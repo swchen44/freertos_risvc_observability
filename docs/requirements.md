@@ -29,3 +29,7 @@
 SDK 目的、功能與限制、FreeRTOS hook／是否改 kernel、安裝與 API、Flash／RAM、CPU loading／每事件成本、UART 介面／頻寬／資料率、buffer／loss、動態裁剪、雲端與本地、金額與維護成本、PDF 圖文、YouTube、官方案例、PSF 格式、時間與物件生命週期、Git／重現性、內網原始碼比對、完整 Markdown／Mermaid 及 MECE 檢查均保留。
 
 QEMU 可以驗證指定軟體行為與資料流程；實體效能、最差 IRQ、電氣吞吐、實際產品載入與能源成本仍需要產品環境。未來新增發現要登錄需求／案例或 U 任務，不能只留在對話。
+
+## M1 實作證據
+
+環境、parser、FreeRTOS hooks／時鐘、Queue runner／獨立 oracle 已驗證。42 個 unit tests、2 個 capture integration、1 個 clean-run E2E，以及 native transport tests 通過。M2 對照案例及 M3 Dashboard 尚未完成。正式證據見 README／日誌。U01～U16 硬體產品研究仍依原狀態追蹤。
