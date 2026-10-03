@@ -37,7 +37,19 @@ def main(argv=None) -> int:
     bench.add_argument("--events", type=int, nargs="+", default=[1000, 10000, 100000])
     bench.add_argument("--output", type=Path, default=Path("artifacts/benchmarks"))
     commands.add_parser("verify-docs", help="Check local documentation and baseline hashes")
+    offline = commands.add_parser("export-html", help="Export PSF as self-contained offline HTML")
+    offline.add_argument("input", type=Path)
+    offline.add_argument("--output", type=Path, required=True)
     args = parser.parse_args(argv)
+    if args.command == "export-html":
+        from psf_lab.offline import export_html
+
+        try:
+            print(json.dumps(export_html(args.input, args.output), ensure_ascii=False))
+            return 0
+        except (OSError, ValueError) as error:
+            print(str(error), file=sys.stderr)
+            return 2
     if args.command in {"benchmark", "verify-docs"}:
         from psf_lab.benchmark import benchmark
         from psf_lab.docs_validation import verify_docs

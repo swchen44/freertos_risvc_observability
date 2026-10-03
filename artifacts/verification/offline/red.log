@@ -1,0 +1,41 @@
+test_export_self_contained_and_safe (tests.unit.test_offline.OfflineTests.test_export_self_contained_and_safe) ... ERROR
+test_query_and_csv_parity (tests.unit.test_offline.OfflineTests.test_query_and_csv_parity) ... ERROR
+test_reject_input_overwrite_and_bad_psf (tests.unit.test_offline.OfflineTests.test_reject_input_overwrite_and_bad_psf) ... ERROR
+test_script_terminator_payload_is_inert (tests.unit.test_offline.OfflineTests.test_script_terminator_payload_is_inert) ... ERROR
+
+======================================================================
+ERROR: test_export_self_contained_and_safe (tests.unit.test_offline.OfflineTests.test_export_self_contained_and_safe)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_offline.py", line 19, in test_export_self_contained_and_safe
+    from psf_lab.offline import export_html
+ModuleNotFoundError: No module named 'psf_lab.offline'
+
+======================================================================
+ERROR: test_query_and_csv_parity (tests.unit.test_offline.OfflineTests.test_query_and_csv_parity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_offline.py", line 68, in test_query_and_csv_parity
+    from psf_lab.offline import casefold_map
+ModuleNotFoundError: No module named 'psf_lab.offline'
+
+======================================================================
+ERROR: test_reject_input_overwrite_and_bad_psf (tests.unit.test_offline.OfflineTests.test_reject_input_overwrite_and_bad_psf)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_offline.py", line 32, in test_reject_input_overwrite_and_bad_psf
+    from psf_lab.offline import export_html
+ModuleNotFoundError: No module named 'psf_lab.offline'
+
+======================================================================
+ERROR: test_script_terminator_payload_is_inert (tests.unit.test_offline.OfflineTests.test_script_terminator_payload_is_inert)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_offline.py", line 44, in test_script_terminator_payload_is_inert
+    from psf_lab.offline import embed_json
+ModuleNotFoundError: No module named 'psf_lab.offline'
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+FAILED (errors=4)

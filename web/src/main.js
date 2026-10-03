@@ -1,4 +1,5 @@
 import "./styles.css";
+import { OfflineDataSource } from "./offline-data-source.js";
 import { HTTPDataSource } from "./data-source.js";
 import { createStore } from "./state.js";
 import { mountTimeline, mountMetrics, taskColor } from "./timeline.js";
@@ -6,7 +7,22 @@ import { mountEventTable } from "./event-table.js";
 import { showDetails } from "./details.js";
 import { renderComparison } from "./compare.js";
 const $ = (id) => document.getElementById(id);
-const api = new HTTPDataSource();
+const offlineNode = document.getElementById("psf-offline-data");
+const api = offlineNode
+  ? new OfflineDataSource(JSON.parse(offlineNode.textContent))
+  : new HTTPDataSource();
+if (offlineNode) {
+  document.querySelector(".local-badge").textContent = "離線 HTML · 已內嵌資料";
+  for (const selector of [
+    ".upload",
+    "#run-select",
+    "#load-run",
+    ".compare-controls",
+  ])
+    document.querySelector(selector).hidden = true;
+  document.querySelector("footer").textContent =
+    "離線報告：新 PSF 請用 Python 重新匯出。案例對照請使用本機服務。";
+}
 const state = createStore({
   traceId: null,
   filters: {},
@@ -419,12 +435,13 @@ $("theme-toggle").onclick = () => {
   if (lastView) draw(lastView);
 };
 Promise.all([api.runs(), savedTraces()])
-  .then(([value]) => {
+  .then(async ([value]) => {
     runs = value;
     options(
       $("run-select"),
       runs.map((r) => [r.run_id, `${r.case_id} · ${r.run_id.slice(-6)}`]),
       "已驗證案例",
     );
+    if (offlineNode) await activate(api.payload.metadata);
   })
   .catch((error) => status(error.message, "error"));

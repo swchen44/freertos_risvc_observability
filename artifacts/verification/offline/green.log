@@ -1,0 +1,9 @@
+test_export_self_contained_and_safe (tests.unit.test_offline.OfflineTests.test_export_self_contained_and_safe) ... ok
+test_query_and_csv_parity (tests.unit.test_offline.OfflineTests.test_query_and_csv_parity) ... ok
+test_reject_input_overwrite_and_bad_psf (tests.unit.test_offline.OfflineTests.test_reject_input_overwrite_and_bad_psf) ... ok
+test_script_terminator_payload_is_inert (tests.unit.test_offline.OfflineTests.test_script_terminator_payload_is_inert) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.319s
+
+OK

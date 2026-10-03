@@ -7,6 +7,7 @@ await mkdir(path.join(root, "dist/assets"), { recursive: true });
 await build({
   entryPoints: [path.join(root, "src/main.js")],
   bundle: true,
+  format: "iife",
   minify: true,
   sourcemap: true,
   outfile: path.join(root, "dist/assets/app.js"),

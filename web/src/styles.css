@@ -598,3 +598,7 @@ fieldset input {
     transition: none !important;
   }
 }
+/* Explicit display rules must not resurrect unavailable offline controls. */
+[hidden] {
+  display: none !important;
+}
