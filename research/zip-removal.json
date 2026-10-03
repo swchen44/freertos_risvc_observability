@@ -1,0 +1,23 @@
+{
+  "date_utc": "2026-10-03T12:26:46.778454+00:00",
+  "removed_path": "percepio-observability-research.zip",
+  "method": "git filter-repo --path percepio-observability-research.zip --invert-paths",
+  "rewritten_branch": "main",
+  "unchanged_poc_commit": "e17fe496e89dc27aa1aa583af63ad9628394c7f6",
+  "commit_map": [
+    {
+      "before": "232637b293858e915d17e6ec04e3633d4539dd28",
+      "after": "a28fe861169711a021077e5bf25d811cfbd27fc8"
+    },
+    {
+      "before": "4afad90ff813d9f5f7c927ecc085158c8ec5d7a8",
+      "after": "997f0a5bce29a30bd467eb1697ad1758fe6d1f7e"
+    },
+    {
+      "before": "ac32ce1d301f501f963a7caacb7341c327a0ab61",
+      "after": "4ef8805f8eea0f763636d1df06ef7e6d5dcb276e"
+    }
+  ],
+  "historical_receipt": "github-publish-receipt.json records pre-removal verification and is retained as historical evidence.",
+  "scope": "Remove from published branch/tag history; ignore future normal git add. GitHub unreachable-object caches and third-party clones cannot be guaranteed erased."
+}

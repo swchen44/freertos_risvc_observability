@@ -225,3 +225,6 @@ node_modules/
 .venv/
 .tools/
 .superpowers/
+
+# Research archive is intentionally excluded from publication.
+/percepio-observability-research.zip

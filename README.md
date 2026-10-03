@@ -27,7 +27,7 @@
 | `Tracealyzer-SDK-demos/` | Percepio 原廠桌面／模擬器示範 | 目錄 README 與各 compiler demo 文件 |
 | `Tracealyzer-STM32CubeIDE-SWO/` | STM32 SWO／STLINK 收集案例與產品圖片 | 目錄 README、`img/`；不代表 RISC-V 板上能力 |
 | `poc/` | **可執行實驗、parser、案例、Dashboard 與完整 Git 歷史** | 詳見下一節；此目錄為 submodule |
-| `percepio-observability-research.zip` | 早期研究快照套件 | 不含後來完整 POC；最新成果請依 Git 版本取得 |
+| `.gitignore` | 排除本機暫存與研究 ZIP | 研究 ZIP 已從發布歷史移除；最新成果請依 Git 版本取得 |
 | `.gitmodules` | 固定 POC commit，保留獨立實驗 repo 行為 | `poc-history` 分支可追查每次原始 commit |
 | `LICENSE` | 保留此 GitHub repo 原有 MIT license | SDK、第三方套件與原始文章依各自授權，原 notices 保留 |
 
@@ -140,7 +140,7 @@ flowchart LR
 
 **研究報告與證據整理已完成；產品韌體整合、板上量測與正式費用評估尚未完成。** 本 README 記錄使用者提出的要求、研究過程、成果、待驗證事項與遺漏檢查，供後續放到內部網路及比對產品原始碼。
 
-主要成果：[完整 Markdown 學習與研究報告](research/FreeRTOS-RISC-V-Observability-研究報告.md)。接續研究可使用[內部 AI 任務檔](research/內部AI-接續研究任務.md)，內含目的、source 比對、驗收與可直接貼給 AI 的指令。可攜套件檔名為 `percepio-observability-research.zip`。
+主要成果：[完整 Markdown 學習與研究報告](research/FreeRTOS-RISC-V-Observability-研究報告.md)。接續研究可使用[內部 AI 任務檔](research/內部AI-接續研究任務.md)，內含目的、source 比對、驗收與可直接貼給 AI 的指令。研究 ZIP 已依要求從 Git 歷史移除，不再上傳；請使用 Git 取得文件與 POC。
 
 ## 1. 這次的要求
 

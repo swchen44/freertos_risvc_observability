@@ -35,11 +35,11 @@ README 原有兩個未勾選事項「放到組織內部網路」、「與產品�
 
 ## 發布內容與保存邊界
 
-- `main`：研究文件、PDF、圖片、下載 SDK／demo 快照、原研究 ZIP、既有 LICENSE、POC gitlink。
+- `main`：研究文件、PDF、圖片、下載 SDK／demo 快照、既有 LICENSE、POC gitlink。
 - `poc-history`：完整 POC commit 歷史、原始 PSF／JSON／oracle、ELF／map、tests、Dashboard 與文件。
 - FreeRTOS 保持上游 submodule pin；不另外複製整個上游歷史到研究根目錄。
 - 本機 `.venv`、`.tools`、`node_modules`、暫存 build／preview store 與巢狀 `.git` 不上傳。
-- 早期 ZIP 保留歷史用途，不聲稱它已包含最新 POC。
+- 研究 ZIP 已依要求從 `main` 的全部歷史移除，並加入 `.gitignore`；SDK 原有的其他 ZIP 不受影響。
 - 原檔 license／notices 保留；GitHub 原有 LICENSE 不覆蓋第三方各自條款。
 
 ## 如何獨立複查
@@ -61,3 +61,7 @@ git log --oneline -8
 GitHub 上傳後已重新 clone，研究區 920 個檔案、POC 1,202 個檔案的 SHA-256 全部一致；422 個基準檔、219 個文件連結與 42 份 PSF 重驗通過。下載版本另外執行 90 項 Python unit tests，全數通過（沿用本機 Python dependencies，沒有重建跨機工具鏈）。
 
 可複查：[上傳與下載核對紀錄](github-publish-receipt.json)、[下載版本測試 log](measurements/github-clone-unit.txt)。receipt 明確記錄受驗證的 snapshot commit；本身於核對後另行提交。
+
+## ZIP 歷史清理
+
+上傳驗證完成後，使用者要求移除研究 ZIP 的全部 Git 歷史。使用 `git filter-repo` 精確移除該路徑，再以 `--force-with-lease` 更新 `main`。`poc-history` 不含此檔案，保持原 commit。原上傳 receipt 保留當時事實；其中 main commit 與檔案數是清理前的歷史紀錄，版本對照見 [清理紀錄](zip-removal.json)。GitHub 快取與別人已下載的副本不在此次可保證清除範圍。
