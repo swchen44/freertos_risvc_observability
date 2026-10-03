@@ -8,3 +8,7 @@ node_modules/
 build/
 artifacts/local/
 runs/local/
+.tools/
+.worktrees/
+*.egg-info/
+.superpowers/

@@ -27,7 +27,7 @@
 4. Clock 與 capture 自我驗證 → T4 DTB timebase、tick probe、獨立 byte count。
 5. Oracle 缺漏或 QEMU timeout → T5 nonzero，保存原始 log／partial PSF。
 
-## P1-T1：可執行的環境檢查與官方 demo
+### Task 1: P1-T1：可執行的環境檢查與官方 demo
 
 **Files**
 - Create: `pyproject.toml`, `requirements-dev.lock`, `src/psf_lab/__init__.py`, `__main__.py`, `cli.py`, `doctor.py`, `provenance.py`。
@@ -121,7 +121,7 @@ git commit -m "build: pin RISC-V environment and add preflight checks"
 
 成功條件：工具完整、原始 demo 可建置與觀察預期輸出、來源可還原。尚未加入 SDK 不算 M1 完成。
 
-## P1-T2：有邊界的 PSF binary framing
+### Task 2: P1-T2：有邊界的 PSF binary framing
 
 **Files**
 - Create: `src/psf_lab/parser/__init__.py`, `binary.py`, `errors.py`；`tests/unit/test_binary.py`。
@@ -180,7 +180,7 @@ ruff format --check .
 
 - [ ] **Step 5：保存 layout 測試與 fixture 來源，commit。** `git add src/psf_lab/parser tests/unit/test_binary.py fixtures/desktop`；`git commit -m "feat: parse bounded PSF v14 binary records"`。
 
-## P1-T3：兩種 schema、JSON 與 decode CLI
+### Task 3: P1-T3：兩種 schema、JSON 與 decode CLI
 
 **Files**
 - Create: `src/psf_lab/parser/semantic.py`, `schemas/__init__.py`, `schemas/desktop.py`, `schemas/freertos.py`；`tests/unit/test_semantic.py`, `test_decode_cli.py`。
@@ -229,7 +229,7 @@ ruff format --check .
 
 - [ ] **Step 5：更新格式支援表並 commit。** `git add src tests docs/format-support.md fixtures/desktop/expected.json`；`git commit -m "feat: decode desktop and FreeRTOS schemas into JSON"`。
 
-## P1-T4：可信時鐘、FreeRTOS hooks 與 binary capture
+### Task 4: P1-T4：可信時鐘、FreeRTOS hooks 與 binary capture
 
 **Files**
 - Create: `firmware/Makefile`, `firmware/config/FreeRTOSConfig.h`, `trcConfig.h`, `trcKernelPortConfig.h`, `trcStreamPortConfig.h`。
@@ -305,7 +305,7 @@ ruff format --check .
 
 - [ ] **Step 5：記錄安裝／hook／clock／capture 差異並 commit。** `git add firmware cases tests tools docs/integration.md`；`git commit -m "feat: capture FreeRTOS queue events on RISC-V QEMU"`。這時才具備正式 run 的 source baseline。
 
-## P1-T5：正式 run 與獨立 Queue harness
+### Task 5: P1-T5：正式 run 與獨立 Queue harness
 
 **Files**
 - Create: `src/psf_lab/runner.py`, `harness.py`；`tests/unit/test_runner.py`, `test_harness.py`；`tests/integration/test_queue_e2e.py`。

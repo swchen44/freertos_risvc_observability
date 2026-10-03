@@ -27,7 +27,7 @@
 4. ABBA 只因沒有事件就宣稱 deadlock → T4 必須有持鎖與等待環及 supervisor oracle。
 5. 多次 run 使用不同 source／clock → T4 suite 在執行前鎖同一 commit，pair 檢查條件一致。
 
-## P2-T1：執行區間、request latency 與品質傳播
+### Task 1: P2-T1：執行區間、request latency 與品質傳播
 
 **Files**
 - Create: `src/psf_lab/analysis.py`, `tests/unit/test_analysis.py`, `tests/fixtures/semantic_traces.py`、其 package `__init__.py`。
@@ -79,7 +79,7 @@ git commit -m "feat: derive trace intervals with explicit uncertainty"
 
 - [ ] **Step 5：對 M1 Queue trace 執行 analyze，保存與原始事件的人工抽查。** 圖表尚未建立，先核對兩段切換的offset、ticks、task；記錄結果於當日日誌。
 
-## P2-T2：Logger 干擾／改善對照
+### Task 2: P2-T2：Logger 干擾／改善對照
 
 **Files**
 - Create: `firmware/app/cases/logger.c`, `cases/logger_bad.json`, `cases/logger_fixed.json`, `tests/unit/test_logger_assertions.py`, `tests/integration/test_logger_pair.py`。
@@ -132,7 +132,7 @@ Integration pair在一個 suite session開始前clean check一次，接續兩個
 
 - [ ] **Step 5：記錄兩組response分布、完整工作量與原始證據；將研究結果寫入日誌。** 若未重現仍保存fail，不把預測改稱觀察。
 
-## P2-T3：Priority inversion／inheritance 對照
+### Task 3: P2-T3：Priority inversion／inheritance 對照
 
 **Files**
 - Create: `firmware/app/cases/inversion.c`, `cases/inversion.json`, `cases/inheritance.json`, `tests/unit/test_inversion_assertions.py`, `tests/integration/test_inversion_pair.py`。
@@ -181,7 +181,7 @@ python -m unittest tests.integration.test_inversion_pair -v
 
 - [ ] **Step 5：保存鎖類型、priority、順序、wait時間與來源offset。** 改善值只對本工作量有效，報告保留case條件。
 
-## P2-T4：Deadlock／ordered locks、三次重跑與M2 gate
+### Task 4: P2-T4：Deadlock／ordered locks、三次重跑與M2 gate
 
 **Files**
 - Create: `firmware/app/cases/deadlock.c`, `cases/deadlock_abba.json`, `cases/ordered_locks.json`, `tests/unit/test_deadlock_assertions.py`, `test_suite.py`, `tests/integration/test_case_suite.py`。

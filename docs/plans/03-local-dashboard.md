@@ -27,7 +27,7 @@
 4. 任意檔名、HTML內容、資源超限 → T2/T3明確拒絕或當純文字顯示。
 5. 大量SVG或聚合造成誤讀 → T4量DOM／延遲並標尺度，原始event仍可查。
 
-## P3-T1：共用Query與CSV，先交付可測函式
+### Task 1: P3-T1：共用Query與CSV，先交付可測函式
 
 **Files**
 - Create: `src/psf_lab/query.py`, `export.py`；`tests/unit/test_query.py`, `test_export.py`；`docs/query-semantics.md`。
@@ -85,7 +85,7 @@ git commit -m "feat: share trace filters and complete CSV exports"
 
 - [ ] **Step 5：以M2 trace核對一個窗口的原始event IDs與CSV一致，保存查詢payload和結果hash。**
 
-## P3-T2：有上限的本機HTTP服務
+### Task 2: P3-T2：有上限的本機HTTP服務
 
 **Files**
 - Create: `src/psf_lab/server.py`, `store.py`, `tests/unit/test_store.py`, `tests/unit/test_server.py`, `requirements-runtime.lock`。
@@ -139,7 +139,7 @@ python -m psf_lab serve --host 127.0.0.1 --port 8000
 
 - [ ] **Step 5：保存OpenAPI JSON與一次真實PSF上傳／filter／CSV回應，不把API通過當瀏覽器驗收。**
 
-## P3-T3：SVG介面、互動狀態與表格
+### Task 3: P3-T3：SVG介面、互動狀態與表格
 
 **Files**
 - Create: `web/package.json`, `package-lock.json`, `build.mjs`, `index.html`, `src/styles.css`, `src/main.js`, `src/data-source.js`, `src/state.js`, `src/timeline.js`, `src/event-table.js`, `src/details.js`, `src/compare.js`。
@@ -200,7 +200,7 @@ git commit -m "feat: add interactive SVG trace workspace"
 
 - [ ] **Step 5：用真實Queue與三組pair進行人工視覺檢查，保存全畫面與details截圖。** 檢查文字大小、欄位、橫向捲動、品質警告與長名稱；修改後重跑受影響tests。
 
-## P3-T4：瀏覽器、效能量測與交接
+### Task 4: P3-T4：瀏覽器、效能量測與交接
 
 **Files**
 - Create: `web/playwright.config.mjs`, `web/tests/e2e/dashboard.spec.mjs`, `src/psf_lab/benchmark.py`, `docs_validation.py`, `tests/unit/test_benchmark.py`, `test_docs_validation.py`。

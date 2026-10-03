@@ -1,0 +1,7 @@
+{
+  "origin": "references/baseline/research/cases/desktop-demo.psf",
+  "kind": "desktop mock RTOS; not RISC-V FreeRTOS",
+  "sha256": "32f6421362bda37e3b91411afedb5df0c29741f99fe1df08389cf76e56f79d47",
+  "bytes": 7152,
+  "expected_events": 309
+}
