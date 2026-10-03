@@ -1,0 +1,122 @@
+{
+  "mode": "server",
+  "viewport": [
+    1600,
+    1000
+  ],
+  "source_commit": "c781e84e14df1617bec38ddf8464d2ace1c8c3aa",
+  "shots": [
+    {
+      "file": "artifacts/screenshots/server/01-start.png",
+      "description": "本機服務：選擇原始 PSF 或已儲存 trace",
+      "sha256": "7dfb79ba78afc776a01196b5f80cfac557cf915285f27513bedd93cd9cde1f94",
+      "state": {
+        "rows": "—",
+        "search": "",
+        "task": [],
+        "window": "—"
+      }
+    },
+    {
+      "file": "artifacts/screenshots/server/02-overview.png",
+      "description": "Queue trace：時間軸、CPU 分母與事件來源",
+      "sha256": "ea94c9618408e24381011b6cee46beba32c1b1303a90fc70575aa5ebab03969a",
+      "state": {
+        "rows": "符合 281 筆；本頁 20 筆。CSV 匯出全部 281 筆。",
+        "search": "",
+        "task": [],
+        "window": "[0, 160571) ticks · 16.057 ms"
+      }
+    },
+    {
+      "file": "artifacts/screenshots/server/03-filter-window.png",
+      "description": "選 consumer 與時間窗；統計分母保留完整排程",
+      "sha256": "763588fee34317c85c6603e2c9b526cbb3fb9c7e40cecaf990369c62745a993b",
+      "state": {
+        "rows": "符合 22 筆；本頁 20 筆。CSV 匯出全部 22 筆。",
+        "search": "",
+        "task": [
+          "0x80081870:0"
+        ],
+        "window": "[500, 50000) ticks · 4.950 ms"
+      }
+    },
+    {
+      "file": "artifacts/screenshots/server/04-timeline-brush.png",
+      "description": "實際拖曳選取時間窗，事件與統計同步更新",
+      "sha256": "42c5cd51e6380e586f355c12c0a26ae1ab1d6fb8d140df19d9490440821a300a",
+      "state": {
+        "rows": "符合 96 筆；本頁 20 筆。CSV 匯出全部 96 筆。",
+        "search": "",
+        "task": [],
+        "window": "[34725, 92098) ticks · 5.737 ms"
+      }
+    },
+    {
+      "file": "artifacts/screenshots/server/04-event-details.png",
+      "description": "滑過事件並點選固定原始欄位、offset 與品質",
+      "sha256": "4749189f4f7a893ba7325b1b7dfc506421542be95085762db589902907cd72e7",
+      "state": {
+        "rows": "符合 281 筆；本頁 20 筆。CSV 匯出全部 281 筆。",
+        "search": "",
+        "task": [],
+        "window": "[0, 160571) ticks · 16.057 ms"
+      }
+    },
+    {
+      "file": "artifacts/screenshots/server/05-sort-resize.png",
+      "description": "時間倒序與拖曳調整欄寬",
+      "sha256": "86c152f4243477fff77bf993fad1e3b8726296fd6aedf00a26a149a17f15c983",
+      "state": {
+        "rows": "符合 281 筆；本頁 20 筆。CSV 匯出全部 281 筆。",
+        "search": "",
+        "task": [],
+        "window": "[0, 160571) ticks · 16.057 ms"
+      }
+    },
+    {
+      "file": "artifacts/screenshots/server/06-csv.png",
+      "description": "匯出所有 281 筆事件，不只目前 20 筆；CSV 另以檔案驗證",
+      "sha256": "86c152f4243477fff77bf993fad1e3b8726296fd6aedf00a26a149a17f15c983",
+      "state": {
+        "rows": "符合 281 筆；本頁 20 筆。CSV 匯出全部 281 筆。",
+        "search": "",
+        "task": [],
+        "window": "[0, 160571) ticks · 16.057 ms"
+      }
+    },
+    {
+      "file": "artifacts/screenshots/server/07-empty-filter.png",
+      "description": "沒有符合事件時仍保留正確的排程分母",
+      "sha256": "efa813fb7ab910e7153a98635588762a527c1977b857be1971799f0f1de89389",
+      "state": {
+        "rows": "符合 0 筆；本頁 0 筆。CSV 匯出全部 0 筆。",
+        "search": "no-such-message",
+        "task": [],
+        "window": "[0, 160571) ticks · 16.057 ms"
+      }
+    },
+    {
+      "file": "artifacts/screenshots/server/08-quality.png",
+      "description": "來源 SHA、時基、完整性限制與品質",
+      "sha256": "55b1a3386b372d3160f2147e62b3795a0698d54d39cd3c54a31b748895488009",
+      "state": {
+        "rows": "符合 281 筆；本頁 20 筆。CSV 匯出全部 281 筆。",
+        "search": "",
+        "task": [],
+        "window": "[0, 160571) ticks · 16.057 ms"
+      }
+    },
+    {
+      "file": "artifacts/screenshots/server/09-comparison.png",
+      "description": "Logger 干擾／改善，附獨立 oracle 結果",
+      "sha256": "3040a40197877dd2569a87d1ec41061de0654eb96f87745cac40f12644cab65b",
+      "state": {
+        "rows": "符合 281 筆；本頁 20 筆。CSV 匯出全部 281 筆。",
+        "search": "",
+        "task": [],
+        "window": "[0, 160571) ticks · 16.057 ms"
+      }
+    }
+  ]
+}

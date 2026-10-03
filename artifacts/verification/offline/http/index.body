@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>PSF Lab · 排程觀測工作區</title>
+    <link rel="stylesheet" href="/assets/app.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="identity">
+        <span class="mark" aria-hidden="true">▥</span>
+        <div>
+          <h1>PSF Lab</h1>
+          <p>FreeRTOS 排程觀測工作區</p>
+        </div>
+      </div>
+      <div class="top-actions">
+        <span class="local-badge">本機分析</span
+        ><button id="theme-toggle" aria-label="切換明暗模式">深色模式</button
+        ><label class="primary upload"
+          >載入 PSF<input
+            id="psf-input"
+            data-testid="psf-input"
+            type="file"
+            accept=".psf"
+        /></label>
+      </div>
+    </header>
+    <div class="sourcebar">
+      <div>
+        <strong id="source-name">尚未載入 trace</strong
+        ><span id="source-info">選擇 PSF，或開啟下方已驗證案例</span>
+      </div>
+      <div class="source-controls">
+        <select id="saved-traces" aria-label="已儲存 trace">
+          <option value="">已儲存 trace</option></select
+        ><select id="run-select" aria-label="已驗證案例">
+          <option value="">已驗證案例</option></select
+        ><button id="load-run">開啟案例</button>
+      </div>
+    </div>
+    <div id="status" class="status" role="status">
+      資料留在本機。原始 PSF、品質與事件位置都可追查。
+    </div>
+    <main class="workbench">
+      <aside class="filters">
+        <div class="section-title">
+          <h2>篩選</h2>
+          <button id="reset" class="quiet">重設</button>
+        </div>
+        <label
+          >Task <small>可多選；不改變統計分母</small
+          ><select
+            id="task-filter"
+            multiple
+            size="5"
+            aria-label="Task 篩選"
+          ></select></label
+        ><label
+          >物件<select id="object-filter" aria-label="物件篩選">
+            <option value="">全部物件</option>
+          </select></label
+        ><label
+          >Channel<select id="channel-filter" aria-label="Channel 篩選">
+            <option value="">全部 channel</option>
+          </select></label
+        ><label
+          >事件類型<select id="event-filter" aria-label="事件類型篩選">
+            <option value="">全部事件</option>
+          </select></label
+        ><label
+          >文字搜尋<input
+            id="search-filter"
+            placeholder="搜尋名稱或訊息"
+            aria-label="文字搜尋"
+        /></label>
+        <fieldset>
+          <legend>時間窗口 <small>ticks</small></legend>
+          <label
+            >起點<input
+              id="start-filter"
+              inputmode="numeric"
+              aria-label="時間起點" /></label
+          ><label
+            >終點，不含<input
+              id="end-filter"
+              inputmode="numeric"
+              aria-label="時間終點" /></label
+          ><button id="apply-window">套用時間窗口</button>
+        </fieldset>
+        <div class="scope-note">
+          物件、channel 與文字篩選作用於事件。排程與 CPU 分母保留完整時間窗口。
+        </div>
+        <button id="show-quality">查看品質與來源</button>
+        <section class="compare-controls">
+          <h2>案例對照</h2>
+          <select id="pair-select" aria-label="比較案例組">
+            <option value="logger">Logger 干擾／改善</option>
+            <option value="priority">Inversion／inheritance</option>
+            <option value="locks">ABBA／ordered locks</option></select
+          ><button id="compare-run">比較已驗證結果</button>
+        </section>
+      </aside>
+      <section class="center">
+        <div id="empty-state" class="empty-state">
+          <div class="empty-glyph" aria-hidden="true">▤</div>
+          <h2>從一份 PSF 開始</h2>
+          <p>
+            沿著時間軸找到事件，再用 task share、回應時間與原始紀錄核對原因。
+          </p>
+          <p>上方可直接開啟已驗證的 FreeRTOS 案例。</p>
+        </div>
+        <div id="trace-workspace" hidden>
+          <section class="panel timeline-panel">
+            <div class="panel-heading">
+              <div>
+                <h2>Task 時間軸</h2>
+                <p id="window-label">—</p>
+              </div>
+              <div>
+                <button id="brush">拖曳選取窗口</button
+                ><button id="reset-window">完整時間</button>
+              </div>
+            </div>
+            <div id="timeline" data-testid="timeline" class="timeline"></div>
+            <div class="panel-foot" id="aggregation-label"></div>
+          </section>
+          <div class="charts-row">
+            <section class="panel">
+              <div class="panel-heading">
+                <div>
+                  <h2>Task execution share</h2>
+                  <p id="coverage-label">—</p>
+                </div>
+              </div>
+              <div
+                id="cpu-chart"
+                data-testid="cpu-chart"
+                class="small-chart"
+              ></div>
+              <p class="chart-note">
+                分母為選取窗口；ISR 尚未完整重建，未知區間以灰色呈現。
+              </p>
+              <div id="share-values" class="share-values"></div>
+            </section>
+            <section class="panel">
+              <div class="panel-heading">
+                <div>
+                  <h2 id="timing-title">Response／execution</h2>
+                  <p id="request-label">需要明確 request 邊界</p>
+                </div>
+              </div>
+              <div
+                id="timing-chart"
+                data-testid="timing-chart"
+                class="small-chart"
+              ></div>
+              <p class="chart-note" id="timing-note"></p>
+            </section>
+          </div>
+          <section class="panel event-panel">
+            <div class="panel-heading">
+              <div>
+                <h2>事件紀錄</h2>
+                <p id="row-count">—</p>
+              </div>
+              <div class="export-actions">
+                <button id="export-metrics">匯出統計 CSV</button
+                ><button id="export-events">匯出事件 CSV</button>
+              </div>
+            </div>
+            <div id="event-table" data-testid="event-table"></div>
+            <div class="table-footer">
+              <span id="sort-label">排序：時間 ↑；點欄名切換</span>
+              <div>
+                <button id="previous">上一頁</button
+                ><span id="page-label">—</span><button id="next">下一頁</button>
+              </div>
+            </div>
+          </section>
+        </div>
+        <section id="comparison-panel" class="panel" hidden>
+          <div class="panel-heading">
+            <h2>案例比較</h2>
+            <button id="close-comparison">收起</button>
+          </div>
+          <div id="comparison"></div>
+        </section>
+      </section>
+      <aside class="inspector">
+        <div class="section-title">
+          <h2>證據詳情</h2>
+          <button id="unpin">解除固定</button>
+        </div>
+        <p class="inspector-hint">滑鼠移到事件可預覽；點選後固定。</p>
+        <div id="details" data-testid="details">
+          <p>選取事件以查看原始 payload、offset、actor 與品質。</p>
+        </div>
+      </aside>
+    </main>
+    <footer class="app-footer">
+      PSF v14 · 單 core · 時間單位與模型依來源記錄
+      <span>Cache／bus 相對最佳化排在後續階段</span>
+    </footer>
+    <script type="module" src="/assets/app.js"></script>
+  </body>
+</html>

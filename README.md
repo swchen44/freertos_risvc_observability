@@ -4,9 +4,43 @@
 
 目前已固定工具鏈、完成 PSF parser，並在 RISC-V QEMU 跑通 FreeRTOS Queue／clock probe。正式 harness 與七配置三次重跑已通過；本機 Dashboard 已通過瀏覽器驗收；獨立 review 的 3 個 Important 已修正，最後全套回歸驗證通過。建立日期：2026-10-03。
 
-## 本次規劃中的工作
+## 離線 HTML 與實際畫面
 
-[離線 HTML、圖文交接與知識庫同步計畫](docs/plans/05-offline-portability-documentation.md) 已確認 1A／2B：Python 匯出離線 HTML、跨機重現整項暫緩。本輪五個交付任務、至少 14 張實際畫面；agent-browser 做 E2E、curl 做 API integration。新增功能尚未實作。
+已新增 Python → 單檔離線 HTML；觀看時不需 Python、Server 或網路。新 PSF 需重新匯出。跨機重現依 2B 整項暫緩。
+
+```sh
+npm --prefix web ci
+npm --prefix web run build
+.venv/bin/python -m psf_lab export-html fixtures/desktop/trace.psf --output artifacts/local/report.html
+```
+
+雙擊 `report.html` 即可篩選、拖曳時間軸、排序／調整表格、查看詳情與匯出 CSV。[可下載 Queue 示範](artifacts/offline/queue-baseline.html)；GitHub 上請下載原始檔後開啟。
+
+[完整 18 張操作圖解與模式比較](docs/offline-guide.md)｜[實作計畫](docs/plans/05-offline-portability-documentation.md)｜[curl 驗證](artifacts/verification/offline/http-tests.log)｜[agent-browser Server](artifacts/verification/offline/browser-server.log)｜[agent-browser 離線](artifacts/verification/offline/browser-offline.log)
+
+**Web Server：載入 Queue PSF。** 時間軸與 CPU share 呈現執行區間，右側保留來源與品質。
+
+![Web Server Queue 全覽](artifacts/screenshots/server/02-overview.png)
+
+**單檔離線 HTML：同一份 Queue 資料。** 右上角標明離線模式，來源與品質保留。這不是圖片報告，仍可操作。
+
+![離線 HTML Queue 全覽](artifacts/screenshots/offline/02-overview.png)
+
+**篩選 consumer 與時間窗。** Task 選取不會錯改 CPU 分母。
+
+![離線篩選與時間窗](artifacts/screenshots/offline/03-filter-window.png)
+
+**滑鼠拖曳時間軸。** 拖曳後窗口、統計與事件表同步更新。
+
+![離線滑鼠拖曳窗口](artifacts/screenshots/offline/04-timeline-brush.png)
+
+**排序、欄寬與 CSV。** 畫面每頁 20 筆，但 CSV 實測輸出全部 281 筆。
+
+![離線排序與欄寬](artifacts/screenshots/offline/05-sort-resize.png)
+
+**Server：Logger 干擾／改善案例。** 比較含獨立 oracle；單 trace 離線版不內嵌案例 registry。
+
+![Server Logger 案例比較](artifacts/screenshots/server/09-comparison.png)
 
 ## 文件入口
 
@@ -106,7 +140,7 @@ npm --prefix web run test:e2e
 - [內網 AI 接續工作](docs/handoff.md)：U01～U16 的目的、產品完成條件與可直接使用的 POC 成果。
 - [Cache 相對最佳化計畫](docs/plans/04-cache-relative-optimization.md)：M1～M3 之後執行；比較 L1I／L1D／L2 miss、指令數、size 與模型成本。接受非 cycle-accurate，保留假設與敏感度分析。
 
-本版不提供離線 HTML、完整 ISR／SMP、任意 PSF schema、實體 UART 或 cloud。SDK CPU 百分比、每事件 cycles、最差 IRQ 與產品 Flash／RAM 仍需內網／硬體量測。
+本版提供單 trace 離線 HTML；仍不提供完整 ISR／SMP、任意 PSF schema、實體 UART 或 cloud。SDK CPU 百分比、每事件 cycles、最差 IRQ 與產品 Flash／RAM 仍需內網／硬體量測。
 
 
 ## 最新驗證紀錄

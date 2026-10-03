@@ -1,0 +1,19 @@
+{
+  "command": [
+    "curl",
+    "--silent",
+    "--show-error",
+    "--max-time",
+    "60",
+    "-D",
+    "/Users/swchen.tw/git/percepio/poc/artifacts/verification/offline/http/metadata.headers",
+    "-o",
+    "/Users/swchen.tw/git/percepio/poc/artifacts/verification/offline/http/metadata.body",
+    "-w",
+    "%{http_code}",
+    "http://127.0.0.1:8767/api/traces/7a92b7c55c614b758a623c15fe2ef89c"
+  ],
+  "returncode": 0,
+  "stderr": "",
+  "status": "200"
+}

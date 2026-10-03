@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "mode": "server",
+  "initial": {
+    "coverage": "Known 160116 / 160571 ticks；Unknown 455",
+    "shares": "supervisor 0.13%consumer 0.36%producer 0.39%TzCtrl 0.01%IDLE 98.83%"
+  },
+  "csv_rows": 281,
+  "console_errors": "",
+  "source_sha256": "497fcb40b29fa45f54719e509afce50ce575f177da6448012ca5aa82a0c5f4bd"
+}

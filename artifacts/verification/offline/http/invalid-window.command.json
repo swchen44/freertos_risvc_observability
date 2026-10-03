@@ -1,0 +1,23 @@
+{
+  "command": [
+    "curl",
+    "--silent",
+    "--show-error",
+    "--max-time",
+    "60",
+    "-D",
+    "/Users/swchen.tw/git/percepio/poc/artifacts/verification/offline/http/invalid-window.headers",
+    "-o",
+    "/Users/swchen.tw/git/percepio/poc/artifacts/verification/offline/http/invalid-window.body",
+    "-w",
+    "%{http_code}",
+    "-H",
+    "Content-Type: application/json",
+    "--data",
+    "{\"filters\": {\"start_ticks\": \"9\", \"end_ticks\": \"2\"}}",
+    "http://127.0.0.1:8767/api/traces/7a92b7c55c614b758a623c15fe2ef89c/events"
+  ],
+  "returncode": 0,
+  "stderr": "",
+  "status": "422"
+}

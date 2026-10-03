@@ -1,0 +1,21 @@
+{
+  "command": [
+    "curl",
+    "--silent",
+    "--show-error",
+    "--max-time",
+    "60",
+    "-D",
+    "/Users/swchen.tw/git/percepio/poc/artifacts/verification/offline/http/upload.headers",
+    "-o",
+    "/Users/swchen.tw/git/percepio/poc/artifacts/verification/offline/http/upload.body",
+    "-w",
+    "%{http_code}",
+    "-F",
+    "file=@/Users/swchen.tw/git/percepio/poc/runs/suite-20261003T085652Z-2732b56355/20261003T085919Z-queue_baseline-4f1069e1ba/trace.psf",
+    "http://127.0.0.1:8767/api/traces"
+  ],
+  "returncode": 0,
+  "stderr": "",
+  "status": "201"
+}

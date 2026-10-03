@@ -1,0 +1,26 @@
+{
+  "queue_baseline": {
+    "source_sha256": "497fcb40b29fa45f54719e509afce50ce575f177da6448012ca5aa82a0c5f4bd",
+    "event_count": 281,
+    "schema_version": 1,
+    "html_bytes": 1795539,
+    "html_sha256": "9c6eaed20f3a8cf68860ee66038938915150413539f74ebc0009fcc9d8f9f341",
+    "issues": []
+  },
+  "logger_bad": {
+    "source_sha256": "e150612caeba73359d7d6a96e13bb5c40b5d2b11ca817808ed4bab938253a084",
+    "event_count": 287,
+    "schema_version": 1,
+    "html_bytes": 1795740,
+    "html_sha256": "f9c51de626f63abf6af1f1e880f5a1a0f92dc336052cd1e09d806aeb160bae3a",
+    "issues": []
+  },
+  "logger_fixed": {
+    "source_sha256": "1c897411dfbe629eab00ae4bb440ee2debbabefb3805784e74ef0b13266f5646",
+    "event_count": 310,
+    "schema_version": 1,
+    "html_bytes": 1803419,
+    "html_sha256": "88b8922ca5835e61d7f3b13d71240772ebc23a15430b38b775986f25825de353",
+    "issues": []
+  }
+}

@@ -1,0 +1,1312 @@
+[
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "open",
+      "about:blank"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ \n  about:blank\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "set",
+      "viewport",
+      "1600",
+      "1000"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "open",
+      "http://127.0.0.1:8767"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ PSF Lab · 排程觀測工作區\n  http://127.0.0.1:8767/\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "snapshot",
+      "-i"
+    ],
+    "exit_code": 0,
+    "stdout": "- heading \"PSF Lab\" [level=1, ref=e4]\n- button \"切換明暗模式\" [ref=e5]\n- LabelText \"載入 PSF\" [ref=e6] clickable [cursor:pointer]\n  - button \"載入 PSF\" [ref=e7]: 未選擇任何檔案\n- combobox \"已儲存 trace\" [expanded=false, ref=e1]\n  - option \"已儲存 trace\" [selected, ref=e8]\n  - option \"trace.psf\" [ref=e9]\n  - option \"trace.psf\" [ref=e10]\n- combobox \"已驗證案例\" [expanded=false, ref=e2]\n  - option \"已驗證案例\" [selected, ref=e11]\n- button \"開啟案例\" [ref=e3]\n- heading \"篩選\" [level=2, ref=e12]\n- button \"重設\" [ref=e13]\n- listbox \"Task 篩選\" [ref=e17]\n- combobox \"物件篩選\" [expanded=false, ref=e18]: 全部物件\n  - option \"全部物件\" [selected, ref=e29]\n- combobox \"Channel 篩選\" [expanded=false, ref=e19]: 全部 channel\n  - option \"全部 channel\" [selected, ref=e30]\n- combobox \"事件類型篩選\" [expanded=false, ref=e20]: 全部事件\n  - option \"全部事件\" [selected, ref=e31]\n- textbox \"文字搜尋\" [ref=e21]\n- textbox \"時間起點\" [ref=e27]\n- textbox \"時間終點\" [ref=e28]\n- button \"套用時間窗口\" [ref=e22]\n- button \"查看品質與來源\" [ref=e14]\n- heading \"案例對照\" [level=2, ref=e23]\n- combobox \"比較案例組\" [expanded=false, ref=e24]: Logger 干擾／改善\n  - option \"Logger 干擾／改善\" [selected, ref=e32]\n  - option \"Inversion／inheritance\" [ref=e33]\n  - option \"ABBA／ordered locks\" [ref=e34]\n- button \"比較已驗證結果\" [ref=e25]\n- heading \"從一份 PSF 開始\" [level=2, ref=e26]\n- heading \"證據詳情\" [level=2, ref=e15]\n- button \"解除固定\" [ref=e16]\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "screenshot",
+      "--full",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/screenshots/server/01-start.png"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/screenshots/server/01-start.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
+      "({window:document.querySelector(\"#window-label\").textContent,search:document.querySelector(\"#search-filter\").value,task:[...document.querySelector(\"#task-filter\").selectedOptions].map(x=>x.value),rows:document.querySelector(\"#row-count\").textContent})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":{\"rows\":\"—\",\"search\":\"\",\"task\":[],\"window\":\"—\"}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "document.querySelector(\"#saved-traces\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "select",
+      "#saved-traces",
+      "7a92b7c55c614b758a623c15fe2ef89c"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "wait",
+      "--fn",
+      "Number(document.body.dataset.renderRevision)>0 && !document.querySelector(\"#status\").textContent.includes(\"正在\")"
+    ],
+    "exit_code": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "snapshot",
+      "-i"
+    ],
+    "exit_code": 0,
+    "stdout": "- heading \"PSF Lab\" [level=1, ref=e4]\n- button \"切換明暗模式\" [ref=e5]\n- LabelText \"載入 PSF\" [ref=e6] clickable [cursor:pointer]\n  - button \"載入 PSF\" [ref=e7]: 未選擇任何檔案\n- combobox \"已儲存 trace\" [expanded=false, ref=e1]: trace.psf\n  - option \"已儲存 trace\" [ref=e8]\n  - option \"trace.psf\" [selected, ref=e9]\n  - option \"trace.psf\" [ref=e10]\n- combobox \"已驗證案例\" [expanded=false, ref=e2]\n  - option \"已驗證案例\" [selected, ref=e11]\n  - option \"queue_baseline · 84eed3\" [ref=e12]\n  - option \"queue_baseline · 6dfb90\" [ref=e13]\n  - option \"logger_bad · 93348d\" [ref=e14]\n  - option \"logger_fixed · ccc2d6\" [ref=e15]\n  - option \"inversion · d028ca\" [ref=e16]\n  - option \"inheritance · d8e2b4\" [ref=e17]\n  - option \"deadlock_abba · 7b5e8a\" [ref=e18]\n  - option \"ordered_locks · 913daf\" [ref=e19]\n  - option \"queue_baseline · ca69e2\" [ref=e20]\n  - option \"logger_bad · 95b91f\" [ref=e21]\n  - option \"logger_fixed · e45ea8\" [ref=e22]\n  - option \"inversion · 0cf818\" [ref=e23]\n  - option \"inheritance · 75e57e\" [ref=e24]\n  - option \"deadlock_abba · 50d96a\" [ref=e25]\n  - option \"ordered_locks · deccab\" [ref=e26]\n  - option \"queue_baseline · f0b2ab\" [ref=e27]\n  - option \"logger_bad · d4a2e3\" [ref=e28]\n  - option \"logger_fixed · 3e02b3\" [ref=e29]\n  - option \"inversion · 5c856f\" [ref=e30]\n  - option \"inheritance · 94feaf\" [ref=e31]\n  - option \"deadlock_abba · 4b86f0\" [ref=e32]\n  - option \"ordered_locks · a38d31\" [ref=e33]\n  - option \"queue_baseline · 22a470\" [ref=e34]\n  - option \"logger_bad · 06c385\" [ref=e35]\n  - option \"logger_fixed · 2d3171\" [ref=e36]\n  - option \"inversion · 1c87aa\" [ref=e37]\n  - option \"inheritance · 375eb0\" [ref=e38]\n  - option \"deadlock_abba · 744600\" [ref=e39]\n  - option \"ordered_locks · a32fb9\" [ref=e40]\n  - option \"queue_baseline · d1d5fa\" [ref=e41]\n  - option \"logger_bad · d7ce62\" [ref=e42]\n  - option \"logger_fixed · eefaa0\" [ref=e43]\n  - option \"inversion · 9aed2f\" [ref=e44]\n  - option \"inheritance · 293468\" [ref=e45]\n  - option \"deadlock_abba · 40754f\" [ref=e46]\n  - option \"ordered_locks · 76800a\" [ref=e47]\n  - option \"queue_baseline · 69e1ba\" [ref=e48]\n  - option \"logger_bad · e83381\" [ref=e49]\n  - option \"logger_fixed · 72b407\" [ref=e50]\n  - option \"inversion · 1c8bd6\" [ref=e51]\n  - option \"inheritance · 84affa\" [ref=e52]\n  - option \"deadlock_abba · 5aa2e4\" [ref=e53]\n  - option \"ordered_locks · 87e5fb\" [ref=e54]\n- button \"開啟案例\" [ref=e3]\n- heading \"篩選\" [level=2, ref=e55]\n- button \"重設\" [ref=e56]\n- listbox \"Task 篩選\" [ref=e60]\n  - option \"TzCtrl\" [ref=e70]\n  - option \"producer\" [ref=e71]\n  - option \"consumer\" [ref=e72]\n  - option \"supervisor\" [ref=e73]\n  - option \"IDLE\" [ref=e74]\n- combobox \"物件篩選\" [expanded=false, ref=e61]: 全部物件\n  - option \"全部物件\" [selected, ref=e85]\n  - option \"System Heap · unknown\" [ref=e86]\n  - option \"TzCtrl · task\" [ref=e87]\n  - option \"POC · channel\" [ref=e88]\n  - option \"messages · queue\" [ref=e89]\n  - option \"producer · task\" [ref=e90]\n  - option \"consumer · task\" [ref=e91]\n  - option \"supervisor · task\" [ref=e92]\n  - option \"IDLE · task\" [ref=e93]\n- combobox \"Channel 篩選\" [expanded=false, ref=e62]: 全部 channel\n  - option \"全部 channel\" [selected, ref=e94]\n  - option \"POC\" [ref=e95]\n- combobox \"事件類型篩選\" [expanded=false, ref=e63]: 全部事件\n  - option \"全部事件\" [selected, ref=e96]\n  - option \"trace_start (0x1)\" [ref=e97]\n  - option \"object_name (0x3)\" [ref=e98]\n  - option \"task_create (0x10)\" [ref=e99]\n  - option \"queue_create (0x11)\" [ref=e100]\n  - option \"task_ready (0x30)\" [ref=e101]\n  - option \"new_time (0x31)\" [ref=e102]\n  - option \"task_switch (0x37)\" [ref=e103]\n  - option \"queue_send (0x50)\" [ref=e104]\n  - option \"queue_receive (0x60)\" [ref=e105]\n  - option \"queue_receive_block (0x66)\" [ref=e106]\n  - option \"task_delay (0x7a)\" [ref=e107]\n  - option \"task_suspend (0x7b)\" [ref=e108]\n  - option \"user_event (0x92)\" [ref=e109]\n- textbox \"文字搜尋\" [ref=e64]\n- textbox \"時間起點\" [ref=e75]\n- textbox \"時間終點\" [ref=e76]\n- button \"套用時間窗口\" [ref=e65]\n- button \"查看品質與來源\" [ref=e57]\n- heading \"案例對照\" [level=2, ref=e66]\n- combobox \"比較案例組\" [expanded=false, ref=e67]: Logger 干擾／改善\n  - option \"Logger 干擾／改善\" [selected, ref=e110]\n  - option \"Inversion／inheritance\" [ref=e111]\n  - option \"ABBA／ordered locks\" [ref=e112]\n- button \"比較已驗證結果\" [ref=e68]\n- heading \"Task 時間軸\" [level=2, ref=e77]\n- button \"拖曳選取窗口\" [ref=e113]\n- button \"完整時間\" [ref=e114]\n- heading \"Task execution share\" [level=2, ref=e78]\n- heading \"User-event signal\" [level=2, ref=e79]\n- heading \"事件紀錄\" [level=2, ref=e80]\n- button \"匯出統計 CSV\" [ref=e81]\n- button \"匯出事件 CSV\" [ref=e82]\n- columnheader \"時間 ticks\" [ref=e256]\n- columnheader \"事件\" [ref=e257]\n- columnheader \"Task\" [ref=e258]\n- columnheader \"物件\" [ref=e259]\n- columnheader \"訊息\" [ref=e260]\n- columnheader \"Offset\" [ref=e261]\n- columnheader \"Seq\" [ref=e262]\n- generic \"0trace_startUnknown—16863object_nameUnknownPOC18079queue_createUnknownmessages196815object_nameUn\" [ref=e115] focusable [tabindex]\n- gridcell \"0\" [ref=e116]\n- gridcell \"trace_start\" [ref=e117]\n- gridcell \"Unknown\" [ref=e118]\n- gridcell \"—\" [ref=e119]\n- gridcell \"\" [ref=e120]\n- gridcell \"168\" [ref=e121]\n- gridcell \"6\" [ref=e122]\n- gridcell \"3\" [ref=e123]\n- gridcell \"object_name\" [ref=e124]\n- gridcell \"Unknown\" [ref=e125]\n- gridcell \"POC\" [ref=e126]\n- gridcell \"\" [ref=e127]\n- gridcell \"180\" [ref=e128]\n- gridcell \"7\" [ref=e129]\n- gridcell \"9\" [ref=e130]\n- gridcell \"queue_create\" [ref=e131]\n- gridcell \"Unknown\" [ref=e132]\n- gridcell \"messages\" [ref=e133]\n- gridcell \"\" [ref=e134]\n- gridcell \"196\" [ref=e135]\n- gridcell \"8\" [ref=e136]\n- gridcell \"15\" [ref=e137]\n- gridcell \"object_name\" [ref=e138]\n- gridcell \"Unknown\" [ref=e139]\n- gridcell \"messages\" [ref=e140]\n- gridcell \"\" [ref=e141]\n- gridcell \"212\" [ref=e142]\n- gridcell \"9\" [ref=e143]\n- gridcell \"111\" [ref=e144]\n- gridcell \"object_name\" [ref=e145]\n- gridcell \"Unknown\" [ref=e146]\n- gridcell \"producer\" [ref=e147]\n- gridcell \"\" [ref=e148]\n- gridcell \"236\" [ref=e149]\n- gridcell \"10\" [ref=e150]\n- gridcell \"114\" [ref=e151]\n- gridcell \"task_create\" [ref=e152]\n- gridcell \"Unknown\" [ref=e153]\n- gridcell \"producer\" [ref=e154]\n- gridcell \"\" [ref=e155]\n- gridcell \"260\" [ref=e156]\n- gridcell \"11\" [ref=e157]\n- gridcell \"116\" [ref=e158]\n- gridcell \"task_ready\" [ref=e159]\n- gridcell \"Unknown\" [ref=e160]\n- gridcell \"producer\" [ref=e161]\n- gridcell \"\" [ref=e162]\n- gridcell \"276\" [ref=e163]\n- gridcell \"12\" [ref=e164]\n- gridcell \"210\" [ref=e165]\n- gridcell \"object_name\" [ref=e166]\n- gridcell \"Unknown\" [ref=e167]\n- gridcell \"consumer\" [ref=e168]\n- gridcell \"\" [ref=e169]\n- gridcell \"288\" [ref=e170]\n- gridcell \"13\" [ref=e171]\n- gridcell \"213\" [ref=e172]\n- gridcell \"task_create\" [ref=e173]\n- gridcell \"Unknown\" [ref=e174]\n- gridcell \"consumer\" [ref=e175]\n- gridcell \"\" [ref=e176]\n- gridcell \"312\" [ref=e177]\n- gridcell \"14\" [ref=e178]\n- gridcell \"215\" [ref=e179]\n- gridcell \"task_ready\" [ref=e180]\n- gridcell \"Unknown\" [ref=e181]\n- gridcell \"consumer\" [ref=e182]\n- gridcell \"\" [ref=e183]\n- gridcell \"328\" [ref=e184]\n- gridcell \"15\" [ref=e185]\n- gridcell \"391\" [ref=e186]\n- gridcell \"object_name\" [ref=e187]\n- gridcell \"Unknown\" [ref=e188]\n- gridcell \"supervisor\" [ref=e189]\n- gridcell \"\" [ref=e190]\n- gridcell \"340\" [ref=e191]\n- gridcell \"16\" [ref=e192]\n- gridcell \"395\" [ref=e193]\n- gridcell \"task_create\" [ref=e194]\n- gridcell \"Unknown\" [ref=e195]\n- gridcell \"supervisor\" [ref=e196]\n- gridcell \"\" [ref=e197]\n- gridcell \"364\" [ref=e198]\n- gridcell \"17\" [ref=e199]\n- gridcell \"396\" [ref=e200]\n- gridcell \"task_ready\" [ref=e201]\n- gridcell \"Unknown\" [ref=e202]\n- gridcell \"supervisor\" [ref=e203]\n- gridcell \"\" [ref=e204]\n- gridcell \"380\" [ref=e205]\n- gridcell \"18\" [ref=e206]\n- gridcell \"449\" [ref=e207]\n- gridcell \"object_name\" [ref=e208]\n- gridcell \"Unknown\" [ref=e209]\n- gridcell \"IDLE\" [ref=e210]\n- gridcell \"\" [ref=e211]\n- gridcell \"392\" [ref=e212]\n- gridcell \"19\" [ref=e213]\n- gridcell \"452\" [ref=e214]\n- gridcell \"task_create\" [ref=e215]\n- gridcell \"Unknown\" [ref=e216]\n- gridcell \"IDLE\" [ref=e217]\n- gridcell \"\" [ref=e218]\n- gridcell \"412\" [ref=e219]\n- gridcell \"20\" [ref=e220]\n- gridcell \"453\" [ref=e221]\n- gridcell \"task_ready\" [ref=e222]\n- gridcell \"Unknown\" [ref=e223]\n- gridcell \"IDLE\" [ref=e224]\n- gridcell \"\" [ref=e225]\n- gridcell \"428\" [ref=e226]\n- gridcell \"21\" [ref=e227]\n- gridcell \"455\" [ref=e228]\n- gridcell \"task_switch\" [ref=e229]\n- gridcell \"supervisor\" [ref=e230]\n- gridcell \"supervisor\" [ref=e231]\n- gridcell \"\" [ref=e232]\n- gridcell \"440\" [ref=e233]\n- gridcell \"22\" [ref=e234]\n- gridcell \"540\" [ref=e235]\n- gridcell \"task_delay\" [ref=e236]\n- gridcell \"supervisor\" [ref=e237]\n- gridcell \"supervisor\" [ref=e238]\n- gridcell \"\" [ref=e239]\n- gridcell \"456\" [ref=e240]\n- gridcell \"23\" [ref=e241]\n- gridcell \"544\" [ref=e242]\n- gridcell \"task_switch\" [ref=e243]\n- gridcell \"consumer\" [ref=e244]\n- gridcell \"consumer\" [ref=e245]\n- gridcell \"\" [ref=e246]\n- gridcell \"468\" [ref=e247]\n- gridcell \"24\" [ref=e248]\n- gridcell \"547\" [ref=e249]\n- gridcell \"queue_receive_block\" [ref=e250]\n- gridcell \"consumer\" [ref=e251]\n- gridcell \"messages\" [ref=e252]\n- gridcell \"\" [ref=e253]\n- gridcell \"484\" [ref=e254]\n- gridcell \"25\" [ref=e255]\n- button \"上一頁\" [disabled, ref=e83]\n- button \"下一頁\" [ref=e84]\n- heading \"證據詳情\" [level=2, ref=e58]\n- button \"解除固定\" [ref=e59]\n- heading \"來源與品質\" [level=3, ref=e69]\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
+      "document.querySelectorAll(\"#timeline svg\").length"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":1},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
+      "document.querySelector(\"#row-count\").textContent"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":\"符合 281 筆；本頁 20 筆。CSV 匯出全部 281 筆。\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "screenshot",
+      "--full",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/screenshots/server/02-overview.png"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/screenshots/server/02-overview.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
+      "({window:document.querySelector(\"#window-label\").textContent,search:document.querySelector(\"#search-filter\").value,task:[...document.querySelector(\"#task-filter\").selectedOptions].map(x=>x.value),rows:document.querySelector(\"#row-count\").textContent})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":{\"rows\":\"符合 281 筆；本頁 20 筆。CSV 匯出全部 281 筆。\",\"search\":\"\",\"task\":[],\"window\":\"[0, 160571) ticks · 16.057 ms\"}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
+      "({coverage:document.querySelector(\"#coverage-label\").textContent,shares:document.querySelector(\"#share-values\").textContent})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":{\"coverage\":\"Known 160116 / 160571 ticks；Unknown 455\",\"shares\":\"supervisor 0.13%consumer 0.36%producer 0.39%TzCtrl 0.01%IDLE 98.83%\"}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
+      "[...document.querySelector(\"#task-filter\").options].find(x=>x.textContent===\"consumer\").value"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":\"0x80081870:0\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "document.querySelector(\"#task-filter\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "select",
+      "#task-filter",
+      "0x80081870:0"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "wait",
+      "--fn",
+      "Number(document.body.dataset.renderRevision)>0 && !document.querySelector(\"#status\").textContent.includes(\"正在\")"
+    ],
+    "exit_code": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "snapshot",
+      "-i"
+    ],
+    "exit_code": 0,
+    "stdout": "- heading \"PSF Lab\" [level=1, ref=e4]\n- button \"切換明暗模式\" [ref=e5]\n- LabelText \"載入 PSF\" [ref=e6] clickable [cursor:pointer]\n  - button \"載入 PSF\" [ref=e7]: 未選擇任何檔案\n- combobox \"已儲存 trace\" [expanded=false, ref=e1]: trace.psf\n  - option \"已儲存 trace\" [ref=e8]\n  - option \"trace.psf\" [selected, ref=e9]\n  - option \"trace.psf\" [ref=e10]\n- combobox \"已驗證案例\" [expanded=false, ref=e2]\n  - option \"已驗證案例\" [selected, ref=e11]\n  - option \"queue_baseline · 84eed3\" [ref=e12]\n  - option \"queue_baseline · 6dfb90\" [ref=e13]\n  - option \"logger_bad · 93348d\" [ref=e14]\n  - option \"logger_fixed · ccc2d6\" [ref=e15]\n  - option \"inversion · d028ca\" [ref=e16]\n  - option \"inheritance · d8e2b4\" [ref=e17]\n  - option \"deadlock_abba · 7b5e8a\" [ref=e18]\n  - option \"ordered_locks · 913daf\" [ref=e19]\n  - option \"queue_baseline · ca69e2\" [ref=e20]\n  - option \"logger_bad · 95b91f\" [ref=e21]\n  - option \"logger_fixed · e45ea8\" [ref=e22]\n  - option \"inversion · 0cf818\" [ref=e23]\n  - option \"inheritance · 75e57e\" [ref=e24]\n  - option \"deadlock_abba · 50d96a\" [ref=e25]\n  - option \"ordered_locks · deccab\" [ref=e26]\n  - option \"queue_baseline · f0b2ab\" [ref=e27]\n  - option \"logger_bad · d4a2e3\" [ref=e28]\n  - option \"logger_fixed · 3e02b3\" [ref=e29]\n  - option \"inversion · 5c856f\" [ref=e30]\n  - option \"inheritance · 94feaf\" [ref=e31]\n  - option \"deadlock_abba · 4b86f0\" [ref=e32]\n  - option \"ordered_locks · a38d31\" [ref=e33]\n  - option \"queue_baseline · 22a470\" [ref=e34]\n  - option \"logger_bad · 06c385\" [ref=e35]\n  - option \"logger_fixed · 2d3171\" [ref=e36]\n  - option \"inversion · 1c87aa\" [ref=e37]\n  - option \"inheritance · 375eb0\" [ref=e38]\n  - option \"deadlock_abba · 744600\" [ref=e39]\n  - option \"ordered_locks · a32fb9\" [ref=e40]\n  - option \"queue_baseline · d1d5fa\" [ref=e41]\n  - option \"logger_bad · d7ce62\" [ref=e42]\n  - option \"logger_fixed · eefaa0\" [ref=e43]\n  - option \"inversion · 9aed2f\" [ref=e44]\n  - option \"inheritance · 293468\" [ref=e45]\n  - option \"deadlock_abba · 40754f\" [ref=e46]\n  - option \"ordered_locks · 76800a\" [ref=e47]\n  - option \"queue_baseline · 69e1ba\" [ref=e48]\n  - option \"logger_bad · e83381\" [ref=e49]\n  - option \"logger_fixed · 72b407\" [ref=e50]\n  - option \"inversion · 1c8bd6\" [ref=e51]\n  - option \"inheritance · 84affa\" [ref=e52]\n  - option \"deadlock_abba · 5aa2e4\" [ref=e53]\n  - option \"ordered_locks · 87e5fb\" [ref=e54]\n- button \"開啟案例\" [ref=e3]\n- heading \"篩選\" [level=2, ref=e55]\n- button \"重設\" [ref=e56]\n- listbox \"Task 篩選\" [ref=e60]\n  - option \"TzCtrl\" [ref=e70]\n  - option \"producer\" [ref=e71]\n  - option \"consumer\" [selected, ref=e72]\n  - option \"supervisor\" [ref=e73]\n  - option \"IDLE\" [ref=e74]\n- combobox \"物件篩選\" [expanded=false, ref=e61]: 全部物件\n  - option \"全部物件\" [selected, ref=e85]\n  - option \"System Heap · unknown\" [ref=e86]\n  - option \"TzCtrl · task\" [ref=e87]\n  - option \"POC · channel\" [ref=e88]\n  - option \"messages · queue\" [ref=e89]\n  - option \"producer · task\" [ref=e90]\n  - option \"consumer · task\" [ref=e91]\n  - option \"supervisor · task\" [ref=e92]\n  - option \"IDLE · task\" [ref=e93]\n- combobox \"Channel 篩選\" [expanded=false, ref=e62]: 全部 channel\n  - option \"全部 channel\" [selected, ref=e94]\n  - option \"POC\" [ref=e95]\n- combobox \"事件類型篩選\" [expanded=false, ref=e63]: 全部事件\n  - option \"全部事件\" [selected, ref=e96]\n  - option \"trace_start (0x1)\" [ref=e97]\n  - option \"object_name (0x3)\" [ref=e98]\n  - option \"task_create (0x10)\" [ref=e99]\n  - option \"queue_create (0x11)\" [ref=e100]\n  - option \"task_ready (0x30)\" [ref=e101]\n  - option \"new_time (0x31)\" [ref=e102]\n  - option \"task_switch (0x37)\" [ref=e103]\n  - option \"queue_send (0x50)\" [ref=e104]\n  - option \"queue_receive (0x60)\" [ref=e105]\n  - option \"queue_receive_block (0x66)\" [ref=e106]\n  - option \"task_delay (0x7a)\" [ref=e107]\n  - option \"task_suspend (0x7b)\" [ref=e108]\n  - option \"user_event (0x92)\" [ref=e109]\n- textbox \"文字搜尋\" [ref=e64]\n- textbox \"時間起點\" [ref=e75]\n- textbox \"時間終點\" [ref=e76]\n- button \"套用時間窗口\" [ref=e65]\n- button \"查看品質與來源\" [ref=e57]\n- heading \"案例對照\" [level=2, ref=e66]\n- combobox \"比較案例組\" [expanded=false, ref=e67]: Logger 干擾／改善\n  - option \"Logger 干擾／改善\" [selected, ref=e110]\n  - option \"Inversion／inheritance\" [ref=e111]\n  - option \"ABBA／ordered locks\" [ref=e112]\n- button \"比較已驗證結果\" [ref=e68]\n- heading \"Task 時間軸\" [level=2, ref=e77]\n- button \"拖曳選取窗口\" [ref=e113]\n- button \"完整時間\" [ref=e114]\n- heading \"Task execution share\" [level=2, ref=e78]\n- heading \"User-event signal\" [level=2, ref=e79]\n- heading \"事件紀錄\" [level=2, ref=e80]\n- button \"匯出統計 CSV\" [ref=e81]\n- button \"匯出事件 CSV\" [ref=e82]\n- columnheader \"時間 ticks\" [ref=e256]\n- columnheader \"事件\" [ref=e257]\n- columnheader \"Task\" [ref=e258]\n- columnheader \"物件\" [ref=e259]\n- columnheader \"訊息\" [ref=e260]\n- columnheader \"Offset\" [ref=e261]\n- columnheader \"Seq\" [ref=e262]\n- generic \"544task_switchconsumerconsumer46824547queue_receive_blockconsumermessages48425560task_switchconsum\" [ref=e115] focusable [tabindex]\n- gridcell \"544\" [ref=e116]\n- gridcell \"task_switch\" [ref=e117]\n- gridcell \"consumer\" [ref=e118]\n- gridcell \"consumer\" [ref=e119]\n- gridcell \"\" [ref=e120]\n- gridcell \"468\" [ref=e121]\n- gridcell \"24\" [ref=e122]\n- gridcell \"547\" [ref=e123]\n- gridcell \"queue_receive_block\" [ref=e124]\n- gridcell \"consumer\" [ref=e125]\n- gridcell \"messages\" [ref=e126]\n- gridcell \"\" [ref=e127]\n- gridcell \"484\" [ref=e128]\n- gridcell \"25\" [ref=e129]\n- gridcell \"560\" [ref=e130]\n- gridcell \"task_switch\" [ref=e131]\n- gridcell \"consumer\" [ref=e132]\n- gridcell \"consumer\" [ref=e133]\n- gridcell \"\" [ref=e134]\n- gridcell \"548\" [ref=e135]\n- gridcell \"29\" [ref=e136]\n- gridcell \"563\" [ref=e137]\n- gridcell \"queue_receive\" [ref=e138]\n- gridcell \"consumer\" [ref=e139]\n- gridcell \"messages\" [ref=e140]\n- gridcell \"\" [ref=e141]\n- gridcell \"564\" [ref=e142]\n- gridcell \"30\" [ref=e143]\n- gridcell \"586\" [ref=e144]\n- gridcell \"user_event\" [ref=e145]\n- gridcell \"consumer\" [ref=e146]\n- gridcell \"POC\" [ref=e147]\n- gridcell \"POC|queue_baseline|RECEIVE|0\" [ref=e148]\n- gridcell \"584\" [ref=e149]\n- gridcell \"31\" [ref=e150]\n- gridcell \"591\" [ref=e151]\n- gridcell \"queue_receive_block\" [ref=e152]\n- gridcell \"consumer\" [ref=e153]\n- gridcell \"messages\" [ref=e154]\n- gridcell \"\" [ref=e155]\n- gridcell \"632\" [ref=e156]\n- gridcell \"32\" [ref=e157]\n- gridcell \"10560\" [ref=e158]\n- gridcell \"task_switch\" [ref=e159]\n- gridcell \"consumer\" [ref=e160]\n- gridcell \"consumer\" [ref=e161]\n- gridcell \"\" [ref=e162]\n- gridcell \"876\" [ref=e163]\n- gridcell \"47\" [ref=e164]\n- gridcell \"10563\" [ref=e165]\n- gridcell \"queue_receive\" [ref=e166]\n- gridcell \"consumer\" [ref=e167]\n- gridcell \"messages\" [ref=e168]\n- gridcell \"\" [ref=e169]\n- gridcell \"892\" [ref=e170]\n- gridcell \"48\" [ref=e171]\n- gridcell \"10586\" [ref=e172]\n- gridcell \"user_event\" [ref=e173]\n- gridcell \"consumer\" [ref=e174]\n- gridcell \"POC\" [ref=e175]\n- gridcell \"POC|queue_baseline|RECEIVE|1\" [ref=e176]\n- gridcell \"912\" [ref=e177]\n- gridcell \"49\" [ref=e178]\n- gridcell \"10591\" [ref=e179]\n- gridcell \"queue_receive_block\" [ref=e180]\n- gridcell \"consumer\" [ref=e181]\n- gridcell \"messages\" [ref=e182]\n- gridcell \"\" [ref=e183]\n- gridcell \"960\" [ref=e184]\n- gridcell \"50\" [ref=e185]\n- gridcell \"20561\" [ref=e186]\n- gridcell \"task_switch\" [ref=e187]\n- gridcell \"consumer\" [ref=e188]\n- gridcell \"consumer\" [ref=e189]\n- gridcell \"\" [ref=e190]\n- gridcell \"1176\" [ref=e191]\n- gridcell \"63\" [ref=e192]\n- gridcell \"20563\" [ref=e193]\n- gridcell \"queue_receive\" [ref=e194]\n- gridcell \"consumer\" [ref=e195]\n- gridcell \"messages\" [ref=e196]\n- gridcell \"\" [ref=e197]\n- gridcell \"1192\" [ref=e198]\n- gridcell \"64\" [ref=e199]\n- gridcell \"20587\" [ref=e200]\n- gridcell \"user_event\" [ref=e201]\n- gridcell \"consumer\" [ref=e202]\n- gridcell \"POC\" [ref=e203]\n- gridcell \"POC|queue_baseline|RECEIVE|2\" [ref=e204]\n- gridcell \"1212\" [ref=e205]\n- gridcell \"65\" [ref=e206]\n- gridcell \"20592\" [ref=e207]\n- gridcell \"queue_receive_block\" [ref=e208]\n- gridcell \"consumer\" [ref=e209]\n- gridcell \"messages\" [ref=e210]\n- gridcell \"\" [ref=e211]\n- gridcell \"1260\" [ref=e212]\n- gridcell \"66\" [ref=e213]\n- gridcell \"30560\" [ref=e214]\n- gridcell \"task_switch\" [ref=e215]\n- gridcell \"consumer\" [ref=e216]\n- gridcell \"consumer\" [ref=e217]\n- gridcell \"\" [ref=e218]\n- gridcell \"1476\" [ref=e219]\n- gridcell \"79\" [ref=e220]\n- gridcell \"30563\" [ref=e221]\n- gridcell \"queue_receive\" [ref=e222]\n- gridcell \"consumer\" [ref=e223]\n- gridcell \"messages\" [ref=e224]\n- gridcell \"\" [ref=e225]\n- gridcell \"1492\" [ref=e226]\n- gridcell \"80\" [ref=e227]\n- gridcell \"30586\" [ref=e228]\n- gridcell \"user_event\" [ref=e229]\n- gridcell \"consumer\" [ref=e230]\n- gridcell \"POC\" [ref=e231]\n- gridcell \"POC|queue_baseline|RECEIVE|3\" [ref=e232]\n- gridcell \"1512\" [ref=e233]\n- gridcell \"81\" [ref=e234]\n- gridcell \"30591\" [ref=e235]\n- gridcell \"queue_receive_block\" [ref=e236]\n- gridcell \"consumer\" [ref=e237]\n- gridcell \"messages\" [ref=e238]\n- gridcell \"\" [ref=e239]\n- gridcell \"1560\" [ref=e240]\n- gridcell \"82\" [ref=e241]\n- gridcell \"40561\" [ref=e242]\n- gridcell \"task_switch\" [ref=e243]\n- gridcell \"consumer\" [ref=e244]\n- gridcell \"consumer\" [ref=e245]\n- gridcell \"\" [ref=e246]\n- gridcell \"1776\" [ref=e247]\n- gridcell \"95\" [ref=e248]\n- gridcell \"40563\" [ref=e249]\n- gridcell \"queue_receive\" [ref=e250]\n- gridcell \"consumer\" [ref=e251]\n- gridcell \"messages\" [ref=e252]\n- gridcell \"\" [ref=e253]\n- gridcell \"1792\" [ref=e254]\n- gridcell \"96\" [ref=e255]\n- button \"上一頁\" [disabled, ref=e83]\n- button \"下一頁\" [ref=e84]\n- heading \"證據詳情\" [level=2, ref=e58]\n- button \"解除固定\" [ref=e59]\n- heading \"來源與品質\" [level=3, ref=e69]\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "document.querySelector(\"#start-filter\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "fill",
+      "#start-filter",
+      "500"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "document.querySelector(\"#end-filter\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "fill",
+      "#end-filter",
+      "50000"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "document.querySelector(\"#apply-window\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "click",
+      "#apply-window"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "wait",
+      "--fn",
+      "Number(document.body.dataset.renderRevision)>0 && !document.querySelector(\"#status\").textContent.includes(\"正在\")"
+    ],
+    "exit_code": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "snapshot",
+      "-i"
+    ],
+    "exit_code": 0,
+    "stdout": "- heading \"PSF Lab\" [level=1, ref=e4]\n- button \"切換明暗模式\" [ref=e5]\n- LabelText \"載入 PSF\" [ref=e6] clickable [cursor:pointer]\n  - button \"載入 PSF\" [ref=e7]: 未選擇任何檔案\n- combobox \"已儲存 trace\" [expanded=false, ref=e1]: trace.psf\n  - option \"已儲存 trace\" [ref=e8]\n  - option \"trace.psf\" [selected, ref=e9]\n  - option \"trace.psf\" [ref=e10]\n- combobox \"已驗證案例\" [expanded=false, ref=e2]\n  - option \"已驗證案例\" [selected, ref=e11]\n  - option \"queue_baseline · 84eed3\" [ref=e12]\n  - option \"queue_baseline · 6dfb90\" [ref=e13]\n  - option \"logger_bad · 93348d\" [ref=e14]\n  - option \"logger_fixed · ccc2d6\" [ref=e15]\n  - option \"inversion · d028ca\" [ref=e16]\n  - option \"inheritance · d8e2b4\" [ref=e17]\n  - option \"deadlock_abba · 7b5e8a\" [ref=e18]\n  - option \"ordered_locks · 913daf\" [ref=e19]\n  - option \"queue_baseline · ca69e2\" [ref=e20]\n  - option \"logger_bad · 95b91f\" [ref=e21]\n  - option \"logger_fixed · e45ea8\" [ref=e22]\n  - option \"inversion · 0cf818\" [ref=e23]\n  - option \"inheritance · 75e57e\" [ref=e24]\n  - option \"deadlock_abba · 50d96a\" [ref=e25]\n  - option \"ordered_locks · deccab\" [ref=e26]\n  - option \"queue_baseline · f0b2ab\" [ref=e27]\n  - option \"logger_bad · d4a2e3\" [ref=e28]\n  - option \"logger_fixed · 3e02b3\" [ref=e29]\n  - option \"inversion · 5c856f\" [ref=e30]\n  - option \"inheritance · 94feaf\" [ref=e31]\n  - option \"deadlock_abba · 4b86f0\" [ref=e32]\n  - option \"ordered_locks · a38d31\" [ref=e33]\n  - option \"queue_baseline · 22a470\" [ref=e34]\n  - option \"logger_bad · 06c385\" [ref=e35]\n  - option \"logger_fixed · 2d3171\" [ref=e36]\n  - option \"inversion · 1c87aa\" [ref=e37]\n  - option \"inheritance · 375eb0\" [ref=e38]\n  - option \"deadlock_abba · 744600\" [ref=e39]\n  - option \"ordered_locks · a32fb9\" [ref=e40]\n  - option \"queue_baseline · d1d5fa\" [ref=e41]\n  - option \"logger_bad · d7ce62\" [ref=e42]\n  - option \"logger_fixed · eefaa0\" [ref=e43]\n  - option \"inversion · 9aed2f\" [ref=e44]\n  - option \"inheritance · 293468\" [ref=e45]\n  - option \"deadlock_abba · 40754f\" [ref=e46]\n  - option \"ordered_locks · 76800a\" [ref=e47]\n  - option \"queue_baseline · 69e1ba\" [ref=e48]\n  - option \"logger_bad · e83381\" [ref=e49]\n  - option \"logger_fixed · 72b407\" [ref=e50]\n  - option \"inversion · 1c8bd6\" [ref=e51]\n  - option \"inheritance · 84affa\" [ref=e52]\n  - option \"deadlock_abba · 5aa2e4\" [ref=e53]\n  - option \"ordered_locks · 87e5fb\" [ref=e54]\n- button \"開啟案例\" [ref=e3]\n- heading \"篩選\" [level=2, ref=e55]\n- button \"重設\" [ref=e56]\n- listbox \"Task 篩選\" [ref=e60]\n  - option \"TzCtrl\" [ref=e70]\n  - option \"producer\" [ref=e71]\n  - option \"consumer\" [selected, ref=e72]\n  - option \"supervisor\" [ref=e73]\n  - option \"IDLE\" [ref=e74]\n- combobox \"物件篩選\" [expanded=false, ref=e61]: 全部物件\n  - option \"全部物件\" [selected, ref=e85]\n  - option \"System Heap · unknown\" [ref=e86]\n  - option \"TzCtrl · task\" [ref=e87]\n  - option \"POC · channel\" [ref=e88]\n  - option \"messages · queue\" [ref=e89]\n  - option \"producer · task\" [ref=e90]\n  - option \"consumer · task\" [ref=e91]\n  - option \"supervisor · task\" [ref=e92]\n  - option \"IDLE · task\" [ref=e93]\n- combobox \"Channel 篩選\" [expanded=false, ref=e62]: 全部 channel\n  - option \"全部 channel\" [selected, ref=e94]\n  - option \"POC\" [ref=e95]\n- combobox \"事件類型篩選\" [expanded=false, ref=e63]: 全部事件\n  - option \"全部事件\" [selected, ref=e96]\n  - option \"trace_start (0x1)\" [ref=e97]\n  - option \"object_name (0x3)\" [ref=e98]\n  - option \"task_create (0x10)\" [ref=e99]\n  - option \"queue_create (0x11)\" [ref=e100]\n  - option \"task_ready (0x30)\" [ref=e101]\n  - option \"new_time (0x31)\" [ref=e102]\n  - option \"task_switch (0x37)\" [ref=e103]\n  - option \"queue_send (0x50)\" [ref=e104]\n  - option \"queue_receive (0x60)\" [ref=e105]\n  - option \"queue_receive_block (0x66)\" [ref=e106]\n  - option \"task_delay (0x7a)\" [ref=e107]\n  - option \"task_suspend (0x7b)\" [ref=e108]\n  - option \"user_event (0x92)\" [ref=e109]\n- textbox \"文字搜尋\" [ref=e64]\n- textbox \"時間起點\" [ref=e75]: 500\n- textbox \"時間終點\" [ref=e76]: 50000\n- button \"套用時間窗口\" [ref=e65]\n- button \"查看品質與來源\" [ref=e57]\n- heading \"案例對照\" [level=2, ref=e66]\n- combobox \"比較案例組\" [expanded=false, ref=e67]: Logger 干擾／改善\n  - option \"Logger 干擾／改善\" [selected, ref=e110]\n  - option \"Inversion／inheritance\" [ref=e111]\n  - option \"ABBA／ordered locks\" [ref=e112]\n- button \"比較已驗證結果\" [ref=e68]\n- heading \"Task 時間軸\" [level=2, ref=e77]\n- button \"拖曳選取窗口\" [ref=e113]\n- button \"完整時間\" [ref=e114]\n- heading \"Task execution share\" [level=2, ref=e78]\n- heading \"User-event signal\" [level=2, ref=e79]\n- heading \"事件紀錄\" [level=2, ref=e80]\n- button \"匯出統計 CSV\" [ref=e81]\n- button \"匯出事件 CSV\" [ref=e82]\n- columnheader \"時間 ticks\" [ref=e256]\n- columnheader \"事件\" [ref=e257]\n- columnheader \"Task\" [ref=e258]\n- columnheader \"物件\" [ref=e259]\n- columnheader \"訊息\" [ref=e260]\n- columnheader \"Offset\" [ref=e261]\n- columnheader \"Seq\" [ref=e262]\n- generic \"544task_switchconsumerconsumer46824547queue_receive_blockconsumermessages48425560task_switchconsum\" [ref=e115] focusable [tabindex]\n- gridcell \"544\" [ref=e116]\n- gridcell \"task_switch\" [ref=e117]\n- gridcell \"consumer\" [ref=e118]\n- gridcell \"consumer\" [ref=e119]\n- gridcell \"\" [ref=e120]\n- gridcell \"468\" [ref=e121]\n- gridcell \"24\" [ref=e122]\n- gridcell \"547\" [ref=e123]\n- gridcell \"queue_receive_block\" [ref=e124]\n- gridcell \"consumer\" [ref=e125]\n- gridcell \"messages\" [ref=e126]\n- gridcell \"\" [ref=e127]\n- gridcell \"484\" [ref=e128]\n- gridcell \"25\" [ref=e129]\n- gridcell \"560\" [ref=e130]\n- gridcell \"task_switch\" [ref=e131]\n- gridcell \"consumer\" [ref=e132]\n- gridcell \"consumer\" [ref=e133]\n- gridcell \"\" [ref=e134]\n- gridcell \"548\" [ref=e135]\n- gridcell \"29\" [ref=e136]\n- gridcell \"563\" [ref=e137]\n- gridcell \"queue_receive\" [ref=e138]\n- gridcell \"consumer\" [ref=e139]\n- gridcell \"messages\" [ref=e140]\n- gridcell \"\" [ref=e141]\n- gridcell \"564\" [ref=e142]\n- gridcell \"30\" [ref=e143]\n- gridcell \"586\" [ref=e144]\n- gridcell \"user_event\" [ref=e145]\n- gridcell \"consumer\" [ref=e146]\n- gridcell \"POC\" [ref=e147]\n- gridcell \"POC|queue_baseline|RECEIVE|0\" [ref=e148]\n- gridcell \"584\" [ref=e149]\n- gridcell \"31\" [ref=e150]\n- gridcell \"591\" [ref=e151]\n- gridcell \"queue_receive_block\" [ref=e152]\n- gridcell \"consumer\" [ref=e153]\n- gridcell \"messages\" [ref=e154]\n- gridcell \"\" [ref=e155]\n- gridcell \"632\" [ref=e156]\n- gridcell \"32\" [ref=e157]\n- gridcell \"10560\" [ref=e158]\n- gridcell \"task_switch\" [ref=e159]\n- gridcell \"consumer\" [ref=e160]\n- gridcell \"consumer\" [ref=e161]\n- gridcell \"\" [ref=e162]\n- gridcell \"876\" [ref=e163]\n- gridcell \"47\" [ref=e164]\n- gridcell \"10563\" [ref=e165]\n- gridcell \"queue_receive\" [ref=e166]\n- gridcell \"consumer\" [ref=e167]\n- gridcell \"messages\" [ref=e168]\n- gridcell \"\" [ref=e169]\n- gridcell \"892\" [ref=e170]\n- gridcell \"48\" [ref=e171]\n- gridcell \"10586\" [ref=e172]\n- gridcell \"user_event\" [ref=e173]\n- gridcell \"consumer\" [ref=e174]\n- gridcell \"POC\" [ref=e175]\n- gridcell \"POC|queue_baseline|RECEIVE|1\" [ref=e176]\n- gridcell \"912\" [ref=e177]\n- gridcell \"49\" [ref=e178]\n- gridcell \"10591\" [ref=e179]\n- gridcell \"queue_receive_block\" [ref=e180]\n- gridcell \"consumer\" [ref=e181]\n- gridcell \"messages\" [ref=e182]\n- gridcell \"\" [ref=e183]\n- gridcell \"960\" [ref=e184]\n- gridcell \"50\" [ref=e185]\n- gridcell \"20561\" [ref=e186]\n- gridcell \"task_switch\" [ref=e187]\n- gridcell \"consumer\" [ref=e188]\n- gridcell \"consumer\" [ref=e189]\n- gridcell \"\" [ref=e190]\n- gridcell \"1176\" [ref=e191]\n- gridcell \"63\" [ref=e192]\n- gridcell \"20563\" [ref=e193]\n- gridcell \"queue_receive\" [ref=e194]\n- gridcell \"consumer\" [ref=e195]\n- gridcell \"messages\" [ref=e196]\n- gridcell \"\" [ref=e197]\n- gridcell \"1192\" [ref=e198]\n- gridcell \"64\" [ref=e199]\n- gridcell \"20587\" [ref=e200]\n- gridcell \"user_event\" [ref=e201]\n- gridcell \"consumer\" [ref=e202]\n- gridcell \"POC\" [ref=e203]\n- gridcell \"POC|queue_baseline|RECEIVE|2\" [ref=e204]\n- gridcell \"1212\" [ref=e205]\n- gridcell \"65\" [ref=e206]\n- gridcell \"20592\" [ref=e207]\n- gridcell \"queue_receive_block\" [ref=e208]\n- gridcell \"consumer\" [ref=e209]\n- gridcell \"messages\" [ref=e210]\n- gridcell \"\" [ref=e211]\n- gridcell \"1260\" [ref=e212]\n- gridcell \"66\" [ref=e213]\n- gridcell \"30560\" [ref=e214]\n- gridcell \"task_switch\" [ref=e215]\n- gridcell \"consumer\" [ref=e216]\n- gridcell \"consumer\" [ref=e217]\n- gridcell \"\" [ref=e218]\n- gridcell \"1476\" [ref=e219]\n- gridcell \"79\" [ref=e220]\n- gridcell \"30563\" [ref=e221]\n- gridcell \"queue_receive\" [ref=e222]\n- gridcell \"consumer\" [ref=e223]\n- gridcell \"messages\" [ref=e224]\n- gridcell \"\" [ref=e225]\n- gridcell \"1492\" [ref=e226]\n- gridcell \"80\" [ref=e227]\n- gridcell \"30586\" [ref=e228]\n- gridcell \"user_event\" [ref=e229]\n- gridcell \"consumer\" [ref=e230]\n- gridcell \"POC\" [ref=e231]\n- gridcell \"POC|queue_baseline|RECEIVE|3\" [ref=e232]\n- gridcell \"1512\" [ref=e233]\n- gridcell \"81\" [ref=e234]\n- gridcell \"30591\" [ref=e235]\n- gridcell \"queue_receive_block\" [ref=e236]\n- gridcell \"consumer\" [ref=e237]\n- gridcell \"messages\" [ref=e238]\n- gridcell \"\" [ref=e239]\n- gridcell \"1560\" [ref=e240]\n- gridcell \"82\" [ref=e241]\n- gridcell \"40561\" [ref=e242]\n- gridcell \"task_switch\" [ref=e243]\n- gridcell \"consumer\" [ref=e244]\n- gridcell \"consumer\" [ref=e245]\n- gridcell \"\" [ref=e246]\n- gridcell \"1776\" [ref=e247]\n- gridcell \"95\" [ref=e248]\n- gridcell \"40563\" [ref=e249]\n- gridcell \"queue_receive\" [ref=e250]\n- gridcell \"consumer\" [ref=e251]\n- gridcell \"messages\" [ref=e252]\n- gridcell \"\" [ref=e253]\n- gridcell \"1792\" [ref=e254]\n- gridcell \"96\" [ref=e255]\n- button \"上一頁\" [disabled, ref=e83]\n- button \"下一頁\" [ref=e84]\n- heading \"證據詳情\" [level=2, ref=e58]\n- button \"解除固定\" [ref=e59]\n- heading \"來源與品質\" [level=3, ref=e69]\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
+      "document.querySelector(\"#window-label\").textContent"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":\"[500, 50000) ticks · 4.950 ms\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "screenshot",
+      "--full",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/screenshots/server/03-filter-window.png"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/screenshots/server/03-filter-window.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
+      "({window:document.querySelector(\"#window-label\").textContent,search:document.querySelector(\"#search-filter\").value,task:[...document.querySelector(\"#task-filter\").selectedOptions].map(x=>x.value),rows:document.querySelector(\"#row-count\").textContent})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":{\"rows\":\"符合 22 筆；本頁 20 筆。CSV 匯出全部 22 筆。\",\"search\":\"\",\"task\":[\"0x80081870:0\"],\"window\":\"[500, 50000) ticks · 4.950 ms\"}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "document.querySelector(\"#reset\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "click",
+      "#reset"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "wait",
+      "--fn",
+      "Number(document.body.dataset.renderRevision)>0 && !document.querySelector(\"#status\").textContent.includes(\"正在\")"
+    ],
+    "exit_code": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "snapshot",
+      "-i"
+    ],
+    "exit_code": 0,
+    "stdout": "- heading \"PSF Lab\" [level=1, ref=e4]\n- button \"切換明暗模式\" [ref=e5]\n- LabelText \"載入 PSF\" [ref=e6] clickable [cursor:pointer]\n  - button \"載入 PSF\" [ref=e7]: 未選擇任何檔案\n- combobox \"已儲存 trace\" [expanded=false, ref=e1]: trace.psf\n  - option \"已儲存 trace\" [ref=e8]\n  - option \"trace.psf\" [selected, ref=e9]\n  - option \"trace.psf\" [ref=e10]\n- combobox \"已驗證案例\" [expanded=false, ref=e2]\n  - option \"已驗證案例\" [selected, ref=e11]\n  - option \"queue_baseline · 84eed3\" [ref=e12]\n  - option \"queue_baseline · 6dfb90\" [ref=e13]\n  - option \"logger_bad · 93348d\" [ref=e14]\n  - option \"logger_fixed · ccc2d6\" [ref=e15]\n  - option \"inversion · d028ca\" [ref=e16]\n  - option \"inheritance · d8e2b4\" [ref=e17]\n  - option \"deadlock_abba · 7b5e8a\" [ref=e18]\n  - option \"ordered_locks · 913daf\" [ref=e19]\n  - option \"queue_baseline · ca69e2\" [ref=e20]\n  - option \"logger_bad · 95b91f\" [ref=e21]\n  - option \"logger_fixed · e45ea8\" [ref=e22]\n  - option \"inversion · 0cf818\" [ref=e23]\n  - option \"inheritance · 75e57e\" [ref=e24]\n  - option \"deadlock_abba · 50d96a\" [ref=e25]\n  - option \"ordered_locks · deccab\" [ref=e26]\n  - option \"queue_baseline · f0b2ab\" [ref=e27]\n  - option \"logger_bad · d4a2e3\" [ref=e28]\n  - option \"logger_fixed · 3e02b3\" [ref=e29]\n  - option \"inversion · 5c856f\" [ref=e30]\n  - option \"inheritance · 94feaf\" [ref=e31]\n  - option \"deadlock_abba · 4b86f0\" [ref=e32]\n  - option \"ordered_locks · a38d31\" [ref=e33]\n  - option \"queue_baseline · 22a470\" [ref=e34]\n  - option \"logger_bad · 06c385\" [ref=e35]\n  - option \"logger_fixed · 2d3171\" [ref=e36]\n  - option \"inversion · 1c87aa\" [ref=e37]\n  - option \"inheritance · 375eb0\" [ref=e38]\n  - option \"deadlock_abba · 744600\" [ref=e39]\n  - option \"ordered_locks · a32fb9\" [ref=e40]\n  - option \"queue_baseline · d1d5fa\" [ref=e41]\n  - option \"logger_bad · d7ce62\" [ref=e42]\n  - option \"logger_fixed · eefaa0\" [ref=e43]\n  - option \"inversion · 9aed2f\" [ref=e44]\n  - option \"inheritance · 293468\" [ref=e45]\n  - option \"deadlock_abba · 40754f\" [ref=e46]\n  - option \"ordered_locks · 76800a\" [ref=e47]\n  - option \"queue_baseline · 69e1ba\" [ref=e48]\n  - option \"logger_bad · e83381\" [ref=e49]\n  - option \"logger_fixed · 72b407\" [ref=e50]\n  - option \"inversion · 1c8bd6\" [ref=e51]\n  - option \"inheritance · 84affa\" [ref=e52]\n  - option \"deadlock_abba · 5aa2e4\" [ref=e53]\n  - option \"ordered_locks · 87e5fb\" [ref=e54]\n- button \"開啟案例\" [ref=e3]\n- heading \"篩選\" [level=2, ref=e55]\n- button \"重設\" [ref=e56]\n- listbox \"Task 篩選\" [ref=e60]\n  - option \"TzCtrl\" [ref=e70]\n  - option \"producer\" [ref=e71]\n  - option \"consumer\" [ref=e72]\n  - option \"supervisor\" [ref=e73]\n  - option \"IDLE\" [ref=e74]\n- combobox \"物件篩選\" [expanded=false, ref=e61]: 全部物件\n  - option \"全部物件\" [selected, ref=e85]\n  - option \"System Heap · unknown\" [ref=e86]\n  - option \"TzCtrl · task\" [ref=e87]\n  - option \"POC · channel\" [ref=e88]\n  - option \"messages · queue\" [ref=e89]\n  - option \"producer · task\" [ref=e90]\n  - option \"consumer · task\" [ref=e91]\n  - option \"supervisor · task\" [ref=e92]\n  - option \"IDLE · task\" [ref=e93]\n- combobox \"Channel 篩選\" [expanded=false, ref=e62]: 全部 channel\n  - option \"全部 channel\" [selected, ref=e94]\n  - option \"POC\" [ref=e95]\n- combobox \"事件類型篩選\" [expanded=false, ref=e63]: 全部事件\n  - option \"全部事件\" [selected, ref=e96]\n  - option \"trace_start (0x1)\" [ref=e97]\n  - option \"object_name (0x3)\" [ref=e98]\n  - option \"task_create (0x10)\" [ref=e99]\n  - option \"queue_create (0x11)\" [ref=e100]\n  - option \"task_ready (0x30)\" [ref=e101]\n  - option \"new_time (0x31)\" [ref=e102]\n  - option \"task_switch (0x37)\" [ref=e103]\n  - option \"queue_send (0x50)\" [ref=e104]\n  - option \"queue_receive (0x60)\" [ref=e105]\n  - option \"queue_receive_block (0x66)\" [ref=e106]\n  - option \"task_delay (0x7a)\" [ref=e107]\n  - option \"task_suspend (0x7b)\" [ref=e108]\n  - option \"user_event (0x92)\" [ref=e109]\n- textbox \"文字搜尋\" [ref=e64]\n- textbox \"時間起點\" [ref=e75]\n- textbox \"時間終點\" [ref=e76]\n- button \"套用時間窗口\" [ref=e65]\n- button \"查看品質與來源\" [ref=e57]\n- heading \"案例對照\" [level=2, ref=e66]\n- combobox \"比較案例組\" [expanded=false, ref=e67]: Logger 干擾／改善\n  - option \"Logger 干擾／改善\" [selected, ref=e110]\n  - option \"Inversion／inheritance\" [ref=e111]\n  - option \"ABBA／ordered locks\" [ref=e112]\n- button \"比較已驗證結果\" [ref=e68]\n- heading \"Task 時間軸\" [level=2, ref=e77]\n- button \"拖曳選取窗口\" [ref=e113]\n- button \"完整時間\" [ref=e114]\n- heading \"Task execution share\" [level=2, ref=e78]\n- heading \"User-event signal\" [level=2, ref=e79]\n- heading \"事件紀錄\" [level=2, ref=e80]\n- button \"匯出統計 CSV\" [ref=e81]\n- button \"匯出事件 CSV\" [ref=e82]\n- columnheader \"時間 ticks\" [ref=e256]\n- columnheader \"事件\" [ref=e257]\n- columnheader \"Task\" [ref=e258]\n- columnheader \"物件\" [ref=e259]\n- columnheader \"訊息\" [ref=e260]\n- columnheader \"Offset\" [ref=e261]\n- columnheader \"Seq\" [ref=e262]\n- generic \"0trace_startUnknown—16863object_nameUnknownPOC18079queue_createUnknownmessages196815object_nameUn\" [ref=e115] focusable [tabindex]\n- gridcell \"0\" [ref=e116]\n- gridcell \"trace_start\" [ref=e117]\n- gridcell \"Unknown\" [ref=e118]\n- gridcell \"—\" [ref=e119]\n- gridcell \"\" [ref=e120]\n- gridcell \"168\" [ref=e121]\n- gridcell \"6\" [ref=e122]\n- gridcell \"3\" [ref=e123]\n- gridcell \"object_name\" [ref=e124]\n- gridcell \"Unknown\" [ref=e125]\n- gridcell \"POC\" [ref=e126]\n- gridcell \"\" [ref=e127]\n- gridcell \"180\" [ref=e128]\n- gridcell \"7\" [ref=e129]\n- gridcell \"9\" [ref=e130]\n- gridcell \"queue_create\" [ref=e131]\n- gridcell \"Unknown\" [ref=e132]\n- gridcell \"messages\" [ref=e133]\n- gridcell \"\" [ref=e134]\n- gridcell \"196\" [ref=e135]\n- gridcell \"8\" [ref=e136]\n- gridcell \"15\" [ref=e137]\n- gridcell \"object_name\" [ref=e138]\n- gridcell \"Unknown\" [ref=e139]\n- gridcell \"messages\" [ref=e140]\n- gridcell \"\" [ref=e141]\n- gridcell \"212\" [ref=e142]\n- gridcell \"9\" [ref=e143]\n- gridcell \"111\" [ref=e144]\n- gridcell \"object_name\" [ref=e145]\n- gridcell \"Unknown\" [ref=e146]\n- gridcell \"producer\" [ref=e147]\n- gridcell \"\" [ref=e148]\n- gridcell \"236\" [ref=e149]\n- gridcell \"10\" [ref=e150]\n- gridcell \"114\" [ref=e151]\n- gridcell \"task_create\" [ref=e152]\n- gridcell \"Unknown\" [ref=e153]\n- gridcell \"producer\" [ref=e154]\n- gridcell \"\" [ref=e155]\n- gridcell \"260\" [ref=e156]\n- gridcell \"11\" [ref=e157]\n- gridcell \"116\" [ref=e158]\n- gridcell \"task_ready\" [ref=e159]\n- gridcell \"Unknown\" [ref=e160]\n- gridcell \"producer\" [ref=e161]\n- gridcell \"\" [ref=e162]\n- gridcell \"276\" [ref=e163]\n- gridcell \"12\" [ref=e164]\n- gridcell \"210\" [ref=e165]\n- gridcell \"object_name\" [ref=e166]\n- gridcell \"Unknown\" [ref=e167]\n- gridcell \"consumer\" [ref=e168]\n- gridcell \"\" [ref=e169]\n- gridcell \"288\" [ref=e170]\n- gridcell \"13\" [ref=e171]\n- gridcell \"213\" [ref=e172]\n- gridcell \"task_create\" [ref=e173]\n- gridcell \"Unknown\" [ref=e174]\n- gridcell \"consumer\" [ref=e175]\n- gridcell \"\" [ref=e176]\n- gridcell \"312\" [ref=e177]\n- gridcell \"14\" [ref=e178]\n- gridcell \"215\" [ref=e179]\n- gridcell \"task_ready\" [ref=e180]\n- gridcell \"Unknown\" [ref=e181]\n- gridcell \"consumer\" [ref=e182]\n- gridcell \"\" [ref=e183]\n- gridcell \"328\" [ref=e184]\n- gridcell \"15\" [ref=e185]\n- gridcell \"391\" [ref=e186]\n- gridcell \"object_name\" [ref=e187]\n- gridcell \"Unknown\" [ref=e188]\n- gridcell \"supervisor\" [ref=e189]\n- gridcell \"\" [ref=e190]\n- gridcell \"340\" [ref=e191]\n- gridcell \"16\" [ref=e192]\n- gridcell \"395\" [ref=e193]\n- gridcell \"task_create\" [ref=e194]\n- gridcell \"Unknown\" [ref=e195]\n- gridcell \"supervisor\" [ref=e196]\n- gridcell \"\" [ref=e197]\n- gridcell \"364\" [ref=e198]\n- gridcell \"17\" [ref=e199]\n- gridcell \"396\" [ref=e200]\n- gridcell \"task_ready\" [ref=e201]\n- gridcell \"Unknown\" [ref=e202]\n- gridcell \"supervisor\" [ref=e203]\n- gridcell \"\" [ref=e204]\n- gridcell \"380\" [ref=e205]\n- gridcell \"18\" [ref=e206]\n- gridcell \"449\" [ref=e207]\n- gridcell \"object_name\" [ref=e208]\n- gridcell \"Unknown\" [ref=e209]\n- gridcell \"IDLE\" [ref=e210]\n- gridcell \"\" [ref=e211]\n- gridcell \"392\" [ref=e212]\n- gridcell \"19\" [ref=e213]\n- gridcell \"452\" [ref=e214]\n- gridcell \"task_create\" [ref=e215]\n- gridcell \"Unknown\" [ref=e216]\n- gridcell \"IDLE\" [ref=e217]\n- gridcell \"\" [ref=e218]\n- gridcell \"412\" [ref=e219]\n- gridcell \"20\" [ref=e220]\n- gridcell \"453\" [ref=e221]\n- gridcell \"task_ready\" [ref=e222]\n- gridcell \"Unknown\" [ref=e223]\n- gridcell \"IDLE\" [ref=e224]\n- gridcell \"\" [ref=e225]\n- gridcell \"428\" [ref=e226]\n- gridcell \"21\" [ref=e227]\n- gridcell \"455\" [ref=e228]\n- gridcell \"task_switch\" [ref=e229]\n- gridcell \"supervisor\" [ref=e230]\n- gridcell \"supervisor\" [ref=e231]\n- gridcell \"\" [ref=e232]\n- gridcell \"440\" [ref=e233]\n- gridcell \"22\" [ref=e234]\n- gridcell \"540\" [ref=e235]\n- gridcell \"task_delay\" [ref=e236]\n- gridcell \"supervisor\" [ref=e237]\n- gridcell \"supervisor\" [ref=e238]\n- gridcell \"\" [ref=e239]\n- gridcell \"456\" [ref=e240]\n- gridcell \"23\" [ref=e241]\n- gridcell \"544\" [ref=e242]\n- gridcell \"task_switch\" [ref=e243]\n- gridcell \"consumer\" [ref=e244]\n- gridcell \"consumer\" [ref=e245]\n- gridcell \"\" [ref=e246]\n- gridcell \"468\" [ref=e247]\n- gridcell \"24\" [ref=e248]\n- gridcell \"547\" [ref=e249]\n- gridcell \"queue_receive_block\" [ref=e250]\n- gridcell \"consumer\" [ref=e251]\n- gridcell \"messages\" [ref=e252]\n- gridcell \"\" [ref=e253]\n- gridcell \"484\" [ref=e254]\n- gridcell \"25\" [ref=e255]\n- button \"上一頁\" [disabled, ref=e83]\n- button \"下一頁\" [ref=e84]\n- heading \"證據詳情\" [level=2, ref=e58]\n- button \"解除固定\" [ref=e59]\n- heading \"來源與品質\" [level=3, ref=e69]\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
+      "({coverage:document.querySelector(\"#coverage-label\").textContent,shares:document.querySelector(\"#share-values\").textContent})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":{\"coverage\":\"Known 160116 / 160571 ticks；Unknown 455\",\"shares\":\"supervisor 0.13%consumer 0.36%producer 0.39%TzCtrl 0.01%IDLE 98.83%\"}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "document.querySelector(\"#brush\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "click",
+      "#brush"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
+      "(() => {const r=document.querySelector(\"#timeline\").getBoundingClientRect();return {x:r.x,y:r.y,w:r.width,h:r.height};})()"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":{\"h\":310,\"w\":1013,\"x\":255,\"y\":280.046875}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "mouse",
+      "move",
+      "559",
+      "373"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "mouse",
+      "down",
+      "left"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "mouse",
+      "move",
+      "863",
+      "466"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "mouse",
+      "up",
+      "left"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "wait",
+      "--fn",
+      "Number(document.body.dataset.renderRevision)>0 && !document.querySelector(\"#status\").textContent.includes(\"正在\")"
+    ],
+    "exit_code": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "snapshot",
+      "-i"
+    ],
+    "exit_code": 0,
+    "stdout": "- heading \"PSF Lab\" [level=1, ref=e4]\n- button \"切換明暗模式\" [ref=e5]\n- LabelText \"載入 PSF\" [ref=e6] clickable [cursor:pointer]\n  - button \"載入 PSF\" [ref=e7]: 未選擇任何檔案\n- combobox \"已儲存 trace\" [expanded=false, ref=e1]: trace.psf\n  - option \"已儲存 trace\" [ref=e8]\n  - option \"trace.psf\" [selected, ref=e9]\n  - option \"trace.psf\" [ref=e10]\n- combobox \"已驗證案例\" [expanded=false, ref=e2]\n  - option \"已驗證案例\" [selected, ref=e11]\n  - option \"queue_baseline · 84eed3\" [ref=e12]\n  - option \"queue_baseline · 6dfb90\" [ref=e13]\n  - option \"logger_bad · 93348d\" [ref=e14]\n  - option \"logger_fixed · ccc2d6\" [ref=e15]\n  - option \"inversion · d028ca\" [ref=e16]\n  - option \"inheritance · d8e2b4\" [ref=e17]\n  - option \"deadlock_abba · 7b5e8a\" [ref=e18]\n  - option \"ordered_locks · 913daf\" [ref=e19]\n  - option \"queue_baseline · ca69e2\" [ref=e20]\n  - option \"logger_bad · 95b91f\" [ref=e21]\n  - option \"logger_fixed · e45ea8\" [ref=e22]\n  - option \"inversion · 0cf818\" [ref=e23]\n  - option \"inheritance · 75e57e\" [ref=e24]\n  - option \"deadlock_abba · 50d96a\" [ref=e25]\n  - option \"ordered_locks · deccab\" [ref=e26]\n  - option \"queue_baseline · f0b2ab\" [ref=e27]\n  - option \"logger_bad · d4a2e3\" [ref=e28]\n  - option \"logger_fixed · 3e02b3\" [ref=e29]\n  - option \"inversion · 5c856f\" [ref=e30]\n  - option \"inheritance · 94feaf\" [ref=e31]\n  - option \"deadlock_abba · 4b86f0\" [ref=e32]\n  - option \"ordered_locks · a38d31\" [ref=e33]\n  - option \"queue_baseline · 22a470\" [ref=e34]\n  - option \"logger_bad · 06c385\" [ref=e35]\n  - option \"logger_fixed · 2d3171\" [ref=e36]\n  - option \"inversion · 1c87aa\" [ref=e37]\n  - option \"inheritance · 375eb0\" [ref=e38]\n  - option \"deadlock_abba · 744600\" [ref=e39]\n  - option \"ordered_locks · a32fb9\" [ref=e40]\n  - option \"queue_baseline · d1d5fa\" [ref=e41]\n  - option \"logger_bad · d7ce62\" [ref=e42]\n  - option \"logger_fixed · eefaa0\" [ref=e43]\n  - option \"inversion · 9aed2f\" [ref=e44]\n  - option \"inheritance · 293468\" [ref=e45]\n  - option \"deadlock_abba · 40754f\" [ref=e46]\n  - option \"ordered_locks · 76800a\" [ref=e47]\n  - option \"queue_baseline · 69e1ba\" [ref=e48]\n  - option \"logger_bad · e83381\" [ref=e49]\n  - option \"logger_fixed · 72b407\" [ref=e50]\n  - option \"inversion · 1c8bd6\" [ref=e51]\n  - option \"inheritance · 84affa\" [ref=e52]\n  - option \"deadlock_abba · 5aa2e4\" [ref=e53]\n  - option \"ordered_locks · 87e5fb\" [ref=e54]\n- button \"開啟案例\" [ref=e3]\n- heading \"篩選\" [level=2, ref=e55]\n- button \"重設\" [ref=e56]\n- listbox \"Task 篩選\" [ref=e60]\n  - option \"TzCtrl\" [ref=e70]\n  - option \"producer\" [ref=e71]\n  - option \"consumer\" [ref=e72]\n  - option \"supervisor\" [ref=e73]\n  - option \"IDLE\" [ref=e74]\n- combobox \"物件篩選\" [expanded=false, ref=e61]: 全部物件\n  - option \"全部物件\" [selected, ref=e85]\n  - option \"System Heap · unknown\" [ref=e86]\n  - option \"TzCtrl · task\" [ref=e87]\n  - option \"POC · channel\" [ref=e88]\n  - option \"messages · queue\" [ref=e89]\n  - option \"producer · task\" [ref=e90]\n  - option \"consumer · task\" [ref=e91]\n  - option \"supervisor · task\" [ref=e92]\n  - option \"IDLE · task\" [ref=e93]\n- combobox \"Channel 篩選\" [expanded=false, ref=e62]: 全部 channel\n  - option \"全部 channel\" [selected, ref=e94]\n  - option \"POC\" [ref=e95]\n- combobox \"事件類型篩選\" [expanded=false, ref=e63]: 全部事件\n  - option \"全部事件\" [selected, ref=e96]\n  - option \"trace_start (0x1)\" [ref=e97]\n  - option \"object_name (0x3)\" [ref=e98]\n  - option \"task_create (0x10)\" [ref=e99]\n  - option \"queue_create (0x11)\" [ref=e100]\n  - option \"task_ready (0x30)\" [ref=e101]\n  - option \"new_time (0x31)\" [ref=e102]\n  - option \"task_switch (0x37)\" [ref=e103]\n  - option \"queue_send (0x50)\" [ref=e104]\n  - option \"queue_receive (0x60)\" [ref=e105]\n  - option \"queue_receive_block (0x66)\" [ref=e106]\n  - option \"task_delay (0x7a)\" [ref=e107]\n  - option \"task_suspend (0x7b)\" [ref=e108]\n  - option \"user_event (0x92)\" [ref=e109]\n- textbox \"文字搜尋\" [ref=e64]\n- textbox \"時間起點\" [ref=e75]: 34725\n- textbox \"時間終點\" [ref=e76]: 92098\n- button \"套用時間窗口\" [ref=e65]\n- button \"查看品質與來源\" [ref=e57]\n- heading \"案例對照\" [level=2, ref=e66]\n- combobox \"比較案例組\" [expanded=false, ref=e67]: Logger 干擾／改善\n  - option \"Logger 干擾／改善\" [selected, ref=e110]\n  - option \"Inversion／inheritance\" [ref=e111]\n  - option \"ABBA／ordered locks\" [ref=e112]\n- button \"比較已驗證結果\" [ref=e68]\n- heading \"Task 時間軸\" [level=2, ref=e77]\n- button \"拖曳選取窗口\" [ref=e113]\n- button \"完整時間\" [ref=e114]\n- heading \"Task execution share\" [level=2, ref=e78]\n- heading \"User-event signal\" [level=2, ref=e79]\n- heading \"事件紀錄\" [level=2, ref=e80]\n- button \"匯出統計 CSV\" [ref=e81]\n- button \"匯出事件 CSV\" [ref=e82]\n- columnheader \"時間 ticks\" [ref=e256]\n- columnheader \"事件\" [ref=e257]\n- columnheader \"Task\" [ref=e258]\n- columnheader \"物件\" [ref=e259]\n- columnheader \"訊息\" [ref=e260]\n- columnheader \"Offset\" [ref=e261]\n- columnheader \"Seq\" [ref=e262]\n- generic \"40541new_timeIDLE—16688740542task_readyIDLEsupervisor16808840544task_readyIDLEproducer16928940547\" [ref=e115] focusable [tabindex]\n- gridcell \"40541\" [ref=e116]\n- gridcell \"new_time\" [ref=e117]\n- gridcell \"IDLE\" [ref=e118]\n- gridcell \"—\" [ref=e119]\n- gridcell \"\" [ref=e120]\n- gridcell \"1668\" [ref=e121]\n- gridcell \"87\" [ref=e122]\n- gridcell \"40542\" [ref=e123]\n- gridcell \"task_ready\" [ref=e124]\n- gridcell \"IDLE\" [ref=e125]\n- gridcell \"supervisor\" [ref=e126]\n- gridcell \"\" [ref=e127]\n- gridcell \"1680\" [ref=e128]\n- gridcell \"88\" [ref=e129]\n- gridcell \"40544\" [ref=e130]\n- gridcell \"task_ready\" [ref=e131]\n- gridcell \"IDLE\" [ref=e132]\n- gridcell \"producer\" [ref=e133]\n- gridcell \"\" [ref=e134]\n- gridcell \"1692\" [ref=e135]\n- gridcell \"89\" [ref=e136]\n- gridcell \"40547\" [ref=e137]\n- gridcell \"task_switch\" [ref=e138]\n- gridcell \"supervisor\" [ref=e139]\n- gridcell \"supervisor\" [ref=e140]\n- gridcell \"\" [ref=e141]\n- gridcell \"1704\" [ref=e142]\n- gridcell \"90\" [ref=e143]\n- gridcell \"40549\" [ref=e144]\n- gridcell \"task_delay\" [ref=e145]\n- gridcell \"supervisor\" [ref=e146]\n- gridcell \"supervisor\" [ref=e147]\n- gridcell \"\" [ref=e148]\n- gridcell \"1720\" [ref=e149]\n- gridcell \"91\" [ref=e150]\n- gridcell \"40553\" [ref=e151]\n- gridcell \"task_switch\" [ref=e152]\n- gridcell \"producer\" [ref=e153]\n- gridcell \"producer\" [ref=e154]\n- gridcell \"\" [ref=e155]\n- gridcell \"1732\" [ref=e156]\n- gridcell \"92\" [ref=e157]\n- gridcell \"40556\" [ref=e158]\n- gridcell \"queue_send\" [ref=e159]\n- gridcell \"producer\" [ref=e160]\n- gridcell \"messages\" [ref=e161]\n- gridcell \"\" [ref=e162]\n- gridcell \"1748\" [ref=e163]\n- gridcell \"93\" [ref=e164]\n- gridcell \"40558\" [ref=e165]\n- gridcell \"task_ready\" [ref=e166]\n- gridcell \"producer\" [ref=e167]\n- gridcell \"consumer\" [ref=e168]\n- gridcell \"\" [ref=e169]\n- gridcell \"1764\" [ref=e170]\n- gridcell \"94\" [ref=e171]\n- gridcell \"40561\" [ref=e172]\n- gridcell \"task_switch\" [ref=e173]\n- gridcell \"consumer\" [ref=e174]\n- gridcell \"consumer\" [ref=e175]\n- gridcell \"\" [ref=e176]\n- gridcell \"1776\" [ref=e177]\n- gridcell \"95\" [ref=e178]\n- gridcell \"40563\" [ref=e179]\n- gridcell \"queue_receive\" [ref=e180]\n- gridcell \"consumer\" [ref=e181]\n- gridcell \"messages\" [ref=e182]\n- gridcell \"\" [ref=e183]\n- gridcell \"1792\" [ref=e184]\n- gridcell \"96\" [ref=e185]\n- gridcell \"40587\" [ref=e186]\n- gridcell \"user_event\" [ref=e187]\n- gridcell \"consumer\" [ref=e188]\n- gridcell \"POC\" [ref=e189]\n- gridcell \"POC|queue_baseline|RECEIVE|4\" [ref=e190]\n- gridcell \"1812\" [ref=e191]\n- gridcell \"97\" [ref=e192]\n- gridcell \"40592\" [ref=e193]\n- gridcell \"queue_receive_block\" [ref=e194]\n- gridcell \"consumer\" [ref=e195]\n- gridcell \"messages\" [ref=e196]\n- gridcell \"\" [ref=e197]\n- gridcell \"1860\" [ref=e198]\n- gridcell \"98\" [ref=e199]\n- gridcell \"40597\" [ref=e200]\n- gridcell \"task_switch\" [ref=e201]\n- gridcell \"producer\" [ref=e202]\n- gridcell \"producer\" [ref=e203]\n- gridcell \"\" [ref=e204]\n- gridcell \"1880\" [ref=e205]\n- gridcell \"99\" [ref=e206]\n- gridcell \"40620\" [ref=e207]\n- gridcell \"user_event\" [ref=e208]\n- gridcell \"producer\" [ref=e209]\n- gridcell \"POC\" [ref=e210]\n- gridcell \"POC|queue_baseline|SEND|4\" [ref=e211]\n- gridcell \"1896\" [ref=e212]\n- gridcell \"100\" [ref=e213]\n- gridcell \"40624\" [ref=e214]\n- gridcell \"task_delay\" [ref=e215]\n- gridcell \"producer\" [ref=e216]\n- gridcell \"producer\" [ref=e217]\n- gridcell \"\" [ref=e218]\n- gridcell \"1940\" [ref=e219]\n- gridcell \"101\" [ref=e220]\n- gridcell \"40628\" [ref=e221]\n- gridcell \"task_switch\" [ref=e222]\n- gridcell \"IDLE\" [ref=e223]\n- gridcell \"IDLE\" [ref=e224]\n- gridcell \"\" [ref=e225]\n- gridcell \"1952\" [ref=e226]\n- gridcell \"102\" [ref=e227]\n- gridcell \"50540\" [ref=e228]\n- gridcell \"new_time\" [ref=e229]\n- gridcell \"IDLE\" [ref=e230]\n- gridcell \"—\" [ref=e231]\n- gridcell \"\" [ref=e232]\n- gridcell \"1968\" [ref=e233]\n- gridcell \"103\" [ref=e234]\n- gridcell \"50542\" [ref=e235]\n- gridcell \"task_ready\" [ref=e236]\n- gridcell \"IDLE\" [ref=e237]\n- gridcell \"supervisor\" [ref=e238]\n- gridcell \"\" [ref=e239]\n- gridcell \"1980\" [ref=e240]\n- gridcell \"104\" [ref=e241]\n- gridcell \"50544\" [ref=e242]\n- gridcell \"task_ready\" [ref=e243]\n- gridcell \"IDLE\" [ref=e244]\n- gridcell \"producer\" [ref=e245]\n- gridcell \"\" [ref=e246]\n- gridcell \"1992\" [ref=e247]\n- gridcell \"105\" [ref=e248]\n- gridcell \"50546\" [ref=e249]\n- gridcell \"task_switch\" [ref=e250]\n- gridcell \"supervisor\" [ref=e251]\n- gridcell \"supervisor\" [ref=e252]\n- gridcell \"\" [ref=e253]\n- gridcell \"2004\" [ref=e254]\n- gridcell \"106\" [ref=e255]\n- button \"上一頁\" [disabled, ref=e83]\n- button \"下一頁\" [ref=e84]\n- heading \"證據詳情\" [level=2, ref=e58]\n- button \"解除固定\" [ref=e59]\n- heading \"來源與品質\" [level=3, ref=e69]\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
+      "document.querySelector(\"#start-filter\").value"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":\"34725\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "screenshot",
+      "--full",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/screenshots/server/04-timeline-brush.png"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/screenshots/server/04-timeline-brush.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
+      "({window:document.querySelector(\"#window-label\").textContent,search:document.querySelector(\"#search-filter\").value,task:[...document.querySelector(\"#task-filter\").selectedOptions].map(x=>x.value),rows:document.querySelector(\"#row-count\").textContent})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":{\"rows\":\"符合 96 筆；本頁 20 筆。CSV 匯出全部 96 筆。\",\"search\":\"\",\"task\":[],\"window\":\"[34725, 92098) ticks · 5.737 ms\"}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "document.querySelector(\"#reset\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "click",
+      "#reset"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "wait",
+      "--fn",
+      "Number(document.body.dataset.renderRevision)>0 && !document.querySelector(\"#status\").textContent.includes(\"正在\")"
+    ],
+    "exit_code": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "snapshot",
+      "-i"
+    ],
+    "exit_code": 0,
+    "stdout": "- heading \"PSF Lab\" [level=1, ref=e4]\n- button \"切換明暗模式\" [ref=e5]\n- LabelText \"載入 PSF\" [ref=e6] clickable [cursor:pointer]\n  - button \"載入 PSF\" [ref=e7]: 未選擇任何檔案\n- combobox \"已儲存 trace\" [expanded=false, ref=e1]: trace.psf\n  - option \"已儲存 trace\" [ref=e8]\n  - option \"trace.psf\" [selected, ref=e9]\n  - option \"trace.psf\" [ref=e10]\n- combobox \"已驗證案例\" [expanded=false, ref=e2]\n  - option \"已驗證案例\" [selected, ref=e11]\n  - option \"queue_baseline · 84eed3\" [ref=e12]\n  - option \"queue_baseline · 6dfb90\" [ref=e13]\n  - option \"logger_bad · 93348d\" [ref=e14]\n  - option \"logger_fixed · ccc2d6\" [ref=e15]\n  - option \"inversion · d028ca\" [ref=e16]\n  - option \"inheritance · d8e2b4\" [ref=e17]\n  - option \"deadlock_abba · 7b5e8a\" [ref=e18]\n  - option \"ordered_locks · 913daf\" [ref=e19]\n  - option \"queue_baseline · ca69e2\" [ref=e20]\n  - option \"logger_bad · 95b91f\" [ref=e21]\n  - option \"logger_fixed · e45ea8\" [ref=e22]\n  - option \"inversion · 0cf818\" [ref=e23]\n  - option \"inheritance · 75e57e\" [ref=e24]\n  - option \"deadlock_abba · 50d96a\" [ref=e25]\n  - option \"ordered_locks · deccab\" [ref=e26]\n  - option \"queue_baseline · f0b2ab\" [ref=e27]\n  - option \"logger_bad · d4a2e3\" [ref=e28]\n  - option \"logger_fixed · 3e02b3\" [ref=e29]\n  - option \"inversion · 5c856f\" [ref=e30]\n  - option \"inheritance · 94feaf\" [ref=e31]\n  - option \"deadlock_abba · 4b86f0\" [ref=e32]\n  - option \"ordered_locks · a38d31\" [ref=e33]\n  - option \"queue_baseline · 22a470\" [ref=e34]\n  - option \"logger_bad · 06c385\" [ref=e35]\n  - option \"logger_fixed · 2d3171\" [ref=e36]\n  - option \"inversion · 1c87aa\" [ref=e37]\n  - option \"inheritance · 375eb0\" [ref=e38]\n  - option \"deadlock_abba · 744600\" [ref=e39]\n  - option \"ordered_locks · a32fb9\" [ref=e40]\n  - option \"queue_baseline · d1d5fa\" [ref=e41]\n  - option \"logger_bad · d7ce62\" [ref=e42]\n  - option \"logger_fixed · eefaa0\" [ref=e43]\n  - option \"inversion · 9aed2f\" [ref=e44]\n  - option \"inheritance · 293468\" [ref=e45]\n  - option \"deadlock_abba · 40754f\" [ref=e46]\n  - option \"ordered_locks · 76800a\" [ref=e47]\n  - option \"queue_baseline · 69e1ba\" [ref=e48]\n  - option \"logger_bad · e83381\" [ref=e49]\n  - option \"logger_fixed · 72b407\" [ref=e50]\n  - option \"inversion · 1c8bd6\" [ref=e51]\n  - option \"inheritance · 84affa\" [ref=e52]\n  - option \"deadlock_abba · 5aa2e4\" [ref=e53]\n  - option \"ordered_locks · 87e5fb\" [ref=e54]\n- button \"開啟案例\" [ref=e3]\n- heading \"篩選\" [level=2, ref=e55]\n- button \"重設\" [ref=e56]\n- listbox \"Task 篩選\" [ref=e60]\n  - option \"TzCtrl\" [ref=e70]\n  - option \"producer\" [ref=e71]\n  - option \"consumer\" [ref=e72]\n  - option \"supervisor\" [ref=e73]\n  - option \"IDLE\" [ref=e74]\n- combobox \"物件篩選\" [expanded=false, ref=e61]: 全部物件\n  - option \"全部物件\" [selected, ref=e85]\n  - option \"System Heap · unknown\" [ref=e86]\n  - option \"TzCtrl · task\" [ref=e87]\n  - option \"POC · channel\" [ref=e88]\n  - option \"messages · queue\" [ref=e89]\n  - option \"producer · task\" [ref=e90]\n  - option \"consumer · task\" [ref=e91]\n  - option \"supervisor · task\" [ref=e92]\n  - option \"IDLE · task\" [ref=e93]\n- combobox \"Channel 篩選\" [expanded=false, ref=e62]: 全部 channel\n  - option \"全部 channel\" [selected, ref=e94]\n  - option \"POC\" [ref=e95]\n- combobox \"事件類型篩選\" [expanded=false, ref=e63]: 全部事件\n  - option \"全部事件\" [selected, ref=e96]\n  - option \"trace_start (0x1)\" [ref=e97]\n  - option \"object_name (0x3)\" [ref=e98]\n  - option \"task_create (0x10)\" [ref=e99]\n  - option \"queue_create (0x11)\" [ref=e100]\n  - option \"task_ready (0x30)\" [ref=e101]\n  - option \"new_time (0x31)\" [ref=e102]\n  - option \"task_switch (0x37)\" [ref=e103]\n  - option \"queue_send (0x50)\" [ref=e104]\n  - option \"queue_receive (0x60)\" [ref=e105]\n  - option \"queue_receive_block (0x66)\" [ref=e106]\n  - option \"task_delay (0x7a)\" [ref=e107]\n  - option \"task_suspend (0x7b)\" [ref=e108]\n  - option \"user_event (0x92)\" [ref=e109]\n- textbox \"文字搜尋\" [ref=e64]\n- textbox \"時間起點\" [ref=e75]\n- textbox \"時間終點\" [ref=e76]\n- button \"套用時間窗口\" [ref=e65]\n- button \"查看品質與來源\" [ref=e57]\n- heading \"案例對照\" [level=2, ref=e66]\n- combobox \"比較案例組\" [expanded=false, ref=e67]: Logger 干擾／改善\n  - option \"Logger 干擾／改善\" [selected, ref=e110]\n  - option \"Inversion／inheritance\" [ref=e111]\n  - option \"ABBA／ordered locks\" [ref=e112]\n- button \"比較已驗證結果\" [ref=e68]\n- heading \"Task 時間軸\" [level=2, ref=e77]\n- button \"拖曳選取窗口\" [ref=e113]\n- button \"完整時間\" [ref=e114]\n- heading \"Task execution share\" [level=2, ref=e78]\n- heading \"User-event signal\" [level=2, ref=e79]\n- heading \"事件紀錄\" [level=2, ref=e80]\n- button \"匯出統計 CSV\" [ref=e81]\n- button \"匯出事件 CSV\" [ref=e82]\n- columnheader \"時間 ticks\" [ref=e256]\n- columnheader \"事件\" [ref=e257]\n- columnheader \"Task\" [ref=e258]\n- columnheader \"物件\" [ref=e259]\n- columnheader \"訊息\" [ref=e260]\n- columnheader \"Offset\" [ref=e261]\n- columnheader \"Seq\" [ref=e262]\n- generic \"0trace_startUnknown—16863object_nameUnknownPOC18079queue_createUnknownmessages196815object_nameUn\" [ref=e115] focusable [tabindex]\n- gridcell \"0\" [ref=e116]\n- gridcell \"trace_start\" [ref=e117]\n- gridcell \"Unknown\" [ref=e118]\n- gridcell \"—\" [ref=e119]\n- gridcell \"\" [ref=e120]\n- gridcell \"168\" [ref=e121]\n- gridcell \"6\" [ref=e122]\n- gridcell \"3\" [ref=e123]\n- gridcell \"object_name\" [ref=e124]\n- gridcell \"Unknown\" [ref=e125]\n- gridcell \"POC\" [ref=e126]\n- gridcell \"\" [ref=e127]\n- gridcell \"180\" [ref=e128]\n- gridcell \"7\" [ref=e129]\n- gridcell \"9\" [ref=e130]\n- gridcell \"queue_create\" [ref=e131]\n- gridcell \"Unknown\" [ref=e132]\n- gridcell \"messages\" [ref=e133]\n- gridcell \"\" [ref=e134]\n- gridcell \"196\" [ref=e135]\n- gridcell \"8\" [ref=e136]\n- gridcell \"15\" [ref=e137]\n- gridcell \"object_name\" [ref=e138]\n- gridcell \"Unknown\" [ref=e139]\n- gridcell \"messages\" [ref=e140]\n- gridcell \"\" [ref=e141]\n- gridcell \"212\" [ref=e142]\n- gridcell \"9\" [ref=e143]\n- gridcell \"111\" [ref=e144]\n- gridcell \"object_name\" [ref=e145]\n- gridcell \"Unknown\" [ref=e146]\n- gridcell \"producer\" [ref=e147]\n- gridcell \"\" [ref=e148]\n- gridcell \"236\" [ref=e149]\n- gridcell \"10\" [ref=e150]\n- gridcell \"114\" [ref=e151]\n- gridcell \"task_create\" [ref=e152]\n- gridcell \"Unknown\" [ref=e153]\n- gridcell \"producer\" [ref=e154]\n- gridcell \"\" [ref=e155]\n- gridcell \"260\" [ref=e156]\n- gridcell \"11\" [ref=e157]\n- gridcell \"116\" [ref=e158]\n- gridcell \"task_ready\" [ref=e159]\n- gridcell \"Unknown\" [ref=e160]\n- gridcell \"producer\" [ref=e161]\n- gridcell \"\" [ref=e162]\n- gridcell \"276\" [ref=e163]\n- gridcell \"12\" [ref=e164]\n- gridcell \"210\" [ref=e165]\n- gridcell \"object_name\" [ref=e166]\n- gridcell \"Unknown\" [ref=e167]\n- gridcell \"consumer\" [ref=e168]\n- gridcell \"\" [ref=e169]\n- gridcell \"288\" [ref=e170]\n- gridcell \"13\" [ref=e171]\n- gridcell \"213\" [ref=e172]\n- gridcell \"task_create\" [ref=e173]\n- gridcell \"Unknown\" [ref=e174]\n- gridcell \"consumer\" [ref=e175]\n- gridcell \"\" [ref=e176]\n- gridcell \"312\" [ref=e177]\n- gridcell \"14\" [ref=e178]\n- gridcell \"215\" [ref=e179]\n- gridcell \"task_ready\" [ref=e180]\n- gridcell \"Unknown\" [ref=e181]\n- gridcell \"consumer\" [ref=e182]\n- gridcell \"\" [ref=e183]\n- gridcell \"328\" [ref=e184]\n- gridcell \"15\" [ref=e185]\n- gridcell \"391\" [ref=e186]\n- gridcell \"object_name\" [ref=e187]\n- gridcell \"Unknown\" [ref=e188]\n- gridcell \"supervisor\" [ref=e189]\n- gridcell \"\" [ref=e190]\n- gridcell \"340\" [ref=e191]\n- gridcell \"16\" [ref=e192]\n- gridcell \"395\" [ref=e193]\n- gridcell \"task_create\" [ref=e194]\n- gridcell \"Unknown\" [ref=e195]\n- gridcell \"supervisor\" [ref=e196]\n- gridcell \"\" [ref=e197]\n- gridcell \"364\" [ref=e198]\n- gridcell \"17\" [ref=e199]\n- gridcell \"396\" [ref=e200]\n- gridcell \"task_ready\" [ref=e201]\n- gridcell \"Unknown\" [ref=e202]\n- gridcell \"supervisor\" [ref=e203]\n- gridcell \"\" [ref=e204]\n- gridcell \"380\" [ref=e205]\n- gridcell \"18\" [ref=e206]\n- gridcell \"449\" [ref=e207]\n- gridcell \"object_name\" [ref=e208]\n- gridcell \"Unknown\" [ref=e209]\n- gridcell \"IDLE\" [ref=e210]\n- gridcell \"\" [ref=e211]\n- gridcell \"392\" [ref=e212]\n- gridcell \"19\" [ref=e213]\n- gridcell \"452\" [ref=e214]\n- gridcell \"task_create\" [ref=e215]\n- gridcell \"Unknown\" [ref=e216]\n- gridcell \"IDLE\" [ref=e217]\n- gridcell \"\" [ref=e218]\n- gridcell \"412\" [ref=e219]\n- gridcell \"20\" [ref=e220]\n- gridcell \"453\" [ref=e221]\n- gridcell \"task_ready\" [ref=e222]\n- gridcell \"Unknown\" [ref=e223]\n- gridcell \"IDLE\" [ref=e224]\n- gridcell \"\" [ref=e225]\n- gridcell \"428\" [ref=e226]\n- gridcell \"21\" [ref=e227]\n- gridcell \"455\" [ref=e228]\n- gridcell \"task_switch\" [ref=e229]\n- gridcell \"supervisor\" [ref=e230]\n- gridcell \"supervisor\" [ref=e231]\n- gridcell \"\" [ref=e232]\n- gridcell \"440\" [ref=e233]\n- gridcell \"22\" [ref=e234]\n- gridcell \"540\" [ref=e235]\n- gridcell \"task_delay\" [ref=e236]\n- gridcell \"supervisor\" [ref=e237]\n- gridcell \"supervisor\" [ref=e238]\n- gridcell \"\" [ref=e239]\n- gridcell \"456\" [ref=e240]\n- gridcell \"23\" [ref=e241]\n- gridcell \"544\" [ref=e242]\n- gridcell \"task_switch\" [ref=e243]\n- gridcell \"consumer\" [ref=e244]\n- gridcell \"consumer\" [ref=e245]\n- gridcell \"\" [ref=e246]\n- gridcell \"468\" [ref=e247]\n- gridcell \"24\" [ref=e248]\n- gridcell \"547\" [ref=e249]\n- gridcell \"queue_receive_block\" [ref=e250]\n- gridcell \"consumer\" [ref=e251]\n- gridcell \"messages\" [ref=e252]\n- gridcell \"\" [ref=e253]\n- gridcell \"484\" [ref=e254]\n- gridcell \"25\" [ref=e255]\n- button \"上一頁\" [disabled, ref=e83]\n- button \"下一頁\" [ref=e84]\n- heading \"證據詳情\" [level=2, ref=e58]\n- button \"解除固定\" [ref=e59]\n- heading \"來源與品質\" [level=3, ref=e69]\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "document.querySelector(\".tabulator-row:nth-child(2) .tabulator-cell[tabulator-field=kind]\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "hover",
+      ".tabulator-row:nth-child(2) .tabulator-cell[tabulator-field=kind]"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "document.querySelector(\".tabulator-row:nth-child(2) .tabulator-cell[tabulator-field=kind]\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "click",
+      ".tabulator-row:nth-child(2) .tabulator-cell[tabulator-field=kind]"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "screenshot",
+      "--full",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/screenshots/server/04-event-details.png"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/screenshots/server/04-event-details.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
+      "({window:document.querySelector(\"#window-label\").textContent,search:document.querySelector(\"#search-filter\").value,task:[...document.querySelector(\"#task-filter\").selectedOptions].map(x=>x.value),rows:document.querySelector(\"#row-count\").textContent})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":{\"rows\":\"符合 281 筆；本頁 20 筆。CSV 匯出全部 281 筆。\",\"search\":\"\",\"task\":[],\"window\":\"[0, 160571) ticks · 16.057 ms\"}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "document.querySelector(\".tabulator-col[tabulator-field=\\\"ticks\\\"]\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "click",
+      ".tabulator-col[tabulator-field=\"ticks\"]"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "wait",
+      "--fn",
+      "Number(document.body.dataset.renderRevision)>0 && !document.querySelector(\"#status\").textContent.includes(\"正在\")"
+    ],
+    "exit_code": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "snapshot",
+      "-i"
+    ],
+    "exit_code": 0,
+    "stdout": "- heading \"PSF Lab\" [level=1, ref=e4]\n- button \"切換明暗模式\" [ref=e5]\n- LabelText \"載入 PSF\" [ref=e6] clickable [cursor:pointer]\n  - button \"載入 PSF\" [ref=e7]: 未選擇任何檔案\n- combobox \"已儲存 trace\" [expanded=false, ref=e1]: trace.psf\n  - option \"已儲存 trace\" [ref=e8]\n  - option \"trace.psf\" [selected, ref=e9]\n  - option \"trace.psf\" [ref=e10]\n- combobox \"已驗證案例\" [expanded=false, ref=e2]\n  - option \"已驗證案例\" [selected, ref=e11]\n  - option \"queue_baseline · 84eed3\" [ref=e12]\n  - option \"queue_baseline · 6dfb90\" [ref=e13]\n  - option \"logger_bad · 93348d\" [ref=e14]\n  - option \"logger_fixed · ccc2d6\" [ref=e15]\n  - option \"inversion · d028ca\" [ref=e16]\n  - option \"inheritance · d8e2b4\" [ref=e17]\n  - option \"deadlock_abba · 7b5e8a\" [ref=e18]\n  - option \"ordered_locks · 913daf\" [ref=e19]\n  - option \"queue_baseline · ca69e2\" [ref=e20]\n  - option \"logger_bad · 95b91f\" [ref=e21]\n  - option \"logger_fixed · e45ea8\" [ref=e22]\n  - option \"inversion · 0cf818\" [ref=e23]\n  - option \"inheritance · 75e57e\" [ref=e24]\n  - option \"deadlock_abba · 50d96a\" [ref=e25]\n  - option \"ordered_locks · deccab\" [ref=e26]\n  - option \"queue_baseline · f0b2ab\" [ref=e27]\n  - option \"logger_bad · d4a2e3\" [ref=e28]\n  - option \"logger_fixed · 3e02b3\" [ref=e29]\n  - option \"inversion · 5c856f\" [ref=e30]\n  - option \"inheritance · 94feaf\" [ref=e31]\n  - option \"deadlock_abba · 4b86f0\" [ref=e32]\n  - option \"ordered_locks · a38d31\" [ref=e33]\n  - option \"queue_baseline · 22a470\" [ref=e34]\n  - option \"logger_bad · 06c385\" [ref=e35]\n  - option \"logger_fixed · 2d3171\" [ref=e36]\n  - option \"inversion · 1c87aa\" [ref=e37]\n  - option \"inheritance · 375eb0\" [ref=e38]\n  - option \"deadlock_abba · 744600\" [ref=e39]\n  - option \"ordered_locks · a32fb9\" [ref=e40]\n  - option \"queue_baseline · d1d5fa\" [ref=e41]\n  - option \"logger_bad · d7ce62\" [ref=e42]\n  - option \"logger_fixed · eefaa0\" [ref=e43]\n  - option \"inversion · 9aed2f\" [ref=e44]\n  - option \"inheritance · 293468\" [ref=e45]\n  - option \"deadlock_abba · 40754f\" [ref=e46]\n  - option \"ordered_locks · 76800a\" [ref=e47]\n  - option \"queue_baseline · 69e1ba\" [ref=e48]\n  - option \"logger_bad · e83381\" [ref=e49]\n  - option \"logger_fixed · 72b407\" [ref=e50]\n  - option \"inversion · 1c8bd6\" [ref=e51]\n  - option \"inheritance · 84affa\" [ref=e52]\n  - option \"deadlock_abba · 5aa2e4\" [ref=e53]\n  - option \"ordered_locks · 87e5fb\" [ref=e54]\n- button \"開啟案例\" [ref=e3]\n- heading \"篩選\" [level=2, ref=e55]\n- button \"重設\" [ref=e56]\n- listbox \"Task 篩選\" [ref=e60]\n  - option \"TzCtrl\" [ref=e70]\n  - option \"producer\" [ref=e71]\n  - option \"consumer\" [ref=e72]\n  - option \"supervisor\" [ref=e73]\n  - option \"IDLE\" [ref=e74]\n- combobox \"物件篩選\" [expanded=false, ref=e61]: 全部物件\n  - option \"全部物件\" [selected, ref=e85]\n  - option \"System Heap · unknown\" [ref=e86]\n  - option \"TzCtrl · task\" [ref=e87]\n  - option \"POC · channel\" [ref=e88]\n  - option \"messages · queue\" [ref=e89]\n  - option \"producer · task\" [ref=e90]\n  - option \"consumer · task\" [ref=e91]\n  - option \"supervisor · task\" [ref=e92]\n  - option \"IDLE · task\" [ref=e93]\n- combobox \"Channel 篩選\" [expanded=false, ref=e62]: 全部 channel\n  - option \"全部 channel\" [selected, ref=e94]\n  - option \"POC\" [ref=e95]\n- combobox \"事件類型篩選\" [expanded=false, ref=e63]: 全部事件\n  - option \"全部事件\" [selected, ref=e96]\n  - option \"trace_start (0x1)\" [ref=e97]\n  - option \"object_name (0x3)\" [ref=e98]\n  - option \"task_create (0x10)\" [ref=e99]\n  - option \"queue_create (0x11)\" [ref=e100]\n  - option \"task_ready (0x30)\" [ref=e101]\n  - option \"new_time (0x31)\" [ref=e102]\n  - option \"task_switch (0x37)\" [ref=e103]\n  - option \"queue_send (0x50)\" [ref=e104]\n  - option \"queue_receive (0x60)\" [ref=e105]\n  - option \"queue_receive_block (0x66)\" [ref=e106]\n  - option \"task_delay (0x7a)\" [ref=e107]\n  - option \"task_suspend (0x7b)\" [ref=e108]\n  - option \"user_event (0x92)\" [ref=e109]\n- textbox \"文字搜尋\" [ref=e64]\n- textbox \"時間起點\" [ref=e75]\n- textbox \"時間終點\" [ref=e76]\n- button \"套用時間窗口\" [ref=e65]\n- button \"查看品質與來源\" [ref=e57]\n- heading \"案例對照\" [level=2, ref=e66]\n- combobox \"比較案例組\" [expanded=false, ref=e67]: Logger 干擾／改善\n  - option \"Logger 干擾／改善\" [selected, ref=e110]\n  - option \"Inversion／inheritance\" [ref=e111]\n  - option \"ABBA／ordered locks\" [ref=e112]\n- button \"比較已驗證結果\" [ref=e68]\n- heading \"Task 時間軸\" [level=2, ref=e77]\n- button \"拖曳選取窗口\" [ref=e113]\n- button \"完整時間\" [ref=e114]\n- heading \"Task execution share\" [level=2, ref=e78]\n- heading \"User-event signal\" [level=2, ref=e79]\n- heading \"事件紀錄\" [level=2, ref=e80]\n- button \"匯出統計 CSV\" [ref=e81]\n- button \"匯出事件 CSV\" [ref=e82]\n- columnheader \"時間 ticks\" [ref=e256]\n- columnheader \"事件\" [ref=e257]\n- columnheader \"Task\" [ref=e258]\n- columnheader \"物件\" [ref=e259]\n- columnheader \"訊息\" [ref=e260]\n- columnheader \"Offset\" [ref=e261]\n- columnheader \"Seq\" [ref=e262]\n- generic \"160571user_eventsupervisorPOCPOC|queue_baseline|COMPLETE|05352286160546task_switchsupervisorsupervis\" [ref=e115] focusable [tabindex]\n- gridcell \"160571\" [ref=e116]\n- gridcell \"user_event\" [ref=e117]\n- gridcell \"supervisor\" [ref=e118]\n- gridcell \"POC\" [ref=e119]\n- gridcell \"POC|queue_baseline|COMPLETE|0\" [ref=e120]\n- gridcell \"5352\" [ref=e121]\n- gridcell \"286\" [ref=e122]\n- gridcell \"160546\" [ref=e123]\n- gridcell \"task_switch\" [ref=e124]\n- gridcell \"supervisor\" [ref=e125]\n- gridcell \"supervisor\" [ref=e126]\n- gridcell \"\" [ref=e127]\n- gridcell \"5336\" [ref=e128]\n- gridcell \"285\" [ref=e129]\n- gridcell \"160544\" [ref=e130]\n- gridcell \"task_ready\" [ref=e131]\n- gridcell \"IDLE\" [ref=e132]\n- gridcell \"producer\" [ref=e133]\n- gridcell \"\" [ref=e134]\n- gridcell \"5324\" [ref=e135]\n- gridcell \"284\" [ref=e136]\n- gridcell \"160542\" [ref=e137]\n- gridcell \"task_ready\" [ref=e138]\n- gridcell \"IDLE\" [ref=e139]\n- gridcell \"supervisor\" [ref=e140]\n- gridcell \"\" [ref=e141]\n- gridcell \"5312\" [ref=e142]\n- gridcell \"283\" [ref=e143]\n- gridcell \"160540\" [ref=e144]\n- gridcell \"new_time\" [ref=e145]\n- gridcell \"IDLE\" [ref=e146]\n- gridcell \"—\" [ref=e147]\n- gridcell \"\" [ref=e148]\n- gridcell \"5300\" [ref=e149]\n- gridcell \"282\" [ref=e150]\n- gridcell \"150625\" [ref=e151]\n- gridcell \"task_switch\" [ref=e152]\n- gridcell \"IDLE\" [ref=e153]\n- gridcell \"IDLE\" [ref=e154]\n- gridcell \"\" [ref=e155]\n- gridcell \"5284\" [ref=e156]\n- gridcell \"281\" [ref=e157]\n- gridcell \"150621\" [ref=e158]\n- gridcell \"task_delay\" [ref=e159]\n- gridcell \"producer\" [ref=e160]\n- gridcell \"producer\" [ref=e161]\n- gridcell \"\" [ref=e162]\n- gridcell \"5272\" [ref=e163]\n- gridcell \"280\" [ref=e164]\n- gridcell \"150617\" [ref=e165]\n- gridcell \"user_event\" [ref=e166]\n- gridcell \"producer\" [ref=e167]\n- gridcell \"POC\" [ref=e168]\n- gridcell \"POC|queue_baseline|SEND|15\" [ref=e169]\n- gridcell \"5228\" [ref=e170]\n- gridcell \"279\" [ref=e171]\n- gridcell \"150594\" [ref=e172]\n- gridcell \"task_switch\" [ref=e173]\n- gridcell \"producer\" [ref=e174]\n- gridcell \"producer\" [ref=e175]\n- gridcell \"\" [ref=e176]\n- gridcell \"5212\" [ref=e177]\n- gridcell \"278\" [ref=e178]\n- gridcell \"150591\" [ref=e179]\n- gridcell \"task_suspend\" [ref=e180]\n- gridcell \"consumer\" [ref=e181]\n- gridcell \"consumer\" [ref=e182]\n- gridcell \"\" [ref=e183]\n- gridcell \"5200\" [ref=e184]\n- gridcell \"277\" [ref=e185]\n- gridcell \"150587\" [ref=e186]\n- gridcell \"user_event\" [ref=e187]\n- gridcell \"consumer\" [ref=e188]\n- gridcell \"POC\" [ref=e189]\n- gridcell \"POC|queue_baseline|RECEIVE|15\" [ref=e190]\n- gridcell \"5152\" [ref=e191]\n- gridcell \"276\" [ref=e192]\n- gridcell \"150563\" [ref=e193]\n- gridcell \"queue_receive\" [ref=e194]\n- gridcell \"consumer\" [ref=e195]\n- gridcell \"messages\" [ref=e196]\n- gridcell \"\" [ref=e197]\n- gridcell \"5132\" [ref=e198]\n- gridcell \"275\" [ref=e199]\n- gridcell \"150561\" [ref=e200]\n- gridcell \"task_switch\" [ref=e201]\n- gridcell \"consumer\" [ref=e202]\n- gridcell \"consumer\" [ref=e203]\n- gridcell \"\" [ref=e204]\n- gridcell \"5116\" [ref=e205]\n- gridcell \"274\" [ref=e206]\n- gridcell \"150558\" [ref=e207]\n- gridcell \"task_ready\" [ref=e208]\n- gridcell \"producer\" [ref=e209]\n- gridcell \"consumer\" [ref=e210]\n- gridcell \"\" [ref=e211]\n- gridcell \"5104\" [ref=e212]\n- gridcell \"273\" [ref=e213]\n- gridcell \"150556\" [ref=e214]\n- gridcell \"queue_send\" [ref=e215]\n- gridcell \"producer\" [ref=e216]\n- gridcell \"messages\" [ref=e217]\n- gridcell \"\" [ref=e218]\n- gridcell \"5088\" [ref=e219]\n- gridcell \"272\" [ref=e220]\n- gridcell \"150553\" [ref=e221]\n- gridcell \"task_switch\" [ref=e222]\n- gridcell \"producer\" [ref=e223]\n- gridcell \"producer\" [ref=e224]\n- gridcell \"\" [ref=e225]\n- gridcell \"5072\" [ref=e226]\n- gridcell \"271\" [ref=e227]\n- gridcell \"150549\" [ref=e228]\n- gridcell \"task_delay\" [ref=e229]\n- gridcell \"supervisor\" [ref=e230]\n- gridcell \"supervisor\" [ref=e231]\n- gridcell \"\" [ref=e232]\n- gridcell \"5060\" [ref=e233]\n- gridcell \"270\" [ref=e234]\n- gridcell \"150547\" [ref=e235]\n- gridcell \"task_switch\" [ref=e236]\n- gridcell \"supervisor\" [ref=e237]\n- gridcell \"supervisor\" [ref=e238]\n- gridcell \"\" [ref=e239]\n- gridcell \"5044\" [ref=e240]\n- gridcell \"269\" [ref=e241]\n- gridcell \"150544\" [ref=e242]\n- gridcell \"task_ready\" [ref=e243]\n- gridcell \"IDLE\" [ref=e244]\n- gridcell \"producer\" [ref=e245]\n- gridcell \"\" [ref=e246]\n- gridcell \"5032\" [ref=e247]\n- gridcell \"268\" [ref=e248]\n- gridcell \"150542\" [ref=e249]\n- gridcell \"task_ready\" [ref=e250]\n- gridcell \"IDLE\" [ref=e251]\n- gridcell \"supervisor\" [ref=e252]\n- gridcell \"\" [ref=e253]\n- gridcell \"5020\" [ref=e254]\n- gridcell \"267\" [ref=e255]\n- button \"上一頁\" [disabled, ref=e83]\n- button \"下一頁\" [ref=e84]\n- heading \"證據詳情\" [level=2, ref=e58]\n- button \"解除固定\" [ref=e59]\n- heading \"事件詳細資料\" [level=3, ref=e69]\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "wait",
+      "--fn",
+      "document.querySelector(\"#sort-label\").textContent.includes(\"↓\")"
+    ],
+    "exit_code": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
+      "document.querySelector(\"#sort-label\").textContent"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":\"排序：ticks ↓；點欄名切換\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
+      "(() => {const r=document.querySelector(\".tabulator-col + .tabulator-col-resize-handle\").getBoundingClientRect();return {x:r.x+r.width/2,y:r.y+r.height/2};})()"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":{\"x\":390,\"y\":572.6875}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
+      "document.querySelector(\".tabulator-col\").getBoundingClientRect().width"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":135},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "mouse",
+      "move",
+      "390",
+      "573"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "mouse",
+      "down",
+      "left"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "mouse",
+      "move",
+      "435",
+      "573"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "mouse",
+      "up",
+      "left"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
+      "document.querySelector(\".tabulator-col\").getBoundingClientRect().width"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":180},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "screenshot",
+      "--full",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/screenshots/server/05-sort-resize.png"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/screenshots/server/05-sort-resize.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
+      "({window:document.querySelector(\"#window-label\").textContent,search:document.querySelector(\"#search-filter\").value,task:[...document.querySelector(\"#task-filter\").selectedOptions].map(x=>x.value),rows:document.querySelector(\"#row-count\").textContent})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":{\"rows\":\"符合 281 筆；本頁 20 筆。CSV 匯出全部 281 筆。\",\"search\":\"\",\"task\":[],\"window\":\"[0, 160571) ticks · 16.057 ms\"}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "document.querySelector(\"#export-events\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "download",
+      "#export-events",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/verification/offline/agent-browser/server/events.csv"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Download saved to /Users/swchen.tw/git/percepio/poc/artifacts/verification/offline/agent-browser/server/events.csv\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "document.querySelector(\"#export-metrics\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "download",
+      "#export-metrics",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/verification/offline/agent-browser/server/metrics.csv"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Download saved to /Users/swchen.tw/git/percepio/poc/artifacts/verification/offline/agent-browser/server/metrics.csv\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "screenshot",
+      "--full",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/screenshots/server/06-csv.png"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/screenshots/server/06-csv.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
+      "({window:document.querySelector(\"#window-label\").textContent,search:document.querySelector(\"#search-filter\").value,task:[...document.querySelector(\"#task-filter\").selectedOptions].map(x=>x.value),rows:document.querySelector(\"#row-count\").textContent})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":{\"rows\":\"符合 281 筆；本頁 20 筆。CSV 匯出全部 281 筆。\",\"search\":\"\",\"task\":[],\"window\":\"[0, 160571) ticks · 16.057 ms\"}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "document.querySelector(\"#search-filter\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "fill",
+      "#search-filter",
+      "no-such-message"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "wait",
+      "--fn",
+      "Number(document.body.dataset.renderRevision)>0 && !document.querySelector(\"#status\").textContent.includes(\"正在\")"
+    ],
+    "exit_code": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "snapshot",
+      "-i"
+    ],
+    "exit_code": 0,
+    "stdout": "- heading \"PSF Lab\" [level=1, ref=e4]\n- button \"切換明暗模式\" [ref=e5]\n- LabelText \"載入 PSF\" [ref=e6] clickable [cursor:pointer]\n  - button \"載入 PSF\" [ref=e7]: 未選擇任何檔案\n- combobox \"已儲存 trace\" [expanded=false, ref=e1]: trace.psf\n  - option \"已儲存 trace\" [ref=e8]\n  - option \"trace.psf\" [selected, ref=e9]\n  - option \"trace.psf\" [ref=e10]\n- combobox \"已驗證案例\" [expanded=false, ref=e2]\n  - option \"已驗證案例\" [selected, ref=e11]\n  - option \"queue_baseline · 84eed3\" [ref=e12]\n  - option \"queue_baseline · 6dfb90\" [ref=e13]\n  - option \"logger_bad · 93348d\" [ref=e14]\n  - option \"logger_fixed · ccc2d6\" [ref=e15]\n  - option \"inversion · d028ca\" [ref=e16]\n  - option \"inheritance · d8e2b4\" [ref=e17]\n  - option \"deadlock_abba · 7b5e8a\" [ref=e18]\n  - option \"ordered_locks · 913daf\" [ref=e19]\n  - option \"queue_baseline · ca69e2\" [ref=e20]\n  - option \"logger_bad · 95b91f\" [ref=e21]\n  - option \"logger_fixed · e45ea8\" [ref=e22]\n  - option \"inversion · 0cf818\" [ref=e23]\n  - option \"inheritance · 75e57e\" [ref=e24]\n  - option \"deadlock_abba · 50d96a\" [ref=e25]\n  - option \"ordered_locks · deccab\" [ref=e26]\n  - option \"queue_baseline · f0b2ab\" [ref=e27]\n  - option \"logger_bad · d4a2e3\" [ref=e28]\n  - option \"logger_fixed · 3e02b3\" [ref=e29]\n  - option \"inversion · 5c856f\" [ref=e30]\n  - option \"inheritance · 94feaf\" [ref=e31]\n  - option \"deadlock_abba · 4b86f0\" [ref=e32]\n  - option \"ordered_locks · a38d31\" [ref=e33]\n  - option \"queue_baseline · 22a470\" [ref=e34]\n  - option \"logger_bad · 06c385\" [ref=e35]\n  - option \"logger_fixed · 2d3171\" [ref=e36]\n  - option \"inversion · 1c87aa\" [ref=e37]\n  - option \"inheritance · 375eb0\" [ref=e38]\n  - option \"deadlock_abba · 744600\" [ref=e39]\n  - option \"ordered_locks · a32fb9\" [ref=e40]\n  - option \"queue_baseline · d1d5fa\" [ref=e41]\n  - option \"logger_bad · d7ce62\" [ref=e42]\n  - option \"logger_fixed · eefaa0\" [ref=e43]\n  - option \"inversion · 9aed2f\" [ref=e44]\n  - option \"inheritance · 293468\" [ref=e45]\n  - option \"deadlock_abba · 40754f\" [ref=e46]\n  - option \"ordered_locks · 76800a\" [ref=e47]\n  - option \"queue_baseline · 69e1ba\" [ref=e48]\n  - option \"logger_bad · e83381\" [ref=e49]\n  - option \"logger_fixed · 72b407\" [ref=e50]\n  - option \"inversion · 1c8bd6\" [ref=e51]\n  - option \"inheritance · 84affa\" [ref=e52]\n  - option \"deadlock_abba · 5aa2e4\" [ref=e53]\n  - option \"ordered_locks · 87e5fb\" [ref=e54]\n- button \"開啟案例\" [ref=e3]\n- heading \"篩選\" [level=2, ref=e55]\n- button \"重設\" [ref=e56]\n- listbox \"Task 篩選\" [ref=e60]\n  - option \"TzCtrl\" [ref=e70]\n  - option \"producer\" [ref=e71]\n  - option \"consumer\" [ref=e72]\n  - option \"supervisor\" [ref=e73]\n  - option \"IDLE\" [ref=e74]\n- combobox \"物件篩選\" [expanded=false, ref=e61]: 全部物件\n  - option \"全部物件\" [selected, ref=e85]\n  - option \"System Heap · unknown\" [ref=e86]\n  - option \"TzCtrl · task\" [ref=e87]\n  - option \"POC · channel\" [ref=e88]\n  - option \"messages · queue\" [ref=e89]\n  - option \"producer · task\" [ref=e90]\n  - option \"consumer · task\" [ref=e91]\n  - option \"supervisor · task\" [ref=e92]\n  - option \"IDLE · task\" [ref=e93]\n- combobox \"Channel 篩選\" [expanded=false, ref=e62]: 全部 channel\n  - option \"全部 channel\" [selected, ref=e94]\n  - option \"POC\" [ref=e95]\n- combobox \"事件類型篩選\" [expanded=false, ref=e63]: 全部事件\n  - option \"全部事件\" [selected, ref=e96]\n  - option \"trace_start (0x1)\" [ref=e97]\n  - option \"object_name (0x3)\" [ref=e98]\n  - option \"task_create (0x10)\" [ref=e99]\n  - option \"queue_create (0x11)\" [ref=e100]\n  - option \"task_ready (0x30)\" [ref=e101]\n  - option \"new_time (0x31)\" [ref=e102]\n  - option \"task_switch (0x37)\" [ref=e103]\n  - option \"queue_send (0x50)\" [ref=e104]\n  - option \"queue_receive (0x60)\" [ref=e105]\n  - option \"queue_receive_block (0x66)\" [ref=e106]\n  - option \"task_delay (0x7a)\" [ref=e107]\n  - option \"task_suspend (0x7b)\" [ref=e108]\n  - option \"user_event (0x92)\" [ref=e109]\n- textbox \"文字搜尋\" [ref=e64]: no-such-message\n- textbox \"時間起點\" [ref=e75]\n- textbox \"時間終點\" [ref=e76]\n- button \"套用時間窗口\" [ref=e65]\n- button \"查看品質與來源\" [ref=e57]\n- heading \"案例對照\" [level=2, ref=e66]\n- combobox \"比較案例組\" [expanded=false, ref=e67]: Logger 干擾／改善\n  - option \"Logger 干擾／改善\" [selected, ref=e110]\n  - option \"Inversion／inheritance\" [ref=e111]\n  - option \"ABBA／ordered locks\" [ref=e112]\n- button \"比較已驗證結果\" [ref=e68]\n- heading \"Task 時間軸\" [level=2, ref=e77]\n- button \"拖曳選取窗口\" [ref=e113]\n- button \"完整時間\" [ref=e114]\n- heading \"Task execution share\" [level=2, ref=e78]\n- heading \"User-event signal\" [level=2, ref=e79]\n- heading \"事件紀錄\" [level=2, ref=e80]\n- button \"匯出統計 CSV\" [ref=e81]\n- button \"匯出事件 CSV\" [ref=e82]\n- columnheader \"時間 ticks\" [ref=e116]\n- columnheader \"事件\" [ref=e117]\n- columnheader \"Task\" [ref=e118]\n- columnheader \"物件\" [ref=e119]\n- columnheader \"訊息\" [ref=e120]\n- columnheader \"Offset\" [ref=e121]\n- columnheader \"Seq\" [ref=e122]\n- generic \"目前沒有符合的事件\" [ref=e115] focusable [tabindex]\n- button \"上一頁\" [disabled, ref=e83]\n- button \"下一頁\" [disabled, ref=e84]\n- heading \"證據詳情\" [level=2, ref=e58]\n- button \"解除固定\" [ref=e59]\n- heading \"事件詳細資料\" [level=3, ref=e69]\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
+      "document.querySelector(\"#row-count\").textContent"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":\"符合 0 筆；本頁 0 筆。CSV 匯出全部 0 筆。\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "screenshot",
+      "--full",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/screenshots/server/07-empty-filter.png"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/screenshots/server/07-empty-filter.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
+      "({window:document.querySelector(\"#window-label\").textContent,search:document.querySelector(\"#search-filter\").value,task:[...document.querySelector(\"#task-filter\").selectedOptions].map(x=>x.value),rows:document.querySelector(\"#row-count\").textContent})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":{\"rows\":\"符合 0 筆；本頁 0 筆。CSV 匯出全部 0 筆。\",\"search\":\"no-such-message\",\"task\":[],\"window\":\"[0, 160571) ticks · 16.057 ms\"}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "document.querySelector(\"#reset\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "click",
+      "#reset"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "wait",
+      "--fn",
+      "Number(document.body.dataset.renderRevision)>0 && !document.querySelector(\"#status\").textContent.includes(\"正在\")"
+    ],
+    "exit_code": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "snapshot",
+      "-i"
+    ],
+    "exit_code": 0,
+    "stdout": "- heading \"PSF Lab\" [level=1, ref=e4]\n- button \"切換明暗模式\" [ref=e5]\n- LabelText \"載入 PSF\" [ref=e6] clickable [cursor:pointer]\n  - button \"載入 PSF\" [ref=e7]: 未選擇任何檔案\n- combobox \"已儲存 trace\" [expanded=false, ref=e1]: trace.psf\n  - option \"已儲存 trace\" [ref=e8]\n  - option \"trace.psf\" [selected, ref=e9]\n  - option \"trace.psf\" [ref=e10]\n- combobox \"已驗證案例\" [expanded=false, ref=e2]\n  - option \"已驗證案例\" [selected, ref=e11]\n  - option \"queue_baseline · 84eed3\" [ref=e12]\n  - option \"queue_baseline · 6dfb90\" [ref=e13]\n  - option \"logger_bad · 93348d\" [ref=e14]\n  - option \"logger_fixed · ccc2d6\" [ref=e15]\n  - option \"inversion · d028ca\" [ref=e16]\n  - option \"inheritance · d8e2b4\" [ref=e17]\n  - option \"deadlock_abba · 7b5e8a\" [ref=e18]\n  - option \"ordered_locks · 913daf\" [ref=e19]\n  - option \"queue_baseline · ca69e2\" [ref=e20]\n  - option \"logger_bad · 95b91f\" [ref=e21]\n  - option \"logger_fixed · e45ea8\" [ref=e22]\n  - option \"inversion · 0cf818\" [ref=e23]\n  - option \"inheritance · 75e57e\" [ref=e24]\n  - option \"deadlock_abba · 50d96a\" [ref=e25]\n  - option \"ordered_locks · deccab\" [ref=e26]\n  - option \"queue_baseline · f0b2ab\" [ref=e27]\n  - option \"logger_bad · d4a2e3\" [ref=e28]\n  - option \"logger_fixed · 3e02b3\" [ref=e29]\n  - option \"inversion · 5c856f\" [ref=e30]\n  - option \"inheritance · 94feaf\" [ref=e31]\n  - option \"deadlock_abba · 4b86f0\" [ref=e32]\n  - option \"ordered_locks · a38d31\" [ref=e33]\n  - option \"queue_baseline · 22a470\" [ref=e34]\n  - option \"logger_bad · 06c385\" [ref=e35]\n  - option \"logger_fixed · 2d3171\" [ref=e36]\n  - option \"inversion · 1c87aa\" [ref=e37]\n  - option \"inheritance · 375eb0\" [ref=e38]\n  - option \"deadlock_abba · 744600\" [ref=e39]\n  - option \"ordered_locks · a32fb9\" [ref=e40]\n  - option \"queue_baseline · d1d5fa\" [ref=e41]\n  - option \"logger_bad · d7ce62\" [ref=e42]\n  - option \"logger_fixed · eefaa0\" [ref=e43]\n  - option \"inversion · 9aed2f\" [ref=e44]\n  - option \"inheritance · 293468\" [ref=e45]\n  - option \"deadlock_abba · 40754f\" [ref=e46]\n  - option \"ordered_locks · 76800a\" [ref=e47]\n  - option \"queue_baseline · 69e1ba\" [ref=e48]\n  - option \"logger_bad · e83381\" [ref=e49]\n  - option \"logger_fixed · 72b407\" [ref=e50]\n  - option \"inversion · 1c8bd6\" [ref=e51]\n  - option \"inheritance · 84affa\" [ref=e52]\n  - option \"deadlock_abba · 5aa2e4\" [ref=e53]\n  - option \"ordered_locks · 87e5fb\" [ref=e54]\n- button \"開啟案例\" [ref=e3]\n- heading \"篩選\" [level=2, ref=e55]\n- button \"重設\" [ref=e56]\n- listbox \"Task 篩選\" [ref=e60]\n  - option \"TzCtrl\" [ref=e70]\n  - option \"producer\" [ref=e71]\n  - option \"consumer\" [ref=e72]\n  - option \"supervisor\" [ref=e73]\n  - option \"IDLE\" [ref=e74]\n- combobox \"物件篩選\" [expanded=false, ref=e61]: 全部物件\n  - option \"全部物件\" [selected, ref=e85]\n  - option \"System Heap · unknown\" [ref=e86]\n  - option \"TzCtrl · task\" [ref=e87]\n  - option \"POC · channel\" [ref=e88]\n  - option \"messages · queue\" [ref=e89]\n  - option \"producer · task\" [ref=e90]\n  - option \"consumer · task\" [ref=e91]\n  - option \"supervisor · task\" [ref=e92]\n  - option \"IDLE · task\" [ref=e93]\n- combobox \"Channel 篩選\" [expanded=false, ref=e62]: 全部 channel\n  - option \"全部 channel\" [selected, ref=e94]\n  - option \"POC\" [ref=e95]\n- combobox \"事件類型篩選\" [expanded=false, ref=e63]: 全部事件\n  - option \"全部事件\" [selected, ref=e96]\n  - option \"trace_start (0x1)\" [ref=e97]\n  - option \"object_name (0x3)\" [ref=e98]\n  - option \"task_create (0x10)\" [ref=e99]\n  - option \"queue_create (0x11)\" [ref=e100]\n  - option \"task_ready (0x30)\" [ref=e101]\n  - option \"new_time (0x31)\" [ref=e102]\n  - option \"task_switch (0x37)\" [ref=e103]\n  - option \"queue_send (0x50)\" [ref=e104]\n  - option \"queue_receive (0x60)\" [ref=e105]\n  - option \"queue_receive_block (0x66)\" [ref=e106]\n  - option \"task_delay (0x7a)\" [ref=e107]\n  - option \"task_suspend (0x7b)\" [ref=e108]\n  - option \"user_event (0x92)\" [ref=e109]\n- textbox \"文字搜尋\" [ref=e64]\n- textbox \"時間起點\" [ref=e75]\n- textbox \"時間終點\" [ref=e76]\n- button \"套用時間窗口\" [ref=e65]\n- button \"查看品質與來源\" [ref=e57]\n- heading \"案例對照\" [level=2, ref=e66]\n- combobox \"比較案例組\" [expanded=false, ref=e67]: Logger 干擾／改善\n  - option \"Logger 干擾／改善\" [selected, ref=e110]\n  - option \"Inversion／inheritance\" [ref=e111]\n  - option \"ABBA／ordered locks\" [ref=e112]\n- button \"比較已驗證結果\" [ref=e68]\n- heading \"Task 時間軸\" [level=2, ref=e77]\n- button \"拖曳選取窗口\" [ref=e113]\n- button \"完整時間\" [ref=e114]\n- heading \"Task execution share\" [level=2, ref=e78]\n- heading \"User-event signal\" [level=2, ref=e79]\n- heading \"事件紀錄\" [level=2, ref=e80]\n- button \"匯出統計 CSV\" [ref=e81]\n- button \"匯出事件 CSV\" [ref=e82]\n- columnheader \"時間 ticks\" [ref=e256]\n- columnheader \"事件\" [ref=e257]\n- columnheader \"Task\" [ref=e258]\n- columnheader \"物件\" [ref=e259]\n- columnheader \"訊息\" [ref=e260]\n- columnheader \"Offset\" [ref=e261]\n- columnheader \"Seq\" [ref=e262]\n- generic \"0trace_startUnknown—16863object_nameUnknownPOC18079queue_createUnknownmessages196815object_nameUn\" [ref=e115] focusable [tabindex]\n- gridcell \"0\" [ref=e116]\n- gridcell \"trace_start\" [ref=e117]\n- gridcell \"Unknown\" [ref=e118]\n- gridcell \"—\" [ref=e119]\n- gridcell \"\" [ref=e120]\n- gridcell \"168\" [ref=e121]\n- gridcell \"6\" [ref=e122]\n- gridcell \"3\" [ref=e123]\n- gridcell \"object_name\" [ref=e124]\n- gridcell \"Unknown\" [ref=e125]\n- gridcell \"POC\" [ref=e126]\n- gridcell \"\" [ref=e127]\n- gridcell \"180\" [ref=e128]\n- gridcell \"7\" [ref=e129]\n- gridcell \"9\" [ref=e130]\n- gridcell \"queue_create\" [ref=e131]\n- gridcell \"Unknown\" [ref=e132]\n- gridcell \"messages\" [ref=e133]\n- gridcell \"\" [ref=e134]\n- gridcell \"196\" [ref=e135]\n- gridcell \"8\" [ref=e136]\n- gridcell \"15\" [ref=e137]\n- gridcell \"object_name\" [ref=e138]\n- gridcell \"Unknown\" [ref=e139]\n- gridcell \"messages\" [ref=e140]\n- gridcell \"\" [ref=e141]\n- gridcell \"212\" [ref=e142]\n- gridcell \"9\" [ref=e143]\n- gridcell \"111\" [ref=e144]\n- gridcell \"object_name\" [ref=e145]\n- gridcell \"Unknown\" [ref=e146]\n- gridcell \"producer\" [ref=e147]\n- gridcell \"\" [ref=e148]\n- gridcell \"236\" [ref=e149]\n- gridcell \"10\" [ref=e150]\n- gridcell \"114\" [ref=e151]\n- gridcell \"task_create\" [ref=e152]\n- gridcell \"Unknown\" [ref=e153]\n- gridcell \"producer\" [ref=e154]\n- gridcell \"\" [ref=e155]\n- gridcell \"260\" [ref=e156]\n- gridcell \"11\" [ref=e157]\n- gridcell \"116\" [ref=e158]\n- gridcell \"task_ready\" [ref=e159]\n- gridcell \"Unknown\" [ref=e160]\n- gridcell \"producer\" [ref=e161]\n- gridcell \"\" [ref=e162]\n- gridcell \"276\" [ref=e163]\n- gridcell \"12\" [ref=e164]\n- gridcell \"210\" [ref=e165]\n- gridcell \"object_name\" [ref=e166]\n- gridcell \"Unknown\" [ref=e167]\n- gridcell \"consumer\" [ref=e168]\n- gridcell \"\" [ref=e169]\n- gridcell \"288\" [ref=e170]\n- gridcell \"13\" [ref=e171]\n- gridcell \"213\" [ref=e172]\n- gridcell \"task_create\" [ref=e173]\n- gridcell \"Unknown\" [ref=e174]\n- gridcell \"consumer\" [ref=e175]\n- gridcell \"\" [ref=e176]\n- gridcell \"312\" [ref=e177]\n- gridcell \"14\" [ref=e178]\n- gridcell \"215\" [ref=e179]\n- gridcell \"task_ready\" [ref=e180]\n- gridcell \"Unknown\" [ref=e181]\n- gridcell \"consumer\" [ref=e182]\n- gridcell \"\" [ref=e183]\n- gridcell \"328\" [ref=e184]\n- gridcell \"15\" [ref=e185]\n- gridcell \"391\" [ref=e186]\n- gridcell \"object_name\" [ref=e187]\n- gridcell \"Unknown\" [ref=e188]\n- gridcell \"supervisor\" [ref=e189]\n- gridcell \"\" [ref=e190]\n- gridcell \"340\" [ref=e191]\n- gridcell \"16\" [ref=e192]\n- gridcell \"395\" [ref=e193]\n- gridcell \"task_create\" [ref=e194]\n- gridcell \"Unknown\" [ref=e195]\n- gridcell \"supervisor\" [ref=e196]\n- gridcell \"\" [ref=e197]\n- gridcell \"364\" [ref=e198]\n- gridcell \"17\" [ref=e199]\n- gridcell \"396\" [ref=e200]\n- gridcell \"task_ready\" [ref=e201]\n- gridcell \"Unknown\" [ref=e202]\n- gridcell \"supervisor\" [ref=e203]\n- gridcell \"\" [ref=e204]\n- gridcell \"380\" [ref=e205]\n- gridcell \"18\" [ref=e206]\n- gridcell \"449\" [ref=e207]\n- gridcell \"object_name\" [ref=e208]\n- gridcell \"Unknown\" [ref=e209]\n- gridcell \"IDLE\" [ref=e210]\n- gridcell \"\" [ref=e211]\n- gridcell \"392\" [ref=e212]\n- gridcell \"19\" [ref=e213]\n- gridcell \"452\" [ref=e214]\n- gridcell \"task_create\" [ref=e215]\n- gridcell \"Unknown\" [ref=e216]\n- gridcell \"IDLE\" [ref=e217]\n- gridcell \"\" [ref=e218]\n- gridcell \"412\" [ref=e219]\n- gridcell \"20\" [ref=e220]\n- gridcell \"453\" [ref=e221]\n- gridcell \"task_ready\" [ref=e222]\n- gridcell \"Unknown\" [ref=e223]\n- gridcell \"IDLE\" [ref=e224]\n- gridcell \"\" [ref=e225]\n- gridcell \"428\" [ref=e226]\n- gridcell \"21\" [ref=e227]\n- gridcell \"455\" [ref=e228]\n- gridcell \"task_switch\" [ref=e229]\n- gridcell \"supervisor\" [ref=e230]\n- gridcell \"supervisor\" [ref=e231]\n- gridcell \"\" [ref=e232]\n- gridcell \"440\" [ref=e233]\n- gridcell \"22\" [ref=e234]\n- gridcell \"540\" [ref=e235]\n- gridcell \"task_delay\" [ref=e236]\n- gridcell \"supervisor\" [ref=e237]\n- gridcell \"supervisor\" [ref=e238]\n- gridcell \"\" [ref=e239]\n- gridcell \"456\" [ref=e240]\n- gridcell \"23\" [ref=e241]\n- gridcell \"544\" [ref=e242]\n- gridcell \"task_switch\" [ref=e243]\n- gridcell \"consumer\" [ref=e244]\n- gridcell \"consumer\" [ref=e245]\n- gridcell \"\" [ref=e246]\n- gridcell \"468\" [ref=e247]\n- gridcell \"24\" [ref=e248]\n- gridcell \"547\" [ref=e249]\n- gridcell \"queue_receive_block\" [ref=e250]\n- gridcell \"consumer\" [ref=e251]\n- gridcell \"messages\" [ref=e252]\n- gridcell \"\" [ref=e253]\n- gridcell \"484\" [ref=e254]\n- gridcell \"25\" [ref=e255]\n- button \"上一頁\" [disabled, ref=e83]\n- button \"下一頁\" [ref=e84]\n- heading \"證據詳情\" [level=2, ref=e58]\n- button \"解除固定\" [ref=e59]\n- heading \"事件詳細資料\" [level=3, ref=e69]\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "document.querySelector(\"#show-quality\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "click",
+      "#show-quality"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "document.querySelector(\"#details\").scrollIntoView({block:\"start\"})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "screenshot",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/screenshots/server/08-quality.png"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/screenshots/server/08-quality.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
+      "({window:document.querySelector(\"#window-label\").textContent,search:document.querySelector(\"#search-filter\").value,task:[...document.querySelector(\"#task-filter\").selectedOptions].map(x=>x.value),rows:document.querySelector(\"#row-count\").textContent})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":{\"rows\":\"符合 281 筆；本頁 20 筆。CSV 匯出全部 281 筆。\",\"search\":\"\",\"task\":[],\"window\":\"[0, 160571) ticks · 16.057 ms\"}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "document.querySelector(\" .tabulator-row .tabulator-cell[tabulator-field=\\\"kind\\\"]\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "click",
+      " .tabulator-row .tabulator-cell[tabulator-field=\"kind\"]"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "document.querySelector(\"#compare-run\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "click",
+      "#compare-run"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "wait",
+      "--fn",
+      "document.querySelector(\"#status\").textContent.includes(\"案例比較：pass\")"
+    ],
+    "exit_code": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "screenshot",
+      "--full",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/screenshots/server/09-comparison.png"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/screenshots/server/09-comparison.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
+      "({window:document.querySelector(\"#window-label\").textContent,search:document.querySelector(\"#search-filter\").value,task:[...document.querySelector(\"#task-filter\").selectedOptions].map(x=>x.value),rows:document.querySelector(\"#row-count\").textContent})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":{\"rows\":\"符合 281 筆；本頁 20 筆。CSV 匯出全部 281 筆。\",\"search\":\"\",\"task\":[],\"window\":\"[0, 160571) ticks · 16.057 ms\"}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "errors"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "close"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Browser closed\n",
+    "stderr": ""
+  }
+]

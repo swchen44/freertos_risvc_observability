@@ -37,7 +37,7 @@
 
 使用者新增的相對最佳化需求排在目前 M1～M3 之後，見 [M4 cache 計畫](plans/04-cache-relative-optimization.md)。接受非 cycle-accurate，先用可校驗的 L1I／L1D／L2 模型比較相同工作量 A/B，再考慮 penalty／bus 估計與硬體抽查。PSF 和 cache plugin 必須有同步關係；cache 統計不會自動改變 QEMU guest 的時間。
 
-離線 HTML 另為後續任務。保留 `HTTPDataSource` 邊界，但本版仍需要 Python 服務；移到無網路內網前保存 wheels、npm 套件與 toolchain archive，依 license 分送。
+單 trace 離線 HTML 已提供，見 [離線指南](offline-guide.md)：產生時需要 Python 與建好的 Web assets，觀看時不需要 Server／網路。跨機重現與內網安裝材料依使用者 2B 暫緩；產品部署仍是後續任務。
 
 ```mermaid
 flowchart TD

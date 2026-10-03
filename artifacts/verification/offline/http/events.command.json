@@ -1,0 +1,23 @@
+{
+  "command": [
+    "curl",
+    "--silent",
+    "--show-error",
+    "--max-time",
+    "60",
+    "-D",
+    "/Users/swchen.tw/git/percepio/poc/artifacts/verification/offline/http/events.headers",
+    "-o",
+    "/Users/swchen.tw/git/percepio/poc/artifacts/verification/offline/http/events.body",
+    "-w",
+    "%{http_code}",
+    "-H",
+    "Content-Type: application/json",
+    "--data",
+    "{\"filters\": {\"channels\": [\"POC\"]}, \"sort\": [{\"field\": \"ticks\", \"direction\": \"desc\"}], \"limit\": 2}",
+    "http://127.0.0.1:8767/api/traces/7a92b7c55c614b758a623c15fe2ef89c/events"
+  ],
+  "returncode": 0,
+  "stderr": "",
+  "status": "200"
+}

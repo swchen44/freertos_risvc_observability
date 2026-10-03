@@ -31,3 +31,7 @@ flowchart LR
 本版尚未提供離線 HTML 匯出、SMP／ISR 完整重建、所有 Tracealyzer views、cache／bus 模型。後續 cache 相對最佳化見 [M4 計畫](plans/04-cache-relative-optimization.md)。
 
 圖表的 requests／Counter 超過 2,000 筆時會明示顯示前段、完整數量及資料點起訖。請縮小時間窗口查看尾段；CSV 保留全部符合事件。全 unknown 的統計 CSV 仍保留窗口摘要，不把未知誤寫成 0% task。
+
+## 新版雙模式完整操作圖
+
+[Server 與單檔離線 HTML：18 張實際截圖、逐步說明與驗證證據](offline-guide.md)。離線 HTML 使用 Python 預先匯出的單 trace，不需觀看端服務或網路。

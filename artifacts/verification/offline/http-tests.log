@@ -1,0 +1,10 @@
+test_comparison (__main__.CurlIntegration.test_comparison) ... ok
+test_filters_view_full_csv (__main__.CurlIntegration.test_filters_view_full_csv) ... ok
+test_invalid_inputs (__main__.CurlIntegration.test_invalid_inputs) ... ok
+test_metadata (__main__.CurlIntegration.test_metadata) ... ok
+test_web_assets (__main__.CurlIntegration.test_web_assets) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.218s
+
+OK

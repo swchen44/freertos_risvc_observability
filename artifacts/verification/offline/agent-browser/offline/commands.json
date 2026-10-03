@@ -1,0 +1,1241 @@
+[
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "open",
+      "about:blank"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ \n  about:blank\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "set",
+      "viewport",
+      "1600",
+      "1000"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "set",
+      "offline",
+      "on"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "network",
+      "route",
+      "http://*",
+      "--abort"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "network",
+      "route",
+      "https://*",
+      "--abort"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "open",
+      "file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ 離線 · PSF Lab · 排程觀測工作區\n  file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "wait",
+      "--fn",
+      "Number(document.body.dataset.renderRevision)>0 && !document.querySelector(\"#status\").textContent.includes(\"正在\")"
+    ],
+    "exit_code": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "snapshot",
+      "-i"
+    ],
+    "exit_code": 0,
+    "stdout": "- heading \"PSF Lab\" [level=1, ref=e2]\n- button \"切換明暗模式\" [ref=e3]\n- combobox \"已儲存 trace\" [expanded=false, ref=e1]: trace.psf\n  - option \"已儲存 trace\" [ref=e4]\n  - option \"trace.psf\" [selected, ref=e5]\n- heading \"篩選\" [level=2, ref=e6]\n- button \"重設\" [ref=e7]\n- listbox \"Task 篩選\" [ref=e11]\n  - option \"TzCtrl\" [ref=e18]\n  - option \"producer\" [ref=e19]\n  - option \"consumer\" [ref=e20]\n  - option \"supervisor\" [ref=e21]\n  - option \"IDLE\" [ref=e22]\n- combobox \"物件篩選\" [expanded=false, ref=e12]: 全部物件\n  - option \"全部物件\" [selected, ref=e33]\n  - option \"System Heap · unknown\" [ref=e34]\n  - option \"TzCtrl · task\" [ref=e35]\n  - option \"POC · channel\" [ref=e36]\n  - option \"messages · queue\" [ref=e37]\n  - option \"producer · task\" [ref=e38]\n  - option \"consumer · task\" [ref=e39]\n  - option \"supervisor · task\" [ref=e40]\n  - option \"IDLE · task\" [ref=e41]\n- combobox \"Channel 篩選\" [expanded=false, ref=e13]: 全部 channel\n  - option \"全部 channel\" [selected, ref=e42]\n  - option \"POC\" [ref=e43]\n- combobox \"事件類型篩選\" [expanded=false, ref=e14]: 全部事件\n  - option \"全部事件\" [selected, ref=e44]\n  - option \"trace_start (0x1)\" [ref=e45]\n  - option \"object_name (0x3)\" [ref=e46]\n  - option \"task_create (0x10)\" [ref=e47]\n  - option \"queue_create (0x11)\" [ref=e48]\n  - option \"task_ready (0x30)\" [ref=e49]\n  - option \"new_time (0x31)\" [ref=e50]\n  - option \"task_switch (0x37)\" [ref=e51]\n  - option \"queue_send (0x50)\" [ref=e52]\n  - option \"queue_receive (0x60)\" [ref=e53]\n  - option \"queue_receive_block (0x66)\" [ref=e54]\n  - option \"task_delay (0x7a)\" [ref=e55]\n  - option \"task_suspend (0x7b)\" [ref=e56]\n  - option \"user_event (0x92)\" [ref=e57]\n- textbox \"文字搜尋\" [ref=e15]\n- textbox \"時間起點\" [ref=e23]\n- textbox \"時間終點\" [ref=e24]\n- button \"套用時間窗口\" [ref=e16]\n- button \"查看品質與來源\" [ref=e8]\n- heading \"Task 時間軸\" [level=2, ref=e25]\n- button \"拖曳選取窗口\" [ref=e58]\n- button \"完整時間\" [ref=e59]\n- heading \"Task execution share\" [level=2, ref=e26]\n- heading \"User-event signal\" [level=2, ref=e27]\n- heading \"事件紀錄\" [level=2, ref=e28]\n- button \"匯出統計 CSV\" [ref=e29]\n- button \"匯出事件 CSV\" [ref=e30]\n- columnheader \"時間 ticks\" [ref=e201]\n- columnheader \"事件\" [ref=e202]\n- columnheader \"Task\" [ref=e203]\n- columnheader \"物件\" [ref=e204]\n- columnheader \"訊息\" [ref=e205]\n- columnheader \"Offset\" [ref=e206]\n- columnheader \"Seq\" [ref=e207]\n- generic \"0trace_startUnknown—16863object_nameUnknownPOC18079queue_createUnknownmessages196815object_nameUn\" [ref=e60] focusable [tabindex]\n- gridcell \"0\" [ref=e61]\n- gridcell \"trace_start\" [ref=e62]\n- gridcell \"Unknown\" [ref=e63]\n- gridcell \"—\" [ref=e64]\n- gridcell \"\" [ref=e65]\n- gridcell \"168\" [ref=e66]\n- gridcell \"6\" [ref=e67]\n- gridcell \"3\" [ref=e68]\n- gridcell \"object_name\" [ref=e69]\n- gridcell \"Unknown\" [ref=e70]\n- gridcell \"POC\" [ref=e71]\n- gridcell \"\" [ref=e72]\n- gridcell \"180\" [ref=e73]\n- gridcell \"7\" [ref=e74]\n- gridcell \"9\" [ref=e75]\n- gridcell \"queue_create\" [ref=e76]\n- gridcell \"Unknown\" [ref=e77]\n- gridcell \"messages\" [ref=e78]\n- gridcell \"\" [ref=e79]\n- gridcell \"196\" [ref=e80]\n- gridcell \"8\" [ref=e81]\n- gridcell \"15\" [ref=e82]\n- gridcell \"object_name\" [ref=e83]\n- gridcell \"Unknown\" [ref=e84]\n- gridcell \"messages\" [ref=e85]\n- gridcell \"\" [ref=e86]\n- gridcell \"212\" [ref=e87]\n- gridcell \"9\" [ref=e88]\n- gridcell \"111\" [ref=e89]\n- gridcell \"object_name\" [ref=e90]\n- gridcell \"Unknown\" [ref=e91]\n- gridcell \"producer\" [ref=e92]\n- gridcell \"\" [ref=e93]\n- gridcell \"236\" [ref=e94]\n- gridcell \"10\" [ref=e95]\n- gridcell \"114\" [ref=e96]\n- gridcell \"task_create\" [ref=e97]\n- gridcell \"Unknown\" [ref=e98]\n- gridcell \"producer\" [ref=e99]\n- gridcell \"\" [ref=e100]\n- gridcell \"260\" [ref=e101]\n- gridcell \"11\" [ref=e102]\n- gridcell \"116\" [ref=e103]\n- gridcell \"task_ready\" [ref=e104]\n- gridcell \"Unknown\" [ref=e105]\n- gridcell \"producer\" [ref=e106]\n- gridcell \"\" [ref=e107]\n- gridcell \"276\" [ref=e108]\n- gridcell \"12\" [ref=e109]\n- gridcell \"210\" [ref=e110]\n- gridcell \"object_name\" [ref=e111]\n- gridcell \"Unknown\" [ref=e112]\n- gridcell \"consumer\" [ref=e113]\n- gridcell \"\" [ref=e114]\n- gridcell \"288\" [ref=e115]\n- gridcell \"13\" [ref=e116]\n- gridcell \"213\" [ref=e117]\n- gridcell \"task_create\" [ref=e118]\n- gridcell \"Unknown\" [ref=e119]\n- gridcell \"consumer\" [ref=e120]\n- gridcell \"\" [ref=e121]\n- gridcell \"312\" [ref=e122]\n- gridcell \"14\" [ref=e123]\n- gridcell \"215\" [ref=e124]\n- gridcell \"task_ready\" [ref=e125]\n- gridcell \"Unknown\" [ref=e126]\n- gridcell \"consumer\" [ref=e127]\n- gridcell \"\" [ref=e128]\n- gridcell \"328\" [ref=e129]\n- gridcell \"15\" [ref=e130]\n- gridcell \"391\" [ref=e131]\n- gridcell \"object_name\" [ref=e132]\n- gridcell \"Unknown\" [ref=e133]\n- gridcell \"supervisor\" [ref=e134]\n- gridcell \"\" [ref=e135]\n- gridcell \"340\" [ref=e136]\n- gridcell \"16\" [ref=e137]\n- gridcell \"395\" [ref=e138]\n- gridcell \"task_create\" [ref=e139]\n- gridcell \"Unknown\" [ref=e140]\n- gridcell \"supervisor\" [ref=e141]\n- gridcell \"\" [ref=e142]\n- gridcell \"364\" [ref=e143]\n- gridcell \"17\" [ref=e144]\n- gridcell \"396\" [ref=e145]\n- gridcell \"task_ready\" [ref=e146]\n- gridcell \"Unknown\" [ref=e147]\n- gridcell \"supervisor\" [ref=e148]\n- gridcell \"\" [ref=e149]\n- gridcell \"380\" [ref=e150]\n- gridcell \"18\" [ref=e151]\n- gridcell \"449\" [ref=e152]\n- gridcell \"object_name\" [ref=e153]\n- gridcell \"Unknown\" [ref=e154]\n- gridcell \"IDLE\" [ref=e155]\n- gridcell \"\" [ref=e156]\n- gridcell \"392\" [ref=e157]\n- gridcell \"19\" [ref=e158]\n- gridcell \"452\" [ref=e159]\n- gridcell \"task_create\" [ref=e160]\n- gridcell \"Unknown\" [ref=e161]\n- gridcell \"IDLE\" [ref=e162]\n- gridcell \"\" [ref=e163]\n- gridcell \"412\" [ref=e164]\n- gridcell \"20\" [ref=e165]\n- gridcell \"453\" [ref=e166]\n- gridcell \"task_ready\" [ref=e167]\n- gridcell \"Unknown\" [ref=e168]\n- gridcell \"IDLE\" [ref=e169]\n- gridcell \"\" [ref=e170]\n- gridcell \"428\" [ref=e171]\n- gridcell \"21\" [ref=e172]\n- gridcell \"455\" [ref=e173]\n- gridcell \"task_switch\" [ref=e174]\n- gridcell \"supervisor\" [ref=e175]\n- gridcell \"supervisor\" [ref=e176]\n- gridcell \"\" [ref=e177]\n- gridcell \"440\" [ref=e178]\n- gridcell \"22\" [ref=e179]\n- gridcell \"540\" [ref=e180]\n- gridcell \"task_delay\" [ref=e181]\n- gridcell \"supervisor\" [ref=e182]\n- gridcell \"supervisor\" [ref=e183]\n- gridcell \"\" [ref=e184]\n- gridcell \"456\" [ref=e185]\n- gridcell \"23\" [ref=e186]\n- gridcell \"544\" [ref=e187]\n- gridcell \"task_switch\" [ref=e188]\n- gridcell \"consumer\" [ref=e189]\n- gridcell \"consumer\" [ref=e190]\n- gridcell \"\" [ref=e191]\n- gridcell \"468\" [ref=e192]\n- gridcell \"24\" [ref=e193]\n- gridcell \"547\" [ref=e194]\n- gridcell \"queue_receive_block\" [ref=e195]\n- gridcell \"consumer\" [ref=e196]\n- gridcell \"messages\" [ref=e197]\n- gridcell \"\" [ref=e198]\n- gridcell \"484\" [ref=e199]\n- gridcell \"25\" [ref=e200]\n- button \"上一頁\" [disabled, ref=e31]\n- button \"下一頁\" [ref=e32]\n- heading \"證據詳情\" [level=2, ref=e9]\n- button \"解除固定\" [ref=e10]\n- heading \"來源與品質\" [level=3, ref=e17]\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "document.querySelectorAll(\"#timeline svg\").length"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":1},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "document.querySelector(\"#row-count\").textContent"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":\"符合 281 筆；本頁 20 筆。CSV 匯出全部 281 筆。\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "!!document.querySelector(\".upload\").getClientRects().length"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":false},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "!!document.querySelector(\".compare-controls\").getClientRects().length"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":false},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "screenshot",
+      "--full",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/screenshots/offline/02-overview.png"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/screenshots/offline/02-overview.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "({window:document.querySelector(\"#window-label\").textContent,search:document.querySelector(\"#search-filter\").value,task:[...document.querySelector(\"#task-filter\").selectedOptions].map(x=>x.value),rows:document.querySelector(\"#row-count\").textContent})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":{\"rows\":\"符合 281 筆；本頁 20 筆。CSV 匯出全部 281 筆。\",\"search\":\"\",\"task\":[],\"window\":\"[0, 160571) ticks · 16.057 ms\"}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "({coverage:document.querySelector(\"#coverage-label\").textContent,shares:document.querySelector(\"#share-values\").textContent})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":{\"coverage\":\"Known 160116 / 160571 ticks；Unknown 455\",\"shares\":\"supervisor 0.13%consumer 0.36%producer 0.39%TzCtrl 0.01%IDLE 98.83%\"}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "[...document.querySelector(\"#task-filter\").options].find(x=>x.textContent===\"consumer\").value"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":\"0x80081870:0\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "document.querySelector(\"#task-filter\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "select",
+      "#task-filter",
+      "0x80081870:0"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "wait",
+      "--fn",
+      "Number(document.body.dataset.renderRevision)>0 && !document.querySelector(\"#status\").textContent.includes(\"正在\")"
+    ],
+    "exit_code": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "snapshot",
+      "-i"
+    ],
+    "exit_code": 0,
+    "stdout": "- heading \"PSF Lab\" [level=1, ref=e2]\n- button \"切換明暗模式\" [ref=e3]\n- combobox \"已儲存 trace\" [expanded=false, ref=e1]: trace.psf\n  - option \"已儲存 trace\" [ref=e4]\n  - option \"trace.psf\" [selected, ref=e5]\n- heading \"篩選\" [level=2, ref=e6]\n- button \"重設\" [ref=e7]\n- listbox \"Task 篩選\" [ref=e11]\n  - option \"TzCtrl\" [ref=e18]\n  - option \"producer\" [ref=e19]\n  - option \"consumer\" [selected, ref=e20]\n  - option \"supervisor\" [ref=e21]\n  - option \"IDLE\" [ref=e22]\n- combobox \"物件篩選\" [expanded=false, ref=e12]: 全部物件\n  - option \"全部物件\" [selected, ref=e33]\n  - option \"System Heap · unknown\" [ref=e34]\n  - option \"TzCtrl · task\" [ref=e35]\n  - option \"POC · channel\" [ref=e36]\n  - option \"messages · queue\" [ref=e37]\n  - option \"producer · task\" [ref=e38]\n  - option \"consumer · task\" [ref=e39]\n  - option \"supervisor · task\" [ref=e40]\n  - option \"IDLE · task\" [ref=e41]\n- combobox \"Channel 篩選\" [expanded=false, ref=e13]: 全部 channel\n  - option \"全部 channel\" [selected, ref=e42]\n  - option \"POC\" [ref=e43]\n- combobox \"事件類型篩選\" [expanded=false, ref=e14]: 全部事件\n  - option \"全部事件\" [selected, ref=e44]\n  - option \"trace_start (0x1)\" [ref=e45]\n  - option \"object_name (0x3)\" [ref=e46]\n  - option \"task_create (0x10)\" [ref=e47]\n  - option \"queue_create (0x11)\" [ref=e48]\n  - option \"task_ready (0x30)\" [ref=e49]\n  - option \"new_time (0x31)\" [ref=e50]\n  - option \"task_switch (0x37)\" [ref=e51]\n  - option \"queue_send (0x50)\" [ref=e52]\n  - option \"queue_receive (0x60)\" [ref=e53]\n  - option \"queue_receive_block (0x66)\" [ref=e54]\n  - option \"task_delay (0x7a)\" [ref=e55]\n  - option \"task_suspend (0x7b)\" [ref=e56]\n  - option \"user_event (0x92)\" [ref=e57]\n- textbox \"文字搜尋\" [ref=e15]\n- textbox \"時間起點\" [ref=e23]\n- textbox \"時間終點\" [ref=e24]\n- button \"套用時間窗口\" [ref=e16]\n- button \"查看品質與來源\" [ref=e8]\n- heading \"Task 時間軸\" [level=2, ref=e25]\n- button \"拖曳選取窗口\" [ref=e58]\n- button \"完整時間\" [ref=e59]\n- heading \"Task execution share\" [level=2, ref=e26]\n- heading \"User-event signal\" [level=2, ref=e27]\n- heading \"事件紀錄\" [level=2, ref=e28]\n- button \"匯出統計 CSV\" [ref=e29]\n- button \"匯出事件 CSV\" [ref=e30]\n- columnheader \"時間 ticks\" [ref=e201]\n- columnheader \"事件\" [ref=e202]\n- columnheader \"Task\" [ref=e203]\n- columnheader \"物件\" [ref=e204]\n- columnheader \"訊息\" [ref=e205]\n- columnheader \"Offset\" [ref=e206]\n- columnheader \"Seq\" [ref=e207]\n- generic \"544task_switchconsumerconsumer46824547queue_receive_blockconsumermessages48425560task_switchconsum\" [ref=e60] focusable [tabindex]\n- gridcell \"544\" [ref=e61]\n- gridcell \"task_switch\" [ref=e62]\n- gridcell \"consumer\" [ref=e63]\n- gridcell \"consumer\" [ref=e64]\n- gridcell \"\" [ref=e65]\n- gridcell \"468\" [ref=e66]\n- gridcell \"24\" [ref=e67]\n- gridcell \"547\" [ref=e68]\n- gridcell \"queue_receive_block\" [ref=e69]\n- gridcell \"consumer\" [ref=e70]\n- gridcell \"messages\" [ref=e71]\n- gridcell \"\" [ref=e72]\n- gridcell \"484\" [ref=e73]\n- gridcell \"25\" [ref=e74]\n- gridcell \"560\" [ref=e75]\n- gridcell \"task_switch\" [ref=e76]\n- gridcell \"consumer\" [ref=e77]\n- gridcell \"consumer\" [ref=e78]\n- gridcell \"\" [ref=e79]\n- gridcell \"548\" [ref=e80]\n- gridcell \"29\" [ref=e81]\n- gridcell \"563\" [ref=e82]\n- gridcell \"queue_receive\" [ref=e83]\n- gridcell \"consumer\" [ref=e84]\n- gridcell \"messages\" [ref=e85]\n- gridcell \"\" [ref=e86]\n- gridcell \"564\" [ref=e87]\n- gridcell \"30\" [ref=e88]\n- gridcell \"586\" [ref=e89]\n- gridcell \"user_event\" [ref=e90]\n- gridcell \"consumer\" [ref=e91]\n- gridcell \"POC\" [ref=e92]\n- gridcell \"POC|queue_baseline|RECEIVE|0\" [ref=e93]\n- gridcell \"584\" [ref=e94]\n- gridcell \"31\" [ref=e95]\n- gridcell \"591\" [ref=e96]\n- gridcell \"queue_receive_block\" [ref=e97]\n- gridcell \"consumer\" [ref=e98]\n- gridcell \"messages\" [ref=e99]\n- gridcell \"\" [ref=e100]\n- gridcell \"632\" [ref=e101]\n- gridcell \"32\" [ref=e102]\n- gridcell \"10560\" [ref=e103]\n- gridcell \"task_switch\" [ref=e104]\n- gridcell \"consumer\" [ref=e105]\n- gridcell \"consumer\" [ref=e106]\n- gridcell \"\" [ref=e107]\n- gridcell \"876\" [ref=e108]\n- gridcell \"47\" [ref=e109]\n- gridcell \"10563\" [ref=e110]\n- gridcell \"queue_receive\" [ref=e111]\n- gridcell \"consumer\" [ref=e112]\n- gridcell \"messages\" [ref=e113]\n- gridcell \"\" [ref=e114]\n- gridcell \"892\" [ref=e115]\n- gridcell \"48\" [ref=e116]\n- gridcell \"10586\" [ref=e117]\n- gridcell \"user_event\" [ref=e118]\n- gridcell \"consumer\" [ref=e119]\n- gridcell \"POC\" [ref=e120]\n- gridcell \"POC|queue_baseline|RECEIVE|1\" [ref=e121]\n- gridcell \"912\" [ref=e122]\n- gridcell \"49\" [ref=e123]\n- gridcell \"10591\" [ref=e124]\n- gridcell \"queue_receive_block\" [ref=e125]\n- gridcell \"consumer\" [ref=e126]\n- gridcell \"messages\" [ref=e127]\n- gridcell \"\" [ref=e128]\n- gridcell \"960\" [ref=e129]\n- gridcell \"50\" [ref=e130]\n- gridcell \"20561\" [ref=e131]\n- gridcell \"task_switch\" [ref=e132]\n- gridcell \"consumer\" [ref=e133]\n- gridcell \"consumer\" [ref=e134]\n- gridcell \"\" [ref=e135]\n- gridcell \"1176\" [ref=e136]\n- gridcell \"63\" [ref=e137]\n- gridcell \"20563\" [ref=e138]\n- gridcell \"queue_receive\" [ref=e139]\n- gridcell \"consumer\" [ref=e140]\n- gridcell \"messages\" [ref=e141]\n- gridcell \"\" [ref=e142]\n- gridcell \"1192\" [ref=e143]\n- gridcell \"64\" [ref=e144]\n- gridcell \"20587\" [ref=e145]\n- gridcell \"user_event\" [ref=e146]\n- gridcell \"consumer\" [ref=e147]\n- gridcell \"POC\" [ref=e148]\n- gridcell \"POC|queue_baseline|RECEIVE|2\" [ref=e149]\n- gridcell \"1212\" [ref=e150]\n- gridcell \"65\" [ref=e151]\n- gridcell \"20592\" [ref=e152]\n- gridcell \"queue_receive_block\" [ref=e153]\n- gridcell \"consumer\" [ref=e154]\n- gridcell \"messages\" [ref=e155]\n- gridcell \"\" [ref=e156]\n- gridcell \"1260\" [ref=e157]\n- gridcell \"66\" [ref=e158]\n- gridcell \"30560\" [ref=e159]\n- gridcell \"task_switch\" [ref=e160]\n- gridcell \"consumer\" [ref=e161]\n- gridcell \"consumer\" [ref=e162]\n- gridcell \"\" [ref=e163]\n- gridcell \"1476\" [ref=e164]\n- gridcell \"79\" [ref=e165]\n- gridcell \"30563\" [ref=e166]\n- gridcell \"queue_receive\" [ref=e167]\n- gridcell \"consumer\" [ref=e168]\n- gridcell \"messages\" [ref=e169]\n- gridcell \"\" [ref=e170]\n- gridcell \"1492\" [ref=e171]\n- gridcell \"80\" [ref=e172]\n- gridcell \"30586\" [ref=e173]\n- gridcell \"user_event\" [ref=e174]\n- gridcell \"consumer\" [ref=e175]\n- gridcell \"POC\" [ref=e176]\n- gridcell \"POC|queue_baseline|RECEIVE|3\" [ref=e177]\n- gridcell \"1512\" [ref=e178]\n- gridcell \"81\" [ref=e179]\n- gridcell \"30591\" [ref=e180]\n- gridcell \"queue_receive_block\" [ref=e181]\n- gridcell \"consumer\" [ref=e182]\n- gridcell \"messages\" [ref=e183]\n- gridcell \"\" [ref=e184]\n- gridcell \"1560\" [ref=e185]\n- gridcell \"82\" [ref=e186]\n- gridcell \"40561\" [ref=e187]\n- gridcell \"task_switch\" [ref=e188]\n- gridcell \"consumer\" [ref=e189]\n- gridcell \"consumer\" [ref=e190]\n- gridcell \"\" [ref=e191]\n- gridcell \"1776\" [ref=e192]\n- gridcell \"95\" [ref=e193]\n- gridcell \"40563\" [ref=e194]\n- gridcell \"queue_receive\" [ref=e195]\n- gridcell \"consumer\" [ref=e196]\n- gridcell \"messages\" [ref=e197]\n- gridcell \"\" [ref=e198]\n- gridcell \"1792\" [ref=e199]\n- gridcell \"96\" [ref=e200]\n- button \"上一頁\" [disabled, ref=e31]\n- button \"下一頁\" [ref=e32]\n- heading \"證據詳情\" [level=2, ref=e9]\n- button \"解除固定\" [ref=e10]\n- heading \"來源與品質\" [level=3, ref=e17]\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "document.querySelector(\"#start-filter\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "fill",
+      "#start-filter",
+      "500"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "document.querySelector(\"#end-filter\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "fill",
+      "#end-filter",
+      "50000"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "document.querySelector(\"#apply-window\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "click",
+      "#apply-window"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "wait",
+      "--fn",
+      "Number(document.body.dataset.renderRevision)>0 && !document.querySelector(\"#status\").textContent.includes(\"正在\")"
+    ],
+    "exit_code": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "snapshot",
+      "-i"
+    ],
+    "exit_code": 0,
+    "stdout": "- heading \"PSF Lab\" [level=1, ref=e2]\n- button \"切換明暗模式\" [ref=e3]\n- combobox \"已儲存 trace\" [expanded=false, ref=e1]: trace.psf\n  - option \"已儲存 trace\" [ref=e4]\n  - option \"trace.psf\" [selected, ref=e5]\n- heading \"篩選\" [level=2, ref=e6]\n- button \"重設\" [ref=e7]\n- listbox \"Task 篩選\" [ref=e11]\n  - option \"TzCtrl\" [ref=e18]\n  - option \"producer\" [ref=e19]\n  - option \"consumer\" [selected, ref=e20]\n  - option \"supervisor\" [ref=e21]\n  - option \"IDLE\" [ref=e22]\n- combobox \"物件篩選\" [expanded=false, ref=e12]: 全部物件\n  - option \"全部物件\" [selected, ref=e33]\n  - option \"System Heap · unknown\" [ref=e34]\n  - option \"TzCtrl · task\" [ref=e35]\n  - option \"POC · channel\" [ref=e36]\n  - option \"messages · queue\" [ref=e37]\n  - option \"producer · task\" [ref=e38]\n  - option \"consumer · task\" [ref=e39]\n  - option \"supervisor · task\" [ref=e40]\n  - option \"IDLE · task\" [ref=e41]\n- combobox \"Channel 篩選\" [expanded=false, ref=e13]: 全部 channel\n  - option \"全部 channel\" [selected, ref=e42]\n  - option \"POC\" [ref=e43]\n- combobox \"事件類型篩選\" [expanded=false, ref=e14]: 全部事件\n  - option \"全部事件\" [selected, ref=e44]\n  - option \"trace_start (0x1)\" [ref=e45]\n  - option \"object_name (0x3)\" [ref=e46]\n  - option \"task_create (0x10)\" [ref=e47]\n  - option \"queue_create (0x11)\" [ref=e48]\n  - option \"task_ready (0x30)\" [ref=e49]\n  - option \"new_time (0x31)\" [ref=e50]\n  - option \"task_switch (0x37)\" [ref=e51]\n  - option \"queue_send (0x50)\" [ref=e52]\n  - option \"queue_receive (0x60)\" [ref=e53]\n  - option \"queue_receive_block (0x66)\" [ref=e54]\n  - option \"task_delay (0x7a)\" [ref=e55]\n  - option \"task_suspend (0x7b)\" [ref=e56]\n  - option \"user_event (0x92)\" [ref=e57]\n- textbox \"文字搜尋\" [ref=e15]\n- textbox \"時間起點\" [ref=e23]: 500\n- textbox \"時間終點\" [ref=e24]: 50000\n- button \"套用時間窗口\" [ref=e16]\n- button \"查看品質與來源\" [ref=e8]\n- heading \"Task 時間軸\" [level=2, ref=e25]\n- button \"拖曳選取窗口\" [ref=e58]\n- button \"完整時間\" [ref=e59]\n- heading \"Task execution share\" [level=2, ref=e26]\n- heading \"User-event signal\" [level=2, ref=e27]\n- heading \"事件紀錄\" [level=2, ref=e28]\n- button \"匯出統計 CSV\" [ref=e29]\n- button \"匯出事件 CSV\" [ref=e30]\n- columnheader \"時間 ticks\" [ref=e201]\n- columnheader \"事件\" [ref=e202]\n- columnheader \"Task\" [ref=e203]\n- columnheader \"物件\" [ref=e204]\n- columnheader \"訊息\" [ref=e205]\n- columnheader \"Offset\" [ref=e206]\n- columnheader \"Seq\" [ref=e207]\n- generic \"544task_switchconsumerconsumer46824547queue_receive_blockconsumermessages48425560task_switchconsum\" [ref=e60] focusable [tabindex]\n- gridcell \"544\" [ref=e61]\n- gridcell \"task_switch\" [ref=e62]\n- gridcell \"consumer\" [ref=e63]\n- gridcell \"consumer\" [ref=e64]\n- gridcell \"\" [ref=e65]\n- gridcell \"468\" [ref=e66]\n- gridcell \"24\" [ref=e67]\n- gridcell \"547\" [ref=e68]\n- gridcell \"queue_receive_block\" [ref=e69]\n- gridcell \"consumer\" [ref=e70]\n- gridcell \"messages\" [ref=e71]\n- gridcell \"\" [ref=e72]\n- gridcell \"484\" [ref=e73]\n- gridcell \"25\" [ref=e74]\n- gridcell \"560\" [ref=e75]\n- gridcell \"task_switch\" [ref=e76]\n- gridcell \"consumer\" [ref=e77]\n- gridcell \"consumer\" [ref=e78]\n- gridcell \"\" [ref=e79]\n- gridcell \"548\" [ref=e80]\n- gridcell \"29\" [ref=e81]\n- gridcell \"563\" [ref=e82]\n- gridcell \"queue_receive\" [ref=e83]\n- gridcell \"consumer\" [ref=e84]\n- gridcell \"messages\" [ref=e85]\n- gridcell \"\" [ref=e86]\n- gridcell \"564\" [ref=e87]\n- gridcell \"30\" [ref=e88]\n- gridcell \"586\" [ref=e89]\n- gridcell \"user_event\" [ref=e90]\n- gridcell \"consumer\" [ref=e91]\n- gridcell \"POC\" [ref=e92]\n- gridcell \"POC|queue_baseline|RECEIVE|0\" [ref=e93]\n- gridcell \"584\" [ref=e94]\n- gridcell \"31\" [ref=e95]\n- gridcell \"591\" [ref=e96]\n- gridcell \"queue_receive_block\" [ref=e97]\n- gridcell \"consumer\" [ref=e98]\n- gridcell \"messages\" [ref=e99]\n- gridcell \"\" [ref=e100]\n- gridcell \"632\" [ref=e101]\n- gridcell \"32\" [ref=e102]\n- gridcell \"10560\" [ref=e103]\n- gridcell \"task_switch\" [ref=e104]\n- gridcell \"consumer\" [ref=e105]\n- gridcell \"consumer\" [ref=e106]\n- gridcell \"\" [ref=e107]\n- gridcell \"876\" [ref=e108]\n- gridcell \"47\" [ref=e109]\n- gridcell \"10563\" [ref=e110]\n- gridcell \"queue_receive\" [ref=e111]\n- gridcell \"consumer\" [ref=e112]\n- gridcell \"messages\" [ref=e113]\n- gridcell \"\" [ref=e114]\n- gridcell \"892\" [ref=e115]\n- gridcell \"48\" [ref=e116]\n- gridcell \"10586\" [ref=e117]\n- gridcell \"user_event\" [ref=e118]\n- gridcell \"consumer\" [ref=e119]\n- gridcell \"POC\" [ref=e120]\n- gridcell \"POC|queue_baseline|RECEIVE|1\" [ref=e121]\n- gridcell \"912\" [ref=e122]\n- gridcell \"49\" [ref=e123]\n- gridcell \"10591\" [ref=e124]\n- gridcell \"queue_receive_block\" [ref=e125]\n- gridcell \"consumer\" [ref=e126]\n- gridcell \"messages\" [ref=e127]\n- gridcell \"\" [ref=e128]\n- gridcell \"960\" [ref=e129]\n- gridcell \"50\" [ref=e130]\n- gridcell \"20561\" [ref=e131]\n- gridcell \"task_switch\" [ref=e132]\n- gridcell \"consumer\" [ref=e133]\n- gridcell \"consumer\" [ref=e134]\n- gridcell \"\" [ref=e135]\n- gridcell \"1176\" [ref=e136]\n- gridcell \"63\" [ref=e137]\n- gridcell \"20563\" [ref=e138]\n- gridcell \"queue_receive\" [ref=e139]\n- gridcell \"consumer\" [ref=e140]\n- gridcell \"messages\" [ref=e141]\n- gridcell \"\" [ref=e142]\n- gridcell \"1192\" [ref=e143]\n- gridcell \"64\" [ref=e144]\n- gridcell \"20587\" [ref=e145]\n- gridcell \"user_event\" [ref=e146]\n- gridcell \"consumer\" [ref=e147]\n- gridcell \"POC\" [ref=e148]\n- gridcell \"POC|queue_baseline|RECEIVE|2\" [ref=e149]\n- gridcell \"1212\" [ref=e150]\n- gridcell \"65\" [ref=e151]\n- gridcell \"20592\" [ref=e152]\n- gridcell \"queue_receive_block\" [ref=e153]\n- gridcell \"consumer\" [ref=e154]\n- gridcell \"messages\" [ref=e155]\n- gridcell \"\" [ref=e156]\n- gridcell \"1260\" [ref=e157]\n- gridcell \"66\" [ref=e158]\n- gridcell \"30560\" [ref=e159]\n- gridcell \"task_switch\" [ref=e160]\n- gridcell \"consumer\" [ref=e161]\n- gridcell \"consumer\" [ref=e162]\n- gridcell \"\" [ref=e163]\n- gridcell \"1476\" [ref=e164]\n- gridcell \"79\" [ref=e165]\n- gridcell \"30563\" [ref=e166]\n- gridcell \"queue_receive\" [ref=e167]\n- gridcell \"consumer\" [ref=e168]\n- gridcell \"messages\" [ref=e169]\n- gridcell \"\" [ref=e170]\n- gridcell \"1492\" [ref=e171]\n- gridcell \"80\" [ref=e172]\n- gridcell \"30586\" [ref=e173]\n- gridcell \"user_event\" [ref=e174]\n- gridcell \"consumer\" [ref=e175]\n- gridcell \"POC\" [ref=e176]\n- gridcell \"POC|queue_baseline|RECEIVE|3\" [ref=e177]\n- gridcell \"1512\" [ref=e178]\n- gridcell \"81\" [ref=e179]\n- gridcell \"30591\" [ref=e180]\n- gridcell \"queue_receive_block\" [ref=e181]\n- gridcell \"consumer\" [ref=e182]\n- gridcell \"messages\" [ref=e183]\n- gridcell \"\" [ref=e184]\n- gridcell \"1560\" [ref=e185]\n- gridcell \"82\" [ref=e186]\n- gridcell \"40561\" [ref=e187]\n- gridcell \"task_switch\" [ref=e188]\n- gridcell \"consumer\" [ref=e189]\n- gridcell \"consumer\" [ref=e190]\n- gridcell \"\" [ref=e191]\n- gridcell \"1776\" [ref=e192]\n- gridcell \"95\" [ref=e193]\n- gridcell \"40563\" [ref=e194]\n- gridcell \"queue_receive\" [ref=e195]\n- gridcell \"consumer\" [ref=e196]\n- gridcell \"messages\" [ref=e197]\n- gridcell \"\" [ref=e198]\n- gridcell \"1792\" [ref=e199]\n- gridcell \"96\" [ref=e200]\n- button \"上一頁\" [disabled, ref=e31]\n- button \"下一頁\" [ref=e32]\n- heading \"證據詳情\" [level=2, ref=e9]\n- button \"解除固定\" [ref=e10]\n- heading \"來源與品質\" [level=3, ref=e17]\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "document.querySelector(\"#window-label\").textContent"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":\"[500, 50000) ticks · 4.950 ms\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "screenshot",
+      "--full",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/screenshots/offline/03-filter-window.png"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/screenshots/offline/03-filter-window.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "({window:document.querySelector(\"#window-label\").textContent,search:document.querySelector(\"#search-filter\").value,task:[...document.querySelector(\"#task-filter\").selectedOptions].map(x=>x.value),rows:document.querySelector(\"#row-count\").textContent})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":{\"rows\":\"符合 22 筆；本頁 20 筆。CSV 匯出全部 22 筆。\",\"search\":\"\",\"task\":[\"0x80081870:0\"],\"window\":\"[500, 50000) ticks · 4.950 ms\"}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "document.querySelector(\"#reset\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "click",
+      "#reset"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "wait",
+      "--fn",
+      "Number(document.body.dataset.renderRevision)>0 && !document.querySelector(\"#status\").textContent.includes(\"正在\")"
+    ],
+    "exit_code": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "snapshot",
+      "-i"
+    ],
+    "exit_code": 0,
+    "stdout": "- heading \"PSF Lab\" [level=1, ref=e2]\n- button \"切換明暗模式\" [ref=e3]\n- combobox \"已儲存 trace\" [expanded=false, ref=e1]: trace.psf\n  - option \"已儲存 trace\" [ref=e4]\n  - option \"trace.psf\" [selected, ref=e5]\n- heading \"篩選\" [level=2, ref=e6]\n- button \"重設\" [ref=e7]\n- listbox \"Task 篩選\" [ref=e11]\n  - option \"TzCtrl\" [ref=e18]\n  - option \"producer\" [ref=e19]\n  - option \"consumer\" [ref=e20]\n  - option \"supervisor\" [ref=e21]\n  - option \"IDLE\" [ref=e22]\n- combobox \"物件篩選\" [expanded=false, ref=e12]: 全部物件\n  - option \"全部物件\" [selected, ref=e33]\n  - option \"System Heap · unknown\" [ref=e34]\n  - option \"TzCtrl · task\" [ref=e35]\n  - option \"POC · channel\" [ref=e36]\n  - option \"messages · queue\" [ref=e37]\n  - option \"producer · task\" [ref=e38]\n  - option \"consumer · task\" [ref=e39]\n  - option \"supervisor · task\" [ref=e40]\n  - option \"IDLE · task\" [ref=e41]\n- combobox \"Channel 篩選\" [expanded=false, ref=e13]: 全部 channel\n  - option \"全部 channel\" [selected, ref=e42]\n  - option \"POC\" [ref=e43]\n- combobox \"事件類型篩選\" [expanded=false, ref=e14]: 全部事件\n  - option \"全部事件\" [selected, ref=e44]\n  - option \"trace_start (0x1)\" [ref=e45]\n  - option \"object_name (0x3)\" [ref=e46]\n  - option \"task_create (0x10)\" [ref=e47]\n  - option \"queue_create (0x11)\" [ref=e48]\n  - option \"task_ready (0x30)\" [ref=e49]\n  - option \"new_time (0x31)\" [ref=e50]\n  - option \"task_switch (0x37)\" [ref=e51]\n  - option \"queue_send (0x50)\" [ref=e52]\n  - option \"queue_receive (0x60)\" [ref=e53]\n  - option \"queue_receive_block (0x66)\" [ref=e54]\n  - option \"task_delay (0x7a)\" [ref=e55]\n  - option \"task_suspend (0x7b)\" [ref=e56]\n  - option \"user_event (0x92)\" [ref=e57]\n- textbox \"文字搜尋\" [ref=e15]\n- textbox \"時間起點\" [ref=e23]\n- textbox \"時間終點\" [ref=e24]\n- button \"套用時間窗口\" [ref=e16]\n- button \"查看品質與來源\" [ref=e8]\n- heading \"Task 時間軸\" [level=2, ref=e25]\n- button \"拖曳選取窗口\" [ref=e58]\n- button \"完整時間\" [ref=e59]\n- heading \"Task execution share\" [level=2, ref=e26]\n- heading \"User-event signal\" [level=2, ref=e27]\n- heading \"事件紀錄\" [level=2, ref=e28]\n- button \"匯出統計 CSV\" [ref=e29]\n- button \"匯出事件 CSV\" [ref=e30]\n- columnheader \"時間 ticks\" [ref=e201]\n- columnheader \"事件\" [ref=e202]\n- columnheader \"Task\" [ref=e203]\n- columnheader \"物件\" [ref=e204]\n- columnheader \"訊息\" [ref=e205]\n- columnheader \"Offset\" [ref=e206]\n- columnheader \"Seq\" [ref=e207]\n- generic \"0trace_startUnknown—16863object_nameUnknownPOC18079queue_createUnknownmessages196815object_nameUn\" [ref=e60] focusable [tabindex]\n- gridcell \"0\" [ref=e61]\n- gridcell \"trace_start\" [ref=e62]\n- gridcell \"Unknown\" [ref=e63]\n- gridcell \"—\" [ref=e64]\n- gridcell \"\" [ref=e65]\n- gridcell \"168\" [ref=e66]\n- gridcell \"6\" [ref=e67]\n- gridcell \"3\" [ref=e68]\n- gridcell \"object_name\" [ref=e69]\n- gridcell \"Unknown\" [ref=e70]\n- gridcell \"POC\" [ref=e71]\n- gridcell \"\" [ref=e72]\n- gridcell \"180\" [ref=e73]\n- gridcell \"7\" [ref=e74]\n- gridcell \"9\" [ref=e75]\n- gridcell \"queue_create\" [ref=e76]\n- gridcell \"Unknown\" [ref=e77]\n- gridcell \"messages\" [ref=e78]\n- gridcell \"\" [ref=e79]\n- gridcell \"196\" [ref=e80]\n- gridcell \"8\" [ref=e81]\n- gridcell \"15\" [ref=e82]\n- gridcell \"object_name\" [ref=e83]\n- gridcell \"Unknown\" [ref=e84]\n- gridcell \"messages\" [ref=e85]\n- gridcell \"\" [ref=e86]\n- gridcell \"212\" [ref=e87]\n- gridcell \"9\" [ref=e88]\n- gridcell \"111\" [ref=e89]\n- gridcell \"object_name\" [ref=e90]\n- gridcell \"Unknown\" [ref=e91]\n- gridcell \"producer\" [ref=e92]\n- gridcell \"\" [ref=e93]\n- gridcell \"236\" [ref=e94]\n- gridcell \"10\" [ref=e95]\n- gridcell \"114\" [ref=e96]\n- gridcell \"task_create\" [ref=e97]\n- gridcell \"Unknown\" [ref=e98]\n- gridcell \"producer\" [ref=e99]\n- gridcell \"\" [ref=e100]\n- gridcell \"260\" [ref=e101]\n- gridcell \"11\" [ref=e102]\n- gridcell \"116\" [ref=e103]\n- gridcell \"task_ready\" [ref=e104]\n- gridcell \"Unknown\" [ref=e105]\n- gridcell \"producer\" [ref=e106]\n- gridcell \"\" [ref=e107]\n- gridcell \"276\" [ref=e108]\n- gridcell \"12\" [ref=e109]\n- gridcell \"210\" [ref=e110]\n- gridcell \"object_name\" [ref=e111]\n- gridcell \"Unknown\" [ref=e112]\n- gridcell \"consumer\" [ref=e113]\n- gridcell \"\" [ref=e114]\n- gridcell \"288\" [ref=e115]\n- gridcell \"13\" [ref=e116]\n- gridcell \"213\" [ref=e117]\n- gridcell \"task_create\" [ref=e118]\n- gridcell \"Unknown\" [ref=e119]\n- gridcell \"consumer\" [ref=e120]\n- gridcell \"\" [ref=e121]\n- gridcell \"312\" [ref=e122]\n- gridcell \"14\" [ref=e123]\n- gridcell \"215\" [ref=e124]\n- gridcell \"task_ready\" [ref=e125]\n- gridcell \"Unknown\" [ref=e126]\n- gridcell \"consumer\" [ref=e127]\n- gridcell \"\" [ref=e128]\n- gridcell \"328\" [ref=e129]\n- gridcell \"15\" [ref=e130]\n- gridcell \"391\" [ref=e131]\n- gridcell \"object_name\" [ref=e132]\n- gridcell \"Unknown\" [ref=e133]\n- gridcell \"supervisor\" [ref=e134]\n- gridcell \"\" [ref=e135]\n- gridcell \"340\" [ref=e136]\n- gridcell \"16\" [ref=e137]\n- gridcell \"395\" [ref=e138]\n- gridcell \"task_create\" [ref=e139]\n- gridcell \"Unknown\" [ref=e140]\n- gridcell \"supervisor\" [ref=e141]\n- gridcell \"\" [ref=e142]\n- gridcell \"364\" [ref=e143]\n- gridcell \"17\" [ref=e144]\n- gridcell \"396\" [ref=e145]\n- gridcell \"task_ready\" [ref=e146]\n- gridcell \"Unknown\" [ref=e147]\n- gridcell \"supervisor\" [ref=e148]\n- gridcell \"\" [ref=e149]\n- gridcell \"380\" [ref=e150]\n- gridcell \"18\" [ref=e151]\n- gridcell \"449\" [ref=e152]\n- gridcell \"object_name\" [ref=e153]\n- gridcell \"Unknown\" [ref=e154]\n- gridcell \"IDLE\" [ref=e155]\n- gridcell \"\" [ref=e156]\n- gridcell \"392\" [ref=e157]\n- gridcell \"19\" [ref=e158]\n- gridcell \"452\" [ref=e159]\n- gridcell \"task_create\" [ref=e160]\n- gridcell \"Unknown\" [ref=e161]\n- gridcell \"IDLE\" [ref=e162]\n- gridcell \"\" [ref=e163]\n- gridcell \"412\" [ref=e164]\n- gridcell \"20\" [ref=e165]\n- gridcell \"453\" [ref=e166]\n- gridcell \"task_ready\" [ref=e167]\n- gridcell \"Unknown\" [ref=e168]\n- gridcell \"IDLE\" [ref=e169]\n- gridcell \"\" [ref=e170]\n- gridcell \"428\" [ref=e171]\n- gridcell \"21\" [ref=e172]\n- gridcell \"455\" [ref=e173]\n- gridcell \"task_switch\" [ref=e174]\n- gridcell \"supervisor\" [ref=e175]\n- gridcell \"supervisor\" [ref=e176]\n- gridcell \"\" [ref=e177]\n- gridcell \"440\" [ref=e178]\n- gridcell \"22\" [ref=e179]\n- gridcell \"540\" [ref=e180]\n- gridcell \"task_delay\" [ref=e181]\n- gridcell \"supervisor\" [ref=e182]\n- gridcell \"supervisor\" [ref=e183]\n- gridcell \"\" [ref=e184]\n- gridcell \"456\" [ref=e185]\n- gridcell \"23\" [ref=e186]\n- gridcell \"544\" [ref=e187]\n- gridcell \"task_switch\" [ref=e188]\n- gridcell \"consumer\" [ref=e189]\n- gridcell \"consumer\" [ref=e190]\n- gridcell \"\" [ref=e191]\n- gridcell \"468\" [ref=e192]\n- gridcell \"24\" [ref=e193]\n- gridcell \"547\" [ref=e194]\n- gridcell \"queue_receive_block\" [ref=e195]\n- gridcell \"consumer\" [ref=e196]\n- gridcell \"messages\" [ref=e197]\n- gridcell \"\" [ref=e198]\n- gridcell \"484\" [ref=e199]\n- gridcell \"25\" [ref=e200]\n- button \"上一頁\" [disabled, ref=e31]\n- button \"下一頁\" [ref=e32]\n- heading \"證據詳情\" [level=2, ref=e9]\n- button \"解除固定\" [ref=e10]\n- heading \"來源與品質\" [level=3, ref=e17]\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "({coverage:document.querySelector(\"#coverage-label\").textContent,shares:document.querySelector(\"#share-values\").textContent})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":{\"coverage\":\"Known 160116 / 160571 ticks；Unknown 455\",\"shares\":\"supervisor 0.13%consumer 0.36%producer 0.39%TzCtrl 0.01%IDLE 98.83%\"}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "document.querySelector(\"#brush\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "click",
+      "#brush"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "(() => {const r=document.querySelector(\"#timeline\").getBoundingClientRect();return {x:r.x,y:r.y,w:r.width,h:r.height};})()"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":{\"h\":310,\"w\":1013,\"x\":255,\"y\":280.046875}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "mouse",
+      "move",
+      "559",
+      "373"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "mouse",
+      "down",
+      "left"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "mouse",
+      "move",
+      "863",
+      "466"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "mouse",
+      "up",
+      "left"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "wait",
+      "--fn",
+      "Number(document.body.dataset.renderRevision)>0 && !document.querySelector(\"#status\").textContent.includes(\"正在\")"
+    ],
+    "exit_code": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "snapshot",
+      "-i"
+    ],
+    "exit_code": 0,
+    "stdout": "- heading \"PSF Lab\" [level=1, ref=e2]\n- button \"切換明暗模式\" [ref=e3]\n- combobox \"已儲存 trace\" [expanded=false, ref=e1]: trace.psf\n  - option \"已儲存 trace\" [ref=e4]\n  - option \"trace.psf\" [selected, ref=e5]\n- heading \"篩選\" [level=2, ref=e6]\n- button \"重設\" [ref=e7]\n- listbox \"Task 篩選\" [ref=e11]\n  - option \"TzCtrl\" [ref=e18]\n  - option \"producer\" [ref=e19]\n  - option \"consumer\" [ref=e20]\n  - option \"supervisor\" [ref=e21]\n  - option \"IDLE\" [ref=e22]\n- combobox \"物件篩選\" [expanded=false, ref=e12]: 全部物件\n  - option \"全部物件\" [selected, ref=e33]\n  - option \"System Heap · unknown\" [ref=e34]\n  - option \"TzCtrl · task\" [ref=e35]\n  - option \"POC · channel\" [ref=e36]\n  - option \"messages · queue\" [ref=e37]\n  - option \"producer · task\" [ref=e38]\n  - option \"consumer · task\" [ref=e39]\n  - option \"supervisor · task\" [ref=e40]\n  - option \"IDLE · task\" [ref=e41]\n- combobox \"Channel 篩選\" [expanded=false, ref=e13]: 全部 channel\n  - option \"全部 channel\" [selected, ref=e42]\n  - option \"POC\" [ref=e43]\n- combobox \"事件類型篩選\" [expanded=false, ref=e14]: 全部事件\n  - option \"全部事件\" [selected, ref=e44]\n  - option \"trace_start (0x1)\" [ref=e45]\n  - option \"object_name (0x3)\" [ref=e46]\n  - option \"task_create (0x10)\" [ref=e47]\n  - option \"queue_create (0x11)\" [ref=e48]\n  - option \"task_ready (0x30)\" [ref=e49]\n  - option \"new_time (0x31)\" [ref=e50]\n  - option \"task_switch (0x37)\" [ref=e51]\n  - option \"queue_send (0x50)\" [ref=e52]\n  - option \"queue_receive (0x60)\" [ref=e53]\n  - option \"queue_receive_block (0x66)\" [ref=e54]\n  - option \"task_delay (0x7a)\" [ref=e55]\n  - option \"task_suspend (0x7b)\" [ref=e56]\n  - option \"user_event (0x92)\" [ref=e57]\n- textbox \"文字搜尋\" [ref=e15]\n- textbox \"時間起點\" [ref=e23]: 34725\n- textbox \"時間終點\" [ref=e24]: 92098\n- button \"套用時間窗口\" [ref=e16]\n- button \"查看品質與來源\" [ref=e8]\n- heading \"Task 時間軸\" [level=2, ref=e25]\n- button \"拖曳選取窗口\" [ref=e58]\n- button \"完整時間\" [ref=e59]\n- heading \"Task execution share\" [level=2, ref=e26]\n- heading \"User-event signal\" [level=2, ref=e27]\n- heading \"事件紀錄\" [level=2, ref=e28]\n- button \"匯出統計 CSV\" [ref=e29]\n- button \"匯出事件 CSV\" [ref=e30]\n- columnheader \"時間 ticks\" [ref=e201]\n- columnheader \"事件\" [ref=e202]\n- columnheader \"Task\" [ref=e203]\n- columnheader \"物件\" [ref=e204]\n- columnheader \"訊息\" [ref=e205]\n- columnheader \"Offset\" [ref=e206]\n- columnheader \"Seq\" [ref=e207]\n- generic \"40541new_timeIDLE—16688740542task_readyIDLEsupervisor16808840544task_readyIDLEproducer16928940547\" [ref=e60] focusable [tabindex]\n- gridcell \"40541\" [ref=e61]\n- gridcell \"new_time\" [ref=e62]\n- gridcell \"IDLE\" [ref=e63]\n- gridcell \"—\" [ref=e64]\n- gridcell \"\" [ref=e65]\n- gridcell \"1668\" [ref=e66]\n- gridcell \"87\" [ref=e67]\n- gridcell \"40542\" [ref=e68]\n- gridcell \"task_ready\" [ref=e69]\n- gridcell \"IDLE\" [ref=e70]\n- gridcell \"supervisor\" [ref=e71]\n- gridcell \"\" [ref=e72]\n- gridcell \"1680\" [ref=e73]\n- gridcell \"88\" [ref=e74]\n- gridcell \"40544\" [ref=e75]\n- gridcell \"task_ready\" [ref=e76]\n- gridcell \"IDLE\" [ref=e77]\n- gridcell \"producer\" [ref=e78]\n- gridcell \"\" [ref=e79]\n- gridcell \"1692\" [ref=e80]\n- gridcell \"89\" [ref=e81]\n- gridcell \"40547\" [ref=e82]\n- gridcell \"task_switch\" [ref=e83]\n- gridcell \"supervisor\" [ref=e84]\n- gridcell \"supervisor\" [ref=e85]\n- gridcell \"\" [ref=e86]\n- gridcell \"1704\" [ref=e87]\n- gridcell \"90\" [ref=e88]\n- gridcell \"40549\" [ref=e89]\n- gridcell \"task_delay\" [ref=e90]\n- gridcell \"supervisor\" [ref=e91]\n- gridcell \"supervisor\" [ref=e92]\n- gridcell \"\" [ref=e93]\n- gridcell \"1720\" [ref=e94]\n- gridcell \"91\" [ref=e95]\n- gridcell \"40553\" [ref=e96]\n- gridcell \"task_switch\" [ref=e97]\n- gridcell \"producer\" [ref=e98]\n- gridcell \"producer\" [ref=e99]\n- gridcell \"\" [ref=e100]\n- gridcell \"1732\" [ref=e101]\n- gridcell \"92\" [ref=e102]\n- gridcell \"40556\" [ref=e103]\n- gridcell \"queue_send\" [ref=e104]\n- gridcell \"producer\" [ref=e105]\n- gridcell \"messages\" [ref=e106]\n- gridcell \"\" [ref=e107]\n- gridcell \"1748\" [ref=e108]\n- gridcell \"93\" [ref=e109]\n- gridcell \"40558\" [ref=e110]\n- gridcell \"task_ready\" [ref=e111]\n- gridcell \"producer\" [ref=e112]\n- gridcell \"consumer\" [ref=e113]\n- gridcell \"\" [ref=e114]\n- gridcell \"1764\" [ref=e115]\n- gridcell \"94\" [ref=e116]\n- gridcell \"40561\" [ref=e117]\n- gridcell \"task_switch\" [ref=e118]\n- gridcell \"consumer\" [ref=e119]\n- gridcell \"consumer\" [ref=e120]\n- gridcell \"\" [ref=e121]\n- gridcell \"1776\" [ref=e122]\n- gridcell \"95\" [ref=e123]\n- gridcell \"40563\" [ref=e124]\n- gridcell \"queue_receive\" [ref=e125]\n- gridcell \"consumer\" [ref=e126]\n- gridcell \"messages\" [ref=e127]\n- gridcell \"\" [ref=e128]\n- gridcell \"1792\" [ref=e129]\n- gridcell \"96\" [ref=e130]\n- gridcell \"40587\" [ref=e131]\n- gridcell \"user_event\" [ref=e132]\n- gridcell \"consumer\" [ref=e133]\n- gridcell \"POC\" [ref=e134]\n- gridcell \"POC|queue_baseline|RECEIVE|4\" [ref=e135]\n- gridcell \"1812\" [ref=e136]\n- gridcell \"97\" [ref=e137]\n- gridcell \"40592\" [ref=e138]\n- gridcell \"queue_receive_block\" [ref=e139]\n- gridcell \"consumer\" [ref=e140]\n- gridcell \"messages\" [ref=e141]\n- gridcell \"\" [ref=e142]\n- gridcell \"1860\" [ref=e143]\n- gridcell \"98\" [ref=e144]\n- gridcell \"40597\" [ref=e145]\n- gridcell \"task_switch\" [ref=e146]\n- gridcell \"producer\" [ref=e147]\n- gridcell \"producer\" [ref=e148]\n- gridcell \"\" [ref=e149]\n- gridcell \"1880\" [ref=e150]\n- gridcell \"99\" [ref=e151]\n- gridcell \"40620\" [ref=e152]\n- gridcell \"user_event\" [ref=e153]\n- gridcell \"producer\" [ref=e154]\n- gridcell \"POC\" [ref=e155]\n- gridcell \"POC|queue_baseline|SEND|4\" [ref=e156]\n- gridcell \"1896\" [ref=e157]\n- gridcell \"100\" [ref=e158]\n- gridcell \"40624\" [ref=e159]\n- gridcell \"task_delay\" [ref=e160]\n- gridcell \"producer\" [ref=e161]\n- gridcell \"producer\" [ref=e162]\n- gridcell \"\" [ref=e163]\n- gridcell \"1940\" [ref=e164]\n- gridcell \"101\" [ref=e165]\n- gridcell \"40628\" [ref=e166]\n- gridcell \"task_switch\" [ref=e167]\n- gridcell \"IDLE\" [ref=e168]\n- gridcell \"IDLE\" [ref=e169]\n- gridcell \"\" [ref=e170]\n- gridcell \"1952\" [ref=e171]\n- gridcell \"102\" [ref=e172]\n- gridcell \"50540\" [ref=e173]\n- gridcell \"new_time\" [ref=e174]\n- gridcell \"IDLE\" [ref=e175]\n- gridcell \"—\" [ref=e176]\n- gridcell \"\" [ref=e177]\n- gridcell \"1968\" [ref=e178]\n- gridcell \"103\" [ref=e179]\n- gridcell \"50542\" [ref=e180]\n- gridcell \"task_ready\" [ref=e181]\n- gridcell \"IDLE\" [ref=e182]\n- gridcell \"supervisor\" [ref=e183]\n- gridcell \"\" [ref=e184]\n- gridcell \"1980\" [ref=e185]\n- gridcell \"104\" [ref=e186]\n- gridcell \"50544\" [ref=e187]\n- gridcell \"task_ready\" [ref=e188]\n- gridcell \"IDLE\" [ref=e189]\n- gridcell \"producer\" [ref=e190]\n- gridcell \"\" [ref=e191]\n- gridcell \"1992\" [ref=e192]\n- gridcell \"105\" [ref=e193]\n- gridcell \"50546\" [ref=e194]\n- gridcell \"task_switch\" [ref=e195]\n- gridcell \"supervisor\" [ref=e196]\n- gridcell \"supervisor\" [ref=e197]\n- gridcell \"\" [ref=e198]\n- gridcell \"2004\" [ref=e199]\n- gridcell \"106\" [ref=e200]\n- button \"上一頁\" [disabled, ref=e31]\n- button \"下一頁\" [ref=e32]\n- heading \"證據詳情\" [level=2, ref=e9]\n- button \"解除固定\" [ref=e10]\n- heading \"來源與品質\" [level=3, ref=e17]\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "document.querySelector(\"#start-filter\").value"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":\"34725\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "screenshot",
+      "--full",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/screenshots/offline/04-timeline-brush.png"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/screenshots/offline/04-timeline-brush.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "({window:document.querySelector(\"#window-label\").textContent,search:document.querySelector(\"#search-filter\").value,task:[...document.querySelector(\"#task-filter\").selectedOptions].map(x=>x.value),rows:document.querySelector(\"#row-count\").textContent})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":{\"rows\":\"符合 96 筆；本頁 20 筆。CSV 匯出全部 96 筆。\",\"search\":\"\",\"task\":[],\"window\":\"[34725, 92098) ticks · 5.737 ms\"}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "document.querySelector(\"#reset\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "click",
+      "#reset"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "wait",
+      "--fn",
+      "Number(document.body.dataset.renderRevision)>0 && !document.querySelector(\"#status\").textContent.includes(\"正在\")"
+    ],
+    "exit_code": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "snapshot",
+      "-i"
+    ],
+    "exit_code": 0,
+    "stdout": "- heading \"PSF Lab\" [level=1, ref=e2]\n- button \"切換明暗模式\" [ref=e3]\n- combobox \"已儲存 trace\" [expanded=false, ref=e1]: trace.psf\n  - option \"已儲存 trace\" [ref=e4]\n  - option \"trace.psf\" [selected, ref=e5]\n- heading \"篩選\" [level=2, ref=e6]\n- button \"重設\" [ref=e7]\n- listbox \"Task 篩選\" [ref=e11]\n  - option \"TzCtrl\" [ref=e18]\n  - option \"producer\" [ref=e19]\n  - option \"consumer\" [ref=e20]\n  - option \"supervisor\" [ref=e21]\n  - option \"IDLE\" [ref=e22]\n- combobox \"物件篩選\" [expanded=false, ref=e12]: 全部物件\n  - option \"全部物件\" [selected, ref=e33]\n  - option \"System Heap · unknown\" [ref=e34]\n  - option \"TzCtrl · task\" [ref=e35]\n  - option \"POC · channel\" [ref=e36]\n  - option \"messages · queue\" [ref=e37]\n  - option \"producer · task\" [ref=e38]\n  - option \"consumer · task\" [ref=e39]\n  - option \"supervisor · task\" [ref=e40]\n  - option \"IDLE · task\" [ref=e41]\n- combobox \"Channel 篩選\" [expanded=false, ref=e13]: 全部 channel\n  - option \"全部 channel\" [selected, ref=e42]\n  - option \"POC\" [ref=e43]\n- combobox \"事件類型篩選\" [expanded=false, ref=e14]: 全部事件\n  - option \"全部事件\" [selected, ref=e44]\n  - option \"trace_start (0x1)\" [ref=e45]\n  - option \"object_name (0x3)\" [ref=e46]\n  - option \"task_create (0x10)\" [ref=e47]\n  - option \"queue_create (0x11)\" [ref=e48]\n  - option \"task_ready (0x30)\" [ref=e49]\n  - option \"new_time (0x31)\" [ref=e50]\n  - option \"task_switch (0x37)\" [ref=e51]\n  - option \"queue_send (0x50)\" [ref=e52]\n  - option \"queue_receive (0x60)\" [ref=e53]\n  - option \"queue_receive_block (0x66)\" [ref=e54]\n  - option \"task_delay (0x7a)\" [ref=e55]\n  - option \"task_suspend (0x7b)\" [ref=e56]\n  - option \"user_event (0x92)\" [ref=e57]\n- textbox \"文字搜尋\" [ref=e15]\n- textbox \"時間起點\" [ref=e23]\n- textbox \"時間終點\" [ref=e24]\n- button \"套用時間窗口\" [ref=e16]\n- button \"查看品質與來源\" [ref=e8]\n- heading \"Task 時間軸\" [level=2, ref=e25]\n- button \"拖曳選取窗口\" [ref=e58]\n- button \"完整時間\" [ref=e59]\n- heading \"Task execution share\" [level=2, ref=e26]\n- heading \"User-event signal\" [level=2, ref=e27]\n- heading \"事件紀錄\" [level=2, ref=e28]\n- button \"匯出統計 CSV\" [ref=e29]\n- button \"匯出事件 CSV\" [ref=e30]\n- columnheader \"時間 ticks\" [ref=e201]\n- columnheader \"事件\" [ref=e202]\n- columnheader \"Task\" [ref=e203]\n- columnheader \"物件\" [ref=e204]\n- columnheader \"訊息\" [ref=e205]\n- columnheader \"Offset\" [ref=e206]\n- columnheader \"Seq\" [ref=e207]\n- generic \"0trace_startUnknown—16863object_nameUnknownPOC18079queue_createUnknownmessages196815object_nameUn\" [ref=e60] focusable [tabindex]\n- gridcell \"0\" [ref=e61]\n- gridcell \"trace_start\" [ref=e62]\n- gridcell \"Unknown\" [ref=e63]\n- gridcell \"—\" [ref=e64]\n- gridcell \"\" [ref=e65]\n- gridcell \"168\" [ref=e66]\n- gridcell \"6\" [ref=e67]\n- gridcell \"3\" [ref=e68]\n- gridcell \"object_name\" [ref=e69]\n- gridcell \"Unknown\" [ref=e70]\n- gridcell \"POC\" [ref=e71]\n- gridcell \"\" [ref=e72]\n- gridcell \"180\" [ref=e73]\n- gridcell \"7\" [ref=e74]\n- gridcell \"9\" [ref=e75]\n- gridcell \"queue_create\" [ref=e76]\n- gridcell \"Unknown\" [ref=e77]\n- gridcell \"messages\" [ref=e78]\n- gridcell \"\" [ref=e79]\n- gridcell \"196\" [ref=e80]\n- gridcell \"8\" [ref=e81]\n- gridcell \"15\" [ref=e82]\n- gridcell \"object_name\" [ref=e83]\n- gridcell \"Unknown\" [ref=e84]\n- gridcell \"messages\" [ref=e85]\n- gridcell \"\" [ref=e86]\n- gridcell \"212\" [ref=e87]\n- gridcell \"9\" [ref=e88]\n- gridcell \"111\" [ref=e89]\n- gridcell \"object_name\" [ref=e90]\n- gridcell \"Unknown\" [ref=e91]\n- gridcell \"producer\" [ref=e92]\n- gridcell \"\" [ref=e93]\n- gridcell \"236\" [ref=e94]\n- gridcell \"10\" [ref=e95]\n- gridcell \"114\" [ref=e96]\n- gridcell \"task_create\" [ref=e97]\n- gridcell \"Unknown\" [ref=e98]\n- gridcell \"producer\" [ref=e99]\n- gridcell \"\" [ref=e100]\n- gridcell \"260\" [ref=e101]\n- gridcell \"11\" [ref=e102]\n- gridcell \"116\" [ref=e103]\n- gridcell \"task_ready\" [ref=e104]\n- gridcell \"Unknown\" [ref=e105]\n- gridcell \"producer\" [ref=e106]\n- gridcell \"\" [ref=e107]\n- gridcell \"276\" [ref=e108]\n- gridcell \"12\" [ref=e109]\n- gridcell \"210\" [ref=e110]\n- gridcell \"object_name\" [ref=e111]\n- gridcell \"Unknown\" [ref=e112]\n- gridcell \"consumer\" [ref=e113]\n- gridcell \"\" [ref=e114]\n- gridcell \"288\" [ref=e115]\n- gridcell \"13\" [ref=e116]\n- gridcell \"213\" [ref=e117]\n- gridcell \"task_create\" [ref=e118]\n- gridcell \"Unknown\" [ref=e119]\n- gridcell \"consumer\" [ref=e120]\n- gridcell \"\" [ref=e121]\n- gridcell \"312\" [ref=e122]\n- gridcell \"14\" [ref=e123]\n- gridcell \"215\" [ref=e124]\n- gridcell \"task_ready\" [ref=e125]\n- gridcell \"Unknown\" [ref=e126]\n- gridcell \"consumer\" [ref=e127]\n- gridcell \"\" [ref=e128]\n- gridcell \"328\" [ref=e129]\n- gridcell \"15\" [ref=e130]\n- gridcell \"391\" [ref=e131]\n- gridcell \"object_name\" [ref=e132]\n- gridcell \"Unknown\" [ref=e133]\n- gridcell \"supervisor\" [ref=e134]\n- gridcell \"\" [ref=e135]\n- gridcell \"340\" [ref=e136]\n- gridcell \"16\" [ref=e137]\n- gridcell \"395\" [ref=e138]\n- gridcell \"task_create\" [ref=e139]\n- gridcell \"Unknown\" [ref=e140]\n- gridcell \"supervisor\" [ref=e141]\n- gridcell \"\" [ref=e142]\n- gridcell \"364\" [ref=e143]\n- gridcell \"17\" [ref=e144]\n- gridcell \"396\" [ref=e145]\n- gridcell \"task_ready\" [ref=e146]\n- gridcell \"Unknown\" [ref=e147]\n- gridcell \"supervisor\" [ref=e148]\n- gridcell \"\" [ref=e149]\n- gridcell \"380\" [ref=e150]\n- gridcell \"18\" [ref=e151]\n- gridcell \"449\" [ref=e152]\n- gridcell \"object_name\" [ref=e153]\n- gridcell \"Unknown\" [ref=e154]\n- gridcell \"IDLE\" [ref=e155]\n- gridcell \"\" [ref=e156]\n- gridcell \"392\" [ref=e157]\n- gridcell \"19\" [ref=e158]\n- gridcell \"452\" [ref=e159]\n- gridcell \"task_create\" [ref=e160]\n- gridcell \"Unknown\" [ref=e161]\n- gridcell \"IDLE\" [ref=e162]\n- gridcell \"\" [ref=e163]\n- gridcell \"412\" [ref=e164]\n- gridcell \"20\" [ref=e165]\n- gridcell \"453\" [ref=e166]\n- gridcell \"task_ready\" [ref=e167]\n- gridcell \"Unknown\" [ref=e168]\n- gridcell \"IDLE\" [ref=e169]\n- gridcell \"\" [ref=e170]\n- gridcell \"428\" [ref=e171]\n- gridcell \"21\" [ref=e172]\n- gridcell \"455\" [ref=e173]\n- gridcell \"task_switch\" [ref=e174]\n- gridcell \"supervisor\" [ref=e175]\n- gridcell \"supervisor\" [ref=e176]\n- gridcell \"\" [ref=e177]\n- gridcell \"440\" [ref=e178]\n- gridcell \"22\" [ref=e179]\n- gridcell \"540\" [ref=e180]\n- gridcell \"task_delay\" [ref=e181]\n- gridcell \"supervisor\" [ref=e182]\n- gridcell \"supervisor\" [ref=e183]\n- gridcell \"\" [ref=e184]\n- gridcell \"456\" [ref=e185]\n- gridcell \"23\" [ref=e186]\n- gridcell \"544\" [ref=e187]\n- gridcell \"task_switch\" [ref=e188]\n- gridcell \"consumer\" [ref=e189]\n- gridcell \"consumer\" [ref=e190]\n- gridcell \"\" [ref=e191]\n- gridcell \"468\" [ref=e192]\n- gridcell \"24\" [ref=e193]\n- gridcell \"547\" [ref=e194]\n- gridcell \"queue_receive_block\" [ref=e195]\n- gridcell \"consumer\" [ref=e196]\n- gridcell \"messages\" [ref=e197]\n- gridcell \"\" [ref=e198]\n- gridcell \"484\" [ref=e199]\n- gridcell \"25\" [ref=e200]\n- button \"上一頁\" [disabled, ref=e31]\n- button \"下一頁\" [ref=e32]\n- heading \"證據詳情\" [level=2, ref=e9]\n- button \"解除固定\" [ref=e10]\n- heading \"來源與品質\" [level=3, ref=e17]\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "document.querySelector(\".tabulator-row:nth-child(2) .tabulator-cell[tabulator-field=kind]\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "hover",
+      ".tabulator-row:nth-child(2) .tabulator-cell[tabulator-field=kind]"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "document.querySelector(\".tabulator-row:nth-child(2) .tabulator-cell[tabulator-field=kind]\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "click",
+      ".tabulator-row:nth-child(2) .tabulator-cell[tabulator-field=kind]"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "screenshot",
+      "--full",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/screenshots/offline/04-event-details.png"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/screenshots/offline/04-event-details.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "({window:document.querySelector(\"#window-label\").textContent,search:document.querySelector(\"#search-filter\").value,task:[...document.querySelector(\"#task-filter\").selectedOptions].map(x=>x.value),rows:document.querySelector(\"#row-count\").textContent})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":{\"rows\":\"符合 281 筆；本頁 20 筆。CSV 匯出全部 281 筆。\",\"search\":\"\",\"task\":[],\"window\":\"[0, 160571) ticks · 16.057 ms\"}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "document.querySelector(\".tabulator-col[tabulator-field=\\\"ticks\\\"]\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "click",
+      ".tabulator-col[tabulator-field=\"ticks\"]"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "wait",
+      "--fn",
+      "Number(document.body.dataset.renderRevision)>0 && !document.querySelector(\"#status\").textContent.includes(\"正在\")"
+    ],
+    "exit_code": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "snapshot",
+      "-i"
+    ],
+    "exit_code": 0,
+    "stdout": "- heading \"PSF Lab\" [level=1, ref=e2]\n- button \"切換明暗模式\" [ref=e3]\n- combobox \"已儲存 trace\" [expanded=false, ref=e1]: trace.psf\n  - option \"已儲存 trace\" [ref=e4]\n  - option \"trace.psf\" [selected, ref=e5]\n- heading \"篩選\" [level=2, ref=e6]\n- button \"重設\" [ref=e7]\n- listbox \"Task 篩選\" [ref=e11]\n  - option \"TzCtrl\" [ref=e18]\n  - option \"producer\" [ref=e19]\n  - option \"consumer\" [ref=e20]\n  - option \"supervisor\" [ref=e21]\n  - option \"IDLE\" [ref=e22]\n- combobox \"物件篩選\" [expanded=false, ref=e12]: 全部物件\n  - option \"全部物件\" [selected, ref=e33]\n  - option \"System Heap · unknown\" [ref=e34]\n  - option \"TzCtrl · task\" [ref=e35]\n  - option \"POC · channel\" [ref=e36]\n  - option \"messages · queue\" [ref=e37]\n  - option \"producer · task\" [ref=e38]\n  - option \"consumer · task\" [ref=e39]\n  - option \"supervisor · task\" [ref=e40]\n  - option \"IDLE · task\" [ref=e41]\n- combobox \"Channel 篩選\" [expanded=false, ref=e13]: 全部 channel\n  - option \"全部 channel\" [selected, ref=e42]\n  - option \"POC\" [ref=e43]\n- combobox \"事件類型篩選\" [expanded=false, ref=e14]: 全部事件\n  - option \"全部事件\" [selected, ref=e44]\n  - option \"trace_start (0x1)\" [ref=e45]\n  - option \"object_name (0x3)\" [ref=e46]\n  - option \"task_create (0x10)\" [ref=e47]\n  - option \"queue_create (0x11)\" [ref=e48]\n  - option \"task_ready (0x30)\" [ref=e49]\n  - option \"new_time (0x31)\" [ref=e50]\n  - option \"task_switch (0x37)\" [ref=e51]\n  - option \"queue_send (0x50)\" [ref=e52]\n  - option \"queue_receive (0x60)\" [ref=e53]\n  - option \"queue_receive_block (0x66)\" [ref=e54]\n  - option \"task_delay (0x7a)\" [ref=e55]\n  - option \"task_suspend (0x7b)\" [ref=e56]\n  - option \"user_event (0x92)\" [ref=e57]\n- textbox \"文字搜尋\" [ref=e15]\n- textbox \"時間起點\" [ref=e23]\n- textbox \"時間終點\" [ref=e24]\n- button \"套用時間窗口\" [ref=e16]\n- button \"查看品質與來源\" [ref=e8]\n- heading \"Task 時間軸\" [level=2, ref=e25]\n- button \"拖曳選取窗口\" [ref=e58]\n- button \"完整時間\" [ref=e59]\n- heading \"Task execution share\" [level=2, ref=e26]\n- heading \"User-event signal\" [level=2, ref=e27]\n- heading \"事件紀錄\" [level=2, ref=e28]\n- button \"匯出統計 CSV\" [ref=e29]\n- button \"匯出事件 CSV\" [ref=e30]\n- columnheader \"時間 ticks\" [ref=e201]\n- columnheader \"事件\" [ref=e202]\n- columnheader \"Task\" [ref=e203]\n- columnheader \"物件\" [ref=e204]\n- columnheader \"訊息\" [ref=e205]\n- columnheader \"Offset\" [ref=e206]\n- columnheader \"Seq\" [ref=e207]\n- generic \"160571user_eventsupervisorPOCPOC|queue_baseline|COMPLETE|05352286160546task_switchsupervisorsupervis\" [ref=e60] focusable [tabindex]\n- gridcell \"160571\" [ref=e61]\n- gridcell \"user_event\" [ref=e62]\n- gridcell \"supervisor\" [ref=e63]\n- gridcell \"POC\" [ref=e64]\n- gridcell \"POC|queue_baseline|COMPLETE|0\" [ref=e65]\n- gridcell \"5352\" [ref=e66]\n- gridcell \"286\" [ref=e67]\n- gridcell \"160546\" [ref=e68]\n- gridcell \"task_switch\" [ref=e69]\n- gridcell \"supervisor\" [ref=e70]\n- gridcell \"supervisor\" [ref=e71]\n- gridcell \"\" [ref=e72]\n- gridcell \"5336\" [ref=e73]\n- gridcell \"285\" [ref=e74]\n- gridcell \"160544\" [ref=e75]\n- gridcell \"task_ready\" [ref=e76]\n- gridcell \"IDLE\" [ref=e77]\n- gridcell \"producer\" [ref=e78]\n- gridcell \"\" [ref=e79]\n- gridcell \"5324\" [ref=e80]\n- gridcell \"284\" [ref=e81]\n- gridcell \"160542\" [ref=e82]\n- gridcell \"task_ready\" [ref=e83]\n- gridcell \"IDLE\" [ref=e84]\n- gridcell \"supervisor\" [ref=e85]\n- gridcell \"\" [ref=e86]\n- gridcell \"5312\" [ref=e87]\n- gridcell \"283\" [ref=e88]\n- gridcell \"160540\" [ref=e89]\n- gridcell \"new_time\" [ref=e90]\n- gridcell \"IDLE\" [ref=e91]\n- gridcell \"—\" [ref=e92]\n- gridcell \"\" [ref=e93]\n- gridcell \"5300\" [ref=e94]\n- gridcell \"282\" [ref=e95]\n- gridcell \"150625\" [ref=e96]\n- gridcell \"task_switch\" [ref=e97]\n- gridcell \"IDLE\" [ref=e98]\n- gridcell \"IDLE\" [ref=e99]\n- gridcell \"\" [ref=e100]\n- gridcell \"5284\" [ref=e101]\n- gridcell \"281\" [ref=e102]\n- gridcell \"150621\" [ref=e103]\n- gridcell \"task_delay\" [ref=e104]\n- gridcell \"producer\" [ref=e105]\n- gridcell \"producer\" [ref=e106]\n- gridcell \"\" [ref=e107]\n- gridcell \"5272\" [ref=e108]\n- gridcell \"280\" [ref=e109]\n- gridcell \"150617\" [ref=e110]\n- gridcell \"user_event\" [ref=e111]\n- gridcell \"producer\" [ref=e112]\n- gridcell \"POC\" [ref=e113]\n- gridcell \"POC|queue_baseline|SEND|15\" [ref=e114]\n- gridcell \"5228\" [ref=e115]\n- gridcell \"279\" [ref=e116]\n- gridcell \"150594\" [ref=e117]\n- gridcell \"task_switch\" [ref=e118]\n- gridcell \"producer\" [ref=e119]\n- gridcell \"producer\" [ref=e120]\n- gridcell \"\" [ref=e121]\n- gridcell \"5212\" [ref=e122]\n- gridcell \"278\" [ref=e123]\n- gridcell \"150591\" [ref=e124]\n- gridcell \"task_suspend\" [ref=e125]\n- gridcell \"consumer\" [ref=e126]\n- gridcell \"consumer\" [ref=e127]\n- gridcell \"\" [ref=e128]\n- gridcell \"5200\" [ref=e129]\n- gridcell \"277\" [ref=e130]\n- gridcell \"150587\" [ref=e131]\n- gridcell \"user_event\" [ref=e132]\n- gridcell \"consumer\" [ref=e133]\n- gridcell \"POC\" [ref=e134]\n- gridcell \"POC|queue_baseline|RECEIVE|15\" [ref=e135]\n- gridcell \"5152\" [ref=e136]\n- gridcell \"276\" [ref=e137]\n- gridcell \"150563\" [ref=e138]\n- gridcell \"queue_receive\" [ref=e139]\n- gridcell \"consumer\" [ref=e140]\n- gridcell \"messages\" [ref=e141]\n- gridcell \"\" [ref=e142]\n- gridcell \"5132\" [ref=e143]\n- gridcell \"275\" [ref=e144]\n- gridcell \"150561\" [ref=e145]\n- gridcell \"task_switch\" [ref=e146]\n- gridcell \"consumer\" [ref=e147]\n- gridcell \"consumer\" [ref=e148]\n- gridcell \"\" [ref=e149]\n- gridcell \"5116\" [ref=e150]\n- gridcell \"274\" [ref=e151]\n- gridcell \"150558\" [ref=e152]\n- gridcell \"task_ready\" [ref=e153]\n- gridcell \"producer\" [ref=e154]\n- gridcell \"consumer\" [ref=e155]\n- gridcell \"\" [ref=e156]\n- gridcell \"5104\" [ref=e157]\n- gridcell \"273\" [ref=e158]\n- gridcell \"150556\" [ref=e159]\n- gridcell \"queue_send\" [ref=e160]\n- gridcell \"producer\" [ref=e161]\n- gridcell \"messages\" [ref=e162]\n- gridcell \"\" [ref=e163]\n- gridcell \"5088\" [ref=e164]\n- gridcell \"272\" [ref=e165]\n- gridcell \"150553\" [ref=e166]\n- gridcell \"task_switch\" [ref=e167]\n- gridcell \"producer\" [ref=e168]\n- gridcell \"producer\" [ref=e169]\n- gridcell \"\" [ref=e170]\n- gridcell \"5072\" [ref=e171]\n- gridcell \"271\" [ref=e172]\n- gridcell \"150549\" [ref=e173]\n- gridcell \"task_delay\" [ref=e174]\n- gridcell \"supervisor\" [ref=e175]\n- gridcell \"supervisor\" [ref=e176]\n- gridcell \"\" [ref=e177]\n- gridcell \"5060\" [ref=e178]\n- gridcell \"270\" [ref=e179]\n- gridcell \"150547\" [ref=e180]\n- gridcell \"task_switch\" [ref=e181]\n- gridcell \"supervisor\" [ref=e182]\n- gridcell \"supervisor\" [ref=e183]\n- gridcell \"\" [ref=e184]\n- gridcell \"5044\" [ref=e185]\n- gridcell \"269\" [ref=e186]\n- gridcell \"150544\" [ref=e187]\n- gridcell \"task_ready\" [ref=e188]\n- gridcell \"IDLE\" [ref=e189]\n- gridcell \"producer\" [ref=e190]\n- gridcell \"\" [ref=e191]\n- gridcell \"5032\" [ref=e192]\n- gridcell \"268\" [ref=e193]\n- gridcell \"150542\" [ref=e194]\n- gridcell \"task_ready\" [ref=e195]\n- gridcell \"IDLE\" [ref=e196]\n- gridcell \"supervisor\" [ref=e197]\n- gridcell \"\" [ref=e198]\n- gridcell \"5020\" [ref=e199]\n- gridcell \"267\" [ref=e200]\n- button \"上一頁\" [disabled, ref=e31]\n- button \"下一頁\" [ref=e32]\n- heading \"證據詳情\" [level=2, ref=e9]\n- button \"解除固定\" [ref=e10]\n- heading \"事件詳細資料\" [level=3, ref=e17]\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "wait",
+      "--fn",
+      "document.querySelector(\"#sort-label\").textContent.includes(\"↓\")"
+    ],
+    "exit_code": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "document.querySelector(\"#sort-label\").textContent"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":\"排序：ticks ↓；點欄名切換\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "(() => {const r=document.querySelector(\".tabulator-col + .tabulator-col-resize-handle\").getBoundingClientRect();return {x:r.x+r.width/2,y:r.y+r.height/2};})()"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":{\"x\":390,\"y\":572.6875}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "document.querySelector(\".tabulator-col\").getBoundingClientRect().width"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":135},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "mouse",
+      "move",
+      "390",
+      "573"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "mouse",
+      "down",
+      "left"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "mouse",
+      "move",
+      "435",
+      "573"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "mouse",
+      "up",
+      "left"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "document.querySelector(\".tabulator-col\").getBoundingClientRect().width"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":180},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "screenshot",
+      "--full",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/screenshots/offline/05-sort-resize.png"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/screenshots/offline/05-sort-resize.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "({window:document.querySelector(\"#window-label\").textContent,search:document.querySelector(\"#search-filter\").value,task:[...document.querySelector(\"#task-filter\").selectedOptions].map(x=>x.value),rows:document.querySelector(\"#row-count\").textContent})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":{\"rows\":\"符合 281 筆；本頁 20 筆。CSV 匯出全部 281 筆。\",\"search\":\"\",\"task\":[],\"window\":\"[0, 160571) ticks · 16.057 ms\"}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "document.querySelector(\"#export-events\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "download",
+      "#export-events",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/verification/offline/agent-browser/offline/events.csv"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Download saved to /Users/swchen.tw/git/percepio/poc/artifacts/verification/offline/agent-browser/offline/events.csv\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "document.querySelector(\"#export-metrics\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "download",
+      "#export-metrics",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/verification/offline/agent-browser/offline/metrics.csv"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Download saved to /Users/swchen.tw/git/percepio/poc/artifacts/verification/offline/agent-browser/offline/metrics.csv\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "screenshot",
+      "--full",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/screenshots/offline/06-csv.png"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/screenshots/offline/06-csv.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "({window:document.querySelector(\"#window-label\").textContent,search:document.querySelector(\"#search-filter\").value,task:[...document.querySelector(\"#task-filter\").selectedOptions].map(x=>x.value),rows:document.querySelector(\"#row-count\").textContent})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":{\"rows\":\"符合 281 筆；本頁 20 筆。CSV 匯出全部 281 筆。\",\"search\":\"\",\"task\":[],\"window\":\"[0, 160571) ticks · 16.057 ms\"}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "document.querySelector(\"#search-filter\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "fill",
+      "#search-filter",
+      "no-such-message"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "wait",
+      "--fn",
+      "Number(document.body.dataset.renderRevision)>0 && !document.querySelector(\"#status\").textContent.includes(\"正在\")"
+    ],
+    "exit_code": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "snapshot",
+      "-i"
+    ],
+    "exit_code": 0,
+    "stdout": "- heading \"PSF Lab\" [level=1, ref=e2]\n- button \"切換明暗模式\" [ref=e3]\n- combobox \"已儲存 trace\" [expanded=false, ref=e1]: trace.psf\n  - option \"已儲存 trace\" [ref=e4]\n  - option \"trace.psf\" [selected, ref=e5]\n- heading \"篩選\" [level=2, ref=e6]\n- button \"重設\" [ref=e7]\n- listbox \"Task 篩選\" [ref=e11]\n  - option \"TzCtrl\" [ref=e18]\n  - option \"producer\" [ref=e19]\n  - option \"consumer\" [ref=e20]\n  - option \"supervisor\" [ref=e21]\n  - option \"IDLE\" [ref=e22]\n- combobox \"物件篩選\" [expanded=false, ref=e12]: 全部物件\n  - option \"全部物件\" [selected, ref=e33]\n  - option \"System Heap · unknown\" [ref=e34]\n  - option \"TzCtrl · task\" [ref=e35]\n  - option \"POC · channel\" [ref=e36]\n  - option \"messages · queue\" [ref=e37]\n  - option \"producer · task\" [ref=e38]\n  - option \"consumer · task\" [ref=e39]\n  - option \"supervisor · task\" [ref=e40]\n  - option \"IDLE · task\" [ref=e41]\n- combobox \"Channel 篩選\" [expanded=false, ref=e13]: 全部 channel\n  - option \"全部 channel\" [selected, ref=e42]\n  - option \"POC\" [ref=e43]\n- combobox \"事件類型篩選\" [expanded=false, ref=e14]: 全部事件\n  - option \"全部事件\" [selected, ref=e44]\n  - option \"trace_start (0x1)\" [ref=e45]\n  - option \"object_name (0x3)\" [ref=e46]\n  - option \"task_create (0x10)\" [ref=e47]\n  - option \"queue_create (0x11)\" [ref=e48]\n  - option \"task_ready (0x30)\" [ref=e49]\n  - option \"new_time (0x31)\" [ref=e50]\n  - option \"task_switch (0x37)\" [ref=e51]\n  - option \"queue_send (0x50)\" [ref=e52]\n  - option \"queue_receive (0x60)\" [ref=e53]\n  - option \"queue_receive_block (0x66)\" [ref=e54]\n  - option \"task_delay (0x7a)\" [ref=e55]\n  - option \"task_suspend (0x7b)\" [ref=e56]\n  - option \"user_event (0x92)\" [ref=e57]\n- textbox \"文字搜尋\" [ref=e15]: no-such-message\n- textbox \"時間起點\" [ref=e23]\n- textbox \"時間終點\" [ref=e24]\n- button \"套用時間窗口\" [ref=e16]\n- button \"查看品質與來源\" [ref=e8]\n- heading \"Task 時間軸\" [level=2, ref=e25]\n- button \"拖曳選取窗口\" [ref=e58]\n- button \"完整時間\" [ref=e59]\n- heading \"Task execution share\" [level=2, ref=e26]\n- heading \"User-event signal\" [level=2, ref=e27]\n- heading \"事件紀錄\" [level=2, ref=e28]\n- button \"匯出統計 CSV\" [ref=e29]\n- button \"匯出事件 CSV\" [ref=e30]\n- columnheader \"時間 ticks\" [ref=e61]\n- columnheader \"事件\" [ref=e62]\n- columnheader \"Task\" [ref=e63]\n- columnheader \"物件\" [ref=e64]\n- columnheader \"訊息\" [ref=e65]\n- columnheader \"Offset\" [ref=e66]\n- columnheader \"Seq\" [ref=e67]\n- generic \"目前沒有符合的事件\" [ref=e60] focusable [tabindex]\n- button \"上一頁\" [disabled, ref=e31]\n- button \"下一頁\" [disabled, ref=e32]\n- heading \"證據詳情\" [level=2, ref=e9]\n- button \"解除固定\" [ref=e10]\n- heading \"事件詳細資料\" [level=3, ref=e17]\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "document.querySelector(\"#row-count\").textContent"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":\"符合 0 筆；本頁 0 筆。CSV 匯出全部 0 筆。\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "screenshot",
+      "--full",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/screenshots/offline/07-empty-filter.png"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/screenshots/offline/07-empty-filter.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "({window:document.querySelector(\"#window-label\").textContent,search:document.querySelector(\"#search-filter\").value,task:[...document.querySelector(\"#task-filter\").selectedOptions].map(x=>x.value),rows:document.querySelector(\"#row-count\").textContent})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":{\"rows\":\"符合 0 筆；本頁 0 筆。CSV 匯出全部 0 筆。\",\"search\":\"no-such-message\",\"task\":[],\"window\":\"[0, 160571) ticks · 16.057 ms\"}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "document.querySelector(\"#reset\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "click",
+      "#reset"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "wait",
+      "--fn",
+      "Number(document.body.dataset.renderRevision)>0 && !document.querySelector(\"#status\").textContent.includes(\"正在\")"
+    ],
+    "exit_code": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "snapshot",
+      "-i"
+    ],
+    "exit_code": 0,
+    "stdout": "- heading \"PSF Lab\" [level=1, ref=e2]\n- button \"切換明暗模式\" [ref=e3]\n- combobox \"已儲存 trace\" [expanded=false, ref=e1]: trace.psf\n  - option \"已儲存 trace\" [ref=e4]\n  - option \"trace.psf\" [selected, ref=e5]\n- heading \"篩選\" [level=2, ref=e6]\n- button \"重設\" [ref=e7]\n- listbox \"Task 篩選\" [ref=e11]\n  - option \"TzCtrl\" [ref=e18]\n  - option \"producer\" [ref=e19]\n  - option \"consumer\" [ref=e20]\n  - option \"supervisor\" [ref=e21]\n  - option \"IDLE\" [ref=e22]\n- combobox \"物件篩選\" [expanded=false, ref=e12]: 全部物件\n  - option \"全部物件\" [selected, ref=e33]\n  - option \"System Heap · unknown\" [ref=e34]\n  - option \"TzCtrl · task\" [ref=e35]\n  - option \"POC · channel\" [ref=e36]\n  - option \"messages · queue\" [ref=e37]\n  - option \"producer · task\" [ref=e38]\n  - option \"consumer · task\" [ref=e39]\n  - option \"supervisor · task\" [ref=e40]\n  - option \"IDLE · task\" [ref=e41]\n- combobox \"Channel 篩選\" [expanded=false, ref=e13]: 全部 channel\n  - option \"全部 channel\" [selected, ref=e42]\n  - option \"POC\" [ref=e43]\n- combobox \"事件類型篩選\" [expanded=false, ref=e14]: 全部事件\n  - option \"全部事件\" [selected, ref=e44]\n  - option \"trace_start (0x1)\" [ref=e45]\n  - option \"object_name (0x3)\" [ref=e46]\n  - option \"task_create (0x10)\" [ref=e47]\n  - option \"queue_create (0x11)\" [ref=e48]\n  - option \"task_ready (0x30)\" [ref=e49]\n  - option \"new_time (0x31)\" [ref=e50]\n  - option \"task_switch (0x37)\" [ref=e51]\n  - option \"queue_send (0x50)\" [ref=e52]\n  - option \"queue_receive (0x60)\" [ref=e53]\n  - option \"queue_receive_block (0x66)\" [ref=e54]\n  - option \"task_delay (0x7a)\" [ref=e55]\n  - option \"task_suspend (0x7b)\" [ref=e56]\n  - option \"user_event (0x92)\" [ref=e57]\n- textbox \"文字搜尋\" [ref=e15]\n- textbox \"時間起點\" [ref=e23]\n- textbox \"時間終點\" [ref=e24]\n- button \"套用時間窗口\" [ref=e16]\n- button \"查看品質與來源\" [ref=e8]\n- heading \"Task 時間軸\" [level=2, ref=e25]\n- button \"拖曳選取窗口\" [ref=e58]\n- button \"完整時間\" [ref=e59]\n- heading \"Task execution share\" [level=2, ref=e26]\n- heading \"User-event signal\" [level=2, ref=e27]\n- heading \"事件紀錄\" [level=2, ref=e28]\n- button \"匯出統計 CSV\" [ref=e29]\n- button \"匯出事件 CSV\" [ref=e30]\n- columnheader \"時間 ticks\" [ref=e201]\n- columnheader \"事件\" [ref=e202]\n- columnheader \"Task\" [ref=e203]\n- columnheader \"物件\" [ref=e204]\n- columnheader \"訊息\" [ref=e205]\n- columnheader \"Offset\" [ref=e206]\n- columnheader \"Seq\" [ref=e207]\n- generic \"0trace_startUnknown—16863object_nameUnknownPOC18079queue_createUnknownmessages196815object_nameUn\" [ref=e60] focusable [tabindex]\n- gridcell \"0\" [ref=e61]\n- gridcell \"trace_start\" [ref=e62]\n- gridcell \"Unknown\" [ref=e63]\n- gridcell \"—\" [ref=e64]\n- gridcell \"\" [ref=e65]\n- gridcell \"168\" [ref=e66]\n- gridcell \"6\" [ref=e67]\n- gridcell \"3\" [ref=e68]\n- gridcell \"object_name\" [ref=e69]\n- gridcell \"Unknown\" [ref=e70]\n- gridcell \"POC\" [ref=e71]\n- gridcell \"\" [ref=e72]\n- gridcell \"180\" [ref=e73]\n- gridcell \"7\" [ref=e74]\n- gridcell \"9\" [ref=e75]\n- gridcell \"queue_create\" [ref=e76]\n- gridcell \"Unknown\" [ref=e77]\n- gridcell \"messages\" [ref=e78]\n- gridcell \"\" [ref=e79]\n- gridcell \"196\" [ref=e80]\n- gridcell \"8\" [ref=e81]\n- gridcell \"15\" [ref=e82]\n- gridcell \"object_name\" [ref=e83]\n- gridcell \"Unknown\" [ref=e84]\n- gridcell \"messages\" [ref=e85]\n- gridcell \"\" [ref=e86]\n- gridcell \"212\" [ref=e87]\n- gridcell \"9\" [ref=e88]\n- gridcell \"111\" [ref=e89]\n- gridcell \"object_name\" [ref=e90]\n- gridcell \"Unknown\" [ref=e91]\n- gridcell \"producer\" [ref=e92]\n- gridcell \"\" [ref=e93]\n- gridcell \"236\" [ref=e94]\n- gridcell \"10\" [ref=e95]\n- gridcell \"114\" [ref=e96]\n- gridcell \"task_create\" [ref=e97]\n- gridcell \"Unknown\" [ref=e98]\n- gridcell \"producer\" [ref=e99]\n- gridcell \"\" [ref=e100]\n- gridcell \"260\" [ref=e101]\n- gridcell \"11\" [ref=e102]\n- gridcell \"116\" [ref=e103]\n- gridcell \"task_ready\" [ref=e104]\n- gridcell \"Unknown\" [ref=e105]\n- gridcell \"producer\" [ref=e106]\n- gridcell \"\" [ref=e107]\n- gridcell \"276\" [ref=e108]\n- gridcell \"12\" [ref=e109]\n- gridcell \"210\" [ref=e110]\n- gridcell \"object_name\" [ref=e111]\n- gridcell \"Unknown\" [ref=e112]\n- gridcell \"consumer\" [ref=e113]\n- gridcell \"\" [ref=e114]\n- gridcell \"288\" [ref=e115]\n- gridcell \"13\" [ref=e116]\n- gridcell \"213\" [ref=e117]\n- gridcell \"task_create\" [ref=e118]\n- gridcell \"Unknown\" [ref=e119]\n- gridcell \"consumer\" [ref=e120]\n- gridcell \"\" [ref=e121]\n- gridcell \"312\" [ref=e122]\n- gridcell \"14\" [ref=e123]\n- gridcell \"215\" [ref=e124]\n- gridcell \"task_ready\" [ref=e125]\n- gridcell \"Unknown\" [ref=e126]\n- gridcell \"consumer\" [ref=e127]\n- gridcell \"\" [ref=e128]\n- gridcell \"328\" [ref=e129]\n- gridcell \"15\" [ref=e130]\n- gridcell \"391\" [ref=e131]\n- gridcell \"object_name\" [ref=e132]\n- gridcell \"Unknown\" [ref=e133]\n- gridcell \"supervisor\" [ref=e134]\n- gridcell \"\" [ref=e135]\n- gridcell \"340\" [ref=e136]\n- gridcell \"16\" [ref=e137]\n- gridcell \"395\" [ref=e138]\n- gridcell \"task_create\" [ref=e139]\n- gridcell \"Unknown\" [ref=e140]\n- gridcell \"supervisor\" [ref=e141]\n- gridcell \"\" [ref=e142]\n- gridcell \"364\" [ref=e143]\n- gridcell \"17\" [ref=e144]\n- gridcell \"396\" [ref=e145]\n- gridcell \"task_ready\" [ref=e146]\n- gridcell \"Unknown\" [ref=e147]\n- gridcell \"supervisor\" [ref=e148]\n- gridcell \"\" [ref=e149]\n- gridcell \"380\" [ref=e150]\n- gridcell \"18\" [ref=e151]\n- gridcell \"449\" [ref=e152]\n- gridcell \"object_name\" [ref=e153]\n- gridcell \"Unknown\" [ref=e154]\n- gridcell \"IDLE\" [ref=e155]\n- gridcell \"\" [ref=e156]\n- gridcell \"392\" [ref=e157]\n- gridcell \"19\" [ref=e158]\n- gridcell \"452\" [ref=e159]\n- gridcell \"task_create\" [ref=e160]\n- gridcell \"Unknown\" [ref=e161]\n- gridcell \"IDLE\" [ref=e162]\n- gridcell \"\" [ref=e163]\n- gridcell \"412\" [ref=e164]\n- gridcell \"20\" [ref=e165]\n- gridcell \"453\" [ref=e166]\n- gridcell \"task_ready\" [ref=e167]\n- gridcell \"Unknown\" [ref=e168]\n- gridcell \"IDLE\" [ref=e169]\n- gridcell \"\" [ref=e170]\n- gridcell \"428\" [ref=e171]\n- gridcell \"21\" [ref=e172]\n- gridcell \"455\" [ref=e173]\n- gridcell \"task_switch\" [ref=e174]\n- gridcell \"supervisor\" [ref=e175]\n- gridcell \"supervisor\" [ref=e176]\n- gridcell \"\" [ref=e177]\n- gridcell \"440\" [ref=e178]\n- gridcell \"22\" [ref=e179]\n- gridcell \"540\" [ref=e180]\n- gridcell \"task_delay\" [ref=e181]\n- gridcell \"supervisor\" [ref=e182]\n- gridcell \"supervisor\" [ref=e183]\n- gridcell \"\" [ref=e184]\n- gridcell \"456\" [ref=e185]\n- gridcell \"23\" [ref=e186]\n- gridcell \"544\" [ref=e187]\n- gridcell \"task_switch\" [ref=e188]\n- gridcell \"consumer\" [ref=e189]\n- gridcell \"consumer\" [ref=e190]\n- gridcell \"\" [ref=e191]\n- gridcell \"468\" [ref=e192]\n- gridcell \"24\" [ref=e193]\n- gridcell \"547\" [ref=e194]\n- gridcell \"queue_receive_block\" [ref=e195]\n- gridcell \"consumer\" [ref=e196]\n- gridcell \"messages\" [ref=e197]\n- gridcell \"\" [ref=e198]\n- gridcell \"484\" [ref=e199]\n- gridcell \"25\" [ref=e200]\n- button \"上一頁\" [disabled, ref=e31]\n- button \"下一頁\" [ref=e32]\n- heading \"證據詳情\" [level=2, ref=e9]\n- button \"解除固定\" [ref=e10]\n- heading \"事件詳細資料\" [level=3, ref=e17]\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "document.querySelector(\"#show-quality\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "click",
+      "#show-quality"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "document.querySelector(\"#details\").scrollIntoView({block:\"start\"})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "screenshot",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/screenshots/offline/08-quality.png"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/screenshots/offline/08-quality.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "({window:document.querySelector(\"#window-label\").textContent,search:document.querySelector(\"#search-filter\").value,task:[...document.querySelector(\"#task-filter\").selectedOptions].map(x=>x.value),rows:document.querySelector(\"#row-count\").textContent})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":{\"rows\":\"符合 281 筆；本頁 20 筆。CSV 匯出全部 281 筆。\",\"search\":\"\",\"task\":[],\"window\":\"[0, 160571) ticks · 16.057 ms\"}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "network",
+      "requests"
+    ],
+    "exit_code": 0,
+    "stdout": "[D4B58226A9E24536187E229EAC809C4C] GET file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html (Document) 200\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "errors"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "close"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Browser closed\n",
+    "stderr": ""
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "command": [
+    "curl",
+    "--silent",
+    "--show-error",
+    "--max-time",
+    "60",
+    "-D",
+    "/Users/swchen.tw/git/percepio/poc/artifacts/verification/offline/http/runs.headers",
+    "-o",
+    "/Users/swchen.tw/git/percepio/poc/artifacts/verification/offline/http/runs.body",
+    "-w",
+    "%{http_code}",
+    "http://127.0.0.1:8767/api/runs"
+  ],
+  "returncode": 0,
+  "stderr": "",
+  "status": "200"
+}

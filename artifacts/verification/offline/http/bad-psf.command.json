@@ -1,0 +1,21 @@
+{
+  "command": [
+    "curl",
+    "--silent",
+    "--show-error",
+    "--max-time",
+    "60",
+    "-D",
+    "/Users/swchen.tw/git/percepio/poc/artifacts/verification/offline/http/bad-psf.headers",
+    "-o",
+    "/Users/swchen.tw/git/percepio/poc/artifacts/verification/offline/http/bad-psf.body",
+    "-w",
+    "%{http_code}",
+    "-F",
+    "file=@/Users/swchen.tw/git/percepio/poc/README.md",
+    "http://127.0.0.1:8767/api/traces"
+  ],
+  "returncode": 0,
+  "stderr": "",
+  "status": "422"
+}

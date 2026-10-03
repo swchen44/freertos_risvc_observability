@@ -1,0 +1,19 @@
+{
+  "command": [
+    "curl",
+    "--silent",
+    "--show-error",
+    "--max-time",
+    "60",
+    "-D",
+    "/Users/swchen.tw/git/percepio/poc/artifacts/verification/offline/http/missing.headers",
+    "-o",
+    "/Users/swchen.tw/git/percepio/poc/artifacts/verification/offline/http/missing.body",
+    "-w",
+    "%{http_code}",
+    "http://127.0.0.1:8767/api/traces/00000000000000000000000000000000"
+  ],
+  "returncode": 0,
+  "stderr": "",
+  "status": "404"
+}

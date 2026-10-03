@@ -1,0 +1,26 @@
+
+> test:e2e
+> playwright test
+
+[WebServer] INFO:     Started server process [5713]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8766 (Press CTRL+C to quit)
+
+Running 11 tests using 1 worker
+
+(node:5715) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/dashboard.spec.mjs:77:1 › B01/02 real upload, SVG, keyboard filters and full sorted CSV (1.9s)
+  ✓   2 tests/e2e/dashboard.spec.mjs:112:1 › B03 task/object/channel/type filters and CPU denominator/metric CSV (1.6s)
+  ✓   3 tests/e2e/dashboard.spec.mjs:161:1 › B04/05 brush, wheel zoom, drag pan and reset change query window (1.6s)
+  ✓   4 tests/e2e/dashboard.spec.mjs:190:1 › B06/07 hover, pin, column resize and reorder use real DOM (1.5s)
+  ✓   5 tests/e2e/dashboard.spec.mjs:231:1 › B08 three verified comparisons and request-relative chart (582ms)
+  ✓   6 tests/e2e/dashboard.spec.mjs:248:1 › B09 unsupported, partial and empty trace show truthful quality (558ms)
+  ✓   7 tests/e2e/dashboard.spec.mjs:274:1 › B10 raw HTML remains text, null timestamps and unknown frequency (403ms)
+  ✓   8 tests/e2e/dashboard.spec.mjs:306:1 › B11 delayed old filter response cannot overwrite newer selection (1.3s)
+  ✓   9 tests/e2e/dashboard.spec.mjs:337:1 › B12/13/14 1k/10k/100k capacity, bounded SVG, measured render and filter (12.3s)
+  ✓  10 tests/e2e/dashboard.spec.mjs:392:1 › B11 source race: delayed run download cannot replace a newer upload (1.5s)
+  ✓  11 tests/e2e/dashboard.spec.mjs:421:1 › review: signal plot explicitly marks 2000 of 2001 samples while CSV remains complete (865ms)
+
+  11 passed (26.1s)

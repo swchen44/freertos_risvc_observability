@@ -1,0 +1,23 @@
+{
+  "command": [
+    "curl",
+    "--silent",
+    "--show-error",
+    "--max-time",
+    "60",
+    "-D",
+    "/Users/swchen.tw/git/percepio/poc/artifacts/verification/offline/http/comparison.headers",
+    "-o",
+    "/Users/swchen.tw/git/percepio/poc/artifacts/verification/offline/http/comparison.body",
+    "-w",
+    "%{http_code}",
+    "-H",
+    "Content-Type: application/json",
+    "--data",
+    "{\"pair_id\": \"logger\", \"run_ids\": [\"20261003T080449Z-logger_bad-0a4693348d\", \"20261003T080457Z-logger_fixed-3794ccc2d6\"]}",
+    "http://127.0.0.1:8767/api/comparisons"
+  ],
+  "returncode": 0,
+  "stderr": "",
+  "status": "200"
+}
