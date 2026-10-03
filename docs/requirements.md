@@ -33,3 +33,11 @@ QEMU 可以驗證指定軟體行為與資料流程；實體效能、最差 IRQ�
 ## M1 實作證據
 
 環境、parser、FreeRTOS hooks／時鐘、Queue runner／獨立 oracle 已驗證。42 個 unit tests、2 個 capture integration、1 個 clean-run E2E，以及 native transport tests 通過。M2 對照案例及 M3 Dashboard 尚未完成。正式證據見 README／日誌。U01～U16 硬體產品研究仍依原狀態追蹤。
+
+## 2026-10-03 新增要求：cache／bus 與分析功能完整性
+
+- C01：研究 L1I／L1D／L2 read/write miss、miss rate、penalty；官方 QEMU plugin 能力已查，尚未實跑。
+- C02：研究 bus latency／仲裁與 timing feedback，明確區分 functional QEMU、cache 模型與實體量測。
+- C03：PSF task usage 的公式、ISR／idle／unknown 邊界與視覺化必須列入 Dashboard；不以事件數當 CPU 百分比。
+- C04：持續維護 Tracealyzer 功能對照，不只 CPU 百分比；execution／response、事件、同步物件、user data、記憶體等逐項標示資料需求與完成狀態。
+- 詳見 [Cache／Bus 與 CPU 使用率](research/Cache-Bus與CPU使用率.md)。CPU core／SoC 資訊已詢問；等待回答不阻塞現有實作。
