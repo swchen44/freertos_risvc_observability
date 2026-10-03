@@ -1,0 +1,121 @@
+{
+  "case_id": "ordered_locks",
+  "verdict": "pass",
+  "assertions": [
+    {
+      "name": "case_id",
+      "expected": "ordered_locks",
+      "actual": "ordered_locks",
+      "passed": true
+    },
+    {
+      "name": "oracle_complete",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "transport_ok",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "outcome",
+      "expected": "normal",
+      "actual": "normal",
+      "passed": true
+    },
+    {
+      "name": "platform",
+      "expected": "FreeRTOS",
+      "actual": "FreeRTOS",
+      "passed": true
+    },
+    {
+      "name": "schema",
+      "expected": "1.2.0",
+      "actual": "1.2.0",
+      "passed": true
+    },
+    {
+      "name": "word_bytes",
+      "expected": 4,
+      "actual": 4,
+      "passed": true
+    },
+    {
+      "name": "clock_hz",
+      "expected": "10000000",
+      "actual": "10000000",
+      "passed": true
+    },
+    {
+      "name": "oracle_clock_hz",
+      "expected": 10000000,
+      "actual": 10000000,
+      "passed": true
+    },
+    {
+      "name": "tick_hz",
+      "expected": 1000,
+      "actual": 1000,
+      "passed": true
+    },
+    {
+      "name": "oracle_tick_hz",
+      "expected": 1000,
+      "actual": 1000,
+      "passed": true
+    },
+    {
+      "name": "parse_issues",
+      "expected": [],
+      "actual": [],
+      "passed": true
+    },
+    {
+      "name": "complete_markers",
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "name": "psf_work_done",
+      "expected": [
+        1,
+        2
+      ],
+      "actual": [
+        1,
+        2
+      ],
+      "passed": true
+    },
+    {
+      "name": "oracle_work_done",
+      "expected": [
+        1,
+        2
+      ],
+      "actual": [
+        1,
+        2
+      ],
+      "passed": true
+    },
+    {
+      "name": "no_wait_cycle",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "name": "all_locks_released",
+      "expected": {},
+      "actual": {},
+      "passed": true
+    }
+  ],
+  "issues": []
+}

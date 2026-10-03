@@ -43,3 +43,5 @@ QEMU 可以驗證指定軟體行為與資料流程；實體效能、最差 IRQ�
 - 詳見 [Cache／Bus 與 CPU 使用率](research/Cache-Bus與CPU使用率.md)。CPU core／SoC 資訊已詢問；等待回答不阻塞現有實作。
 
 C01～C02 目的補充：使用者接受非 cycle-accurate、以儘量接近平台的模型比較軟體 data／程式碼最佳化前後的相對差異。排在 M1～M3 完成後，見 [後續計畫](plans/04-cache-relative-optimization.md)。不要求先取得精確硬體 timing 才能做相對比較。
+
+M2完成：七配置三次重跑21/21、每輪三組pair9/9通過；原始證據與案例解說見 [case-results](case-results.md)。M3互動服務尚未完成。

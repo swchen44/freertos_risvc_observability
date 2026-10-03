@@ -1,0 +1,1839 @@
+{
+  "schema_version": 1,
+  "source": {
+    "name": "trace.psf",
+    "sha256": "bf0d8995a734d5c2943486453ee0ee20f318f3d6eaa69ff3ffff7a1c2a35d818",
+    "byte_length": 1544
+  },
+  "platform": {
+    "format_version": 14,
+    "platform_id": 6817,
+    "name": "FreeRTOS",
+    "schema": "1.2.0",
+    "word_bytes": 4,
+    "endianness": "little",
+    "core_count": 1
+  },
+  "clock": {
+    "frequency_hz": "10000000",
+    "tick_hz": 1000,
+    "type": 1,
+    "origin_ticks": "1325",
+    "time_model": "qemu-icount",
+    "assumptions": [
+      "less_than_one_wrap_between_events"
+    ]
+  },
+  "objects": [
+    {
+      "object_id": "0x800a0b90:0",
+      "address": "0x800a0b90",
+      "epoch": 0,
+      "kind": "unknown",
+      "name": "System Heap",
+      "created_offset": null,
+      "deleted_offset": null,
+      "first_seen_offset": 72
+    },
+    {
+      "object_id": "0x80080730:0",
+      "address": "0x80080730",
+      "epoch": 0,
+      "kind": "task",
+      "name": "TzCtrl",
+      "created_offset": null,
+      "deleted_offset": null,
+      "first_seen_offset": 120
+    },
+    {
+      "object_id": "0x800a15b0:0",
+      "address": "0x800a15b0",
+      "epoch": 0,
+      "kind": "channel",
+      "name": "POC",
+      "created_offset": null,
+      "deleted_offset": null,
+      "first_seen_offset": 180
+    },
+    {
+      "object_id": "0x800807a0:0",
+      "address": "0x800807a0",
+      "epoch": 0,
+      "kind": "mutex",
+      "name": "lock_A",
+      "created_offset": 196,
+      "deleted_offset": null,
+      "first_seen_offset": 196
+    },
+    {
+      "object_id": "0x80080800:0",
+      "address": "0x80080800",
+      "epoch": 0,
+      "kind": "mutex",
+      "name": "lock_B",
+      "created_offset": 224,
+      "deleted_offset": null,
+      "first_seen_offset": 224
+    },
+    {
+      "object_id": "0x80081870:0",
+      "address": "0x80081870",
+      "epoch": 0,
+      "kind": "task",
+      "name": "supervisor",
+      "created_offset": 316,
+      "deleted_offset": null,
+      "first_seen_offset": 292
+    },
+    {
+      "object_id": "0x800820f0:0",
+      "address": "0x800820f0",
+      "epoch": 0,
+      "kind": "task",
+      "name": "T1",
+      "created_offset": 360,
+      "deleted_offset": null,
+      "first_seen_offset": 344
+    },
+    {
+      "object_id": "0x80082970:0",
+      "address": "0x80082970",
+      "epoch": 0,
+      "kind": "task",
+      "name": "T2",
+      "created_offset": 404,
+      "deleted_offset": null,
+      "first_seen_offset": 388
+    },
+    {
+      "object_id": "0x80082df0:0",
+      "address": "0x80082df0",
+      "epoch": 0,
+      "kind": "task",
+      "name": "IDLE",
+      "created_offset": 452,
+      "deleted_offset": null,
+      "first_seen_offset": 432
+    }
+  ],
+  "events": [
+    {
+      "event_id": "0:168",
+      "offset": 168,
+      "id": 1,
+      "sequence": 6,
+      "core": 0,
+      "timestamp_raw": 1325,
+      "ticks": "0",
+      "payload_hex": "02000000",
+      "kind": "trace_start",
+      "actor_id": null,
+      "object_id": null,
+      "fields": {
+        "raw_words": [
+          "2"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:180",
+      "offset": 180,
+      "id": 3,
+      "sequence": 7,
+      "core": 0,
+      "timestamp_raw": 1329,
+      "ticks": "4",
+      "payload_hex": "b0150a80504f4300",
+      "kind": "object_name",
+      "actor_id": null,
+      "object_id": "0x800a15b0:0",
+      "fields": {
+        "raw_words": [
+          "2148144560",
+          "4411216"
+        ],
+        "name": "POC"
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:196",
+      "offset": 196,
+      "id": 19,
+      "sequence": 8,
+      "core": 0,
+      "timestamp_raw": 1334,
+      "ticks": "9",
+      "payload_hex": "a007088000000000",
+      "kind": "mutex_create",
+      "actor_id": null,
+      "object_id": "0x800807a0:0",
+      "fields": {
+        "raw_words": [
+          "2148009888",
+          "0"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:212",
+      "offset": 212,
+      "id": 82,
+      "sequence": 9,
+      "core": 0,
+      "timestamp_raw": 1336,
+      "ticks": "11",
+      "payload_hex": "a0070880",
+      "kind": "mutex_give",
+      "actor_id": null,
+      "object_id": "0x800807a0:0",
+      "fields": {
+        "raw_words": [
+          "2148009888"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:224",
+      "offset": 224,
+      "id": 19,
+      "sequence": 10,
+      "core": 0,
+      "timestamp_raw": 1342,
+      "ticks": "17",
+      "payload_hex": "0008088000000000",
+      "kind": "mutex_create",
+      "actor_id": null,
+      "object_id": "0x80080800:0",
+      "fields": {
+        "raw_words": [
+          "2148009984",
+          "0"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:240",
+      "offset": 240,
+      "id": 82,
+      "sequence": 11,
+      "core": 0,
+      "timestamp_raw": 1344,
+      "ticks": "19",
+      "payload_hex": "00080880",
+      "kind": "mutex_give",
+      "actor_id": null,
+      "object_id": "0x80080800:0",
+      "fields": {
+        "raw_words": [
+          "2148009984"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:252",
+      "offset": 252,
+      "id": 3,
+      "sequence": 12,
+      "core": 0,
+      "timestamp_raw": 1351,
+      "ticks": "26",
+      "payload_hex": "a00708806c6f636b5f410000",
+      "kind": "object_name",
+      "actor_id": null,
+      "object_id": "0x800807a0:0",
+      "fields": {
+        "raw_words": [
+          "2148009888",
+          "1801678700",
+          "16735"
+        ],
+        "name": "lock_A"
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:272",
+      "offset": 272,
+      "id": 3,
+      "sequence": 13,
+      "core": 0,
+      "timestamp_raw": 1359,
+      "ticks": "34",
+      "payload_hex": "000808806c6f636b5f420000",
+      "kind": "object_name",
+      "actor_id": null,
+      "object_id": "0x80080800:0",
+      "fields": {
+        "raw_words": [
+          "2148009984",
+          "1801678700",
+          "16991"
+        ],
+        "name": "lock_B"
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:292",
+      "offset": 292,
+      "id": 3,
+      "sequence": 14,
+      "core": 0,
+      "timestamp_raw": 1536,
+      "ticks": "211",
+      "payload_hex": "7018088073757065727669736f720000",
+      "kind": "object_name",
+      "actor_id": null,
+      "object_id": "0x80081870:0",
+      "fields": {
+        "raw_words": [
+          "2148014192",
+          "1701868915",
+          "1936291442",
+          "29295"
+        ],
+        "name": "supervisor"
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:316",
+      "offset": 316,
+      "id": 16,
+      "sequence": 15,
+      "core": 0,
+      "timestamp_raw": 1540,
+      "ticks": "215",
+      "payload_hex": "7018088005000000",
+      "kind": "task_create",
+      "actor_id": null,
+      "object_id": "0x80081870:0",
+      "fields": {
+        "raw_words": [
+          "2148014192",
+          "5"
+        ],
+        "priority": 5
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:332",
+      "offset": 332,
+      "id": 48,
+      "sequence": 16,
+      "core": 0,
+      "timestamp_raw": 1541,
+      "ticks": "216",
+      "payload_hex": "70180880",
+      "kind": "task_ready",
+      "actor_id": null,
+      "object_id": "0x80081870:0",
+      "fields": {
+        "raw_words": [
+          "2148014192"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:344",
+      "offset": 344,
+      "id": 3,
+      "sequence": 17,
+      "core": 0,
+      "timestamp_raw": 1635,
+      "ticks": "310",
+      "payload_hex": "f020088054310000",
+      "kind": "object_name",
+      "actor_id": null,
+      "object_id": "0x800820f0:0",
+      "fields": {
+        "raw_words": [
+          "2148016368",
+          "12628"
+        ],
+        "name": "T1"
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:360",
+      "offset": 360,
+      "id": 16,
+      "sequence": 18,
+      "core": 0,
+      "timestamp_raw": 1637,
+      "ticks": "312",
+      "payload_hex": "f020088003000000",
+      "kind": "task_create",
+      "actor_id": null,
+      "object_id": "0x800820f0:0",
+      "fields": {
+        "raw_words": [
+          "2148016368",
+          "3"
+        ],
+        "priority": 3
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:376",
+      "offset": 376,
+      "id": 48,
+      "sequence": 19,
+      "core": 0,
+      "timestamp_raw": 1638,
+      "ticks": "313",
+      "payload_hex": "f0200880",
+      "kind": "task_ready",
+      "actor_id": null,
+      "object_id": "0x800820f0:0",
+      "fields": {
+        "raw_words": [
+          "2148016368"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:388",
+      "offset": 388,
+      "id": 3,
+      "sequence": 20,
+      "core": 0,
+      "timestamp_raw": 1732,
+      "ticks": "407",
+      "payload_hex": "7029088054320000",
+      "kind": "object_name",
+      "actor_id": null,
+      "object_id": "0x80082970:0",
+      "fields": {
+        "raw_words": [
+          "2148018544",
+          "12884"
+        ],
+        "name": "T2"
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:404",
+      "offset": 404,
+      "id": 16,
+      "sequence": 21,
+      "core": 0,
+      "timestamp_raw": 1734,
+      "ticks": "409",
+      "payload_hex": "7029088003000000",
+      "kind": "task_create",
+      "actor_id": null,
+      "object_id": "0x80082970:0",
+      "fields": {
+        "raw_words": [
+          "2148018544",
+          "3"
+        ],
+        "priority": 3
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:420",
+      "offset": 420,
+      "id": 48,
+      "sequence": 22,
+      "core": 0,
+      "timestamp_raw": 1736,
+      "ticks": "411",
+      "payload_hex": "70290880",
+      "kind": "task_ready",
+      "actor_id": null,
+      "object_id": "0x80082970:0",
+      "fields": {
+        "raw_words": [
+          "2148018544"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:432",
+      "offset": 432,
+      "id": 3,
+      "sequence": 23,
+      "core": 0,
+      "timestamp_raw": 1789,
+      "ticks": "464",
+      "payload_hex": "f02d088049444c4500000000",
+      "kind": "object_name",
+      "actor_id": null,
+      "object_id": "0x80082df0:0",
+      "fields": {
+        "raw_words": [
+          "2148019696",
+          "1162626121",
+          "0"
+        ],
+        "name": "IDLE"
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:452",
+      "offset": 452,
+      "id": 16,
+      "sequence": 24,
+      "core": 0,
+      "timestamp_raw": 1792,
+      "ticks": "467",
+      "payload_hex": "f02d088000000000",
+      "kind": "task_create",
+      "actor_id": null,
+      "object_id": "0x80082df0:0",
+      "fields": {
+        "raw_words": [
+          "2148019696",
+          "0"
+        ],
+        "priority": 0
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:468",
+      "offset": 468,
+      "id": 48,
+      "sequence": 25,
+      "core": 0,
+      "timestamp_raw": 1793,
+      "ticks": "468",
+      "payload_hex": "f02d0880",
+      "kind": "task_ready",
+      "actor_id": null,
+      "object_id": "0x80082df0:0",
+      "fields": {
+        "raw_words": [
+          "2148019696"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:480",
+      "offset": 480,
+      "id": 55,
+      "sequence": 26,
+      "core": 0,
+      "timestamp_raw": 1795,
+      "ticks": "470",
+      "payload_hex": "7018088005000000",
+      "kind": "task_switch",
+      "actor_id": "0x80081870:0",
+      "object_id": "0x80081870:0",
+      "fields": {
+        "raw_words": [
+          "2148014192",
+          "5"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:496",
+      "offset": 496,
+      "id": 201,
+      "sequence": 27,
+      "core": 0,
+      "timestamp_raw": 1880,
+      "ticks": "555",
+      "payload_hex": "f0200880",
+      "kind": "task_notify",
+      "actor_id": "0x80081870:0",
+      "object_id": "0x800820f0:0",
+      "fields": {
+        "raw_words": [
+          "2148016368"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:508",
+      "offset": 508,
+      "id": 201,
+      "sequence": 28,
+      "core": 0,
+      "timestamp_raw": 1882,
+      "ticks": "557",
+      "payload_hex": "70290880",
+      "kind": "task_notify",
+      "actor_id": "0x80081870:0",
+      "object_id": "0x80082970:0",
+      "fields": {
+        "raw_words": [
+          "2148018544"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:520",
+      "offset": 520,
+      "id": 122,
+      "sequence": 29,
+      "core": 0,
+      "timestamp_raw": 1883,
+      "ticks": "558",
+      "payload_hex": "14000000",
+      "kind": "task_delay",
+      "actor_id": "0x80081870:0",
+      "object_id": "0x80081870:0",
+      "fields": {
+        "raw_words": [
+          "20"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:532",
+      "offset": 532,
+      "id": 55,
+      "sequence": 30,
+      "core": 0,
+      "timestamp_raw": 1888,
+      "ticks": "563",
+      "payload_hex": "f020088003000000",
+      "kind": "task_switch",
+      "actor_id": "0x800820f0:0",
+      "object_id": "0x800820f0:0",
+      "fields": {
+        "raw_words": [
+          "2148016368",
+          "3"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:548",
+      "offset": 548,
+      "id": 202,
+      "sequence": 31,
+      "core": 0,
+      "timestamp_raw": 1891,
+      "ticks": "566",
+      "payload_hex": "f020088064000000",
+      "kind": "task_notify_wait",
+      "actor_id": "0x800820f0:0",
+      "object_id": "0x800820f0:0",
+      "fields": {
+        "raw_words": [
+          "2148016368",
+          "100"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:564",
+      "offset": 564,
+      "id": 98,
+      "sequence": 32,
+      "core": 0,
+      "timestamp_raw": 1893,
+      "ticks": "568",
+      "payload_hex": "a0070880ffffffff",
+      "kind": "mutex_take",
+      "actor_id": "0x800820f0:0",
+      "object_id": "0x800807a0:0",
+      "fields": {
+        "raw_words": [
+          "2148009888",
+          "4294967295"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:580",
+      "offset": 580,
+      "id": 146,
+      "sequence": 33,
+      "core": 0,
+      "timestamp_raw": 1916,
+      "ticks": "591",
+      "payload_hex": "b0150a8001000000504f437c6f7264657265645f6c6f636b737c484f4c445f417c257500",
+      "kind": "user_event",
+      "actor_id": "0x800820f0:0",
+      "object_id": "0x800a15b0:0",
+      "fields": {
+        "raw_words": [
+          "2148144560",
+          "1",
+          "2084786000",
+          "1701081711",
+          "1600415090",
+          "1801678700",
+          "1330150515",
+          "1096762444",
+          "7677308"
+        ],
+        "channel": "POC",
+        "format": "POC|ordered_locks|HOLD_A|%u",
+        "arguments": [
+          "1"
+        ],
+        "message": "POC|ordered_locks|HOLD_A|1",
+        "case_id": "ordered_locks",
+        "phase": "HOLD_A",
+        "message_id": 1,
+        "request_id": 1
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:624",
+      "offset": 624,
+      "id": 146,
+      "sequence": 34,
+      "core": 0,
+      "timestamp_raw": 1941,
+      "ticks": "616",
+      "payload_hex": "b0150a8001000000504f437c6f7264657265645f6c6f636b737c574149545f427c257500",
+      "kind": "user_event",
+      "actor_id": "0x800820f0:0",
+      "object_id": "0x800a15b0:0",
+      "fields": {
+        "raw_words": [
+          "2148144560",
+          "1",
+          "2084786000",
+          "1701081711",
+          "1600415090",
+          "1801678700",
+          "1096252531",
+          "1113543753",
+          "7677308"
+        ],
+        "channel": "POC",
+        "format": "POC|ordered_locks|WAIT_B|%u",
+        "arguments": [
+          "1"
+        ],
+        "message": "POC|ordered_locks|WAIT_B|1",
+        "case_id": "ordered_locks",
+        "phase": "WAIT_B",
+        "message_id": 1,
+        "request_id": 1
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:668",
+      "offset": 668,
+      "id": 98,
+      "sequence": 35,
+      "core": 0,
+      "timestamp_raw": 1944,
+      "ticks": "619",
+      "payload_hex": "00080880ffffffff",
+      "kind": "mutex_take",
+      "actor_id": "0x800820f0:0",
+      "object_id": "0x80080800:0",
+      "fields": {
+        "raw_words": [
+          "2148009984",
+          "4294967295"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:684",
+      "offset": 684,
+      "id": 146,
+      "sequence": 36,
+      "core": 0,
+      "timestamp_raw": 1969,
+      "ticks": "644",
+      "payload_hex": "b0150a8001000000504f437c6f7264657265645f6c6f636b737c5345434f4e445f41435155495245447c257500000000",
+      "kind": "user_event",
+      "actor_id": "0x800820f0:0",
+      "object_id": "0x800a15b0:0",
+      "fields": {
+        "raw_words": [
+          "2148144560",
+          "1",
+          "2084786000",
+          "1701081711",
+          "1600415090",
+          "1801678700",
+          "1163099251",
+          "1145982787",
+          "1363362143",
+          "1163020629",
+          "1965390916",
+          "0"
+        ],
+        "channel": "POC",
+        "format": "POC|ordered_locks|SECOND_ACQUIRED|%u",
+        "arguments": [
+          "1"
+        ],
+        "message": "POC|ordered_locks|SECOND_ACQUIRED|1",
+        "case_id": "ordered_locks",
+        "phase": "SECOND_ACQUIRED",
+        "message_id": 1,
+        "request_id": 1
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:740",
+      "offset": 740,
+      "id": 82,
+      "sequence": 37,
+      "core": 0,
+      "timestamp_raw": 1974,
+      "ticks": "649",
+      "payload_hex": "00080880",
+      "kind": "mutex_give",
+      "actor_id": "0x800820f0:0",
+      "object_id": "0x80080800:0",
+      "fields": {
+        "raw_words": [
+          "2148009984"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:752",
+      "offset": 752,
+      "id": 82,
+      "sequence": 38,
+      "core": 0,
+      "timestamp_raw": 1977,
+      "ticks": "652",
+      "payload_hex": "a0070880",
+      "kind": "mutex_give",
+      "actor_id": "0x800820f0:0",
+      "object_id": "0x800807a0:0",
+      "fields": {
+        "raw_words": [
+          "2148009888"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:764",
+      "offset": 764,
+      "id": 146,
+      "sequence": 39,
+      "core": 0,
+      "timestamp_raw": 2001,
+      "ticks": "676",
+      "payload_hex": "b0150a8001000000504f437c6f7264657265645f6c6f636b737c574f524b5f444f4e457c25750000",
+      "kind": "user_event",
+      "actor_id": "0x800820f0:0",
+      "object_id": "0x800a15b0:0",
+      "fields": {
+        "raw_words": [
+          "2148144560",
+          "1",
+          "2084786000",
+          "1701081711",
+          "1600415090",
+          "1801678700",
+          "1331133555",
+          "1147095890",
+          "2084916815",
+          "29989"
+        ],
+        "channel": "POC",
+        "format": "POC|ordered_locks|WORK_DONE|%u",
+        "arguments": [
+          "1"
+        ],
+        "message": "POC|ordered_locks|WORK_DONE|1",
+        "case_id": "ordered_locks",
+        "phase": "WORK_DONE",
+        "message_id": 1,
+        "request_id": 1
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:812",
+      "offset": 812,
+      "id": 123,
+      "sequence": 40,
+      "core": 0,
+      "timestamp_raw": 2004,
+      "ticks": "679",
+      "payload_hex": "f0200880",
+      "kind": "task_suspend",
+      "actor_id": "0x800820f0:0",
+      "object_id": "0x800820f0:0",
+      "fields": {
+        "raw_words": [
+          "2148016368"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:824",
+      "offset": 824,
+      "id": 55,
+      "sequence": 41,
+      "core": 0,
+      "timestamp_raw": 2008,
+      "ticks": "683",
+      "payload_hex": "7029088003000000",
+      "kind": "task_switch",
+      "actor_id": "0x80082970:0",
+      "object_id": "0x80082970:0",
+      "fields": {
+        "raw_words": [
+          "2148018544",
+          "3"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:840",
+      "offset": 840,
+      "id": 202,
+      "sequence": 42,
+      "core": 0,
+      "timestamp_raw": 2011,
+      "ticks": "686",
+      "payload_hex": "7029088064000000",
+      "kind": "task_notify_wait",
+      "actor_id": "0x80082970:0",
+      "object_id": "0x80082970:0",
+      "fields": {
+        "raw_words": [
+          "2148018544",
+          "100"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:856",
+      "offset": 856,
+      "id": 98,
+      "sequence": 43,
+      "core": 0,
+      "timestamp_raw": 2013,
+      "ticks": "688",
+      "payload_hex": "a0070880ffffffff",
+      "kind": "mutex_take",
+      "actor_id": "0x80082970:0",
+      "object_id": "0x800807a0:0",
+      "fields": {
+        "raw_words": [
+          "2148009888",
+          "4294967295"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:872",
+      "offset": 872,
+      "id": 146,
+      "sequence": 44,
+      "core": 0,
+      "timestamp_raw": 2036,
+      "ticks": "711",
+      "payload_hex": "b0150a8002000000504f437c6f7264657265645f6c6f636b737c484f4c445f417c257500",
+      "kind": "user_event",
+      "actor_id": "0x80082970:0",
+      "object_id": "0x800a15b0:0",
+      "fields": {
+        "raw_words": [
+          "2148144560",
+          "2",
+          "2084786000",
+          "1701081711",
+          "1600415090",
+          "1801678700",
+          "1330150515",
+          "1096762444",
+          "7677308"
+        ],
+        "channel": "POC",
+        "format": "POC|ordered_locks|HOLD_A|%u",
+        "arguments": [
+          "2"
+        ],
+        "message": "POC|ordered_locks|HOLD_A|2",
+        "case_id": "ordered_locks",
+        "phase": "HOLD_A",
+        "message_id": 2,
+        "request_id": 2
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:916",
+      "offset": 916,
+      "id": 146,
+      "sequence": 45,
+      "core": 0,
+      "timestamp_raw": 2061,
+      "ticks": "736",
+      "payload_hex": "b0150a8002000000504f437c6f7264657265645f6c6f636b737c574149545f427c257500",
+      "kind": "user_event",
+      "actor_id": "0x80082970:0",
+      "object_id": "0x800a15b0:0",
+      "fields": {
+        "raw_words": [
+          "2148144560",
+          "2",
+          "2084786000",
+          "1701081711",
+          "1600415090",
+          "1801678700",
+          "1096252531",
+          "1113543753",
+          "7677308"
+        ],
+        "channel": "POC",
+        "format": "POC|ordered_locks|WAIT_B|%u",
+        "arguments": [
+          "2"
+        ],
+        "message": "POC|ordered_locks|WAIT_B|2",
+        "case_id": "ordered_locks",
+        "phase": "WAIT_B",
+        "message_id": 2,
+        "request_id": 2
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:960",
+      "offset": 960,
+      "id": 98,
+      "sequence": 46,
+      "core": 0,
+      "timestamp_raw": 2065,
+      "ticks": "740",
+      "payload_hex": "00080880ffffffff",
+      "kind": "mutex_take",
+      "actor_id": "0x80082970:0",
+      "object_id": "0x80080800:0",
+      "fields": {
+        "raw_words": [
+          "2148009984",
+          "4294967295"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:976",
+      "offset": 976,
+      "id": 146,
+      "sequence": 47,
+      "core": 0,
+      "timestamp_raw": 2090,
+      "ticks": "765",
+      "payload_hex": "b0150a8002000000504f437c6f7264657265645f6c6f636b737c5345434f4e445f41435155495245447c257500000000",
+      "kind": "user_event",
+      "actor_id": "0x80082970:0",
+      "object_id": "0x800a15b0:0",
+      "fields": {
+        "raw_words": [
+          "2148144560",
+          "2",
+          "2084786000",
+          "1701081711",
+          "1600415090",
+          "1801678700",
+          "1163099251",
+          "1145982787",
+          "1363362143",
+          "1163020629",
+          "1965390916",
+          "0"
+        ],
+        "channel": "POC",
+        "format": "POC|ordered_locks|SECOND_ACQUIRED|%u",
+        "arguments": [
+          "2"
+        ],
+        "message": "POC|ordered_locks|SECOND_ACQUIRED|2",
+        "case_id": "ordered_locks",
+        "phase": "SECOND_ACQUIRED",
+        "message_id": 2,
+        "request_id": 2
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1032",
+      "offset": 1032,
+      "id": 82,
+      "sequence": 48,
+      "core": 0,
+      "timestamp_raw": 2094,
+      "ticks": "769",
+      "payload_hex": "00080880",
+      "kind": "mutex_give",
+      "actor_id": "0x80082970:0",
+      "object_id": "0x80080800:0",
+      "fields": {
+        "raw_words": [
+          "2148009984"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1044",
+      "offset": 1044,
+      "id": 82,
+      "sequence": 49,
+      "core": 0,
+      "timestamp_raw": 2097,
+      "ticks": "772",
+      "payload_hex": "a0070880",
+      "kind": "mutex_give",
+      "actor_id": "0x80082970:0",
+      "object_id": "0x800807a0:0",
+      "fields": {
+        "raw_words": [
+          "2148009888"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1056",
+      "offset": 1056,
+      "id": 146,
+      "sequence": 50,
+      "core": 0,
+      "timestamp_raw": 2121,
+      "ticks": "796",
+      "payload_hex": "b0150a8002000000504f437c6f7264657265645f6c6f636b737c574f524b5f444f4e457c25750000",
+      "kind": "user_event",
+      "actor_id": "0x80082970:0",
+      "object_id": "0x800a15b0:0",
+      "fields": {
+        "raw_words": [
+          "2148144560",
+          "2",
+          "2084786000",
+          "1701081711",
+          "1600415090",
+          "1801678700",
+          "1331133555",
+          "1147095890",
+          "2084916815",
+          "29989"
+        ],
+        "channel": "POC",
+        "format": "POC|ordered_locks|WORK_DONE|%u",
+        "arguments": [
+          "2"
+        ],
+        "message": "POC|ordered_locks|WORK_DONE|2",
+        "case_id": "ordered_locks",
+        "phase": "WORK_DONE",
+        "message_id": 2,
+        "request_id": 2
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1104",
+      "offset": 1104,
+      "id": 123,
+      "sequence": 51,
+      "core": 0,
+      "timestamp_raw": 2125,
+      "ticks": "800",
+      "payload_hex": "70290880",
+      "kind": "task_suspend",
+      "actor_id": "0x80082970:0",
+      "object_id": "0x80082970:0",
+      "fields": {
+        "raw_words": [
+          "2148018544"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1116",
+      "offset": 1116,
+      "id": 55,
+      "sequence": 52,
+      "core": 0,
+      "timestamp_raw": 2128,
+      "ticks": "803",
+      "payload_hex": "3007088001000000",
+      "kind": "task_switch",
+      "actor_id": "0x80080730:0",
+      "object_id": "0x80080730:0",
+      "fields": {
+        "raw_words": [
+          "2148009776",
+          "1"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1132",
+      "offset": 1132,
+      "id": 122,
+      "sequence": 53,
+      "core": 0,
+      "timestamp_raw": 2131,
+      "ticks": "806",
+      "payload_hex": "0a000000",
+      "kind": "task_delay",
+      "actor_id": "0x80080730:0",
+      "object_id": "0x80080730:0",
+      "fields": {
+        "raw_words": [
+          "10"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1144",
+      "offset": 1144,
+      "id": 55,
+      "sequence": 54,
+      "core": 0,
+      "timestamp_raw": 2135,
+      "ticks": "810",
+      "payload_hex": "f02d088000000000",
+      "kind": "task_switch",
+      "actor_id": "0x80082df0:0",
+      "object_id": "0x80082df0:0",
+      "fields": {
+        "raw_words": [
+          "2148019696",
+          "0"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1160",
+      "offset": 1160,
+      "id": 49,
+      "sequence": 55,
+      "core": 0,
+      "timestamp_raw": 11880,
+      "ticks": "10555",
+      "payload_hex": "01000000",
+      "kind": "new_time",
+      "actor_id": "0x80082df0:0",
+      "object_id": null,
+      "fields": {
+        "raw_words": [
+          "1"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1172",
+      "offset": 1172,
+      "id": 49,
+      "sequence": 56,
+      "core": 0,
+      "timestamp_raw": 21879,
+      "ticks": "20554",
+      "payload_hex": "02000000",
+      "kind": "new_time",
+      "actor_id": "0x80082df0:0",
+      "object_id": null,
+      "fields": {
+        "raw_words": [
+          "2"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1184",
+      "offset": 1184,
+      "id": 49,
+      "sequence": 57,
+      "core": 0,
+      "timestamp_raw": 31879,
+      "ticks": "30554",
+      "payload_hex": "03000000",
+      "kind": "new_time",
+      "actor_id": "0x80082df0:0",
+      "object_id": null,
+      "fields": {
+        "raw_words": [
+          "3"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1196",
+      "offset": 1196,
+      "id": 49,
+      "sequence": 58,
+      "core": 0,
+      "timestamp_raw": 41879,
+      "ticks": "40554",
+      "payload_hex": "04000000",
+      "kind": "new_time",
+      "actor_id": "0x80082df0:0",
+      "object_id": null,
+      "fields": {
+        "raw_words": [
+          "4"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1208",
+      "offset": 1208,
+      "id": 49,
+      "sequence": 59,
+      "core": 0,
+      "timestamp_raw": 51879,
+      "ticks": "50554",
+      "payload_hex": "05000000",
+      "kind": "new_time",
+      "actor_id": "0x80082df0:0",
+      "object_id": null,
+      "fields": {
+        "raw_words": [
+          "5"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1220",
+      "offset": 1220,
+      "id": 49,
+      "sequence": 60,
+      "core": 0,
+      "timestamp_raw": 61879,
+      "ticks": "60554",
+      "payload_hex": "06000000",
+      "kind": "new_time",
+      "actor_id": "0x80082df0:0",
+      "object_id": null,
+      "fields": {
+        "raw_words": [
+          "6"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1232",
+      "offset": 1232,
+      "id": 49,
+      "sequence": 61,
+      "core": 0,
+      "timestamp_raw": 71879,
+      "ticks": "70554",
+      "payload_hex": "07000000",
+      "kind": "new_time",
+      "actor_id": "0x80082df0:0",
+      "object_id": null,
+      "fields": {
+        "raw_words": [
+          "7"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1244",
+      "offset": 1244,
+      "id": 49,
+      "sequence": 62,
+      "core": 0,
+      "timestamp_raw": 81879,
+      "ticks": "80554",
+      "payload_hex": "08000000",
+      "kind": "new_time",
+      "actor_id": "0x80082df0:0",
+      "object_id": null,
+      "fields": {
+        "raw_words": [
+          "8"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1256",
+      "offset": 1256,
+      "id": 49,
+      "sequence": 63,
+      "core": 0,
+      "timestamp_raw": 91879,
+      "ticks": "90554",
+      "payload_hex": "09000000",
+      "kind": "new_time",
+      "actor_id": "0x80082df0:0",
+      "object_id": null,
+      "fields": {
+        "raw_words": [
+          "9"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1268",
+      "offset": 1268,
+      "id": 49,
+      "sequence": 64,
+      "core": 0,
+      "timestamp_raw": 101880,
+      "ticks": "100555",
+      "payload_hex": "0a000000",
+      "kind": "new_time",
+      "actor_id": "0x80082df0:0",
+      "object_id": null,
+      "fields": {
+        "raw_words": [
+          "10"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1280",
+      "offset": 1280,
+      "id": 48,
+      "sequence": 65,
+      "core": 0,
+      "timestamp_raw": 101881,
+      "ticks": "100556",
+      "payload_hex": "30070880",
+      "kind": "task_ready",
+      "actor_id": "0x80082df0:0",
+      "object_id": "0x80080730:0",
+      "fields": {
+        "raw_words": [
+          "2148009776"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1292",
+      "offset": 1292,
+      "id": 55,
+      "sequence": 66,
+      "core": 0,
+      "timestamp_raw": 101884,
+      "ticks": "100559",
+      "payload_hex": "3007088001000000",
+      "kind": "task_switch",
+      "actor_id": "0x80080730:0",
+      "object_id": "0x80080730:0",
+      "fields": {
+        "raw_words": [
+          "2148009776",
+          "1"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1308",
+      "offset": 1308,
+      "id": 122,
+      "sequence": 67,
+      "core": 0,
+      "timestamp_raw": 101887,
+      "ticks": "100562",
+      "payload_hex": "0a000000",
+      "kind": "task_delay",
+      "actor_id": "0x80080730:0",
+      "object_id": "0x80080730:0",
+      "fields": {
+        "raw_words": [
+          "10"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1320",
+      "offset": 1320,
+      "id": 55,
+      "sequence": 68,
+      "core": 0,
+      "timestamp_raw": 101891,
+      "ticks": "100566",
+      "payload_hex": "f02d088000000000",
+      "kind": "task_switch",
+      "actor_id": "0x80082df0:0",
+      "object_id": "0x80082df0:0",
+      "fields": {
+        "raw_words": [
+          "2148019696",
+          "0"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1336",
+      "offset": 1336,
+      "id": 49,
+      "sequence": 69,
+      "core": 0,
+      "timestamp_raw": 111879,
+      "ticks": "110554",
+      "payload_hex": "0b000000",
+      "kind": "new_time",
+      "actor_id": "0x80082df0:0",
+      "object_id": null,
+      "fields": {
+        "raw_words": [
+          "11"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1348",
+      "offset": 1348,
+      "id": 49,
+      "sequence": 70,
+      "core": 0,
+      "timestamp_raw": 121880,
+      "ticks": "120555",
+      "payload_hex": "0c000000",
+      "kind": "new_time",
+      "actor_id": "0x80082df0:0",
+      "object_id": null,
+      "fields": {
+        "raw_words": [
+          "12"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1360",
+      "offset": 1360,
+      "id": 49,
+      "sequence": 71,
+      "core": 0,
+      "timestamp_raw": 131879,
+      "ticks": "130554",
+      "payload_hex": "0d000000",
+      "kind": "new_time",
+      "actor_id": "0x80082df0:0",
+      "object_id": null,
+      "fields": {
+        "raw_words": [
+          "13"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1372",
+      "offset": 1372,
+      "id": 49,
+      "sequence": 72,
+      "core": 0,
+      "timestamp_raw": 141880,
+      "ticks": "140555",
+      "payload_hex": "0e000000",
+      "kind": "new_time",
+      "actor_id": "0x80082df0:0",
+      "object_id": null,
+      "fields": {
+        "raw_words": [
+          "14"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1384",
+      "offset": 1384,
+      "id": 49,
+      "sequence": 73,
+      "core": 0,
+      "timestamp_raw": 151879,
+      "ticks": "150554",
+      "payload_hex": "0f000000",
+      "kind": "new_time",
+      "actor_id": "0x80082df0:0",
+      "object_id": null,
+      "fields": {
+        "raw_words": [
+          "15"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1396",
+      "offset": 1396,
+      "id": 49,
+      "sequence": 74,
+      "core": 0,
+      "timestamp_raw": 161879,
+      "ticks": "160554",
+      "payload_hex": "10000000",
+      "kind": "new_time",
+      "actor_id": "0x80082df0:0",
+      "object_id": null,
+      "fields": {
+        "raw_words": [
+          "16"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1408",
+      "offset": 1408,
+      "id": 49,
+      "sequence": 75,
+      "core": 0,
+      "timestamp_raw": 171879,
+      "ticks": "170554",
+      "payload_hex": "11000000",
+      "kind": "new_time",
+      "actor_id": "0x80082df0:0",
+      "object_id": null,
+      "fields": {
+        "raw_words": [
+          "17"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1420",
+      "offset": 1420,
+      "id": 49,
+      "sequence": 76,
+      "core": 0,
+      "timestamp_raw": 181879,
+      "ticks": "180554",
+      "payload_hex": "12000000",
+      "kind": "new_time",
+      "actor_id": "0x80082df0:0",
+      "object_id": null,
+      "fields": {
+        "raw_words": [
+          "18"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1432",
+      "offset": 1432,
+      "id": 49,
+      "sequence": 77,
+      "core": 0,
+      "timestamp_raw": 191879,
+      "ticks": "190554",
+      "payload_hex": "13000000",
+      "kind": "new_time",
+      "actor_id": "0x80082df0:0",
+      "object_id": null,
+      "fields": {
+        "raw_words": [
+          "19"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1444",
+      "offset": 1444,
+      "id": 49,
+      "sequence": 78,
+      "core": 0,
+      "timestamp_raw": 201879,
+      "ticks": "200554",
+      "payload_hex": "14000000",
+      "kind": "new_time",
+      "actor_id": "0x80082df0:0",
+      "object_id": null,
+      "fields": {
+        "raw_words": [
+          "20"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1456",
+      "offset": 1456,
+      "id": 48,
+      "sequence": 79,
+      "core": 0,
+      "timestamp_raw": 201881,
+      "ticks": "200556",
+      "payload_hex": "70180880",
+      "kind": "task_ready",
+      "actor_id": "0x80082df0:0",
+      "object_id": "0x80081870:0",
+      "fields": {
+        "raw_words": [
+          "2148014192"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1468",
+      "offset": 1468,
+      "id": 48,
+      "sequence": 80,
+      "core": 0,
+      "timestamp_raw": 201882,
+      "ticks": "200557",
+      "payload_hex": "30070880",
+      "kind": "task_ready",
+      "actor_id": "0x80082df0:0",
+      "object_id": "0x80080730:0",
+      "fields": {
+        "raw_words": [
+          "2148009776"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1480",
+      "offset": 1480,
+      "id": 55,
+      "sequence": 81,
+      "core": 0,
+      "timestamp_raw": 201885,
+      "ticks": "200560",
+      "payload_hex": "7018088005000000",
+      "kind": "task_switch",
+      "actor_id": "0x80081870:0",
+      "object_id": "0x80081870:0",
+      "fields": {
+        "raw_words": [
+          "2148014192",
+          "5"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1496",
+      "offset": 1496,
+      "id": 146,
+      "sequence": 82,
+      "core": 0,
+      "timestamp_raw": 201909,
+      "ticks": "200584",
+      "payload_hex": "b0150a8000000000504f437c6f7264657265645f6c6f636b737c434f4d504c4554457c257500a5a5",
+      "kind": "user_event",
+      "actor_id": "0x80081870:0",
+      "object_id": "0x800a15b0:0",
+      "fields": {
+        "raw_words": [
+          "2148144560",
+          "0",
+          "2084786000",
+          "1701081711",
+          "1600415090",
+          "1801678700",
+          "1329822835",
+          "1162629197",
+          "628901204",
+          "2779054197"
+        ],
+        "channel": "POC",
+        "format": "POC|ordered_locks|COMPLETE|%u",
+        "arguments": [
+          "0"
+        ],
+        "message": "POC|ordered_locks|COMPLETE|0",
+        "case_id": "ordered_locks",
+        "phase": "COMPLETE",
+        "message_id": 0,
+        "request_id": 0
+      },
+      "quality": []
+    }
+  ],
+  "quality": {
+    "status": "valid",
+    "issues": [],
+    "capture_complete": true
+  },
+  "derived": {},
+  "raw_metadata": {
+    "entries": [
+      {
+        "offset": 72,
+        "address": "0x800a0b90",
+        "states": [
+          "0",
+          "0",
+          "131072"
+        ],
+        "options": 2147483648,
+        "name": "System Heap",
+        "symbol_hex": "53797374656d20486561700000000000000000000000000000000000"
+      },
+      {
+        "offset": 120,
+        "address": "0x80080730",
+        "states": [
+          "1",
+          "0",
+          "0"
+        ],
+        "options": 0,
+        "name": "TzCtrl",
+        "symbol_hex": "547a4374726c00000000000000000000000000000000000000000000"
+      }
+    ],
+    "period": 0,
+    "wraparounds": 0,
+    "latest_timestamp": 0,
+    "os_tick_count": 0,
+    "options": 1,
+    "core_flags": 769,
+    "tailchain_threshold": 0
+  }
+}
