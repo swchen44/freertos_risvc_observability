@@ -17,10 +17,10 @@ CASE_IDS = (
     "clock_probe",
     "logger_bad",
     "logger_fixed",
-    "inversion_semaphore",
-    "inversion_mutex",
+    "inversion",
+    "inheritance",
     "deadlock_abba",
-    "deadlock_ordered",
+    "ordered_locks",
 )
 QEMU_FLAGS = [
     "-machine",

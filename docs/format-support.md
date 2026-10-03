@@ -14,3 +14,7 @@ CLI：`python -m psf_lab decode fixtures/desktop/trace.psf --output artifacts/lo
 - 無gap不保證收集完整，`capture_complete`保持null，直到harness核對completion與獨立oracle。
 
 限制：PSF無每事件checksum，不能保證識別所有bit flip。頻率需外部校正；parser不把來源宣告值當實體頻率證明。
+
+## 已實作的排程分析
+
+`analyze` 以明確 task switch 建立 running intervals；首個 switch 前、sequence gap 相鄰區間、未知事件與 ISR 未重建區間列 unknown。COMPLETE 才關閉 capture 尾端，否則保留 open interval。Task share 的分母包含 unknown 時間；它不是包含 ISR 的整體 CPU utilization。Request response 與 worker execution 分開，缺完成或執行證據時為 null。物件 epoch 分開計算。

@@ -1,0 +1,638 @@
+{
+  "intervals": [
+    {
+      "object_id": "0x2:0",
+      "start_ticks": "0",
+      "end_ticks": "456",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x800828f0:0",
+      "start_ticks": "456",
+      "end_ticks": "544",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80081870:0",
+      "start_ticks": "544",
+      "end_ticks": "553",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80080ff0:0",
+      "start_ticks": "553",
+      "end_ticks": "561",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80081870:0",
+      "start_ticks": "561",
+      "end_ticks": "596",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80080ff0:0",
+      "start_ticks": "596",
+      "end_ticks": "627",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80080700:0",
+      "start_ticks": "627",
+      "end_ticks": "633",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80082d70:0",
+      "start_ticks": "633",
+      "end_ticks": "10547",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x800828f0:0",
+      "start_ticks": "10547",
+      "end_ticks": "10553",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80080ff0:0",
+      "start_ticks": "10553",
+      "end_ticks": "10561",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80081870:0",
+      "start_ticks": "10561",
+      "end_ticks": "10596",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80080ff0:0",
+      "start_ticks": "10596",
+      "end_ticks": "10627",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80082d70:0",
+      "start_ticks": "10627",
+      "end_ticks": "20546",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x800828f0:0",
+      "start_ticks": "20546",
+      "end_ticks": "20552",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80080ff0:0",
+      "start_ticks": "20552",
+      "end_ticks": "20560",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80081870:0",
+      "start_ticks": "20560",
+      "end_ticks": "20596",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80080ff0:0",
+      "start_ticks": "20596",
+      "end_ticks": "20626",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80082d70:0",
+      "start_ticks": "20626",
+      "end_ticks": "30547",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x800828f0:0",
+      "start_ticks": "30547",
+      "end_ticks": "30553",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80080ff0:0",
+      "start_ticks": "30553",
+      "end_ticks": "30561",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80081870:0",
+      "start_ticks": "30561",
+      "end_ticks": "30596",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80080ff0:0",
+      "start_ticks": "30596",
+      "end_ticks": "30627",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80082d70:0",
+      "start_ticks": "30627",
+      "end_ticks": "40546",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x800828f0:0",
+      "start_ticks": "40546",
+      "end_ticks": "40552",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80080ff0:0",
+      "start_ticks": "40552",
+      "end_ticks": "40560",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80081870:0",
+      "start_ticks": "40560",
+      "end_ticks": "40596",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80080ff0:0",
+      "start_ticks": "40596",
+      "end_ticks": "40626",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80082d70:0",
+      "start_ticks": "40626",
+      "end_ticks": "50547",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x800828f0:0",
+      "start_ticks": "50547",
+      "end_ticks": "50553",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80080ff0:0",
+      "start_ticks": "50553",
+      "end_ticks": "50561",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80081870:0",
+      "start_ticks": "50561",
+      "end_ticks": "50596",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80080ff0:0",
+      "start_ticks": "50596",
+      "end_ticks": "50627",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80082d70:0",
+      "start_ticks": "50627",
+      "end_ticks": "60546",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x800828f0:0",
+      "start_ticks": "60546",
+      "end_ticks": "60552",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80080ff0:0",
+      "start_ticks": "60552",
+      "end_ticks": "60560",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80081870:0",
+      "start_ticks": "60560",
+      "end_ticks": "60596",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80080ff0:0",
+      "start_ticks": "60596",
+      "end_ticks": "60626",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80082d70:0",
+      "start_ticks": "60626",
+      "end_ticks": "70547",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x800828f0:0",
+      "start_ticks": "70547",
+      "end_ticks": "70553",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80080ff0:0",
+      "start_ticks": "70553",
+      "end_ticks": "70561",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80081870:0",
+      "start_ticks": "70561",
+      "end_ticks": "70596",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80080ff0:0",
+      "start_ticks": "70596",
+      "end_ticks": "70627",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80082d70:0",
+      "start_ticks": "70627",
+      "end_ticks": "80546",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x800828f0:0",
+      "start_ticks": "80546",
+      "end_ticks": "80553",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80080ff0:0",
+      "start_ticks": "80553",
+      "end_ticks": "80560",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80081870:0",
+      "start_ticks": "80560",
+      "end_ticks": "80596",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80080ff0:0",
+      "start_ticks": "80596",
+      "end_ticks": "80627",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80082d70:0",
+      "start_ticks": "80627",
+      "end_ticks": "90547",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x800828f0:0",
+      "start_ticks": "90547",
+      "end_ticks": "90553",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80080ff0:0",
+      "start_ticks": "90553",
+      "end_ticks": "90561",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80081870:0",
+      "start_ticks": "90561",
+      "end_ticks": "90597",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80080ff0:0",
+      "start_ticks": "90597",
+      "end_ticks": "90627",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80082d70:0",
+      "start_ticks": "90627",
+      "end_ticks": "100548",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x800828f0:0",
+      "start_ticks": "100548",
+      "end_ticks": "100554",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80080ff0:0",
+      "start_ticks": "100554",
+      "end_ticks": "100562",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80081870:0",
+      "start_ticks": "100562",
+      "end_ticks": "100598",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80080ff0:0",
+      "start_ticks": "100598",
+      "end_ticks": "100628",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80080700:0",
+      "start_ticks": "100628",
+      "end_ticks": "100635",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80082d70:0",
+      "start_ticks": "100635",
+      "end_ticks": "110547",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x800828f0:0",
+      "start_ticks": "110547",
+      "end_ticks": "110553",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80080ff0:0",
+      "start_ticks": "110553",
+      "end_ticks": "110561",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80081870:0",
+      "start_ticks": "110561",
+      "end_ticks": "110597",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80080ff0:0",
+      "start_ticks": "110597",
+      "end_ticks": "110627",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80082d70:0",
+      "start_ticks": "110627",
+      "end_ticks": "120546",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x800828f0:0",
+      "start_ticks": "120546",
+      "end_ticks": "120553",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80080ff0:0",
+      "start_ticks": "120553",
+      "end_ticks": "120561",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80081870:0",
+      "start_ticks": "120561",
+      "end_ticks": "120596",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80080ff0:0",
+      "start_ticks": "120596",
+      "end_ticks": "120627",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80082d70:0",
+      "start_ticks": "120627",
+      "end_ticks": "130546",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x800828f0:0",
+      "start_ticks": "130546",
+      "end_ticks": "130552",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80080ff0:0",
+      "start_ticks": "130552",
+      "end_ticks": "130560",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80081870:0",
+      "start_ticks": "130560",
+      "end_ticks": "130596",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80080ff0:0",
+      "start_ticks": "130596",
+      "end_ticks": "130626",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80082d70:0",
+      "start_ticks": "130626",
+      "end_ticks": "140547",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x800828f0:0",
+      "start_ticks": "140547",
+      "end_ticks": "140553",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80080ff0:0",
+      "start_ticks": "140553",
+      "end_ticks": "140561",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80081870:0",
+      "start_ticks": "140561",
+      "end_ticks": "140596",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80080ff0:0",
+      "start_ticks": "140596",
+      "end_ticks": "140627",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80082d70:0",
+      "start_ticks": "140627",
+      "end_ticks": "150546",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x800828f0:0",
+      "start_ticks": "150546",
+      "end_ticks": "150552",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80080ff0:0",
+      "start_ticks": "150552",
+      "end_ticks": "150560",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80081870:0",
+      "start_ticks": "150560",
+      "end_ticks": "150593",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80080ff0:0",
+      "start_ticks": "150593",
+      "end_ticks": "150623",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x80082d70:0",
+      "start_ticks": "150623",
+      "end_ticks": "160547",
+      "state": "running",
+      "quality": []
+    },
+    {
+      "object_id": "0x800828f0:0",
+      "start_ticks": "160547",
+      "end_ticks": "160570",
+      "state": "running",
+      "quality": []
+    }
+  ],
+  "requests": [],
+  "metrics": {
+    "start_ticks": "0",
+    "end_ticks": "160570",
+    "window_ticks": "160570",
+    "window_seconds": 0.016057,
+    "known_ticks": "160570",
+    "unknown_ticks": "0",
+    "task_share": {
+      "0x2:0": {
+        "running_ticks": "456",
+        "fraction": 0.0028398829171078035
+      },
+      "0x800828f0:0": {
+        "running_ticks": "203",
+        "fraction": 0.0012642461231861493
+      },
+      "0x80081870:0": {
+        "running_ticks": "575",
+        "fraction": 0.003580992713458305
+      },
+      "0x80080ff0:0": {
+        "running_ticks": "615",
+        "fraction": 0.0038301052500467085
+      },
+      "0x80080700:0": {
+        "running_ticks": "13",
+        "fraction": 8.096157439123123e-05
+      },
+      "0x80082d70:0": {
+        "running_ticks": "158708",
+        "fraction": 0.9884038114218098
+      }
+    }
+  },
+  "quality": {
+    "issues": [],
+    "open_end": false
+  }
+}

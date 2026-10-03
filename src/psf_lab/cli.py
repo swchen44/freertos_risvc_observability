@@ -5,6 +5,7 @@ import json
 import sys
 from pathlib import Path
 
+from psf_lab.analysis import analyze
 from psf_lab.doctor import inspect_tools
 from psf_lab.parser.errors import ParseError
 from psf_lab.parser.semantic import parse_trace
@@ -23,7 +24,21 @@ def main(argv=None) -> int:
     runner.add_argument("case_id")
     checker = commands.add_parser("check", help="Recheck independent run evidence")
     checker.add_argument("directory", type=Path)
+    analyzer = commands.add_parser("analyze", help="Derive scheduling intervals and requests")
+    analyzer.add_argument("input", type=Path)
+    analyzer.add_argument("--output", type=Path, required=True)
     args = parser.parse_args(argv)
+    if args.command == "analyze":
+        try:
+            if args.input.resolve() == args.output.resolve():
+                raise ValueError("Analysis must not overwrite the input")
+            result = analyze(json.loads(args.input.read_text()))
+            args.output.parent.mkdir(parents=True, exist_ok=True)
+            args.output.write_text(json.dumps(result, indent=2, allow_nan=False) + "\n")
+            return 0
+        except (OSError, ValueError, KeyError, TypeError) as error:
+            print(str(error), file=sys.stderr)
+            return 2
     if args.command in {"run", "check"}:
         try:
             if args.command == "run":
