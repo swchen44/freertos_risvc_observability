@@ -1,0 +1,92 @@
+{
+  "date": "2026-10-03",
+  "scope": "研究文件與單一既有桌面PSF探測；新產品尚未實作",
+  "documents": 5,
+  "local_links": 69,
+  "broken_links": [],
+  "inline_images": 2,
+  "new_requirements": [
+    "N01",
+    "N02",
+    "N03",
+    "N04",
+    "N05",
+    "N06",
+    "N07",
+    "N08",
+    "N09",
+    "N10",
+    "N11",
+    "N12"
+  ],
+  "mece_primary_assignments": {
+    "M2": [
+      "N05"
+    ],
+    "M6": [
+      "N03",
+      "N06",
+      "N07",
+      "N08",
+      "N09",
+      "N10"
+    ],
+    "M7": [
+      "N11"
+    ],
+    "M8": [
+      "N01",
+      "N02",
+      "N04",
+      "N12"
+    ]
+  },
+  "mermaid": {
+    "mermaid_version": "11.12.0",
+    "results": [
+      {
+        "source": "research/next-phase/Dashboard功能與設計研究.md",
+        "passed": true,
+        "type": "flowchart-v2"
+      }
+    ]
+  },
+  "diagram_visual_review": "已開啟PNG；文字與兩條來源流程可讀，無裁切",
+  "psf_probe": {
+    "bytes": 7152,
+    "sha256": "32f6421362bda37e3b91411afedb5df0c29741f99fe1df08389cf76e56f79d47",
+    "format_version": 14,
+    "word_bytes": 8,
+    "events": 309,
+    "event_start": 152,
+    "counter_0_to_49": true,
+    "fifty_cycles_event_pattern": true,
+    "full_eof": true,
+    "sequence_gaps": 0,
+    "timestamp_regressions": 0,
+    "log": "desktop-psf-probe.log"
+  },
+  "review": {
+    "critical_findings": 0,
+    "important_findings": 1,
+    "important_fixed": 1,
+    "minor_or_suggestions": 2,
+    "minor_or_suggestions_addressed": 2,
+    "scope": "研究提案，非實作驗收"
+  },
+  "not_run": [
+    "new_firmware_build",
+    "qemu_execution",
+    "production_decoder_tests",
+    "dashboard_browser_tests",
+    "new_project_unittest",
+    "new_project_ruff"
+  ],
+  "document_sha256": {
+    "Dashboard功能與設計研究.md": "8548d3898fc0ecd9b9b00f639daf87b2e64081fc947a6de35bd0b7af244e0779",
+    "PSF格式與解析研究.md": "1914646dddc1b0867f03222ae83e36645384d41f5d69734cca40f5ec3d537ebd",
+    "README.md": "50fe2d7238eb1e869c9bc4771d51356ef35476c2d554c815ae5d4fbe6fdc6a3f",
+    "RISC-V模擬環境研究.md": "372f75313e2666520f6368c7f829a5647302d061d913f505331ebe887129698e",
+    "review-record.md": "ef0d2589c4a9d394d4cf704874194d28d9f721ff3b0108367fa2ab6d7f211d5e"
+  }
+}

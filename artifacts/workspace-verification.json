@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-03",
+  "scope": "POC 目錄、文件、參考快照與設計；非產品執行驗收",
+  "markdown_files": 38,
+  "local_links": 398,
+  "broken_links": [],
+  "baseline_files_hash_verified": 422,
+  "git_root": "/Users/swchen.tw/git/percepio/poc",
+  "remote_configured": false,
+  "mermaid": {
+    "rendered": [
+      "dashboard-flow",
+      "psf-lab-architecture"
+    ],
+    "formats": [
+      "svg",
+      "png"
+    ],
+    "visual_review": "兩圖已開啟檢查，無裁切；SVG 可縮放閱讀"
+  },
+  "review": {
+    "critical": 0,
+    "important": 1,
+    "important_addressed": 1
+  },
+  "not_run": [
+    "qemu",
+    "new_firmware",
+    "production_parser",
+    "dashboard",
+    "product_unittest",
+    "product_ruff",
+    "browser_interaction_tests"
+  ],
+  "authored_document_sha256": {
+    "README.md": "0da07b6f6f5a3380a99c9764e4da7d8228ee62da7757c9f1b03766ad88e973be",
+    "artifacts/README.md": "547b0f1821705251b37ffce568821313cdea42a63d91df38af8c905350e29da4",
+    "cases/README.md": "4fa6833b3d9e7dfb3a7253db645249cb70b69cac5e04345ba0bc161e3de92ebb",
+    "docs/decisions/0001-workspace-and-delivery.md": "9d40559a6c7a0f73c43ffd771665bcda7741044ca5490f584e68ed11a3d6ddcf",
+    "docs/design/PSF-Lab-設計規格.md": "427081191f36e7992639d630da37374d532ff5f06fc815d352892173a22f53c2",
+    "docs/journal/2026-10-03.md": "defd66e1b1c0b04b30795792efc3ec1a06e7c23e3eeeea05fbe41c29386ea85b",
+    "docs/plans/README.md": "24ef4981661c5accd0e3cad8ece080814ad9342b66eda0827d06b8e177417278",
+    "docs/requirements.md": "63296d74a29327d99877394a9f6d04748ec746b67e103ff4131512b78ec6c31f",
+    "docs/research/Dashboard功能與設計研究.md": "1efaed2644f535f9ae3ce144dbd732762407a9c1309d51064ef5e64f5d5872c4",
+    "docs/research/PSF格式與解析研究.md": "d1967ec003e992c891331ab94b593a1fa1ae224a7784f71bde6c7d5f6d965670",
+    "docs/research/README.md": "cef64a6450bf2f5042698e535c62081427915950120744bed23cbe01b449f7e1",
+    "docs/research/RISC-V模擬環境研究.md": "959930a81bc18c84f2851c5609de99a8e3d30f579d53cc177368efe22d1acf59",
+    "docs/research/review-record.md": "ef0d2589c4a9d394d4cf704874194d28d9f721ff3b0108367fa2ab6d7f211d5e",
+    "docs/reviews/2026-10-03-design-and-layout.md": "ef0cda3e09b4cc14126684b5a8e05b3ce17097dcbf3fb0cef7b96e19f1f1ad47",
+    "firmware/README.md": "1358ceeee1d3fa39b5f377b6f75de97b9bd89467c8f07bb73a1df1dea2e4da0b",
+    "fixtures/README.md": "6ddc399d67759f35352656dce638d4be847320966de1c2d0098ad63fbc672975",
+    "references/README.md": "7321a7e482e4b0546e7c71b53d4094ab7e99824947568dea2f7857c8ff1d9809",
+    "runs/README.md": "fcb80ef2febb808ca200a7e41fd32d3b9c607b806a2cc41969c95e1910714a1b",
+    "scripts/README.md": "7aee10b88f5a09346027ada29e8d32d743e365c75c2630945f5d0920ce80762b",
+    "src/README.md": "e7cc197b03c4d1542ffc74ab0e5287e531b423d2e0ba78d6ed3e308f9358ecc1",
+    "tests/README.md": "430ffd4af231b681e4d6ec69f263cace17a46e7971f60362abd1665841545adb",
+    "web/README.md": "c41c09f0b3bb611f081184f9ec18fe5f37d0f439681934da20ef0ab43074d409"
+  }
+}

@@ -1,0 +1,12 @@
+flowchart LR
+    P["PDF 文件<br/>輸入範圍待確認"] --> D["文件擷取資料<br/>page／figure／table／units"]
+    D --> DQ["文件來源檢查<br/>頁碼／單位／擷取可信度"]
+    DQ --> DF["文件篩選<br/>章節／案例／圖表"]
+    DF --> DV["文件證據視圖<br/>文字／原圖／表格"]
+    DV --> DE["匯出擷取表格<br/>保留文件來源"]
+    S["PSF trace<br/>parser 支援範圍待確認"] --> J["原始事件 JSON<br/>格式與事件語意驗證"]
+    J --> Q["Trace 完整性檢查<br/>clock／loss／schema"]
+    Q --> F["共同篩選狀態<br/>time／actor／object／channel"]
+    F --> V["連動 view<br/>timeline／metrics／event table"]
+    V --> E["匯出 filtered events<br/>derived metrics／filter descriptor"]
+    DV -.->|案例來源連結| V

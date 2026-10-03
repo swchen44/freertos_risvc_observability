@@ -1,0 +1,13 @@
+bytes 7152
+sha256 32f6421362bda37e3b91411afedb5df0c29741f99fe1df08389cf76e56f79d47
+header (1347634688, 14, 8177, 9, 769, 0, 0, 0, 1, b'my_krnl\x00')
+timestamp (1, 0, 1000000, 0, 1, 0, 0)
+entry_header (1, 28, 3)
+first_entry (4376166696, 1, 0, 0, 0, b'main\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00')
+event_count 309
+ids {'0x1': 1, '0x3': 4, '0x10': 2, '0x60': 1, '0x20': 51, '0x25': 100, '0x61': 50, '0x52': 50, '0x62': 50}
+full_eof True
+counter_0_to_49 True
+50_cycles_event_pattern True
+sequence_gaps []
+timestamp_regressions []

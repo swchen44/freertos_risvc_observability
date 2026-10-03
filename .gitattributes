@@ -1,0 +1,6 @@
+# Preserve upstream snapshots without imposing authored-document whitespace rules.
+references/baseline/** -whitespace
+*.psf binary
+*.pdf binary
+*.png binary
+*.zip binary

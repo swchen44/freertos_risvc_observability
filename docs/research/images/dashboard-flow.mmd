@@ -1,0 +1,9 @@
+flowchart LR
+    S["PSF trace<br/>使用者輸入或模擬輸出"] --> J["Python parser<br/>原始事件 JSON／offset／版本"]
+    J --> Q["Trace 完整性檢查<br/>clock／loss／schema"]
+    Q --> A["Python 狀態重建與分析<br/>harness 驗證"]
+    A --> API["FastAPI 本機服務<br/>window query／event page／metrics"]
+    API --> F["ES modules 共用 state<br/>time／actor／object／selection"]
+    F --> V["ECharts SVG＋Tabulator<br/>timeline／metrics／event table／details"]
+    F --> E["Python 匯出完整 filtered dataset<br/>CSV／metrics／filter descriptor"]
+    V -.->|brush／click／filters| F

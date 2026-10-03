@@ -1,0 +1,14 @@
+flowchart LR
+    A[案例規格與預先定義 expected] --> B[RISC-V QEMU]
+    F[FreeRTOS 加 TraceRecorder] --> B
+    B --> C[線性 PSF]
+    B --> O[獨立應用結果]
+    C --> P[Python parser]
+    P --> J[JSON 與品質資訊]
+    J --> H[Harness]
+    O --> H
+    A --> H
+    J --> S[本機 FastAPI]
+    S --> V[JavaScript 與 SVG Dashboard]
+    V --> E[完整篩選結果 CSV]
+    H --> R[run 記錄與判定]
