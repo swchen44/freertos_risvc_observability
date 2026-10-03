@@ -41,3 +41,5 @@ QEMU 可以驗證指定軟體行為與資料流程；實體效能、最差 IRQ�
 - C03：PSF task usage 的公式、ISR／idle／unknown 邊界與視覺化必須列入 Dashboard；不以事件數當 CPU 百分比。
 - C04：持續維護 Tracealyzer 功能對照，不只 CPU 百分比；execution／response、事件、同步物件、user data、記憶體等逐項標示資料需求與完成狀態。
 - 詳見 [Cache／Bus 與 CPU 使用率](research/Cache-Bus與CPU使用率.md)。CPU core／SoC 資訊已詢問；等待回答不阻塞現有實作。
+
+C01～C02 目的補充：使用者接受非 cycle-accurate、以儘量接近平台的模型比較軟體 data／程式碼最佳化前後的相對差異。排在 M1～M3 完成後，見 [後續計畫](plans/04-cache-relative-optimization.md)。不要求先取得精確硬體 timing 才能做相對比較。

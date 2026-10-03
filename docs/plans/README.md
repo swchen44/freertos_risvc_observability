@@ -81,3 +81,7 @@ P1-T1 建立環境後，後續命令先在 POC 根目錄執行 `source .venv/bin
 建議 Native：由主代理依序實作，里程碑保留測試證據，最後另做獨立整體 code review。此專案 firmware／parser／analysis 共用時鐘與 schema，順序實作方便維持契約一致。
 
 另一選擇是 Subagent-driven：每個任務由新代理實作、另一代理 review 後才進下一個任務；獨立檢查較密集，也增加交接與上下文成本。執行方式由使用者在審閱計畫後選擇。
+
+## 排在目前三階段之後
+
+[Cache 相對效能最佳化](04-cache-relative-optimization.md)：使用者接受非 cycle-accurate 模型，目的是比較 data／程式碼修改前後的相對改善。先完成 M1～M3，再做 plugin 校驗、受控 A/B 與 cache 視圖；不把此項當成目前 Dashboard 交付前置。

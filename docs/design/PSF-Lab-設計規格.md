@@ -111,3 +111,5 @@ CSV 使用與畫面相同的 filter／sort，匯出**所有符合的資料**，�
 ## 補充：CPU 與 cache／bus 需求
 
 2026-10-03 使用者確認 Dashboard 須參照 Tracealyzer 多種分析功能，不限 CPU 百分比。第一版必須呈現 task execution share、完整窗口分母、unknown coverage、request execution／response 與案例對照。ISR 尚未完整重建時，介面必須標示其限制。Cache／bus 額外資料源與研究邊界见 [補充研究](../research/Cache-Bus與CPU使用率.md)，未量到的欄位不可填 0。
+
+Cache 目的已明確：以相同模型及工作量比較軟體 data／程式碼變更，接受非 cycle-accurate；列為 M3 後的 [相對最佳化階段](../plans/04-cache-relative-optimization.md)。畫面同時列 miss、指令數與 size 的 tradeoff，penalty 估計與 PSF 虛擬時間分開標示。
