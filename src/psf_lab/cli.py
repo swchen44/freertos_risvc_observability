@@ -29,7 +29,18 @@ def main(argv=None) -> int:
     analyzer.add_argument("--output", type=Path, required=True)
     suite = commands.add_parser("suite", help="Run seven cases and three comparisons")
     suite.add_argument("--repeat", type=int, default=3)
+    server = commands.add_parser("serve", help="Start loopback-only local dashboard")
+    server.add_argument("--host", choices=["127.0.0.1", "localhost", "::1"], default="127.0.0.1")
+    server.add_argument("--port", type=int, default=8000)
+    server.add_argument("--store", type=Path, default=Path("artifacts/local/store"))
     args = parser.parse_args(argv)
+    if args.command == "serve":
+        import uvicorn
+
+        from psf_lab.server import create_app
+
+        uvicorn.run(create_app(args.store), host=args.host, port=args.port)
+        return 0
     if args.command == "suite":
         try:
             directory = run_suite(Path.cwd(), repeat=args.repeat)
