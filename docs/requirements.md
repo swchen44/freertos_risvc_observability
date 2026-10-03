@@ -48,3 +48,9 @@ M2完成：七配置三次重跑21/21、每輪三組pair9/9通過；原始證據
 
 
 M3 驗證：90 unit、6 integration、5 Node、11 Playwright 全通過，Ruff／build 通過。新正式 suite 21／21、pair 9／9，見 README。後續尚未完成：產品 U01～U16、M4 cache 相對最佳化與離線 HTML。
+
+## 新增優先工作：離線 HTML 與圖文同步
+
+使用者已確認 **1A／2B**：Python 先將 PSF 匯出成單檔 HTML，離線觀看時不需要 Python 服務；跨機重現整項暫緩，不要求目標平台。同步原本一篇知識庫、整理 README 歷史／現況，至少 14 張實際操作截圖。驗證指定 **agent-browser E2E** 與 **curl API integration**，另保留 unittest／Ruff／Node 和既有回歸。
+
+[實作計畫](plans/05-offline-portability-documentation.md) 已記錄；上述新增成果尚未完成。M4 與產品 U01～U16 繼續列為後續。

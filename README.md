@@ -6,7 +6,7 @@
 
 ## 本次規劃中的工作
 
-[離線 HTML、跨機重現與圖文交接計畫](docs/plans/05-offline-portability-documentation.md) 已建立草案：四項工作、七個交付任務、至少 14 張實際畫面及其驗收證據。離線輸入方式與目標環境待確認；這些新增功能尚未實作。
+[離線 HTML、圖文交接與知識庫同步計畫](docs/plans/05-offline-portability-documentation.md) 已確認 1A／2B：Python 匯出離線 HTML、跨機重現整項暫緩。本輪五個交付任務、至少 14 張實際畫面；agent-browser 做 E2E、curl 做 API integration。新增功能尚未實作。
 
 ## 文件入口
 
