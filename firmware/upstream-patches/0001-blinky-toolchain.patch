@@ -1,0 +1,31 @@
+--- a/main.c
++++ b/main.c
+@@ -65,7 +65,7 @@
+  * If mainCREATE_SIMPLE_BLINKY_DEMO_ONLY is not 1 then the comprehensive test and
+  * demo application will be built.  The comprehensive test and demo application is
+  * implemented and described in main_full.c. */
+-#define mainCREATE_SIMPLE_BLINKY_DEMO_ONLY    0
++#define mainCREATE_SIMPLE_BLINKY_DEMO_ONLY    1
+ 
+ /* Set to 1 to use direct mode and set to 0 to use vectored mode.
+  * VECTOR MODE=Direct --> all traps into machine mode cause the pc to be set to the
+--- a/build/gcc/Makefile
++++ b/build/gcc/Makefile
+@@ -14,7 +14,7 @@
+ GCC_VERSION_NEED_ZICSR = "110100"
+ 
+ CFLAGS += $(INCLUDE_DIRS) -fmessage-length=0 \
+-          -mabi=ilp32 -mcmodel=medlow -ffunction-sections -fdata-sections \
++          -mabi=ilp32 -mcmodel=medany -ffunction-sections -fdata-sections \
+           -Wno-unused-parameter -nostartfiles -g3 -Os
+ 
+ ifeq ($(shell test $(GCC_VERSION) -ge $(GCC_VERSION_NEED_ZICSR) && echo true),true)
+@@ -30,7 +30,7 @@
+ endif
+ 
+ LDFLAGS += -nostartfiles -Xlinker --gc-sections -Wl,-Map,$(OUTPUT_DIR)/RTOSDemo.map \
+-           -T./fake_rom.ld -march=rv32imac -mabi=ilp32 -mcmodel=medlow -Xlinker \
++           -T./fake_rom.ld -march=rv32imac -mabi=ilp32 -mcmodel=medany -Xlinker \
+            --defsym=__stack_size=350 -Wl,--start-group -Wl,--end-group
+ 
+ ifeq ($(PICOLIBC),1)

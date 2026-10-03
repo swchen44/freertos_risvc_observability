@@ -1,0 +1,45 @@
+{
+  "tools": {
+    "riscv-none-elf-gcc": {
+      "path": "/Users/swchen.tw/git/percepio/poc/.tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin/riscv-none-elf-gcc",
+      "sha256": "d21f58713e7f2f9a9ef9de8762b2c2d1995cd4cdeda724d5fe4834f3af4737b2",
+      "version": "riscv-none-elf-gcc (xPack GNU RISC-V Embedded GCC arm64) 15.2.0\nCopyright (C) 2025 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
+    },
+    "qemu-system-riscv32": {
+      "path": "/opt/homebrew/bin/qemu-system-riscv32",
+      "sha256": "9571ebc592f0415e8979c972416102300ea80863f52643adafdee09207ced191",
+      "version": "QEMU emulator version 11.1.2\nCopyright (c) 2003-2026 Fabrice Bellard and the QEMU Project developers"
+    },
+    "dtc": {
+      "path": "/opt/homebrew/bin/dtc",
+      "sha256": "29aa15cf78e04ea4e389036b00e552a844cc092ce4a17acda49fcc83f88e974a",
+      "version": "Version: DTC 1.8.1"
+    },
+    "fdtget": {
+      "path": "/opt/homebrew/bin/fdtget",
+      "sha256": "4b4f82070d9152ae6e1aa19a925b98ece9fba712480f478d5f45f49044f7d9bc",
+      "version": "Version: DTC 1.8.1"
+    }
+  },
+  "gcc_archive": {
+    "url": "https://github.com/xpack-dev-tools/riscv-none-elf-gcc-xpack/releases/download/v15.2.0-1/xpack-riscv-none-elf-gcc-15.2.0-1-darwin-arm64.tar.gz",
+    "sha256": "6588e8351455fad8aca37551f0e5a5543f3346bfa9a837cf03cbd3bdd4989f8f"
+  },
+  "multilib": ".;\nrv32e/ilp32e;@march=rv32e@mabi=ilp32e\nrv32ec/ilp32e;@march=rv32ec@mabi=ilp32e\nrv32ea_zaamo_zalrsc/ilp32e;@march=rv32ea_zaamo_zalrsc@mabi=ilp32e\nrv32em/ilp32e;@march=rv32em@mabi=ilp32e\nrv32eac_zaamo_zalrsc/ilp32e;@march=rv32eac_zaamo_zalrsc@mabi=ilp32e\nrv32emac_zaamo_zalrsc/ilp32e;@march=rv32emac_zaamo_zalrsc@mabi=ilp32e\nrv32i/ilp32;@march=rv32i@mabi=ilp32\nrv32ia_zaamo_zalrsc/ilp32;@march=rv32ia_zaamo_zalrsc@mabi=ilp32\nrv32im/ilp32;@march=rv32im@mabi=ilp32\nrv32imc/ilp32;@march=rv32imc@mabi=ilp32\nrv32if_zicsr/ilp32f;@march=rv32if_zicsr@mabi=ilp32f\nrv32ifd_zicsr/ilp32d;@march=rv32ifd_zicsr@mabi=ilp32d\nrv32iaf_zicsr_zaamo_zalrsc/ilp32f;@march=rv32iaf_zicsr_zaamo_zalrsc@mabi=ilp32f\nrv32iafd_zicsr_zaamo_zalrsc/ilp32d;@march=rv32iafd_zicsr_zaamo_zalrsc@mabi=ilp32d\nrv32imf_zicsr/ilp32f;@march=rv32imf_zicsr@mabi=ilp32f\nrv32imfd_zicsr/ilp32d;@march=rv32imfd_zicsr@mabi=ilp32d\nrv32iac_zaamo_zalrsc/ilp32;@march=rv32iac_zaamo_zalrsc@mabi=ilp32\nrv32imafc_zicsr_zaamo_zalrsc/ilp32f;@march=rv32imafc_zicsr_zaamo_zalrsc@mabi=ilp32f\nrv32imafdc_zicsr_zaamo_zalrsc/ilp32d;@march=rv32imafdc_zicsr_zaamo_zalrsc@mabi=ilp32d\nrv64i/lp64;@march=rv64i@mabi=lp64\nrv64ia_zaamo_zalrsc/lp64;@march=rv64ia_zaamo_zalrsc@mabi=lp64\nrv64im/lp64;@march=rv64im@mabi=lp64\nrv64if_zicsr/lp64f;@march=rv64if_zicsr@mabi=lp64f\nrv64ifd_zicsr/lp64d;@march=rv64ifd_zicsr@mabi=lp64d\nrv64iaf_zicsr_zaamo_zalrsc/lp64f;@march=rv64iaf_zicsr_zaamo_zalrsc@mabi=lp64f\nrv64iafd_zicsr_zaamo_zalrsc/lp64d;@march=rv64iafd_zicsr_zaamo_zalrsc@mabi=lp64d\nrv64imf_zicsr/lp64f;@march=rv64imf_zicsr@mabi=lp64f\nrv64iac_zaamo_zalrsc/lp64;@march=rv64iac_zaamo_zalrsc@mabi=lp64\nrv64imac_zaamo_zalrsc/lp64;@march=rv64imac_zaamo_zalrsc@mabi=lp64\nrv64imafc_zicsr_zaamo_zalrsc/lp64f;@march=rv64imafc_zicsr_zaamo_zalrsc@mabi=lp64f\nrv64imafdc_zicsr_zaamo_zalrsc/lp64d;@march=rv64imafdc_zicsr_zaamo_zalrsc@mabi=lp64d\n",
+  "sysroot": "/Users/swchen.tw/git/percepio/poc/.tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../riscv-none-elf",
+  "nano_specs": "/Users/swchen.tw/git/percepio/poc/.tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/../../../../riscv-none-elf/lib/nano.specs",
+  "smoke_command": [
+    "qemu-system-riscv32",
+    "-machine",
+    "virt",
+    "-bios",
+    "none",
+    "-nographic",
+    "-kernel",
+    "/Users/swchen.tw/git/percepio/poc/artifacts/local/upstream-demo/build/gcc/output/RTOSDemo.elf"
+  ],
+  "timebase_hz": 10000000,
+  "dtb_sha256": "9634af39ce76aad900d4c788a0ed50e691354b24d6aa155bc5a8232dc52eb48d",
+  "freertos_commit": "152cf36d6775bce6026a791845af12201aae703d",
+  "kernel_commit": "dbf70559b27d39c1fdb68dfb9a32140b6a6777a0"
+}
