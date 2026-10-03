@@ -9,6 +9,7 @@ from urllib.parse import urlsplit
 from fastapi import FastAPI, UploadFile
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import FileResponse, JSONResponse, Response
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, Field, StrictInt
 from starlette.concurrency import run_in_threadpool
 from starlette.exceptions import HTTPException
@@ -262,4 +263,7 @@ def create_app(
         ]
         return result
 
+    dist = ROOT / "web/dist"
+    if dist.is_dir():
+        app.mount("/", StaticFiles(directory=dist, html=True), name="dashboard")
     return app

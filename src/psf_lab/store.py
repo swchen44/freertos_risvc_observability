@@ -70,7 +70,17 @@ def create_trace(
             write_json(temporary / "trace.json", trace)
             write_json(temporary / "analysis.json", analysis)
             metadata = {k: trace[k] for k in ["source", "platform", "clock", "objects", "quality"]}
-            metadata.update(trace_id=id_, event_count=len(trace["events"]))
+            metadata.update(
+                trace_id=id_,
+                event_count=len(trace["events"]),
+                event_types=[
+                    {"id": id_, "kind": kind}
+                    for id_, kind in sorted({(e["id"], e["kind"]) for e in trace["events"]})
+                ],
+                channels=sorted(
+                    {e["fields"]["channel"] for e in trace["events"] if e["fields"].get("channel")}
+                ),
+            )
             write_json(temporary / "metadata.json", metadata)
             temporary.rename(store / id_)
         except BaseException:
