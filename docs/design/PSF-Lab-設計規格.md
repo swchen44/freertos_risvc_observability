@@ -1,6 +1,6 @@
 # PSF Lab 設計規格
 
-日期：2026-10-03。狀態：**待書面設計 review；尚未實作產品**。
+日期：2026-10-03。狀態：**使用者閱讀規格後要求撰寫實作計畫；設計作為本輪計畫依據，尚未實作產品**。
 
 目標：用真正的 FreeRTOS＋TraceRecorder 在 RISC-V 模擬器產生正常／異常案例 PSF，Python 解析、驗證並供本機互動 Dashboard 使用。工作位置固定為 `~/git/percepio/poc`，所有新文件與執行證據存入此 Git 專案。
 
@@ -106,4 +106,4 @@ CSV 使用與畫面相同的 filter／sort，匯出**所有符合的資料**，�
 - [FastAPI 上傳](https://fastapi.tiangolo.com/tutorial/request-files/)、[靜態檔案](https://fastapi.tiangolo.com/tutorial/static-files/)
 - [ECharts SVG](https://echarts.apache.org/handbook/en/best-practices/canvas-vs-svg/)、[Tabulator](https://tabulator.info/docs/6.3)
 
-此文件是設計草案。Q1／Q2 與 POC 路徑不再詢問；書面規格確認後，才將建置順序、檔案修改與測試命令寫成實作計畫。
+使用者已要求進入實作計畫階段；見 [實作計畫入口](../plans/README.md)。Q1／Q2 與 POC 路徑不再詢問；本輪完成計畫，執行方式尚未選定。

@@ -1,0 +1,15 @@
+flowchart TD
+    A[P1-T1 工具與來源] --> D[P1-T4 FreeRTOS hooks 和 capture]
+    B[P1-T2 binary framing] --> C[P1-T3 平台語意]
+    C --> E[P1-T5 Queue harness]
+    D --> E
+    E --> F[M1 第一條真實資料流程]
+    F --> G[P2-T1 分析與品質]
+    G --> H[P2-T2 Logger]
+    H --> I[P2-T3 Priority inversion]
+    I --> J[P2-T4 Deadlock 和完整 suite]
+    J --> K[M2 七個配置可重跑]
+    K --> L[P3-T1 Query 和 CSV]
+    L --> M[P3-T2 本機 API]
+    M --> N[P3-T3 SVG Dashboard]
+    N --> O[P3-T4 瀏覽器和效能驗收]

@@ -2,13 +2,14 @@
 
 **這裡是後續實驗與文件的主要入口，使用獨立 Git 管理。**
 
-目前完成目錄、研究快照、需求與決策紀錄及設計草案；尚未建置 QEMU firmware、正式 parser、harness 或 Dashboard。建立日期：2026-10-03。
+目前完成目錄、研究快照、需求與決策紀錄、設計及三份實作子計畫；尚未建置 QEMU firmware、正式 parser、harness 或 Dashboard。建立日期：2026-10-03。
 
-## 先看這三份
+## 文件入口
 
 1. [需求與進度](docs/requirements.md)：所有原需求、新需求、完成與未完成項目。
 2. [設計規格](docs/design/PSF-Lab-設計規格.md)：PSF → Python → 互動 HTML／SVG＋JavaScript。
-3. [過程日誌](docs/journal/2026-10-03.md)：本次做了什麼、依據、限制與下一步。
+3. [實作計畫](docs/plans/README.md)：13 個任務、測試與完成條件。
+4. [過程日誌](docs/journal/2026-10-03.md)：本次做了什麼、依據、限制與下一步。
 
 ## 目錄用途
 

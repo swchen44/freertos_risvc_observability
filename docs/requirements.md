@@ -14,7 +14,7 @@
 | POC 目錄與 Git | 本輪建立 | README、過程、決策、來源 manifest 與初始 commit |
 | PSF／QEMU／UI 研究 | 已有研究與 review | 以實際模擬及正式 parser 驗證研究主張 |
 | PSF／本機服務選擇 | 已確認 | 依此設計，PDF 僅保留研究用途 |
-| 設計規格 | 草案 | 書面 review 後建立實作計畫 |
+| 設計規格／實作計畫 | 使用者已要求寫計畫；三份子計畫已建立 | [計畫 review 與執行方式](plans/README.md)，尚未開始程式實作 |
 | RISC-V＋FreeRTOS＋SDK | 未建置 | 可重跑 firmware、版本鎖定、ELF／map、時鐘證據 |
 | 正常／異常案例 | 未執行 | 七個配置、PSF、獨立應用結果與判定 |
 | PSF → JSON parser | 未實作 | desktop 64-bit 與 RV32 FreeRTOS 的分開 schema |
