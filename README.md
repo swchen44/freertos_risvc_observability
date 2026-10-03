@@ -2,7 +2,7 @@
 
 這個 repository 保存 SDK／PDF／影片研究，以及能實際產生、解碼、驗證 PSF 的 FreeRTOS／RISC-V POC。
 
-**目前完成：M1～M3 的 PSF parser、QEMU 控制案例、harness、本機 Python＋SVG Dashboard。** M4 cache 相對最佳化、離線 HTML、產品 U01～U16 尚未完成，不能以 POC 通過取代板上量測。
+**目前完成：M1～M3 的 PSF parser、QEMU 控制案例、harness、本機 Python＋SVG Dashboard。** 單 trace 離線 HTML 已新增；M4 cache 相對最佳化、跨機重現與產品 U01～U16 尚未完成，不能以 POC 通過取代板上量測。
 
 ## 先從哪裡讀？
 
@@ -13,6 +13,46 @@
 | 看 Dashboard 操作與截圖 | [Dashboard 指南](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/dashboard-guide.md) |
 | 查看本次 todo／checklist 稽核和證據 | [GitHub 上傳與完成度稽核](research/github-upload-audit.md) |
 | 帶到內網與產品 source 比對 | [POC handoff](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/handoff.md)、[原始 U01～U16 任務](research/內部AI-接續研究任務.md) |
+
+## 2026-10-04：離線 HTML、20 張截圖與最新驗證
+
+**Python 先將 PSF 轉成單檔 HTML，之後雙擊即可離線操作。** 新 PSF 需重新匯出；離線觀看端不需要 Python、Web Server 或網路。跨機重現依使用者 2B 整項暫緩。
+
+[完整操作圖解](https://github.com/swchen44/freertos_risvc_observability/blob/5594d730adc432608013c2cd0855aa3794e8dc6e/docs/offline-guide.md)｜[下載 Queue 離線示範](https://github.com/swchen44/freertos_risvc_observability/blob/5594d730adc432608013c2cd0855aa3794e8dc6e/artifacts/offline/queue-baseline.html)｜[103 項 Python tests](https://github.com/swchen44/freertos_risvc_observability/blob/5594d730adc432608013c2cd0855aa3794e8dc6e/artifacts/verification/offline/full-suite.log)｜[curl integration](https://github.com/swchen44/freertos_risvc_observability/blob/5594d730adc432608013c2cd0855aa3794e8dc6e/artifacts/verification/offline/http-tests.log)｜[agent-browser E2E](https://github.com/swchen44/freertos_risvc_observability/blob/5594d730adc432608013c2cd0855aa3794e8dc6e/artifacts/verification/offline/browser-offline.log)｜[20 張圖片與版本 manifest](https://github.com/swchen44/freertos_risvc_observability/blob/5594d730adc432608013c2cd0855aa3794e8dc6e/artifacts/verification/offline/screenshot-manifest.json)
+
+在初始化後的 `poc/`，依 Python 環境設定安裝，再執行：
+
+```sh
+npm --prefix web ci
+npm --prefix web run build
+.venv/bin/python -m psf_lab export-html fixtures/desktop/trace.psf --output artifacts/local/report.html
+```
+
+將 `report.html` 複製到閱讀位置後雙擊。GitHub 不會直接執行 HTML，範例需下載原始檔。離線單 trace 沒有案例 registry／oracle compare，該功能繼續在 Server 使用。
+
+**Server 全覽：** 真實 Queue PSF 的時間軸、CPU share、事件表與來源。
+
+![Web Server Queue 全覽](https://raw.githubusercontent.com/swchen44/freertos_risvc_observability/5594d730adc432608013c2cd0855aa3794e8dc6e/artifacts/screenshots/server/02-overview.png)
+
+**單檔 HTML 全覽：** 同一份 trace，右上角標明離線模式；保留互動能力。
+
+![離線 HTML Queue 全覽](https://raw.githubusercontent.com/swchen44/freertos_risvc_observability/5594d730adc432608013c2cd0855aa3794e8dc6e/artifacts/screenshots/offline/02-overview.png)
+
+**篩選與拖曳時間窗：** 選 consumer，CPU 分母仍保留整個窗口的排程。
+
+![離線 task 與窗口篩選](https://raw.githubusercontent.com/swchen44/freertos_risvc_observability/5594d730adc432608013c2cd0855aa3794e8dc6e/artifacts/screenshots/offline/03-filter-window.png)
+
+![離線滑鼠拖曳時間軸](https://raw.githubusercontent.com/swchen44/freertos_risvc_observability/5594d730adc432608013c2cd0855aa3794e8dc6e/artifacts/screenshots/offline/04-timeline-brush.png)
+
+**排序、欄寬與完整 CSV：** 本頁 20 筆，實測完整下載 281 筆。
+
+![離線排序與欄寬](https://raw.githubusercontent.com/swchen44/freertos_risvc_observability/5594d730adc432608013c2cd0855aa3794e8dc6e/artifacts/screenshots/offline/05-sort-resize.png)
+
+**Server 案例對照：** Logger 干擾與改善有獨立 oracle，異常案例 pass 表示預期重現異常。
+
+![Logger 干擾與改善](https://raw.githubusercontent.com/swchen44/freertos_risvc_observability/5594d730adc432608013c2cd0855aa3794e8dc6e/artifacts/screenshots/server/09-comparison.png)
+
+最新結果：103 Python（97 unit＋6 integration）、5 Node、11 Playwright regression 通過；另外以 curl 驗 5 項真實 HTTP integration、agent-browser 驗 Server／無 Server 的離線完整流程。離線 partial／10,000-event synthetic 與完整下載另有證據；不能把合成容量案例當硬體效能。
 
 ## 各資料夾與重要檔案
 
@@ -358,7 +398,9 @@ python3 research/package_report.py
 
 編譯腳本沒有產生產品 firmware。驗證腳本對本次編譯重跑結果的比較仍依賴暫存檔；換主機或清除暫存後，需要先執行編譯探測。新增產品實測時，保留條件與證據，不把原先試算直接改稱實測。
 
-## 9. 新增階段：知識庫、PSF、模擬與互動分析
+## 9. 新增階段：知識庫、PSF、模擬與互動分析（歷史快照）
+
+本節 N01～N12 保留進入實作前的狀態，不能當作目前 TODO。Parser、RISC-V 環境、案例／harness、本機 UI／tests 均已完成，最新成果及離線版見本 README 頂部；M4、跨機及產品任務仍另行追蹤。
 
 本節保留後續新增要求，不改寫前一階段 R01～R27／U01～U16 的歷史範圍。研究與設計入口：[下一階段研究索引](research/next-phase/README.md)。
 

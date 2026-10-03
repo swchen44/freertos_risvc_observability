@@ -1,4 +1,6 @@
-# GitHub 上傳前：todo／checklist 與證據稽核
+# 首次 GitHub 上傳：todo／checklist 與證據稽核（歷史）
+
+更新：2026-10-04 已完成單 trace 離線 HTML、curl／agent-browser 驗證與 20 張操作截圖，最新證據見根 README。跨機重現依使用者 2B 暫緩。以下測試數與 receipt 是首次發布的歷史證據。
 
 日期：2026-10-03。目標 repository：<https://github.com/swchen44/freertos_risvc_observability>。
 
@@ -26,7 +28,7 @@
 | 待辦 | 為什麼尚未完成 | 後續完成條件 |
 |---|---|---|
 | M4 cache 相對最佳化 | 使用者明確要求排後面，本輪只有計畫 | 驗 cache plugin、相同工作量 A/B、L1I／L1D／L2 miss、指令數／size、模型假設與校驗 |
-| 離線 HTML | 第一版依使用者選擇為本機 Python 服務 | 關閉 Python／網路後仍可載入、分析、篩選、匯出 |
+| 離線 HTML | **2026-10-04 已完成單 trace 匯出** | agent-browser 已在 Server 停止／瀏覽器 offline 下驗證；新 PSF 仍需 Python 重新匯出 |
 | U01～U16 產品任務 | POC 控制案例不能取代產品 source／BSP／實體平台 | 依 [內部 AI 任務](內部AI-接續研究任務.md) 的個別完成條件 |
 | 組織內部網路部署 | 上傳 GitHub 不等於部署內網 | 依組織環境部署、權限與實際檔案存取驗收 |
 | 相同工具鏈跨機重現 | 原 lock 是 macOS arm64 的路徑／hash，工具 archive 不上傳 | 安裝、驗 checksum、依環境更新並提交 lock；正式 run 必須 clean |
