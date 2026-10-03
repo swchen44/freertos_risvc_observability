@@ -18,3 +18,5 @@ CLI：`python -m psf_lab decode fixtures/desktop/trace.psf --output artifacts/lo
 ## 已實作的排程分析
 
 `analyze` 以明確 task switch 建立 running intervals；首個 switch 前、sequence gap 相鄰區間、未知事件與 ISR 未重建區間列 unknown。COMPLETE 才關閉 capture 尾端，否則保留 open interval。Task share 的分母包含 unknown 時間；它不是包含 ISR 的整體 CPU utilization。Request response 與 worker execution 分開，缺完成或執行證據時為 null。物件 epoch 分開計算。
+
+FreeRTOS notification family 0xC9～0xCD 已解碼為 task target／wait 事件，來源 `trcKernelPort.h:687–691,1471–1538`；actor 與通知對象分開。FreeRTOS `TRACE_HANDLE_NO_TASK=2` 為 reserved startup sentinel，不建立 task。
