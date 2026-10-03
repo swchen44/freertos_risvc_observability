@@ -9,7 +9,7 @@ from psf_lab.analysis import analyze
 from psf_lab.doctor import inspect_tools
 from psf_lab.parser.errors import ParseError
 from psf_lab.parser.semantic import parse_trace
-from psf_lab.runner import check_run, run_case
+from psf_lab.runner import check_run, run_case, run_suite
 
 
 def main(argv=None) -> int:
@@ -27,7 +27,19 @@ def main(argv=None) -> int:
     analyzer = commands.add_parser("analyze", help="Derive scheduling intervals and requests")
     analyzer.add_argument("input", type=Path)
     analyzer.add_argument("--output", type=Path, required=True)
+    suite = commands.add_parser("suite", help="Run seven cases and three comparisons")
+    suite.add_argument("--repeat", type=int, default=3)
     args = parser.parse_args(argv)
+    if args.command == "suite":
+        try:
+            directory = run_suite(Path.cwd(), repeat=args.repeat)
+            print(directory)
+            return (
+                0 if json.loads((directory / "index.json").read_text())["verdict"] == "pass" else 1
+            )
+        except (OSError, ValueError, RuntimeError) as error:
+            print(str(error), file=sys.stderr)
+            return 2
     if args.command == "analyze":
         try:
             if args.input.resolve() == args.output.resolve():

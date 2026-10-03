@@ -103,6 +103,55 @@ def check_case(case: dict, trace: dict, oracle: dict) -> dict:
             )
         else:
             expect("no_inheritance", 0, sum(e["kind"] == "task_prio_inherit" for e in events))
+    elif case["case_id"] in ("deadlock_abba", "ordered_locks"):
+        graph = lock_graph(trace)
+        if case["case_id"] == "deadlock_abba":
+            relations = [
+                ("HOLD_A", 1),
+                ("WAIT_B", 1),
+                ("HOLD_B", 2),
+                ("WAIT_A", 2),
+                ("DEADLOCK_CONFIRMED", 2),
+            ]
+            for phase, task in relations:
+                expect(
+                    "psf_" + phase,
+                    True,
+                    any(
+                        e["fields"].get("phase") == phase and e["fields"].get("message_id") == task
+                        for e in markers
+                    ),
+                )
+                expect(
+                    "oracle_" + phase,
+                    True,
+                    any(
+                        p["phase"] == phase and p["request_id"] == task
+                        for p in oracle.get("phases", [])
+                    ),
+                )
+            expect("wait_cycle", True, graph["cycle"])
+            if not graph["cycle"] or graph["status"] != "known":
+                issues.append("insufficient_deadlock_evidence")
+        else:
+            expect(
+                "psf_work_done",
+                [1, 2],
+                sorted(
+                    e["fields"]["message_id"]
+                    for e in markers
+                    if e["fields"].get("phase") == "WORK_DONE"
+                ),
+            )
+            expect(
+                "oracle_work_done",
+                [1, 2],
+                sorted(
+                    p["request_id"] for p in oracle.get("phases", []) if p["phase"] == "WORK_DONE"
+                ),
+            )
+            expect("no_wait_cycle", False, graph["cycle"])
+            expect("all_locks_released", {}, graph["owners"])
     elif case["case_id"] == "clock_probe":
         expect("clock_ticks", 100, oracle.get("delta_ticks"))
         expect(
@@ -116,7 +165,14 @@ def check_case(case: dict, trace: dict, oracle: dict) -> dict:
     passed = all(a["passed"] for a in assertions) and not issues
     return dict(
         case_id=case["case_id"],
-        verdict="pass" if passed else "fail",
+        verdict=(
+            "indeterminate"
+            if "insufficient_deadlock_evidence" in issues
+            or (case["case_id"] in ("inversion", "inheritance") and trace["quality"]["issues"])
+            else "pass"
+            if passed
+            else "fail"
+        ),
         assertions=assertions,
         issues=issues,
     )
@@ -199,6 +255,12 @@ def compare_cases(pair_id: str, runs: list[dict]) -> dict:
                 assertions=assertions,
                 issues=["trace_quality"],
             )
+    elif pair_id == "locks":
+        expect("same_work", a["case"]["parameters"], b["case"]["parameters"])
+        expect("abba_cycle", True, lock_graph(a["trace"])["cycle"])
+        expect("ordered_cycle", False, lock_graph(b["trace"])["cycle"])
+        expect("abba_outcome", "deadlock", a["oracle"]["outcome"])
+        expect("ordered_outcome", "normal", b["oracle"]["outcome"])
     else:
         issues.append("unsupported_pair")
     return dict(
@@ -237,3 +299,31 @@ def priority_order(oracle: dict, inheritance: bool) -> bool:
     return (
         times["HIGH_BLOCKED"] < times["MEDIUM_END"] < times["LOW_RELEASE"] < times["HIGH_ACQUIRED"]
     )
+
+
+def lock_graph(trace: dict) -> dict:
+    if trace["quality"]["issues"]:
+        return dict(status="indeterminate", cycle=False, owners={}, waits={})
+    owners, waits = {}, {}
+    for e in trace["events"]:
+        actor, obj = e.get("actor_id"), e.get("object_id")
+        if not actor or not obj:
+            continue
+        if e["kind"] == "mutex_take":
+            owners[obj] = actor
+            waits.pop(actor, None)
+        elif e["kind"] == "mutex_give":
+            owners.pop(obj, None)
+        elif e["kind"] == "mutex_take_block":
+            waits[actor] = obj
+    cycle = False
+    for actor in waits:
+        seen = set()
+        current = actor
+        while current in waits and waits[current] in owners:
+            if current in seen:
+                cycle = True
+                break
+            seen.add(current)
+            current = owners[waits[current]]
+    return dict(status="known", cycle=cycle, owners=owners, waits=waits)

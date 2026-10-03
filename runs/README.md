@@ -21,3 +21,5 @@
 `python -m psf_lab run queue_baseline` 要求乾淨 Git、固定 submodule 和工具 checksum，強制重新編譯後執行 QEMU。每次 run 保留 case、ELF、map、展開 hooks、PSF、oracle、JSON、assertions 和 manifest。`python -m psf_lab check RUN_DIRECTORY` 從 raw PSF／oracle 重做判定並核對原始 hash。host timeout／crash 的 exit code 為 4，不當案例成功。
 
 正式 run 產物需 commit 後才可執行下一輪。整合測試用同一 runner 輸出到 TemporaryDirectory，仍要求原始碼乾淨，沒有 skip。
+
+`python -m psf_lab suite --repeat 3` 一次執行七配置各三次，並做每輪三組比較。開始時仍需 clean source；suite session 只容許它以 exclusive mkdir 建立的輸出子目錄新增檔案，其他 tracked／untracked 變更、HEAD 或來源 hash 改變都拒絕。每次失敗也列入 attempts，不能漏掉 timeout。

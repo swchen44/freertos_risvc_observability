@@ -8,7 +8,7 @@ import uuid
 from datetime import datetime, timezone
 from pathlib import Path
 
-from psf_lab.harness import check_case
+from psf_lab.harness import check_case, compare_cases
 from psf_lab.parser.semantic import parse_trace
 from psf_lab.provenance import require_clean_tree
 
@@ -153,11 +153,16 @@ def check_run(run: Path) -> dict:
 
 
 def run_case(
-    root: Path, case_id: str, *, timeout_s: float = 30.0, output_root: Path | None = None
+    root: Path,
+    case_id: str,
+    *,
+    timeout_s: float = 30.0,
+    output_root: Path | None = None,
+    _session: dict | None = None,
 ) -> Path:
     root = root.resolve()
     validate_case_id(case_id)
-    commit = require_clean_tree(root)
+    commit = require_clean_tree(root) if _session is None else check_session(root, _session)
     lock = verify_environment(root)
     before = source_snapshot(root)
     case = json.loads((root / "cases" / f"{case_id}.json").read_text())
@@ -204,7 +209,7 @@ def run_case(
             write_json(run / "trace.json", trace)
             write_json(run / "assertions.json", result)
             manifest.update(
-                exit_code=0 if result["verdict"] == "pass" else 1,
+                exit_code={"pass": 0, "fail": 1, "indeterminate": 3}[result["verdict"]],
                 status=result["verdict"],
                 quality=trace["quality"],
                 event_count=len(trace["events"]),
@@ -240,3 +245,105 @@ def load_run(run: Path) -> dict:
     value["trace"] = parse_trace((run / "trace.psf").read_bytes(), source_name="trace.psf")
     value["analysis"] = analyze(value["trace"])
     return value
+
+
+SUITE_CASES = [c for c in CASE_IDS if c != "clock_probe"]
+
+
+def check_session(root: Path, session: dict) -> str:
+    commit = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=root, text=True).strip()
+    if commit != session["commit"] or source_snapshot(root) != session["sources"]:
+        raise RuntimeError("Sources changed during suite")
+    status = (
+        subprocess.check_output(
+            ["git", "status", "--porcelain=v1", "-z", "--untracked-files=all"], cwd=root
+        )
+        .decode()
+        .split("\0")
+    )
+    prefix = session["directory"].relative_to(root).as_posix() + "/"
+    for row in status:
+        if row and not (row.startswith("?? ") and row[3:].startswith(prefix)):
+            raise RuntimeError("Unrelated changes during suite")
+    return commit
+
+
+def run_suite(root: Path, *, repeat: int = 3) -> Path:
+    if not isinstance(repeat, int) or not 1 <= repeat <= 10:
+        raise ValueError("Repeat must be between 1 and 10")
+    root = root.resolve()
+    commit = require_clean_tree(root)
+    verify_environment(root)
+    sources = source_snapshot(root)
+    directory = (
+        root
+        / "runs"
+        / (
+            "suite-"
+            + datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+            + "-"
+            + uuid.uuid4().hex[:10]
+        )
+    )
+    directory.mkdir(parents=True, exist_ok=False)
+    session = dict(commit=commit, sources=sources, directory=directory)
+    index = dict(
+        source_commit=commit, repeat=repeat, attempts=[], comparisons=[], verdict="incomplete"
+    )
+    for iteration in range(repeat):
+        current = {}
+        for case_id in SUITE_CASES:
+            try:
+                check_session(root, session)
+                run = run_case(root, case_id, output_root=directory, _session=session)
+                manifest = json.loads((run / "manifest.json").read_text())
+                index["attempts"].append(
+                    dict(
+                        iteration=iteration,
+                        case_id=case_id,
+                        run_id=run.name,
+                        exit_code=manifest["exit_code"],
+                        status=manifest["status"],
+                    )
+                )
+                if manifest["exit_code"] == 0:
+                    current[case_id] = load_run(run)
+            except (OSError, ValueError, RuntimeError) as error:
+                index["attempts"].append(
+                    dict(
+                        iteration=iteration,
+                        case_id=case_id,
+                        run_id=None,
+                        exit_code=4,
+                        status="failed",
+                        error=str(error),
+                    )
+                )
+            write_json(directory / "index.json", index)
+        for pair, names in {
+            "logger": ("logger_bad", "logger_fixed"),
+            "priority": ("inversion", "inheritance"),
+            "locks": ("deadlock_abba", "ordered_locks"),
+        }.items():
+            result = (
+                compare_cases(pair, [current[n] for n in names])
+                if all(n in current for n in names)
+                else dict(
+                    pair_id=pair,
+                    verdict="fail",
+                    issues=["missing_successful_member"],
+                    assertions=[],
+                )
+            )
+            index["comparisons"].append(dict(iteration=iteration, **result))
+    complete = len(index["attempts"]) == 7 * repeat
+    index["verdict"] = (
+        "pass"
+        if complete
+        and all(a["exit_code"] == 0 for a in index["attempts"])
+        and all(c["verdict"] == "pass" for c in index["comparisons"])
+        else "fail"
+    )
+    check_session(root, session)
+    write_json(directory / "index.json", index)
+    return directory
