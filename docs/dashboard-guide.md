@@ -34,4 +34,4 @@ flowchart LR
 
 ## 新版雙模式完整操作圖
 
-[Server 與單檔離線 HTML：18 張實際截圖、逐步說明與驗證證據](offline-guide.md)。離線 HTML 使用 Python 預先匯出的單 trace，不需觀看端服務或網路。
+[Server 與單檔離線 HTML：20 張實際截圖、逐步說明與驗證證據](offline-guide.md)。離線 HTML 使用 Python 預先匯出的單 trace，不需觀看端服務或網路。

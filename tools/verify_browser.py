@@ -59,6 +59,15 @@ def shot(name, description):
         {
             "file": str(dest.relative_to(ROOT)),
             "description": description,
+            "url": evaluate("location.href"),
+            "source_info": evaluate('document.querySelector("#source-info").textContent'),
+            "source_sha256": (
+                evaluate(
+                    'JSON.parse(document.querySelector("#psf-offline-data").textContent).trace.source.sha256'
+                )
+                if MODE == "offline"
+                else hashlib.sha256(PSF.read_bytes()).hexdigest()
+            ),
             "sha256": hashlib.sha256(dest.read_bytes()).hexdigest(),
             "state": evaluate(
                 '({window:document.querySelector("#window-label").textContent,search:document.querySelector("#search-filter").value,task:[...document.querySelector("#task-filter").selectedOptions].map(x=>x.value),rows:document.querySelector("#row-count").textContent})'
@@ -118,6 +127,13 @@ class BrowserAcceptance(unittest.TestCase):
             )
             ab("select", "#task-filter", task)
             settled()
+            self.assertEqual(
+                initial,
+                evaluate(
+                    '({coverage:document.querySelector("#coverage-label").textContent,'
+                    'shares:document.querySelector("#share-values").textContent})'
+                ),
+            )
             ab("fill", "#start-filter", "500")
             ab("fill", "#end-filter", "50000")
             ab("click", "#apply-window")
@@ -159,7 +175,10 @@ class BrowserAcceptance(unittest.TestCase):
             ab("click", "#reset")
             settled()
             # Hover a real table cell then pin the details through a click.
+            ab("click", "#unpin")
             ab("hover", ".tabulator-row:nth-child(2) .tabulator-cell[tabulator-field=kind]")
+            self.assertIn("event_id", evaluate('document.querySelector("#details").textContent'))
+            self.assertIn("offset", evaluate('document.querySelector("#details").textContent'))
             ab("click", ".tabulator-row:nth-child(2) .tabulator-cell[tabulator-field=kind]")
             shot("04-event-details", "滑過事件並點選固定原始欄位、offset 與品質")
             ab("click", '.tabulator-col[tabulator-field="ticks"]')
@@ -212,6 +231,52 @@ class BrowserAcceptance(unittest.TestCase):
                 )
                 shot("09-comparison", "Logger 干擾／改善，附獨立 oracle 結果")
             else:
+                for term in ["consumer", "producer", "no-such-message"]:
+                    ab("fill", "#search-filter", term)
+                ab(
+                    "wait",
+                    "--fn",
+                    'document.querySelector("#row-count").textContent.includes("符合 0 筆")',
+                )
+                settled()
+                self.assertEqual(
+                    "no-such-message", evaluate('document.querySelector("#search-filter").value')
+                )
+                for fixture in ["partial", "synthetic-10000"]:
+                    report = ROOT / "artifacts/local/offline-reports" / (fixture + ".html")
+                    ab("open", report.as_uri())
+                    settled()
+                    if fixture == "partial":
+                        self.assertIn(
+                            "warning", evaluate('document.querySelector("#status").className')
+                        )
+                        shot(
+                            "10-partial",
+                            "截斷的 desktop PSF：明確顯示品質警示，不能宣稱完整 capture",
+                        )
+                    else:
+                        count = evaluate(
+                            'JSON.parse(document.querySelector("#psf-offline-data").textContent).metadata.event_count'
+                        )
+                        self.assertGreaterEqual(count, 10000)
+                        ab("download", "#export-events", str(OUT / "large-events.csv"))
+                        self.assertEqual(
+                            count,
+                            len(
+                                list(
+                                    csv.DictReader(
+                                        io.StringIO((OUT / "large-events.csv").read_text())
+                                    )
+                                )
+                            ),
+                        )
+                        self.assertLessEqual(
+                            evaluate('document.querySelectorAll("#timeline svg path").length'), 2200
+                        )
+                        shot(
+                            "11-large-synthetic",
+                            "合成容量案例：完整資料查詢與匯出，不當硬體效能證據",
+                        )
                 requests = ab("network", "requests")
                 self.assertNotIn("http://", requests)
                 self.assertNotIn("https://", requests)
@@ -239,6 +304,10 @@ class BrowserAcceptance(unittest.TestCase):
                     {
                         "mode": MODE,
                         "viewport": [1600, 1000],
+                        "browser_user_agent": evaluate("navigator.userAgent"),
+                        "agent_browser": subprocess.check_output(
+                            ["agent-browser", "--version"], text=True
+                        ).strip(),
                         "source_commit": subprocess.check_output(
                             ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True
                         ).strip(),

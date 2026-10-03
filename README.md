@@ -16,7 +16,7 @@ npm --prefix web run build
 
 雙擊 `report.html` 即可篩選、拖曳時間軸、排序／調整表格、查看詳情與匯出 CSV。[可下載 Queue 示範](artifacts/offline/queue-baseline.html)；GitHub 上請下載原始檔後開啟。
 
-[完整 18 張操作圖解與模式比較](docs/offline-guide.md)｜[實作計畫](docs/plans/05-offline-portability-documentation.md)｜[curl 驗證](artifacts/verification/offline/http-tests.log)｜[agent-browser Server](artifacts/verification/offline/browser-server.log)｜[agent-browser 離線](artifacts/verification/offline/browser-offline.log)
+[完整 20 張操作圖解與模式比較](docs/offline-guide.md)｜[實作計畫](docs/plans/05-offline-portability-documentation.md)｜[curl 驗證](artifacts/verification/offline/http-tests.log)｜[agent-browser Server](artifacts/verification/offline/browser-server.log)｜[agent-browser 離線](artifacts/verification/offline/browser-offline.log)
 
 **Web Server：載入 Queue PSF。** 時間軸與 CPU share 呈現執行區間，右側保留來源與品質。
 
@@ -82,7 +82,7 @@ npm --prefix web run build
 ## 已確認方向與驗收
 
 - 輸入為 **PSF**；「PDF 轉 HTML」是筆誤，PDF 僅為研究參考。
-- 先做 **本機 Python 服務**，之後才擴充離線 HTML。
+- 原先先做 **本機 Python 服務**；現在已新增單 trace 離線 HTML。
 - 互動圖表使用 SVG＋JavaScript，包含 filters、hover、時間軸、可排序／調整欄位的表格與完整篩選結果 CSV。
 - Python 必須有 `unittest`、`ruff check`、`ruff format --check`；瀏覽器操作另做驗收。
 - 不購買 Tracealyzer；QEMU 的虛擬時間不能當成實體 CPU overhead。
@@ -143,7 +143,7 @@ npm --prefix web run test:e2e
 本版提供單 trace 離線 HTML；仍不提供完整 ISR／SMP、任意 PSF schema、實體 UART 或 cloud。SDK CPU 百分比、每事件 cycles、最差 IRQ 與產品 Flash／RAM 仍需內網／硬體量測。
 
 
-## 最新驗證紀錄
+## M1～M3 歷史驗證紀錄（2026-10-03）
 
 - Python unit tests：90／90；integration tests：6／6；Node tests：5／5。
 - Playwright：11／11；SVG、drag／pan／zoom、filters、完整 CSV、欄寬／欄位拖曳、品質與來源競爭均有實際操作。
@@ -161,12 +161,12 @@ Starlette TestClient 有建議移到 httpx2 的 deprecation warning，現行測�
 最終修正 commit `5f84e53`：完整 Python 測試 96／96 通過，包含 90 unit＋6 integration；[完整 log](artifacts/verification/all-tests-final.log)。11／11 browser 與 5／5 Node tests 亦通過。先前本機交付保留 `feat/psf-lab`；本次 GitHub 發布將相同歷史送至 `poc-history`，不改寫舊實驗 commit。
 
 
-## 從 GitHub 取得與本次上傳驗證
+## 從 GitHub 取得與首次上傳驗證（歷史）
 
 完整研究入口：[GitHub main](https://github.com/swchen44/freertos_risvc_observability)。在該 repo 根目錄執行 `git submodule update --init poc` 後進入 `poc`；修改前可用 `git switch -c my-poc-experiment` 建立自己的分支。
 
 Dashboard 可先使用既有 PSF，不需要 FreeRTOS toolchain。重新模擬須依 [setup](docs/setup.md) 安裝工具並適配／提交本機 toolchain lock，原 lock 包含已驗證機器的絕對路徑和 binary hash。
 
-本次上傳前重新執行 96 Python tests 和 11 browser tests；[checklist 與來源 commit](artifacts/verification/github-upload/checklist.json)、[Python log](artifacts/verification/github-upload/python-tests.log)、[browser log](artifacts/verification/github-upload/browser-tests.log) 可複查。M1～M3 共 13 tasks 的步驟勾選已核對，M4／offline／U01～U16 仍待後續。
+本次上傳前重新執行 96 Python tests 和 11 browser tests；[checklist 與來源 commit](artifacts/verification/github-upload/checklist.json)、[Python log](artifacts/verification/github-upload/python-tests.log)、[browser log](artifacts/verification/github-upload/browser-tests.log) 可複查。M1～M3 共 13 tasks 的步驟勾選已核對，該次上傳時 offline 尚未實作；目前已提供單 trace 離線 HTML。M4／U01～U16 與跨機重現仍待後續。
 
 重要程式入口：`src/psf_lab/cli.py`、`parser/semantic.py`、`analysis.py`、`runner.py`、`harness.py`、`server.py`；前端 `web/src/main.js`；韌體 `firmware/config/FreeRTOSConfig.h`、`firmware/app/main.c`、`firmware/app/cases/`。文件集中於 `docs/`，驗證 logs 在 `artifacts/verification/`，正式 capture 與原始 PSF 在 `runs/`。

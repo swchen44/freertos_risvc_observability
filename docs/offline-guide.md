@@ -100,6 +100,16 @@ CPU share 是該時間窗的排程占比；不能拿它當 SDK 本身 overhead�
 
 ![Server Logger 案例比較](../artifacts/screenshots/server/09-comparison.png)
 
+### 10. 離線品質警示與較大資料
+
+以下截斷案例由 desktop PSF 移除末尾 8 bytes 產生，應顯示 `truncated_payload` 警示，不能當完整 trace。
+
+![離線截斷資料警示](../artifacts/screenshots/offline/10-partial.png)
+
+以下是明確標為 synthetic 的 10,000-event 容量案例，不是實體效能量測。E2E 另外核對完整下載列數與 SVG marks 數量。
+
+![離線合成容量案例](../artifacts/screenshots/offline/11-large-synthetic.png)
+
 ## 驗證方法與證據
 
 - [Python 跨語言查詢／CSV 測試](../tests/unit/test_offline.py)：七個真實案例與大 ticks、Unicode、unknown、負 Counter、空資料、density／truncation。
@@ -109,3 +119,32 @@ CPU share 是該時間窗的排程占比；不能拿它當 SDK 本身 overhead�
 - [Server 圖片 manifest](../artifacts/verification/offline/agent-browser/server/screenshots.json)、[離線圖片 manifest](../artifacts/verification/offline/agent-browser/offline/screenshots.json) 保存 filters、viewport、PNG hash 與程式 commit；同目錄 commands.json 保存每次 agent-browser 操作。
 
 目前測試只代表本機環境。跨機重現依使用者 2B 整項暫緩；不要把離線 HTML 可開啟解讀成其他 OS 已驗證。
+
+## 重跑指定的 integration／E2E
+
+在 POC 根目錄先開啟測試服務：
+
+```sh
+.venv/bin/python -m psf_lab serve --port 8767 --store artifacts/local/offline-http/store
+```
+
+另一個 shell 執行 `.venv/bin/python tools/verify_http.py`，它以真正 curl 請求建立 trace 並留下 upload.body，再執行 `.venv/bin/python tools/verify_browser.py` 驗 Server。agent-browser 版本與指令以 `agent-browser skills get core` 為準。
+
+停止該測試服務後，執行 `POC_MODE=offline .venv/bin/python tools/verify_browser.py`。該腳本要求下列預先匯出的 fixtures 位於 `artifacts/local/offline-reports/`：
+
+```sh
+.venv/bin/python - <<'PYCODE'
+from pathlib import Path
+from psf_lab.offline import export_html
+out = Path("artifacts/local/offline-reports")
+out.mkdir(parents=True, exist_ok=True)
+source = next(Path("runs/suite-20261003T085652Z-2732b56355").glob("*-queue_baseline-*/trace.psf"))
+export_html(source, out / "queue_baseline.html")
+partial = out / "partial.psf"
+partial.write_bytes(Path("fixtures/desktop/trace.psf").read_bytes()[:-8])
+export_html(partial, out / "partial.html")
+export_html(Path("artifacts/benchmarks/synthetic-10000.psf"), out / "synthetic-10000.html")
+PYCODE
+```
+
+這些驗收命令會更新同名本輪 evidence／screenshots；正式歷史 `runs/` 不修改。要保存另一輪完整驗收，先保留原 commit，再提交新證據。若本機服務未停止，offline test 會明確失敗；不會把仍靠服務運作的頁面當成離線成功。

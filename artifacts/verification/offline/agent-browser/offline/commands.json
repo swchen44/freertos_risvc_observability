@@ -175,6 +175,45 @@
       "poc-accept-offline",
       "eval",
       "--json",
+      "location.href"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "document.querySelector(\"#source-info\").textContent"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":\"FreeRTOS · PSF 14 · 281 events · 10000000 Hz · unspecified\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "JSON.parse(document.querySelector(\"#psf-offline-data\").textContent).trace.source.sha256"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":\"497fcb40b29fa45f54719e509afce50ce575f177da6448012ca5aa82a0c5f4bd\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
       "({window:document.querySelector(\"#window-label\").textContent,search:document.querySelector(\"#search-filter\").value,task:[...document.querySelector(\"#task-filter\").selectedOptions].map(x=>x.value),rows:document.querySelector(\"#row-count\").textContent})"
     ],
     "exit_code": 0,
@@ -255,6 +294,19 @@
     ],
     "exit_code": 0,
     "stdout": "- heading \"PSF Lab\" [level=1, ref=e2]\n- button \"切換明暗模式\" [ref=e3]\n- combobox \"已儲存 trace\" [expanded=false, ref=e1]: trace.psf\n  - option \"已儲存 trace\" [ref=e4]\n  - option \"trace.psf\" [selected, ref=e5]\n- heading \"篩選\" [level=2, ref=e6]\n- button \"重設\" [ref=e7]\n- listbox \"Task 篩選\" [ref=e11]\n  - option \"TzCtrl\" [ref=e18]\n  - option \"producer\" [ref=e19]\n  - option \"consumer\" [selected, ref=e20]\n  - option \"supervisor\" [ref=e21]\n  - option \"IDLE\" [ref=e22]\n- combobox \"物件篩選\" [expanded=false, ref=e12]: 全部物件\n  - option \"全部物件\" [selected, ref=e33]\n  - option \"System Heap · unknown\" [ref=e34]\n  - option \"TzCtrl · task\" [ref=e35]\n  - option \"POC · channel\" [ref=e36]\n  - option \"messages · queue\" [ref=e37]\n  - option \"producer · task\" [ref=e38]\n  - option \"consumer · task\" [ref=e39]\n  - option \"supervisor · task\" [ref=e40]\n  - option \"IDLE · task\" [ref=e41]\n- combobox \"Channel 篩選\" [expanded=false, ref=e13]: 全部 channel\n  - option \"全部 channel\" [selected, ref=e42]\n  - option \"POC\" [ref=e43]\n- combobox \"事件類型篩選\" [expanded=false, ref=e14]: 全部事件\n  - option \"全部事件\" [selected, ref=e44]\n  - option \"trace_start (0x1)\" [ref=e45]\n  - option \"object_name (0x3)\" [ref=e46]\n  - option \"task_create (0x10)\" [ref=e47]\n  - option \"queue_create (0x11)\" [ref=e48]\n  - option \"task_ready (0x30)\" [ref=e49]\n  - option \"new_time (0x31)\" [ref=e50]\n  - option \"task_switch (0x37)\" [ref=e51]\n  - option \"queue_send (0x50)\" [ref=e52]\n  - option \"queue_receive (0x60)\" [ref=e53]\n  - option \"queue_receive_block (0x66)\" [ref=e54]\n  - option \"task_delay (0x7a)\" [ref=e55]\n  - option \"task_suspend (0x7b)\" [ref=e56]\n  - option \"user_event (0x92)\" [ref=e57]\n- textbox \"文字搜尋\" [ref=e15]\n- textbox \"時間起點\" [ref=e23]\n- textbox \"時間終點\" [ref=e24]\n- button \"套用時間窗口\" [ref=e16]\n- button \"查看品質與來源\" [ref=e8]\n- heading \"Task 時間軸\" [level=2, ref=e25]\n- button \"拖曳選取窗口\" [ref=e58]\n- button \"完整時間\" [ref=e59]\n- heading \"Task execution share\" [level=2, ref=e26]\n- heading \"User-event signal\" [level=2, ref=e27]\n- heading \"事件紀錄\" [level=2, ref=e28]\n- button \"匯出統計 CSV\" [ref=e29]\n- button \"匯出事件 CSV\" [ref=e30]\n- columnheader \"時間 ticks\" [ref=e201]\n- columnheader \"事件\" [ref=e202]\n- columnheader \"Task\" [ref=e203]\n- columnheader \"物件\" [ref=e204]\n- columnheader \"訊息\" [ref=e205]\n- columnheader \"Offset\" [ref=e206]\n- columnheader \"Seq\" [ref=e207]\n- generic \"544task_switchconsumerconsumer46824547queue_receive_blockconsumermessages48425560task_switchconsum\" [ref=e60] focusable [tabindex]\n- gridcell \"544\" [ref=e61]\n- gridcell \"task_switch\" [ref=e62]\n- gridcell \"consumer\" [ref=e63]\n- gridcell \"consumer\" [ref=e64]\n- gridcell \"\" [ref=e65]\n- gridcell \"468\" [ref=e66]\n- gridcell \"24\" [ref=e67]\n- gridcell \"547\" [ref=e68]\n- gridcell \"queue_receive_block\" [ref=e69]\n- gridcell \"consumer\" [ref=e70]\n- gridcell \"messages\" [ref=e71]\n- gridcell \"\" [ref=e72]\n- gridcell \"484\" [ref=e73]\n- gridcell \"25\" [ref=e74]\n- gridcell \"560\" [ref=e75]\n- gridcell \"task_switch\" [ref=e76]\n- gridcell \"consumer\" [ref=e77]\n- gridcell \"consumer\" [ref=e78]\n- gridcell \"\" [ref=e79]\n- gridcell \"548\" [ref=e80]\n- gridcell \"29\" [ref=e81]\n- gridcell \"563\" [ref=e82]\n- gridcell \"queue_receive\" [ref=e83]\n- gridcell \"consumer\" [ref=e84]\n- gridcell \"messages\" [ref=e85]\n- gridcell \"\" [ref=e86]\n- gridcell \"564\" [ref=e87]\n- gridcell \"30\" [ref=e88]\n- gridcell \"586\" [ref=e89]\n- gridcell \"user_event\" [ref=e90]\n- gridcell \"consumer\" [ref=e91]\n- gridcell \"POC\" [ref=e92]\n- gridcell \"POC|queue_baseline|RECEIVE|0\" [ref=e93]\n- gridcell \"584\" [ref=e94]\n- gridcell \"31\" [ref=e95]\n- gridcell \"591\" [ref=e96]\n- gridcell \"queue_receive_block\" [ref=e97]\n- gridcell \"consumer\" [ref=e98]\n- gridcell \"messages\" [ref=e99]\n- gridcell \"\" [ref=e100]\n- gridcell \"632\" [ref=e101]\n- gridcell \"32\" [ref=e102]\n- gridcell \"10560\" [ref=e103]\n- gridcell \"task_switch\" [ref=e104]\n- gridcell \"consumer\" [ref=e105]\n- gridcell \"consumer\" [ref=e106]\n- gridcell \"\" [ref=e107]\n- gridcell \"876\" [ref=e108]\n- gridcell \"47\" [ref=e109]\n- gridcell \"10563\" [ref=e110]\n- gridcell \"queue_receive\" [ref=e111]\n- gridcell \"consumer\" [ref=e112]\n- gridcell \"messages\" [ref=e113]\n- gridcell \"\" [ref=e114]\n- gridcell \"892\" [ref=e115]\n- gridcell \"48\" [ref=e116]\n- gridcell \"10586\" [ref=e117]\n- gridcell \"user_event\" [ref=e118]\n- gridcell \"consumer\" [ref=e119]\n- gridcell \"POC\" [ref=e120]\n- gridcell \"POC|queue_baseline|RECEIVE|1\" [ref=e121]\n- gridcell \"912\" [ref=e122]\n- gridcell \"49\" [ref=e123]\n- gridcell \"10591\" [ref=e124]\n- gridcell \"queue_receive_block\" [ref=e125]\n- gridcell \"consumer\" [ref=e126]\n- gridcell \"messages\" [ref=e127]\n- gridcell \"\" [ref=e128]\n- gridcell \"960\" [ref=e129]\n- gridcell \"50\" [ref=e130]\n- gridcell \"20561\" [ref=e131]\n- gridcell \"task_switch\" [ref=e132]\n- gridcell \"consumer\" [ref=e133]\n- gridcell \"consumer\" [ref=e134]\n- gridcell \"\" [ref=e135]\n- gridcell \"1176\" [ref=e136]\n- gridcell \"63\" [ref=e137]\n- gridcell \"20563\" [ref=e138]\n- gridcell \"queue_receive\" [ref=e139]\n- gridcell \"consumer\" [ref=e140]\n- gridcell \"messages\" [ref=e141]\n- gridcell \"\" [ref=e142]\n- gridcell \"1192\" [ref=e143]\n- gridcell \"64\" [ref=e144]\n- gridcell \"20587\" [ref=e145]\n- gridcell \"user_event\" [ref=e146]\n- gridcell \"consumer\" [ref=e147]\n- gridcell \"POC\" [ref=e148]\n- gridcell \"POC|queue_baseline|RECEIVE|2\" [ref=e149]\n- gridcell \"1212\" [ref=e150]\n- gridcell \"65\" [ref=e151]\n- gridcell \"20592\" [ref=e152]\n- gridcell \"queue_receive_block\" [ref=e153]\n- gridcell \"consumer\" [ref=e154]\n- gridcell \"messages\" [ref=e155]\n- gridcell \"\" [ref=e156]\n- gridcell \"1260\" [ref=e157]\n- gridcell \"66\" [ref=e158]\n- gridcell \"30560\" [ref=e159]\n- gridcell \"task_switch\" [ref=e160]\n- gridcell \"consumer\" [ref=e161]\n- gridcell \"consumer\" [ref=e162]\n- gridcell \"\" [ref=e163]\n- gridcell \"1476\" [ref=e164]\n- gridcell \"79\" [ref=e165]\n- gridcell \"30563\" [ref=e166]\n- gridcell \"queue_receive\" [ref=e167]\n- gridcell \"consumer\" [ref=e168]\n- gridcell \"messages\" [ref=e169]\n- gridcell \"\" [ref=e170]\n- gridcell \"1492\" [ref=e171]\n- gridcell \"80\" [ref=e172]\n- gridcell \"30586\" [ref=e173]\n- gridcell \"user_event\" [ref=e174]\n- gridcell \"consumer\" [ref=e175]\n- gridcell \"POC\" [ref=e176]\n- gridcell \"POC|queue_baseline|RECEIVE|3\" [ref=e177]\n- gridcell \"1512\" [ref=e178]\n- gridcell \"81\" [ref=e179]\n- gridcell \"30591\" [ref=e180]\n- gridcell \"queue_receive_block\" [ref=e181]\n- gridcell \"consumer\" [ref=e182]\n- gridcell \"messages\" [ref=e183]\n- gridcell \"\" [ref=e184]\n- gridcell \"1560\" [ref=e185]\n- gridcell \"82\" [ref=e186]\n- gridcell \"40561\" [ref=e187]\n- gridcell \"task_switch\" [ref=e188]\n- gridcell \"consumer\" [ref=e189]\n- gridcell \"consumer\" [ref=e190]\n- gridcell \"\" [ref=e191]\n- gridcell \"1776\" [ref=e192]\n- gridcell \"95\" [ref=e193]\n- gridcell \"40563\" [ref=e194]\n- gridcell \"queue_receive\" [ref=e195]\n- gridcell \"consumer\" [ref=e196]\n- gridcell \"messages\" [ref=e197]\n- gridcell \"\" [ref=e198]\n- gridcell \"1792\" [ref=e199]\n- gridcell \"96\" [ref=e200]\n- button \"上一頁\" [disabled, ref=e31]\n- button \"下一頁\" [ref=e32]\n- heading \"證據詳情\" [level=2, ref=e9]\n- button \"解除固定\" [ref=e10]\n- heading \"來源與品質\" [level=3, ref=e17]\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "({coverage:document.querySelector(\"#coverage-label\").textContent,shares:document.querySelector(\"#share-values\").textContent})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":{\"coverage\":\"Known 160116 / 160571 ticks；Unknown 455\",\"shares\":\"supervisor 0.13%consumer 0.36%producer 0.39%TzCtrl 0.01%IDLE 98.83%\"}},\"error\":null}\n",
     "stderr": ""
   },
   {
@@ -380,6 +432,45 @@
     ],
     "exit_code": 0,
     "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/screenshots/offline/03-filter-window.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "location.href"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "document.querySelector(\"#source-info\").textContent"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":\"FreeRTOS · PSF 14 · 281 events · 10000000 Hz · unspecified\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "JSON.parse(document.querySelector(\"#psf-offline-data\").textContent).trace.source.sha256"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":\"497fcb40b29fa45f54719e509afce50ce575f177da6448012ca5aa82a0c5f4bd\"},\"error\":null}\n",
     "stderr": ""
   },
   {
@@ -606,6 +697,45 @@
       "poc-accept-offline",
       "eval",
       "--json",
+      "location.href"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "document.querySelector(\"#source-info\").textContent"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":\"FreeRTOS · PSF 14 · 281 events · 10000000 Hz · unspecified\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "JSON.parse(document.querySelector(\"#psf-offline-data\").textContent).trace.source.sha256"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":\"497fcb40b29fa45f54719e509afce50ce575f177da6448012ca5aa82a0c5f4bd\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
       "({window:document.querySelector(\"#window-label\").textContent,search:document.querySelector(\"#search-filter\").value,task:[...document.querySelector(\"#task-filter\").selectedOptions].map(x=>x.value),rows:document.querySelector(\"#row-count\").textContent})"
     ],
     "exit_code": 0,
@@ -667,6 +797,30 @@
       "--session",
       "poc-accept-offline",
       "eval",
+      "document.querySelector(\"#unpin\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "click",
+      "#unpin"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
       "document.querySelector(\".tabulator-row:nth-child(2) .tabulator-cell[tabulator-field=kind]\").scrollIntoView({block:\"center\"})"
     ],
     "exit_code": 0,
@@ -683,6 +837,32 @@
     ],
     "exit_code": 0,
     "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "document.querySelector(\"#details\").textContent"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":\"事件詳細資料{\\n  \\\"event_id\\\": \\\"0:180\\\",\\n  \\\"offset\\\": 180,\\n  \\\"id\\\": 3,\\n  \\\"sequence\\\": 7,\\n  \\\"core\\\": 0,\\n  \\\"timestamp_raw\\\": 1328,\\n  \\\"ticks\\\": \\\"3\\\",\\n  \\\"payload_hex\\\": \\\"80150a80504f4300\\\",\\n  \\\"kind\\\": \\\"object_name\\\",\\n  \\\"actor_id\\\": null,\\n  \\\"object_id\\\": \\\"0x800a1580:0\\\",\\n  \\\"fields\\\": {\\n    \\\"raw_words\\\": [\\n      \\\"2148144512\\\",\\n      \\\"4411216\\\"\\n    ],\\n    \\\"name\\\": \\\"POC\\\"\\n  },\\n  \\\"quality\\\": []\\n}\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "document.querySelector(\"#details\").textContent"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":\"事件詳細資料{\\n  \\\"event_id\\\": \\\"0:180\\\",\\n  \\\"offset\\\": 180,\\n  \\\"id\\\": 3,\\n  \\\"sequence\\\": 7,\\n  \\\"core\\\": 0,\\n  \\\"timestamp_raw\\\": 1328,\\n  \\\"ticks\\\": \\\"3\\\",\\n  \\\"payload_hex\\\": \\\"80150a80504f4300\\\",\\n  \\\"kind\\\": \\\"object_name\\\",\\n  \\\"actor_id\\\": null,\\n  \\\"object_id\\\": \\\"0x800a1580:0\\\",\\n  \\\"fields\\\": {\\n    \\\"raw_words\\\": [\\n      \\\"2148144512\\\",\\n      \\\"4411216\\\"\\n    ],\\n    \\\"name\\\": \\\"POC\\\"\\n  },\\n  \\\"quality\\\": []\\n}\"},\"error\":null}\n",
     "stderr": ""
   },
   {
@@ -720,6 +900,45 @@
     ],
     "exit_code": 0,
     "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/screenshots/offline/04-event-details.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "location.href"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "document.querySelector(\"#source-info\").textContent"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":\"FreeRTOS · PSF 14 · 281 events · 10000000 Hz · unspecified\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "JSON.parse(document.querySelector(\"#psf-offline-data\").textContent).trace.source.sha256"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":\"497fcb40b29fa45f54719e509afce50ce575f177da6448012ca5aa82a0c5f4bd\"},\"error\":null}\n",
     "stderr": ""
   },
   {
@@ -923,6 +1142,45 @@
       "poc-accept-offline",
       "eval",
       "--json",
+      "location.href"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "document.querySelector(\"#source-info\").textContent"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":\"FreeRTOS · PSF 14 · 281 events · 10000000 Hz · unspecified\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "JSON.parse(document.querySelector(\"#psf-offline-data\").textContent).trace.source.sha256"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":\"497fcb40b29fa45f54719e509afce50ce575f177da6448012ca5aa82a0c5f4bd\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
       "({window:document.querySelector(\"#window-label\").textContent,search:document.querySelector(\"#search-filter\").value,task:[...document.querySelector(\"#task-filter\").selectedOptions].map(x=>x.value),rows:document.querySelector(\"#row-count\").textContent})"
     ],
     "exit_code": 0,
@@ -990,6 +1248,45 @@
     ],
     "exit_code": 0,
     "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/screenshots/offline/06-csv.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "location.href"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "document.querySelector(\"#source-info\").textContent"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":\"FreeRTOS · PSF 14 · 281 events · 10000000 Hz · unspecified\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "JSON.parse(document.querySelector(\"#psf-offline-data\").textContent).trace.source.sha256"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":\"497fcb40b29fa45f54719e509afce50ce575f177da6448012ca5aa82a0c5f4bd\"},\"error\":null}\n",
     "stderr": ""
   },
   {
@@ -1079,6 +1376,45 @@
     ],
     "exit_code": 0,
     "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/screenshots/offline/07-empty-filter.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "location.href"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "document.querySelector(\"#source-info\").textContent"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":\"FreeRTOS · PSF 14 · 281 events · 10000000 Hz · unspecified\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "JSON.parse(document.querySelector(\"#psf-offline-data\").textContent).trace.source.sha256"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":\"497fcb40b29fa45f54719e509afce50ce575f177da6448012ca5aa82a0c5f4bd\"},\"error\":null}\n",
     "stderr": ""
   },
   {
@@ -1198,6 +1534,45 @@
       "poc-accept-offline",
       "eval",
       "--json",
+      "location.href"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "document.querySelector(\"#source-info\").textContent"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":\"FreeRTOS · PSF 14 · 281 events · 10000000 Hz · unspecified\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "JSON.parse(document.querySelector(\"#psf-offline-data\").textContent).trace.source.sha256"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":\"497fcb40b29fa45f54719e509afce50ce575f177da6448012ca5aa82a0c5f4bd\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
       "({window:document.querySelector(\"#window-label\").textContent,search:document.querySelector(\"#search-filter\").value,task:[...document.querySelector(\"#task-filter\").selectedOptions].map(x=>x.value),rows:document.querySelector(\"#row-count\").textContent})"
     ],
     "exit_code": 0,
@@ -1209,11 +1584,405 @@
       "agent-browser",
       "--session",
       "poc-accept-offline",
+      "eval",
+      "document.querySelector(\"#search-filter\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "fill",
+      "#search-filter",
+      "consumer"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "document.querySelector(\"#search-filter\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "fill",
+      "#search-filter",
+      "producer"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "document.querySelector(\"#search-filter\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "fill",
+      "#search-filter",
+      "no-such-message"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "wait",
+      "--fn",
+      "document.querySelector(\"#row-count\").textContent.includes(\"符合 0 筆\")"
+    ],
+    "exit_code": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "wait",
+      "--fn",
+      "Number(document.body.dataset.renderRevision)>0 && !document.querySelector(\"#status\").textContent.includes(\"正在\")"
+    ],
+    "exit_code": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "snapshot",
+      "-i"
+    ],
+    "exit_code": 0,
+    "stdout": "- heading \"PSF Lab\" [level=1, ref=e2]\n- button \"切換明暗模式\" [ref=e3]\n- combobox \"已儲存 trace\" [expanded=false, ref=e1]: trace.psf\n  - option \"已儲存 trace\" [ref=e4]\n  - option \"trace.psf\" [selected, ref=e5]\n- heading \"篩選\" [level=2, ref=e6]\n- button \"重設\" [ref=e7]\n- listbox \"Task 篩選\" [ref=e11]\n  - option \"TzCtrl\" [ref=e18]\n  - option \"producer\" [ref=e19]\n  - option \"consumer\" [ref=e20]\n  - option \"supervisor\" [ref=e21]\n  - option \"IDLE\" [ref=e22]\n- combobox \"物件篩選\" [expanded=false, ref=e12]: 全部物件\n  - option \"全部物件\" [selected, ref=e33]\n  - option \"System Heap · unknown\" [ref=e34]\n  - option \"TzCtrl · task\" [ref=e35]\n  - option \"POC · channel\" [ref=e36]\n  - option \"messages · queue\" [ref=e37]\n  - option \"producer · task\" [ref=e38]\n  - option \"consumer · task\" [ref=e39]\n  - option \"supervisor · task\" [ref=e40]\n  - option \"IDLE · task\" [ref=e41]\n- combobox \"Channel 篩選\" [expanded=false, ref=e13]: 全部 channel\n  - option \"全部 channel\" [selected, ref=e42]\n  - option \"POC\" [ref=e43]\n- combobox \"事件類型篩選\" [expanded=false, ref=e14]: 全部事件\n  - option \"全部事件\" [selected, ref=e44]\n  - option \"trace_start (0x1)\" [ref=e45]\n  - option \"object_name (0x3)\" [ref=e46]\n  - option \"task_create (0x10)\" [ref=e47]\n  - option \"queue_create (0x11)\" [ref=e48]\n  - option \"task_ready (0x30)\" [ref=e49]\n  - option \"new_time (0x31)\" [ref=e50]\n  - option \"task_switch (0x37)\" [ref=e51]\n  - option \"queue_send (0x50)\" [ref=e52]\n  - option \"queue_receive (0x60)\" [ref=e53]\n  - option \"queue_receive_block (0x66)\" [ref=e54]\n  - option \"task_delay (0x7a)\" [ref=e55]\n  - option \"task_suspend (0x7b)\" [ref=e56]\n  - option \"user_event (0x92)\" [ref=e57]\n- textbox \"文字搜尋\" [ref=e15]: no-such-message\n- textbox \"時間起點\" [ref=e23]\n- textbox \"時間終點\" [ref=e24]\n- button \"套用時間窗口\" [ref=e16]\n- button \"查看品質與來源\" [ref=e8]\n- heading \"Task 時間軸\" [level=2, ref=e25]\n- button \"拖曳選取窗口\" [ref=e58]\n- button \"完整時間\" [ref=e59]\n- heading \"Task execution share\" [level=2, ref=e26]\n- heading \"User-event signal\" [level=2, ref=e27]\n- heading \"事件紀錄\" [level=2, ref=e28]\n- button \"匯出統計 CSV\" [ref=e29]\n- button \"匯出事件 CSV\" [ref=e30]\n- columnheader \"時間 ticks\" [ref=e61]\n- columnheader \"事件\" [ref=e62]\n- columnheader \"Task\" [ref=e63]\n- columnheader \"物件\" [ref=e64]\n- columnheader \"訊息\" [ref=e65]\n- columnheader \"Offset\" [ref=e66]\n- columnheader \"Seq\" [ref=e67]\n- generic \"目前沒有符合的事件\" [ref=e60] focusable [tabindex]\n- button \"上一頁\" [disabled, ref=e31]\n- button \"下一頁\" [disabled, ref=e32]\n- heading \"證據詳情\" [level=2, ref=e9]\n- button \"解除固定\" [ref=e10]\n- heading \"來源、時基與品質\" [level=3, ref=e17]\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "document.querySelector(\"#search-filter\").value"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html\",\"result\":\"no-such-message\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "open",
+      "file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/partial.html"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ 離線 · PSF Lab · 排程觀測工作區\n  file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/partial.html\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "wait",
+      "--fn",
+      "Number(document.body.dataset.renderRevision)>0 && !document.querySelector(\"#status\").textContent.includes(\"正在\")"
+    ],
+    "exit_code": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "snapshot",
+      "-i"
+    ],
+    "exit_code": 0,
+    "stdout": "- heading \"PSF Lab\" [level=1, ref=e2]\n- button \"切換明暗模式\" [ref=e3]\n- combobox \"已儲存 trace\" [expanded=false, ref=e1]: partial.psf\n  - option \"已儲存 trace\" [ref=e4]\n  - option \"partial.psf\" [selected, ref=e5]\n- heading \"篩選\" [level=2, ref=e6]\n- button \"重設\" [ref=e7]\n- listbox \"Task 篩選\" [ref=e11]\n  - option \"main\" [ref=e18]\n  - option \"IDLE\" [ref=e19]\n  - option \"Task2\" [ref=e20]\n- combobox \"物件篩選\" [expanded=false, ref=e12]: 全部物件\n  - option \"全部物件\" [selected, ref=e31]\n  - option \"main · task\" [ref=e32]\n  - option \"Logging · channel\" [ref=e33]\n  - option \"IDLE · task\" [ref=e34]\n  - option \"Task2 · task\" [ref=e35]\n  - option \"mutex1 · mutex\" [ref=e36]\n- combobox \"Channel 篩選\" [expanded=false, ref=e13]: 全部 channel\n  - option \"全部 channel\" [selected, ref=e37]\n  - option \"Logging\" [ref=e38]\n- combobox \"事件類型篩選\" [expanded=false, ref=e14]: 全部事件\n  - option \"全部事件\" [selected, ref=e39]\n  - option \"trace_start (0x1)\" [ref=e40]\n  - option \"object_name (0x3)\" [ref=e41]\n  - option \"task_create (0x10)\" [ref=e42]\n  - option \"task_ready (0x20)\" [ref=e43]\n  - option \"task_switch (0x25)\" [ref=e44]\n  - option \"user_event (0x52)\" [ref=e45]\n  - option \"mutex_create (0x60)\" [ref=e46]\n  - option \"mutex_take (0x61)\" [ref=e47]\n  - option \"mutex_give (0x62)\" [ref=e48]\n- textbox \"文字搜尋\" [ref=e15]\n- textbox \"時間起點\" [ref=e21]\n- textbox \"時間終點\" [ref=e22]\n- button \"套用時間窗口\" [ref=e16]\n- button \"查看品質與來源\" [ref=e8]\n- heading \"Task 時間軸\" [level=2, ref=e23]\n- button \"拖曳選取窗口\" [ref=e49]\n- button \"完整時間\" [ref=e50]\n- heading \"Task execution share\" [level=2, ref=e24]\n- heading \"User-event signal\" [level=2, ref=e25]\n- heading \"事件紀錄\" [level=2, ref=e26]\n- button \"匯出統計 CSV\" [ref=e27]\n- button \"匯出事件 CSV\" [ref=e28]\n- columnheader \"時間 ticks\" [ref=e192]\n- columnheader \"事件\" [ref=e193]\n- columnheader \"Task\" [ref=e194]\n- columnheader \"物件\" [ref=e195]\n- columnheader \"訊息\" [ref=e196]\n- columnheader \"Offset\" [ref=e197]\n- columnheader \"Seq\" [ref=e198]\n- generic \"0trace_startmain—15251object_namemainLogging16861260object_namemainIDLE19271262task_createmainIDL\" [ref=e51] focusable [tabindex]\n- gridcell \"0\" [ref=e52]\n- gridcell \"trace_start\" [ref=e53]\n- gridcell \"main\" [ref=e54]\n- gridcell \"—\" [ref=e55]\n- gridcell \"\" [ref=e56]\n- gridcell \"152\" [ref=e57]\n- gridcell \"5\" [ref=e58]\n- gridcell \"1\" [ref=e59]\n- gridcell \"object_name\" [ref=e60]\n- gridcell \"main\" [ref=e61]\n- gridcell \"Logging\" [ref=e62]\n- gridcell \"\" [ref=e63]\n- gridcell \"168\" [ref=e64]\n- gridcell \"6\" [ref=e65]\n- gridcell \"1260\" [ref=e66]\n- gridcell \"object_name\" [ref=e67]\n- gridcell \"main\" [ref=e68]\n- gridcell \"IDLE\" [ref=e69]\n- gridcell \"\" [ref=e70]\n- gridcell \"192\" [ref=e71]\n- gridcell \"7\" [ref=e72]\n- gridcell \"1262\" [ref=e73]\n- gridcell \"task_create\" [ref=e74]\n- gridcell \"main\" [ref=e75]\n- gridcell \"IDLE\" [ref=e76]\n- gridcell \"\" [ref=e77]\n- gridcell \"216\" [ref=e78]\n- gridcell \"8\" [ref=e79]\n- gridcell \"1262\" [ref=e80]\n- gridcell \"object_name\" [ref=e81]\n- gridcell \"main\" [ref=e82]\n- gridcell \"Task2\" [ref=e83]\n- gridcell \"\" [ref=e84]\n- gridcell \"240\" [ref=e85]\n- gridcell \"9\" [ref=e86]\n- gridcell \"1262\" [ref=e87]\n- gridcell \"task_create\" [ref=e88]\n- gridcell \"main\" [ref=e89]\n- gridcell \"Task2\" [ref=e90]\n- gridcell \"\" [ref=e91]\n- gridcell \"264\" [ref=e92]\n- gridcell \"10\" [ref=e93]\n- gridcell \"1263\" [ref=e94]\n- gridcell \"object_name\" [ref=e95]\n- gridcell \"main\" [ref=e96]\n- gridcell \"mutex1\" [ref=e97]\n- gridcell \"\" [ref=e98]\n- gridcell \"288\" [ref=e99]\n- gridcell \"11\" [ref=e100]\n- gridcell \"1263\" [ref=e101]\n- gridcell \"mutex_create\" [ref=e102]\n- gridcell \"main\" [ref=e103]\n- gridcell \"mutex1\" [ref=e104]\n- gridcell \"\" [ref=e105]\n- gridcell \"312\" [ref=e106]\n- gridcell \"12\" [ref=e107]\n- gridcell \"2467\" [ref=e108]\n- gridcell \"task_ready\" [ref=e109]\n- gridcell \"main\" [ref=e110]\n- gridcell \"IDLE\" [ref=e111]\n- gridcell \"\" [ref=e112]\n- gridcell \"336\" [ref=e113]\n- gridcell \"13\" [ref=e114]\n- gridcell \"3725\" [ref=e115]\n- gridcell \"task_ready\" [ref=e116]\n- gridcell \"main\" [ref=e117]\n- gridcell \"Task2\" [ref=e118]\n- gridcell \"\" [ref=e119]\n- gridcell \"352\" [ref=e120]\n- gridcell \"14\" [ref=e121]\n- gridcell \"3726\" [ref=e122]\n- gridcell \"task_switch\" [ref=e123]\n- gridcell \"Task2\" [ref=e124]\n- gridcell \"Task2\" [ref=e125]\n- gridcell \"\" [ref=e126]\n- gridcell \"368\" [ref=e127]\n- gridcell \"15\" [ref=e128]\n- gridcell \"16237\" [ref=e129]\n- gridcell \"mutex_take\" [ref=e130]\n- gridcell \"Task2\" [ref=e131]\n- gridcell \"mutex1\" [ref=e132]\n- gridcell \"\" [ref=e133]\n- gridcell \"392\" [ref=e134]\n- gridcell \"16\" [ref=e135]\n- gridcell \"16239\" [ref=e136]\n- gridcell \"user_event\" [ref=e137]\n- gridcell \"Task2\" [ref=e138]\n- gridcell \"Logging\" [ref=e139]\n- gridcell \"Counter: 0\" [ref=e140]\n- gridcell \"408\" [ref=e141]\n- gridcell \"17\" [ref=e142]\n- gridcell \"16240\" [ref=e143]\n- gridcell \"mutex_give\" [ref=e144]\n- gridcell \"Task2\" [ref=e145]\n- gridcell \"mutex1\" [ref=e146]\n- gridcell \"\" [ref=e147]\n- gridcell \"448\" [ref=e148]\n- gridcell \"18\" [ref=e149]\n- gridcell \"28763\" [ref=e150]\n- gridcell \"task_switch\" [ref=e151]\n- gridcell \"IDLE\" [ref=e152]\n- gridcell \"IDLE\" [ref=e153]\n- gridcell \"\" [ref=e154]\n- gridcell \"464\" [ref=e155]\n- gridcell \"19\" [ref=e156]\n- gridcell \"123780\" [ref=e157]\n- gridcell \"task_ready\" [ref=e158]\n- gridcell \"IDLE\" [ref=e159]\n- gridcell \"Task2\" [ref=e160]\n- gridcell \"\" [ref=e161]\n- gridcell \"488\" [ref=e162]\n- gridcell \"20\" [ref=e163]\n- gridcell \"123782\" [ref=e164]\n- gridcell \"task_switch\" [ref=e165]\n- gridcell \"Task2\" [ref=e166]\n- gridcell \"Task2\" [ref=e167]\n- gridcell \"\" [ref=e168]\n- gridcell \"504\" [ref=e169]\n- gridcell \"21\" [ref=e170]\n- gridcell \"135218\" [ref=e171]\n- gridcell \"mutex_take\" [ref=e172]\n- gridcell \"Task2\" [ref=e173]\n- gridcell \"mutex1\" [ref=e174]\n- gridcell \"\" [ref=e175]\n- gridcell \"528\" [ref=e176]\n- gridcell \"22\" [ref=e177]\n- gridcell \"135221\" [ref=e178]\n- gridcell \"user_event\" [ref=e179]\n- gridcell \"Task2\" [ref=e180]\n- gridcell \"Logging\" [ref=e181]\n- gridcell \"Counter: 1\" [ref=e182]\n- gridcell \"544\" [ref=e183]\n- gridcell \"23\" [ref=e184]\n- gridcell \"135222\" [ref=e185]\n- gridcell \"mutex_give\" [ref=e186]\n- gridcell \"Task2\" [ref=e187]\n- gridcell \"mutex1\" [ref=e188]\n- gridcell \"\" [ref=e189]\n- gridcell \"584\" [ref=e190]\n- gridcell \"24\" [ref=e191]\n- button \"上一頁\" [disabled, ref=e29]\n- button \"下一頁\" [ref=e30]\n- heading \"證據詳情\" [level=2, ref=e9]\n- button \"解除固定\" [ref=e10]\n- heading \"來源與品質\" [level=3, ref=e17]\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "document.querySelector(\"#status\").className"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/partial.html\",\"result\":\"status warning\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "screenshot",
+      "--full",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/screenshots/offline/10-partial.png"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/screenshots/offline/10-partial.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "location.href"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/partial.html\",\"result\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/partial.html\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "document.querySelector(\"#source-info\").textContent"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/partial.html\",\"result\":\"my_krnl · PSF 14 · 308 events · 1000000 Hz · unspecified\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "JSON.parse(document.querySelector(\"#psf-offline-data\").textContent).trace.source.sha256"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/partial.html\",\"result\":\"cfffd9f2368840fc85352458bd87163bb4b484bb8d8a81876f986c6d88c37847\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "({window:document.querySelector(\"#window-label\").textContent,search:document.querySelector(\"#search-filter\").value,task:[...document.querySelector(\"#task-filter\").selectedOptions].map(x=>x.value),rows:document.querySelector(\"#row-count\").textContent})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/partial.html\",\"result\":{\"rows\":\"符合 308 筆；本頁 20 筆。CSV 匯出全部 308 筆。\",\"search\":\"\",\"task\":[],\"window\":\"[0, 5751184) ticks · 5751.184 ms\"}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "open",
+      "file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/synthetic-10000.html"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ 離線 · PSF Lab · 排程觀測工作區\n  file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/synthetic-10000.html\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "wait",
+      "--fn",
+      "Number(document.body.dataset.renderRevision)>0 && !document.querySelector(\"#status\").textContent.includes(\"正在\")"
+    ],
+    "exit_code": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "snapshot",
+      "-i"
+    ],
+    "exit_code": 0,
+    "stdout": "- heading \"PSF Lab\" [level=1, ref=e2]\n- button \"切換明暗模式\" [ref=e3]\n- combobox \"已儲存 trace\" [expanded=false, ref=e1]: synthetic-10000.psf\n  - option \"已儲存 trace\" [ref=e4]\n  - option \"synthetic-10000.psf\" [selected, ref=e5]\n- heading \"篩選\" [level=2, ref=e6]\n- button \"重設\" [ref=e7]\n- listbox \"Task 篩選\" [ref=e11]\n  - option \"0x1000\" [ref=e18]\n  - option \"0x1001\" [ref=e19]\n  - option \"0x1002\" [ref=e20]\n  - option \"0x1003\" [ref=e21]\n  - option \"0x1004\" [ref=e22]\n- combobox \"物件篩選\" [expanded=false, ref=e12]: 全部物件\n  - option \"全部物件\" [selected, ref=e33]\n  - option \"0x1000 · task\" [ref=e34]\n  - option \"0x1001 · task\" [ref=e35]\n  - option \"0x1002 · task\" [ref=e36]\n  - option \"0x1003 · task\" [ref=e37]\n  - option \"0x1004 · task\" [ref=e38]\n- combobox \"Channel 篩選\" [expanded=false, ref=e13]: 全部 channel\n  - option \"全部 channel\" [selected, ref=e39]\n- combobox \"事件類型篩選\" [expanded=false, ref=e14]: 全部事件\n  - option \"全部事件\" [selected, ref=e40]\n  - option \"task_switch (0x37)\" [ref=e41]\n- textbox \"文字搜尋\" [ref=e15]\n- textbox \"時間起點\" [ref=e23]\n- textbox \"時間終點\" [ref=e24]\n- button \"套用時間窗口\" [ref=e16]\n- button \"查看品質與來源\" [ref=e8]\n- heading \"Task 時間軸\" [level=2, ref=e25]\n- button \"拖曳選取窗口\" [ref=e42]\n- button \"完整時間\" [ref=e43]\n- heading \"Task execution share\" [level=2, ref=e26]\n- heading \"User-event signal\" [level=2, ref=e27]\n- heading \"事件紀錄\" [level=2, ref=e28]\n- button \"匯出統計 CSV\" [ref=e29]\n- button \"匯出事件 CSV\" [ref=e30]\n- columnheader \"時間 ticks\" [ref=e185]\n- columnheader \"事件\" [ref=e186]\n- columnheader \"Task\" [ref=e187]\n- columnheader \"物件\" [ref=e188]\n- columnheader \"訊息\" [ref=e189]\n- columnheader \"Offset\" [ref=e190]\n- columnheader \"Seq\" [ref=e191]\n- generic \"0task_switch0x10000x1000720100task_switch0x10010x1001841200task_switch0x10020x1002962300task_swit\" [ref=e44] focusable [tabindex]\n- gridcell \"0\" [ref=e45]\n- gridcell \"task_switch\" [ref=e46]\n- gridcell \"0x1000\" [ref=e47]\n- gridcell \"0x1000\" [ref=e48]\n- gridcell \"\" [ref=e49]\n- gridcell \"72\" [ref=e50]\n- gridcell \"0\" [ref=e51]\n- gridcell \"100\" [ref=e52]\n- gridcell \"task_switch\" [ref=e53]\n- gridcell \"0x1001\" [ref=e54]\n- gridcell \"0x1001\" [ref=e55]\n- gridcell \"\" [ref=e56]\n- gridcell \"84\" [ref=e57]\n- gridcell \"1\" [ref=e58]\n- gridcell \"200\" [ref=e59]\n- gridcell \"task_switch\" [ref=e60]\n- gridcell \"0x1002\" [ref=e61]\n- gridcell \"0x1002\" [ref=e62]\n- gridcell \"\" [ref=e63]\n- gridcell \"96\" [ref=e64]\n- gridcell \"2\" [ref=e65]\n- gridcell \"300\" [ref=e66]\n- gridcell \"task_switch\" [ref=e67]\n- gridcell \"0x1003\" [ref=e68]\n- gridcell \"0x1003\" [ref=e69]\n- gridcell \"\" [ref=e70]\n- gridcell \"108\" [ref=e71]\n- gridcell \"3\" [ref=e72]\n- gridcell \"400\" [ref=e73]\n- gridcell \"task_switch\" [ref=e74]\n- gridcell \"0x1004\" [ref=e75]\n- gridcell \"0x1004\" [ref=e76]\n- gridcell \"\" [ref=e77]\n- gridcell \"120\" [ref=e78]\n- gridcell \"4\" [ref=e79]\n- gridcell \"500\" [ref=e80]\n- gridcell \"task_switch\" [ref=e81]\n- gridcell \"0x1000\" [ref=e82]\n- gridcell \"0x1000\" [ref=e83]\n- gridcell \"\" [ref=e84]\n- gridcell \"132\" [ref=e85]\n- gridcell \"5\" [ref=e86]\n- gridcell \"600\" [ref=e87]\n- gridcell \"task_switch\" [ref=e88]\n- gridcell \"0x1001\" [ref=e89]\n- gridcell \"0x1001\" [ref=e90]\n- gridcell \"\" [ref=e91]\n- gridcell \"144\" [ref=e92]\n- gridcell \"6\" [ref=e93]\n- gridcell \"700\" [ref=e94]\n- gridcell \"task_switch\" [ref=e95]\n- gridcell \"0x1002\" [ref=e96]\n- gridcell \"0x1002\" [ref=e97]\n- gridcell \"\" [ref=e98]\n- gridcell \"156\" [ref=e99]\n- gridcell \"7\" [ref=e100]\n- gridcell \"800\" [ref=e101]\n- gridcell \"task_switch\" [ref=e102]\n- gridcell \"0x1003\" [ref=e103]\n- gridcell \"0x1003\" [ref=e104]\n- gridcell \"\" [ref=e105]\n- gridcell \"168\" [ref=e106]\n- gridcell \"8\" [ref=e107]\n- gridcell \"900\" [ref=e108]\n- gridcell \"task_switch\" [ref=e109]\n- gridcell \"0x1004\" [ref=e110]\n- gridcell \"0x1004\" [ref=e111]\n- gridcell \"\" [ref=e112]\n- gridcell \"180\" [ref=e113]\n- gridcell \"9\" [ref=e114]\n- gridcell \"1000\" [ref=e115]\n- gridcell \"task_switch\" [ref=e116]\n- gridcell \"0x1000\" [ref=e117]\n- gridcell \"0x1000\" [ref=e118]\n- gridcell \"\" [ref=e119]\n- gridcell \"192\" [ref=e120]\n- gridcell \"10\" [ref=e121]\n- gridcell \"1100\" [ref=e122]\n- gridcell \"task_switch\" [ref=e123]\n- gridcell \"0x1001\" [ref=e124]\n- gridcell \"0x1001\" [ref=e125]\n- gridcell \"\" [ref=e126]\n- gridcell \"204\" [ref=e127]\n- gridcell \"11\" [ref=e128]\n- gridcell \"1200\" [ref=e129]\n- gridcell \"task_switch\" [ref=e130]\n- gridcell \"0x1002\" [ref=e131]\n- gridcell \"0x1002\" [ref=e132]\n- gridcell \"\" [ref=e133]\n- gridcell \"216\" [ref=e134]\n- gridcell \"12\" [ref=e135]\n- gridcell \"1300\" [ref=e136]\n- gridcell \"task_switch\" [ref=e137]\n- gridcell \"0x1003\" [ref=e138]\n- gridcell \"0x1003\" [ref=e139]\n- gridcell \"\" [ref=e140]\n- gridcell \"228\" [ref=e141]\n- gridcell \"13\" [ref=e142]\n- gridcell \"1400\" [ref=e143]\n- gridcell \"task_switch\" [ref=e144]\n- gridcell \"0x1004\" [ref=e145]\n- gridcell \"0x1004\" [ref=e146]\n- gridcell \"\" [ref=e147]\n- gridcell \"240\" [ref=e148]\n- gridcell \"14\" [ref=e149]\n- gridcell \"1500\" [ref=e150]\n- gridcell \"task_switch\" [ref=e151]\n- gridcell \"0x1000\" [ref=e152]\n- gridcell \"0x1000\" [ref=e153]\n- gridcell \"\" [ref=e154]\n- gridcell \"252\" [ref=e155]\n- gridcell \"15\" [ref=e156]\n- gridcell \"1600\" [ref=e157]\n- gridcell \"task_switch\" [ref=e158]\n- gridcell \"0x1001\" [ref=e159]\n- gridcell \"0x1001\" [ref=e160]\n- gridcell \"\" [ref=e161]\n- gridcell \"264\" [ref=e162]\n- gridcell \"16\" [ref=e163]\n- gridcell \"1700\" [ref=e164]\n- gridcell \"task_switch\" [ref=e165]\n- gridcell \"0x1002\" [ref=e166]\n- gridcell \"0x1002\" [ref=e167]\n- gridcell \"\" [ref=e168]\n- gridcell \"276\" [ref=e169]\n- gridcell \"17\" [ref=e170]\n- gridcell \"1800\" [ref=e171]\n- gridcell \"task_switch\" [ref=e172]\n- gridcell \"0x1003\" [ref=e173]\n- gridcell \"0x1003\" [ref=e174]\n- gridcell \"\" [ref=e175]\n- gridcell \"288\" [ref=e176]\n- gridcell \"18\" [ref=e177]\n- gridcell \"1900\" [ref=e178]\n- gridcell \"task_switch\" [ref=e179]\n- gridcell \"0x1004\" [ref=e180]\n- gridcell \"0x1004\" [ref=e181]\n- gridcell \"\" [ref=e182]\n- gridcell \"300\" [ref=e183]\n- gridcell \"19\" [ref=e184]\n- button \"上一頁\" [disabled, ref=e31]\n- button \"下一頁\" [ref=e32]\n- heading \"證據詳情\" [level=2, ref=e9]\n- button \"解除固定\" [ref=e10]\n- heading \"來源與品質\" [level=3, ref=e17]\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "JSON.parse(document.querySelector(\"#psf-offline-data\").textContent).metadata.event_count"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/synthetic-10000.html\",\"result\":10000},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "document.querySelector(\"#export-events\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "download",
+      "#export-events",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/verification/offline/agent-browser/offline/large-events.csv"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Download saved to /Users/swchen.tw/git/percepio/poc/artifacts/verification/offline/agent-browser/offline/large-events.csv\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "document.querySelectorAll(\"#timeline svg path\").length"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/synthetic-10000.html\",\"result\":2024},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "screenshot",
+      "--full",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/screenshots/offline/11-large-synthetic.png"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/screenshots/offline/11-large-synthetic.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "location.href"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/synthetic-10000.html\",\"result\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/synthetic-10000.html\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "document.querySelector(\"#source-info\").textContent"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/synthetic-10000.html\",\"result\":\"FreeRTOS · PSF 14 · 10000 events · 10000000 Hz · unspecified\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "JSON.parse(document.querySelector(\"#psf-offline-data\").textContent).trace.source.sha256"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/synthetic-10000.html\",\"result\":\"2f2943cbf5bfee4cb59aca8d4a9d4f43573b48f19b424e7e54d292ec92fa9f03\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "({window:document.querySelector(\"#window-label\").textContent,search:document.querySelector(\"#search-filter\").value,task:[...document.querySelector(\"#task-filter\").selectedOptions].map(x=>x.value),rows:document.querySelector(\"#row-count\").textContent})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/synthetic-10000.html\",\"result\":{\"rows\":\"符合 10000 筆；本頁 20 筆。CSV 匯出全部 10000 筆。\",\"search\":\"\",\"task\":[],\"window\":\"[0, 999900) ticks · 99.990 ms\"}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
       "network",
       "requests"
     ],
     "exit_code": 0,
-    "stdout": "[D4B58226A9E24536187E229EAC809C4C] GET file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html (Document) 200\n",
+    "stdout": "[1EAA1184E76F43286ED2694ED42C1C4A] GET file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/queue_baseline.html (Document) 200\n[0B65D76237D73E574A09E3FD410D7C21] GET file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/partial.html (Document) 200\n[1602AB99CECA6D13E322BD4F48F8EE09] GET file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/synthetic-10000.html (Document) 200\n",
     "stderr": ""
   },
   {
@@ -1225,6 +1994,19 @@
     ],
     "exit_code": 0,
     "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-offline",
+      "eval",
+      "--json",
+      "navigator.userAgent"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/offline-reports/synthetic-10000.html\",\"result\":\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36\"},\"error\":null}\n",
     "stderr": ""
   },
   {

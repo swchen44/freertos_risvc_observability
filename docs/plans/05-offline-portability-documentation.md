@@ -10,7 +10,7 @@
 
 **Spec:** 本文件的「範圍與設計決策」及既有 [資料契約](data-contract.md)、[query semantics](../query-semantics.md)、[Dashboard 設計](../design/PSF-Lab-設計規格.md)。
 
-狀態：2026-10-03 使用者已選 1A、2B：Python 預先產生離線 HTML；跨機重現整項暫緩。追加指定 agent-browser 做 E2E、curl 做 integration。本文件已依選擇收斂範圍；新增功能與驗證尚未執行。
+狀態：2026-10-03 使用者已選 1A、2B：Python 預先產生離線 HTML；跨機重現整項暫緩。追加指定 agent-browser 做 E2E、curl 做 integration。本文件已依選擇收斂範圍；離線功能與指定工具驗證已完成；知識庫發布以本輪 completion.json 記錄為準。
 
 ## 範圍與設計決策
 
@@ -67,11 +67,11 @@ flowchart TD
 
 檔案：新增 `docs/design/offline-data-contract.md`、`docs/screenshot-guide.md`；擴充 `web/tests/e2e/dashboard.spec.mjs`，截圖存 `artifacts/screenshots/server/`。
 
-- [ ] 依已確認 1A／2B 固定支援流程、資料契約與本輪排除項目。
-- [ ] 列出 DataSource 方法：metadata、events、view、export、traces、compare、runs、runPSF、upload、latest；每項寫明離線能力及 UI 行為，不留下點了才失敗的按鈕。
-- [ ] 從現有正式 PSF 選 Queue、logger bad/fixed、inversion/inheritance、deadlock/ordered locks 作為固定案例，不重新合成成功證據。
-- [ ] 保存 query／metrics／CSV 對照 fixtures：半開區間、2^53 ticks、unknown、Unicode、負值、loss、超過 2,000 點及全量匯出。
-- [ ] 啟動現有 Web Server，執行既有瀏覽器測試並擷取基準畫面；保存 manifest 與實際 PNG。
+- [x] 依已確認 1A／2B 固定支援流程、資料契約與本輪排除項目。
+- [x] 列出 DataSource 方法：metadata、events、view、export、traces、compare、runs、runPSF、upload、latest；每項寫明離線能力及 UI 行為，不留下點了才失敗的按鈕。
+- [x] 從現有正式 PSF 選 Queue、logger bad/fixed、inversion/inheritance、deadlock/ordered locks 作為固定案例，不重新合成成功證據。
+- [x] 保存 query／metrics／CSV 對照 fixtures：半開區間、2^53 ticks、unknown、Unicode、負值、loss、超過 2,000 點及全量匯出。
+- [x] 啟動現有 Web Server，執行既有瀏覽器測試並擷取基準畫面；保存 manifest 與實際 PNG。
 
 驗收：契約能指出每個畫面的資料來源、Python 計算點與離線責任；現有功能與截圖來源可重跑。
 
@@ -82,11 +82,11 @@ flowchart TD
 
 已選 A 的規劃介面：`psf_lab export-html INPUT.psf --output OUTPUT.html`；`export_html(input_path: Path, output_path: Path) -> dict` 回傳輸入 hash、schema、event_count、輸出 bytes 及 issues。多 trace／成對比較的參數在 T1 依現有 compare 契約固定，不能只保留單一 trace 卻展示可用比較按鈕。
 
-- [ ] 先寫 unittest／Node RED：輸出不存在時正常建立、拒絕覆寫輸入、非法資料不生成假成功、嵌入字串安全。
-- [ ] 抽出資料來源選擇，HTTP 模式保留原 API；離線模式不建立 fetch 依賴。
-- [ ] 實作離線 filters／排序／時間窗統計／CSV，逐筆對照 T1 的 Python golden 結果；搜尋 casefold 差異、整數精度與 null 排序須有測試。
-- [ ] 封裝 CSS／JS／資料／notices 到單檔 HTML，file:// 不做網路 fetch 或載入外部 module。
-- [ ] 跑 Python unittest、Ruff、Node tests 與原 Server regression；只有選定路徑通過才能標為完成。
+- [x] 先寫 unittest／Node RED：輸出不存在時正常建立、拒絕覆寫輸入、非法資料不生成假成功、嵌入字串安全。
+- [x] 抽出資料來源選擇，HTTP 模式保留原 API；離線模式不建立 fetch 依賴。
+- [x] 實作離線 filters／排序／時間窗統計／CSV，逐筆對照 T1 的 Python golden 結果；搜尋 casefold 差異、整數精度與 null 排序須有測試。
+- [x] 封裝 CSS／JS／資料／notices 到單檔 HTML，file:// 不做網路 fetch 或載入外部 module。
+- [x] 跑 Python unittest、Ruff、Node tests 與原 Server regression；只有選定路徑通過才能標為完成。
 
 驗收：離線運作保留完整資料分析與 CSV 能力；匯出大小與載入時間實測記錄，不先宣稱效能門檻已通過。
 
@@ -94,12 +94,12 @@ flowchart TD
 
 新增 `tools/verify_http.sh`、`docs/agent-browser-e2e.md`；驗收 log 保存於 `artifacts/verification/offline/`。使用 agent-browser 隔離 session 實際操作 HTTP 與 file://；既有 Playwright 只作額外回歸，不能取代指定的 agent-browser。
 
-- [ ] 用 curl 呼叫真實服務，保存 status、headers、body；驗 PSF 上傳、metadata、分頁／filters、view／metrics、完整 CSV、comparison 與非法輸入。
-- [ ] 關閉 Python Server，以 agent-browser 新 session 開啟離線 HTML，攔截 HTTP／HTTPS／WebSocket；任何必要網路請求視為失敗。
-- [ ] 驗 filters、hover、timeline 拖曳縮放、表格排序／欄寬與 CSV download；對照 Python 結果和同條件 Server 畫面。
-- [ ] 測時間窗／搜尋／unknown／大量資料／損壞輸入；保留舊的 2,000 點截取提示與全量匯出語意。
-- [ ] 同一案例在 server 與 offline 各截同一畫面；加入 renderer=SVG 的 DOM 斷言，不只看 PNG。
-- [ ] 每張圖片實際檢視，修掉被遮住的 tooltip、空白圖、截斷文字、console error；保存正式結果後再更新 README。
+- [x] 用 curl 呼叫真實服務，保存 status、headers、body；驗 PSF 上傳、metadata、分頁／filters、view／metrics、完整 CSV、comparison 與非法輸入。
+- [x] 關閉 Python Server，以 agent-browser 新 session 開啟離線 HTML，攔截 HTTP／HTTPS／WebSocket；任何必要網路請求視為失敗。
+- [x] 驗 filters、hover、timeline 拖曳縮放、表格排序／欄寬與 CSV download；對照 Python 結果和同條件 Server 畫面。
+- [x] 測時間窗／搜尋／unknown／大量資料／損壞輸入；保留舊的 2,000 點截取提示與全量匯出語意。
+- [x] 同一案例在 server 與 offline 各截同一畫面；加入 renderer=SVG 的 DOM 斷言，不只看 PNG。
+- [x] 每張圖片實際檢視，修掉被遮住的 tooltip、空白圖、截斷文字、console error；保存正式結果後再更新 README。
 
 ### P5-T4／T5：跨機重現，依 2B 暫緩
 
@@ -109,11 +109,11 @@ flowchart TD
 
 修改 POC README、`docs/dashboard-guide.md`、`docs/requirements.md`、`docs/handoff.md`、root README 與相關研究稽核。
 
-- [ ] 將目前狀態置頂，舊 N03／N05／N06／N07／N10／N12 等表格標為歷史快照並指向目前成果；不改寫 baseline。
-- [ ] README 加上雙模式快速入口、準備資料、啟動或雙擊 HTML、篩選、定位事件、匯出 CSV 的逐步圖文。
-- [ ] 每張圖說包含「正在看什麼、怎麼操作、觀察到什麼、不能據此推論什麼」；只展示該版本真正完成的功能。
-- [ ] 更新模式能力表：讀新 PSF、離線互動、多 trace／比較、CSV、需要的 runtime；與 D1 一致。
-- [ ] 檢查 POC 相對圖片連結、root README 跨 submodule 的固定 commit 連結、Markdown／Mermaid 與圖片 manifest。
+- [x] 將目前狀態置頂，舊 N03／N05／N06／N07／N10／N12 等表格標為歷史快照並指向目前成果；不改寫 baseline。
+- [x] README 加上雙模式快速入口、準備資料、啟動或雙擊 HTML、篩選、定位事件、匯出 CSV 的逐步圖文。
+- [x] 每張圖說包含「正在看什麼、怎麼操作、觀察到什麼、不能據此推論什麼」；只展示該版本真正完成的功能。
+- [x] 更新模式能力表：讀新 PSF、離線互動、多 trace／比較、CSV、需要的 runtime；與 D1 一致。
+- [x] 檢查 POC 相對圖片連結、root README 跨 submodule 的固定 commit 連結、Markdown／Mermaid 與圖片 manifest。
 
 ### P5-T7：同步原知識庫與完成稽核
 
@@ -165,7 +165,7 @@ E2E 必須實際完成選資料、filters、timeline 操作、hover、排序／�
 
 正式保存 `artifacts/verification/offline/http/` 與 `artifacts/verification/offline/agent-browser/` 的命令、stdout／stderr、assertions、來源 commit、PSF／HTML／CSV hashes；截圖維持獨立 manifest。所有測試證據去除與案例無關的本機敏感資料，不保存 credentials。
 
-## 截圖清單：至少 14 張實際畫面
+## 截圖清單：至少 14 張（本輪已保存 20 張）實際畫面
 
 | 圖號 | 模式與畫面 | 說明／佐證 |
 |---|---|---|
@@ -179,7 +179,11 @@ E2E 必須實際完成選資料、filters、timeline 操作、hover、排序／�
 | O01 | 離線 HTML 初始／載入完成 | 無 Server、斷網開啟；網路紀錄另外驗證 |
 | O08 | 離線品質警示或受支援錯誤案例 | unknown／loss／截取限制不可隱藏 |
 
-上述合計至少 14 張；需要 tooltip 可讀性時增加局部圖。主 README 精選 6～8 張，其餘放 Dashboard 指南，避免首頁過長。每張附 alt 與圖說；manifest 記錄 PNG SHA-256、source commit、輸入 hash、query、viewport、browser 與 capture command。
+上述合計至少 14 張（本輪已保存 20 張）；需要 tooltip 可讀性時增加局部圖。主 README 精選 6～8 張，其餘放 Dashboard 指南，避免首頁過長。每張附 alt 與圖說；manifest 記錄 PNG SHA-256、source commit、輸入 hash、query、viewport、browser 與 capture command。
+
+## 執行補充
+
+採用單 trace 匯出；無離線 registry／oracle compare，UI 清楚標示 Server 能力。curl runner 使用 Python unittest 呼叫實際 curl，取代草案中的 shell 檔名，以便直接核對 status／JSON／CSV。agent-browser 用穩定 CSS selector 配合 snapshot；操作前先 scrollIntoView，避免目前 CLI 對畫面外控制項回報成功卻未操作。
 
 ## 自我檢查
 

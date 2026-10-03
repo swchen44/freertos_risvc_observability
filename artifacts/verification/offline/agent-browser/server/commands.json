@@ -69,6 +69,32 @@
       "poc-accept-server",
       "eval",
       "--json",
+      "location.href"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":\"http://127.0.0.1:8767/\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
+      "document.querySelector(\"#source-info\").textContent"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":\"選擇 PSF，或開啟下方已驗證案例\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
       "({window:document.querySelector(\"#window-label\").textContent,search:document.querySelector(\"#search-filter\").value,task:[...document.querySelector(\"#task-filter\").selectedOptions].map(x=>x.value),rows:document.querySelector(\"#row-count\").textContent})"
     ],
     "exit_code": 0,
@@ -171,6 +197,32 @@
       "poc-accept-server",
       "eval",
       "--json",
+      "location.href"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":\"http://127.0.0.1:8767/\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
+      "document.querySelector(\"#source-info\").textContent"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":\"FreeRTOS · PSF 14 · 281 events · 10000000 Hz · unspecified\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
       "({window:document.querySelector(\"#window-label\").textContent,search:document.querySelector(\"#search-filter\").value,task:[...document.querySelector(\"#task-filter\").selectedOptions].map(x=>x.value),rows:document.querySelector(\"#row-count\").textContent})"
     ],
     "exit_code": 0,
@@ -251,6 +303,19 @@
     ],
     "exit_code": 0,
     "stdout": "- heading \"PSF Lab\" [level=1, ref=e4]\n- button \"切換明暗模式\" [ref=e5]\n- LabelText \"載入 PSF\" [ref=e6] clickable [cursor:pointer]\n  - button \"載入 PSF\" [ref=e7]: 未選擇任何檔案\n- combobox \"已儲存 trace\" [expanded=false, ref=e1]: trace.psf\n  - option \"已儲存 trace\" [ref=e8]\n  - option \"trace.psf\" [selected, ref=e9]\n  - option \"trace.psf\" [ref=e10]\n- combobox \"已驗證案例\" [expanded=false, ref=e2]\n  - option \"已驗證案例\" [selected, ref=e11]\n  - option \"queue_baseline · 84eed3\" [ref=e12]\n  - option \"queue_baseline · 6dfb90\" [ref=e13]\n  - option \"logger_bad · 93348d\" [ref=e14]\n  - option \"logger_fixed · ccc2d6\" [ref=e15]\n  - option \"inversion · d028ca\" [ref=e16]\n  - option \"inheritance · d8e2b4\" [ref=e17]\n  - option \"deadlock_abba · 7b5e8a\" [ref=e18]\n  - option \"ordered_locks · 913daf\" [ref=e19]\n  - option \"queue_baseline · ca69e2\" [ref=e20]\n  - option \"logger_bad · 95b91f\" [ref=e21]\n  - option \"logger_fixed · e45ea8\" [ref=e22]\n  - option \"inversion · 0cf818\" [ref=e23]\n  - option \"inheritance · 75e57e\" [ref=e24]\n  - option \"deadlock_abba · 50d96a\" [ref=e25]\n  - option \"ordered_locks · deccab\" [ref=e26]\n  - option \"queue_baseline · f0b2ab\" [ref=e27]\n  - option \"logger_bad · d4a2e3\" [ref=e28]\n  - option \"logger_fixed · 3e02b3\" [ref=e29]\n  - option \"inversion · 5c856f\" [ref=e30]\n  - option \"inheritance · 94feaf\" [ref=e31]\n  - option \"deadlock_abba · 4b86f0\" [ref=e32]\n  - option \"ordered_locks · a38d31\" [ref=e33]\n  - option \"queue_baseline · 22a470\" [ref=e34]\n  - option \"logger_bad · 06c385\" [ref=e35]\n  - option \"logger_fixed · 2d3171\" [ref=e36]\n  - option \"inversion · 1c87aa\" [ref=e37]\n  - option \"inheritance · 375eb0\" [ref=e38]\n  - option \"deadlock_abba · 744600\" [ref=e39]\n  - option \"ordered_locks · a32fb9\" [ref=e40]\n  - option \"queue_baseline · d1d5fa\" [ref=e41]\n  - option \"logger_bad · d7ce62\" [ref=e42]\n  - option \"logger_fixed · eefaa0\" [ref=e43]\n  - option \"inversion · 9aed2f\" [ref=e44]\n  - option \"inheritance · 293468\" [ref=e45]\n  - option \"deadlock_abba · 40754f\" [ref=e46]\n  - option \"ordered_locks · 76800a\" [ref=e47]\n  - option \"queue_baseline · 69e1ba\" [ref=e48]\n  - option \"logger_bad · e83381\" [ref=e49]\n  - option \"logger_fixed · 72b407\" [ref=e50]\n  - option \"inversion · 1c8bd6\" [ref=e51]\n  - option \"inheritance · 84affa\" [ref=e52]\n  - option \"deadlock_abba · 5aa2e4\" [ref=e53]\n  - option \"ordered_locks · 87e5fb\" [ref=e54]\n- button \"開啟案例\" [ref=e3]\n- heading \"篩選\" [level=2, ref=e55]\n- button \"重設\" [ref=e56]\n- listbox \"Task 篩選\" [ref=e60]\n  - option \"TzCtrl\" [ref=e70]\n  - option \"producer\" [ref=e71]\n  - option \"consumer\" [selected, ref=e72]\n  - option \"supervisor\" [ref=e73]\n  - option \"IDLE\" [ref=e74]\n- combobox \"物件篩選\" [expanded=false, ref=e61]: 全部物件\n  - option \"全部物件\" [selected, ref=e85]\n  - option \"System Heap · unknown\" [ref=e86]\n  - option \"TzCtrl · task\" [ref=e87]\n  - option \"POC · channel\" [ref=e88]\n  - option \"messages · queue\" [ref=e89]\n  - option \"producer · task\" [ref=e90]\n  - option \"consumer · task\" [ref=e91]\n  - option \"supervisor · task\" [ref=e92]\n  - option \"IDLE · task\" [ref=e93]\n- combobox \"Channel 篩選\" [expanded=false, ref=e62]: 全部 channel\n  - option \"全部 channel\" [selected, ref=e94]\n  - option \"POC\" [ref=e95]\n- combobox \"事件類型篩選\" [expanded=false, ref=e63]: 全部事件\n  - option \"全部事件\" [selected, ref=e96]\n  - option \"trace_start (0x1)\" [ref=e97]\n  - option \"object_name (0x3)\" [ref=e98]\n  - option \"task_create (0x10)\" [ref=e99]\n  - option \"queue_create (0x11)\" [ref=e100]\n  - option \"task_ready (0x30)\" [ref=e101]\n  - option \"new_time (0x31)\" [ref=e102]\n  - option \"task_switch (0x37)\" [ref=e103]\n  - option \"queue_send (0x50)\" [ref=e104]\n  - option \"queue_receive (0x60)\" [ref=e105]\n  - option \"queue_receive_block (0x66)\" [ref=e106]\n  - option \"task_delay (0x7a)\" [ref=e107]\n  - option \"task_suspend (0x7b)\" [ref=e108]\n  - option \"user_event (0x92)\" [ref=e109]\n- textbox \"文字搜尋\" [ref=e64]\n- textbox \"時間起點\" [ref=e75]\n- textbox \"時間終點\" [ref=e76]\n- button \"套用時間窗口\" [ref=e65]\n- button \"查看品質與來源\" [ref=e57]\n- heading \"案例對照\" [level=2, ref=e66]\n- combobox \"比較案例組\" [expanded=false, ref=e67]: Logger 干擾／改善\n  - option \"Logger 干擾／改善\" [selected, ref=e110]\n  - option \"Inversion／inheritance\" [ref=e111]\n  - option \"ABBA／ordered locks\" [ref=e112]\n- button \"比較已驗證結果\" [ref=e68]\n- heading \"Task 時間軸\" [level=2, ref=e77]\n- button \"拖曳選取窗口\" [ref=e113]\n- button \"完整時間\" [ref=e114]\n- heading \"Task execution share\" [level=2, ref=e78]\n- heading \"User-event signal\" [level=2, ref=e79]\n- heading \"事件紀錄\" [level=2, ref=e80]\n- button \"匯出統計 CSV\" [ref=e81]\n- button \"匯出事件 CSV\" [ref=e82]\n- columnheader \"時間 ticks\" [ref=e256]\n- columnheader \"事件\" [ref=e257]\n- columnheader \"Task\" [ref=e258]\n- columnheader \"物件\" [ref=e259]\n- columnheader \"訊息\" [ref=e260]\n- columnheader \"Offset\" [ref=e261]\n- columnheader \"Seq\" [ref=e262]\n- generic \"544task_switchconsumerconsumer46824547queue_receive_blockconsumermessages48425560task_switchconsum\" [ref=e115] focusable [tabindex]\n- gridcell \"544\" [ref=e116]\n- gridcell \"task_switch\" [ref=e117]\n- gridcell \"consumer\" [ref=e118]\n- gridcell \"consumer\" [ref=e119]\n- gridcell \"\" [ref=e120]\n- gridcell \"468\" [ref=e121]\n- gridcell \"24\" [ref=e122]\n- gridcell \"547\" [ref=e123]\n- gridcell \"queue_receive_block\" [ref=e124]\n- gridcell \"consumer\" [ref=e125]\n- gridcell \"messages\" [ref=e126]\n- gridcell \"\" [ref=e127]\n- gridcell \"484\" [ref=e128]\n- gridcell \"25\" [ref=e129]\n- gridcell \"560\" [ref=e130]\n- gridcell \"task_switch\" [ref=e131]\n- gridcell \"consumer\" [ref=e132]\n- gridcell \"consumer\" [ref=e133]\n- gridcell \"\" [ref=e134]\n- gridcell \"548\" [ref=e135]\n- gridcell \"29\" [ref=e136]\n- gridcell \"563\" [ref=e137]\n- gridcell \"queue_receive\" [ref=e138]\n- gridcell \"consumer\" [ref=e139]\n- gridcell \"messages\" [ref=e140]\n- gridcell \"\" [ref=e141]\n- gridcell \"564\" [ref=e142]\n- gridcell \"30\" [ref=e143]\n- gridcell \"586\" [ref=e144]\n- gridcell \"user_event\" [ref=e145]\n- gridcell \"consumer\" [ref=e146]\n- gridcell \"POC\" [ref=e147]\n- gridcell \"POC|queue_baseline|RECEIVE|0\" [ref=e148]\n- gridcell \"584\" [ref=e149]\n- gridcell \"31\" [ref=e150]\n- gridcell \"591\" [ref=e151]\n- gridcell \"queue_receive_block\" [ref=e152]\n- gridcell \"consumer\" [ref=e153]\n- gridcell \"messages\" [ref=e154]\n- gridcell \"\" [ref=e155]\n- gridcell \"632\" [ref=e156]\n- gridcell \"32\" [ref=e157]\n- gridcell \"10560\" [ref=e158]\n- gridcell \"task_switch\" [ref=e159]\n- gridcell \"consumer\" [ref=e160]\n- gridcell \"consumer\" [ref=e161]\n- gridcell \"\" [ref=e162]\n- gridcell \"876\" [ref=e163]\n- gridcell \"47\" [ref=e164]\n- gridcell \"10563\" [ref=e165]\n- gridcell \"queue_receive\" [ref=e166]\n- gridcell \"consumer\" [ref=e167]\n- gridcell \"messages\" [ref=e168]\n- gridcell \"\" [ref=e169]\n- gridcell \"892\" [ref=e170]\n- gridcell \"48\" [ref=e171]\n- gridcell \"10586\" [ref=e172]\n- gridcell \"user_event\" [ref=e173]\n- gridcell \"consumer\" [ref=e174]\n- gridcell \"POC\" [ref=e175]\n- gridcell \"POC|queue_baseline|RECEIVE|1\" [ref=e176]\n- gridcell \"912\" [ref=e177]\n- gridcell \"49\" [ref=e178]\n- gridcell \"10591\" [ref=e179]\n- gridcell \"queue_receive_block\" [ref=e180]\n- gridcell \"consumer\" [ref=e181]\n- gridcell \"messages\" [ref=e182]\n- gridcell \"\" [ref=e183]\n- gridcell \"960\" [ref=e184]\n- gridcell \"50\" [ref=e185]\n- gridcell \"20561\" [ref=e186]\n- gridcell \"task_switch\" [ref=e187]\n- gridcell \"consumer\" [ref=e188]\n- gridcell \"consumer\" [ref=e189]\n- gridcell \"\" [ref=e190]\n- gridcell \"1176\" [ref=e191]\n- gridcell \"63\" [ref=e192]\n- gridcell \"20563\" [ref=e193]\n- gridcell \"queue_receive\" [ref=e194]\n- gridcell \"consumer\" [ref=e195]\n- gridcell \"messages\" [ref=e196]\n- gridcell \"\" [ref=e197]\n- gridcell \"1192\" [ref=e198]\n- gridcell \"64\" [ref=e199]\n- gridcell \"20587\" [ref=e200]\n- gridcell \"user_event\" [ref=e201]\n- gridcell \"consumer\" [ref=e202]\n- gridcell \"POC\" [ref=e203]\n- gridcell \"POC|queue_baseline|RECEIVE|2\" [ref=e204]\n- gridcell \"1212\" [ref=e205]\n- gridcell \"65\" [ref=e206]\n- gridcell \"20592\" [ref=e207]\n- gridcell \"queue_receive_block\" [ref=e208]\n- gridcell \"consumer\" [ref=e209]\n- gridcell \"messages\" [ref=e210]\n- gridcell \"\" [ref=e211]\n- gridcell \"1260\" [ref=e212]\n- gridcell \"66\" [ref=e213]\n- gridcell \"30560\" [ref=e214]\n- gridcell \"task_switch\" [ref=e215]\n- gridcell \"consumer\" [ref=e216]\n- gridcell \"consumer\" [ref=e217]\n- gridcell \"\" [ref=e218]\n- gridcell \"1476\" [ref=e219]\n- gridcell \"79\" [ref=e220]\n- gridcell \"30563\" [ref=e221]\n- gridcell \"queue_receive\" [ref=e222]\n- gridcell \"consumer\" [ref=e223]\n- gridcell \"messages\" [ref=e224]\n- gridcell \"\" [ref=e225]\n- gridcell \"1492\" [ref=e226]\n- gridcell \"80\" [ref=e227]\n- gridcell \"30586\" [ref=e228]\n- gridcell \"user_event\" [ref=e229]\n- gridcell \"consumer\" [ref=e230]\n- gridcell \"POC\" [ref=e231]\n- gridcell \"POC|queue_baseline|RECEIVE|3\" [ref=e232]\n- gridcell \"1512\" [ref=e233]\n- gridcell \"81\" [ref=e234]\n- gridcell \"30591\" [ref=e235]\n- gridcell \"queue_receive_block\" [ref=e236]\n- gridcell \"consumer\" [ref=e237]\n- gridcell \"messages\" [ref=e238]\n- gridcell \"\" [ref=e239]\n- gridcell \"1560\" [ref=e240]\n- gridcell \"82\" [ref=e241]\n- gridcell \"40561\" [ref=e242]\n- gridcell \"task_switch\" [ref=e243]\n- gridcell \"consumer\" [ref=e244]\n- gridcell \"consumer\" [ref=e245]\n- gridcell \"\" [ref=e246]\n- gridcell \"1776\" [ref=e247]\n- gridcell \"95\" [ref=e248]\n- gridcell \"40563\" [ref=e249]\n- gridcell \"queue_receive\" [ref=e250]\n- gridcell \"consumer\" [ref=e251]\n- gridcell \"messages\" [ref=e252]\n- gridcell \"\" [ref=e253]\n- gridcell \"1792\" [ref=e254]\n- gridcell \"96\" [ref=e255]\n- button \"上一頁\" [disabled, ref=e83]\n- button \"下一頁\" [ref=e84]\n- heading \"證據詳情\" [level=2, ref=e58]\n- button \"解除固定\" [ref=e59]\n- heading \"來源與品質\" [level=3, ref=e69]\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
+      "({coverage:document.querySelector(\"#coverage-label\").textContent,shares:document.querySelector(\"#share-values\").textContent})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":{\"coverage\":\"Known 160116 / 160571 ticks；Unknown 455\",\"shares\":\"supervisor 0.13%consumer 0.36%producer 0.39%TzCtrl 0.01%IDLE 98.83%\"}},\"error\":null}\n",
     "stderr": ""
   },
   {
@@ -376,6 +441,32 @@
     ],
     "exit_code": 0,
     "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/screenshots/server/03-filter-window.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
+      "location.href"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":\"http://127.0.0.1:8767/\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
+      "document.querySelector(\"#source-info\").textContent"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":\"FreeRTOS · PSF 14 · 281 events · 10000000 Hz · unspecified\"},\"error\":null}\n",
     "stderr": ""
   },
   {
@@ -602,6 +693,32 @@
       "poc-accept-server",
       "eval",
       "--json",
+      "location.href"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":\"http://127.0.0.1:8767/\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
+      "document.querySelector(\"#source-info\").textContent"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":\"FreeRTOS · PSF 14 · 281 events · 10000000 Hz · unspecified\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
       "({window:document.querySelector(\"#window-label\").textContent,search:document.querySelector(\"#search-filter\").value,task:[...document.querySelector(\"#task-filter\").selectedOptions].map(x=>x.value),rows:document.querySelector(\"#row-count\").textContent})"
     ],
     "exit_code": 0,
@@ -663,6 +780,30 @@
       "--session",
       "poc-accept-server",
       "eval",
+      "document.querySelector(\"#unpin\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "click",
+      "#unpin"
+    ],
+    "exit_code": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
       "document.querySelector(\".tabulator-row:nth-child(2) .tabulator-cell[tabulator-field=kind]\").scrollIntoView({block:\"center\"})"
     ],
     "exit_code": 0,
@@ -679,6 +820,32 @@
     ],
     "exit_code": 0,
     "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
+      "document.querySelector(\"#details\").textContent"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":\"事件詳細資料{\\n  \\\"event_id\\\": \\\"0:180\\\",\\n  \\\"offset\\\": 180,\\n  \\\"id\\\": 3,\\n  \\\"sequence\\\": 7,\\n  \\\"core\\\": 0,\\n  \\\"timestamp_raw\\\": 1328,\\n  \\\"ticks\\\": \\\"3\\\",\\n  \\\"payload_hex\\\": \\\"80150a80504f4300\\\",\\n  \\\"kind\\\": \\\"object_name\\\",\\n  \\\"actor_id\\\": null,\\n  \\\"object_id\\\": \\\"0x800a1580:0\\\",\\n  \\\"fields\\\": {\\n    \\\"raw_words\\\": [\\n      \\\"2148144512\\\",\\n      \\\"4411216\\\"\\n    ],\\n    \\\"name\\\": \\\"POC\\\"\\n  },\\n  \\\"quality\\\": []\\n}\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
+      "document.querySelector(\"#details\").textContent"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":\"事件詳細資料{\\n  \\\"event_id\\\": \\\"0:180\\\",\\n  \\\"offset\\\": 180,\\n  \\\"id\\\": 3,\\n  \\\"sequence\\\": 7,\\n  \\\"core\\\": 0,\\n  \\\"timestamp_raw\\\": 1328,\\n  \\\"ticks\\\": \\\"3\\\",\\n  \\\"payload_hex\\\": \\\"80150a80504f4300\\\",\\n  \\\"kind\\\": \\\"object_name\\\",\\n  \\\"actor_id\\\": null,\\n  \\\"object_id\\\": \\\"0x800a1580:0\\\",\\n  \\\"fields\\\": {\\n    \\\"raw_words\\\": [\\n      \\\"2148144512\\\",\\n      \\\"4411216\\\"\\n    ],\\n    \\\"name\\\": \\\"POC\\\"\\n  },\\n  \\\"quality\\\": []\\n}\"},\"error\":null}\n",
     "stderr": ""
   },
   {
@@ -716,6 +883,32 @@
     ],
     "exit_code": 0,
     "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/screenshots/server/04-event-details.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
+      "location.href"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":\"http://127.0.0.1:8767/\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
+      "document.querySelector(\"#source-info\").textContent"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":\"FreeRTOS · PSF 14 · 281 events · 10000000 Hz · unspecified\"},\"error\":null}\n",
     "stderr": ""
   },
   {
@@ -919,6 +1112,32 @@
       "poc-accept-server",
       "eval",
       "--json",
+      "location.href"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":\"http://127.0.0.1:8767/\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
+      "document.querySelector(\"#source-info\").textContent"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":\"FreeRTOS · PSF 14 · 281 events · 10000000 Hz · unspecified\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
       "({window:document.querySelector(\"#window-label\").textContent,search:document.querySelector(\"#search-filter\").value,task:[...document.querySelector(\"#task-filter\").selectedOptions].map(x=>x.value),rows:document.querySelector(\"#row-count\").textContent})"
     ],
     "exit_code": 0,
@@ -986,6 +1205,32 @@
     ],
     "exit_code": 0,
     "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/screenshots/server/06-csv.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
+      "location.href"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":\"http://127.0.0.1:8767/\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
+      "document.querySelector(\"#source-info\").textContent"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":\"FreeRTOS · PSF 14 · 281 events · 10000000 Hz · unspecified\"},\"error\":null}\n",
     "stderr": ""
   },
   {
@@ -1075,6 +1320,32 @@
     ],
     "exit_code": 0,
     "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/screenshots/server/07-empty-filter.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
+      "location.href"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":\"http://127.0.0.1:8767/\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
+      "document.querySelector(\"#source-info\").textContent"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":\"FreeRTOS · PSF 14 · 281 events · 10000000 Hz · unspecified\"},\"error\":null}\n",
     "stderr": ""
   },
   {
@@ -1194,6 +1465,32 @@
       "poc-accept-server",
       "eval",
       "--json",
+      "location.href"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":\"http://127.0.0.1:8767/\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
+      "document.querySelector(\"#source-info\").textContent"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":\"FreeRTOS · PSF 14 · 281 events · 10000000 Hz · unspecified\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
       "({window:document.querySelector(\"#window-label\").textContent,search:document.querySelector(\"#search-filter\").value,task:[...document.querySelector(\"#task-filter\").selectedOptions].map(x=>x.value),rows:document.querySelector(\"#row-count\").textContent})"
     ],
     "exit_code": 0,
@@ -1281,6 +1578,32 @@
       "poc-accept-server",
       "eval",
       "--json",
+      "location.href"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":\"http://127.0.0.1:8767/\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
+      "document.querySelector(\"#source-info\").textContent"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":\"FreeRTOS · PSF 14 · 281 events · 10000000 Hz · unspecified\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
       "({window:document.querySelector(\"#window-label\").textContent,search:document.querySelector(\"#search-filter\").value,task:[...document.querySelector(\"#task-filter\").selectedOptions].map(x=>x.value),rows:document.querySelector(\"#row-count\").textContent})"
     ],
     "exit_code": 0,
@@ -1296,6 +1619,19 @@
     ],
     "exit_code": 0,
     "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "poc-accept-server",
+      "eval",
+      "--json",
+      "navigator.userAgent"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8767/\",\"result\":\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36\"},\"error\":null}\n",
     "stderr": ""
   },
   {
