@@ -1,0 +1,26 @@
+{
+  "captured_at": "2026-10-03T11:49:22.409527+00:00",
+  "sources": [
+    {
+      "path": "percepio",
+      "upstream": "https://github.com/percepio/percepio.git",
+      "commit": "c3055e4b6ae5627407b002e200f769596b7cfe01",
+      "files": 234,
+      "local_changes": []
+    },
+    {
+      "path": "Tracealyzer-SDK-demos",
+      "upstream": "https://github.com/percepio/Tracealyzer-SDK-demos.git",
+      "commit": "238245df239ef6d5ef3e3a9c39b20b12b688147f",
+      "files": 187,
+      "local_changes": []
+    },
+    {
+      "path": "Tracealyzer-STM32CubeIDE-SWO",
+      "upstream": "https://github.com/percepio/Tracealyzer-STM32CubeIDE-SWO.git",
+      "commit": "b435d3941cc918bbeb613d74ad42910fac5cd9b2",
+      "files": 396,
+      "local_changes": []
+    }
+  ]
+}

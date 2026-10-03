@@ -1,0 +1,4 @@
+[submodule "poc"]
+	path = poc
+	url = https://github.com/swchen44/freertos_risvc_observability.git
+	branch = poc-history

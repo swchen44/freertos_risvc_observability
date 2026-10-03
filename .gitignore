@@ -218,3 +218,10 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Local execution caches; proof artifacts are committed explicitly in poc.
+.DS_Store
+node_modules/
+.venv/
+.tools/
+.superpowers/
