@@ -1,9 +1,9 @@
 {
   "date": "2026-10-03",
   "report_sha256": "509a5fa2aabb3e0d36be3821833f0e4b2f7ec04bab131476358bfd43548bcb76",
-  "root_readme_sha256": "4b1038f6771904de2c1501ae9f505bdf2bab857e7fd1f3095fc3191fa1308e32",
+  "root_readme_sha256": "d3c032ba8ad0530bf04e8ee4c9dcde5c91fc0c8b56091425414048c2b61fd727",
   "sections": 24,
-  "checked_links": 343,
+  "checked_links": 345,
   "root_readme_checked": true,
   "inline_report_images": 14,
   "broken_local_links": [],

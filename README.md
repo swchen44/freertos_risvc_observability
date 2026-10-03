@@ -16,6 +16,8 @@
 
 ## 2026-10-04：離線 HTML、20 張截圖與最新驗證
 
+[本輪完成紀錄](https://github.com/swchen44/freertos_risvc_observability/blob/337074f/artifacts/verification/offline/completion.json)｜[同步後的原知識庫文章](https://github.com/swchen44/personal-knowledge-base-from-ai/blob/83fd7d4/Research/2026-10-03-FREERTOS-RISCV-OBSERVABILITY-RESEARCH.md)
+
 **Python 先將 PSF 轉成單檔 HTML，之後雙擊即可離線操作。** 新 PSF 需重新匯出；離線觀看端不需要 Python、Web Server 或網路。跨機重現依使用者 2B 整項暫緩。
 
 [完整操作圖解](https://github.com/swchen44/freertos_risvc_observability/blob/5594d730adc432608013c2cd0855aa3794e8dc6e/docs/offline-guide.md)｜[下載 Queue 離線示範](https://github.com/swchen44/freertos_risvc_observability/blob/5594d730adc432608013c2cd0855aa3794e8dc6e/artifacts/offline/queue-baseline.html)｜[103 項 Python tests](https://github.com/swchen44/freertos_risvc_observability/blob/5594d730adc432608013c2cd0855aa3794e8dc6e/artifacts/verification/offline/full-suite.log)｜[curl integration](https://github.com/swchen44/freertos_risvc_observability/blob/5594d730adc432608013c2cd0855aa3794e8dc6e/artifacts/verification/offline/http-tests.log)｜[agent-browser E2E](https://github.com/swchen44/freertos_risvc_observability/blob/5594d730adc432608013c2cd0855aa3794e8dc6e/artifacts/verification/offline/browser-offline.log)｜[20 張圖片與版本 manifest](https://github.com/swchen44/freertos_risvc_observability/blob/5594d730adc432608013c2cd0855aa3794e8dc6e/artifacts/verification/offline/screenshot-manifest.json)
