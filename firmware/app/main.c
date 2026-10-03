@@ -4,6 +4,7 @@
 extern void freertos_risc_v_trap_handler(void);
 static TraceStringHandle_t channel;
 void poc_mark(const char *phase,unsigned id) {
+ poc_oracle_record(phase,id);
  char format[80];
  snprintf(format,sizeof format,"POC|%s|%s|%%u",POC_CASE,phase);
  configASSERT(xTracePrintF(channel,format,id)==TRC_SUCCESS);

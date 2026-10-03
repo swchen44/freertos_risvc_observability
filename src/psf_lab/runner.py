@@ -228,3 +228,15 @@ def run_case(
         )
     write_json(run / "manifest.json", manifest)
     return run
+
+
+def load_run(run: Path) -> dict:
+    from psf_lab.analysis import analyze
+
+    value = {
+        name: json.loads((run / (name + ".json")).read_text())
+        for name in ["manifest", "case", "oracle"]
+    }
+    value["trace"] = parse_trace((run / "trace.psf").read_bytes(), source_name="trace.psf")
+    value["analysis"] = analyze(value["trace"])
+    return value

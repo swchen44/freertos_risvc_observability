@@ -10,7 +10,12 @@ OUT := $(ROOT)/build/$(CASE)
 PORT := $(KERNEL)/portable/GCC/RISC-V
 INC := -Iconfig -Iport -Iapp -I$(KERNEL)/include -I$(PORT) -I$(PORT)/chip_specific_extensions/RV32I_CLINT_no_extensions -I$(DEMO) -I$(SDK)/include -I$(SDK)/kernelports/FreeRTOS/include
 CFLAGS := $(INC) -DPOC_CASE='"$(CASE)"' -march=rv32imac_zicsr -mabi=ilp32 -mcmodel=medany -Os -g3 -ffunction-sections -fdata-sections -nostartfiles --specs=nano.specs
-SRC := $(KERNEL)/tasks.c $(KERNEL)/queue.c $(KERNEL)/list.c $(KERNEL)/portable/MemMang/heap_4.c $(PORT)/port.c $(wildcard $(SDK)/*.c) $(SDK)/kernelports/FreeRTOS/trcKernelPort.c $(wildcard port/*.c) $(wildcard app/*.c) app/cases/$(CASE).c
+CASE_SRC := $(CASE)
+ifneq ($(filter $(CASE),logger_bad logger_fixed),)
+CASE_SRC := logger
+CFLAGS += -DPOC_LOGGER_FIXED=$(if $(filter logger_fixed,$(CASE)),1,0)
+endif
+SRC := $(KERNEL)/tasks.c $(KERNEL)/queue.c $(KERNEL)/list.c $(KERNEL)/portable/MemMang/heap_4.c $(PORT)/port.c $(wildcard $(SDK)/*.c) $(SDK)/kernelports/FreeRTOS/trcKernelPort.c $(wildcard port/*.c) $(wildcard app/*.c) app/cases/$(CASE_SRC).c
 ASM := $(PORT)/portASM.S $(DEMO)/build/gcc/start.S
 OBJ := $(addprefix $(OUT)/,$(notdir $(SRC:.c=.o) $(ASM:.S=.o)))
 VPATH := $(sort $(dir $(SRC) $(ASM)))
