@@ -15,6 +15,11 @@ def name_event(handle, text, sequence=4, timestamp=90, width=4):
 
 
 class SemanticTests(unittest.TestCase):
+    def test_sdk_no_task_sentinel_is_not_a_running_task(self):
+        trace = parse_trace(stream(event(1, words=(2,))))
+        self.assertIsNone(trace["events"][0]["actor_id"])
+        self.assertFalse(any(o["address"] == "0x2" for o in trace["objects"]))
+
     def test_id_dispatch_uses_platform(self):
         self.assertEqual(resolve_kind("my_krnl", 0x20), "task_ready")
         self.assertEqual(resolve_kind("FreeRTOS", 0x20), "task_delete")

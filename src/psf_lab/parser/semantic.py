@@ -175,7 +175,8 @@ def parse_trace(data: bytes, *, source_name: str = "memory.psf", strict: bool = 
                     if current == obj["object_id"]:
                         current = None
         elif kind == "trace_start" and words:
-            obj = object_for(words[0], ev["offset"], "task")
+            # trcTask.c TRACE_HANDLE_NO_TASK is the reserved value 2.
+            obj = object_for(words[0], ev["offset"], "task") if words[0] != 2 else None
             current = obj["object_id"] if obj else None
             ev["actor_id"] = current
         elif kind in ("user_event", "user_event_fixed"):

@@ -1,11 +1,13 @@
 {
   "intervals": [
     {
-      "object_id": "0x2:0",
+      "object_id": null,
       "start_ticks": "0",
       "end_ticks": "456",
-      "state": "running",
-      "quality": []
+      "state": "unknown",
+      "quality": [
+        "unobserved_execution"
+      ]
     },
     {
       "object_id": "0x800828f0:0",
@@ -602,13 +604,9 @@
     "end_ticks": "160570",
     "window_ticks": "160570",
     "window_seconds": 0.016057,
-    "known_ticks": "160570",
-    "unknown_ticks": "0",
+    "known_ticks": "160114",
+    "unknown_ticks": "456",
     "task_share": {
-      "0x2:0": {
-        "running_ticks": "456",
-        "fraction": 0.0028398829171078035
-      },
       "0x800828f0:0": {
         "running_ticks": "203",
         "fraction": 0.0012642461231861493
