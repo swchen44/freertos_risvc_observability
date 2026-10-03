@@ -49,7 +49,6 @@ def check_case(case: dict, trace: dict, oracle: dict) -> dict:
     elif case["case_id"] in ("logger_bad", "logger_fixed"):
         ids = list(range(case["parameters"]["requests"]))
         expect("oracle_requests", ids, [r["request_id"] for r in oracle.get("requests", [])])
-        origin = int(trace["clock"]["origin_ticks"])
         for phase in ["START", "WORKER_BEGIN", "WORKER_END", "LOGGER_BEGIN", "LOGGER_END"]:
             observed = [e for e in markers if e["fields"].get("phase") == phase]
             independent = [p for p in oracle.get("phases", []) if p["phase"] == phase]
@@ -59,7 +58,51 @@ def check_case(case: dict, trace: dict, oracle: dict) -> dict:
                 for e, p in zip(observed, independent, strict=True):
                     delta = (int(e["timestamp_raw"]) - int(p["mtime"])) % (1 << 32)
                     expect(phase + "_timestamp_" + str(p["request_id"]), True, delta <= 1000)
-        del origin
+    elif case["case_id"] in ("inversion", "inheritance"):
+        inheritance = case["case_id"] == "inheritance"
+        required = [
+            "LOW_HOLD",
+            "HIGH_ATTEMPT",
+            "HIGH_BLOCKED",
+            "LOW_RELEASE",
+            "HIGH_ACQUIRED",
+            "MEDIUM_END",
+            "LOW_RESTORED",
+        ]
+        for phase in required:
+            expect("psf_" + phase, 1, sum(e["fields"].get("phase") == phase for e in markers))
+            expect("oracle_" + phase, 1, sum(p["phase"] == phase for p in oracle.get("phases", [])))
+        expect("phase_order", True, priority_order(oracle, inheritance))
+        for kind in (
+            [
+                "mutex_create",
+                "mutex_take_block",
+                "mutex_give",
+                "task_prio_inherit",
+                "task_prio_disinherit",
+            ]
+            if inheritance
+            else ["semaphore_create", "semaphore_take_block", "semaphore_give"]
+        ):
+            expect(kind, True, any(e["kind"] == kind for e in events))
+        if inheritance:
+            boosts = {
+                (e["object_id"], e["fields"].get("priority"))
+                for e in events
+                if e["kind"] == "task_prio_inherit"
+            }
+            restores = {
+                (e["object_id"], e["fields"].get("priority"))
+                for e in events
+                if e["kind"] == "task_prio_disinherit"
+            }
+            expect(
+                "same_owner_boost_restore",
+                True,
+                any((owner, 2) in restores for owner, priority in boosts if priority == 4),
+            )
+        else:
+            expect("no_inheritance", 0, sum(e["kind"] == "task_prio_inherit" for e in events))
     elif case["case_id"] == "clock_probe":
         expect("clock_ticks", 100, oracle.get("delta_ticks"))
         expect(
@@ -120,6 +163,42 @@ def compare_cases(pair_id: str, runs: list[dict]) -> dict:
                     int(y["end_mtime"]) - int(y["start_mtime"])
                 )
                 expect("response_improves_" + str(x["request_id"]), True, delta >= 40000)
+    elif pair_id == "priority":
+        for r in runs:
+            expect(
+                "same_work_" + r["case"]["case_id"],
+                {"low_ticks": 2, "medium_ticks": 6},
+                r["case"]["parameters"],
+            )
+            expect(
+                "phase_order_" + r["case"]["case_id"],
+                True,
+                priority_order(r["oracle"], r["case"]["case_id"] == "inheritance"),
+            )
+        boosts = [
+            e
+            for e in b["trace"]["events"]
+            if e["kind"] == "task_prio_inherit" and e["fields"].get("priority") == 4
+        ]
+        restores = {
+            e["object_id"]
+            for e in b["trace"]["events"]
+            if e["kind"] == "task_prio_disinherit" and e["fields"].get("priority") == 2
+        }
+        if not any(e["object_id"] in restores for e in boosts):
+            issues.append("missing_inheritance_evidence")
+        expect(
+            "binary_no_boost",
+            False,
+            any(e["kind"] == "task_prio_inherit" for e in a["trace"]["events"]),
+        )
+        if any(r["trace"]["quality"]["issues"] for r in runs):
+            return dict(
+                pair_id=pair_id,
+                verdict="indeterminate",
+                assertions=assertions,
+                issues=["trace_quality"],
+            )
     else:
         issues.append("unsupported_pair")
     return dict(
@@ -127,4 +206,34 @@ def compare_cases(pair_id: str, runs: list[dict]) -> dict:
         verdict="pass" if not issues and all(x["passed"] for x in assertions) else "fail",
         assertions=assertions,
         issues=issues,
+    )
+
+
+def priority_order(oracle: dict, inheritance: bool) -> bool:
+    phases = oracle.get("phases", [])
+    times = {p["phase"]: int(p["mtime"]) for p in phases}
+    required = [
+        "LOW_HOLD",
+        "HIGH_ATTEMPT",
+        "HIGH_BLOCKED",
+        "LOW_RELEASE",
+        "HIGH_ACQUIRED",
+        "MEDIUM_END",
+        "LOW_RESTORED",
+    ]
+    if any(k not in times for k in required):
+        return False
+    if not times["LOW_HOLD"] < times["HIGH_ATTEMPT"] < times["HIGH_BLOCKED"]:
+        return False
+    if not any(p["phase"] == "LOW_RESTORED" and p["request_id"] == 2 for p in phases):
+        return False
+    if inheritance:
+        return (
+            times["HIGH_BLOCKED"]
+            < times["LOW_RELEASE"]
+            < times["HIGH_ACQUIRED"]
+            < times["MEDIUM_END"]
+        )
+    return (
+        times["HIGH_BLOCKED"] < times["MEDIUM_END"] < times["LOW_RELEASE"] < times["HIGH_ACQUIRED"]
     )

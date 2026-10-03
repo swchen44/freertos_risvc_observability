@@ -15,6 +15,10 @@ ifneq ($(filter $(CASE),logger_bad logger_fixed),)
 CASE_SRC := logger
 CFLAGS += -DPOC_LOGGER_FIXED=$(if $(filter logger_fixed,$(CASE)),1,0)
 endif
+ifneq ($(filter $(CASE),inversion inheritance),)
+CASE_SRC := inversion
+CFLAGS += -DPOC_USE_MUTEX=$(if $(filter inheritance,$(CASE)),1,0)
+endif
 SRC := $(KERNEL)/tasks.c $(KERNEL)/queue.c $(KERNEL)/list.c $(KERNEL)/portable/MemMang/heap_4.c $(PORT)/port.c $(wildcard $(SDK)/*.c) $(SDK)/kernelports/FreeRTOS/trcKernelPort.c $(wildcard port/*.c) $(wildcard app/*.c) app/cases/$(CASE_SRC).c
 ASM := $(PORT)/portASM.S $(DEMO)/build/gcc/start.S
 OBJ := $(addprefix $(OUT)/,$(notdir $(SRC:.c=.o) $(ASM:.S=.o)))
