@@ -58,4 +58,6 @@ git log --oneline -8
 
 要重驗單次正式 capture：`.venv/bin/python -m psf_lab check runs/<suite>/<run_id>`。這會解碼 raw PSF、核對 oracle／case 與 hash；查看舊 JSON 或已保存的 pass 字樣不能取代這個步驟。
 
-本次公開上傳完成後，GitHub 的 commit／tree／submodule pointer 與一次乾淨 clone 的核對結果另存 `github-publish-receipt.json`。不以 `git push` 沒報錯就當作全部檔案已可取得。
+GitHub 上傳後已重新 clone，研究區 920 個檔案、POC 1,202 個檔案的 SHA-256 全部一致；422 個基準檔、219 個文件連結與 42 份 PSF 重驗通過。下載版本另外執行 90 項 Python unit tests，全數通過（沿用本機 Python dependencies，沒有重建跨機工具鏈）。
+
+可複查：[上傳與下載核對紀錄](github-publish-receipt.json)、[下載版本測試 log](measurements/github-clone-unit.txt)。receipt 明確記錄受驗證的 snapshot commit；本身於核對後另行提交。
