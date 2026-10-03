@@ -167,13 +167,23 @@ async function refresh() {
       ? "Response／execution"
       : "User-event signal";
     $("request-label").textContent = lastView.request_total
-      ? `${lastView.request_stats.samples} 個完整 requests；response min／mean／max ${lastView.request_stats.min_ticks}／${lastView.request_stats.mean_ticks?.toFixed(1)}／${lastView.request_stats.max_ticks} ticks`
-      : `${lastView.signal_total} 個 Counter samples`;
+      ? `${lastView.request_stats.samples} 個完整 requests；圖上 ${lastView.requests.length} / ${lastView.request_total}；response min／mean／max ${lastView.request_stats.min_ticks}／${lastView.request_stats.mean_ticks?.toFixed(1)}／${lastView.request_stats.max_ticks} ticks`
+      : `${lastView.signals.length} / ${lastView.signal_total} 個 Counter samples`;
     $("timing-note").textContent = lastView.request_total
       ? "Response 是開始到完成；execution 僅累加已知 worker 執行區間。"
       : lastView.signal_total
         ? "顯示已解碼的 Counter 數值。"
         : "此 trace 未提供支援的 request／Counter 訊號。";
+    const display =
+      lastView.display_limits[lastView.request_total ? "requests" : "signals"];
+    if (display.truncated) {
+      const range =
+        display.start_ticks === null
+          ? "資料點時間未知"
+          : `資料點起訖 ${display.start_ticks} ～ ${display.end_ticks} ticks`;
+      $("timing-note").textContent +=
+        ` 只顯示前 ${display.shown}／共 ${display.total} 筆；${range}。請縮小時間窗口查看尾段；事件 CSV 保留全部符合資料。`;
+    }
     $("row-count").textContent =
       `符合 ${lastPage.total} 筆；本頁 ${lastPage.rows.length} 筆。CSV 匯出全部 ${lastPage.total} 筆。`;
     $("page-label").textContent =

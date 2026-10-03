@@ -14,12 +14,12 @@
 | POC 目錄與 Git | 已建立獨立 feat/psf-lab 分支 | README、過程、決策、來源 manifest 與初始 commit |
 | PSF／QEMU／UI 研究 | 已有研究與 review | 以實際模擬及正式 parser 驗證研究主張 |
 | PSF／本機服務選擇 | 已確認 | 依此設計，PDF 僅保留研究用途 |
-| 設計規格／實作計畫 | 使用者已要求寫計畫；三份子計畫已建立 | [計畫 review 與執行方式](plans/README.md)，已按 A 執行，驗收通過、整體 review 中 |
+| 設計規格／實作計畫 | 使用者已要求寫計畫；三份子計畫已建立 | [計畫 review 與執行方式](plans/README.md)，已按 A 執行，驗收通過、review 重要發現已修正 |
 | RISC-V＋FreeRTOS＋SDK | 已建置並驗 hooks／clock | 可重跑 firmware、版本鎖定、ELF／map、時鐘證據 |
 | 正常／異常案例 | 七配置三輪、三組對照已通過 | 七個配置、PSF、獨立應用結果與判定 |
 | PSF → JSON parser | 兩個 v14 schema 已實作／測試 | desktop 64-bit 與 RV32 FreeRTOS 的分開 schema |
 | Harness | 已實作、獨立 oracle 與品質判定 | 預先定義 expected、錯誤案例拒絕、可追查結果 |
-| 本機 Dashboard | 已實作，10 組瀏覽器驗收通過 | SVG 圖表、filters、table、timeline、CSV |
+| 本機 Dashboard | 已實作，11 組瀏覽器驗收通過 | SVG 圖表、filters、table、timeline、CSV |
 | unittest／Ruff／瀏覽器驗收 | 本機 POC 測試持續通過；不代表產品測試 | 實際命令、結果與失敗證據 |
 | 離線 HTML | 後續階段 | 第一版本機服務完成後，驗證離線資料來源 |
 | 板上 CPU／IRQ／UART 等 | 留待內網與硬體 | 保留 U01～U16，不以 QEMU 結果結清 |
@@ -47,4 +47,4 @@ C01～C02 目的補充：使用者接受非 cycle-accurate、以儘量接近平�
 M2完成：七配置三次重跑21/21、每輪三組pair9/9通過；原始證據與案例解說見 [case-results](case-results.md)。M3互動服務與 UI 已建立，最終證據見 README。
 
 
-M3 驗證：87 unit、6 integration、5 Node、10 Playwright 全通過，Ruff／build 通過。新正式 suite 21／21、pair 9／9，見 README。後续尚未完成：獨立整體 review、產品 U01～U16、M4 cache 相對最佳化與離線 HTML。
+M3 驗證：90 unit、6 integration、5 Node、11 Playwright 全通過，Ruff／build 通過。新正式 suite 21／21、pair 9／9，見 README。後續尚未完成：產品 U01～U16、M4 cache 相對最佳化與離線 HTML。

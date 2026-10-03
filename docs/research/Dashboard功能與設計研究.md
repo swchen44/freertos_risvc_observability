@@ -411,4 +411,4 @@ CSV 的 expected test 在 `unittest` 與 B07 使用同一份獨立 fixture 規�
 
 前面第 10 節保留研究當時狀態；目前套件已固定、UI 與 parser 已實作。操作與實際截圖見 [使用指南](../dashboard-guide.md)，版本見 [第三方套件](../../web/THIRD_PARTY_NOTICES.md)，真實量測見 [benchmarks](../benchmarks.md)。
 
-第一版 CSV 在 16 MiB／200k events 的輸入上限內完整產生再回傳，尚未實作逐列 streaming。這是記憶體成本限制，不能宣稱無上限串流。Dataset 以 immutable trace UUID 區分，無就地修改 revision。B01～B14 的功能合併為 Playwright 情境測試，細項以測試檔和報告為準；精度 helper 另以 Node unit test 驗证。
+第一版 CSV 在 16 MiB／200k events 的輸入上限內完整產生再回傳，尚未實作逐列 streaming。這是記憶體成本限制，不能宣稱無上限串流。Dataset 以 immutable trace UUID 區分，無就地修改 revision。B01～B14 的功能合併為 Playwright 情境測試，細項以測試檔和報告為準；精度 helper 另以 Node unit test 驗證。

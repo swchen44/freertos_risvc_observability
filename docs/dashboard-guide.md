@@ -29,3 +29,5 @@ flowchart LR
 單檔限制 16 MiB／200k events，本機 store 最多 20 traces。空資料、截斷與未知頻率會顯示品質，不填入假數字。PSF 重新上傳不帶獨立 oracle，因此 capture 完整性顯示未確認；比較頁會重新核對正式 run。API 見 [server-api.md](server-api.md)，統計語意見 [query-semantics.md](query-semantics.md)。
 
 本版尚未提供離線 HTML 匯出、SMP／ISR 完整重建、所有 Tracealyzer views、cache／bus 模型。後續 cache 相對最佳化見 [M4 計畫](plans/04-cache-relative-optimization.md)。
+
+圖表的 requests／Counter 超過 2,000 筆時會明示顯示前段、完整數量及資料點起訖。請縮小時間窗口查看尾段；CSV 保留全部符合事件。全 unknown 的統計 CSV 仍保留窗口摘要，不把未知誤寫成 0% task。

@@ -69,7 +69,10 @@ def export_csv(trace, analysis, filters, sort, *, kind="events"):
                 "task_id": k,
                 **v,
             }
-            for k, v in metrics["task_share"].items()
+            for k, v in (
+                list(metrics["task_share"].items())
+                or [(None, {"running_ticks": None, "fraction": None})]
+            )
         ]
     else:
         raise ValueError("Unsupported CSV kind")

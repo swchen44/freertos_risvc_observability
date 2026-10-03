@@ -248,13 +248,11 @@ test("B08 three verified comparisons and request-relative chart", async ({
 test("B09 unsupported, partial and empty trace show truthful quality", async ({
   page,
 }) => {
-  await page
-    .locator("#psf-input")
-    .setInputFiles({
-      name: "bad.psf",
-      mimeType: "application/octet-stream",
-      buffer: Buffer.from("BAD!"),
-    });
+  await page.locator("#psf-input").setInputFiles({
+    name: "bad.psf",
+    mimeType: "application/octet-stream",
+    buffer: Buffer.from("BAD!"),
+  });
   await expect(page.locator("#status")).toHaveClass(/error/);
   await expect(page.locator("#trace-workspace")).toBeHidden();
   const data = await readFile(fixture);
@@ -418,4 +416,33 @@ test("B11 source race: delayed run download cannot replace a newer upload", asyn
   await page.waitForLoadState("networkidle");
   expect(await page.locator("#source-info").textContent()).toBe(before);
   await expect(page.locator("#source-info")).toContainText("309 events");
+});
+
+test("review: signal plot explicitly marks 2000 of 2001 samples while CSV remains complete", async ({
+  page,
+}, info) => {
+  const records = [];
+  for (let i = 0; i < 2001; i++) {
+    const text = Buffer.alloc(12);
+    text.write("Counter: %d");
+    records.push(
+      event(
+        0x92,
+        i,
+        i * 100,
+        Buffer.concat([words(4, i === 2000 ? 999999 : i), text]),
+      ),
+    );
+  }
+  await load(page, {
+    name: "signals.psf",
+    mimeType: "application/octet-stream",
+    buffer: await synthetic(records),
+  });
+  await expect(page.locator("#request-label")).toContainText("2000 / 2001");
+  await expect(page.locator("#timing-note")).toContainText("前 2000");
+  const csv = await exportCSV(page, "events", info);
+  expect(csv.length).toBe(2001);
+  expect(csv.at(-1).message).toBe("Counter: 999999");
+  await expect(page.locator("#timing-note")).toContainText("199900");
 });

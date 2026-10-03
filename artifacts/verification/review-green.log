@@ -1,0 +1,8 @@
+test_signal_display_limit_has_explicit_scope (tests.unit.test_review_regressions.ReviewRegressionTests.test_signal_display_limit_has_explicit_scope) ... ok
+test_signed_counter_matches_formatted_value_in_both_schemas (tests.unit.test_review_regressions.ReviewRegressionTests.test_signed_counter_matches_formatted_value_in_both_schemas) ... ok
+test_unknown_and_zero_windows_survive_metrics_csv (tests.unit.test_review_regressions.ReviewRegressionTests.test_unknown_and_zero_windows_survive_metrics_csv) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.022s
+
+OK

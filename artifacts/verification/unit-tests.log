@@ -57,6 +57,9 @@ test_half_open_numeric_sort_and_page (tests.unit.test_query.QueryTests.test_half
 test_invalid_query_rejected (tests.unit.test_query.QueryTests.test_invalid_query_rejected) ... ok
 test_null_last_ties_and_large_ticks (tests.unit.test_query.QueryTests.test_null_last_ties_and_large_ticks) ... ok
 test_task_visibility_does_not_change_denominator (tests.unit.test_query.QueryTests.test_task_visibility_does_not_change_denominator) ... ok
+test_signal_display_limit_has_explicit_scope (tests.unit.test_review_regressions.ReviewRegressionTests.test_signal_display_limit_has_explicit_scope) ... ok
+test_signed_counter_matches_formatted_value_in_both_schemas (tests.unit.test_review_regressions.ReviewRegressionTests.test_signed_counter_matches_formatted_value_in_both_schemas) ... ok
+test_unknown_and_zero_windows_survive_metrics_csv (tests.unit.test_review_regressions.ReviewRegressionTests.test_unknown_and_zero_windows_survive_metrics_csv) ... ok
 test_allowlist (tests.unit.test_runner.RunnerTests.test_allowlist) ... ok
 test_timeout_keeps_manifest_console_and_nonzero (tests.unit.test_runner.RunnerTests.test_timeout_keeps_manifest_console_and_nonzero) ... ok
 test_unique_run_directories (tests.unit.test_runner.RunnerTests.test_unique_run_directories) ... ok
@@ -89,6 +92,6 @@ test_quota_and_unknown_ids (tests.unit.test_store.StoreTests.test_quota_and_unkn
 test_timeout_still_records_all_21_attempts_and_fails (tests.unit.test_suite.SuiteTests.test_timeout_still_records_all_21_attempts_and_fails) ... ok
 
 ----------------------------------------------------------------------
-Ran 87 tests in 2.619s
+Ran 90 tests in 1.730s
 
 OK

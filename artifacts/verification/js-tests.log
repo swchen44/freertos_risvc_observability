@@ -1,0 +1,17 @@
+
+> test:unit
+> node --test tests/*.test.mjs
+
+✔ comparison uses each request origin, preserves unknown duration (1.567667ms)
+✔ late requests cannot replace newer workspace (0.873541ms)
+✔ query contract and error handling (0.396334ms)
+✔ subtract before Number conversion (0.92825ms)
+✔ isolated state, patch and reset (2.195084ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 458.521209

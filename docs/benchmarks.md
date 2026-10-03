@@ -20,13 +20,13 @@ Chromium 153.0.8010.12、viewport 1600×1000。本表每個規模一次觀察，
 
 | Events | 上傳至首圖 ms | Query 至 render ms | Filter 至 settled ms | Timeline SVG elements | 表格本頁 |
 |---:|---:|---:|---:|---:|---:|
-| 1,000 | 789 | 578.6 | 214.0 | 1037 | 20 |
-| 10,000 | 2029 | 905.5 | 437.1 | 2038 | 20 |
-| 100,000 | 10335 | 6550.6 | 2855.6 | 2038 | 20 |
+| 1,000 | 194 | 145.8 | 42.0 | 1037 | 20 |
+| 10,000 | 423 | 285.0 | 193.4 | 2038 | 20 |
+| 100,000 | 5038 | 2792.8 | 1448.0 | 2038 | 20 |
 
-原始記錄：[capacity.json](../artifacts/browser/capacity.json)、[10 組瀏覽器測試](../artifacts/browser/results.json)。10k／100k timeline 以 `density_by_interval_start` 聚合，至多 2,000 marks；SVG elements 還含座標軸、文字與 slider，因此不是 mark count。密度圖表示區間起點的數量，不表示精確佔用時間；task share 仍由完整 intervals 計算。
+原始記錄：[capacity.json](../artifacts/browser/capacity.json)、[11 組瀏覽器測試](../artifacts/browser/results.json)。10k／100k timeline 以 `density_by_interval_start` 聚合，至多 2,000 marks；SVG elements 還含座標軸、文字與 slider，因此不是 mark count。密度圖表示區間起點的數量，不表示精確佔用時間；task share 仍由完整 intervals 計算。
 
-100k 首次載入約 10 秒、篩選約 2.9 秒，目前不適合即時高速連續更新。後續若需要更快，應先量 JSON 載入、查詢與 40-bin trend 成本，再考慮索引、共用載入 cache、預先聚合與 worker；不可先降低原始資料保真度。產品可接受延遲尚未指定，測試的 10 秒一般等待／30 秒大型載入／60 秒情境上限只是 hang guard。
+本次 100k 首次載入約 5.0 秒、篩選約 1.4 秒，目前不適合即時高速連續更新。後續若需要更快，應先量 JSON 載入、查詢與 40-bin trend 成本，再考慮索引、共用載入 cache、預先聚合與 worker；不可先降低原始資料保真度。產品可接受延遲尚未指定，測試的 10 秒一般等待／30 秒大型載入／60 秒情境上限只是 hang guard。
 
 重跑命令：
 
@@ -37,3 +37,5 @@ npm --prefix web run test:e2e
 ```
 
 所有效能量測與 memory 上限應隨版本重新記錄；此處沒有宣稱 200k events 是已量得的最佳容量。
+
+前一輪同機 100k 首次載入約 10.3 秒，本次完整數字如表；host 負載會影響結果，不以單次變快宣稱修正提高效能。

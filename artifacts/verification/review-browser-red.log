@@ -1,0 +1,57 @@
+
+> test:e2e
+> playwright test --grep review: signal
+
+[WebServer] INFO:     Started server process [80004]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8766 (Press CTRL+C to quit)
+
+Running 1 test using 1 worker
+
+(node:80009) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/dashboard.spec.mjs:423:1 › review: signal plot explicitly marks 2000 of 2001 samples while CSV remains complete (11.2s)
+
+
+  1) tests/e2e/dashboard.spec.mjs:423:1 › review: signal plot explicitly marks 2000 of 2001 samples while CSV remains complete
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: locator('#request-label')
+    Expected substring: "2000 / 2001"
+    Received string:    "2001 個 Counter samples"
+    Timeout: 10000ms
+
+    Call log:
+      - Expect "toContainText" locator('#request-label') with timeout 10000ms
+      - waiting for locator('#request-label')
+        24 × locator resolved to <p id="request-label">2001 個 Counter samples</p>
+           - unexpected value "2001 個 Counter samples"
+
+
+      425 |  for(let i=0;i<2001;i++){const text=Buffer.alloc(12);text.write('Counter: %d');records.push(event(0x92,i,i*100,Buffer.concat([words(4,i===2000?999999:i),text])));}
+      426 |  await load(page,{name:'signals.psf',mimeType:'application/octet-stream',buffer:await synthetic(records)});
+    > 427 |  await expect(page.locator('#request-label')).toContainText('2000 / 2001');
+          |                                               ^
+      428 |  await expect(page.locator('#timing-note')).toContainText('前 2000');
+      429 |  const csv=await exportCSV(page,'events',info);expect(csv.length).toBe(2001);expect(csv.at(-1).message).toBe('Counter: 999999');
+      430 |  await expect(page.locator('#timing-note')).toContainText('199900');
+        at /Users/swchen.tw/git/percepio/poc/web/tests/e2e/dashboard.spec.mjs:427:47
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/dashboard-review-signal-pl-3e312--while-CSV-remains-complete/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/dashboard-review-signal-pl-3e312--while-CSV-remains-complete/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/dashboard-review-signal-pl-3e312--while-CSV-remains-complete/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/dashboard-review-signal-pl-3e312--while-CSV-remains-complete/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/e2e/dashboard.spec.mjs:423:1 › review: signal plot explicitly marks 2000 of 2001 samples while CSV remains complete

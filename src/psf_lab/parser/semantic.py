@@ -209,8 +209,9 @@ def parse_trace(data: bytes, *, source_name: str = "memory.psf", strict: bool = 
             fields["message"] = message
             if not supported:
                 issue("unsupported_format", ev)
-            if fmt == "Counter: %d" and args:
-                fields["counter"] = args[0]
+            if supported and fmt == "Counter: %d" and args:
+                # Use the already schema-width-aware signed representation.
+                fields["counter"] = int(message.removeprefix("Counter: "))
             parts = message.split("|")
             if supported and len(parts) == 4 and parts[0] == "POC" and parts[3].isdigit():
                 fields.update(

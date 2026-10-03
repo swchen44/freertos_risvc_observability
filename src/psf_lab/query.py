@@ -117,6 +117,23 @@ def query_events(trace, filters, sort, *, offset=0, limit=200):
     return {"total": len(rows), "rows": rows[offset : None if limit is None else offset + limit]}
 
 
+def _display_limit(items, total, *, start_key, end_key=None):
+    times = [
+        int(item[key])
+        for item in items
+        for key in ([start_key, end_key] if end_key else [start_key])
+        if item.get(key) is not None
+    ]
+    return {
+        "shown": len(items),
+        "total": total,
+        "mode": "first_n" if len(items) < total else "all",
+        "truncated": len(items) < total,
+        "start_ticks": str(min(times)) if times else None,
+        "end_ticks": str(max(times)) if times else None,
+    }
+
+
 def query_view(trace, analysis, filters):
     validate_filters(filters)
     base = analysis["metrics"]
@@ -195,6 +212,12 @@ def query_view(trace, analysis, filters):
         request_stats=stats,
         signals=signals[:2000],
         signal_total=len(signals),
+        display_limits={
+            "requests": _display_limit(
+                requests[:2000], len(requests), start_key="start_ticks", end_key="end_ticks"
+            ),
+            "signals": _display_limit(signals[:2000], len(signals), start_key="ticks"),
+        },
         quality=analysis["quality"],
         aggregation=aggregation,
         event_total=len(events),

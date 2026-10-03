@@ -1,0 +1,66 @@
+test_signal_display_limit_has_explicit_scope (tests.unit.test_review_regressions.ReviewRegressionTests.test_signal_display_limit_has_explicit_scope) ... ERROR
+test_signed_counter_matches_formatted_value_in_both_schemas (tests.unit.test_review_regressions.ReviewRegressionTests.test_signed_counter_matches_formatted_value_in_both_schemas) ...
+  test_signed_counter_matches_formatted_value_in_both_schemas (tests.unit.test_review_regressions.ReviewRegressionTests.test_signed_counter_matches_formatted_value_in_both_schemas) (width=4, value=-1) ... FAIL
+  test_signed_counter_matches_formatted_value_in_both_schemas (tests.unit.test_review_regressions.ReviewRegressionTests.test_signed_counter_matches_formatted_value_in_both_schemas) (width=4, value=-2147483648) ... FAIL
+  test_signed_counter_matches_formatted_value_in_both_schemas (tests.unit.test_review_regressions.ReviewRegressionTests.test_signed_counter_matches_formatted_value_in_both_schemas) (width=8, value=-1) ... FAIL
+  test_signed_counter_matches_formatted_value_in_both_schemas (tests.unit.test_review_regressions.ReviewRegressionTests.test_signed_counter_matches_formatted_value_in_both_schemas) (width=8, value=-9223372036854775808) ... FAIL
+test_unknown_and_zero_windows_survive_metrics_csv (tests.unit.test_review_regressions.ReviewRegressionTests.test_unknown_and_zero_windows_survive_metrics_csv) ... FAIL
+
+======================================================================
+ERROR: test_signal_display_limit_has_explicit_scope (tests.unit.test_review_regressions.ReviewRegressionTests.test_signal_display_limit_has_explicit_scope)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_review_regressions.py", line 54, in test_signal_display_limit_has_explicit_scope
+    self.assertEqual(view['display_limits']['signals'], {
+                     ~~~~^^^^^^^^^^^^^^^^^^
+KeyError: 'display_limits'
+
+======================================================================
+FAIL: test_signed_counter_matches_formatted_value_in_both_schemas (tests.unit.test_review_regressions.ReviewRegressionTests.test_signed_counter_matches_formatted_value_in_both_schemas) (width=4, value=-1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_review_regressions.py", line 31, in test_signed_counter_matches_formatted_value_in_both_schemas
+    self.assertEqual(fields['counter'], value)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 4294967295 != -1
+
+======================================================================
+FAIL: test_signed_counter_matches_formatted_value_in_both_schemas (tests.unit.test_review_regressions.ReviewRegressionTests.test_signed_counter_matches_formatted_value_in_both_schemas) (width=4, value=-2147483648)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_review_regressions.py", line 31, in test_signed_counter_matches_formatted_value_in_both_schemas
+    self.assertEqual(fields['counter'], value)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 2147483648 != -2147483648
+
+======================================================================
+FAIL: test_signed_counter_matches_formatted_value_in_both_schemas (tests.unit.test_review_regressions.ReviewRegressionTests.test_signed_counter_matches_formatted_value_in_both_schemas) (width=8, value=-1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_review_regressions.py", line 31, in test_signed_counter_matches_formatted_value_in_both_schemas
+    self.assertEqual(fields['counter'], value)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 18446744073709551615 != -1
+
+======================================================================
+FAIL: test_signed_counter_matches_formatted_value_in_both_schemas (tests.unit.test_review_regressions.ReviewRegressionTests.test_signed_counter_matches_formatted_value_in_both_schemas) (width=8, value=-9223372036854775808)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_review_regressions.py", line 31, in test_signed_counter_matches_formatted_value_in_both_schemas
+    self.assertEqual(fields['counter'], value)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 9223372036854775808 != -9223372036854775808
+
+======================================================================
+FAIL: test_unknown_and_zero_windows_survive_metrics_csv (tests.unit.test_review_regressions.ReviewRegressionTests.test_unknown_and_zero_windows_survive_metrics_csv)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_review_regressions.py", line 38, in test_unknown_and_zero_windows_survive_metrics_csv
+    self.assertEqual(len(rows), 1)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+AssertionError: 0 != 1
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.018s
+
+FAILED (failures=5, errors=1)
