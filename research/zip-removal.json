@@ -19,5 +19,14 @@
     }
   ],
   "historical_receipt": "github-publish-receipt.json records pre-removal verification and is retained as historical evidence.",
-  "scope": "Remove from published branch/tag history; ignore future normal git add. GitHub unreachable-object caches and third-party clones cannot be guaranteed erased."
+  "scope": "Remove from published branch/tag history; ignore future normal git add. GitHub unreachable-object caches and third-party clones cannot be guaranteed erased.",
+  "verification": {
+    "fresh_github_bare_clone": true,
+    "remote_refs": [
+      "refs/heads/main 751c9e95e4e2bf4b1cacfc08ccf7331a7c39f729",
+      "refs/heads/poc-history e17fe496e89dc27aa1aa583af63ad9628394c7f6"
+    ],
+    "zip_path_in_any_branch_or_tag_history": false,
+    "poc_unchanged": true
+  }
 }
