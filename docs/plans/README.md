@@ -85,3 +85,7 @@ P1-T1 建立環境後，後續命令先在 POC 根目錄執行 `source .venv/bin
 ## 排在目前三階段之後
 
 [Cache 相對效能最佳化](04-cache-relative-optimization.md)：使用者接受非 cycle-accurate 模型，目的是比較 data／程式碼修改前後的相對改善。先完成 M1～M3，再做 plugin 校驗、受控 A/B 與 cache 視圖；不把此項當成目前 Dashboard 交付前置。
+
+## 本次優先規劃
+
+[離線 HTML、跨機重現與圖文交接計畫草案](05-offline-portability-documentation.md)：依使用者最新排序，先規劃離線模式、環境重現、單篇知識庫同步與 README 截圖；M4 維持後續。離線輸入及目標平台待確認，尚未開始實作。

@@ -4,6 +4,10 @@
 
 目前已固定工具鏈、完成 PSF parser，並在 RISC-V QEMU 跑通 FreeRTOS Queue／clock probe。正式 harness 與七配置三次重跑已通過；本機 Dashboard 已通過瀏覽器驗收；獨立 review 的 3 個 Important 已修正，最後全套回歸驗證通過。建立日期：2026-10-03。
 
+## 本次規劃中的工作
+
+[離線 HTML、跨機重現與圖文交接計畫](docs/plans/05-offline-portability-documentation.md) 已建立草案：四項工作、七個交付任務、至少 14 張實際畫面及其驗收證據。離線輸入方式與目標環境待確認；這些新增功能尚未實作。
+
 ## 文件入口
 
 1. [需求與進度](docs/requirements.md)：所有原需求、新需求、完成與未完成項目。
