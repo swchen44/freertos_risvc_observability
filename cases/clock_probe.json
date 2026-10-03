@@ -1,0 +1,18 @@
+{
+  "case_id": "clock_probe",
+  "expected_outcome": "normal",
+  "required_event_families": [
+    "task",
+    "user"
+  ],
+  "parameters": {
+    "ticks": 100
+  },
+  "assertions": [
+    "complete",
+    "transport_ok",
+    "schema",
+    "clock"
+  ],
+  "guest_timeout_ticks": 102
+}

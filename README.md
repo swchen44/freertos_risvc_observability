@@ -2,7 +2,7 @@
 
 **這裡是後續實驗與文件的主要入口，使用獨立 Git 管理。**
 
-目前完成目錄、研究快照、需求與決策紀錄、設計及三份實作子計畫；尚未建置 QEMU firmware、正式 parser、harness 或 Dashboard。建立日期：2026-10-03。
+目前已固定工具鏈、完成 PSF parser，並在 RISC-V QEMU 跑通 FreeRTOS Queue／clock probe。正式 harness、異常案例與 Dashboard 仍在實作。建立日期：2026-10-03。
 
 ## 文件入口
 
