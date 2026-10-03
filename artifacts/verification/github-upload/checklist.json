@@ -1,0 +1,44 @@
+{
+  "checked_at_utc": "2026-10-03T11:43:10.075524+00:00",
+  "tested_source_commit": "ec0b62441871be6a314fe06c147c39ab148ce48c",
+  "plans": [
+    {
+      "file": "docs/plans/01-simulator-parser-queue.md",
+      "tasks": 5,
+      "checked_steps": 25,
+      "unchecked_steps": 0,
+      "sha256": "e2e4d35774c268a81137713ab97ebf1dc5bc01d9c230b62e7bb676447eedf591"
+    },
+    {
+      "file": "docs/plans/02-cases-and-analysis.md",
+      "tasks": 4,
+      "checked_steps": 20,
+      "unchecked_steps": 0,
+      "sha256": "71eb884f0499fa8c6f9448a4c7fcb689629d6baca031adb774c0e7ab8d7260b4"
+    },
+    {
+      "file": "docs/plans/03-local-dashboard.md",
+      "tasks": 4,
+      "checked_steps": 20,
+      "unchecked_steps": 0,
+      "sha256": "4c02a9669c57727fbf64af6f45baa98a3ad8445faf59a5fc61c544dc65ba779a"
+    }
+  ],
+  "python_tests": {
+    "passed": 96,
+    "unit": 90,
+    "integration": 6,
+    "log": "python-tests.log"
+  },
+  "browser_tests": {
+    "passed": 11,
+    "log": "browser-tests.log"
+  },
+  "pending": [
+    "M4 cache relative optimization",
+    "offline HTML",
+    "U01-U16 product/source/hardware tasks",
+    "organization intranet deployment"
+  ],
+  "claim": "M1-M3 completed; whole research/product roadmap is not complete"
+}

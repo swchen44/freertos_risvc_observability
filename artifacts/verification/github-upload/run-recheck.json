@@ -1,0 +1,174 @@
+{
+  "runs_checked": 42,
+  "all_passed": true,
+  "runs": [
+    {
+      "run": "runs/suite-20261003T080440Z-ed4c40bb08/20261003T080442Z-queue_baseline-c8216dfb90",
+      "verdict": "pass"
+    },
+    {
+      "run": "runs/suite-20261003T080440Z-ed4c40bb08/20261003T080449Z-logger_bad-0a4693348d",
+      "verdict": "pass"
+    },
+    {
+      "run": "runs/suite-20261003T080440Z-ed4c40bb08/20261003T080457Z-logger_fixed-3794ccc2d6",
+      "verdict": "pass"
+    },
+    {
+      "run": "runs/suite-20261003T080440Z-ed4c40bb08/20261003T080505Z-inversion-7558d028ca",
+      "verdict": "pass"
+    },
+    {
+      "run": "runs/suite-20261003T080440Z-ed4c40bb08/20261003T080510Z-inheritance-b5b6d8e2b4",
+      "verdict": "pass"
+    },
+    {
+      "run": "runs/suite-20261003T080440Z-ed4c40bb08/20261003T080515Z-deadlock_abba-3f217b5e8a",
+      "verdict": "pass"
+    },
+    {
+      "run": "runs/suite-20261003T080440Z-ed4c40bb08/20261003T080520Z-ordered_locks-9fc9913daf",
+      "verdict": "pass"
+    },
+    {
+      "run": "runs/suite-20261003T080440Z-ed4c40bb08/20261003T080524Z-queue_baseline-f558ca69e2",
+      "verdict": "pass"
+    },
+    {
+      "run": "runs/suite-20261003T080440Z-ed4c40bb08/20261003T080529Z-logger_bad-f20995b91f",
+      "verdict": "pass"
+    },
+    {
+      "run": "runs/suite-20261003T080440Z-ed4c40bb08/20261003T080538Z-logger_fixed-9fd1e45ea8",
+      "verdict": "pass"
+    },
+    {
+      "run": "runs/suite-20261003T080440Z-ed4c40bb08/20261003T080545Z-inversion-ba320cf818",
+      "verdict": "pass"
+    },
+    {
+      "run": "runs/suite-20261003T080440Z-ed4c40bb08/20261003T080551Z-inheritance-415875e57e",
+      "verdict": "pass"
+    },
+    {
+      "run": "runs/suite-20261003T080440Z-ed4c40bb08/20261003T080600Z-deadlock_abba-b40f50d96a",
+      "verdict": "pass"
+    },
+    {
+      "run": "runs/suite-20261003T080440Z-ed4c40bb08/20261003T080606Z-ordered_locks-c787deccab",
+      "verdict": "pass"
+    },
+    {
+      "run": "runs/suite-20261003T080440Z-ed4c40bb08/20261003T080612Z-queue_baseline-f8d9f0b2ab",
+      "verdict": "pass"
+    },
+    {
+      "run": "runs/suite-20261003T080440Z-ed4c40bb08/20261003T080617Z-logger_bad-e90ed4a2e3",
+      "verdict": "pass"
+    },
+    {
+      "run": "runs/suite-20261003T080440Z-ed4c40bb08/20261003T080624Z-logger_fixed-53103e02b3",
+      "verdict": "pass"
+    },
+    {
+      "run": "runs/suite-20261003T080440Z-ed4c40bb08/20261003T080631Z-inversion-2d215c856f",
+      "verdict": "pass"
+    },
+    {
+      "run": "runs/suite-20261003T080440Z-ed4c40bb08/20261003T080637Z-inheritance-b77194feaf",
+      "verdict": "pass"
+    },
+    {
+      "run": "runs/suite-20261003T080440Z-ed4c40bb08/20261003T080642Z-deadlock_abba-06bf4b86f0",
+      "verdict": "pass"
+    },
+    {
+      "run": "runs/suite-20261003T080440Z-ed4c40bb08/20261003T080647Z-ordered_locks-6eb9a38d31",
+      "verdict": "pass"
+    },
+    {
+      "run": "runs/suite-20261003T085652Z-2732b56355/20261003T085654Z-queue_baseline-81e822a470",
+      "verdict": "pass"
+    },
+    {
+      "run": "runs/suite-20261003T085652Z-2732b56355/20261003T085701Z-logger_bad-7fc706c385",
+      "verdict": "pass"
+    },
+    {
+      "run": "runs/suite-20261003T085652Z-2732b56355/20261003T085713Z-logger_fixed-3a6f2d3171",
+      "verdict": "pass"
+    },
+    {
+      "run": "runs/suite-20261003T085652Z-2732b56355/20261003T085726Z-inversion-dfa61c87aa",
+      "verdict": "pass"
+    },
+    {
+      "run": "runs/suite-20261003T085652Z-2732b56355/20261003T085741Z-inheritance-618a375eb0",
+      "verdict": "pass"
+    },
+    {
+      "run": "runs/suite-20261003T085652Z-2732b56355/20261003T085746Z-deadlock_abba-e652744600",
+      "verdict": "pass"
+    },
+    {
+      "run": "runs/suite-20261003T085652Z-2732b56355/20261003T085750Z-ordered_locks-ce1ba32fb9",
+      "verdict": "pass"
+    },
+    {
+      "run": "runs/suite-20261003T085652Z-2732b56355/20261003T085758Z-queue_baseline-8f10d1d5fa",
+      "verdict": "pass"
+    },
+    {
+      "run": "runs/suite-20261003T085652Z-2732b56355/20261003T085808Z-logger_bad-b973d7ce62",
+      "verdict": "pass"
+    },
+    {
+      "run": "runs/suite-20261003T085652Z-2732b56355/20261003T085821Z-logger_fixed-296feefaa0",
+      "verdict": "pass"
+    },
+    {
+      "run": "runs/suite-20261003T085652Z-2732b56355/20261003T085831Z-inversion-a3fd9aed2f",
+      "verdict": "pass"
+    },
+    {
+      "run": "runs/suite-20261003T085652Z-2732b56355/20261003T085837Z-inheritance-ea36293468",
+      "verdict": "pass"
+    },
+    {
+      "run": "runs/suite-20261003T085652Z-2732b56355/20261003T085855Z-deadlock_abba-018840754f",
+      "verdict": "pass"
+    },
+    {
+      "run": "runs/suite-20261003T085652Z-2732b56355/20261003T085908Z-ordered_locks-e74c76800a",
+      "verdict": "pass"
+    },
+    {
+      "run": "runs/suite-20261003T085652Z-2732b56355/20261003T085919Z-queue_baseline-4f1069e1ba",
+      "verdict": "pass"
+    },
+    {
+      "run": "runs/suite-20261003T085652Z-2732b56355/20261003T085941Z-logger_bad-87a1e83381",
+      "verdict": "pass"
+    },
+    {
+      "run": "runs/suite-20261003T085652Z-2732b56355/20261003T090004Z-logger_fixed-328472b407",
+      "verdict": "pass"
+    },
+    {
+      "run": "runs/suite-20261003T085652Z-2732b56355/20261003T090055Z-inversion-710a1c8bd6",
+      "verdict": "pass"
+    },
+    {
+      "run": "runs/suite-20261003T085652Z-2732b56355/20261003T090124Z-inheritance-e04d84affa",
+      "verdict": "pass"
+    },
+    {
+      "run": "runs/suite-20261003T085652Z-2732b56355/20261003T090140Z-deadlock_abba-935c5aa2e4",
+      "verdict": "pass"
+    },
+    {
+      "run": "runs/suite-20261003T085652Z-2732b56355/20261003T090151Z-ordered_locks-394f87e5fb",
+      "verdict": "pass"
+    }
+  ]
+}

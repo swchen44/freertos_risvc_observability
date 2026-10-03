@@ -1,0 +1,33 @@
+{
+  "browser": "153.0.8010.12",
+  "viewport": {
+    "width": 1600,
+    "height": 1000
+  },
+  "rows": [
+    {
+      "count": 1000,
+      "first_upload_to_render_ms": 184,
+      "render_ms": 134.5,
+      "filter_to_settled_ms": 41.29999998211861,
+      "svg_elements": 1037,
+      "table_rows": 20
+    },
+    {
+      "count": 10000,
+      "first_upload_to_render_ms": 402,
+      "render_ms": 268,
+      "filter_to_settled_ms": 179.30000001192093,
+      "svg_elements": 2038,
+      "table_rows": 20
+    },
+    {
+      "count": 100000,
+      "first_upload_to_render_ms": 4001,
+      "render_ms": 2543.5,
+      "filter_to_settled_ms": 1343,
+      "svg_elements": 2038,
+      "table_rows": 20
+    }
+  ]
+}
