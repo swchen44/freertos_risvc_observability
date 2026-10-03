@@ -15,6 +15,23 @@ def name_event(handle, text, sequence=4, timestamp=90, width=4):
 
 
 class SemanticTests(unittest.TestCase):
+    def test_freertos_notifications_preserve_actor_and_target(self):
+        trace = parse_trace(
+            stream(
+                event(0x35, 1, 100, (0x100,)),
+                event(0xC9, 2, 101, (0x200,)),
+                event(0xCB, 3, 102, (0x100, 100)),
+                event(0xCA, 4, 103, (0x100, 100)),
+            )
+        )
+        self.assertEqual(
+            [e["kind"] for e in trace["events"]][1:],
+            ["task_notify", "task_notify_wait_block", "task_notify_wait"],
+        )
+        self.assertEqual(trace["events"][1]["actor_id"], "0x100:0")
+        self.assertEqual(trace["events"][1]["object_id"], "0x200:0")
+        self.assertEqual(trace["quality"]["issues"], [])
+
     def test_sdk_no_task_sentinel_is_not_a_running_task(self):
         trace = parse_trace(stream(event(1, words=(2,))))
         self.assertIsNone(trace["events"][0]["actor_id"])

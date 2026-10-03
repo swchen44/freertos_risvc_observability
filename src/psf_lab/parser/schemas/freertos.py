@@ -2,6 +2,12 @@
 
 KEY = (0x1AA1, "FreeRTOS", "1.2.0", 4)
 KINDS = {
+    # trcKernelPort.h:687-691, writers at 1471-1538.
+    0xC9: "task_notify",
+    0xCA: "task_notify_wait",
+    0xCB: "task_notify_wait_block",
+    0xCC: "task_notify_wait_failed",
+    0xCD: "task_notify_isr",
     0x00: "null",
     0x01: "trace_start",
     0x02: "timestamp_config",
