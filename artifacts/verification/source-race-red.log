@@ -1,0 +1,47 @@
+
+> test:e2e
+> playwright test --grep source race
+
+[WebServer] INFO:     Started server process [73224]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8766 (Press CTRL+C to quit)
+
+Running 1 test using 1 worker
+
+(node:73234) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/dashboard.spec.mjs:96:1 › B11 source race: delayed run download cannot replace a newer upload (4.6s)
+
+
+  1) tests/e2e/dashboard.spec.mjs:96:1 › B11 source race: delayed run download cannot replace a newer upload
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "my_krnl · PSF 14 · 309 events · 1000000 Hz · unspecified"
+    Received: "FreeRTOS · PSF 14 · 281 events · 10000000 Hz · unspecified"
+
+      100 |  const finished=page.waitForResponse(r=>r.url().endsWith('/psf'));release();await finished;
+      101 |  // Wait on all real requests becoming idle, not an arbitrary rendering delay.
+    > 102 |  await page.waitForLoadState('networkidle');expect(await page.locator('#source-info').textContent()).toBe(before);await expect(page.locator('#source-info')).toContainText('309 events');
+          |                                                                                                      ^
+      103 | });
+      104 |
+        at /Users/swchen.tw/git/percepio/poc/web/tests/e2e/dashboard.spec.mjs:102:102
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/dashboard-B11-source-race--56392-nnot-replace-a-newer-upload/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/dashboard-B11-source-race--56392-nnot-replace-a-newer-upload/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/dashboard-B11-source-race--56392-nnot-replace-a-newer-upload/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/dashboard-B11-source-race--56392-nnot-replace-a-newer-upload/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/e2e/dashboard.spec.mjs:96:1 › B11 source race: delayed run download cannot replace a newer upload

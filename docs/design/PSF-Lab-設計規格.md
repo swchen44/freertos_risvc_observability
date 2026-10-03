@@ -1,6 +1,6 @@
 # PSF Lab 設計規格
 
-日期：2026-10-03。狀態：**使用者閱讀規格後要求撰寫實作計畫；設計作為本輪計畫依據，尚未實作產品**。
+日期：2026-10-03。狀態：**使用者選 A 後執行；M1／M2 已驗證，M3 已實作並進行最終驗收。此規格保留設計邊界，狀態以 README 與驗證紀錄為準**。
 
 目標：用真正的 FreeRTOS＋TraceRecorder 在 RISC-V 模擬器產生正常／異常案例 PSF，Python 解析、驗證並供本機互動 Dashboard 使用。工作位置固定為 `~/git/percepio/poc`，所有新文件與執行證據存入此 Git 專案。
 
@@ -106,10 +106,10 @@ CSV 使用與畫面相同的 filter／sort，匯出**所有符合的資料**，�
 - [FastAPI 上傳](https://fastapi.tiangolo.com/tutorial/request-files/)、[靜態檔案](https://fastapi.tiangolo.com/tutorial/static-files/)
 - [ECharts SVG](https://echarts.apache.org/handbook/en/best-practices/canvas-vs-svg/)、[Tabulator](https://tabulator.info/docs/6.3)
 
-使用者已要求進入實作計畫階段；見 [實作計畫入口](../plans/README.md)。Q1／Q2 與 POC 路徑不再詢問；本輪完成計畫，執行方式尚未選定。
+使用者已要求進入實作計畫階段；見 [實作計畫入口](../plans/README.md)。Q1／Q2 與 POC 路徑不再詢問；使用者已選 A，由主 agent 逐任務執行並於整體完成後 review。
 
 ## 補充：CPU 與 cache／bus 需求
 
-2026-10-03 使用者確認 Dashboard 須參照 Tracealyzer 多種分析功能，不限 CPU 百分比。第一版必須呈現 task execution share、完整窗口分母、unknown coverage、request execution／response 與案例對照。ISR 尚未完整重建時，介面必須標示其限制。Cache／bus 額外資料源與研究邊界见 [補充研究](../research/Cache-Bus與CPU使用率.md)，未量到的欄位不可填 0。
+2026-10-03 使用者確認 Dashboard 須參照 Tracealyzer 多種分析功能，不限 CPU 百分比。第一版必須呈現 task execution share、完整窗口分母、unknown coverage、request execution／response 與案例對照。ISR 尚未完整重建時，介面必須標示其限制。Cache／bus 額外資料源與研究邊界見 [補充研究](../research/Cache-Bus與CPU使用率.md)，未量到的欄位不可填 0。
 
 Cache 目的已明確：以相同模型及工作量比較軟體 data／程式碼變更，接受非 cycle-accurate；列為 M3 後的 [相對最佳化階段](../plans/04-cache-relative-optimization.md)。畫面同時列 miss、指令數與 size 的 tradeoff，penalty 估計與 PSF 虛擬時間分開標示。

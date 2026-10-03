@@ -33,7 +33,26 @@ def main(argv=None) -> int:
     server.add_argument("--host", choices=["127.0.0.1", "localhost", "::1"], default="127.0.0.1")
     server.add_argument("--port", type=int, default=8000)
     server.add_argument("--store", type=Path, default=Path("artifacts/local/store"))
+    bench = commands.add_parser("benchmark", help="Measure synthetic parser capacity")
+    bench.add_argument("--events", type=int, nargs="+", default=[1000, 10000, 100000])
+    bench.add_argument("--output", type=Path, default=Path("artifacts/benchmarks"))
+    commands.add_parser("verify-docs", help="Check local documentation and baseline hashes")
     args = parser.parse_args(argv)
+    if args.command in {"benchmark", "verify-docs"}:
+        from psf_lab.benchmark import benchmark
+        from psf_lab.docs_validation import verify_docs
+
+        try:
+            result = (
+                benchmark(args.events, args.output)
+                if args.command == "benchmark"
+                else verify_docs(Path.cwd())
+            )
+            print(json.dumps(result, indent=2, ensure_ascii=False, allow_nan=False))
+            return 0 if result.get("ok", True) else 1
+        except (OSError, ValueError, RuntimeError) as error:
+            print(str(error), file=sys.stderr)
+            return 2
     if args.command == "serve":
         import uvicorn
 

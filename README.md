@@ -2,7 +2,7 @@
 
 **這裡是後續實驗與文件的主要入口，使用獨立 Git 管理。**
 
-目前已固定工具鏈、完成 PSF parser，並在 RISC-V QEMU 跑通 FreeRTOS Queue／clock probe。正式 harness 與七配置三次重跑已通過；Dashboard 正在實作。建立日期：2026-10-03。
+目前已固定工具鏈、完成 PSF parser，並在 RISC-V QEMU 跑通 FreeRTOS Queue／clock probe。正式 harness 與七配置三次重跑已通過；本機 Dashboard 已實作，最終驗收與 review 進行中。建立日期：2026-10-03。
 
 ## 文件入口
 
@@ -57,3 +57,48 @@
 新增研究：[L1／L2 cache、bus latency 與 CPU task usage](docs/research/Cache-Bus與CPU使用率.md)，包含 QEMU 的能力邊界、PSF 計算公式、Tracealyzer 功能對照與待驗證項目。
 
 [案例教學與21份原始證據](docs/case-results.md)：Queue、Logger干擾、priority inversion／inheritance、deadlock／ordered locks。
+
+## 啟動與重跑
+
+先依 [環境設定](docs/setup.md) 建 Python 3.13 環境。Dashboard 不需啟動 QEMU；內含已收集的 PSF 可直接分析。
+
+```sh
+.venv/bin/python -m pip install -e . -r requirements-dev.lock
+npm --prefix web ci
+npm --prefix web run build
+.venv/bin/python -m psf_lab serve
+```
+
+開啟 http://127.0.0.1:8000 ，操作見 [Dashboard 指南與截圖](docs/dashboard-guide.md)。API 見 [server-api](docs/server-api.md)，本機啟動後可讀 `/openapi.json`。
+
+```sh
+.venv/bin/python -m unittest discover -s tests/unit -t . -v
+.venv/bin/ruff check .
+.venv/bin/ruff format --check .
+npm --prefix web run test:unit
+npm --prefix web exec -- playwright install chromium
+npm --prefix web run test:e2e
+.venv/bin/python -m psf_lab benchmark --events 1000 10000 100000
+.venv/bin/python -m psf_lab verify-docs
+```
+
+瀏覽器測試自行啟動 port 8766 與暫存 store，測後關閉。測試資料中的三份 synthetic PSF 隨 `artifacts/benchmarks` 保存，benchmark 可重新產生。容量測試結果不當成板端 SDK 成本。
+
+重新編譯／收集需要 [固定工具鏈](tools/toolchain-lock.json) 與乾淨 Git。先保存修改，再執行：
+
+```sh
+.venv/bin/python -m psf_lab run queue_baseline
+# 完成後先將本次 runs 證據 commit，才能開始下一次正式 capture。
+.venv/bin/python -m psf_lab suite --repeat 3
+```
+
+單次 run 輸出新目錄；`check <run目錄>` 重驗 PSF／oracle／case，`decode <trace.psf> --output <trace.json>` 與 `analyze <trace.json> --output <analysis.json>` 可分別使用。不要覆寫既有正式 run。
+
+## 研究與後續交接
+
+- [主張與實驗證據](docs/research-evidence.md)：每項結論的支持案例、條件與尚未證明事項。
+- [容量與效能量測](docs/benchmarks.md)：parser 時間／memory、瀏覽器載入／篩選／SVG 數量。
+- [內網 AI 接續工作](docs/handoff.md)：U01～U16 的目的、產品完成條件與可直接使用的 POC 成果。
+- [Cache 相對最佳化計畫](docs/plans/04-cache-relative-optimization.md)：M1～M3 之後執行；比較 L1I／L1D／L2 miss、指令數、size 與模型成本。接受非 cycle-accurate，保留假設與敏感度分析。
+
+本版不提供離線 HTML、完整 ISR／SMP、任意 PSF schema、實體 UART 或 cloud。SDK CPU 百分比、每事件 cycles、最差 IRQ 與產品 Flash／RAM 仍需內網／硬體量測。

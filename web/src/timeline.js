@@ -9,6 +9,13 @@ export const colors = [
   "#58788E",
   "#9C7651",
 ];
+export function taskColor(id) {
+  if (id === null) return "#919DAA";
+  let hash = 0;
+  for (const character of id)
+    hash = (hash * 31 + character.codePointAt(0)) >>> 0;
+  return colors[hash % colors.length];
+}
 export function relativeTickNumber(ticks, origin) {
   if (typeof ticks !== "string" || typeof origin !== "string")
     throw new TypeError("Ticks must be decimal strings");
@@ -142,9 +149,7 @@ export function mountTimeline(element, onWindowChange, onInspect = () => {}) {
                       shape: rect,
                       style: {
                         fill:
-                          api.value(3) === 1
-                            ? "#919DAA"
-                            : colors[y % colors.length],
+                          api.value(3) === 1 ? "#919DAA" : taskColor(lanes[y]),
                         opacity: api.value(3) === 2 ? 0.55 : 1,
                       },
                     }
@@ -208,11 +213,11 @@ export function mountMetrics(element, kind) {
             axisLabel: { formatter: "{value}%", color: text },
           },
           series: [
-            ...keys.map((key, i) => ({
+            ...keys.map((key) => ({
               name: names.get(key) || key,
               type: "bar",
               stack: "cpu",
-              itemStyle: { color: colors[i % colors.length] },
+              itemStyle: { color: taskColor(key) },
               data: view.trend.map(
                 (m) => (m.task_share[key]?.fraction || 0) * 100,
               ),

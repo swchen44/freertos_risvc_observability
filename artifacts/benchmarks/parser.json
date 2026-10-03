@@ -1,0 +1,68 @@
+{
+  "kind": "synthetic_capacity_only",
+  "generator": "five-task-switch-v1",
+  "seed": "fixed pattern; no PRNG",
+  "python": "3.13.2 (v3.13.2:4f8bb3947cf, Feb  4 2025, 11:51:10) [Clang 15.0.0 (clang-1500.3.9.4)]",
+  "platform": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+  "warmup": 1,
+  "repetitions": 5,
+  "p95_method": "nearest rank",
+  "rss_scope": "fresh subprocess per count, high-water after warmup and timed parse; before tracemalloc",
+  "tracemalloc_scope": "one separate parse; Python tracked allocations only",
+  "results": [
+    {
+      "event_count": 1000,
+      "byte_length": 12072,
+      "source_sha256": "8832c4c6dc76843ae1cefd8d232b6bfc54a18017d0e1616a706f33358864f673",
+      "parse_ms": [
+        2.323583,
+        2.318292,
+        3.234709,
+        2.329833,
+        2.320583
+      ],
+      "median_ms": 2.323583,
+      "p95_ms": 3.234709,
+      "peak_rss_raw": 20496384,
+      "peak_rss_raw_unit": "bytes",
+      "peak_rss_bytes": 20496384,
+      "tracemalloc_peak_bytes": 1057380
+    },
+    {
+      "event_count": 10000,
+      "byte_length": 120072,
+      "source_sha256": "2f2943cbf5bfee4cb59aca8d4a9d4f43573b48f19b424e7e54d292ec92fa9f03",
+      "parse_ms": [
+        30.037375,
+        30.602458,
+        34.787791,
+        33.338667,
+        36.463708
+      ],
+      "median_ms": 33.338667,
+      "p95_ms": 36.463708,
+      "peak_rss_raw": 31064064,
+      "peak_rss_raw_unit": "bytes",
+      "peak_rss_bytes": 31064064,
+      "tracemalloc_peak_bytes": 10802252
+    },
+    {
+      "event_count": 100000,
+      "byte_length": 1200072,
+      "source_sha256": "2648fc131402b8139b07bcef1a30a0f5d7aafdb8692204f402cb8957f32b3ccb",
+      "parse_ms": [
+        1149.159042,
+        1022.722792,
+        2094.275958,
+        1707.027,
+        1181.537417
+      ],
+      "median_ms": 1181.537417,
+      "p95_ms": 2094.275958,
+      "peak_rss_raw": 135233536,
+      "peak_rss_raw_unit": "bytes",
+      "peak_rss_bytes": 135233536,
+      "tracemalloc_peak_bytes": 108276684
+    }
+  ]
+}

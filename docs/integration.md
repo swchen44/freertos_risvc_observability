@@ -32,7 +32,7 @@ artifacts/local/test-stream
 - Queue：281 events；PSF SEND／RECEIVE 各 0..15，與獨立 RAM oracle 一致，無 parser issues。
 - Clock probe：100 RTOS ticks = 1,000,008 mtime counts；DTB 獨立宣告 10,000,000 Hz，1000 Hz tick 預期 1,000,000 counts，容許 2 ticks。
 - 關中斷後再次進出 recorder critical section，MIE 保持關閉；外層再還原原狀。
-- 目前只有開發 integration 驗證，正式 run manifest 與 harness 由後續任務產生。
+- 正式 run manifest、獨立 oracle 與 harness 已產生，見 [案例結果](case-results.md)。
 
 ## 明確限制與實作決定
 
@@ -41,3 +41,13 @@ artifacts/local/test-stream
 - SDK 此版的 `xTraceKernelPortEnable` 固定建立 `TzCtrl`，即使關閉 stack monitor。保留其 priority 1／delay 10 ticks；它會出現在排程，不可當成不存在。
 - Newlib 使用獨立 8 KiB bounded arena，FreeRTOS 使用自己的 128 KiB heap；ELF 的總 RAM／text 不能直接當 SDK overhead。
 - trace 關閉成功後才輸出 oracle；oracle 只記應用結果，不使用 parser 解碼結果決定成功。
+
+
+## SDK API 與本機原始碼入口
+
+- [POC FreeRTOSConfig.h](../firmware/config/FreeRTOSConfig.h)：trace facility 與 recorder include。
+- [firmware main](../firmware/app/main.c)：initialize／enable／disable 與 user event 使用。
+- [Recorder public header](../references/baseline/percepio/TraceRecorder/include/trcRecorder.h)：SDK API 定義。
+- [官方 TraceRecorder repository](https://github.com/percepio/TraceRecorderSource)：版本與整合參考。
+
+先以本機固定版本 header／預處理輸出核對，官方最新版本的 API 不能自動套到此 POC。

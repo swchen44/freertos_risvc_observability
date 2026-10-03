@@ -1,7 +1,7 @@
 import "./styles.css";
 import { HTTPDataSource } from "./data-source.js";
 import { createStore } from "./state.js";
-import { mountTimeline, mountMetrics, colors } from "./timeline.js";
+import { mountTimeline, mountMetrics, taskColor } from "./timeline.js";
 import { mountEventTable } from "./event-table.js";
 import { showDetails } from "./details.js";
 import { renderComparison } from "./compare.js";
@@ -139,6 +139,11 @@ async function refresh() {
     initViews();
     draw(lastView);
     await table.render(lastPage, metadata.objects);
+    const now = state.getState();
+    if (
+      JSON.stringify([now.traceId, now.filters, now.sort, now.offset]) !== key
+    )
+      return;
     const m = lastView.metrics;
     $("window-label").textContent =
       `[${m.start_ticks}, ${m.end_ticks}) ticks · ${m.window_seconds === null ? "時間頻率未知" : (m.window_seconds * 1000).toFixed(3) + " ms"}`;
@@ -152,10 +157,10 @@ async function refresh() {
       metadata.objects.map((o) => [o.object_id, o.name || o.object_id]),
     );
     $("share-values").replaceChildren();
-    Object.entries(m.task_share).forEach(([id, v], i) => {
+    Object.entries(m.task_share).forEach(([id, v]) => {
       const el = document.createElement("span");
       el.textContent = `${names.get(id) || id} ${v.fraction === null ? "未知" : (v.fraction * 100).toFixed(2) + "%"}`;
-      el.style.borderColor = colors[i % colors.length];
+      el.style.borderColor = taskColor(id);
       $("share-values").append(el);
     });
     $("timing-title").textContent = lastView.request_total
@@ -230,19 +235,22 @@ async function activate(meta) {
   });
   await savedTraces();
 }
-async function loadFile(file) {
-  if (!file) return;
+async function loadSource(work) {
   status("正在解析 PSF…");
+  clearTimeout(searchTimer);
   api.latest("workspace", async () => null);
   state.setState({ traceId: null });
   try {
-    const meta = await api.latest("load", () => api.upload(file));
+    const meta = await api.latest("load", work);
     if (meta) await activate(meta);
   } catch (error) {
     $("trace-workspace").hidden = true;
     $("empty-state").hidden = false;
     status(error.message, "error");
   }
+}
+async function loadFile(file) {
+  if (file) await loadSource(() => api.upload(file));
 }
 $("psf-input").addEventListener("change", (event) =>
   loadFile(event.target.files[0]),
@@ -357,25 +365,16 @@ async function savedTraces() {
 }
 $("saved-traces").onchange = async () => {
   const id = $("saved-traces").value;
-  if (id)
-    try {
-      const meta = await api.latest("load", () => api.metadata(id));
-      if (meta) await activate(meta);
-    } catch (error) {
-      status(error.message, "error");
-    }
+  if (id) await loadSource(() => api.metadata(id));
 };
 $("load-run").onclick = async () => {
   const id = $("run-select").value;
   if (!id) return;
-  try {
-    status("載入已驗證案例…");
+  await loadSource(async () => {
     const blob = await api.runPSF(id);
     const run = runs.find((r) => r.run_id === id);
-    await loadFile(new File([blob], `${run.case_id}.psf`));
-  } catch (error) {
-    status(error.message, "error");
-  }
+    return api.upload(new File([blob], `${run.case_id}.psf`));
+  });
 };
 $("compare-run").onclick = async () => {
   const pair = $("pair-select").value,
