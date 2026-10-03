@@ -88,4 +88,4 @@ P1-T1 建立環境後，後續命令先在 POC 根目錄執行 `source .venv/bin
 
 ## 本次優先規劃
 
-[離線 HTML、圖文交接與知識庫同步計畫](05-offline-portability-documentation.md)：已選 Python 匯出單檔 HTML，跨機重現整項暫緩。本輪包含單篇知識庫同步與 README 截圖，使用 agent-browser E2E 與 curl integration；M4 維持後續。尚未開始實作。
+[離線 HTML、圖文交接與知識庫同步計畫](05-offline-portability-documentation.md)：已選 Python 匯出單檔 HTML，跨機重現整項暫緩。本輪包含單篇知識庫同步與 README 截圖，使用 agent-browser E2E 與 curl integration；M4 維持後續。離線匯出、指定工具驗收、README 圖解與單篇知識庫同步已完成；見 artifacts/verification/offline/completion.json。

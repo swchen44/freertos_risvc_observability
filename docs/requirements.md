@@ -10,7 +10,7 @@
 
 | 項目 | 狀態 | 下一個可驗收成果 |
 |---|---|---|
-| 一篇知識庫與 push | 已完成，commit `63ac65685a796870804445e5d79b59c78054ce41` | POC 尚未同步至該知識庫 |
+| 一篇知識庫與 push | 已完成，commit `63ac65685a796870804445e5d79b59c78054ce41` | 最新 POC／離線 HTML／20 張截圖已同步；KB commit 83fd7d4 |
 | POC 目錄與 Git | 已建立獨立 feat/psf-lab 分支 | README、過程、決策、來源 manifest 與初始 commit |
 | PSF／QEMU／UI 研究 | 已有研究與 review | 以實際模擬及正式 parser 驗證研究主張 |
 | PSF／本機服務選擇 | 已確認 | 依此設計，PDF 僅保留研究用途 |
@@ -53,4 +53,4 @@ M3 驗證：90 unit、6 integration、5 Node、11 Playwright 全通過，Ruff／
 
 使用者已確認 **1A／2B**：Python 先將 PSF 匯出成單檔 HTML，離線觀看時不需要 Python 服務；跨機重現整項暫緩，不要求目標平台。同步原本一篇知識庫、整理 README 歷史／現況，至少 14 張實際操作截圖。驗證指定 **agent-browser E2E** 與 **curl API integration**，另保留 unittest／Ruff／Node 和既有回歸。
 
-[實作計畫](plans/05-offline-portability-documentation.md) 已記錄；離線匯出、curl integration 與 agent-browser E2E 已實作並驗證；知識庫同步以本輪發布紀錄為準。M4 與產品 U01～U16 繼續列為後續。
+[實作計畫](plans/05-offline-portability-documentation.md) 已記錄；離線匯出、curl integration 與 agent-browser E2E 已實作並驗證；知識庫已同步並核對遠端；見本輪 completion.json。M4 與產品 U01～U16 繼續列為後續。

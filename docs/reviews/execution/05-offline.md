@@ -7,7 +7,7 @@ Base b4462ce；原專用 feat/psf-lab 工作目錄，未改 main 上的產品程
 - T3 完成：curl 5 integration；agent-browser Server／offline 各完整流程；停止 Server、offline on、網路 route abort、無請求。補 hover、分母、快速 filters、partial、10,000-event download；20 PNG 與 hashes。
 - T4／T5：使用者 2B 整項暫緩。
 - T6 完成：README 六張精選圖、指南二十張圖與重跑命令，舊狀態標歷史。
-- T7：知識庫與 root 發布進行中；最後 completion.json 留下 commits。
+- T7 完成：知識庫 83fd7d4、root cce0e68、POC 5594d73 已核對 remote；completion.json 保存發布 snapshot。後續僅追加此收尾文件。
 
 Ruling：離線單 trace 不內嵌 registry／oracle comparison，Server 保留；代價是離線兩份資料分開閱讀。
 Ruling：curl integration 寫成 Python unittest 呼叫真實 curl，利於精確斷言；沒有以 mock 取代 HTTP。

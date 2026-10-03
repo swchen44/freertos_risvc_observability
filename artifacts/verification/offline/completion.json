@@ -1,0 +1,41 @@
+{
+  "main_snapshot": "cce0e685d17b3ebb413828a5f739688be1d4a81e",
+  "poc_snapshot": "5594d730adc432608013c2cd0855aa3794e8dc6e",
+  "kb": {
+    "local_links_checked": 198,
+    "broken_links": [],
+    "image_hashes_checked": 20,
+    "same_note_updated": true,
+    "poc_commit": "5594d730adc432608013c2cd0855aa3794e8dc6e",
+    "kb_commit": "83fd7d434f811d72c929d41f053ffa4cf1eb7b91",
+    "remote_verified": true
+  },
+  "remote_heads_verified": true,
+  "downloaded_html_and_screenshot_sha256_match": true,
+  "python": {
+    "passed": 103,
+    "unit": 97,
+    "integration": 6
+  },
+  "node": 5,
+  "playwright_regression": 11,
+  "curl_integration": 5,
+  "agent_browser": [
+    "server full flow",
+    "offline full flow including partial and 10000-event synthetic"
+  ],
+  "screenshots": 20,
+  "deferred": [
+    "cross-machine work (user 2B)",
+    "M4 cache relative optimization",
+    "product U01-U16",
+    "organization intranet deployment"
+  ],
+  "limitations": [
+    "offline viewer embeds one trace; new PSF requires Python export",
+    "offline has no run registry/oracle comparison; use Server",
+    "floating CSV fractions permit equivalent scientific/decimal text"
+  ],
+  "review": "docs/reviews/offline-code-review.md",
+  "receipt_note": "Verified published snapshots before this documentation-only closeout commit; the receipt does not self-reference its own commit."
+}

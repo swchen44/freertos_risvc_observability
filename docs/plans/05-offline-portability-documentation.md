@@ -1,6 +1,6 @@
 # 離線 HTML、圖文交接與知識庫同步計畫
 
-> 執行時使用 `superpowers:executing-plans`，延續既有主代理依序實作方式。此輪先做計畫，未開始產品實作。勾選只代表已取得該項驗收證據。
+> 執行時使用 `superpowers:executing-plans`，延續既有主代理依序實作方式。本輪已依使用者 1A／2B 完成實作與指定驗收，跨機整項暫緩。勾選只代表已取得該項驗收證據。
 
 **Goal:** 讓讀者看得懂 Web Server／離線 Dashboard、能離線分析已匯出的 PSF 資料，並從同一篇知識庫找到最新結果。
 
@@ -119,12 +119,12 @@ flowchart TD
 
 依 `kb-create` 更新既有一篇筆記及其 assets、Research/INDEX.md、LOG.md、README.md；不是建立多篇平行研究。
 
-- [ ] 先檢查 KB 工作樹與遠端，保留既有正文、來源、雙向連結與歷史；有衝突變更時不覆蓋。
-- [ ] 加入新版 POC 架構、server／offline 操作圖、本機驗證範圍與跨機暫緩狀態、測試證據與仍未完成事項。
-- [ ] 複用正式截圖，保存圖片來源與 hash；表格型資訊另以 Markdown 呈現，互動畫面保留原截圖以符合使用者要求。
-- [ ] 檢查 wikilinks、圖片、索引與 append-only LOG，明確 stage 本次檔案、commit、push，核對遠端 commit。
-- [ ] 先保存／push POC 分支，再更新 root submodule pointer；KB 連結指向穩定 commit。保存三處 repo 的發布紀錄。
-- [ ] 最後以需求→task→log／PNG／JSON／commit 表逐項結清；未實跑跨機／斷網測試不得勾選完成。
+- [x] 先檢查 KB 工作樹與遠端，保留既有正文、來源、雙向連結與歷史；有衝突變更時不覆蓋。
+- [x] 加入新版 POC 架構、server／offline 操作圖、本機驗證範圍與跨機暫緩狀態、測試證據與仍未完成事項。
+- [x] 複用正式截圖，保存圖片來源與 hash；表格型資訊另以 Markdown 呈現，互動畫面保留原截圖以符合使用者要求。
+- [x] 檢查 wikilinks、圖片、索引與 append-only LOG，明確 stage 本次檔案、commit、push，核對遠端 commit。
+- [x] 先保存／push POC 分支，再更新 root submodule pointer；KB 連結指向穩定 commit。保存三處 repo 的發布紀錄。
+- [x] 最後以需求→task→log／PNG／JSON／commit 表逐項結清；未實跑跨機／斷網測試不得勾選完成。
 
 ## 指定工具的驗收方式
 
