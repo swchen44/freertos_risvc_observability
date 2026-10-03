@@ -15,3 +15,9 @@
 資料缺失時明確列出 missing，不能捏造 placeholder trace／oracle。小型代表性 run 直接 commit；大型暫存放 `local/`，正式摘要記錄保存位置與 hash。不要將機密環境變數或憑證加入 log。
 
 正式實驗開始前，所有建置輸入、案例、設定與工具程式必須已 commit，且 Git 工作目錄乾淨；manifest 記錄該 commit。先檢查再建立 run 產物。執行中若改動來源即作廢，修正並 commit 後用新的 run_id 重跑。臨時 dirty 探索只能放 local/ 並標為不可重現草稿，不能用來宣稱正式驗收。
+
+## 已實作命令
+
+`python -m psf_lab run queue_baseline` 要求乾淨 Git、固定 submodule 和工具 checksum，強制重新編譯後執行 QEMU。每次 run 保留 case、ELF、map、展開 hooks、PSF、oracle、JSON、assertions 和 manifest。`python -m psf_lab check RUN_DIRECTORY` 從 raw PSF／oracle 重做判定並核對原始 hash。host timeout／crash 的 exit code 為 4，不當案例成功。
+
+正式 run 產物需 commit 後才可執行下一輪。整合測試用同一 runner 輸出到 TemporaryDirectory，仍要求原始碼乾淨，沒有 skip。
