@@ -39,7 +39,7 @@
 - Consumes: 現有 source manifest、上游固定 commits。
 - Produces: `inspect_tools(required: tuple[str,...]) -> dict`，含 `ok`、`tools`、`missing`；`verify_sources(root: Path, lock: dict) -> dict`；`require_clean_tree(root: Path) -> str`。CLI 先只有 `doctor`。
 
-- [ ] **Step 1：先寫 preflight 與 provenance 的失敗測試。** 在臨時 Git repo 測 clean／tracked 修改／untracked source，避免測試讀寫真專案。
+- [x] **Step 1：先寫 preflight 與 provenance 的失敗測試。** 在臨時 Git repo 測 clean／tracked 修改／untracked source，避免測試讀寫真專案。
 
 ```python
 import unittest
@@ -56,7 +56,7 @@ class DoctorTests(unittest.TestCase):
 
 另在 `test_provenance.py` 建 `tempfile.TemporaryDirectory`、`git init`、以 `git -c user.name=Test -c user.email=test@example.invalid commit` 建 baseline；新增 `dirty.c` 後要求 `require_clean_tree` 丟 RuntimeError。Lock 的檔案 hash 不同也必須回 `ok=false`。
 
-- [ ] **Step 2：建立最小 Python 專案並看測試紅燈。** `pyproject.toml` 使用 setuptools src layout、Python `>=3.13,<3.14`，Ruff target `py313`、rules `E,F,I,B`、line-length 100，排除 `references`／`third_party`／產物。當前正式 Python 支援只宣稱 3.13。
+- [x] **Step 2：建立最小 Python 專案並看測試紅燈。** `pyproject.toml` 使用 setuptools src layout、Python `>=3.13,<3.14`，Ruff target `py313`、rules `E,F,I,B`、line-length 100，排除 `references`／`third_party`／產物。當前正式 Python 支援只宣稱 3.13。
 
 ```sh
 python3 -m venv .venv
@@ -66,7 +66,7 @@ python3 -m venv .venv
 
 預期第一次失敗為尚未實作的模組／函式；固定實際安裝版本到 lock，之後重建使用 lock。安裝失敗需記錄原錯誤，不當成測試紅燈證據。
 
-- [ ] **Step 3：實作檢查與 CLI。** 用 `shutil.which`、`subprocess.run` 參數陣列、timeout；不執行 shell 字串。只取得工具版本與必要資訊，不 dump 全部環境變數。
+- [x] **Step 3：實作檢查與 CLI。** 用 `shutil.which`、`subprocess.run` 參數陣列、timeout；不執行 shell 字串。只取得工具版本與必要資訊，不 dump 全部環境變數。
 
 ```python
 # provenance.py 的 clean 判斷核心
@@ -80,7 +80,7 @@ if status:
 
 工具 lock 含 URL、版本、archive SHA-256、executable SHA-256、multilib、sysroot 和使用命令。被忽略的工具也必須與 lock 比對，clean Git 本身不夠。
 
-- [ ] **Step 4：取得及固定上游，驗證未整合 SDK 的 demo。** FreeRTOS 用 submodule，鎖以下父 commit 及 kernel commit；先只取得必要 kernel submodule。下載 archive 驗 SHA-256 後才解壓，拒絕絕對路徑／`..`。
+- [x] **Step 4：取得及固定上游，驗證未整合 SDK 的 demo。** FreeRTOS 用 submodule，鎖以下父 commit 及 kernel commit；先只取得必要 kernel submodule。下載 archive 驗 SHA-256 後才解壓，拒絕絕對路徑／`..`。
 
 ```sh
 git submodule add https://github.com/FreeRTOS/FreeRTOS.git third_party/FreeRTOS
@@ -109,7 +109,7 @@ make -C artifacts/local/upstream-demo/build/gcc CC=riscv-none-elf-gcc LD=riscv-n
 
 執行文件必須保存展開後命令。官方 blinky 是常駐程式，觀察到 queue／timer output 後用有限 timeout 結束 smoke；此 smoke 不當正式案例成功。把 `subprocess.run` 的TimeoutExpired作為有限觀察結束，仍檢查先前輸出；不能僅憑timeout認定範例有運作。
 
-- [ ] **Step 5：測試、記錄並 commit。**
+- [x] **Step 5：測試、記錄並 commit。**
 
 ```sh
 .venv/bin/python -m unittest tests.unit.test_doctor tests.unit.test_provenance -v
@@ -131,7 +131,7 @@ git commit -m "build: pin RISC-V environment and add preflight checks"
 - Consumes: bytes、[PSF 格式研究](../research/PSF格式與解析研究.md) header／metadata layout。
 - Produces: `parse_binary(data, *, source_name="memory.psf", strict=True) -> dict`、`ParseError(code, offset, message)`，回共同契約的 raw envelope。
 
-- [ ] **Step 1：寫真實 fixture 及截斷測試。**
+- [x] **Step 1：寫真實 fixture 及截斷測試。**
 
 ```python
 import unittest
@@ -156,9 +156,9 @@ class BinaryTests(unittest.TestCase):
 
 Fixture SHA-256 必須為 `32f6421362bda37e3b91411afedb5df0c29741f99fe1df08389cf76e56f79d47`，manifest 註明 desktop mock RTOS。再加入 32-bit 手工 `struct.pack` fixture：32-byte header＋28-byte timestamp metadata＋3×4-byte entry table header；payload 長度由高 4 bits×base width 算，expected offset 手算。
 
-- [ ] **Step 2：確認紅燈。** `python -m unittest tests.unit.test_binary -v`；預期缺 parser／ParseError，而不是 fixture 不見。
+- [x] **Step 2：確認紅燈。** `python -m unittest tests.unit.test_binary -v`；預期缺 parser／ParseError，而不是 fixture 不見。
 
-- [ ] **Step 3：實作逐段 bounds check。**
+- [x] **Step 3：實作逐段 bounds check。**
 
 ```python
 # binary.py：每次讀取前檢查，不預先相信 count
@@ -170,7 +170,7 @@ semantic_id = event_word & 0xFFF
 
 先驗 magic、版本、endian、base width／cores／schema 支援；entry count 上限 65,536、symbol bytes 上限 4,096、總 events 上限 200,000、檔案16 MiB。每個長度先以剩餘資料驗證，不直接配置宣告大小。Unsupported endian／core count／mode 回明確 code。Timestamp frequency 0 禁止時間分析；原始 ticks 仍保留。多 session 或垃圾 prefix 第一版拒絕，不掃描猜 session。
 
-- [ ] **Step 4：加入 payload 各位置截斷、未知合法 ID、最大 word count、32／64-bit、nonzero string padding、錯 magic／version、宣告巨大 entry count 的表格測試。** Strict 在不完整 event 報錯；partial 只回完整 prefix 並列 issue。Header／metadata 不完整仍拒絕。合法未知 ID 留給語意層，不能當 corruption 丟掉。
+- [x] **Step 4：加入 payload 各位置截斷、未知合法 ID、最大 word count、32／64-bit、nonzero string padding、錯 magic／version、宣告巨大 entry count 的表格測試。** Strict 在不完整 event 報錯；partial 只回完整 prefix 並列 issue。Header／metadata 不完整仍拒絕。合法未知 ID 留給語意層，不能當 corruption 丟掉。
 
 ```sh
 python -m unittest tests.unit.test_binary -v
@@ -178,7 +178,7 @@ ruff check .
 ruff format --check .
 ```
 
-- [ ] **Step 5：保存 layout 測試與 fixture 來源，commit。** `git add src/psf_lab/parser tests/unit/test_binary.py fixtures/desktop`；`git commit -m "feat: parse bounded PSF v14 binary records"`。
+- [x] **Step 5：保存 layout 測試與 fixture 來源，commit。** `git add src/psf_lab/parser tests/unit/test_binary.py fixtures/desktop`；`git commit -m "feat: parse bounded PSF v14 binary records"`。
 
 ### Task 3: P1-T3：兩種 schema、JSON 與 decode CLI
 
@@ -191,7 +191,7 @@ ruff format --check .
 - Consumes: `parse_binary` raw envelope。
 - Produces: `parse_trace(data, *, source_name="memory.psf", strict=True) -> dict`；`resolve_kind(platform_name: str, event_id: int) -> str` 定義在 semantic.py，僅支援已知 schema。
 
-- [ ] **Step 1：寫平台衝突與真實序列測試。**
+- [x] **Step 1：寫平台衝突與真實序列測試。**
 
 ```python
 class SemanticTests(unittest.TestCase):
@@ -207,9 +207,9 @@ class SemanticTests(unittest.TestCase):
 
 測試 import `unittest`、`Path` 及 `parse_trace/resolve_kind`。Counter expected 固定為 `list(range(50))`，欄位從解碼 `fields["counter"]` 取，不從 parser 寫 expected。附 schema table 每個已支援事件的 writer 檔案／行號。
 
-- [ ] **Step 2：先跑 `python -m unittest tests.unit.test_semantic tests.unit.test_decode_cli -v` 確認未實作失敗。**
+- [x] **Step 2：先跑 `python -m unittest tests.unit.test_semantic tests.unit.test_decode_cli -v` 確認未實作失敗。**
 
-- [ ] **Step 3：實作 schema 派送與完整 JSON。**
+- [x] **Step 3：實作 schema 派送與完整 JSON。**
 
 ```python
 key = (raw["platform"]["platform_id"], raw["platform"]["name"], raw["platform"]["schema"])
@@ -218,7 +218,7 @@ key = (raw["platform"]["platform_id"], raw["platform"]["name"], raw["platform"][
 
 解碼 name／create／delete／switch／ready／queue／mutex／priority／user event，依本地 writer 欄位與 params 數驗證。不支援 printf specifier 保留原文與參數並加 issue；不呼叫 Python `%` 解讀任意來源。名稱 NUL 後 bytes 留 raw。名稱晚到、地址重用建立 epoch；尚未證實生命週期標記 unknown。CLI 用 `json.dump(..., ensure_ascii=False, allow_nan=False)`。
 
-- [ ] **Step 4：加入 sequence wrap `65535→0`、gap、timestamp 一次 wrap、時間相同、無法判定多 wrap、handle 超過 `2**53`、未知 handle／ID、restart 拒絕、錯 schema tests。** Single-core sequence wrap 不當 loss；時間回退未能由 counter 模型解釋時標記未知，不自行補算。用 subprocess 驗 decode CLI exit code 及輸出 JSON。
+- [x] **Step 4：加入 sequence wrap `65535→0`、gap、timestamp 一次 wrap、時間相同、無法判定多 wrap、handle 超過 `2**53`、未知 handle／ID、restart 拒絕、錯 schema tests。** Single-core sequence wrap 不當 loss；時間回退未能由 counter 模型解釋時標記未知，不自行補算。用 subprocess 驗 decode CLI exit code 及輸出 JSON。
 
 ```sh
 python -m unittest tests.unit.test_binary tests.unit.test_semantic tests.unit.test_decode_cli -v
@@ -227,7 +227,7 @@ ruff check .
 ruff format --check .
 ```
 
-- [ ] **Step 5：更新格式支援表並 commit。** `git add src tests docs/format-support.md fixtures/desktop/expected.json`；`git commit -m "feat: decode desktop and FreeRTOS schemas into JSON"`。
+- [x] **Step 5：更新格式支援表並 commit。** `git add src tests docs/format-support.md fixtures/desktop/expected.json`；`git commit -m "feat: decode desktop and FreeRTOS schemas into JSON"`。
 
 ### Task 4: P1-T4：可信時鐘、FreeRTOS hooks 與 binary capture
 
@@ -242,7 +242,7 @@ ruff format --check .
 - Consumes: T1 pin 的工具／upstream、T3 parser。
 - Produces: `uint64_t poc_mtime(void)`、`void poc_case_run(void)` 每個 ELF 選一個 case、`void poc_oracle_finish(void)`；SDK 規定的 stream callbacks；`make -C firmware CASE=queue_baseline` 產生 `build/queue_baseline/firmware.elf/.map`。
 
-- [ ] **Step 1：先寫 integration 驗收與 fake transport 的 C 測試。** Python integration 預期 PSF 可解碼、platform 正確、16 個收送 ID、`capture_complete` 可由 oracle 核對；clock_probe 量固定 100 RTOS ticks 的 mtime delta，先確認沒 ELF 時明確失敗。C 測試 mock semihost，分別回全部寫完、只剩一部分、全部剩餘與 error；用 host clang＋assert 執行，避免只測 Python 替身。
+- [x] **Step 1：先寫 integration 驗收與 fake transport 的 C 測試。** Python integration 預期 PSF 可解碼、platform 正確、16 個收送 ID、`capture_complete` 可由 oracle 核對；clock_probe 量固定 100 RTOS ticks 的 mtime delta，先確認沒 ELF 時明確失敗。C 測試 mock semihost，分別回全部寫完、只剩一部分、全部剩餘與 error；用 host clang＋assert 執行，避免只測 Python 替身。
 
 ```c
 /* tests/native/test_stream_port.c 的必要斷言形狀 */
@@ -252,7 +252,7 @@ assert(xTraceStreamPortWriteData(payload, 8, 0, &written) == TRC_SUCCESS);
 assert(written == 5); /* semihost SYS_WRITE 回傳尚未寫入數 */
 ```
 
-- [ ] **Step 2：獨立取得 QEMU timebase，再設定 firmware。** 用 `-machine virt,dumpdtb=...` 保存 DTB，以 `dtc` 讀 `/cpus/timebase-frequency`；將 dtc 也納工具 lock。保存 DTB hash、頻率及來源；FreeRTOS tick 設1000 Hz，recorder 讀同一 mtime。不要以 PSF 自己宣告的 frequency 校驗自己。
+- [x] **Step 2：獨立取得 QEMU timebase，再設定 firmware。** 用 `-machine virt,dumpdtb=...` 保存 DTB，以 `dtc` 讀 `/cpus/timebase-frequency`；將 dtc 也納工具 lock。保存 DTB hash、頻率及來源；FreeRTOS tick 設1000 Hz，recorder 讀同一 mtime。不要以 PSF 自己宣告的 frequency 校驗自己。
 
 ```c
 uint64_t poc_mtime(void) {
@@ -267,7 +267,7 @@ uint64_t poc_mtime(void) {
 
 application-defined hardware port 使用 low32、free-running increment、divisor1、已確認頻率；critical section 必須保存／還原原 MIE，不可一律開中斷。測 IRQ 原本關閉時進出仍關閉。
 
-- [ ] **Step 3：最小 hooks、single-stream 與 Queue。** 本地 SDK source 從 `references/baseline/percepio/TraceRecorder` 建置；自訂 config／port include 優先。SDK 原型對照 File port，**不複製其 multistream flag**：
+- [x] **Step 3：最小 hooks、single-stream 與 Queue。** 本地 SDK source 從 `references/baseline/percepio/TraceRecorder` 建置；自訂 config／port include 優先。SDK 原型對照 File port，**不複製其 multistream flag**：
 
 ```c
 traceResult xTraceStreamPortWriteData(
@@ -281,7 +281,7 @@ traceResult xTraceStreamPortWriteData(
 
 Queue length4，producer/consumer 優先權2/3，IDs0..15，timeout為100 ticks；應用用固定陣列記 oracle，finish才輸出JSON，避免逐事件 semihost text I/O。SDK user event 以 `POC` channel、固定 phase＋整數 ID 表示 SEND／RECEIVE／COMPLETE；錯 return code 不記成功事件。收尾寫 completion、stop／close；若 SDK close 在 disable 中發生，要確認 completion 已寫入再 disable。
 
-- [ ] **Step 4：執行 clock_probe 與 Queue 的開發驗收。** T5 runner 前，integration tests 用 `subprocess.run(..., cwd=temp_dir, timeout=30)` 執行以下參數陣列，保存展開命令；這些探索產物放 local/。
+- [x] **Step 4：執行 clock_probe 與 Queue 的開發驗收。** T5 runner 前，integration tests 用 `subprocess.run(..., cwd=temp_dir, timeout=30)` 執行以下參數陣列，保存展開命令；這些探索產物放 local/。
 
 ```python
 elf = (root / "build/queue_baseline/firmware.elf").resolve()
@@ -303,7 +303,7 @@ ruff check .
 ruff format --check .
 ```
 
-- [ ] **Step 5：記錄安裝／hook／clock／capture 差異並 commit。** `git add firmware cases tests tools docs/integration.md`；`git commit -m "feat: capture FreeRTOS queue events on RISC-V QEMU"`。這時才具備正式 run 的 source baseline。
+- [x] **Step 5：記錄安裝／hook／clock／capture 差異並 commit。** `git add firmware cases tests tools docs/integration.md`；`git commit -m "feat: capture FreeRTOS queue events on RISC-V QEMU"`。這時才具備正式 run 的 source baseline。
 
 ### Task 5: P1-T5：正式 run 與獨立 Queue harness
 
@@ -315,7 +315,7 @@ ruff format --check .
 - Consumes: clean sources、case JSON、ELF、`parse_trace`、oracle。
 - Produces: `run_case(root, case_id, *, timeout_s=30.0) -> Path`、`check_case(case, trace, oracle) -> dict`，dict 固定 `{case_id, verdict, assertions, issues}`；assertion 有 `{name, expected, actual, passed}`。
 
-- [ ] **Step 1：寫 independent oracle 的負向測試。** `test_harness.py` 手工組最小 trace／oracle，不調 decoder 建 expected；先讓 oracle少一個received ID，必須 fail。再讓 `complete=false`、缺 PSF marker、transport error，必須非 pass。
+- [x] **Step 1：寫 independent oracle 的負向測試。** `test_harness.py` 手工組最小 trace／oracle，不調 decoder 建 expected；先讓 oracle少一個received ID，必須 fail。再讓 `complete=false`、缺 PSF marker、transport error，必須非 pass。
 
 ```python
 result = check_case(case, trace, {**oracle, "complete": False})
@@ -325,9 +325,9 @@ self.assertIn("oracle_incomplete", result["issues"])
 
 Runner tests mock `subprocess.run` timeout，確認留下 console／manifest、exit code4且無 pass。兩次同一 second 的 run_id 也不能覆寫：名稱追加 random suffix，用 exclusive mkdir；路徑只接受 allowlist case_id。
 
-- [ ] **Step 2：跑 `python -m unittest tests.unit.test_runner tests.unit.test_harness -v`，確認紅燈。**
+- [x] **Step 2：跑 `python -m unittest tests.unit.test_runner tests.unit.test_harness -v`，確認紅燈。**
 
-- [ ] **Step 3：實作 runner 與 assertions。** 先 clean check＋lock verify，再建立 run dir、從固定 source build、保存 ELF/map與hash，啟動 QEMU。PSF原封保存，JSON與oracle分開，缺檔寫missing。建置中與執行後再驗 source hash，確保沒有途中修改。
+- [x] **Step 3：實作 runner 與 assertions。** 先 clean check＋lock verify，再建立 run dir、從固定 source build、保存 ELF/map與hash，啟動 QEMU。PSF原封保存，JSON與oracle分開，缺檔寫missing。建置中與執行後再驗 source hash，確保沒有途中修改。
 
 ```python
 # assertions 基準，expected IDs 來自 case.parameters.count
@@ -337,7 +337,7 @@ ids_match = oracle["sent_ids"] == expected_ids and oracle["received_ids"] == exp
 
 再核對 PSF 的 SEND／RECEIVE application IDs 和成功 queue events、object lifecycle；不要求包含未保證的每個排程間隔。Run manifest 保存工具hash、casehash、config、ELF/map、完整參數、clock、start/end、exit、bytes、loss與完整性。
 
-- [ ] **Step 4：先跑全體 unit tests／Ruff，commit 程式；再執行正式 Queue。**
+- [x] **Step 4：先跑全體 unit tests／Ruff，commit 程式；再執行正式 Queue。**
 
 ```sh
 python -m unittest discover -s tests/unit -t . -v
@@ -350,7 +350,7 @@ python -m psf_lab run queue_baseline
 
 `run` 自動 parse＋check 並把實際 run 路徑印出；`check` 接受剛產生的run路徑，必須可獨立重做；integration test使用 `run_dir = run_case(root, "queue_baseline")` 回傳值傳入，不解析任意shell輸出。`test_queue_e2e` 使用臨時輸出根並呼叫相同 runner，明確禁止 skip。正式 run 寫入後工作目錄有新證據屬預期，下一個正式 run 前先 commit。
 
-- [ ] **Step 5：審查 M1 證據並 commit。** 至少一份真實 Queue trace、16 IDs、正確schema／clock、完整結束、PSF hash、oracle及assertions。將 run artifacts、`docs/journal` 與「研究→證據」表 commit；只列已通過項目。
+- [x] **Step 5：審查 M1 證據並 commit。** 至少一份真實 Queue trace、16 IDs、正確schema／clock、完整結束、PSF hash、oracle及assertions。將 run artifacts、`docs/journal` 與「研究→證據」表 commit；只列已通過項目。
 
 ## M1 Gate
 

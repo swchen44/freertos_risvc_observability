@@ -2,7 +2,7 @@
 
 **這裡是後續實驗與文件的主要入口，使用獨立 Git 管理。**
 
-目前已固定工具鏈、完成 PSF parser，並在 RISC-V QEMU 跑通 FreeRTOS Queue／clock probe。正式 harness 與七配置三次重跑已通過；本機 Dashboard 已實作，最終驗收與 review 進行中。建立日期：2026-10-03。
+目前已固定工具鏈、完成 PSF parser，並在 RISC-V QEMU 跑通 FreeRTOS Queue／clock probe。正式 harness 與七配置三次重跑已通過；本機 Dashboard 已通過瀏覽器驗收，獨立整體 review 進行中。建立日期：2026-10-03。
 
 ## 文件入口
 
@@ -102,3 +102,15 @@ npm --prefix web run test:e2e
 - [Cache 相對最佳化計畫](docs/plans/04-cache-relative-optimization.md)：M1～M3 之後執行；比較 L1I／L1D／L2 miss、指令數、size 與模型成本。接受非 cycle-accurate，保留假設與敏感度分析。
 
 本版不提供離線 HTML、完整 ISR／SMP、任意 PSF schema、實體 UART 或 cloud。SDK CPU 百分比、每事件 cycles、最差 IRQ 與產品 Flash／RAM 仍需內網／硬體量測。
+
+
+## 最新驗證紀錄
+
+- Python unit tests：87／87；integration tests：6／6；Node tests：5／5。
+- Playwright：10／10；SVG、drag／pan／zoom、filters、完整 CSV、欄寬／欄位拖曳、品質與來源競爭均有實際操作。
+- Ruff check／format、native transport tests、npm ci／build 通過。
+- 最終正式 suite：[21 次 capture 與 9 組比較](runs/suite-20261003T085652Z-2732b56355/index.json)，source commit `a3802c5`，全部 pass。
+- 文件／baseline 驗證：[docs.json](artifacts/verification/docs.json)；422 份原始檔案 hash 保持不變。
+- [Python log](artifacts/verification/unit-tests.log)、[integration log](artifacts/verification/integration-tests.log)、[browser log](artifacts/verification/browser-tests.log)。
+
+Starlette TestClient 有建議移到 httpx2 的 deprecation warning，現行測試通過；尚未將測試 client 遷移。瀏覽器與 parser 容量限制見 benchmarks，產品 U01～U16 維持未結清。

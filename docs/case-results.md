@@ -59,3 +59,7 @@ flowchart LR
 ## 適用範圍
 
 結果對固定工具鏈、single-core QEMU icount、明確受控工作量成立。不能換算成產品晶片的CPU loading、UART吞吐、cache stall或bus latency。新增cache相對最佳化安排在M3之後。
+
+## Dashboard 完成後的再次重跑
+
+[新 suite](../runs/suite-20261003T085652Z-2732b56355/index.json) 從乾淨 source commit `a3802c5` 重編七配置各三次，21／21 pass、9／9 pair pass。保留前一輪資料作歷史證據，不覆寫原 run。

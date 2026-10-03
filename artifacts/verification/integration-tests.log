@@ -1,0 +1,11 @@
+test_committed_suite_has_21_verified_attempts (tests.integration.test_case_suite.CaseSuiteTests.test_committed_suite_has_21_verified_attempts) ... ok
+test_clock_probe_and_irq_restore (tests.integration.test_clock_capture.ClockCaptureTests.test_clock_probe_and_irq_restore) ... ok
+test_real_queue_capture (tests.integration.test_clock_capture.ClockCaptureTests.test_real_queue_capture) ... ok
+test_real_priority_pair (tests.integration.test_inversion_pair.InversionPairTests.test_real_priority_pair) ... ok
+test_real_controlled_pair (tests.integration.test_logger_pair.LoggerPairTests.test_real_controlled_pair) ... ok
+test_formal_clean_queue_run (tests.integration.test_queue_e2e.QueueE2ETests.test_formal_clean_queue_run) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 49.638s
+
+OK
