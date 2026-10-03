@@ -1,0 +1,19 @@
+{
+  "case_id": "queue_baseline",
+  "expected_outcome": "normal",
+  "required_event_families": [
+    "task",
+    "user",
+    "queue"
+  ],
+  "parameters": {
+    "count": 16
+  },
+  "assertions": [
+    "complete",
+    "transport_ok",
+    "schema",
+    "clock"
+  ],
+  "guest_timeout_ticks": 100
+}

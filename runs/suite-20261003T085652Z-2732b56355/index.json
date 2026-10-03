@@ -1,0 +1,990 @@
+{
+  "source_commit": "a3802c551e5a7007d772ac6fc7a72d4b6d73319a",
+  "repeat": 3,
+  "attempts": [
+    {
+      "iteration": 0,
+      "case_id": "queue_baseline",
+      "run_id": "20261003T085654Z-queue_baseline-81e822a470",
+      "exit_code": 0,
+      "status": "pass"
+    },
+    {
+      "iteration": 0,
+      "case_id": "logger_bad",
+      "run_id": "20261003T085701Z-logger_bad-7fc706c385",
+      "exit_code": 0,
+      "status": "pass"
+    },
+    {
+      "iteration": 0,
+      "case_id": "logger_fixed",
+      "run_id": "20261003T085713Z-logger_fixed-3a6f2d3171",
+      "exit_code": 0,
+      "status": "pass"
+    },
+    {
+      "iteration": 0,
+      "case_id": "inversion",
+      "run_id": "20261003T085726Z-inversion-dfa61c87aa",
+      "exit_code": 0,
+      "status": "pass"
+    },
+    {
+      "iteration": 0,
+      "case_id": "inheritance",
+      "run_id": "20261003T085741Z-inheritance-618a375eb0",
+      "exit_code": 0,
+      "status": "pass"
+    },
+    {
+      "iteration": 0,
+      "case_id": "deadlock_abba",
+      "run_id": "20261003T085746Z-deadlock_abba-e652744600",
+      "exit_code": 0,
+      "status": "pass"
+    },
+    {
+      "iteration": 0,
+      "case_id": "ordered_locks",
+      "run_id": "20261003T085750Z-ordered_locks-ce1ba32fb9",
+      "exit_code": 0,
+      "status": "pass"
+    },
+    {
+      "iteration": 1,
+      "case_id": "queue_baseline",
+      "run_id": "20261003T085758Z-queue_baseline-8f10d1d5fa",
+      "exit_code": 0,
+      "status": "pass"
+    },
+    {
+      "iteration": 1,
+      "case_id": "logger_bad",
+      "run_id": "20261003T085808Z-logger_bad-b973d7ce62",
+      "exit_code": 0,
+      "status": "pass"
+    },
+    {
+      "iteration": 1,
+      "case_id": "logger_fixed",
+      "run_id": "20261003T085821Z-logger_fixed-296feefaa0",
+      "exit_code": 0,
+      "status": "pass"
+    },
+    {
+      "iteration": 1,
+      "case_id": "inversion",
+      "run_id": "20261003T085831Z-inversion-a3fd9aed2f",
+      "exit_code": 0,
+      "status": "pass"
+    },
+    {
+      "iteration": 1,
+      "case_id": "inheritance",
+      "run_id": "20261003T085837Z-inheritance-ea36293468",
+      "exit_code": 0,
+      "status": "pass"
+    },
+    {
+      "iteration": 1,
+      "case_id": "deadlock_abba",
+      "run_id": "20261003T085855Z-deadlock_abba-018840754f",
+      "exit_code": 0,
+      "status": "pass"
+    },
+    {
+      "iteration": 1,
+      "case_id": "ordered_locks",
+      "run_id": "20261003T085908Z-ordered_locks-e74c76800a",
+      "exit_code": 0,
+      "status": "pass"
+    },
+    {
+      "iteration": 2,
+      "case_id": "queue_baseline",
+      "run_id": "20261003T085919Z-queue_baseline-4f1069e1ba",
+      "exit_code": 0,
+      "status": "pass"
+    },
+    {
+      "iteration": 2,
+      "case_id": "logger_bad",
+      "run_id": "20261003T085941Z-logger_bad-87a1e83381",
+      "exit_code": 0,
+      "status": "pass"
+    },
+    {
+      "iteration": 2,
+      "case_id": "logger_fixed",
+      "run_id": "20261003T090004Z-logger_fixed-328472b407",
+      "exit_code": 0,
+      "status": "pass"
+    },
+    {
+      "iteration": 2,
+      "case_id": "inversion",
+      "run_id": "20261003T090055Z-inversion-710a1c8bd6",
+      "exit_code": 0,
+      "status": "pass"
+    },
+    {
+      "iteration": 2,
+      "case_id": "inheritance",
+      "run_id": "20261003T090124Z-inheritance-e04d84affa",
+      "exit_code": 0,
+      "status": "pass"
+    },
+    {
+      "iteration": 2,
+      "case_id": "deadlock_abba",
+      "run_id": "20261003T090140Z-deadlock_abba-935c5aa2e4",
+      "exit_code": 0,
+      "status": "pass"
+    },
+    {
+      "iteration": 2,
+      "case_id": "ordered_locks",
+      "run_id": "20261003T090151Z-ordered_locks-394f87e5fb",
+      "exit_code": 0,
+      "status": "pass"
+    }
+  ],
+  "comparisons": [
+    {
+      "iteration": 0,
+      "pair_id": "logger",
+      "verdict": "pass",
+      "assertions": [
+        {
+          "name": "same_source_commit",
+          "expected": "a3802c551e5a7007d772ac6fc7a72d4b6d73319a",
+          "actual": "a3802c551e5a7007d772ac6fc7a72d4b6d73319a",
+          "passed": true
+        },
+        {
+          "name": "same_mtime_hz",
+          "expected": 10000000,
+          "actual": 10000000,
+          "passed": true
+        },
+        {
+          "name": "same_time_model",
+          "expected": "qemu-icount",
+          "actual": "qemu-icount",
+          "passed": true
+        },
+        {
+          "name": "logger_bad_passed",
+          "expected": "pass",
+          "actual": "pass",
+          "passed": true
+        },
+        {
+          "name": "logger_bad_loss",
+          "expected": [],
+          "actual": [],
+          "passed": true
+        },
+        {
+          "name": "logger_fixed_passed",
+          "expected": "pass",
+          "actual": "pass",
+          "passed": true
+        },
+        {
+          "name": "logger_fixed_loss",
+          "expected": [],
+          "actual": [],
+          "passed": true
+        },
+        {
+          "name": "response_improves_0",
+          "expected": true,
+          "actual": true,
+          "passed": true
+        },
+        {
+          "name": "response_improves_1",
+          "expected": true,
+          "actual": true,
+          "passed": true
+        },
+        {
+          "name": "response_improves_2",
+          "expected": true,
+          "actual": true,
+          "passed": true
+        },
+        {
+          "name": "response_improves_3",
+          "expected": true,
+          "actual": true,
+          "passed": true
+        },
+        {
+          "name": "response_improves_4",
+          "expected": true,
+          "actual": true,
+          "passed": true
+        },
+        {
+          "name": "response_improves_5",
+          "expected": true,
+          "actual": true,
+          "passed": true
+        },
+        {
+          "name": "response_improves_6",
+          "expected": true,
+          "actual": true,
+          "passed": true
+        },
+        {
+          "name": "response_improves_7",
+          "expected": true,
+          "actual": true,
+          "passed": true
+        }
+      ],
+      "issues": []
+    },
+    {
+      "iteration": 0,
+      "pair_id": "priority",
+      "verdict": "pass",
+      "assertions": [
+        {
+          "name": "same_source_commit",
+          "expected": "a3802c551e5a7007d772ac6fc7a72d4b6d73319a",
+          "actual": "a3802c551e5a7007d772ac6fc7a72d4b6d73319a",
+          "passed": true
+        },
+        {
+          "name": "same_mtime_hz",
+          "expected": 10000000,
+          "actual": 10000000,
+          "passed": true
+        },
+        {
+          "name": "same_time_model",
+          "expected": "qemu-icount",
+          "actual": "qemu-icount",
+          "passed": true
+        },
+        {
+          "name": "inversion_passed",
+          "expected": "pass",
+          "actual": "pass",
+          "passed": true
+        },
+        {
+          "name": "inversion_loss",
+          "expected": [],
+          "actual": [],
+          "passed": true
+        },
+        {
+          "name": "inheritance_passed",
+          "expected": "pass",
+          "actual": "pass",
+          "passed": true
+        },
+        {
+          "name": "inheritance_loss",
+          "expected": [],
+          "actual": [],
+          "passed": true
+        },
+        {
+          "name": "same_work_inversion",
+          "expected": {
+            "low_ticks": 2,
+            "medium_ticks": 6
+          },
+          "actual": {
+            "low_ticks": 2,
+            "medium_ticks": 6
+          },
+          "passed": true
+        },
+        {
+          "name": "phase_order_inversion",
+          "expected": true,
+          "actual": true,
+          "passed": true
+        },
+        {
+          "name": "same_work_inheritance",
+          "expected": {
+            "low_ticks": 2,
+            "medium_ticks": 6
+          },
+          "actual": {
+            "low_ticks": 2,
+            "medium_ticks": 6
+          },
+          "passed": true
+        },
+        {
+          "name": "phase_order_inheritance",
+          "expected": true,
+          "actual": true,
+          "passed": true
+        },
+        {
+          "name": "binary_no_boost",
+          "expected": false,
+          "actual": false,
+          "passed": true
+        }
+      ],
+      "issues": []
+    },
+    {
+      "iteration": 0,
+      "pair_id": "locks",
+      "verdict": "pass",
+      "assertions": [
+        {
+          "name": "same_source_commit",
+          "expected": "a3802c551e5a7007d772ac6fc7a72d4b6d73319a",
+          "actual": "a3802c551e5a7007d772ac6fc7a72d4b6d73319a",
+          "passed": true
+        },
+        {
+          "name": "same_mtime_hz",
+          "expected": 10000000,
+          "actual": 10000000,
+          "passed": true
+        },
+        {
+          "name": "same_time_model",
+          "expected": "qemu-icount",
+          "actual": "qemu-icount",
+          "passed": true
+        },
+        {
+          "name": "deadlock_abba_passed",
+          "expected": "pass",
+          "actual": "pass",
+          "passed": true
+        },
+        {
+          "name": "deadlock_abba_loss",
+          "expected": [],
+          "actual": [],
+          "passed": true
+        },
+        {
+          "name": "ordered_locks_passed",
+          "expected": "pass",
+          "actual": "pass",
+          "passed": true
+        },
+        {
+          "name": "ordered_locks_loss",
+          "expected": [],
+          "actual": [],
+          "passed": true
+        },
+        {
+          "name": "same_work",
+          "expected": {
+            "workers": 2,
+            "locks": 2,
+            "observation_ticks": 20
+          },
+          "actual": {
+            "workers": 2,
+            "locks": 2,
+            "observation_ticks": 20
+          },
+          "passed": true
+        },
+        {
+          "name": "abba_cycle",
+          "expected": true,
+          "actual": true,
+          "passed": true
+        },
+        {
+          "name": "ordered_cycle",
+          "expected": false,
+          "actual": false,
+          "passed": true
+        },
+        {
+          "name": "abba_outcome",
+          "expected": "deadlock",
+          "actual": "deadlock",
+          "passed": true
+        },
+        {
+          "name": "ordered_outcome",
+          "expected": "normal",
+          "actual": "normal",
+          "passed": true
+        }
+      ],
+      "issues": []
+    },
+    {
+      "iteration": 1,
+      "pair_id": "logger",
+      "verdict": "pass",
+      "assertions": [
+        {
+          "name": "same_source_commit",
+          "expected": "a3802c551e5a7007d772ac6fc7a72d4b6d73319a",
+          "actual": "a3802c551e5a7007d772ac6fc7a72d4b6d73319a",
+          "passed": true
+        },
+        {
+          "name": "same_mtime_hz",
+          "expected": 10000000,
+          "actual": 10000000,
+          "passed": true
+        },
+        {
+          "name": "same_time_model",
+          "expected": "qemu-icount",
+          "actual": "qemu-icount",
+          "passed": true
+        },
+        {
+          "name": "logger_bad_passed",
+          "expected": "pass",
+          "actual": "pass",
+          "passed": true
+        },
+        {
+          "name": "logger_bad_loss",
+          "expected": [],
+          "actual": [],
+          "passed": true
+        },
+        {
+          "name": "logger_fixed_passed",
+          "expected": "pass",
+          "actual": "pass",
+          "passed": true
+        },
+        {
+          "name": "logger_fixed_loss",
+          "expected": [],
+          "actual": [],
+          "passed": true
+        },
+        {
+          "name": "response_improves_0",
+          "expected": true,
+          "actual": true,
+          "passed": true
+        },
+        {
+          "name": "response_improves_1",
+          "expected": true,
+          "actual": true,
+          "passed": true
+        },
+        {
+          "name": "response_improves_2",
+          "expected": true,
+          "actual": true,
+          "passed": true
+        },
+        {
+          "name": "response_improves_3",
+          "expected": true,
+          "actual": true,
+          "passed": true
+        },
+        {
+          "name": "response_improves_4",
+          "expected": true,
+          "actual": true,
+          "passed": true
+        },
+        {
+          "name": "response_improves_5",
+          "expected": true,
+          "actual": true,
+          "passed": true
+        },
+        {
+          "name": "response_improves_6",
+          "expected": true,
+          "actual": true,
+          "passed": true
+        },
+        {
+          "name": "response_improves_7",
+          "expected": true,
+          "actual": true,
+          "passed": true
+        }
+      ],
+      "issues": []
+    },
+    {
+      "iteration": 1,
+      "pair_id": "priority",
+      "verdict": "pass",
+      "assertions": [
+        {
+          "name": "same_source_commit",
+          "expected": "a3802c551e5a7007d772ac6fc7a72d4b6d73319a",
+          "actual": "a3802c551e5a7007d772ac6fc7a72d4b6d73319a",
+          "passed": true
+        },
+        {
+          "name": "same_mtime_hz",
+          "expected": 10000000,
+          "actual": 10000000,
+          "passed": true
+        },
+        {
+          "name": "same_time_model",
+          "expected": "qemu-icount",
+          "actual": "qemu-icount",
+          "passed": true
+        },
+        {
+          "name": "inversion_passed",
+          "expected": "pass",
+          "actual": "pass",
+          "passed": true
+        },
+        {
+          "name": "inversion_loss",
+          "expected": [],
+          "actual": [],
+          "passed": true
+        },
+        {
+          "name": "inheritance_passed",
+          "expected": "pass",
+          "actual": "pass",
+          "passed": true
+        },
+        {
+          "name": "inheritance_loss",
+          "expected": [],
+          "actual": [],
+          "passed": true
+        },
+        {
+          "name": "same_work_inversion",
+          "expected": {
+            "low_ticks": 2,
+            "medium_ticks": 6
+          },
+          "actual": {
+            "low_ticks": 2,
+            "medium_ticks": 6
+          },
+          "passed": true
+        },
+        {
+          "name": "phase_order_inversion",
+          "expected": true,
+          "actual": true,
+          "passed": true
+        },
+        {
+          "name": "same_work_inheritance",
+          "expected": {
+            "low_ticks": 2,
+            "medium_ticks": 6
+          },
+          "actual": {
+            "low_ticks": 2,
+            "medium_ticks": 6
+          },
+          "passed": true
+        },
+        {
+          "name": "phase_order_inheritance",
+          "expected": true,
+          "actual": true,
+          "passed": true
+        },
+        {
+          "name": "binary_no_boost",
+          "expected": false,
+          "actual": false,
+          "passed": true
+        }
+      ],
+      "issues": []
+    },
+    {
+      "iteration": 1,
+      "pair_id": "locks",
+      "verdict": "pass",
+      "assertions": [
+        {
+          "name": "same_source_commit",
+          "expected": "a3802c551e5a7007d772ac6fc7a72d4b6d73319a",
+          "actual": "a3802c551e5a7007d772ac6fc7a72d4b6d73319a",
+          "passed": true
+        },
+        {
+          "name": "same_mtime_hz",
+          "expected": 10000000,
+          "actual": 10000000,
+          "passed": true
+        },
+        {
+          "name": "same_time_model",
+          "expected": "qemu-icount",
+          "actual": "qemu-icount",
+          "passed": true
+        },
+        {
+          "name": "deadlock_abba_passed",
+          "expected": "pass",
+          "actual": "pass",
+          "passed": true
+        },
+        {
+          "name": "deadlock_abba_loss",
+          "expected": [],
+          "actual": [],
+          "passed": true
+        },
+        {
+          "name": "ordered_locks_passed",
+          "expected": "pass",
+          "actual": "pass",
+          "passed": true
+        },
+        {
+          "name": "ordered_locks_loss",
+          "expected": [],
+          "actual": [],
+          "passed": true
+        },
+        {
+          "name": "same_work",
+          "expected": {
+            "workers": 2,
+            "locks": 2,
+            "observation_ticks": 20
+          },
+          "actual": {
+            "workers": 2,
+            "locks": 2,
+            "observation_ticks": 20
+          },
+          "passed": true
+        },
+        {
+          "name": "abba_cycle",
+          "expected": true,
+          "actual": true,
+          "passed": true
+        },
+        {
+          "name": "ordered_cycle",
+          "expected": false,
+          "actual": false,
+          "passed": true
+        },
+        {
+          "name": "abba_outcome",
+          "expected": "deadlock",
+          "actual": "deadlock",
+          "passed": true
+        },
+        {
+          "name": "ordered_outcome",
+          "expected": "normal",
+          "actual": "normal",
+          "passed": true
+        }
+      ],
+      "issues": []
+    },
+    {
+      "iteration": 2,
+      "pair_id": "logger",
+      "verdict": "pass",
+      "assertions": [
+        {
+          "name": "same_source_commit",
+          "expected": "a3802c551e5a7007d772ac6fc7a72d4b6d73319a",
+          "actual": "a3802c551e5a7007d772ac6fc7a72d4b6d73319a",
+          "passed": true
+        },
+        {
+          "name": "same_mtime_hz",
+          "expected": 10000000,
+          "actual": 10000000,
+          "passed": true
+        },
+        {
+          "name": "same_time_model",
+          "expected": "qemu-icount",
+          "actual": "qemu-icount",
+          "passed": true
+        },
+        {
+          "name": "logger_bad_passed",
+          "expected": "pass",
+          "actual": "pass",
+          "passed": true
+        },
+        {
+          "name": "logger_bad_loss",
+          "expected": [],
+          "actual": [],
+          "passed": true
+        },
+        {
+          "name": "logger_fixed_passed",
+          "expected": "pass",
+          "actual": "pass",
+          "passed": true
+        },
+        {
+          "name": "logger_fixed_loss",
+          "expected": [],
+          "actual": [],
+          "passed": true
+        },
+        {
+          "name": "response_improves_0",
+          "expected": true,
+          "actual": true,
+          "passed": true
+        },
+        {
+          "name": "response_improves_1",
+          "expected": true,
+          "actual": true,
+          "passed": true
+        },
+        {
+          "name": "response_improves_2",
+          "expected": true,
+          "actual": true,
+          "passed": true
+        },
+        {
+          "name": "response_improves_3",
+          "expected": true,
+          "actual": true,
+          "passed": true
+        },
+        {
+          "name": "response_improves_4",
+          "expected": true,
+          "actual": true,
+          "passed": true
+        },
+        {
+          "name": "response_improves_5",
+          "expected": true,
+          "actual": true,
+          "passed": true
+        },
+        {
+          "name": "response_improves_6",
+          "expected": true,
+          "actual": true,
+          "passed": true
+        },
+        {
+          "name": "response_improves_7",
+          "expected": true,
+          "actual": true,
+          "passed": true
+        }
+      ],
+      "issues": []
+    },
+    {
+      "iteration": 2,
+      "pair_id": "priority",
+      "verdict": "pass",
+      "assertions": [
+        {
+          "name": "same_source_commit",
+          "expected": "a3802c551e5a7007d772ac6fc7a72d4b6d73319a",
+          "actual": "a3802c551e5a7007d772ac6fc7a72d4b6d73319a",
+          "passed": true
+        },
+        {
+          "name": "same_mtime_hz",
+          "expected": 10000000,
+          "actual": 10000000,
+          "passed": true
+        },
+        {
+          "name": "same_time_model",
+          "expected": "qemu-icount",
+          "actual": "qemu-icount",
+          "passed": true
+        },
+        {
+          "name": "inversion_passed",
+          "expected": "pass",
+          "actual": "pass",
+          "passed": true
+        },
+        {
+          "name": "inversion_loss",
+          "expected": [],
+          "actual": [],
+          "passed": true
+        },
+        {
+          "name": "inheritance_passed",
+          "expected": "pass",
+          "actual": "pass",
+          "passed": true
+        },
+        {
+          "name": "inheritance_loss",
+          "expected": [],
+          "actual": [],
+          "passed": true
+        },
+        {
+          "name": "same_work_inversion",
+          "expected": {
+            "low_ticks": 2,
+            "medium_ticks": 6
+          },
+          "actual": {
+            "low_ticks": 2,
+            "medium_ticks": 6
+          },
+          "passed": true
+        },
+        {
+          "name": "phase_order_inversion",
+          "expected": true,
+          "actual": true,
+          "passed": true
+        },
+        {
+          "name": "same_work_inheritance",
+          "expected": {
+            "low_ticks": 2,
+            "medium_ticks": 6
+          },
+          "actual": {
+            "low_ticks": 2,
+            "medium_ticks": 6
+          },
+          "passed": true
+        },
+        {
+          "name": "phase_order_inheritance",
+          "expected": true,
+          "actual": true,
+          "passed": true
+        },
+        {
+          "name": "binary_no_boost",
+          "expected": false,
+          "actual": false,
+          "passed": true
+        }
+      ],
+      "issues": []
+    },
+    {
+      "iteration": 2,
+      "pair_id": "locks",
+      "verdict": "pass",
+      "assertions": [
+        {
+          "name": "same_source_commit",
+          "expected": "a3802c551e5a7007d772ac6fc7a72d4b6d73319a",
+          "actual": "a3802c551e5a7007d772ac6fc7a72d4b6d73319a",
+          "passed": true
+        },
+        {
+          "name": "same_mtime_hz",
+          "expected": 10000000,
+          "actual": 10000000,
+          "passed": true
+        },
+        {
+          "name": "same_time_model",
+          "expected": "qemu-icount",
+          "actual": "qemu-icount",
+          "passed": true
+        },
+        {
+          "name": "deadlock_abba_passed",
+          "expected": "pass",
+          "actual": "pass",
+          "passed": true
+        },
+        {
+          "name": "deadlock_abba_loss",
+          "expected": [],
+          "actual": [],
+          "passed": true
+        },
+        {
+          "name": "ordered_locks_passed",
+          "expected": "pass",
+          "actual": "pass",
+          "passed": true
+        },
+        {
+          "name": "ordered_locks_loss",
+          "expected": [],
+          "actual": [],
+          "passed": true
+        },
+        {
+          "name": "same_work",
+          "expected": {
+            "workers": 2,
+            "locks": 2,
+            "observation_ticks": 20
+          },
+          "actual": {
+            "workers": 2,
+            "locks": 2,
+            "observation_ticks": 20
+          },
+          "passed": true
+        },
+        {
+          "name": "abba_cycle",
+          "expected": true,
+          "actual": true,
+          "passed": true
+        },
+        {
+          "name": "ordered_cycle",
+          "expected": false,
+          "actual": false,
+          "passed": true
+        },
+        {
+          "name": "abba_outcome",
+          "expected": "deadlock",
+          "actual": "deadlock",
+          "passed": true
+        },
+        {
+          "name": "ordered_outcome",
+          "expected": "normal",
+          "actual": "normal",
+          "passed": true
+        }
+      ],
+      "issues": []
+    }
+  ],
+  "verdict": "pass"
+}

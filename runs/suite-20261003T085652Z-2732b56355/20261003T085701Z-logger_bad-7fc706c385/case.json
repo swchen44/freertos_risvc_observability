@@ -1,0 +1,24 @@
+{
+  "case_id": "logger_bad",
+  "expected_outcome": "interference",
+  "required_event_families": [
+    "task",
+    "user"
+  ],
+  "parameters": {
+    "requests": 8,
+    "worker_ticks": 2,
+    "logger_ticks": 8
+  },
+  "assertions": [
+    "complete",
+    "same_work",
+    "psf_oracle_timing"
+  ],
+  "guest_timeout_ticks": 200,
+  "pair": {
+    "pair_id": "logger",
+    "required_response_improvement_ticks": 4,
+    "same_work_required": true
+  }
+}

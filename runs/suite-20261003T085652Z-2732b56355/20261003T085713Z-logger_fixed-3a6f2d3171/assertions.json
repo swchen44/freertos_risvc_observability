@@ -1,0 +1,589 @@
+{
+  "case_id": "logger_fixed",
+  "verdict": "pass",
+  "assertions": [
+    {
+      "name": "case_id",
+      "expected": "logger_fixed",
+      "actual": "logger_fixed",
+      "passed": true
+    },
+    {
+      "name": "oracle_complete",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "transport_ok",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "outcome",
+      "expected": "normal",
+      "actual": "normal",
+      "passed": true
+    },
+    {
+      "name": "platform",
+      "expected": "FreeRTOS",
+      "actual": "FreeRTOS",
+      "passed": true
+    },
+    {
+      "name": "schema",
+      "expected": "1.2.0",
+      "actual": "1.2.0",
+      "passed": true
+    },
+    {
+      "name": "word_bytes",
+      "expected": 4,
+      "actual": 4,
+      "passed": true
+    },
+    {
+      "name": "clock_hz",
+      "expected": "10000000",
+      "actual": "10000000",
+      "passed": true
+    },
+    {
+      "name": "oracle_clock_hz",
+      "expected": 10000000,
+      "actual": 10000000,
+      "passed": true
+    },
+    {
+      "name": "tick_hz",
+      "expected": 1000,
+      "actual": 1000,
+      "passed": true
+    },
+    {
+      "name": "oracle_tick_hz",
+      "expected": 1000,
+      "actual": 1000,
+      "passed": true
+    },
+    {
+      "name": "parse_issues",
+      "expected": [],
+      "actual": [],
+      "passed": true
+    },
+    {
+      "name": "complete_markers",
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "name": "oracle_requests",
+      "expected": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "actual": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passed": true
+    },
+    {
+      "name": "psf_START",
+      "expected": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "actual": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passed": true
+    },
+    {
+      "name": "oracle_START",
+      "expected": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "actual": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passed": true
+    },
+    {
+      "name": "START_timestamp_0",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "START_timestamp_1",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "START_timestamp_2",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "START_timestamp_3",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "START_timestamp_4",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "START_timestamp_5",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "START_timestamp_6",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "START_timestamp_7",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "psf_WORKER_BEGIN",
+      "expected": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "actual": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passed": true
+    },
+    {
+      "name": "oracle_WORKER_BEGIN",
+      "expected": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "actual": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passed": true
+    },
+    {
+      "name": "WORKER_BEGIN_timestamp_0",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "WORKER_BEGIN_timestamp_1",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "WORKER_BEGIN_timestamp_2",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "WORKER_BEGIN_timestamp_3",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "WORKER_BEGIN_timestamp_4",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "WORKER_BEGIN_timestamp_5",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "WORKER_BEGIN_timestamp_6",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "WORKER_BEGIN_timestamp_7",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "psf_WORKER_END",
+      "expected": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "actual": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passed": true
+    },
+    {
+      "name": "oracle_WORKER_END",
+      "expected": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "actual": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passed": true
+    },
+    {
+      "name": "WORKER_END_timestamp_0",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "WORKER_END_timestamp_1",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "WORKER_END_timestamp_2",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "WORKER_END_timestamp_3",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "WORKER_END_timestamp_4",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "WORKER_END_timestamp_5",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "WORKER_END_timestamp_6",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "WORKER_END_timestamp_7",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "psf_LOGGER_BEGIN",
+      "expected": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "actual": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passed": true
+    },
+    {
+      "name": "oracle_LOGGER_BEGIN",
+      "expected": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "actual": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passed": true
+    },
+    {
+      "name": "LOGGER_BEGIN_timestamp_0",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "LOGGER_BEGIN_timestamp_1",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "LOGGER_BEGIN_timestamp_2",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "LOGGER_BEGIN_timestamp_3",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "LOGGER_BEGIN_timestamp_4",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "LOGGER_BEGIN_timestamp_5",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "LOGGER_BEGIN_timestamp_6",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "LOGGER_BEGIN_timestamp_7",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "psf_LOGGER_END",
+      "expected": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "actual": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passed": true
+    },
+    {
+      "name": "oracle_LOGGER_END",
+      "expected": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "actual": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passed": true
+    },
+    {
+      "name": "LOGGER_END_timestamp_0",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "LOGGER_END_timestamp_1",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "LOGGER_END_timestamp_2",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "LOGGER_END_timestamp_3",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "LOGGER_END_timestamp_4",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "LOGGER_END_timestamp_5",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "LOGGER_END_timestamp_6",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "LOGGER_END_timestamp_7",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    }
+  ],
+  "issues": []
+}

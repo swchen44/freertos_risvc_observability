@@ -1,0 +1,20 @@
+{
+  "case_id": "deadlock_abba",
+  "expected_outcome": "deadlock",
+  "required_event_families": [
+    "task",
+    "mutex",
+    "user"
+  ],
+  "parameters": {
+    "workers": 2,
+    "locks": 2,
+    "observation_ticks": 20
+  },
+  "assertions": [
+    "complete",
+    "lock_graph",
+    "supervisor_outcome"
+  ],
+  "guest_timeout_ticks": 100
+}

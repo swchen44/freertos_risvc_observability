@@ -1,0 +1,2423 @@
+{
+  "schema_version": 1,
+  "source": {
+    "name": "trace.psf",
+    "sha256": "043a2102c9e1cd74ea924429833a1b079ecf1d9e3d3f56bb7b08f0d27f09f467",
+    "byte_length": 2044
+  },
+  "platform": {
+    "format_version": 14,
+    "platform_id": 6817,
+    "name": "FreeRTOS",
+    "schema": "1.2.0",
+    "word_bytes": 4,
+    "endianness": "little",
+    "core_count": 1
+  },
+  "clock": {
+    "frequency_hz": "10000000",
+    "tick_hz": 1000,
+    "type": 1,
+    "origin_ticks": "1325",
+    "time_model": "qemu-icount",
+    "assumptions": [
+      "less_than_one_wrap_between_events"
+    ]
+  },
+  "objects": [
+    {
+      "object_id": "0x800a0b70:0",
+      "address": "0x800a0b70",
+      "epoch": 0,
+      "kind": "unknown",
+      "name": "System Heap",
+      "created_offset": null,
+      "deleted_offset": null,
+      "first_seen_offset": 72
+    },
+    {
+      "object_id": "0x80080710:0",
+      "address": "0x80080710",
+      "epoch": 0,
+      "kind": "task",
+      "name": "TzCtrl",
+      "created_offset": null,
+      "deleted_offset": null,
+      "first_seen_offset": 120
+    },
+    {
+      "object_id": "0x800a1590:0",
+      "address": "0x800a1590",
+      "epoch": 0,
+      "kind": "channel",
+      "name": "POC",
+      "created_offset": null,
+      "deleted_offset": null,
+      "first_seen_offset": 180
+    },
+    {
+      "object_id": "0x80080780:0",
+      "address": "0x80080780",
+      "epoch": 0,
+      "kind": "semaphore",
+      "name": "resource_binary",
+      "created_offset": 196,
+      "deleted_offset": null,
+      "first_seen_offset": 196
+    },
+    {
+      "object_id": "0x800817f0:0",
+      "address": "0x800817f0",
+      "epoch": 0,
+      "kind": "task",
+      "name": "coordinator",
+      "created_offset": 280,
+      "deleted_offset": null,
+      "first_seen_offset": 256
+    },
+    {
+      "object_id": "0x80082070:0",
+      "address": "0x80082070",
+      "epoch": 0,
+      "kind": "task",
+      "name": "low",
+      "created_offset": 324,
+      "deleted_offset": null,
+      "first_seen_offset": 308
+    },
+    {
+      "object_id": "0x800828f0:0",
+      "address": "0x800828f0",
+      "epoch": 0,
+      "kind": "task",
+      "name": "medium",
+      "created_offset": 372,
+      "deleted_offset": null,
+      "first_seen_offset": 352
+    },
+    {
+      "object_id": "0x80083170:0",
+      "address": "0x80083170",
+      "epoch": 0,
+      "kind": "task",
+      "name": "high",
+      "created_offset": 420,
+      "deleted_offset": null,
+      "first_seen_offset": 400
+    },
+    {
+      "object_id": "0x800835f0:0",
+      "address": "0x800835f0",
+      "epoch": 0,
+      "kind": "task",
+      "name": "IDLE",
+      "created_offset": 468,
+      "deleted_offset": null,
+      "first_seen_offset": 448
+    }
+  ],
+  "events": [
+    {
+      "event_id": "0:168",
+      "offset": 168,
+      "id": 1,
+      "sequence": 6,
+      "core": 0,
+      "timestamp_raw": 1325,
+      "ticks": "0",
+      "payload_hex": "02000000",
+      "kind": "trace_start",
+      "actor_id": null,
+      "object_id": null,
+      "fields": {
+        "raw_words": [
+          "2"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:180",
+      "offset": 180,
+      "id": 3,
+      "sequence": 7,
+      "core": 0,
+      "timestamp_raw": 1328,
+      "ticks": "3",
+      "payload_hex": "90150a80504f4300",
+      "kind": "object_name",
+      "actor_id": null,
+      "object_id": "0x800a1590:0",
+      "fields": {
+        "raw_words": [
+          "2148144528",
+          "4411216"
+        ],
+        "name": "POC"
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:196",
+      "offset": 196,
+      "id": 18,
+      "sequence": 8,
+      "core": 0,
+      "timestamp_raw": 1334,
+      "ticks": "9",
+      "payload_hex": "8007088000000000",
+      "kind": "semaphore_create",
+      "actor_id": null,
+      "object_id": "0x80080780:0",
+      "fields": {
+        "raw_words": [
+          "2148009856",
+          "0"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:212",
+      "offset": 212,
+      "id": 81,
+      "sequence": 9,
+      "core": 0,
+      "timestamp_raw": 1336,
+      "ticks": "11",
+      "payload_hex": "8007088001000000",
+      "kind": "semaphore_give",
+      "actor_id": null,
+      "object_id": "0x80080780:0",
+      "fields": {
+        "raw_words": [
+          "2148009856",
+          "1"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:228",
+      "offset": 228,
+      "id": 3,
+      "sequence": 10,
+      "core": 0,
+      "timestamp_raw": 1343,
+      "ticks": "18",
+      "payload_hex": "800708807265736f757263655f62696e61727900",
+      "kind": "object_name",
+      "actor_id": null,
+      "object_id": "0x80080780:0",
+      "fields": {
+        "raw_words": [
+          "2148009856",
+          "1869833586",
+          "1701016181",
+          "1852400223",
+          "7959137"
+        ],
+        "name": "resource_binary"
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:256",
+      "offset": 256,
+      "id": 3,
+      "sequence": 11,
+      "core": 0,
+      "timestamp_raw": 1522,
+      "ticks": "197",
+      "payload_hex": "f0170880636f6f7264696e61746f7200",
+      "kind": "object_name",
+      "actor_id": null,
+      "object_id": "0x800817f0:0",
+      "fields": {
+        "raw_words": [
+          "2148014064",
+          "1919905635",
+          "1634625892",
+          "7499636"
+        ],
+        "name": "coordinator"
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:280",
+      "offset": 280,
+      "id": 16,
+      "sequence": 12,
+      "core": 0,
+      "timestamp_raw": 1525,
+      "ticks": "200",
+      "payload_hex": "f017088005000000",
+      "kind": "task_create",
+      "actor_id": null,
+      "object_id": "0x800817f0:0",
+      "fields": {
+        "raw_words": [
+          "2148014064",
+          "5"
+        ],
+        "priority": 5
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:296",
+      "offset": 296,
+      "id": 48,
+      "sequence": 13,
+      "core": 0,
+      "timestamp_raw": 1527,
+      "ticks": "202",
+      "payload_hex": "f0170880",
+      "kind": "task_ready",
+      "actor_id": null,
+      "object_id": "0x800817f0:0",
+      "fields": {
+        "raw_words": [
+          "2148014064"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:308",
+      "offset": 308,
+      "id": 3,
+      "sequence": 14,
+      "core": 0,
+      "timestamp_raw": 1621,
+      "ticks": "296",
+      "payload_hex": "702008806c6f7700",
+      "kind": "object_name",
+      "actor_id": null,
+      "object_id": "0x80082070:0",
+      "fields": {
+        "raw_words": [
+          "2148016240",
+          "7827308"
+        ],
+        "name": "low"
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:324",
+      "offset": 324,
+      "id": 16,
+      "sequence": 15,
+      "core": 0,
+      "timestamp_raw": 1623,
+      "ticks": "298",
+      "payload_hex": "7020088002000000",
+      "kind": "task_create",
+      "actor_id": null,
+      "object_id": "0x80082070:0",
+      "fields": {
+        "raw_words": [
+          "2148016240",
+          "2"
+        ],
+        "priority": 2
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:340",
+      "offset": 340,
+      "id": 48,
+      "sequence": 16,
+      "core": 0,
+      "timestamp_raw": 1624,
+      "ticks": "299",
+      "payload_hex": "70200880",
+      "kind": "task_ready",
+      "actor_id": null,
+      "object_id": "0x80082070:0",
+      "fields": {
+        "raw_words": [
+          "2148016240"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:352",
+      "offset": 352,
+      "id": 3,
+      "sequence": 17,
+      "core": 0,
+      "timestamp_raw": 1718,
+      "ticks": "393",
+      "payload_hex": "f02808806d656469756d0000",
+      "kind": "object_name",
+      "actor_id": null,
+      "object_id": "0x800828f0:0",
+      "fields": {
+        "raw_words": [
+          "2148018416",
+          "1768187245",
+          "28021"
+        ],
+        "name": "medium"
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:372",
+      "offset": 372,
+      "id": 16,
+      "sequence": 18,
+      "core": 0,
+      "timestamp_raw": 1721,
+      "ticks": "396",
+      "payload_hex": "f028088003000000",
+      "kind": "task_create",
+      "actor_id": null,
+      "object_id": "0x800828f0:0",
+      "fields": {
+        "raw_words": [
+          "2148018416",
+          "3"
+        ],
+        "priority": 3
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:388",
+      "offset": 388,
+      "id": 48,
+      "sequence": 19,
+      "core": 0,
+      "timestamp_raw": 1723,
+      "ticks": "398",
+      "payload_hex": "f0280880",
+      "kind": "task_ready",
+      "actor_id": null,
+      "object_id": "0x800828f0:0",
+      "fields": {
+        "raw_words": [
+          "2148018416"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:400",
+      "offset": 400,
+      "id": 3,
+      "sequence": 20,
+      "core": 0,
+      "timestamp_raw": 1817,
+      "ticks": "492",
+      "payload_hex": "703108806869676800000000",
+      "kind": "object_name",
+      "actor_id": null,
+      "object_id": "0x80083170:0",
+      "fields": {
+        "raw_words": [
+          "2148020592",
+          "1751607656",
+          "0"
+        ],
+        "name": "high"
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:420",
+      "offset": 420,
+      "id": 16,
+      "sequence": 21,
+      "core": 0,
+      "timestamp_raw": 1819,
+      "ticks": "494",
+      "payload_hex": "7031088004000000",
+      "kind": "task_create",
+      "actor_id": null,
+      "object_id": "0x80083170:0",
+      "fields": {
+        "raw_words": [
+          "2148020592",
+          "4"
+        ],
+        "priority": 4
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:436",
+      "offset": 436,
+      "id": 48,
+      "sequence": 22,
+      "core": 0,
+      "timestamp_raw": 1821,
+      "ticks": "496",
+      "payload_hex": "70310880",
+      "kind": "task_ready",
+      "actor_id": null,
+      "object_id": "0x80083170:0",
+      "fields": {
+        "raw_words": [
+          "2148020592"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:448",
+      "offset": 448,
+      "id": 3,
+      "sequence": 23,
+      "core": 0,
+      "timestamp_raw": 1874,
+      "ticks": "549",
+      "payload_hex": "f035088049444c4500000000",
+      "kind": "object_name",
+      "actor_id": null,
+      "object_id": "0x800835f0:0",
+      "fields": {
+        "raw_words": [
+          "2148021744",
+          "1162626121",
+          "0"
+        ],
+        "name": "IDLE"
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:468",
+      "offset": 468,
+      "id": 16,
+      "sequence": 24,
+      "core": 0,
+      "timestamp_raw": 1877,
+      "ticks": "552",
+      "payload_hex": "f035088000000000",
+      "kind": "task_create",
+      "actor_id": null,
+      "object_id": "0x800835f0:0",
+      "fields": {
+        "raw_words": [
+          "2148021744",
+          "0"
+        ],
+        "priority": 0
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:484",
+      "offset": 484,
+      "id": 48,
+      "sequence": 25,
+      "core": 0,
+      "timestamp_raw": 1878,
+      "ticks": "553",
+      "payload_hex": "f0350880",
+      "kind": "task_ready",
+      "actor_id": null,
+      "object_id": "0x800835f0:0",
+      "fields": {
+        "raw_words": [
+          "2148021744"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:496",
+      "offset": 496,
+      "id": 55,
+      "sequence": 26,
+      "core": 0,
+      "timestamp_raw": 1880,
+      "ticks": "555",
+      "payload_hex": "f017088005000000",
+      "kind": "task_switch",
+      "actor_id": "0x800817f0:0",
+      "object_id": "0x800817f0:0",
+      "fields": {
+        "raw_words": [
+          "2148014064",
+          "5"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:512",
+      "offset": 512,
+      "id": 201,
+      "sequence": 27,
+      "core": 0,
+      "timestamp_raw": 1965,
+      "ticks": "640",
+      "payload_hex": "70200880",
+      "kind": "task_notify",
+      "actor_id": "0x800817f0:0",
+      "object_id": "0x80082070:0",
+      "fields": {
+        "raw_words": [
+          "2148016240"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:524",
+      "offset": 524,
+      "id": 203,
+      "sequence": 28,
+      "core": 0,
+      "timestamp_raw": 1967,
+      "ticks": "642",
+      "payload_hex": "f017088064000000",
+      "kind": "task_notify_wait_block",
+      "actor_id": "0x800817f0:0",
+      "object_id": "0x800817f0:0",
+      "fields": {
+        "raw_words": [
+          "2148014064",
+          "100"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:540",
+      "offset": 540,
+      "id": 55,
+      "sequence": 29,
+      "core": 0,
+      "timestamp_raw": 1971,
+      "ticks": "646",
+      "payload_hex": "7031088004000000",
+      "kind": "task_switch",
+      "actor_id": "0x80083170:0",
+      "object_id": "0x80083170:0",
+      "fields": {
+        "raw_words": [
+          "2148020592",
+          "4"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:556",
+      "offset": 556,
+      "id": 203,
+      "sequence": 30,
+      "core": 0,
+      "timestamp_raw": 1973,
+      "ticks": "648",
+      "payload_hex": "7031088064000000",
+      "kind": "task_notify_wait_block",
+      "actor_id": "0x80083170:0",
+      "object_id": "0x80083170:0",
+      "fields": {
+        "raw_words": [
+          "2148020592",
+          "100"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:572",
+      "offset": 572,
+      "id": 55,
+      "sequence": 31,
+      "core": 0,
+      "timestamp_raw": 1977,
+      "ticks": "652",
+      "payload_hex": "f028088003000000",
+      "kind": "task_switch",
+      "actor_id": "0x800828f0:0",
+      "object_id": "0x800828f0:0",
+      "fields": {
+        "raw_words": [
+          "2148018416",
+          "3"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:588",
+      "offset": 588,
+      "id": 203,
+      "sequence": 32,
+      "core": 0,
+      "timestamp_raw": 1980,
+      "ticks": "655",
+      "payload_hex": "f028088064000000",
+      "kind": "task_notify_wait_block",
+      "actor_id": "0x800828f0:0",
+      "object_id": "0x800828f0:0",
+      "fields": {
+        "raw_words": [
+          "2148018416",
+          "100"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:604",
+      "offset": 604,
+      "id": 55,
+      "sequence": 33,
+      "core": 0,
+      "timestamp_raw": 1984,
+      "ticks": "659",
+      "payload_hex": "7020088002000000",
+      "kind": "task_switch",
+      "actor_id": "0x80082070:0",
+      "object_id": "0x80082070:0",
+      "fields": {
+        "raw_words": [
+          "2148016240",
+          "2"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:620",
+      "offset": 620,
+      "id": 202,
+      "sequence": 34,
+      "core": 0,
+      "timestamp_raw": 1987,
+      "ticks": "662",
+      "payload_hex": "7020088064000000",
+      "kind": "task_notify_wait",
+      "actor_id": "0x80082070:0",
+      "object_id": "0x80082070:0",
+      "fields": {
+        "raw_words": [
+          "2148016240",
+          "100"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:636",
+      "offset": 636,
+      "id": 97,
+      "sequence": 35,
+      "core": 0,
+      "timestamp_raw": 1989,
+      "ticks": "664",
+      "payload_hex": "800708806400000000000000",
+      "kind": "semaphore_take",
+      "actor_id": "0x80082070:0",
+      "object_id": "0x80080780:0",
+      "fields": {
+        "raw_words": [
+          "2148009856",
+          "100",
+          "0"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:656",
+      "offset": 656,
+      "id": 146,
+      "sequence": 36,
+      "core": 0,
+      "timestamp_raw": 2012,
+      "ticks": "687",
+      "payload_hex": "90150a8000000000504f437c696e76657273696f6e7c4c4f575f484f4c447c257500a5a5",
+      "kind": "user_event",
+      "actor_id": "0x80082070:0",
+      "object_id": "0x800a1590:0",
+      "fields": {
+        "raw_words": [
+          "2148144528",
+          "0",
+          "2084786000",
+          "1702260329",
+          "1869181810",
+          "1330412654",
+          "1330143063",
+          "628900940",
+          "2779054197"
+        ],
+        "channel": "POC",
+        "format": "POC|inversion|LOW_HOLD|%u",
+        "arguments": [
+          "0"
+        ],
+        "message": "POC|inversion|LOW_HOLD|0",
+        "case_id": "inversion",
+        "phase": "LOW_HOLD",
+        "message_id": 0,
+        "request_id": 0
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:700",
+      "offset": 700,
+      "id": 201,
+      "sequence": 37,
+      "core": 0,
+      "timestamp_raw": 2016,
+      "ticks": "691",
+      "payload_hex": "f0170880",
+      "kind": "task_notify",
+      "actor_id": "0x80082070:0",
+      "object_id": "0x800817f0:0",
+      "fields": {
+        "raw_words": [
+          "2148014064"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:712",
+      "offset": 712,
+      "id": 48,
+      "sequence": 38,
+      "core": 0,
+      "timestamp_raw": 2017,
+      "ticks": "692",
+      "payload_hex": "f0170880",
+      "kind": "task_ready",
+      "actor_id": "0x80082070:0",
+      "object_id": "0x800817f0:0",
+      "fields": {
+        "raw_words": [
+          "2148014064"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:724",
+      "offset": 724,
+      "id": 55,
+      "sequence": 39,
+      "core": 0,
+      "timestamp_raw": 2020,
+      "ticks": "695",
+      "payload_hex": "f017088005000000",
+      "kind": "task_switch",
+      "actor_id": "0x800817f0:0",
+      "object_id": "0x800817f0:0",
+      "fields": {
+        "raw_words": [
+          "2148014064",
+          "5"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:740",
+      "offset": 740,
+      "id": 202,
+      "sequence": 40,
+      "core": 0,
+      "timestamp_raw": 2022,
+      "ticks": "697",
+      "payload_hex": "f017088064000000",
+      "kind": "task_notify_wait",
+      "actor_id": "0x800817f0:0",
+      "object_id": "0x800817f0:0",
+      "fields": {
+        "raw_words": [
+          "2148014064",
+          "100"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:756",
+      "offset": 756,
+      "id": 201,
+      "sequence": 41,
+      "core": 0,
+      "timestamp_raw": 2024,
+      "ticks": "699",
+      "payload_hex": "70310880",
+      "kind": "task_notify",
+      "actor_id": "0x800817f0:0",
+      "object_id": "0x80083170:0",
+      "fields": {
+        "raw_words": [
+          "2148020592"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:768",
+      "offset": 768,
+      "id": 48,
+      "sequence": 42,
+      "core": 0,
+      "timestamp_raw": 2026,
+      "ticks": "701",
+      "payload_hex": "70310880",
+      "kind": "task_ready",
+      "actor_id": "0x800817f0:0",
+      "object_id": "0x80083170:0",
+      "fields": {
+        "raw_words": [
+          "2148020592"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:780",
+      "offset": 780,
+      "id": 203,
+      "sequence": 43,
+      "core": 0,
+      "timestamp_raw": 2028,
+      "ticks": "703",
+      "payload_hex": "f017088064000000",
+      "kind": "task_notify_wait_block",
+      "actor_id": "0x800817f0:0",
+      "object_id": "0x800817f0:0",
+      "fields": {
+        "raw_words": [
+          "2148014064",
+          "100"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:796",
+      "offset": 796,
+      "id": 55,
+      "sequence": 44,
+      "core": 0,
+      "timestamp_raw": 2032,
+      "ticks": "707",
+      "payload_hex": "7031088004000000",
+      "kind": "task_switch",
+      "actor_id": "0x80083170:0",
+      "object_id": "0x80083170:0",
+      "fields": {
+        "raw_words": [
+          "2148020592",
+          "4"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:812",
+      "offset": 812,
+      "id": 202,
+      "sequence": 45,
+      "core": 0,
+      "timestamp_raw": 2034,
+      "ticks": "709",
+      "payload_hex": "7031088064000000",
+      "kind": "task_notify_wait",
+      "actor_id": "0x80083170:0",
+      "object_id": "0x80083170:0",
+      "fields": {
+        "raw_words": [
+          "2148020592",
+          "100"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:828",
+      "offset": 828,
+      "id": 146,
+      "sequence": 46,
+      "core": 0,
+      "timestamp_raw": 2057,
+      "ticks": "732",
+      "payload_hex": "90150a8000000000504f437c696e76657273696f6e7c484947485f415454454d50547c2575000000",
+      "kind": "user_event",
+      "actor_id": "0x80083170:0",
+      "object_id": "0x800a1590:0",
+      "fields": {
+        "raw_words": [
+          "2148144528",
+          "0",
+          "2084786000",
+          "1702260329",
+          "1869181810",
+          "1229487214",
+          "1096763463",
+          "1296389204",
+          "628905040",
+          "117"
+        ],
+        "channel": "POC",
+        "format": "POC|inversion|HIGH_ATTEMPT|%u",
+        "arguments": [
+          "0"
+        ],
+        "message": "POC|inversion|HIGH_ATTEMPT|0",
+        "case_id": "inversion",
+        "phase": "HIGH_ATTEMPT",
+        "message_id": 0,
+        "request_id": 0
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:876",
+      "offset": 876,
+      "id": 201,
+      "sequence": 47,
+      "core": 0,
+      "timestamp_raw": 2061,
+      "ticks": "736",
+      "payload_hex": "f0170880",
+      "kind": "task_notify",
+      "actor_id": "0x80083170:0",
+      "object_id": "0x800817f0:0",
+      "fields": {
+        "raw_words": [
+          "2148014064"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:888",
+      "offset": 888,
+      "id": 48,
+      "sequence": 48,
+      "core": 0,
+      "timestamp_raw": 2063,
+      "ticks": "738",
+      "payload_hex": "f0170880",
+      "kind": "task_ready",
+      "actor_id": "0x80083170:0",
+      "object_id": "0x800817f0:0",
+      "fields": {
+        "raw_words": [
+          "2148014064"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:900",
+      "offset": 900,
+      "id": 55,
+      "sequence": 49,
+      "core": 0,
+      "timestamp_raw": 2066,
+      "ticks": "741",
+      "payload_hex": "f017088005000000",
+      "kind": "task_switch",
+      "actor_id": "0x800817f0:0",
+      "object_id": "0x800817f0:0",
+      "fields": {
+        "raw_words": [
+          "2148014064",
+          "5"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:916",
+      "offset": 916,
+      "id": 202,
+      "sequence": 50,
+      "core": 0,
+      "timestamp_raw": 2068,
+      "ticks": "743",
+      "payload_hex": "f017088064000000",
+      "kind": "task_notify_wait",
+      "actor_id": "0x800817f0:0",
+      "object_id": "0x800817f0:0",
+      "fields": {
+        "raw_words": [
+          "2148014064",
+          "100"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:932",
+      "offset": 932,
+      "id": 122,
+      "sequence": 51,
+      "core": 0,
+      "timestamp_raw": 2069,
+      "ticks": "744",
+      "payload_hex": "01000000",
+      "kind": "task_delay",
+      "actor_id": "0x800817f0:0",
+      "object_id": "0x800817f0:0",
+      "fields": {
+        "raw_words": [
+          "1"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:944",
+      "offset": 944,
+      "id": 55,
+      "sequence": 52,
+      "core": 0,
+      "timestamp_raw": 2073,
+      "ticks": "748",
+      "payload_hex": "7031088004000000",
+      "kind": "task_switch",
+      "actor_id": "0x80083170:0",
+      "object_id": "0x80083170:0",
+      "fields": {
+        "raw_words": [
+          "2148020592",
+          "4"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:960",
+      "offset": 960,
+      "id": 103,
+      "sequence": 53,
+      "core": 0,
+      "timestamp_raw": 2077,
+      "ticks": "752",
+      "payload_hex": "800708806400000000000000",
+      "kind": "semaphore_take_block",
+      "actor_id": "0x80083170:0",
+      "object_id": "0x80080780:0",
+      "fields": {
+        "raw_words": [
+          "2148009856",
+          "100",
+          "0"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:980",
+      "offset": 980,
+      "id": 55,
+      "sequence": 54,
+      "core": 0,
+      "timestamp_raw": 2082,
+      "ticks": "757",
+      "payload_hex": "7020088002000000",
+      "kind": "task_switch",
+      "actor_id": "0x80082070:0",
+      "object_id": "0x80082070:0",
+      "fields": {
+        "raw_words": [
+          "2148016240",
+          "2"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:996",
+      "offset": 996,
+      "id": 203,
+      "sequence": 55,
+      "core": 0,
+      "timestamp_raw": 2085,
+      "ticks": "760",
+      "payload_hex": "7020088064000000",
+      "kind": "task_notify_wait_block",
+      "actor_id": "0x80082070:0",
+      "object_id": "0x80082070:0",
+      "fields": {
+        "raw_words": [
+          "2148016240",
+          "100"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1012",
+      "offset": 1012,
+      "id": 55,
+      "sequence": 56,
+      "core": 0,
+      "timestamp_raw": 2089,
+      "ticks": "764",
+      "payload_hex": "1007088001000000",
+      "kind": "task_switch",
+      "actor_id": "0x80080710:0",
+      "object_id": "0x80080710:0",
+      "fields": {
+        "raw_words": [
+          "2148009744",
+          "1"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1028",
+      "offset": 1028,
+      "id": 122,
+      "sequence": 57,
+      "core": 0,
+      "timestamp_raw": 2092,
+      "ticks": "767",
+      "payload_hex": "0a000000",
+      "kind": "task_delay",
+      "actor_id": "0x80080710:0",
+      "object_id": "0x80080710:0",
+      "fields": {
+        "raw_words": [
+          "10"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1040",
+      "offset": 1040,
+      "id": 55,
+      "sequence": 58,
+      "core": 0,
+      "timestamp_raw": 2096,
+      "ticks": "771",
+      "payload_hex": "f035088000000000",
+      "kind": "task_switch",
+      "actor_id": "0x800835f0:0",
+      "object_id": "0x800835f0:0",
+      "fields": {
+        "raw_words": [
+          "2148021744",
+          "0"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1056",
+      "offset": 1056,
+      "id": 49,
+      "sequence": 59,
+      "core": 0,
+      "timestamp_raw": 11965,
+      "ticks": "10640",
+      "payload_hex": "01000000",
+      "kind": "new_time",
+      "actor_id": "0x800835f0:0",
+      "object_id": null,
+      "fields": {
+        "raw_words": [
+          "1"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1068",
+      "offset": 1068,
+      "id": 48,
+      "sequence": 60,
+      "core": 0,
+      "timestamp_raw": 11966,
+      "ticks": "10641",
+      "payload_hex": "f0170880",
+      "kind": "task_ready",
+      "actor_id": "0x800835f0:0",
+      "object_id": "0x800817f0:0",
+      "fields": {
+        "raw_words": [
+          "2148014064"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1080",
+      "offset": 1080,
+      "id": 55,
+      "sequence": 61,
+      "core": 0,
+      "timestamp_raw": 11969,
+      "ticks": "10644",
+      "payload_hex": "f017088005000000",
+      "kind": "task_switch",
+      "actor_id": "0x800817f0:0",
+      "object_id": "0x800817f0:0",
+      "fields": {
+        "raw_words": [
+          "2148014064",
+          "5"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1096",
+      "offset": 1096,
+      "id": 146,
+      "sequence": 62,
+      "core": 0,
+      "timestamp_raw": 11994,
+      "ticks": "10669",
+      "payload_hex": "90150a8000000000504f437c696e76657273696f6e7c484947485f424c4f434b45447c257500a5a5",
+      "kind": "user_event",
+      "actor_id": "0x800817f0:0",
+      "object_id": "0x800a1590:0",
+      "fields": {
+        "raw_words": [
+          "2148144528",
+          "0",
+          "2084786000",
+          "1702260329",
+          "1869181810",
+          "1229487214",
+          "1113540679",
+          "1262702412",
+          "628900933",
+          "2779054197"
+        ],
+        "channel": "POC",
+        "format": "POC|inversion|HIGH_BLOCKED|%u",
+        "arguments": [
+          "0"
+        ],
+        "message": "POC|inversion|HIGH_BLOCKED|0",
+        "case_id": "inversion",
+        "phase": "HIGH_BLOCKED",
+        "message_id": 0,
+        "request_id": 0
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1144",
+      "offset": 1144,
+      "id": 201,
+      "sequence": 63,
+      "core": 0,
+      "timestamp_raw": 11998,
+      "ticks": "10673",
+      "payload_hex": "f0280880",
+      "kind": "task_notify",
+      "actor_id": "0x800817f0:0",
+      "object_id": "0x800828f0:0",
+      "fields": {
+        "raw_words": [
+          "2148018416"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1156",
+      "offset": 1156,
+      "id": 48,
+      "sequence": 64,
+      "core": 0,
+      "timestamp_raw": 11999,
+      "ticks": "10674",
+      "payload_hex": "f0280880",
+      "kind": "task_ready",
+      "actor_id": "0x800817f0:0",
+      "object_id": "0x800828f0:0",
+      "fields": {
+        "raw_words": [
+          "2148018416"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1168",
+      "offset": 1168,
+      "id": 201,
+      "sequence": 65,
+      "core": 0,
+      "timestamp_raw": 12001,
+      "ticks": "10676",
+      "payload_hex": "70200880",
+      "kind": "task_notify",
+      "actor_id": "0x800817f0:0",
+      "object_id": "0x80082070:0",
+      "fields": {
+        "raw_words": [
+          "2148016240"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1180",
+      "offset": 1180,
+      "id": 48,
+      "sequence": 66,
+      "core": 0,
+      "timestamp_raw": 12003,
+      "ticks": "10678",
+      "payload_hex": "70200880",
+      "kind": "task_ready",
+      "actor_id": "0x800817f0:0",
+      "object_id": "0x80082070:0",
+      "fields": {
+        "raw_words": [
+          "2148016240"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1192",
+      "offset": 1192,
+      "id": 203,
+      "sequence": 67,
+      "core": 0,
+      "timestamp_raw": 12005,
+      "ticks": "10680",
+      "payload_hex": "f017088064000000",
+      "kind": "task_notify_wait_block",
+      "actor_id": "0x800817f0:0",
+      "object_id": "0x800817f0:0",
+      "fields": {
+        "raw_words": [
+          "2148014064",
+          "100"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1208",
+      "offset": 1208,
+      "id": 55,
+      "sequence": 68,
+      "core": 0,
+      "timestamp_raw": 12009,
+      "ticks": "10684",
+      "payload_hex": "f028088003000000",
+      "kind": "task_switch",
+      "actor_id": "0x800828f0:0",
+      "object_id": "0x800828f0:0",
+      "fields": {
+        "raw_words": [
+          "2148018416",
+          "3"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1224",
+      "offset": 1224,
+      "id": 202,
+      "sequence": 69,
+      "core": 0,
+      "timestamp_raw": 12011,
+      "ticks": "10686",
+      "payload_hex": "f028088064000000",
+      "kind": "task_notify_wait",
+      "actor_id": "0x800828f0:0",
+      "object_id": "0x800828f0:0",
+      "fields": {
+        "raw_words": [
+          "2148018416",
+          "100"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1240",
+      "offset": 1240,
+      "id": 146,
+      "sequence": 70,
+      "core": 0,
+      "timestamp_raw": 12035,
+      "ticks": "10710",
+      "payload_hex": "90150a8000000000504f437c696e76657273696f6e7c4d454449554d5f424547494e7c2575000000",
+      "kind": "user_event",
+      "actor_id": "0x800828f0:0",
+      "object_id": "0x800a1590:0",
+      "fields": {
+        "raw_words": [
+          "2148144528",
+          "0",
+          "2084786000",
+          "1702260329",
+          "1869181810",
+          "1162706030",
+          "1297434948",
+          "1195721311",
+          "628903497",
+          "117"
+        ],
+        "channel": "POC",
+        "format": "POC|inversion|MEDIUM_BEGIN|%u",
+        "arguments": [
+          "0"
+        ],
+        "message": "POC|inversion|MEDIUM_BEGIN|0",
+        "case_id": "inversion",
+        "phase": "MEDIUM_BEGIN",
+        "message_id": 0,
+        "request_id": 0
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1288",
+      "offset": 1288,
+      "id": 49,
+      "sequence": 71,
+      "core": 0,
+      "timestamp_raw": 21964,
+      "ticks": "20639",
+      "payload_hex": "02000000",
+      "kind": "new_time",
+      "actor_id": "0x800828f0:0",
+      "object_id": null,
+      "fields": {
+        "raw_words": [
+          "2"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1300",
+      "offset": 1300,
+      "id": 49,
+      "sequence": 72,
+      "core": 0,
+      "timestamp_raw": 31964,
+      "ticks": "30639",
+      "payload_hex": "03000000",
+      "kind": "new_time",
+      "actor_id": "0x800828f0:0",
+      "object_id": null,
+      "fields": {
+        "raw_words": [
+          "3"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1312",
+      "offset": 1312,
+      "id": 49,
+      "sequence": 73,
+      "core": 0,
+      "timestamp_raw": 41964,
+      "ticks": "40639",
+      "payload_hex": "04000000",
+      "kind": "new_time",
+      "actor_id": "0x800828f0:0",
+      "object_id": null,
+      "fields": {
+        "raw_words": [
+          "4"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1324",
+      "offset": 1324,
+      "id": 49,
+      "sequence": 74,
+      "core": 0,
+      "timestamp_raw": 51964,
+      "ticks": "50639",
+      "payload_hex": "05000000",
+      "kind": "new_time",
+      "actor_id": "0x800828f0:0",
+      "object_id": null,
+      "fields": {
+        "raw_words": [
+          "5"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1336",
+      "offset": 1336,
+      "id": 49,
+      "sequence": 75,
+      "core": 0,
+      "timestamp_raw": 61964,
+      "ticks": "60639",
+      "payload_hex": "06000000",
+      "kind": "new_time",
+      "actor_id": "0x800828f0:0",
+      "object_id": null,
+      "fields": {
+        "raw_words": [
+          "6"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1348",
+      "offset": 1348,
+      "id": 49,
+      "sequence": 76,
+      "core": 0,
+      "timestamp_raw": 71964,
+      "ticks": "70639",
+      "payload_hex": "07000000",
+      "kind": "new_time",
+      "actor_id": "0x800828f0:0",
+      "object_id": null,
+      "fields": {
+        "raw_words": [
+          "7"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1360",
+      "offset": 1360,
+      "id": 146,
+      "sequence": 77,
+      "core": 0,
+      "timestamp_raw": 72060,
+      "ticks": "70735",
+      "payload_hex": "90150a8000000000504f437c696e76657273696f6e7c4d454449554d5f454e447c257500",
+      "kind": "user_event",
+      "actor_id": "0x800828f0:0",
+      "object_id": "0x800a1590:0",
+      "fields": {
+        "raw_words": [
+          "2148144528",
+          "0",
+          "2084786000",
+          "1702260329",
+          "1869181810",
+          "1162706030",
+          "1297434948",
+          "1145980255",
+          "7677308"
+        ],
+        "channel": "POC",
+        "format": "POC|inversion|MEDIUM_END|%u",
+        "arguments": [
+          "0"
+        ],
+        "message": "POC|inversion|MEDIUM_END|0",
+        "case_id": "inversion",
+        "phase": "MEDIUM_END",
+        "message_id": 0,
+        "request_id": 0
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1404",
+      "offset": 1404,
+      "id": 201,
+      "sequence": 78,
+      "core": 0,
+      "timestamp_raw": 72063,
+      "ticks": "70738",
+      "payload_hex": "f0170880",
+      "kind": "task_notify",
+      "actor_id": "0x800828f0:0",
+      "object_id": "0x800817f0:0",
+      "fields": {
+        "raw_words": [
+          "2148014064"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1416",
+      "offset": 1416,
+      "id": 48,
+      "sequence": 79,
+      "core": 0,
+      "timestamp_raw": 72065,
+      "ticks": "70740",
+      "payload_hex": "f0170880",
+      "kind": "task_ready",
+      "actor_id": "0x800828f0:0",
+      "object_id": "0x800817f0:0",
+      "fields": {
+        "raw_words": [
+          "2148014064"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1428",
+      "offset": 1428,
+      "id": 55,
+      "sequence": 80,
+      "core": 0,
+      "timestamp_raw": 72068,
+      "ticks": "70743",
+      "payload_hex": "f017088005000000",
+      "kind": "task_switch",
+      "actor_id": "0x800817f0:0",
+      "object_id": "0x800817f0:0",
+      "fields": {
+        "raw_words": [
+          "2148014064",
+          "5"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1444",
+      "offset": 1444,
+      "id": 202,
+      "sequence": 81,
+      "core": 0,
+      "timestamp_raw": 72070,
+      "ticks": "70745",
+      "payload_hex": "f017088064000000",
+      "kind": "task_notify_wait",
+      "actor_id": "0x800817f0:0",
+      "object_id": "0x800817f0:0",
+      "fields": {
+        "raw_words": [
+          "2148014064",
+          "100"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1460",
+      "offset": 1460,
+      "id": 203,
+      "sequence": 82,
+      "core": 0,
+      "timestamp_raw": 72072,
+      "ticks": "70747",
+      "payload_hex": "f017088064000000",
+      "kind": "task_notify_wait_block",
+      "actor_id": "0x800817f0:0",
+      "object_id": "0x800817f0:0",
+      "fields": {
+        "raw_words": [
+          "2148014064",
+          "100"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1476",
+      "offset": 1476,
+      "id": 55,
+      "sequence": 83,
+      "core": 0,
+      "timestamp_raw": 72076,
+      "ticks": "70751",
+      "payload_hex": "f028088003000000",
+      "kind": "task_switch",
+      "actor_id": "0x800828f0:0",
+      "object_id": "0x800828f0:0",
+      "fields": {
+        "raw_words": [
+          "2148018416",
+          "3"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1492",
+      "offset": 1492,
+      "id": 123,
+      "sequence": 84,
+      "core": 0,
+      "timestamp_raw": 72078,
+      "ticks": "70753",
+      "payload_hex": "f0280880",
+      "kind": "task_suspend",
+      "actor_id": "0x800828f0:0",
+      "object_id": "0x800828f0:0",
+      "fields": {
+        "raw_words": [
+          "2148018416"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1504",
+      "offset": 1504,
+      "id": 55,
+      "sequence": 85,
+      "core": 0,
+      "timestamp_raw": 72082,
+      "ticks": "70757",
+      "payload_hex": "7020088002000000",
+      "kind": "task_switch",
+      "actor_id": "0x80082070:0",
+      "object_id": "0x80082070:0",
+      "fields": {
+        "raw_words": [
+          "2148016240",
+          "2"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1520",
+      "offset": 1520,
+      "id": 202,
+      "sequence": 86,
+      "core": 0,
+      "timestamp_raw": 72084,
+      "ticks": "70759",
+      "payload_hex": "7020088064000000",
+      "kind": "task_notify_wait",
+      "actor_id": "0x80082070:0",
+      "object_id": "0x80082070:0",
+      "fields": {
+        "raw_words": [
+          "2148016240",
+          "100"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1536",
+      "offset": 1536,
+      "id": 146,
+      "sequence": 87,
+      "core": 0,
+      "timestamp_raw": 72107,
+      "ticks": "70782",
+      "payload_hex": "90150a8002000000504f437c696e76657273696f6e7c4c4f575f524553554d457c257500",
+      "kind": "user_event",
+      "actor_id": "0x80082070:0",
+      "object_id": "0x800a1590:0",
+      "fields": {
+        "raw_words": [
+          "2148144528",
+          "2",
+          "2084786000",
+          "1702260329",
+          "1869181810",
+          "1330412654",
+          "1163026263",
+          "1162696019",
+          "7677308"
+        ],
+        "channel": "POC",
+        "format": "POC|inversion|LOW_RESUME|%u",
+        "arguments": [
+          "2"
+        ],
+        "message": "POC|inversion|LOW_RESUME|2",
+        "case_id": "inversion",
+        "phase": "LOW_RESUME",
+        "message_id": 2,
+        "request_id": 2
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1580",
+      "offset": 1580,
+      "id": 49,
+      "sequence": 88,
+      "core": 0,
+      "timestamp_raw": 81964,
+      "ticks": "80639",
+      "payload_hex": "08000000",
+      "kind": "new_time",
+      "actor_id": "0x80082070:0",
+      "object_id": null,
+      "fields": {
+        "raw_words": [
+          "8"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1592",
+      "offset": 1592,
+      "id": 49,
+      "sequence": 89,
+      "core": 0,
+      "timestamp_raw": 91964,
+      "ticks": "90639",
+      "payload_hex": "09000000",
+      "kind": "new_time",
+      "actor_id": "0x80082070:0",
+      "object_id": null,
+      "fields": {
+        "raw_words": [
+          "9"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1604",
+      "offset": 1604,
+      "id": 146,
+      "sequence": 90,
+      "core": 0,
+      "timestamp_raw": 92132,
+      "ticks": "90807",
+      "payload_hex": "90150a8000000000504f437c696e76657273696f6e7c4c4f575f52454c454153457c257500a5a5a5",
+      "kind": "user_event",
+      "actor_id": "0x80082070:0",
+      "object_id": "0x800a1590:0",
+      "fields": {
+        "raw_words": [
+          "2148144528",
+          "0",
+          "2084786000",
+          "1702260329",
+          "1869181810",
+          "1330412654",
+          "1163026263",
+          "1396786508",
+          "1965390917",
+          "2779096320"
+        ],
+        "channel": "POC",
+        "format": "POC|inversion|LOW_RELEASE|%u",
+        "arguments": [
+          "0"
+        ],
+        "message": "POC|inversion|LOW_RELEASE|0",
+        "case_id": "inversion",
+        "phase": "LOW_RELEASE",
+        "message_id": 0,
+        "request_id": 0
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1652",
+      "offset": 1652,
+      "id": 81,
+      "sequence": 91,
+      "core": 0,
+      "timestamp_raw": 92136,
+      "ticks": "90811",
+      "payload_hex": "8007088001000000",
+      "kind": "semaphore_give",
+      "actor_id": "0x80082070:0",
+      "object_id": "0x80080780:0",
+      "fields": {
+        "raw_words": [
+          "2148009856",
+          "1"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1668",
+      "offset": 1668,
+      "id": 48,
+      "sequence": 92,
+      "core": 0,
+      "timestamp_raw": 92138,
+      "ticks": "90813",
+      "payload_hex": "70310880",
+      "kind": "task_ready",
+      "actor_id": "0x80082070:0",
+      "object_id": "0x80083170:0",
+      "fields": {
+        "raw_words": [
+          "2148020592"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1680",
+      "offset": 1680,
+      "id": 55,
+      "sequence": 93,
+      "core": 0,
+      "timestamp_raw": 92141,
+      "ticks": "90816",
+      "payload_hex": "7031088004000000",
+      "kind": "task_switch",
+      "actor_id": "0x80083170:0",
+      "object_id": "0x80083170:0",
+      "fields": {
+        "raw_words": [
+          "2148020592",
+          "4"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1696",
+      "offset": 1696,
+      "id": 97,
+      "sequence": 94,
+      "core": 0,
+      "timestamp_raw": 92143,
+      "ticks": "90818",
+      "payload_hex": "800708806400000000000000",
+      "kind": "semaphore_take",
+      "actor_id": "0x80083170:0",
+      "object_id": "0x80080780:0",
+      "fields": {
+        "raw_words": [
+          "2148009856",
+          "100",
+          "0"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1716",
+      "offset": 1716,
+      "id": 146,
+      "sequence": 95,
+      "core": 0,
+      "timestamp_raw": 92167,
+      "ticks": "90842",
+      "payload_hex": "90150a8000000000504f437c696e76657273696f6e7c484947485f41435155495245447c25750000",
+      "kind": "user_event",
+      "actor_id": "0x80083170:0",
+      "object_id": "0x800a1590:0",
+      "fields": {
+        "raw_words": [
+          "2148144528",
+          "0",
+          "2084786000",
+          "1702260329",
+          "1869181810",
+          "1229487214",
+          "1096763463",
+          "1230328131",
+          "2084848978",
+          "29989"
+        ],
+        "channel": "POC",
+        "format": "POC|inversion|HIGH_ACQUIRED|%u",
+        "arguments": [
+          "0"
+        ],
+        "message": "POC|inversion|HIGH_ACQUIRED|0",
+        "case_id": "inversion",
+        "phase": "HIGH_ACQUIRED",
+        "message_id": 0,
+        "request_id": 0
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1764",
+      "offset": 1764,
+      "id": 81,
+      "sequence": 96,
+      "core": 0,
+      "timestamp_raw": 92171,
+      "ticks": "90846",
+      "payload_hex": "8007088001000000",
+      "kind": "semaphore_give",
+      "actor_id": "0x80083170:0",
+      "object_id": "0x80080780:0",
+      "fields": {
+        "raw_words": [
+          "2148009856",
+          "1"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1780",
+      "offset": 1780,
+      "id": 201,
+      "sequence": 97,
+      "core": 0,
+      "timestamp_raw": 92173,
+      "ticks": "90848",
+      "payload_hex": "f0170880",
+      "kind": "task_notify",
+      "actor_id": "0x80083170:0",
+      "object_id": "0x800817f0:0",
+      "fields": {
+        "raw_words": [
+          "2148014064"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1792",
+      "offset": 1792,
+      "id": 48,
+      "sequence": 98,
+      "core": 0,
+      "timestamp_raw": 92174,
+      "ticks": "90849",
+      "payload_hex": "f0170880",
+      "kind": "task_ready",
+      "actor_id": "0x80083170:0",
+      "object_id": "0x800817f0:0",
+      "fields": {
+        "raw_words": [
+          "2148014064"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1804",
+      "offset": 1804,
+      "id": 55,
+      "sequence": 99,
+      "core": 0,
+      "timestamp_raw": 92177,
+      "ticks": "90852",
+      "payload_hex": "f017088005000000",
+      "kind": "task_switch",
+      "actor_id": "0x800817f0:0",
+      "object_id": "0x800817f0:0",
+      "fields": {
+        "raw_words": [
+          "2148014064",
+          "5"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1820",
+      "offset": 1820,
+      "id": 202,
+      "sequence": 100,
+      "core": 0,
+      "timestamp_raw": 92179,
+      "ticks": "90854",
+      "payload_hex": "f017088064000000",
+      "kind": "task_notify_wait",
+      "actor_id": "0x800817f0:0",
+      "object_id": "0x800817f0:0",
+      "fields": {
+        "raw_words": [
+          "2148014064",
+          "100"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1836",
+      "offset": 1836,
+      "id": 203,
+      "sequence": 101,
+      "core": 0,
+      "timestamp_raw": 92181,
+      "ticks": "90856",
+      "payload_hex": "f017088064000000",
+      "kind": "task_notify_wait_block",
+      "actor_id": "0x800817f0:0",
+      "object_id": "0x800817f0:0",
+      "fields": {
+        "raw_words": [
+          "2148014064",
+          "100"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1852",
+      "offset": 1852,
+      "id": 55,
+      "sequence": 102,
+      "core": 0,
+      "timestamp_raw": 92185,
+      "ticks": "90860",
+      "payload_hex": "7031088004000000",
+      "kind": "task_switch",
+      "actor_id": "0x80083170:0",
+      "object_id": "0x80083170:0",
+      "fields": {
+        "raw_words": [
+          "2148020592",
+          "4"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1868",
+      "offset": 1868,
+      "id": 123,
+      "sequence": 103,
+      "core": 0,
+      "timestamp_raw": 92188,
+      "ticks": "90863",
+      "payload_hex": "70310880",
+      "kind": "task_suspend",
+      "actor_id": "0x80083170:0",
+      "object_id": "0x80083170:0",
+      "fields": {
+        "raw_words": [
+          "2148020592"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1880",
+      "offset": 1880,
+      "id": 55,
+      "sequence": 104,
+      "core": 0,
+      "timestamp_raw": 92191,
+      "ticks": "90866",
+      "payload_hex": "7020088002000000",
+      "kind": "task_switch",
+      "actor_id": "0x80082070:0",
+      "object_id": "0x80082070:0",
+      "fields": {
+        "raw_words": [
+          "2148016240",
+          "2"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1896",
+      "offset": 1896,
+      "id": 146,
+      "sequence": 105,
+      "core": 0,
+      "timestamp_raw": 92215,
+      "ticks": "90890",
+      "payload_hex": "90150a8002000000504f437c696e76657273696f6e7c4c4f575f524553544f5245447c2575000000",
+      "kind": "user_event",
+      "actor_id": "0x80082070:0",
+      "object_id": "0x800a1590:0",
+      "fields": {
+        "raw_words": [
+          "2148144528",
+          "2",
+          "2084786000",
+          "1702260329",
+          "1869181810",
+          "1330412654",
+          "1163026263",
+          "1380930643",
+          "628900933",
+          "117"
+        ],
+        "channel": "POC",
+        "format": "POC|inversion|LOW_RESTORED|%u",
+        "arguments": [
+          "2"
+        ],
+        "message": "POC|inversion|LOW_RESTORED|2",
+        "case_id": "inversion",
+        "phase": "LOW_RESTORED",
+        "message_id": 2,
+        "request_id": 2
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1944",
+      "offset": 1944,
+      "id": 201,
+      "sequence": 106,
+      "core": 0,
+      "timestamp_raw": 92219,
+      "ticks": "90894",
+      "payload_hex": "f0170880",
+      "kind": "task_notify",
+      "actor_id": "0x80082070:0",
+      "object_id": "0x800817f0:0",
+      "fields": {
+        "raw_words": [
+          "2148014064"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1956",
+      "offset": 1956,
+      "id": 48,
+      "sequence": 107,
+      "core": 0,
+      "timestamp_raw": 92221,
+      "ticks": "90896",
+      "payload_hex": "f0170880",
+      "kind": "task_ready",
+      "actor_id": "0x80082070:0",
+      "object_id": "0x800817f0:0",
+      "fields": {
+        "raw_words": [
+          "2148014064"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1968",
+      "offset": 1968,
+      "id": 55,
+      "sequence": 108,
+      "core": 0,
+      "timestamp_raw": 92224,
+      "ticks": "90899",
+      "payload_hex": "f017088005000000",
+      "kind": "task_switch",
+      "actor_id": "0x800817f0:0",
+      "object_id": "0x800817f0:0",
+      "fields": {
+        "raw_words": [
+          "2148014064",
+          "5"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:1984",
+      "offset": 1984,
+      "id": 202,
+      "sequence": 109,
+      "core": 0,
+      "timestamp_raw": 92226,
+      "ticks": "90901",
+      "payload_hex": "f017088064000000",
+      "kind": "task_notify_wait",
+      "actor_id": "0x800817f0:0",
+      "object_id": "0x800817f0:0",
+      "fields": {
+        "raw_words": [
+          "2148014064",
+          "100"
+        ]
+      },
+      "quality": []
+    },
+    {
+      "event_id": "0:2000",
+      "offset": 2000,
+      "id": 146,
+      "sequence": 110,
+      "core": 0,
+      "timestamp_raw": 92249,
+      "ticks": "90924",
+      "payload_hex": "90150a8000000000504f437c696e76657273696f6e7c434f4d504c4554457c2575000000",
+      "kind": "user_event",
+      "actor_id": "0x800817f0:0",
+      "object_id": "0x800a1590:0",
+      "fields": {
+        "raw_words": [
+          "2148144528",
+          "0",
+          "2084786000",
+          "1702260329",
+          "1869181810",
+          "1329822830",
+          "1162629197",
+          "628901204",
+          "117"
+        ],
+        "channel": "POC",
+        "format": "POC|inversion|COMPLETE|%u",
+        "arguments": [
+          "0"
+        ],
+        "message": "POC|inversion|COMPLETE|0",
+        "case_id": "inversion",
+        "phase": "COMPLETE",
+        "message_id": 0,
+        "request_id": 0
+      },
+      "quality": []
+    }
+  ],
+  "quality": {
+    "status": "valid",
+    "issues": [],
+    "capture_complete": true
+  },
+  "derived": {},
+  "raw_metadata": {
+    "entries": [
+      {
+        "offset": 72,
+        "address": "0x800a0b70",
+        "states": [
+          "0",
+          "0",
+          "131072"
+        ],
+        "options": 2147483648,
+        "name": "System Heap",
+        "symbol_hex": "53797374656d20486561700000000000000000000000000000000000"
+      },
+      {
+        "offset": 120,
+        "address": "0x80080710",
+        "states": [
+          "1",
+          "0",
+          "0"
+        ],
+        "options": 0,
+        "name": "TzCtrl",
+        "symbol_hex": "547a4374726c00000000000000000000000000000000000000000000"
+      }
+    ],
+    "period": 0,
+    "wraparounds": 0,
+    "latest_timestamp": 0,
+    "os_tick_count": 0,
+    "options": 1,
+    "core_flags": 769,
+    "tailchain_threshold": 0
+  }
+}
