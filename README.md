@@ -2,7 +2,7 @@
 
 **這裡是後續實驗與文件的主要入口，使用獨立 Git 管理。**
 
-目前已固定工具鏈、完成 PSF parser，並在 RISC-V QEMU 跑通 FreeRTOS Queue／clock probe。正式 harness 與七配置三次重跑已通過；本機 Dashboard 已通過瀏覽器驗收；獨立 review 的 3 個 Important 已修正，最後全套回歸驗證中。建立日期：2026-10-03。
+目前已固定工具鏈、完成 PSF parser，並在 RISC-V QEMU 跑通 FreeRTOS Queue／clock probe。正式 harness 與七配置三次重跑已通過；本機 Dashboard 已通過瀏覽器驗收；獨立 review 的 3 個 Important 已修正，最後全套回歸驗證通過。建立日期：2026-10-03。
 
 ## 文件入口
 
@@ -117,3 +117,6 @@ Starlette TestClient 有建議移到 httpx2 的 deprecation warning，現行測�
 
 
 獨立 [整體 code review 與修正](docs/reviews/final-code-review.md) 及 [實作決策／代價](docs/reviews/implementation-decisions.md) 已保存。沒有延後的功能性 Minor。
+
+
+最終修正 commit `5f84e53`：完整 Python 測試 96／96 通過，包含 90 unit＋6 integration；[完整 log](artifacts/verification/all-tests-final.log)。11／11 browser 與 5／5 Node tests 亦通過。`feat/psf-lab` 保留於指定 POC；未 merge／push。

@@ -25,3 +25,8 @@ Reviewer 自行重跑原有 87 unit、5 JavaScript tests 與 Ruff，核對 21-ru
 | SMP、ring dump、其他 schema、離線 HTML、雲端 | 明確不在第一版本機 PSF 流程，維持分期 | 使用者不能將此 POC 當完整 Tracealyzer 替代品；缺少的能力仍列 handoff |
 
 其他 observations：SDK 設定註解與既有 patch context 有尾端空白，reviewer 沒有判成產品缺陷，未為此改動 SDK／patch。沒有延後的功能性 Minor。
+
+
+## 修正後結果
+
+修正 commit `5f84e53`，90 unit＋6 integration 合計 96／96、5／5 JavaScript、11／11 Playwright 通過。Clock probe 在最終整合前重新建置；最新正式 21-run 證據也由修正後 decoder 重驗。完整 [Python log](../../artifacts/verification/all-tests-final.log)、[browser log](../../artifacts/verification/browser-tests.log)、[unit GREEN](../../artifacts/verification/review-green.log) 已保存。未留下 Critical／Important 待修項目；沒有延後的功能性 Minor。

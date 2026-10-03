@@ -11,3 +11,12 @@ Task 4: Ruling: Browser hang guard is 10 s assertions / 30 s large-capacity load
 Task 4: Source race reproduced RED (late run PSF replaced newer desktop upload); unified download/upload/saved-trace generation fixes it. API parsing remains real during held-response tests.
 Task 4: T3 HTML/null/quality end-to-end checks completed in immediately following browser task rather than duplicating DOM mocks; BigInt/reset/late-response unit checks remained in T3.
 Task 4: complete (commits a84eaf9..e5f2d3f, tests: .venv/bin/python -m unittest discover -s tests/unit -t . -v → OK)
+Final review: fresh-context gpt-6-astra, range 1a29e50..e5f2d3f, Critical 0 / Important 3 / Minor 0; final verdict With fixes.
+Final: Ruling: M4 implementation was declined by reviewer — user explicitly put it after M1-M3, retain planning-only status — cost: no cache improvement claim until the later model experiment.
+Final: Ruling: physical cycles/cache/bus/UART overhead declined — QEMU icount cannot establish these, retain U tasks/M4 — cost: product performance numbers remain unknown pending platform evidence.
+Final: Ruling: SMP/ring/other schemas/offline/cloud declined — keep explicit first-version exclusions — cost: POC cannot replace all Tracealyzer capabilities.
+Final: fixed F01 signed Counter — test_signed_counter_matches_formatted_value_in_both_schemas RED→GREEN; full Python suite 96/96, JS 5/5, browser 11/11.
+Final: fixed F02 missing unknown-window CSV — test_unknown_and_zero_windows_survive_metrics_csv RED→GREEN; full Python suite 96/96, JS 5/5, browser 11/11.
+Final: fixed F03 undisclosed signal/request cap — test_signal_display_limit_has_explicit_scope and browser tail-anomaly test RED→GREEN; full Python suite 96/96, JS 5/5, browser 11/11.
+Final: deferred minors: none.
+Final: user requested local POC experiment/history, no merge or publishing; keep feat/psf-lab and designated checkout. No extra integration decision or remote operation introduced.
