@@ -1,0 +1,12 @@
+{
+  "archive_sha256": "ed2eaa790a3faddd00227699079b4b76311904945f092a89dabb053956a3a5ce",
+  "verified_files": 1343,
+  "unit_tests": 2,
+  "recaptured_psf": 9,
+  "measurements_equal": 108,
+  "scope": "same host clean temporary directory; not cross-machine validation",
+  "logs": [
+    "..\n----------------------------------------------------------------------\nRan 2 tests in 4.105s\n\nOK\n",
+    "PASS: 108 measurements, 9 PSF captures; /private/var/folders/wj/3v8944vj0t714p6b5l9lmr_80000gq/T/tcp-restore-yvdhfmtd/recaptured\n"
+  ]
+}

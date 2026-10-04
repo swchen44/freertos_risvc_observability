@@ -24,6 +24,11 @@ CASE_SRC := deadlock
 CFLAGS += -DPOC_ABBA=$(if $(filter deadlock_abba,$(CASE)),1,0)
 endif
 SRC := $(KERNEL)/tasks.c $(KERNEL)/queue.c $(KERNEL)/list.c $(KERNEL)/portable/MemMang/heap_4.c $(PORT)/port.c $(wildcard $(SDK)/*.c) $(SDK)/kernelports/FreeRTOS/trcKernelPort.c $(wildcard port/*.c) $(wildcard app/*.c) app/cases/$(CASE_SRC).c
+ifneq ($(filter $(CASE),tcp_checksum1 tcp_checksum2 tcp_checksum3),)
+LWIP := $(ROOT)/references/tcp/lwip
+CFLAGS += -Itcp -I$(LWIP)/src/include -fno-strict-aliasing -DLWIP_CHKSUM_ALGORITHM=$(patsubst tcp_checksum%,%,$(CASE))
+SRC += $(LWIP)/src/core/inet_chksum.c $(LWIP)/src/core/def.c
+endif
 ASM := $(PORT)/portASM.S $(DEMO)/build/gcc/start.S
 OBJ := $(addprefix $(OUT)/,$(notdir $(SRC:.c=.o) $(ASM:.S=.o)))
 VPATH := $(sort $(dir $(SRC) $(ASM)))

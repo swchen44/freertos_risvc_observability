@@ -1,5 +1,7 @@
 # PSF、RISC-V 模擬與 Dashboard：下一階段研究
 
+**新增 TCP/IP 實際元件研究：**[Stack 比較、公開案例與 RV32 checksum 實測](TCP-IP與Cache最佳化案例.md)。三種 lwIP 演算法、9 份 PSF、108 筆量測；完整 TCP 與 16+16 / 64 KiB cache 模型仍列為後續工作。
+
 更新日期：2026-10-03。這份文件記錄已查到的事實、使用者新增要求、設計選項與驗收方向。**目前正在研究與釐清設計，尚未建立新的模擬 firmware、Python decoder、harness 或 Dashboard。**
 
 原始研究：[完整研究報告](../../references/baseline/research/FreeRTOS-RISC-V-Observability-研究報告.md)。要求與過程：[根 README](../../references/baseline/README.md)。產品驗證：[內部 AI 接續任務](../../references/baseline/research/內部AI-接續研究任務.md)。

@@ -1,0 +1,7 @@
+{
+  "archive": "tcp-checksum-source.tar.gz",
+  "sha256": "ed2eaa790a3faddd00227699079b4b76311904945f092a89dabb053956a3a5ce",
+  "files": 1343,
+  "bytes": 4935338,
+  "excluded": "Host tools, Python packages, complete TCP stack, cache simulation"
+}
