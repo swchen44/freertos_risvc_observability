@@ -1,0 +1,62 @@
+{
+  "command": [
+    "/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-system-riscv32-relative",
+    "-machine",
+    "virt",
+    "-cpu",
+    "rv32",
+    "-smp",
+    "1",
+    "-m",
+    "128M",
+    "-bios",
+    "none",
+    "-display",
+    "none",
+    "-monitor",
+    "none",
+    "-serial",
+    "file:console.log",
+    "-accel",
+    "tcg,thread=single",
+    "-icount",
+    "shift=0,align=off,sleep=off",
+    "-semihosting-config",
+    "enable=on,target=native",
+    "-plugin",
+    "/Users/swchen.tw/git/percepio/poc/runs/clock-edges-relative-v1/clock_edges.dylib,trigger=80002b22,enabled=1,out=/Users/swchen.tw/git/percepio/poc/runs/clock-edges-relative-v1/enabled-1-1/plugin.json",
+    "-kernel",
+    "/Users/swchen.tw/git/percepio/poc/runs/clock-edges-relative-v1/enabled-1-1/firmware.elf"
+  ],
+  "result": {
+    "run": "enabled-1-1",
+    "enabled": true,
+    "repeat": 1,
+    "accepted": true,
+    "exit_code": 0,
+    "status": "completed",
+    "acceptance": {
+      "passed": true,
+      "enabled": true,
+      "phase_elapsed_ns": [
+        1003600,
+        2003600,
+        3600,
+        3003700,
+        1003900
+      ],
+      "restored_ticks": 3,
+      "wfi_elapsed_ns": 986100
+    }
+  },
+  "files": {
+    "symbols.txt": "975fd9f56c07eeb62e14695eba96e27773cf972e2efe08c10bf8ac06fca0f008",
+    "trace.psf": "9bf998430dc58b73fdb6fa893687979994f1455a843c2f4500393c3998168639",
+    "firmware.elf": "dd7ccfac29526487aa3c915481bced42dee2e289c9d00c29072bfae4e1c59c5b",
+    "console.log": "c5651757c2aa7a4dab804a23a69ade3527d450e87c3fc55fe000fb5970721126",
+    "oracle.json": "528a3893d955f50dec17570045cc3f2688b60d770a0fc493cc885c19b13152d4",
+    "plugin.json": "c2671479526ec1404501f05f699e0f28f5590c3dd3bf022cfa0ebee1dd3ba35e",
+    "qemu.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "clock-edges.json": "f5f65bdcac136cb8420d47185df18517395a2fba2c95dfd5680a165ef577c306"
+  }
+}

@@ -92,3 +92,12 @@ class ClockEdgesTests(unittest.TestCase):
         m, r = fixture()
         r["wfi_count"] = 2
         self.assertTrue(validate_edges(m, r, True)["passed"])
+
+    def test_relative_cost_has_no_claimed_absolute_target(self):
+        m, r = fixture()
+        for request in r["requests"]:
+            if request["id"] != 2:
+                request["mode"] = "relative_cost"
+                request["anchor_target_ns"] = request["target_ns"]
+                request["target_ns"] = None
+        self.assertTrue(validate_edges(m, r, True)["passed"])

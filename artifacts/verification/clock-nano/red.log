@@ -1,0 +1,18 @@
+test_nano_clock (unittest.loader._FailedTest.test_nano_clock) ... ERROR
+
+======================================================================
+ERROR: test_nano_clock (unittest.loader._FailedTest.test_nano_clock)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_nano_clock
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/unittest/loader.py", line 137, in loadTestsFromName
+    module = __import__(module_name)
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_nano_clock.py", line 4, in <module>
+    from psf_lab.nano_clock import compare_nano
+ModuleNotFoundError: No module named 'psf_lab.nano_clock'
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)

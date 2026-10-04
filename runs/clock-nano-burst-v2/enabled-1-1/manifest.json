@@ -1,0 +1,128 @@
+{
+  "command": [
+    "/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-system-riscv32-relative",
+    "-machine",
+    "virt",
+    "-cpu",
+    "rv32",
+    "-smp",
+    "1",
+    "-m",
+    "128M",
+    "-bios",
+    "none",
+    "-display",
+    "none",
+    "-monitor",
+    "none",
+    "-serial",
+    "file:console.log",
+    "-accel",
+    "tcg,thread=single",
+    "-icount",
+    "shift=0,align=off,sleep=off",
+    "-semihosting-config",
+    "enable=on,target=native",
+    "-plugin",
+    "/Users/swchen.tw/git/percepio/poc/runs/clock-nano-burst-v2/clock_nano.dylib,trigger=800029b2,begin=800029b6,end=800029ba,enabled=1,out=/Users/swchen.tw/git/percepio/poc/runs/clock-nano-burst-v2/enabled-1-1/plugin.json",
+    "-kernel",
+    "/Users/swchen.tw/git/percepio/poc/runs/clock-nano-burst-v2/enabled-1-1/firmware.elf"
+  ],
+  "result": {
+    "run": "enabled-1-1",
+    "enabled": true,
+    "repeat": 1,
+    "accepted": true,
+    "exit_code": 0,
+    "status": "completed",
+    "measurement": [
+      {
+        "id": 0,
+        "delay_ns": 10,
+        "repeats": 1000,
+        "before": 1363,
+        "after": 2824,
+        "ticks": 0
+      },
+      {
+        "id": 1,
+        "delay_ns": 20,
+        "repeats": 1000,
+        "before": 2874,
+        "after": 4434,
+        "ticks": 0
+      },
+      {
+        "id": 2,
+        "delay_ns": 50,
+        "repeats": 1000,
+        "before": 4484,
+        "after": 6344,
+        "ticks": 0
+      },
+      {
+        "id": 3,
+        "delay_ns": 100,
+        "repeats": 1000,
+        "before": 6394,
+        "after": 8754,
+        "ticks": 0
+      },
+      {
+        "id": 4,
+        "delay_ns": 1000,
+        "repeats": 1000,
+        "before": 8804,
+        "after": 20164,
+        "ticks": 0
+      }
+    ],
+    "receipt": [
+      {
+        "id": 0,
+        "requests": 1000,
+        "requested_ns": 10000,
+        "insns": 136032,
+        "api_calls": 10000
+      },
+      {
+        "id": 1,
+        "requests": 1000,
+        "requested_ns": 20000,
+        "insns": 136032,
+        "api_calls": 10000
+      },
+      {
+        "id": 2,
+        "requests": 1000,
+        "requested_ns": 50000,
+        "insns": 136032,
+        "api_calls": 10000
+      },
+      {
+        "id": 3,
+        "requests": 1000,
+        "requested_ns": 100000,
+        "insns": 136032,
+        "api_calls": 10000
+      },
+      {
+        "id": 4,
+        "requests": 1000,
+        "requested_ns": 1000000,
+        "insns": 136032,
+        "api_calls": 10000
+      }
+    ]
+  },
+  "files": {
+    "symbols.txt": "14bc355b66e8cfff5dab9d3f4dbb10c9464e34e8b05d9bff8a31fde4bc560c16",
+    "trace.psf": "ee262116dd208a9eae05d5892b649bbb57325b163330a90a6e5915e8684a3ff0",
+    "firmware.elf": "9113a96c7c98987edd647bf7510d78f529fae3dda69295b26bc368dbd173be17",
+    "console.log": "c5651757c2aa7a4dab804a23a69ade3527d450e87c3fc55fe000fb5970721126",
+    "oracle.json": "0af52ee1d37fa5fa50eda562e6b69644799a751afdf1351c1d6f8a18cc780562",
+    "plugin.json": "00e20fbd492c46564c0433bb2afa5c1ef16c1cf3eed3a4381bdda8810291e077",
+    "clock-nano.json": "357249106f4041f5dc0cd9bb2fe9b044a5cc1d6a69958b798277ce0cf31f6268",
+    "qemu.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

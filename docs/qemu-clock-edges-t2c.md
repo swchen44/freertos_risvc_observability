@@ -1,5 +1,7 @@
 # T2c：連續時間注入、過期目標、WFI 與 IRQ 邊界
 
+**後續進展：**[T2d 已解決小延遲累計流失](qemu-clock-nano-t2d.md)，並完成相對 API 的 IRQ／WFI 回歸。逐次 memory stall 接合仍未完成。
+
 **六次正式執行全部通過：control／啟用注入各三次，guest 結果一致。** 使用前一輪的獨立 QEMU 9.2.0 clock binary，本輪沒有修改 QEMU patch。新增 guest／plugin／Python oracle，驗證 scheduler 啟動前的無 timer 情境、連續請求、過期目標、IRQ 遮蔽／恢復，以及 WFI 後再次注入。
 
 這是毫秒級 clock API 驗證，尚未接上逐次 cache miss 或 10-cycle sysram。

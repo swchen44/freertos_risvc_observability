@@ -25,7 +25,11 @@ def validate_edges(measurement, receipt, enabled):
         if not before * 100 <= request["anchor_ns"] <= after * 100:
             raise ValueError("Anchor not in guest measurement interval")
         target = 0 if i == 2 else request["anchor_ns"] + delay
-        if request["target_ns"] != target:
+        mode = request.get("mode", "absolute_target")
+        if mode == "relative_cost":
+            if request["target_ns"] is not None or request["anchor_target_ns"] != target:
+                raise ValueError("Incorrect relative target metadata")
+        elif mode != "absolute_target" or request["target_ns"] != target:
             raise ValueError("Incorrect absolute target")
         deltas.append(delta * 100)
     masked = phases[3]

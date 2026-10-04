@@ -1,0 +1,54 @@
+--- a/include/qemu/qemu-plugin.h
++++ b/include/qemu/qemu-plugin.h
+@@ -728,6 +728,13 @@
+ QEMU_PLUGIN_API
+ void qemu_plugin_update_ns(const void *handle, int64_t time);
+ 
++/* POC-only extension: add cost when async work executes, never an upstream API.
++ * Single-vCPU fixed-icount builds with the experimental clock setter only.
++ */
++QEMU_PLUGIN_API
++void qemu_plugin_poc_add_ns(const void *handle, uint64_t delta_ns);
++
++
+ typedef void
+ (*qemu_plugin_vcpu_syscall_cb_t)(qemu_plugin_id_t id, unsigned int vcpu_index,
+                                  int64_t num, uint64_t a1, uint64_t a2,
+--- a/plugins/api.c
++++ b/plugins/api.c
+@@ -670,6 +670,35 @@
+ }
+ #endif
+ 
++#ifdef CONFIG_SOFTMMU
++static void poc_add_virtual_time__async(CPUState *cpu, run_on_cpu_data data)
++{
++    uint64_t delta = data.host_ulong;
++    int64_t now = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
++
++    /* Bound the sum before converting to the signed clock API. */
++    if (now < 0 || delta > INT64_MAX - (uint64_t)now) {
++        error_report("POC clock cost overflow");
++        exit(1);
++    }
++    qemu_clock_advance_virtual_time(now + delta);
++}
++#endif
++
++void qemu_plugin_poc_add_ns(const void *handle, uint64_t delta_ns)
++{
++#ifdef CONFIG_SOFTMMU
++    if (handle == &has_control && delta_ns) {
++        if (!current_cpu || delta_ns > INT64_MAX) {
++            error_report("POC clock cost requires a vCPU and signed-ns range");
++            exit(1);
++        }
++        async_run_on_cpu(current_cpu, poc_add_virtual_time__async,
++                         RUN_ON_CPU_HOST_ULONG(delta_ns));
++    }
++#endif
++}
++
+ void qemu_plugin_update_ns(const void *handle, int64_t new_time)
+ {
+ #ifdef CONFIG_SOFTMMU

@@ -1,0 +1,187 @@
+{
+  "nano_runs": 18,
+  "edge_runs": 6,
+  "same_qemu_for_formal_three_way_comparison": true,
+  "all_formal_nano_hashes_verified": true,
+  "api_call_counts_verified": true,
+  "patch_reconstruction_matches_build": true,
+  "patches": {
+    "0002-clock-advance-without-pending-timer.patch": "b2f057dd2ce0b50494df9bb363e4bb351fbb405b7f50da404a5bfb288a195b06",
+    "0003-experimental-relative-clock-cost.patch": "d77bf8974a950eb3aac7b6333b6fd6dfe30940af8704b953ae3832db4c6ab11f",
+    "0001-experimental-icount-setter.patch": "944844a4384b8fbeda92091bb4c926995bfd89e7eda3fe2e528c94bdc6b6f5ae"
+  },
+  "modes": {
+    "absolute": {
+      "qemu_sha256": "69969c3ec8cce8f9340215fc340c5c01f81c3ef978252d3766937d2d176816db",
+      "results_sha256": "faa558b9e4b50c38de43b0f75031f796de7aad7de5f5889354a2f32a487b9d8b",
+      "all_delays_reliable": false,
+      "first_comparison": {
+        "all_delays_reliable": false,
+        "rows": [
+          {
+            "delay_ns": 10,
+            "requests": 1000,
+            "expected_extra_ns": 10000,
+            "observed_extra_ns": 0,
+            "error_ns": -10000,
+            "delivery_ratio": 0.0,
+            "reliable": false
+          },
+          {
+            "delay_ns": 20,
+            "requests": 1000,
+            "expected_extra_ns": 20000,
+            "observed_extra_ns": 300,
+            "error_ns": -19700,
+            "delivery_ratio": 0.015,
+            "reliable": false
+          },
+          {
+            "delay_ns": 50,
+            "requests": 1000,
+            "expected_extra_ns": 50000,
+            "observed_extra_ns": 14000,
+            "error_ns": -36000,
+            "delivery_ratio": 0.28,
+            "reliable": false
+          },
+          {
+            "delay_ns": 100,
+            "requests": 1000,
+            "expected_extra_ns": 100000,
+            "observed_extra_ns": 64000,
+            "error_ns": -36000,
+            "delivery_ratio": 0.64,
+            "reliable": false
+          },
+          {
+            "delay_ns": 1000,
+            "requests": 1000,
+            "expected_extra_ns": 1000000,
+            "observed_extra_ns": 964000,
+            "error_ns": -36000,
+            "delivery_ratio": 0.964,
+            "reliable": false
+          }
+        ],
+        "tolerance_ns": 200,
+        "boundary": "Aggregate mtime evidence; clock mode is recorded in the capture manifest"
+      }
+    },
+    "relative": {
+      "qemu_sha256": "69969c3ec8cce8f9340215fc340c5c01f81c3ef978252d3766937d2d176816db",
+      "results_sha256": "294c52bff7d0c4de7b4eb7808f8b5960886ced8664c6d22118f8434798253ea6",
+      "all_delays_reliable": true,
+      "first_comparison": {
+        "all_delays_reliable": true,
+        "rows": [
+          {
+            "delay_ns": 10,
+            "requests": 1000,
+            "expected_extra_ns": 10000,
+            "observed_extra_ns": 10000,
+            "error_ns": 0,
+            "delivery_ratio": 1.0,
+            "reliable": true
+          },
+          {
+            "delay_ns": 20,
+            "requests": 1000,
+            "expected_extra_ns": 20000,
+            "observed_extra_ns": 20000,
+            "error_ns": 0,
+            "delivery_ratio": 1.0,
+            "reliable": true
+          },
+          {
+            "delay_ns": 50,
+            "requests": 1000,
+            "expected_extra_ns": 50000,
+            "observed_extra_ns": 50000,
+            "error_ns": 0,
+            "delivery_ratio": 1.0,
+            "reliable": true
+          },
+          {
+            "delay_ns": 100,
+            "requests": 1000,
+            "expected_extra_ns": 100000,
+            "observed_extra_ns": 100000,
+            "error_ns": 0,
+            "delivery_ratio": 1.0,
+            "reliable": true
+          },
+          {
+            "delay_ns": 1000,
+            "requests": 1000,
+            "expected_extra_ns": 1000000,
+            "observed_extra_ns": 1000000,
+            "error_ns": 0,
+            "delivery_ratio": 1.0,
+            "reliable": true
+          }
+        ],
+        "tolerance_ns": 200,
+        "boundary": "Aggregate mtime evidence; clock mode is recorded in the capture manifest"
+      }
+    },
+    "burst": {
+      "qemu_sha256": "69969c3ec8cce8f9340215fc340c5c01f81c3ef978252d3766937d2d176816db",
+      "results_sha256": "65aea40b381345572e2423de8bc1ec2ee07657ed5fc05a5c3c012d41ab213c81",
+      "all_delays_reliable": true,
+      "first_comparison": {
+        "all_delays_reliable": true,
+        "rows": [
+          {
+            "delay_ns": 10,
+            "requests": 1000,
+            "expected_extra_ns": 10000,
+            "observed_extra_ns": 10000,
+            "error_ns": 0,
+            "delivery_ratio": 1.0,
+            "reliable": true
+          },
+          {
+            "delay_ns": 20,
+            "requests": 1000,
+            "expected_extra_ns": 20000,
+            "observed_extra_ns": 20000,
+            "error_ns": 0,
+            "delivery_ratio": 1.0,
+            "reliable": true
+          },
+          {
+            "delay_ns": 50,
+            "requests": 1000,
+            "expected_extra_ns": 50000,
+            "observed_extra_ns": 50000,
+            "error_ns": 0,
+            "delivery_ratio": 1.0,
+            "reliable": true
+          },
+          {
+            "delay_ns": 100,
+            "requests": 1000,
+            "expected_extra_ns": 100000,
+            "observed_extra_ns": 100000,
+            "error_ns": 0,
+            "delivery_ratio": 1.0,
+            "reliable": true
+          },
+          {
+            "delay_ns": 1000,
+            "requests": 1000,
+            "expected_extra_ns": 1000000,
+            "observed_extra_ns": 1000000,
+            "error_ns": 0,
+            "delivery_ratio": 1.0,
+            "reliable": true
+          }
+        ],
+        "tolerance_ns": 200,
+        "boundary": "Aggregate mtime evidence; clock mode is recorded in the capture manifest"
+      }
+    }
+  },
+  "edge_results_sha256": "f1e75a8e4cfa415d7eadf3c5e18b5c48d7344416a3c290b3564d5a864c565ed4"
+}

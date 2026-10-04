@@ -10,6 +10,8 @@ mkdir "$1"
 dest=$(CDPATH= cd -- "$1" && pwd)
 uv venv "$dest/venv"
 uv pip install --python "$dest/venv/bin/python" meson==1.12.1 ninja==1.13.2
+NINJA="$dest/venv/bin/ninja"
+export NINJA
 curl -fL --max-time 600 https://download.qemu.org/qemu-9.2.0.tar.xz -o "$dest/qemu-9.2.0.tar.xz"
 "$dest/venv/bin/python" - "$dest/qemu-9.2.0.tar.xz" <<'PY'
 import hashlib
@@ -38,6 +40,9 @@ cp qemu-system-riscv32 "$dest/qemu-system-riscv32-setter"
 patch -d "$dest/qemu-9.2.0" -p1 < "$repo/tools/qemu/0002-clock-advance-without-pending-timer.patch"
 "$dest/venv/bin/ninja" -j4 qemu-system-riscv32 > "$dest/clock-build.log" 2>&1
 cp qemu-system-riscv32 "$dest/qemu-system-riscv32-clock"
+patch -d "$dest/qemu-9.2.0" -p1 < "$repo/tools/qemu/0003-experimental-relative-clock-cost.patch"
+"$dest/venv/bin/ninja" -j4 qemu-system-riscv32 > "$dest/relative-build.log" 2>&1
+cp qemu-system-riscv32 "$dest/qemu-system-riscv32-relative"
 "$dest/venv/bin/python" - "$dest" <<'PY'
 import hashlib
 import json
@@ -47,7 +52,7 @@ import sys
 from pathlib import Path
 root = Path(sys.argv[1])
 files = [root / ("qemu-system-riscv32-" + suffix)
-         for suffix in ("baseline", "setter", "clock")]
+         for suffix in ("baseline", "setter", "clock", "relative")]
 result = {"host": platform.platform(), "binaries": {
     p.name: {"sha256": hashlib.sha256(p.read_bytes()).hexdigest(),
              "version": subprocess.check_output([str(p), "--version"], text=True)}

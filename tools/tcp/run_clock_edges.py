@@ -22,6 +22,7 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--qemu", type=Path, required=True)
     parser.add_argument("--repeats", type=int, choices=(1, 3), default=3)
+    parser.add_argument("--relative", action="store_true")
     args = parser.parse_args()
     dest, qemu = args.output.resolve(), args.qemu.resolve()
     dest.mkdir(parents=True, exist_ok=False)
@@ -56,6 +57,8 @@ def main():
         str(plugin),
         *shlex.split(subprocess.check_output(["pkg-config", "--cflags", "glib-2.0"], text=True)),
     ]
+    if args.relative:
+        plugin_cmd.append("-DPOC_RELATIVE")
     command(plugin_cmd, ROOT, dest / "plugin-build.log")
     elf = build / "firmware.elf"
     symbols = subprocess.check_output(
@@ -74,6 +77,7 @@ def main():
             "tools/tcp/run_clock_edges.py",
             "tools/tcp/run_transfer.py",
             "src/psf_lab/clock_edges.py",
+            "tools/qemu/poc-clock-api.h",
             "src/psf_lab/runner.py",
             "references/qemu-time-control/include/qemu/qemu-plugin.h",
             "third_party/FreeRTOS/FreeRTOS/Demo/RISC-V_RV32_QEMU_VIRT_GCC/build/gcc/fake_rom.ld",
@@ -85,6 +89,7 @@ def main():
             if not token.endswith(":") and path.is_file():
                 dependencies.add(path)
     manifest = dict(
+        clock_mode="relative_async_cost" if args.relative else "guest_anchor_absolute",
         build_command=build_cmd,
         plugin_command=plugin_cmd,
         qemu_sha256=digest(qemu),

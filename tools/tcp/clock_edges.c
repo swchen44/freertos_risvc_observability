@@ -8,6 +8,9 @@
 #include <string.h>
 #include <errno.h>
 #include <inttypes.h>
+#ifdef POC_RELATIVE
+#include "../qemu/poc-clock-api.h"
+#endif
 QEMU_PLUGIN_EXPORT int qemu_plugin_version=QEMU_PLUGIN_VERSION;
 static uint64_t trigger;
 static unsigned enabled,count,idle_count,resume_count,wfi_count;
@@ -47,9 +50,21 @@ static void execute(unsigned cpu,void *data) {
  uint64_t target=id==2?0:anchor+delay;
  if(id==4) wfi_span=insns-wfi_start;
  if(target>INT64_MAX) fail("target overflow");
- if(fprintf(out,"%s{\"id\":%u,\"delay_ns\":%u,\"anchor_ns\":%"PRIu64",\"target_ns\":%"PRIu64",\"applied\":%s,\"wfi_before\":%u}",count?",":"",id,delay,anchor,target,enabled?"true":"false",wfi_count)<0) fail("receipt write");
+ char target_text[32];const char *mode="absolute_target";
+ snprintf(target_text,sizeof target_text,"%"PRIu64,target);
+#ifdef POC_RELATIVE
+ if(id!=2) {strcpy(target_text,"null");mode="relative_cost";}
+#endif
+ if(fprintf(out,"%s{\"id\":%u,\"delay_ns\":%u,\"anchor_ns\":%"PRIu64",\"target_ns\":%s,\"anchor_target_ns\":%"PRIu64",\"mode\":\"%s\",\"applied\":%s,\"wfi_before\":%u}",count?",":"",id,delay,anchor,target_text,target,mode,enabled?"true":"false",wfi_count)<0) fail("receipt write");
  fflush(out);count++;
- if(enabled) qemu_plugin_update_ns(handle,(int64_t)target);
+ if(enabled) {
+#ifdef POC_RELATIVE
+  if(id==2) qemu_plugin_update_ns(handle,0);
+  else qemu_plugin_poc_add_ns(handle,delay);
+#else
+  qemu_plugin_update_ns(handle,(int64_t)target);
+#endif
+ }
 }
 static void translate(qemu_plugin_id_t id,struct qemu_plugin_tb *tb) {
  (void)id;

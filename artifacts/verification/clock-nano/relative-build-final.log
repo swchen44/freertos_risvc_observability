@@ -1,0 +1,5 @@
+ninja: Entering directory `.tools/qemu-time-control/build'
+[1/6] Generating qemu-version.h with a custom command (wrapped by meson to capture output)
+[2/4] Compiling C object libqemu-riscv32-softmmu.a.p/plugins_api.c.o
+[3/4] Linking target qemu-system-riscv32-unsigned
+[4/4] Generating qemu-system-riscv32 with a custom command

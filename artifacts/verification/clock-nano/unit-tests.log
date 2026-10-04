@@ -1,0 +1,22 @@
+test_changed_instruction_work_is_rejected (tests.unit.test_nano_clock.NanoClockTests.test_changed_instruction_work_is_rejected) ... ok
+test_clock_reversal_is_rejected (tests.unit.test_nano_clock.NanoClockTests.test_clock_reversal_is_rejected) ... ok
+test_completed_requests_can_all_be_lost (tests.unit.test_nano_clock.NanoClockTests.test_completed_requests_can_all_be_lost) ... ok
+test_full_delivery (tests.unit.test_nano_clock.NanoClockTests.test_full_delivery) ... ok
+test_incomplete_requests_are_rejected (tests.unit.test_nano_clock.NanoClockTests.test_incomplete_requests_are_rejected) ... ok
+test_partial_delivery_is_not_a_pass (tests.unit.test_nano_clock.NanoClockTests.test_partial_delivery_is_not_a_pass) ... ok
+test_timer_interference_is_rejected (tests.unit.test_nano_clock.NanoClockTests.test_timer_interference_is_rejected) ... ok
+test_control_without_injection (tests.unit.test_clock_edges.ClockEdgesTests.test_control_without_injection) ... ok
+test_enabled_guest_clock_irq_and_wfi (tests.unit.test_clock_edges.ClockEdgesTests.test_enabled_guest_clock_irq_and_wfi) ... ok
+test_masked_irq_must_not_deliver_tick (tests.unit.test_clock_edges.ClockEdgesTests.test_masked_irq_must_not_deliver_tick) ... ok
+test_no_timer_does_not_advance (tests.unit.test_clock_edges.ClockEdgesTests.test_no_timer_does_not_advance) ... ok
+test_relative_cost_has_no_claimed_absolute_target (tests.unit.test_clock_edges.ClockEdgesTests.test_relative_cost_has_no_claimed_absolute_target) ... ok
+test_restore_must_wake_task (tests.unit.test_clock_edges.ClockEdgesTests.test_restore_must_wake_task) ... ok
+test_shutdown_wfi_does_not_change_measured_window (tests.unit.test_clock_edges.ClockEdgesTests.test_shutdown_wfi_does_not_change_measured_window) ... ok
+test_stale_request_must_not_reverse_time (tests.unit.test_clock_edges.ClockEdgesTests.test_stale_request_must_not_reverse_time) ... ok
+test_target_must_match_guest_anchor (tests.unit.test_clock_edges.ClockEdgesTests.test_target_must_match_guest_anchor) ... ok
+test_wfi_must_really_idle (tests.unit.test_clock_edges.ClockEdgesTests.test_wfi_must_really_idle) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.001s
+
+OK

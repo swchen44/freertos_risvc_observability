@@ -1,0 +1,17 @@
+test_relative_cost_has_no_claimed_absolute_target (tests.unit.test_clock_edges.ClockEdgesTests.test_relative_cost_has_no_claimed_absolute_target) ... ERROR
+
+======================================================================
+ERROR: test_relative_cost_has_no_claimed_absolute_target (tests.unit.test_clock_edges.ClockEdgesTests.test_relative_cost_has_no_claimed_absolute_target)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_clock_edges.py", line 103, in test_relative_cost_has_no_claimed_absolute_target
+    self.assertTrue(validate_edges(m, r, True)["passed"])
+                    ~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "/Users/swchen.tw/git/percepio/poc/src/psf_lab/clock_edges.py", line 29, in validate_edges
+    raise ValueError("Incorrect absolute target")
+ValueError: Incorrect absolute target
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (errors=1)
