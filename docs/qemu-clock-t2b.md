@@ -46,7 +46,7 @@ sequenceDiagram
 
 ## 重建與重跑
 
-前置工具：C compiler、pkg-config、glib-2.0、uv、curl、tar、patch；firmware 重跑另需既有 RISC-V GCC。QEMU tarball 帶內部 dtc 與必要 subprojects；Python 建置工具安裝在目的目錄的 venv。
+前置工具：C compiler、pkg-config、glib-2.0、uv、curl、tar、patch、git；firmware 重跑另需既有 RISC-V GCC。QEMU configure 另從 GitLab 取得 dtc，固定 revision 為 `b6910bec11614980a21e46fbccc35934b671bd81`；Python 建置工具安裝在目的目錄的 venv。
 
 ```sh
 # 在 poc/ 執行；目的目錄不可存在，過程需要下載來源／Python 套件
@@ -68,7 +68,7 @@ f859f0bc65e1f533d040bbe8c92bcfecee5af2c921a6687c652fb44d089bd894
 
 [來源核對](../artifacts/verification/qemu-clock-build/source.json) 驗證研究引用的九個原始檔與 tarball 一致。重建腳本保存 baseline／setter／clock 三個 binary，各自記錄 hash；`ninja`／`meson` 版本固定，host compiler／glib 仍需依平台準備。這不宣稱 bit-for-bit 跨機重現。
 
-本輪實際執行腳本內對應的 configure／build／patch 命令；包裝腳本另通過 `sh -n`，尚未第二次從空目錄完整執行。兩個 patch 在暫存的 pristine 檔案依序套用，結果與實際建置來源一致。[比較與檢查紀錄](../artifacts/verification/qemu-clock-build/comparison.json)。內網離線重建仍需先準備 tarball、uv wheels 與 host build dependencies，只有 repo 不足以離線建置。
+本輪實際執行腳本內對應的 configure／build／patch 命令；包裝腳本另通過 `sh -n`，尚未第二次從空目錄完整執行。兩個 patch 在暫存的 pristine 檔案依序套用，結果與實際建置來源一致。[比較與檢查紀錄](../artifacts/verification/qemu-clock-build/comparison.json)。內網離線重建仍需先準備 tarball、上述固定 dtc source、uv wheels 與 host build dependencies，只有 repo 不足以離線建置。
 
 ## API 相容與驗證
 

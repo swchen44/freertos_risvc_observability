@@ -12,5 +12,11 @@
     "accel/qtest/qtest.c",
     "COPYING",
     "include/qemu/qemu-plugin.h"
-  ]
+  ],
+  "configure_fetched_subprojects": {
+    "dtc": {
+      "url": "https://gitlab.com/qemu-project/dtc",
+      "revision": "b6910bec11614980a21e46fbccc35934b671bd81"
+    }
+  }
 }
