@@ -1,0 +1,22 @@
+{
+  "verified": [
+    {
+      "run": "live-cache-v2",
+      "manifest_sha256": "861a52fd1039d091309d3b8af0e513dd7bdd2c98b5b54ce143c578c7c2efa655",
+      "runs": 6,
+      "sources_verified": 123,
+      "compressed_streams_reaudited": 6,
+      "comparisons_verified": 3
+    },
+    {
+      "run": "live-tcp-v2",
+      "manifest_sha256": "fac74d4800d8788231a2952e1714930985549db46518409379ad675d7b138998",
+      "runs": 6,
+      "sources_verified": 216,
+      "compressed_streams_reaudited": 6,
+      "comparisons_verified": 3
+    }
+  ],
+  "review": "self review; no independent reviewer",
+  "scope": "synthetic and IRQ-masked TCP; no hardware timing claim"
+}

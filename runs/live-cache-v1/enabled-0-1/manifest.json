@@ -1,0 +1,74 @@
+{
+  "command": [
+    "/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-system-riscv32-relative",
+    "-machine",
+    "virt",
+    "-cpu",
+    "rv32",
+    "-smp",
+    "1",
+    "-m",
+    "128M",
+    "-bios",
+    "none",
+    "-display",
+    "none",
+    "-monitor",
+    "none",
+    "-serial",
+    "file:console.log",
+    "-accel",
+    "tcg,thread=single",
+    "-icount",
+    "shift=0,align=off,sleep=off",
+    "-semihosting-config",
+    "enable=on,target=native",
+    "-plugin",
+    "/Users/swchen.tw/git/percepio/poc/runs/live-cache-v1/live_cache.dylib,begin=800029d6,end=800029da,enabled=0,out=/Users/swchen.tw/git/percepio/poc/runs/live-cache-v1/enabled-0-1/accesses.csv",
+    "-kernel",
+    "/Users/swchen.tw/git/percepio/poc/runs/live-cache-v1/enabled-0-1/firmware.elf"
+  ],
+  "result": {
+    "run": "enabled-0-1",
+    "enabled": false,
+    "repeat": 1,
+    "accepted": true,
+    "exit_code": 0,
+    "host_wall_seconds": 0.34015066700521857,
+    "audit": {
+      "events": 25619,
+      "operations": {
+        "I": 20499,
+        "R": 2560,
+        "W": 2560
+      },
+      "cycles": 106337,
+      "ns": 212674,
+      "costs": {
+        "l1i": 20499,
+        "l1d": 5120,
+        "l2": 40984,
+        "ram_read": 11574,
+        "ram_write": 28160
+      },
+      "stream_sha256": "d7dc524e932f49f509b00faf2329baad1d1143a8f57564351cd3e9fcf0c6b939"
+    },
+    "measurement": {
+      "case": "live_cache",
+      "before": 2178,
+      "after": 2386,
+      "ticks": 0,
+      "work": 13090560
+    }
+  },
+  "files": {
+    "symbols.txt": "216a8e4f5c0a2e469f68b407cc90661495d879d54f9e581838d51e24c9fd1397",
+    "trace.psf": "60f3b3ee60f7a5e4e0f17eb10885b9ceff1e62d0f34add8c04a5984abe0c7067",
+    "firmware.elf": "c1cf7d6ff7cc598e2a5ecce3839a6121957e62b7ca544c86669e4f1fae15a1f7",
+    "console.log": "c5651757c2aa7a4dab804a23a69ade3527d450e87c3fc55fe000fb5970721126",
+    "oracle.json": "3a4a01ef3322399cb7c94f9c78db53e28cbb9e22f93a5268cc0fff41f834b844",
+    "qemu.log": "327f232cc6ff7ad0978247806eb90aca82221fc3e73e8b318d62fbde73212ac0",
+    "live-cache.json": "802ddde36c6fcab6c9359f0140bca4f34751f709e6fe201c8434a418a2445c1a",
+    "accesses.csv": "d7dc524e932f49f509b00faf2329baad1d1143a8f57564351cd3e9fcf0c6b939"
+  }
+}

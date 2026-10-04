@@ -1,0 +1,41 @@
+FFFF
+======================================================================
+FAIL: test_cold_warm_split_l1_and_write_through (tests.unit.test_live_timing.LiveTimingTests.test_cold_warm_split_l1_and_write_through)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_live_timing.py", line 33, in setUp
+    self.assertTrue(self.source.exists(), 'Native timing kernel not implemented')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Native timing kernel not implemented
+
+======================================================================
+FAIL: test_cross_line_and_lru_conflicts (tests.unit.test_live_timing.LiveTimingTests.test_cross_line_and_lru_conflicts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_live_timing.py", line 33, in setUp
+    self.assertTrue(self.source.exists(), 'Native timing kernel not implemented')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Native timing kernel not implemented
+
+======================================================================
+FAIL: test_invalid_request_preserves_cache_state (tests.unit.test_live_timing.LiveTimingTests.test_invalid_request_preserves_cache_state)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_live_timing.py", line 33, in setUp
+    self.assertTrue(self.source.exists(), 'Native timing kernel not implemented')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Native timing kernel not implemented
+
+======================================================================
+FAIL: test_mixed_seeded_stream (tests.unit.test_live_timing.LiveTimingTests.test_mixed_seeded_stream)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_live_timing.py", line 33, in setUp
+    self.assertTrue(self.source.exists(), 'Native timing kernel not implemented')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Native timing kernel not implemented
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.002s
+
+FAILED (failures=4)

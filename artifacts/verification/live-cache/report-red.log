@@ -1,0 +1,49 @@
+FFFF
+======================================================================
+FAIL: test_different_work_timer_or_backward_time_rejected (tests.unit.test_live_cache_report.LiveCacheReportTests.test_different_work_timer_or_backward_time_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_live_cache_report.py", line 11, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.live_cache'),
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                         'Live cache verifier not implemented')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : Live cache verifier not implemented
+
+======================================================================
+FAIL: test_empty_capture_rejected (tests.unit.test_live_cache_report.LiveCacheReportTests.test_empty_capture_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_live_cache_report.py", line 11, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.live_cache'),
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                         'Live cache verifier not implemented')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : Live cache verifier not implemented
+
+======================================================================
+FAIL: test_event_costs_checked_against_python (tests.unit.test_live_cache_report.LiveCacheReportTests.test_event_costs_checked_against_python)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_live_cache_report.py", line 11, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.live_cache'),
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                         'Live cache verifier not implemented')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : Live cache verifier not implemented
+
+======================================================================
+FAIL: test_guest_delta_matches_accumulated_cost (tests.unit.test_live_cache_report.LiveCacheReportTests.test_guest_delta_matches_accumulated_cost)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_live_cache_report.py", line 11, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.live_cache'),
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                         'Live cache verifier not implemented')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : Live cache verifier not implemented
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+FAILED (failures=4)

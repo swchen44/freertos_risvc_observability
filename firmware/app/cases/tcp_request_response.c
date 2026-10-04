@@ -28,6 +28,9 @@ typedef struct { const char *kind; unsigned round; uint32_t instructions; } Phas
 static Phase phases[40];
 static unsigned phase_count;
 static char output[16384];
+#ifdef POC_LIVE_TIMING
+static uint32_t timing_before,timing_after,timing_ticks;
+#endif
 
 __attribute__((noinline)) void tcp_capture_begin(void) { __asm__ volatile("nop":::"memory"); }
 __attribute__((noinline)) void tcp_capture_end(void) { __asm__ volatile("nop":::"memory"); }
@@ -129,7 +132,11 @@ static void session_task(void *arg) {
  configASSERT(netif_add(&interface,&local_ip,&mask,&gateway,NULL,setup,ip4_input));
  netif_set_default(&interface);netif_set_up(&interface);netif_set_link_up(&interface);
  resources(resources_before);
- poc_mark("TCP_SESSION_BEGIN",0);taskENTER_CRITICAL();tcp_capture_begin();
+ poc_mark("TCP_SESSION_BEGIN",0);taskENTER_CRITICAL();
+#ifdef POC_LIVE_TIMING
+ timing_ticks=xTaskGetTickCount();timing_before=(uint32_t)poc_mtime();
+#endif
+ tcp_capture_begin();
  uint32_t start=phase_start();struct tcp_pcb *listener=tcp_new();configASSERT(listener);
  configASSERT(tcp_bind(listener,IP_ADDR_ANY,1234)==ERR_OK);
  listener=tcp_listen(listener);configASSERT(listener);tcp_accept(listener,on_accept);phase("listen",start);
@@ -161,7 +168,20 @@ static void session_task(void *arg) {
  configASSERT(!pending&&!tcp_active_pcbs&&!tcp_tw_pcbs&&!tcp_listen_pcbs.pcbs&&!tcp_bound_pcbs);
  resources(resources_after);
  for(unsigned i=0;i<6;i++) configASSERT(resources_before[i]==resources_after[i]);
- tcp_capture_end();taskEXIT_CRITICAL();poc_mark("TCP_SESSION_END",0);
+ tcp_capture_end();
+#ifdef POC_LIVE_TIMING
+ for(volatile unsigned k=0;k<32;k++) __asm__ volatile("nop":::"memory");
+ timing_after=(uint32_t)poc_mtime();timing_ticks=xTaskGetTickCount()-timing_ticks;
+#endif
+ taskEXIT_CRITICAL();poc_mark("TCP_SESSION_END",0);
+#ifdef POC_LIVE_TIMING
+ int n=snprintf(output,sizeof output,
+  "{\"case\":\"tcp_request_response\",\"before\":%u,\"after\":%u,\"ticks\":%u,\"work\":%u}\n",
+  timing_before,timing_after,timing_ticks,acked);
+ configASSERT(n>0&&n<(int)sizeof output);
+ int fd=poc_sh_open("live-cache.json");
+ configASSERT(fd>=0&&poc_write_all(fd,output,n)==0&&poc_sh_close(fd)==0);
+#endif
  save();poc_sent[poc_sent_count++]=11680;poc_received[poc_received_count++]=acked;poc_oracle_finish();
 }
 void poc_case_run(void) {configASSERT(xTaskCreate(session_task,"tcp_session",2048,NULL,2,NULL)==pdPASS);}

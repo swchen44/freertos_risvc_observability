@@ -1,0 +1,2 @@
+usage: run_live_cache.py [-h] --qemu QEMU --output OUTPUT [--repeats {1,3}]
+run_live_cache.py: error: unrecognized arguments: --case tcp

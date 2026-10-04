@@ -1,0 +1,30 @@
+E....F
+======================================================================
+ERROR: test_archived_gzip_can_be_reaudited (tests.unit.test_live_cache_report.LiveCacheReportTests.test_archived_gzip_can_be_reaudited)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_live_cache_report.py", line 41, in test_archived_gzip_can_be_reaudited
+    self.assertEqual(self.audit(raw), self.audit(packed))
+                                      ~~~~~~~~~~^^^^^^^^
+  File "/Users/swchen.tw/git/percepio/poc/src/psf_lab/live_cache.py", line 25, in audit_accesses
+    if reader.fieldnames != ["pc", "address", "size", "operation", *COSTS]:
+       ^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/csv.py", line 164, in fieldnames
+    self._fieldnames = next(self.reader)
+                       ~~~~^^^^^^^^^^^^^
+  File "<frozen codecs>", line 325, in decode
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0x8b in position 1: invalid start byte
+
+======================================================================
+FAIL: test_nonidentity_instruction_mapping_rejected (tests.unit.test_live_cache_report.LiveCacheReportTests.test_nonidentity_instruction_mapping_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_live_cache_report.py", line 48, in test_nonidentity_instruction_mapping_rejected
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.022s
+
+FAILED (failures=1, errors=1)
