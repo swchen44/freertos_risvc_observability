@@ -96,6 +96,8 @@ Profile JSON 的位址使用十進位整數。`cases/timing/illustrative-ram.jso
 
 目前 147 個 unit tests、全庫 Ruff lint、本次四個 Python 檔案格式檢查通過；三份 Z0 capture 重播、560 次 RAM read 的延遲敏感度、300 列 CSV 與 JSON 加總一致性也已驗證。原有全庫格式問題仍維持紀錄。
 
+Commit `5005204` 後的乾淨來源全套 **153／153 測試通過**，原始結果見 [committed-full-tests.log](../artifacts/verification/memory-timing/committed-full-tests.log)。
+
 - T2：真正讓 guest time 反映 latency，驗證 `mtime`、IRQ、tick 與 task scheduling。
 - 確認產品 write policy；有必要時新增 write-back／dirty eviction／store buffer，不能沿用本版寫入數字。
 - Web／離線 Dashboard 的 profile selector、分層圖與互動 CSV 篩選。本輪提供 JSON／CSV，未修改 UI。
