@@ -1,0 +1,10 @@
+{
+  "schema": "timing-experiment-decision-v1",
+  "frequency_hz": 500000000,
+  "profile": "cases/timing/sysram-10.json",
+  "selected_by": "user option B",
+  "decision_date": "2026-10-05",
+  "scope": "memory-service cost conversion",
+  "runtime_integration": "pending",
+  "existing_icount_shift": 0
+}

@@ -1,0 +1,27 @@
+{
+  "frequency_hz": 500000000,
+  "profile_sha256": "0d27337fb70896b26adb48b9cb6c716419b9f89a35724093c1e2d003627fdbbf",
+  "cases": [
+    {
+      "case": "cold_line",
+      "cycles": 27,
+      "ns": 54
+    },
+    {
+      "case": "l1_hit",
+      "cycles": 1,
+      "ns": 2
+    },
+    {
+      "case": "l2_hit_other_l1",
+      "cycles": 9,
+      "ns": 18
+    },
+    {
+      "case": "warm_write_4",
+      "cycles": 20,
+      "ns": 40
+    }
+  ],
+  "guest_time_changed": false
+}

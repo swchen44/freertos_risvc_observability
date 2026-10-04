@@ -1,5 +1,7 @@
 # FreeRTOS／RISC-V PSF POC
 
+**頻率決策已確定：**[500 MHz 換算基準與後續驗收](docs/timing-500mhz.md)。每 cycle 2 ns；sysram 起始延遲 10 cycles = 20 ns。逐筆 cache 成本接合尚未完成。以下 T2d 的待選頻率描述為歷史狀態。
+
 **T2d 小延遲累加通過：**[10～1,000 ns 流失對照、研究用相對 API 與多筆排隊驗證](docs/qemu-clock-nano-t2d.md)。正式 18 次 nano 與 6 次 IRQ／WFI 執行；尚未接 cache 模型或指定產品 CPU 頻率。
 
 **T2c clock 邊界通過：**[無 timer、連續／過期請求、IRQ 遮蔽與 WFI 後注入](docs/qemu-clock-edges-t2c.md)。正式六次執行通過，新增 cycles → ns 餘數累計；數十 ns 級與逐次 cache 成本接合仍待驗證。
