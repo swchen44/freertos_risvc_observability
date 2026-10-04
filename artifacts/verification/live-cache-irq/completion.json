@@ -1,0 +1,14 @@
+{
+  "tested_commit": "d31381522506b2e2b5b0e54a4e1462c288049c65",
+  "python_tests_passed": 200,
+  "full_tests_sha256": "08ebf7f4bae805e3c20a431bdfb8a7db48fe966a3d2a26da2078d5a80ebca65e",
+  "formal_irq_runs": 6,
+  "regression_runs": 4,
+  "ruff": "passed",
+  "changed_python_format": "passed",
+  "irq_cache_guest_tick_and_preemption_verified": true,
+  "per_instruction_hardware_stall_order_verified": false,
+  "hardware_timing_calibrated": false,
+  "dashboard_updated": false,
+  "review": "self review; no independent reviewer"
+}

@@ -70,7 +70,7 @@ IRQ／observer 也增加了 memory service：相對 control 模型多 24,952 cyc
 | switch → cache_worker | 22,733 |
 | 測量結束 | 37,232 |
 
-Verifier 要求 observer 的 clock 值落在對應 PSF task interval 內，且 marker 順序與 guest window 一致。另從指令 trace 比對 ELF symbols，確認 `freertos_risc_v_trap_handler`、`test_if_mtimer` 與 `xTaskIncrementTick` 都各執行 3 次。control 三者皆為 0；核對紀錄見 [receipt](../artifacts/verification/live-cache-irq/receipt.json)。
+Verifier 要求 observer 的 clock 值落在對應 PSF task interval 內，且 marker 順序與 guest window 一致。另從指令 trace 比對 ELF symbols，確認 `test_if_mtimer` 與 `xTaskIncrementTick` 各執行 3 次。共用 `freertos_risc_v_trap_handler` 實際執行 4 次，另外一次進入 `synchronous_exception`／`handle_exception`，未進入 `application_exception_handler`；依 `portASM.S` 的分支對應 machine-mode ECALL，用來切換 task。control 這些入口皆為 0；核對紀錄見 [receipt](../artifacts/verification/live-cache-irq/receipt.json)。
 
 這些證據支持「模型延遲已影響此 guest 的 timer 和排程」，不支持真實 NIC／DMA／RTT、硬體中斷 latency 或產品 CPU loading 的推論。
 
@@ -109,7 +109,7 @@ Verifier 要求 observer 的 clock 值落在對應 PSF task interval 內，且 m
 .venv/bin/python -m unittest tests.unit.test_live_cache_irq
 ```
 
-預設 control／注入各三次；output 必須是新目錄。`runs/live-cache-irq-v1` 為初次探針，正式結論以 v2 為準。所有 source 和 artefact hashes 都保存於 manifests；原始 PSF 可供後續 Dashboard 分析。
+預設 control／注入各三次；output 必須是新目錄。`runs/live-cache-irq-v1` 為初次探針，正式結論以 v2 為準。所有來源與產物雜湊都保存於 manifests；原始 PSF 可供後續 Dashboard 分析。
 
 ## 完成範圍與後續
 
@@ -121,5 +121,9 @@ Verifier 要求 observer 的 clock 值落在對應 PSF task interval 內，且 m
 - [ ] 完整 TCP 的 IRQ 開啟版本，以及真實程式碼最佳化 A/B。
 - [ ] Web／離線 HTML 的 memory service、ISR／task 分項與時間軸。現有 UI 本輪未改，未宣稱瀏覽器驗收。
 - [ ] MMIO bus latency、其他 memory regions、SMP 與目標產品校準。
+
+完整回歸 **200／200 通過**，Ruff 與本輪 Python 格式檢查通過。
+
+自行檢查時曾把共用 trap 次數預期為 3，因實際為 4 而失敗；已分開驗證 timer 與 ECALL 路徑，保留 [原始錯誤說明](../artifacts/verification/live-cache-irq/trap-audit-initial-failure.txt)。可執行 `.venv/bin/python artifacts/verification/live-cache-irq/verify.py` 重驗 hash、模型、PSF、時間差分與入口次數；需在本輪來源版本的 POC 根目錄執行。
 
 Review 為自行檢查，沒有獨立 reviewer。最終測試數與 tested commit 見 [completion](../artifacts/verification/live-cache-irq/completion.json)。

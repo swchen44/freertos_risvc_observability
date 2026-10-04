@@ -1,0 +1,114 @@
+{
+  "verified": [
+    {
+      "name": "live-cache-irq-v2",
+      "manifest_sha256": "d5bc8831623d28d9354581db196071d9aee4818a94cf28b935726576f05dee2b",
+      "sources_verified": 124,
+      "runs": [
+        {
+          "run": "enabled-0-1",
+          "files_verified": 8,
+          "verified_trap_path_counts": {
+            "freertos_risc_v_trap_handler": 0,
+            "test_if_mtimer": 0,
+            "xTaskIncrementTick": 0,
+            "synchronous_exception": 0,
+            "handle_exception": 0,
+            "application_exception_handler": 0
+          }
+        },
+        {
+          "run": "enabled-0-2",
+          "files_verified": 8,
+          "verified_trap_path_counts": {
+            "freertos_risc_v_trap_handler": 0,
+            "test_if_mtimer": 0,
+            "xTaskIncrementTick": 0,
+            "synchronous_exception": 0,
+            "handle_exception": 0,
+            "application_exception_handler": 0
+          }
+        },
+        {
+          "run": "enabled-0-3",
+          "files_verified": 8,
+          "verified_trap_path_counts": {
+            "freertos_risc_v_trap_handler": 0,
+            "test_if_mtimer": 0,
+            "xTaskIncrementTick": 0,
+            "synchronous_exception": 0,
+            "handle_exception": 0,
+            "application_exception_handler": 0
+          }
+        },
+        {
+          "run": "enabled-1-1",
+          "files_verified": 8,
+          "verified_trap_path_counts": {
+            "freertos_risc_v_trap_handler": 4,
+            "test_if_mtimer": 3,
+            "xTaskIncrementTick": 3,
+            "synchronous_exception": 1,
+            "handle_exception": 1,
+            "application_exception_handler": 0
+          }
+        },
+        {
+          "run": "enabled-1-2",
+          "files_verified": 8,
+          "verified_trap_path_counts": {
+            "freertos_risc_v_trap_handler": 4,
+            "test_if_mtimer": 3,
+            "xTaskIncrementTick": 3,
+            "synchronous_exception": 1,
+            "handle_exception": 1,
+            "application_exception_handler": 0
+          }
+        },
+        {
+          "run": "enabled-1-3",
+          "files_verified": 8,
+          "verified_trap_path_counts": {
+            "freertos_risc_v_trap_handler": 4,
+            "test_if_mtimer": 3,
+            "xTaskIncrementTick": 3,
+            "synchronous_exception": 1,
+            "handle_exception": 1,
+            "application_exception_handler": 0
+          }
+        }
+      ]
+    },
+    {
+      "name": "live-cache-irq-regression-synthetic",
+      "manifest_sha256": "e46fcacb6c1b12865963966c595e0b6d0f3de1eeefd7664243215348e361d450",
+      "sources_verified": 124,
+      "runs": [
+        {
+          "run": "enabled-0-1",
+          "files_verified": 8
+        },
+        {
+          "run": "enabled-1-1",
+          "files_verified": 8
+        }
+      ]
+    },
+    {
+      "name": "live-cache-irq-regression-tcp",
+      "manifest_sha256": "9edd8938181b08ec6e84fc44fb0d461cb2ed387b32789296f1ec68902eb04598",
+      "sources_verified": 217,
+      "runs": [
+        {
+          "run": "enabled-0-1",
+          "files_verified": 34
+        },
+        {
+          "run": "enabled-1-1",
+          "files_verified": 34
+        }
+      ]
+    }
+  ],
+  "review": "self review; no independent reviewer"
+}

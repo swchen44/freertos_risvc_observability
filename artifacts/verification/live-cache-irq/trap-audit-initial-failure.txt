@@ -1,0 +1,5 @@
+Initial self-review incorrectly expected all trap entries to be timer IRQs.
+Observed: freertos_risc_v_trap_handler=4, test_if_mtimer=3, xTaskIncrementTick=3.
+The assertion failed. Corrected verification also counts synchronous_exception=1, handle_exception=1 and application_exception_handler=0.
+portASM.S routes machine-mode ECALL (cause 11) through handle_exception to vTaskSwitchContext.
+This is an audit expectation correction; guest firmware and timing results were not changed.
