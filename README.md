@@ -2,7 +2,7 @@
 
 **新增 TCP/IP 實際元件研究：**[Stack 比較、公開案例與 RV32 checksum 實測](docs/research/TCP-IP與Cache最佳化案例.md)。三種 lwIP 演算法、9 份 PSF、108 筆量測；完整 TCP 與 16+16 / 64 KiB cache 模型仍列為後續工作。
 
-TCP 本輪證據：[108 筆結果](runs/tcp-checksum-v2/results.json)、[manifest 與 hashes](runs/tcp-checksum-v2/manifest.json)、[119 個 unit tests](artifacts/verification/tcp/unit-tests.log)、[獨立 review](artifacts/verification/tcp/review.md)、[內網原始碼還原包](artifacts/restore/tcp-checksum-source.tar.gz)、[乾淨目錄重新編譯與 108 筆對照證據](artifacts/verification/tcp/restore.json)。`tools/tcp/` 放擷取與打包腳本，`references/tcp/` 放上游原始碼與授權，`firmware/app/cases/tcp_checksum*` 是 guest 測試，`runs/tcp-checksum-v2/` 保存 PSF/ELF/反組譯。
+TCP 本輪證據：[108 筆結果](runs/tcp-checksum-v2/results.json)、[manifest 與 hashes](runs/tcp-checksum-v2/manifest.json)、[125 個完整回歸測試](artifacts/verification/tcp/full-tests.log)、[獨立 review](artifacts/verification/tcp/review.md)、[內網原始碼還原包](artifacts/restore/tcp-checksum-source.tar.gz)、[乾淨目錄重新編譯與 108 筆對照證據](artifacts/verification/tcp/restore.json)。`tools/tcp/` 放擷取與打包腳本，`references/tcp/` 放上游原始碼與授權，`firmware/app/cases/tcp_checksum*` 是 guest 測試，`runs/tcp-checksum-v2/` 保存 PSF/ELF/反組譯。
 
 TODO：完整 TCP 連線、I/D 共用 L2 模型、TCP 專用 Web／離線圖表。先前 AoS/SoA 草稿保存在 [plan 07](docs/plans/07-cache-layout.md)，尚未實跑。
 

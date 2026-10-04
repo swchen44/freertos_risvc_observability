@@ -1,0 +1,11 @@
+{
+  "scope": "lwIP checksum component research; complete TCP/cache dashboards pending",
+  "tests": 125,
+  "ruff": "passed",
+  "captures": 9,
+  "measurements": 108,
+  "clean_restore_recaptures": 9,
+  "review": "two important findings fixed and re-reviewed",
+  "browser_tests": "not run: no UI behavior changed",
+  "source_commit": "25b746d"
+}
