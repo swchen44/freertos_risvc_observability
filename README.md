@@ -1,8 +1,10 @@
 # FreeRTOS／RISC-V Observability：研究與可重跑 POC
 
+**T2b 基本時間注入通過：**[QEMU 獨立建置、兩項 patch、三階段對照與重跑方法](poc/docs/qemu-clock-t2b.md)。5 ms 注入使 guest 前進約 5.0024 ms、5 ticks 並喚醒等待 task；158 個回歸測試通過。逐次 cache stall 與 sysram 10-cycle guest 接合仍待驗證。
+
 **Sysram 已可獨立設為 10 cycles：**[設定、讀寫對照與重跑證據](poc/docs/sysram-10.md)。本輪為 sidecar 成本比較，尚未改變 guest 時間；[clock 接合研究](poc/docs/research/QEMU-clock接合下一步.md) 保存固定來源與後續驗收。
 
-**Cache 延遲研究更新：**[L1 格式、原廠參考值與校準](poc/docs/research/Cache延遲參考值與校準.md)；[QEMU 時間注入探針](poc/docs/time-control-probe.md)。158 個 Python 回歸測試通過；正增量注入仍逾時，guest stall 尚未完成，原始證據與下一步已保存。
+**Cache 延遲研究更新：**[L1 格式、原廠參考值與校準](poc/docs/research/Cache延遲參考值與校準.md)；[QEMU 時間注入探針](poc/docs/time-control-probe.md)。T2a 原版 QEMU 正增量注入逾時的歷史證據已保存；新版實驗結果見上方 T2b，逐次 cache stall 尚未完成。
 
 **TCP 最佳化最新成果：**[實作比較、Web／離線畫面與重跑方法](poc/docs/tcp-optimization.md)。真實 lwIP 握手／傳送／ACK／重傳、三配置各三次、45 個 I/D trace 區段。
 
