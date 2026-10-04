@@ -1,0 +1,14 @@
+{"run": "enabled-0-1", "enabled": false, "repeat": 1, "accepted": true, "exit_code": 0, "host_wall_seconds": 0.4513383330195211, "tcp": {"request_bytes": 128, "unique_response_bytes": 11680, "packets": 25}, "audit": {"events": 405924, "operations": {"I": 325247, "R": 48725, "W": 31952}, "cycles": 1028434, "ns": 2056868, "costs": {"l1i": 328509, "l1d": 80677, "l2": 258200, "ram_read": 9576, "ram_write": 351472}, "stream_sha256": "f0c5bd5e0c6a7c16e0e81e9d58dfeb21ce1bb068bcebbb4a3cb785eaef561898"}, "measurement": {"case": "tcp_request_response", "before": 2826, "after": 6080, "ticks": 0, "work": 11680}}
+{"run": "enabled-1-1", "enabled": true, "repeat": 1, "accepted": true, "exit_code": 0, "host_wall_seconds": 0.4520624579745345, "tcp": {"request_bytes": 128, "unique_response_bytes": 11680, "packets": 25}, "audit": {"events": 405924, "operations": {"I": 325247, "R": 48725, "W": 31952}, "cycles": 1028434, "ns": 2056868, "costs": {"l1i": 328509, "l1d": 80677, "l2": 258200, "ram_read": 9576, "ram_write": 351472}, "stream_sha256": "f0c5bd5e0c6a7c16e0e81e9d58dfeb21ce1bb068bcebbb4a3cb785eaef561898"}, "measurement": {"case": "tcp_request_response", "before": 2826, "after": 26649, "ticks": 0, "work": 11680}}
+[
+  {
+    "accepted": true,
+    "repeat": 1,
+    "control_ns": 325400,
+    "active_ns": 2382300,
+    "extra_guest_ns": 2056900,
+    "expected_extra_ns": 2056868,
+    "error_ns": 32,
+    "tolerance_ns": 200
+  }
+]

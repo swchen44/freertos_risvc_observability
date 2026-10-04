@@ -1,0 +1,42 @@
+EEEE
+======================================================================
+ERROR: test_tcp_payload_completion_and_cost_conservation (tests.unit.test_live_tcp_irq.TCPIRQTests.test_tcp_payload_completion_and_cost_conservation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_live_tcp_irq.py", line 18, in test_tcp_payload_completion_and_cost_conservation
+    result = compare_irq(self.control, self.active, self.ca, self.aa, scenario='tcp')
+TypeError: compare_irq() got an unexpected keyword argument 'scenario'
+
+======================================================================
+ERROR: test_tcp_psf_requires_tcp_session_resumption (tests.unit.test_live_tcp_irq.TCPIRQTests.test_tcp_psf_requires_tcp_session_resumption)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_live_tcp_irq.py", line 39, in test_tcp_psf_requires_tcp_session_resumption
+    self.assertEqual([s['name'] for s in validate_irq_trace(trace, self.active, scenario='tcp')],
+                                         ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: validate_irq_trace() got an unexpected keyword argument 'scenario'
+
+======================================================================
+ERROR: test_unknown_scenario_rejected (tests.unit.test_live_tcp_irq.TCPIRQTests.test_unknown_scenario_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_live_tcp_irq.py", line 47, in test_unknown_scenario_rejected
+    compare_irq(self.control, self.active, self.ca, self.aa, scenario='unknown')
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: compare_irq() got an unexpected keyword argument 'scenario'
+
+======================================================================
+ERROR: test_wrong_payload_total_rejected (tests.unit.test_live_tcp_irq.TCPIRQTests.test_wrong_payload_total_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_live_tcp_irq.py", line 24, in test_wrong_payload_total_rejected
+    compare_irq(self.control, dict(self.active, work=11679), self.ca, self.aa,
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                scenario='tcp')
+                ^^^^^^^^^^^^^^^
+TypeError: compare_irq() got an unexpected keyword argument 'scenario'
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+FAILED (errors=4)

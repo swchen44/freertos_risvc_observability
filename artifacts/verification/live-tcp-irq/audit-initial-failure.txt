@@ -1,0 +1,3 @@
+The first post-capture audit script reused compare_irq without scenario=tcp.
+It correctly rejected the TCP work value 11680 against the memory default 210677760.
+Fixed the audit call to pass scenario explicitly; firmware and captured runs unchanged.

@@ -1,5 +1,30 @@
 """Acceptance for live memory service while timer IRQs and scheduling run."""
 
+SCENARIOS = {
+    "memory": dict(
+        work=210677760,
+        worker="cache_worker",
+        observer="cache_observer",
+        begin="IRQ_CACHE_BEGIN",
+        end="IRQ_CACHE_END",
+        marker="IRQ_OBSERVER",
+    ),
+    "tcp": dict(
+        work=11680,
+        worker="tcp_session",
+        observer="tcp_observer",
+        begin="TCP_SESSION_BEGIN",
+        end="TCP_SESSION_END",
+        marker="TCP_IRQ_OBSERVER",
+    ),
+}
+
+
+def scenario_config(scenario):
+    if scenario not in SCENARIOS:
+        raise ValueError("Unsupported IRQ timing scenario")
+    return SCENARIOS[scenario]
+
 
 def validate_mmio(address, size, operation):
     allowed = size == 4 and (
@@ -10,9 +35,10 @@ def validate_mmio(address, size, operation):
         raise ValueError("Only CLINT mtime reads / mtimecmp writes may bypass RAM costing")
 
 
-def compare_irq(control, active, control_audit, active_audit):
+def compare_irq(control, active, control_audit, active_audit, *, scenario="memory"):
+    config = scenario_config(scenario)
     for result in (control, active):
-        if result["after"] < result["before"] or result["work"] != 210677760:
+        if result["after"] < result["before"] or result["work"] != config["work"]:
             raise ValueError("Guest clock or work checksum mismatch")
     if control["ticks"] != 0 or control["woke"] != 0:
         raise ValueError("Control unexpectedly reached observer deadline")
@@ -43,16 +69,17 @@ def compare_irq(control, active, control_audit, active_audit):
     )
 
 
-def validate_irq_trace(trace, m):
+def validate_irq_trace(trace, m, *, scenario="memory"):
+    config = scenario_config(scenario)
     marks = [
         (e["fields"]["phase"], e["fields"].get("request_id"), e["timestamp_raw"])
         for e in trace["events"]
         if e["fields"].get("phase")
     ]
-    expected = [("IRQ_CACHE_BEGIN", 0)]
+    expected = [(config["begin"], 0)]
     if m["woke"]:
-        expected.append(("IRQ_OBSERVER", m["observer_tick"]))
-    expected += [("IRQ_CACHE_END", 0), ("COMPLETE", 0)]
+        expected.append((config["marker"], m["observer_tick"]))
+    expected += [(config["end"], 0), ("COMPLETE", 0)]
     if [(n, i) for n, i, _ in marks] != expected or not (
         marks[0][2] <= m["before"] <= m["after"] <= marks[-2][2]
     ):
@@ -64,7 +91,7 @@ def validate_irq_trace(trace, m):
         if e["kind"] == "task_switch" and marks[0][2] < e["timestamp_raw"] < marks[-2][2]
     ]
     observed = [x["name"] for x in switches]
-    if m["woke"] and observed != ["cache_observer", "cache_worker"]:
+    if m["woke"] and observed != [config["observer"], config["worker"]]:
         raise ValueError("Missing observer preemption / worker resumption")
     if not m["woke"] and observed:
         raise ValueError("Unexpected control preemption")

@@ -1,5 +1,7 @@
 # T2f：逐筆 cache 成本已影響 FreeRTOS timer 與 task 排程
 
+**後續更新：**[T2g](live-tcp-irq-t2g.md) 已完成完整 zero-copy TCP 的 IRQ 開啟驗證；本文保留 T2f 的小案例結果。
+
 **IRQ 開啟的案例通過。** 同一段固定記憶體工作，control 尚未到 observer deadline；啟用 500 MHz 成本換算後，timer 前進 3 ticks，高優先序 observer 在第 2 tick 執行，接著返回 worker。三次配對結果一致。
 
 這完成 [T2e](live-cache-t2e.md) 留下的「IRQ 開啟時是否真的影響 scheduler」驗收；仍未驗證真實 CPU 每筆 load/store 的 cycle-accurate 完成順序。

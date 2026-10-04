@@ -28,11 +28,14 @@ def main():
     parser.add_argument("--qemu", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--repeats", type=int, choices=(1, 3), default=3)
-    parser.add_argument("--case", choices=("synthetic", "tcp", "irq"), default="synthetic")
+    parser.add_argument(
+        "--case", choices=("synthetic", "tcp", "irq", "tcp-irq"), default="synthetic"
+    )
     args = parser.parse_args()
-    case = {"synthetic": "live_cache", "tcp": "tcp_request_response", "irq": "live_cache_irq"}[
-        args.case
-    ]
+    is_tcp = args.case in ("tcp", "tcp-irq")
+    has_irq = args.case in ("irq", "tcp-irq")
+    irq_scenario = "tcp" if is_tcp else "memory"
+    case = "tcp_request_response" if is_tcp else ("live_cache_irq" if has_irq else "live_cache")
     dest, qemu = args.output.resolve(), args.qemu.resolve()
     decision = json.loads((ROOT / "cases/timing-experiments/500mhz.json").read_text())
     if (
@@ -58,8 +61,10 @@ def main():
         "OUT=" + str(build),
         "TOOLCHAIN=" + str(toolchain),
     ]
-    if args.case == "tcp":
-        build_cmd.append("CASE_SRC=tcp_request_response_live")
+    if is_tcp:
+        build_cmd.append(
+            "CASE_SRC=" + ("tcp_request_response_irq" if has_irq else "tcp_request_response_live")
+        )
     command(build_cmd, ROOT, dest / "build.log")
     plugin = dest / ("live_cache.dylib" if platform.system() == "Darwin" else "live_cache.so")
     flags = (
@@ -81,7 +86,7 @@ def main():
         str(plugin),
         *shlex.split(subprocess.check_output(["pkg-config", "--cflags", "glib-2.0"], text=True)),
     ]
-    if args.case == "irq":
+    if has_irq:
         plugin_cmd.append("-DPOC_LIVE_IRQ")
     command(plugin_cmd, ROOT, dest / "plugin-build.log")
     elf = build / "firmware.elf"
@@ -93,7 +98,7 @@ def main():
     }
     markers = (
         ("live_cache_begin", "live_cache_end")
-        if args.case != "tcp"
+        if not is_tcp
         else ("tcp_capture_begin", "tcp_capture_end")
     )
     begin, end = (addresses[n] for n in markers)
@@ -174,7 +179,7 @@ def main():
                 )
                 if receipt is None:
                     raise ValueError("Missing completion receipt")
-                if args.case == "irq":
+                if has_irq:
                     mmio = re.findall(
                         r"live_cache_mmio pc=(\d+) address=(\d+) size=(\d+) op=([RW])",
                         (run / "qemu.log").read_text(),
@@ -204,9 +209,14 @@ def main():
                 oracle = json.loads((run / "oracle.json").read_text())
                 if m["case"] != case or not oracle["complete"] or oracle["case_id"] != m["case"]:
                     raise ValueError("Guest did not complete")
-                if m["work"] != {"synthetic": 13090560, "tcp": 11680, "irq": 210677760}[args.case]:
+                if (
+                    m["work"]
+                    != {"synthetic": 13090560, "tcp": 11680, "irq": 210677760, "tcp-irq": 11680}[
+                        args.case
+                    ]
+                ):
                     raise ValueError("Unexpected work checksum")
-                if args.case == "tcp":
+                if is_tcp:
                     metrics = json.loads((run / "session.json").read_text())
                     packets = []
                     for index, entry in enumerate(metrics["packets"]):
@@ -235,8 +245,8 @@ def main():
                     for e in trace["events"]
                     if e["fields"].get("phase")
                 ]
-                if args.case == "irq":
-                    result["switches"] = validate_irq_trace(trace, m)
+                if has_irq:
+                    result["switches"] = validate_irq_trace(trace, m, scenario=irq_scenario)
                 else:
                     begin_mark, end_mark = (
                         ("CACHE_BEGIN", "CACHE_END")
@@ -269,7 +279,7 @@ def main():
             control = next(r for r in results if not r["enabled"] and r["repeat"] == repeat)
             active = next(r for r in results if r["enabled"] and r["repeat"] == repeat)
             try:
-                if args.case != "irq" and control["audit"] != active["audit"]:
+                if not has_irq and control["audit"] != active["audit"]:
                     raise ValueError("Control and injection access streams differ")
                 comparisons.append(
                     dict(
@@ -281,8 +291,9 @@ def main():
                                 active["measurement"],
                                 control["audit"],
                                 active["audit"],
+                                scenario=irq_scenario,
                             )
-                            if args.case == "irq"
+                            if has_irq
                             else compare_guest(
                                 control["measurement"], active["measurement"], active["audit"]["ns"]
                             )
