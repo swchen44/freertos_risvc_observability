@@ -93,9 +93,10 @@
 ## 驗證結果與未完成項目
 
 - 全部 133 個 unit tests 通過，包含新增的 6 個 oracle tests；三次實際 QEMU session 通過。
-- 全套 `unittest discover -s tests`：139 個，136 個通過、3 個 error。`test_real_priority_pair`、`test_real_controlled_pair`、`test_formal_clean_queue_run` 被既有 `Formal run requires committed, clean sources` 檢查擋下，未進入對應 QEMU 測試。此次沒有 commit 或繞過檢查。
+- 全套 `unittest discover -s tests`：139 個，136 個通過、3 個 error。`test_real_priority_pair`、`test_real_controlled_pair`、`test_formal_clean_queue_run` 被既有 `Formal run requires committed, clean sources` 檢查擋下，未進入對應 QEMU 測試。初次執行時尚未 commit，沒有繞過檢查。
+- 更新：依使用者要求 commit 後，乾淨來源重跑 **139／139 通過**，包括上述三個整合測試。證據為 [committed-full-tests.log](../artifacts/verification/tcp-session-z0/committed-full-tests.log)。Z0 commit `a5d2f22` 已 push，主倉庫 `d238be4` 已更新 submodule 指標。
 - `ruff check .` 通過；新增三個 Python 檔的 `ruff format --check` 通過。全庫 format check 指出 10 個既有檔案需格式化，本次未改寫那些檔案。
 - 尚未新增 Z0 的 Web／離線視圖；既有 TCP Dashboard 仍只顯示原本三配置。尚未執行新的 UI E2E。
-- 尚未完成 Z1～Z4、partial ACK／abort 清理、timing model 或新的 A/B 最佳化。
+- 尚未完成 Z1～Z4、partial ACK／abort 清理、T2 guest timing 或新的 A/B 最佳化。
 
-新的記憶體速度要求見 [QEMU 分層記憶體延遲研究](research/QEMU分層記憶體延遲研究.md)，明確區分 trace 成本估算與真正改變 guest virtual time。
+新的記憶體速度要求見 [QEMU 分層記憶體延遲研究](research/QEMU分層記憶體延遲研究.md)。[T1 成本估算已完成](memory-timing-t1.md)，真正改變 guest virtual time 的 T2 仍待驗證。

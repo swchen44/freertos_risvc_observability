@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "profiles": 3,
+  "replayed_captures": 3,
+  "ram_read_transactions": 560,
+  "sensitivity_formula": "delta = 560 * delta_read_latency",
+  "csv_rows": 300,
+  "local_links": 11,
+  "guest_time_changed": false
+}

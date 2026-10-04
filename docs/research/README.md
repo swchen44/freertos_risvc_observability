@@ -1,6 +1,8 @@
 # PSF、RISC-V 模擬與 Dashboard：下一階段研究
 
-**Z0 新進度：**[固定 request／response 的 zero-copy 實測](../tcp-session-z0.md)，三次 QEMU、25 個雙向封包／次、RX／TX／ACK／FIN 與資源回收；新 UI 與 A/B 尚未實作。新增 [L1／L2／system RAM 延遲研究](QEMU分層記憶體延遲研究.md)，timing 模型尚未實作。
+**T1 已實作：**[L1／L2／RAM 成本模型、三組參數比較與重跑](../memory-timing-t1.md)。T2 guest time／IRQ 影響與新的 Dashboard 仍未完成。
+
+**Z0 新進度：**[固定 request／response 的 zero-copy 實測](../tcp-session-z0.md)，三次 QEMU、25 個雙向封包／次、RX／TX／ACK／FIN 與資源回收；新 UI 與 A/B 尚未實作。新增 [L1／L2／system RAM 延遲研究](QEMU分層記憶體延遲研究.md)，T1 成本估算已完成，T2 guest 時序模型仍待實作。
 
 **新增研究要求：**[memcpy 分析與 zero-copy 後的完整 TCP 流程最佳化](Zero-copy後的TCP完整流程最佳化.md)。保存已確認的 byte-copy 成本與 RX／ACK／timer／關閉等驗收待辦；Z0 正常基準已實作，其他案例仍待執行。
 

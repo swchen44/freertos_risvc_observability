@@ -2,7 +2,7 @@
 
 2026-10-04。使用者新增要求：依不同記憶體層級設定速度，cache hit 快速返回；miss 則等待下一層，最終由 system RAM 回應，用於軟體最佳化的相對比較。
 
-**目前已查證可行方向，尚未實作延遲模型或把 penalty 注入 guest 時間。** 現有工具只有 cache tag／locality replay，輸出的 `cycles` 仍是 `null`。Z0 的 cache miss 數與指令數不包含這裡提出的等待成本。
+**T1 參數化 memory-service 模型已實作，T2 把 penalty 注入 guest 時間仍未實作。** 見 [T1 程式、三組 RAM 延遲結果與重跑方式](../memory-timing-t1.md)。原 Z0 的 cache miss 數與指令數仍保持原定義，新估算另存 sidecar，不覆寫 CPU cycles 或 PSF 時間。
 
 ## 1. 要表現的行為
 
@@ -86,9 +86,9 @@ Web／離線 HTML 都應能選 timing profile，顯示 L1、L2、RAM 各自的�
 
 - [x] 查證官方 icount／cache／Memory API 定位及本機 time-control 宣告。
 - [x] 定義 T1 成本估算與 T2 guest 時序影響的不同驗收範圍。
-- [ ] T1：相同 line 第二次存取為 L1 hit；超過 L1 但留在 L2 為 L2 hit；兩層 miss 才計 RAM。
-- [ ] T1：跨 line、不同 RAM 區域、uncached bypass、讀寫策略各有獨立期望值測試。
-- [ ] T1：提高 RAM latency 只增加對應 RAM transaction 的成本；修改參數不改封包正確性。
+- [x] T1：read／取指相同 line 第二次為 L1 hit；超過 L1 但留在 L2 為 L2 hit；兩層 miss 才計 RAM read fill。
+- [x] T1：跨 line、不同 RAM 區域、uncached bypass、write-through＋write-allocate 有獨立期望值測試；write-back 尚未支援。
+- [x] T1：提高 RAM read latency 只增加對應 RAM read transaction 的成本；同一份 trace 與封包維持不變。
 - [ ] T2：用 guest `mtime` 而非 host stopwatch 驗證時間差；確認 clock Hz 換算與無重複計時。
 - [ ] T2：開啟中斷的小案例驗證 timer／tick／task 排程；目前 Z0 capture 期間關閉中斷，不適合直接證明這件事。
 - [ ] T2：驗證 IRQ／TB 生效邊界與 deterministic 重跑，再接完整 TCP 流程。

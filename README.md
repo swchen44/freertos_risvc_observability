@@ -1,5 +1,7 @@
 # FreeRTOS／RISC-V PSF POC
 
+**新增 T1 記憶體成本估算：**[設定 L1／L2／RAM 延遲、三組重播結果與 CLI](docs/memory-timing-t1.md)。程式在 `src/psf_lab/memory_timing.py`／`timing_report.py`，設定在 `cases/timing/`，JSON／CSV 證據在 `runs/timing-z0-v2/`。這是 sidecar 成本估算；尚未改變 QEMU guest 時間或更新 Dashboard。
+
 **最新 Z0：**[固定 request／response 的 zero-copy 基準](docs/tcp-session-z0.md)，三次 QEMU、RX／ACK／FIN／資源回收與分段指令量；[記憶體延遲研究](docs/research/QEMU分層記憶體延遲研究.md) 說明 L1／L2／system RAM timing 的待辦。
 
 **TCP 最佳化最新成果：**[實作比較、Web／離線畫面與重跑方法](docs/tcp-optimization.md)。真實 lwIP 握手／傳送／ACK／重傳、三配置各三次、45 個 I/D trace 區段。
