@@ -1,0 +1,11 @@
+src/psf_lab/cache_model.py:15:30: unformatted: File would be reformatted
+src/psf_lab/cache_report.py:16:41: unformatted: File would be reformatted
+src/psf_lab/cache_suites.py:6:5: unformatted: File would be reformatted
+tests/unit/test_cache_model.py:8:28: unformatted: File would be reformatted
+tests/unit/test_cache_report.py:17:39: unformatted: File would be reformatted
+tests/unit/test_cache_suites.py:8:27: unformatted: File would be reformatted
+tools/cache/package.py:10:10: unformatted: File would be reformatted
+tools/cache/run.py:28:29: unformatted: File would be reformatted
+tools/cache/verify.py:11:23: unformatted: File would be reformatted
+tools/cache/verify_restore.py:17:25: unformatted: File would be reformatted
+10 files would be reformatted, 84 files already formatted

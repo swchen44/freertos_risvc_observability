@@ -1,0 +1,435 @@
+{
+  "request_bytes": 128,
+  "unique_response_bytes": 11680,
+  "packets": 25,
+  "schema": "tcp-session-z0-v1",
+  "phases": {
+    "listen": 912,
+    "syn": 2757,
+    "establish": 1332,
+    "request_rx": 5954,
+    "response_tx": 27804,
+    "response_ack": 10726,
+    "timer_idle": 374,
+    "peer_fin": 1820,
+    "close": 1091,
+    "final_ack": 1320,
+    "listener_close": 110
+  },
+  "measurements": {
+    "case": "tcp_request_response",
+    "request_bytes": 128,
+    "acked_bytes": 11680,
+    "retained_bytes": 0,
+    "peak_retained_bytes": 1460,
+    "peer_closed": true,
+    "active_pcbs": 0,
+    "timewait_pcbs": 0,
+    "resources_before": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "resources_after": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "phases": [
+      {
+        "kind": "listen",
+        "round": 0,
+        "instructions": 912
+      },
+      {
+        "kind": "syn",
+        "round": 0,
+        "instructions": 2757
+      },
+      {
+        "kind": "establish",
+        "round": 0,
+        "instructions": 1332
+      },
+      {
+        "kind": "request_rx",
+        "round": 0,
+        "instructions": 2977
+      },
+      {
+        "kind": "response_tx",
+        "round": 0,
+        "instructions": 3476
+      },
+      {
+        "kind": "response_ack",
+        "round": 0,
+        "instructions": 1335
+      },
+      {
+        "kind": "response_tx",
+        "round": 0,
+        "instructions": 3475
+      },
+      {
+        "kind": "response_ack",
+        "round": 0,
+        "instructions": 1327
+      },
+      {
+        "kind": "response_tx",
+        "round": 0,
+        "instructions": 3475
+      },
+      {
+        "kind": "response_ack",
+        "round": 0,
+        "instructions": 1327
+      },
+      {
+        "kind": "response_tx",
+        "round": 0,
+        "instructions": 3475
+      },
+      {
+        "kind": "response_ack",
+        "round": 0,
+        "instructions": 1327
+      },
+      {
+        "kind": "timer_idle",
+        "round": 0,
+        "instructions": 187
+      },
+      {
+        "kind": "request_rx",
+        "round": 1,
+        "instructions": 2977
+      },
+      {
+        "kind": "response_tx",
+        "round": 1,
+        "instructions": 3475
+      },
+      {
+        "kind": "response_ack",
+        "round": 1,
+        "instructions": 1357
+      },
+      {
+        "kind": "response_tx",
+        "round": 1,
+        "instructions": 3476
+      },
+      {
+        "kind": "response_ack",
+        "round": 1,
+        "instructions": 1351
+      },
+      {
+        "kind": "response_tx",
+        "round": 1,
+        "instructions": 3476
+      },
+      {
+        "kind": "response_ack",
+        "round": 1,
+        "instructions": 1351
+      },
+      {
+        "kind": "response_tx",
+        "round": 1,
+        "instructions": 3476
+      },
+      {
+        "kind": "response_ack",
+        "round": 1,
+        "instructions": 1351
+      },
+      {
+        "kind": "timer_idle",
+        "round": 1,
+        "instructions": 187
+      },
+      {
+        "kind": "peer_fin",
+        "round": 2,
+        "instructions": 1820
+      },
+      {
+        "kind": "close",
+        "round": 2,
+        "instructions": 1091
+      },
+      {
+        "kind": "final_ack",
+        "round": 2,
+        "instructions": 1320
+      },
+      {
+        "kind": "listener_close",
+        "round": 2,
+        "instructions": 110
+      }
+    ],
+    "packets": [
+      {
+        "file": "packet-0.bin",
+        "direction": "rx"
+      },
+      {
+        "file": "packet-1.bin",
+        "direction": "tx"
+      },
+      {
+        "file": "packet-2.bin",
+        "direction": "rx"
+      },
+      {
+        "file": "packet-3.bin",
+        "direction": "rx"
+      },
+      {
+        "file": "packet-4.bin",
+        "direction": "tx"
+      },
+      {
+        "file": "packet-5.bin",
+        "direction": "rx"
+      },
+      {
+        "file": "packet-6.bin",
+        "direction": "tx"
+      },
+      {
+        "file": "packet-7.bin",
+        "direction": "rx"
+      },
+      {
+        "file": "packet-8.bin",
+        "direction": "tx"
+      },
+      {
+        "file": "packet-9.bin",
+        "direction": "rx"
+      },
+      {
+        "file": "packet-10.bin",
+        "direction": "tx"
+      },
+      {
+        "file": "packet-11.bin",
+        "direction": "rx"
+      },
+      {
+        "file": "packet-12.bin",
+        "direction": "rx"
+      },
+      {
+        "file": "packet-13.bin",
+        "direction": "tx"
+      },
+      {
+        "file": "packet-14.bin",
+        "direction": "rx"
+      },
+      {
+        "file": "packet-15.bin",
+        "direction": "tx"
+      },
+      {
+        "file": "packet-16.bin",
+        "direction": "rx"
+      },
+      {
+        "file": "packet-17.bin",
+        "direction": "tx"
+      },
+      {
+        "file": "packet-18.bin",
+        "direction": "rx"
+      },
+      {
+        "file": "packet-19.bin",
+        "direction": "tx"
+      },
+      {
+        "file": "packet-20.bin",
+        "direction": "rx"
+      },
+      {
+        "file": "packet-21.bin",
+        "direction": "rx"
+      },
+      {
+        "file": "packet-22.bin",
+        "direction": "tx"
+      },
+      {
+        "file": "packet-23.bin",
+        "direction": "tx"
+      },
+      {
+        "file": "packet-24.bin",
+        "direction": "rx"
+      }
+    ]
+  },
+  "measured_stack_window_instructions": 54200,
+  "cache": {
+    "schema": "tcp-split-cache-v1",
+    "initial_state": "cold at session start; continuous including peer and snapshots",
+    "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+    "cycles": null,
+    "events": {
+      "I": 301602,
+      "R": 48725,
+      "W": 31952
+    },
+    "l1i": {
+      "geometry": {
+        "size": 16384,
+        "line": 64,
+        "ways": 4
+      },
+      "accesses": 303466,
+      "misses": 301,
+      "reads": 303466,
+      "writes": 0,
+      "read_misses": 301,
+      "write_misses": 0,
+      "spatial": {
+        "observed_used_bytes": 12346,
+        "filled_bytes": 19264,
+        "evicted_unused_bytes": 1870,
+        "resident_unobserved_bytes": 5048,
+        "observed_utilization": 0.6408845514950167
+      },
+      "miss_rate": 0.000991873883729973
+    },
+    "l1d": {
+      "geometry": {
+        "size": 16384,
+        "line": 64,
+        "ways": 4
+      },
+      "accesses": 80677,
+      "misses": 309,
+      "reads": 48725,
+      "writes": 31952,
+      "read_misses": 22,
+      "write_misses": 287,
+      "spatial": {
+        "observed_used_bytes": 15934,
+        "filled_bytes": 19776,
+        "evicted_unused_bytes": 909,
+        "resident_unobserved_bytes": 2933,
+        "observed_utilization": 0.8057241100323624
+      },
+      "miss_rate": 0.003830087881304461
+    },
+    "l2": {
+      "geometry": {
+        "size": 65536,
+        "line": 64,
+        "ways": 4
+      },
+      "accesses": 610,
+      "misses": 559,
+      "reads": 323,
+      "writes": 287,
+      "read_misses": 275,
+      "write_misses": 284,
+      "miss_rate": 0.9163934426229509
+    }
+  },
+  "hotspots_including_harness": [
+    [
+      "memcmp",
+      81792
+    ],
+    [
+      "memcpy",
+      77769
+    ],
+    [
+      "session_task",
+      71655
+    ],
+    [
+      "lwip_standard_chksum",
+      22476
+    ],
+    [
+      "memset",
+      4096
+    ],
+    [
+      "tcp_input",
+      3817
+    ],
+    [
+      "tcp_output",
+      3005
+    ],
+    [
+      "inet_chksum_pseudo",
+      2967
+    ],
+    [
+      "inject",
+      2480
+    ],
+    [
+      "lwip_htons",
+      2460
+    ],
+    [
+      "lwip_htonl",
+      2093
+    ],
+    [
+      "ip4_input",
+      1806
+    ],
+    [
+      "tcp_receive",
+      1641
+    ],
+    [
+      "mem_malloc",
+      1548
+    ],
+    [
+      "pbuf_alloc",
+      1466
+    ],
+    [
+      "pbuf_copy_partial",
+      1416
+    ],
+    [
+      "on_recv",
+      1372
+    ],
+    [
+      "pbuf_free",
+      1369
+    ],
+    [
+      "mem_free",
+      1314
+    ],
+    [
+      "pbuf_get_at",
+      1280
+    ]
+  ],
+  "scope": "single-task NO_SYS=1; IRQ masked; peer and RAM snapshots in cache trace; no cycles"
+}

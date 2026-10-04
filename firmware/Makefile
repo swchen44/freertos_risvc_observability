@@ -29,7 +29,7 @@ LWIP := $(ROOT)/references/tcp/lwip
 CFLAGS += -Itcp -I$(LWIP)/src/include -fno-strict-aliasing -DLWIP_CHKSUM_ALGORITHM=$(patsubst tcp_checksum%,%,$(CASE))
 SRC += $(LWIP)/src/core/inet_chksum.c $(LWIP)/src/core/def.c
 endif
-ifneq ($(filter $(CASE),tcp_copy2 tcp_copy3 tcp_nocopy3),)
+ifneq ($(filter $(CASE),tcp_copy2 tcp_copy3 tcp_nocopy3 tcp_request_response),)
 LWIP := $(ROOT)/references/tcp/lwip
 CFLAGS += -Itcp_stack -I$(LWIP)/src/include -fno-strict-aliasing -ffile-prefix-map=$(ROOT)=/poc
 CFLAGS += -DLWIP_CHKSUM_ALGORITHM=$(if $(filter tcp_copy2,$(CASE)),2,3)
@@ -37,6 +37,9 @@ CFLAGS += -DPOC_TCP_COPY=$(if $(filter tcp_nocopy3,$(CASE)),0,1)
 SRC += $(wildcard $(LWIP)/src/core/*.c) $(wildcard $(LWIP)/src/core/ipv4/*.c)
 endif
 ASM := $(PORT)/portASM.S $(DEMO)/build/gcc/start.S
+ifeq ($(CASE),tcp_request_response)
+CFLAGS += -DLWIP_STATS=1
+endif
 OBJ := $(addprefix $(OUT)/,$(notdir $(SRC:.c=.o) $(ASM:.S=.o)))
 VPATH := $(sort $(dir $(SRC) $(ASM)))
 all: $(OUT)/firmware.elf $(OUT)/tasks.i $(OUT)/queue.i

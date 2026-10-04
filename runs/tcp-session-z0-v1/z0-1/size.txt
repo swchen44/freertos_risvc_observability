@@ -1,0 +1,2 @@
+   text	   data	    bss	    dec	    hex	filename
+  40164	    144	 296672	 336980	  52454	/Users/swchen.tw/git/percepio/poc/runs/tcp-session-z0-v1/build/firmware.elf

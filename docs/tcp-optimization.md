@@ -184,6 +184,10 @@ PY
 
 ## 完成與後續
 
+**Z0 基準已完成：**[固定 request／response 全流程實測](tcp-session-z0.md)。與本篇的 TX-only 比較有不同 capture 邊界及 stats 設定，請勿直接相減計算收益。
+
+**2026-10-04 新增研究方向：**使用者要求在「已經 zero-copy」前提下最佳化更完整的 TCP 流程。見 [memcpy 分析與 zero-copy 後的完整 TCP 流程研究](research/Zero-copy後的TCP完整流程最佳化.md)，包含 request／response、RX／ACK／timer／關閉、cache 與 buffer 指標、案例和未完成驗收。Z0 正常基準已執行；本報告原有數字仍限於上述 TX 量測邊界。
+
 已完成本輪三配置 × 三次、真 TCP state machine、遺失 ACK 重傳、逐 byte / checksum 驗證、I/D 共用 L2 replay、雙模式 Dashboard。
 
 後續合理實驗仍分開列管：copy+checksum 合併、更多 PCB / buffer 的 working-set 壓力、TCP window / delayed ACK、接入 NIC/DMA 後的 cache coherence，以及硬體 PMU 對照。ESP32-C3 的 IRAM / Wi-Fi Mbps 案例只作研究依據，沒有把本次 QEMU 數字冒充它的重現結果。

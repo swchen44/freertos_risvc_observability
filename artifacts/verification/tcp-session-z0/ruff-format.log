@@ -1,0 +1,1148 @@
+unformatted: File would be reformatted
+   --> src/psf_lab/cache_model.py:15:30
+    |
+14  |         if any(type(v) is not int or v <= 0 or v & (v - 1) for v in values):
+    -             raise ValueError('geometry values must be positive powers of two')
+15  +             raise ValueError("geometry values must be positive powers of two")
+16  |         if self.size < self.line * self.ways:
+    -             raise ValueError('cache must contain at least one set')
+17  +             raise ValueError("cache must contain at least one set")
+18  |
+--------------------------------------------------------------------------------
+26  |         self.evicted_fills = 0
+    -         self.stats = dict.fromkeys(('accesses', 'misses', 'reads', 'writes',
+    -                                    'read_misses', 'write_misses'), 0)
+27  +         self.stats = dict.fromkeys(
+28  +             ("accesses", "misses", "reads", "writes", "read_misses", "write_misses"), 0
+29  +         )
+30  |
+--------------------------------------------------------------------------------
+34  |         hit = block in entries
+    -         key = 'read' if operation == 'R' else 'write'
+    -         self.stats['accesses'] += 1
+    -         self.stats[key + 's'] += 1
+35  +         key = "read" if operation == "R" else "write"
+36  +         self.stats["accesses"] += 1
+37  +         self.stats[key + "s"] += 1
+38  |         if hit:
+39  |             entries.remove(block)
+40  |         else:
+    -             self.stats['misses'] += 1
+    -             self.stats[key + '_misses'] += 1
+41  +             self.stats["misses"] += 1
+42  +             self.stats[key + "_misses"] += 1
+43  |             if len(entries) == self.geometry.ways:
+--------------------------------------------------------------------------------
+53  |     def result(self):
+    -         count = self.stats['accesses']
+54  +         count = self.stats["accesses"]
+55  |         used = self.evicted_used + sum(mask.bit_count() for mask in self.used.values())
+    -         filled = self.stats['misses'] * self.geometry.line
+56  +         filled = self.stats["misses"] * self.geometry.line
+57  |         spatial = {
+    -             'observed_used_bytes': used, 'filled_bytes': filled,
+    -             'evicted_unused_bytes': self.evicted_fills * self.geometry.line - self.evicted_used,
+    -             'resident_unobserved_bytes': (self.stats['misses'] - self.evicted_fills)
+    -             * self.geometry.line - sum(mask.bit_count() for mask in self.used.values()),
+    -             'observed_utilization': used / filled if filled else None,
+58  +             "observed_used_bytes": used,
+59  +             "filled_bytes": filled,
+60  +             "evicted_unused_bytes": self.evicted_fills * self.geometry.line - self.evicted_used,
+61  +             "resident_unobserved_bytes": (self.stats["misses"] - self.evicted_fills)
+62  +             * self.geometry.line
+63  +             - sum(mask.bit_count() for mask in self.used.values()),
+64  +             "observed_utilization": used / filled if filled else None,
+65  +         }
+66  +         return {
+67  +             "geometry": asdict(self.geometry),
+68  +             **self.stats,
+69  +             "spatial": spatial,
+70  +             "miss_rate": self.stats["misses"] / count if count else None,
+71  |         }
+    -         return {'geometry': asdict(self.geometry), **self.stats, 'spatial': spatial,
+    -                 'miss_rate': self.stats['misses'] / count if count else None}
+72  |
+--------------------------------------------------------------------------------
+81  |     if l2_geometry and l2_geometry.line != l1_geometry.line:
+    -         raise ValueError('L1 and L2 line sizes must match')
+82  +         raise ValueError("L1 and L2 line sizes must match")
+83  |     l1 = _Cache(l1_geometry)
+84  |     l2 = _Cache(l2_geometry) if l2_geometry else None
+85  |     count = 0
+86  |     for address, size, operation in events:
+    -         if (type(address) is not int or type(size) is not int or address < 0
+    -                 or size <= 0 or size > 4096 or address + size > 2**64
+    -                 or operation not in ('R', 'W')):
+    -             raise ValueError('invalid memory access')
+87  +         if (
+88  +             type(address) is not int
+89  +             or type(size) is not int
+90  +             or address < 0
+91  +             or size <= 0
+92  +             or size > 4096
+93  +             or address + size > 2**64
+94  +             or operation not in ("R", "W")
+95  +         ):
+96  +             raise ValueError("invalid memory access")
+97  |         count += 1
+--------------------------------------------------------------------------------
+105 |     if l2_result:
+    -         l2_result.pop('spatial')  # L2 fetch stream cannot measure all CPU byte uses.
+    -     return {'schema': 'psf-lab-cache-replay-v1', 'scope': 'data-only-region',
+    -             'initial_state': 'cold', 'replacement': 'LRU', 'write_policy': 'tag-allocate',
+    -             'timing_feedback': False, 'memory_operations': count,
+    -             'l1': l1.result(), 'l2': l2_result}
+106 +         l2_result.pop("spatial")  # L2 fetch stream cannot measure all CPU byte uses.
+107 +     return {
+108 +         "schema": "psf-lab-cache-replay-v1",
+109 +         "scope": "data-only-region",
+110 +         "initial_state": "cold",
+111 +         "replacement": "LRU",
+112 +         "write_policy": "tag-allocate",
+113 +         "timing_feedback": False,
+114 +         "memory_operations": count,
+115 +         "l1": l1.result(),
+116 +         "l2": l2_result,
+117 +     }
+    |
+
+unformatted: File would be reformatted
+   --> src/psf_lab/cache_report.py:16:41
+    |
+15  |     rows = []
+    -     model_hash = hashlib.sha256((ROOT / 'src/psf_lab/cache_model.py').read_bytes()).hexdigest()
+    -     expected = {f'{variant}-{n}' for variant in ('cache_row', 'cache_column')
+    -                 for n in (1, 2, 3)}
+    -     found = {p.name for p in directory.glob('cache_*-[123]')}
+16  +     model_hash = hashlib.sha256((ROOT / "src/psf_lab/cache_model.py").read_bytes()).hexdigest()
+17  +     expected = {f"{variant}-{n}" for variant in ("cache_row", "cache_column") for n in (1, 2, 3)}
+18  +     found = {p.name for p in directory.glob("cache_*-[123]")}
+19  |     if found != expected:
+    -         raise ValueError('expected row/column captures, repeats 1..3')
+    -     for run in sorted(directory.glob('cache_*-[123]')):
+    -         manifest = json.loads((run / 'manifest.json').read_text())
+    -         for name in ['trace.psf', 'oracle.json', 'accesses.csv', 'firmware.elf']:
+20  +         raise ValueError("expected row/column captures, repeats 1..3")
+21  +     for run in sorted(directory.glob("cache_*-[123]")):
+22  +         manifest = json.loads((run / "manifest.json").read_text())
+23  +         for name in ["trace.psf", "oracle.json", "accesses.csv", "firmware.elf"]:
+24  |             actual = hashlib.sha256((run / name).read_bytes()).hexdigest()
+    -             if manifest['files'].get(name) != actual:
+    -                 raise ValueError(f'cache evidence hash mismatch: {run.name}/{name}')
+    -         oracle = json.loads((run / 'oracle.json').read_text())
+    -         variant, repeat = run.name.rsplit('-', 1)
+    -         if (manifest.get('variant') != variant or manifest.get('repeat') != int(repeat)
+    -                 or oracle.get('case_id') != variant):
+    -             raise ValueError('cache case identity mismatch')
+    -         if (not oracle['complete'] or oracle['received_ids'] != [8394752]
+    -                 or oracle['sent_ids'] != [8394752]):
+    -             raise ValueError('cache oracle mismatch')
+    -         with (run / 'accesses.csv').open() as stream:
+    -             events = [(int(e['address']), int(e['size']), e['operation'])
+    -                       for e in csv.DictReader(stream)]
+    -         region = manifest['region']
+    -         if (len(events) != 16384 or sum(e[2] == 'R' for e in events) != 8192
+    -                 or sum(e[2] == 'W' for e in events) != 8192
+    -                 or any(size != 4 or not region['data_start'] <= address
+    -                        < region['data_start'] + region['data_size']
+    -                        for address, size, _ in events)):
+    -             raise ValueError('capture count/range mismatch')
+25  +             if manifest["files"].get(name) != actual:
+26  +                 raise ValueError(f"cache evidence hash mismatch: {run.name}/{name}")
+27  +         oracle = json.loads((run / "oracle.json").read_text())
+28  +         variant, repeat = run.name.rsplit("-", 1)
+29  +         if (
+30  +             manifest.get("variant") != variant
+31  +             or manifest.get("repeat") != int(repeat)
+32  +             or oracle.get("case_id") != variant
+33  +         ):
+34  +             raise ValueError("cache case identity mismatch")
+35  +         if (
+36  +             not oracle["complete"]
+37  +             or oracle["received_ids"] != [8394752]
+38  +             or oracle["sent_ids"] != [8394752]
+39  +         ):
+40  +             raise ValueError("cache oracle mismatch")
+41  +         with (run / "accesses.csv").open() as stream:
+42  +             events = [
+43  +                 (int(e["address"]), int(e["size"]), e["operation"]) for e in csv.DictReader(stream)
+44  +             ]
+45  +         region = manifest["region"]
+46  +         if (
+47  +             len(events) != 16384
+48  +             or sum(e[2] == "R" for e in events) != 8192
+49  +             or sum(e[2] == "W" for e in events) != 8192
+50  +             or any(
+51  +                 size != 4
+52  +                 or not region["data_start"] <= address < region["data_start"] + region["data_size"]
+53  +                 for address, size, _ in events
+54  +             )
+55  +         ):
+56  +             raise ValueError("capture count/range mismatch")
+57  |         for size in [1024, 4096, 16384]:
+58  |             result = replay(events, Geometry(size, 64, 4), Geometry(32768, 64, 4))
+    -             rows.append({**result, 'run': run.name, 'checksum': 8394752,
+    -                          'psf_sha256': manifest['files']['trace.psf'],
+    -                          'source_sha256': manifest['files']['accesses.csv'],
+    -                          'model_sha256': model_hash,
+    -                          'function': 'cache_work', 'object': 'cache_matrix',
+    -                          'region': manifest['region']})
+59  +             rows.append(
+60  +                 {
+61  +                     **result,
+62  +                     "run": run.name,
+63  +                     "checksum": 8394752,
+64  +                     "psf_sha256": manifest["files"]["trace.psf"],
+65  +                     "source_sha256": manifest["files"]["accesses.csv"],
+66  +                     "model_sha256": model_hash,
+67  +                     "function": "cache_work",
+68  +                     "object": "cache_matrix",
+69  +                     "region": manifest["region"],
+70  +                 }
+71  +             )
+72  |     if len(rows) != 18:
+    -         raise ValueError('expected six captures with three geometries each')
+    -     return {'schema': 'cache-dashboard-v1', 'rows': rows,
+    -             'scope': 'data-only matrix region; L2 excludes instruction traffic',
+    -             'time_alignment': 'whole workload region only; no per-event PSF timestamp',
+    -             'source': 'QEMU guest physical access replay; not hardware PMU'}
+73  +         raise ValueError("expected six captures with three geometries each")
+74  +     return {
+75  +         "schema": "cache-dashboard-v1",
+76  +         "rows": rows,
+77  +         "scope": "data-only matrix region; L2 excludes instruction traffic",
+78  +         "time_alignment": "whole workload region only; no per-event PSF timestamp",
+79  +         "source": "QEMU guest physical access replay; not hardware PMU",
+80  +     }
+81  |
+82  |
+83  | def render_offline(data, template, js, css):
+    -     html = template.replace('<script id="cache-data"></script>',
+    -                             '<script id="cache-data" type="application/json">'
+    -                             + embed_json(data) + '</script>')
+    -     html = html.replace('<script src="/assets/cache.js"></script>',
+    -                         '<script>' + js.replace('</script', '<\\/script') + '</script>')
+    -     html = html.replace('<link rel="stylesheet" href="/assets/cache.css">',
+    -                         '<style>' + css.replace('</style', '<\\/style') + '</style>')
+    -     policy = ("default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; "
+    -               "img-src data: blob:; connect-src 'none'; font-src data:; base-uri 'none'")
+    -     return html.replace('<title>', '<meta http-equiv="Content-Security-Policy" content="'
+    -                         + policy + '"><title>')
+84  +     html = template.replace(
+85  +         '<script id="cache-data"></script>',
+86  +         '<script id="cache-data" type="application/json">' + embed_json(data) + "</script>",
+87  +     )
+88  +     html = html.replace(
+89  +         '<script src="/assets/cache.js"></script>',
+90  +         "<script>" + js.replace("</script", "<\\/script") + "</script>",
+91  +     )
+92  +     html = html.replace(
+93  +         '<link rel="stylesheet" href="/assets/cache.css">',
+94  +         "<style>" + css.replace("</style", "<\\/style") + "</style>",
+95  +     )
+96  +     policy = (
+97  +         "default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; "
+98  +         "img-src data: blob:; connect-src 'none'; font-src data:; base-uri 'none'"
+99  +     )
+100 +     return html.replace(
+101 +         "<title>", '<meta http-equiv="Content-Security-Policy" content="' + policy + '"><title>'
+102 +     )
+103 |
+104 |
+105 | def export_cache(directory, output):
+    -     assets = ROOT / 'web/dist/assets'
+    -     html = render_offline(load_comparison(directory), (ROOT / 'web/cache.html').read_text(),
+    -                           (assets / 'cache.js').read_text(), (assets / 'cache.css').read_text())
+106 +     assets = ROOT / "web/dist/assets"
+107 +     html = render_offline(
+108 +         load_comparison(directory),
+109 +         (ROOT / "web/cache.html").read_text(),
+110 +         (assets / "cache.js").read_text(),
+111 +         (assets / "cache.css").read_text(),
+112 +     )
+113 |     output.parent.mkdir(parents=True, exist_ok=True)
+    |
+
+unformatted: File would be reformatted
+  --> src/psf_lab/cache_suites.py:6:5
+   |
+5  | _SUITES = {
+   -     'matrix': {
+   -         'id': 'matrix', 'title': '矩陣遍歷',
+   -         'variants': {'cache_row': '連續存取 Row', 'cache_column': '跨列存取 Column'},
+   -         'checksum': 8394752, 'oracle_values': [8394752], 'operations': 16384,
+   -         'allocated_bytes': 16384, 'hot_bytes': 16384, 'symbol': 'cache_matrix',
+   -         'description': '64 × 64 uint32，每個元素加一兩次',
+6  +     "matrix": {
+7  +         "id": "matrix",
+8  +         "title": "矩陣遍歷",
+9  +         "variants": {"cache_row": "連續存取 Row", "cache_column": "跨列存取 Column"},
+10 +         "checksum": 8394752,
+11 +         "oracle_values": [8394752],
+12 +         "operations": 16384,
+13 +         "allocated_bytes": 16384,
+14 +         "hot_bytes": 16384,
+15 +         "symbol": "cache_matrix",
+16 +         "description": "64 × 64 uint32，每個元素加一兩次",
+17 |     },
+   -     'layout': {
+   -         'id': 'layout', 'title': 'AoS／SoA／Hot-cold',
+   -         'variants': {'cache_aos': 'AoS', 'cache_soa': 'SoA', 'cache_hotcold': 'Hot/cold'},
+   -         'checksum': 131584, 'oracle_values': [131584, 7334656], 'operations': 2048,
+   -         'allocated_bytes': 16384, 'hot_bytes': 2048, 'symbol': 'cache_records',
+   -         'description': '256 records，兩個 hot 欄位加一兩次；14 cold 欄位保持不變',
+18 +     "layout": {
+19 +         "id": "layout",
+20 +         "title": "AoS／SoA／Hot-cold",
+21 +         "variants": {"cache_aos": "AoS", "cache_soa": "SoA", "cache_hotcold": "Hot/cold"},
+22 +         "checksum": 131584,
+23 +         "oracle_values": [131584, 7334656],
+24 +         "operations": 2048,
+25 +         "allocated_bytes": 16384,
+26 +         "hot_bytes": 2048,
+27 +         "symbol": "cache_records",
+28 +         "description": "256 records，兩個 hot 欄位加一兩次；14 cold 欄位保持不變",
+29 |     },
+--------------------------------------------------------------------------------
+34 |     if name not in _SUITES:
+   -         raise ValueError('unknown cache suite')
+35 +         raise ValueError("unknown cache suite")
+36 |     return deepcopy(_SUITES[name])
+   |
+
+unformatted: File would be reformatted
+  --> tests/unit/test_cache_model.py:8:28
+   |
+7  |     def test_cold_warm_reads_writes(self):
+   -         r = replay([(0, 4, 'R'), (4, 4, 'W'), (0, 4, 'R')], Geometry(128, 64, 1))
+   -         self.assertEqual(r['l1']['read_misses'], 1)
+   -         self.assertEqual(r['l1']['write_misses'], 0)
+   -         self.assertEqual(r['l1']['accesses'], 3)
+8  +         r = replay([(0, 4, "R"), (4, 4, "W"), (0, 4, "R")], Geometry(128, 64, 1))
+9  +         self.assertEqual(r["l1"]["read_misses"], 1)
+10 +         self.assertEqual(r["l1"]["write_misses"], 0)
+11 +         self.assertEqual(r["l1"]["accesses"], 3)
+12 |
+13 |     def test_conflict_l2_retains(self):
+   -         r = replay([(a, 4, 'R') for a in [0, 128, 0]], Geometry(128, 64, 1),
+   -                    Geometry(256, 64, 2))
+   -         self.assertEqual(r['l1']['misses'], 3)
+   -         self.assertEqual(r['l2']['accesses'], 3)
+   -         self.assertEqual(r['l2']['misses'], 2)
+14 +         r = replay([(a, 4, "R") for a in [0, 128, 0]], Geometry(128, 64, 1), Geometry(256, 64, 2))
+15 +         self.assertEqual(r["l1"]["misses"], 3)
+16 +         self.assertEqual(r["l2"]["accesses"], 3)
+17 +         self.assertEqual(r["l2"]["misses"], 2)
+18 |
+19 |     def test_lru(self):
+   -         r = replay([(a, 4, 'R') for a in [0, 64, 0, 128, 0, 64]], Geometry(128, 64, 2))
+   -         self.assertEqual(r['l1']['misses'], 4)
+20 +         r = replay([(a, 4, "R") for a in [0, 64, 0, 128, 0, 64]], Geometry(128, 64, 2))
+21 +         self.assertEqual(r["l1"]["misses"], 4)
+22 |
+23 |     def test_cross_line_write_allocate(self):
+   -         r = replay([(60, 8, 'W'), (64, 4, 'R')], Geometry(128, 64, 1))
+   -         self.assertEqual(r['memory_operations'], 2)
+   -         self.assertEqual(r['l1']['accesses'], 3)
+   -         self.assertEqual(r['l1']['write_misses'], 2)
+   -         self.assertEqual(r['l1']['read_misses'], 0)
+24 +         r = replay([(60, 8, "W"), (64, 4, "R")], Geometry(128, 64, 1))
+25 +         self.assertEqual(r["memory_operations"], 2)
+26 +         self.assertEqual(r["l1"]["accesses"], 3)
+27 +         self.assertEqual(r["l1"]["write_misses"], 2)
+28 +         self.assertEqual(r["l1"]["read_misses"], 0)
+29 |
+30 |     def test_empty_without_l2(self):
+31 |         r = replay([], Geometry(128, 64, 1))
+   -         self.assertEqual(r['l1']['misses'], 0)
+   -         self.assertIsNone(r['l1']['miss_rate'])
+   -         self.assertIsNone(r['l2'])
+32 +         self.assertEqual(r["l1"]["misses"], 0)
+33 +         self.assertIsNone(r["l1"]["miss_rate"])
+34 +         self.assertIsNone(r["l2"])
+35 |
+36 |     def test_invalid_geometry(self):
+   -         for args in [(0, 64, 1), (128, 0, 1), (128, 64, 0), (192, 64, 1),
+   -                      (64, 128, 1), (128, 64, -1)]:
+37 +         for args in [
+38 +             (0, 64, 1),
+39 +             (128, 0, 1),
+40 +             (128, 64, 0),
+41 +             (192, 64, 1),
+42 +             (64, 128, 1),
+43 +             (128, 64, -1),
+44 +         ]:
+45 |             with self.subTest(args=args), self.assertRaises(ValueError):
+46 |                 Geometry(*args)
+47 |
+48 |     def test_invalid_access(self):
+   -         for event in [(-1, 4, 'R'), (0, 0, 'R'), (0, 4, 'X'), (2**64-1, 2, 'W')]:
+49 +         for event in [(-1, 4, "R"), (0, 0, "R"), (0, 4, "X"), (2**64 - 1, 2, "W")]:
+50 |             with self.subTest(event=event), self.assertRaises(ValueError):
+--------------------------------------------------------------------------------
+57 |     def test_spatial_use_separates_evicted_and_resident(self):
+   -         r = replay([(0, 4, 'R'), (64, 4, 'R')], Geometry(64, 64, 1))
+   -         self.assertEqual(r['l1']['spatial']['evicted_unused_bytes'], 60)
+   -         self.assertEqual(r['l1']['spatial']['resident_unobserved_bytes'], 60)
+   -         self.assertEqual(r['l1']['spatial']['observed_utilization'], 4/64)
+58 +         r = replay([(0, 4, "R"), (64, 4, "R")], Geometry(64, 64, 1))
+59 +         self.assertEqual(r["l1"]["spatial"]["evicted_unused_bytes"], 60)
+60 +         self.assertEqual(r["l1"]["spatial"]["resident_unobserved_bytes"], 60)
+61 +         self.assertEqual(r["l1"]["spatial"]["observed_utilization"], 4 / 64)
+62 |
+63 |     def test_repeated_bytes_count_once_per_residency(self):
+   -         r = replay([(0, 4, 'R'), (0, 4, 'W'), (4, 4, 'R')], Geometry(64, 64, 1))
+   -         self.assertEqual(r['l1']['spatial']['observed_used_bytes'], 8)
+64 +         r = replay([(0, 4, "R"), (0, 4, "W"), (4, 4, "R")], Geometry(64, 64, 1))
+65 +         self.assertEqual(r["l1"]["spatial"]["observed_used_bytes"], 8)
+   |
+
+unformatted: File would be reformatted
+  --> tests/unit/test_cache_report.py:17:39
+   |
+16 |     def test_verified_dataset(self):
+   -         data = load_comparison(ROOT / 'runs/cache-relative-v3')
+   -         self.assertEqual(len(data['rows']), 18)
+   -         self.assertTrue(all(len(row['psf_sha256']) == 64 for row in data['rows']))
+17 +         data = load_comparison(ROOT / "runs/cache-relative-v3")
+18 +         self.assertEqual(len(data["rows"]), 18)
+19 +         self.assertTrue(all(len(row["psf_sha256"]) == 64 for row in data["rows"]))
+20 |
+21 |     def test_script_escape(self):
+   -         html = render_offline({'rows': [], 'label': '</script><script>alert(1)</script>'},
+   -                               '<head><title>Cache</title></head>'
+   -                               '<script id="cache-data"></script>', '', '')
+   -         self.assertNotIn('</script><script>alert', html)
+   -         self.assertIn('connect-src', html)
+22 +         html = render_offline(
+23 +             {"rows": [], "label": "</script><script>alert(1)</script>"},
+24 +             '<head><title>Cache</title></head><script id="cache-data"></script>',
+25 +             "",
+26 +             "",
+27 +         )
+28 +         self.assertNotIn("</script><script>alert", html)
+29 +         self.assertIn("connect-src", html)
+30 |
+31 |     def test_cache_api(self):
+32 |         with tempfile.TemporaryDirectory() as directory:
+   -             with TestClient(create_app(Path(directory)), base_url='http://localhost') as client:
+   -                 response = client.get('/api/cache')
+33 +             with TestClient(create_app(Path(directory)), base_url="http://localhost") as client:
+34 +                 response = client.get("/api/cache")
+35 |                 self.assertEqual(response.status_code, 200)
+   -                 self.assertEqual(len(response.json()['rows']), 18)
+36 +                 self.assertEqual(len(response.json()["rows"]), 18)
+37 |
+38 |     def test_tampered_accesses_rejected(self):
+39 |         with tempfile.TemporaryDirectory() as directory:
+   -             root = Path(directory) / 'suite'
+   -             shutil.copytree(ROOT / 'runs/cache-relative-v3', root)
+   -             (root / 'cache_row-1/accesses.csv').write_text('address,size,operation\n0,4,R\n')
+   -             with self.assertRaisesRegex(ValueError, 'hash mismatch'):
+40 +             root = Path(directory) / "suite"
+41 +             shutil.copytree(ROOT / "runs/cache-relative-v3", root)
+42 +             (root / "cache_row-1/accesses.csv").write_text("address,size,operation\n0,4,R\n")
+43 +             with self.assertRaisesRegex(ValueError, "hash mismatch"):
+44 |                 load_comparison(root)
+45 |
+46 |     def test_swapped_case_directories_rejected(self):
+47 |         with tempfile.TemporaryDirectory() as directory:
+   -             root = Path(directory) / 'suite'
+   -             shutil.copytree(ROOT / 'runs/cache-relative-v3', root)
+   -             (root / 'cache_row-1').rename(root / 'temporary')
+   -             (root / 'cache_column-1').rename(root / 'cache_row-1')
+   -             (root / 'temporary').rename(root / 'cache_column-1')
+   -             with self.assertRaisesRegex(ValueError, 'identity mismatch'):
+48 +             root = Path(directory) / "suite"
+49 +             shutil.copytree(ROOT / "runs/cache-relative-v3", root)
+50 +             (root / "cache_row-1").rename(root / "temporary")
+51 +             (root / "cache_column-1").rename(root / "cache_row-1")
+52 +             (root / "temporary").rename(root / "cache_column-1")
+53 +             with self.assertRaisesRegex(ValueError, "identity mismatch"):
+54 |                 load_comparison(root)
+55 |
+56 |     def test_actual_model_hash_attached(self):
+   -         expected = hashlib.sha256((ROOT / 'src/psf_lab/cache_model.py').read_bytes()).hexdigest()
+   -         result = load_comparison(ROOT / 'runs/cache-relative-v3')
+   -         self.assertTrue(all(row['model_sha256'] == expected for row in result['rows']))
+57 +         expected = hashlib.sha256((ROOT / "src/psf_lab/cache_model.py").read_bytes()).hexdigest()
+58 +         result = load_comparison(ROOT / "runs/cache-relative-v3")
+59 +         self.assertTrue(all(row["model_sha256"] == expected for row in result["rows"]))
+   |
+
+unformatted: File would be reformatted
+  --> tests/unit/test_cache_suites.py:8:27
+   |
+7  |     def test_legacy_matrix_contract(self):
+   -         spec = suite_spec('matrix')
+   -         self.assertEqual(spec['checksum'], 8394752)
+   -         self.assertEqual(spec['operations'], 16384)
+   -         self.assertEqual(len(spec['variants']), 2)
+8  +         spec = suite_spec("matrix")
+9  +         self.assertEqual(spec["checksum"], 8394752)
+10 +         self.assertEqual(spec["operations"], 16384)
+11 +         self.assertEqual(len(spec["variants"]), 2)
+12 |
+13 |     def test_layout_same_work(self):
+   -         spec = suite_spec('layout')
+   -         self.assertEqual(spec['checksum'], sum(4*i+4 for i in range(256)))
+   -         self.assertEqual(spec['operations'], 256*2*2*2)
+   -         self.assertEqual(spec['allocated_bytes'], 256*16*4)
+   -         self.assertEqual(spec['hot_bytes'], 256*2*4)
+   -         self.assertEqual(set(spec['variants']), {'cache_aos', 'cache_soa', 'cache_hotcold'})
+14 +         spec = suite_spec("layout")
+15 +         self.assertEqual(spec["checksum"], sum(4 * i + 4 for i in range(256)))
+16 +         self.assertEqual(spec["operations"], 256 * 2 * 2 * 2)
+17 +         self.assertEqual(spec["allocated_bytes"], 256 * 16 * 4)
+18 +         self.assertEqual(spec["hot_bytes"], 256 * 2 * 4)
+19 +         self.assertEqual(set(spec["variants"]), {"cache_aos", "cache_soa", "cache_hotcold"})
+20 |
+21 |     def test_unknown_rejected(self):
+22 |         with self.assertRaises(ValueError):
+   -             suite_spec('../../other')
+23 +             suite_spec("../../other")
+24 |
+25 |     def test_caller_cannot_mutate_contract(self):
+   -         suite_spec('layout')['variants']['cache_aos'] = 'changed'
+   -         self.assertEqual(suite_spec('layout')['variants']['cache_aos'], 'AoS')
+26 +         suite_spec("layout")["variants"]["cache_aos"] = "changed"
+27 +         self.assertEqual(suite_spec("layout")["variants"]["cache_aos"], "AoS")
+   |
+
+unformatted: File would be reformatted
+  --> tools/cache/package.py:10:10
+   |
+9  | ROOT = Path(__file__).resolve().parents[2]
+   - PATHS = ['firmware', 'src', 'tools/cache', 'tools/toolchain-lock.json',
+   -          'third_party/qemu-cache', 'third_party/FreeRTOS/FreeRTOS/Source',
+   -          'third_party/FreeRTOS/FreeRTOS/Demo/RISC-V_RV32_QEMU_VIRT_GCC',
+   -          'references/baseline/percepio/TraceRecorder', 'references/cache',
+   -          'runs/cache-relative-v3', 'web/cache.html', 'web/src/cache.js', 'web/src/cache.css',
+   -          'web/dist/assets/cache.js', 'web/dist/assets/cache.css',
+   -          'artifacts/offline/cache-comparison.html', 'artifacts/screenshots/cache',
+   -          'docs/cache-replay.md',
+   -          'docs/research/Cache效率與PSF擴充.md', 'requirements-runtime.lock',
+   -          'requirements-dev.lock', 'pyproject.toml', 'tests/unit/test_cache_model.py',
+   -          'tests/unit/test_cache_report.py']
+10 + PATHS = [
+11 +     "firmware",
+12 +     "src",
+13 +     "tools/cache",
+14 +     "tools/toolchain-lock.json",
+15 +     "third_party/qemu-cache",
+16 +     "third_party/FreeRTOS/FreeRTOS/Source",
+17 +     "third_party/FreeRTOS/FreeRTOS/Demo/RISC-V_RV32_QEMU_VIRT_GCC",
+18 +     "references/baseline/percepio/TraceRecorder",
+19 +     "references/cache",
+20 +     "runs/cache-relative-v3",
+21 +     "web/cache.html",
+22 +     "web/src/cache.js",
+23 +     "web/src/cache.css",
+24 +     "web/dist/assets/cache.js",
+25 +     "web/dist/assets/cache.css",
+26 +     "artifacts/offline/cache-comparison.html",
+27 +     "artifacts/screenshots/cache",
+28 +     "docs/cache-replay.md",
+29 +     "docs/research/Cache效率與PSF擴充.md",
+30 +     "requirements-runtime.lock",
+31 +     "requirements-dev.lock",
+32 +     "pyproject.toml",
+33 +     "tests/unit/test_cache_model.py",
+34 +     "tests/unit/test_cache_report.py",
+35 + ]
+36 |
+--------------------------------------------------------------------------------
+43 |             raise FileNotFoundError(path)
+   -         for item in sorted(path.rglob('*')) if path.is_dir() else [path]:
+   -             if (not item.is_file() or item.is_symlink()
+   -                     or any(p in ('.git', '__pycache__') for p in item.parts)
+   -                     or item.suffix == '.pyc'):
+44 +         for item in sorted(path.rglob("*")) if path.is_dir() else [path]:
+45 +             if (
+46 +                 not item.is_file()
+47 +                 or item.is_symlink()
+48 +                 or any(p in (".git", "__pycache__") for p in item.parts)
+49 +                 or item.suffix == ".pyc"
+50 +             ):
+51 |                 continue
+52 |             files[str(item.relative_to(ROOT))] = item
+   -     dest = ROOT / 'artifacts/restore/cache-replay-source.tar.gz'
+53 +     dest = ROOT / "artifacts/restore/cache-replay-source.tar.gz"
+54 |     dest.parent.mkdir(parents=True, exist_ok=True)
+55 |     records = {}
+   -     with tarfile.open(dest, 'w:gz') as archive:
+56 +     with tarfile.open(dest, "w:gz") as archive:
+57 |         for name, path in sorted(files.items()):
+--------------------------------------------------------------------------------
+64 |             archive.addfile(entry, io.BytesIO(data))
+   -         blob = (json.dumps(records, indent=2, ensure_ascii=False) + '\n').encode()
+   -         entry = tarfile.TarInfo('RESTORE-SHA256.json')
+65 +         blob = (json.dumps(records, indent=2, ensure_ascii=False) + "\n").encode()
+66 +         entry = tarfile.TarInfo("RESTORE-SHA256.json")
+67 |         entry.size = len(blob)
+68 |         archive.addfile(entry, io.BytesIO(blob))
+   -     receipt = {'archive': dest.name, 'sha256': hashlib.sha256(dest.read_bytes()).hexdigest(),
+   -                'bytes': dest.stat().st_size, 'files': len(files),
+   -                'includes': 'source, FreeRTOS/SDK source dependencies, captures, offline HTML',
+   -                'external_tools': ['Python 3.13', 'QEMU 11.1.2 API 7',
+   -                                   'RISC-V GCC 15.2', 'C compiler', 'pkg-config', 'GLib headers'],
+   -                'excluded': 'host executables, Python wheels, cross-platform validation'}
+   -     (dest.parent / 'cache-replay-source.json').write_text(json.dumps(receipt, indent=2) + '\n')
+69 +     receipt = {
+70 +         "archive": dest.name,
+71 +         "sha256": hashlib.sha256(dest.read_bytes()).hexdigest(),
+72 +         "bytes": dest.stat().st_size,
+73 +         "files": len(files),
+74 +         "includes": "source, FreeRTOS/SDK source dependencies, captures, offline HTML",
+75 +         "external_tools": [
+76 +             "Python 3.13",
+77 +             "QEMU 11.1.2 API 7",
+78 +             "RISC-V GCC 15.2",
+79 +             "C compiler",
+80 +             "pkg-config",
+81 +             "GLib headers",
+82 +         ],
+83 +         "excluded": "host executables, Python wheels, cross-platform validation",
+84 +     }
+85 +     (dest.parent / "cache-replay-source.json").write_text(json.dumps(receipt, indent=2) + "\n")
+86 |     print(json.dumps(receipt))
+87 |
+88 |
+   - if __name__ == '__main__':
+89 + if __name__ == "__main__":
+90 |     main()
+   |
+
+unformatted: File would be reformatted
+   --> tools/cache/run.py:28:29
+    |
+27  |     if result.returncode:
+    -         raise RuntimeError(f'command failed ({result.returncode}); see {log}')
+28  +         raise RuntimeError(f"command failed ({result.returncode}); see {log}")
+29  |     return command
+--------------------------------------------------------------------------------
+34  |         reader = csv.DictReader(stream)
+    -         if reader.fieldnames != ['address', 'size', 'operation']:
+    -             raise ValueError('unexpected access CSV columns')
+    -         return [(int(row['address']), int(row['size']), row['operation']) for row in reader]
+35  +         if reader.fieldnames != ["address", "size", "operation"]:
+36  +             raise ValueError("unexpected access CSV columns")
+37  +         return [(int(row["address"]), int(row["size"]), row["operation"]) for row in reader]
+38  |
+39  |
+40  | def analyze(directory):
+41  |     dataset = load_comparison(directory)
+    -     summaries = dataset['rows']
+    -     for run in sorted(directory.glob('cache_*-[123]')):
+    -         rows = [r for r in summaries if r['run'] == run.name]
+    -         (run / 'analysis.json').write_text(json.dumps(rows, indent=2) + '\n')
+    -     (directory / 'comparison.json').write_text(json.dumps(summaries, indent=2) + '\n')
+    -     receipt = {'model_sha256': digest(ROOT / 'src/psf_lab/cache_model.py'),
+    -                'report_sha256': digest(ROOT / 'src/psf_lab/cache_report.py'),
+    -                'comparison_sha256': digest(directory / 'comparison.json'),
+    -                'row_count': len(summaries)}
+    -     (directory / 'analysis-receipt.json').write_text(json.dumps(receipt, indent=2) + '\n')
+42  +     summaries = dataset["rows"]
+43  +     for run in sorted(directory.glob("cache_*-[123]")):
+44  +         rows = [r for r in summaries if r["run"] == run.name]
+45  +         (run / "analysis.json").write_text(json.dumps(rows, indent=2) + "\n")
+46  +     (directory / "comparison.json").write_text(json.dumps(summaries, indent=2) + "\n")
+47  +     receipt = {
+48  +         "model_sha256": digest(ROOT / "src/psf_lab/cache_model.py"),
+49  +         "report_sha256": digest(ROOT / "src/psf_lab/cache_report.py"),
+50  +         "comparison_sha256": digest(directory / "comparison.json"),
+51  +         "row_count": len(summaries),
+52  +     }
+53  +     (directory / "analysis-receipt.json").write_text(json.dumps(receipt, indent=2) + "\n")
+54  |     return summaries
+--------------------------------------------------------------------------------
+58  |     directory.mkdir(parents=True, exist_ok=False)
+    -     plugin = directory / ('addresses.dylib' if platform.system() == 'Darwin' else 'addresses.so')
+    -     link = ['-dynamiclib', '-undefined', 'dynamic_lookup'] if platform.system() == 'Darwin' else [
+    -         '-shared', '-fPIC']
+    -     build = ['cc', *link, '-O2', '-Wall', '-Wextra', '-Werror',
+    -              '-I' + str(ROOT / 'third_party/qemu-cache'),
+    -              str(ROOT / 'tools/cache/addresses.c'), '-o', str(plugin),
+    -              *shlex.split(subprocess.check_output(
+    -                  ['pkg-config', '--cflags', 'glib-2.0'], text=True))]
+    -     execute(build, ROOT, directory / 'plugin-build.log')
+59  +     plugin = directory / ("addresses.dylib" if platform.system() == "Darwin" else "addresses.so")
+60  +     link = (
+61  +         ["-dynamiclib", "-undefined", "dynamic_lookup"]
+62  +         if platform.system() == "Darwin"
+63  +         else ["-shared", "-fPIC"]
+64  +     )
+65  +     build = [
+66  +         "cc",
+67  +         *link,
+68  +         "-O2",
+69  +         "-Wall",
+70  +         "-Wextra",
+71  +         "-Werror",
+72  +         "-I" + str(ROOT / "third_party/qemu-cache"),
+73  +         str(ROOT / "tools/cache/addresses.c"),
+74  +         "-o",
+75  +         str(plugin),
+76  +         *shlex.split(subprocess.check_output(["pkg-config", "--cflags", "glib-2.0"], text=True)),
+77  +     ]
+78  +     execute(build, ROOT, directory / "plugin-build.log")
+79  |     manifests = []
+    -     for variant in ['cache_row', 'cache_column']:
+    -         command = ['make', '-B', '-C', 'firmware', f'CASE={variant}',
+    -                    f'TOOLCHAIN={toolchain}']
+    -         execute(command, ROOT, directory / f'{variant}-build.log')
+    -         elf = ROOT / 'build' / variant / 'firmware.elf'
+80  +     for variant in ["cache_row", "cache_column"]:
+81  +         command = ["make", "-B", "-C", "firmware", f"CASE={variant}", f"TOOLCHAIN={toolchain}"]
+82  +         execute(command, ROOT, directory / f"{variant}-build.log")
+83  +         elf = ROOT / "build" / variant / "firmware.elf"
+84  |         symbols = subprocess.check_output(
+    -             [str(toolchain / 'riscv-none-elf-nm'), '-S', str(elf)], text=True)
+    -         table = {parts[3]: (int(parts[0], 16), int(parts[1], 16))
+    -                  for line in symbols.splitlines() if len(parts := line.split()) == 4}
+    -         pc, pc_size = table['cache_work']
+    -         data, data_size = table['cache_matrix']
+85  +             [str(toolchain / "riscv-none-elf-nm"), "-S", str(elf)], text=True
+86  +         )
+87  +         table = {
+88  +             parts[3]: (int(parts[0], 16), int(parts[1], 16))
+89  +             for line in symbols.splitlines()
+90  +             if len(parts := line.split()) == 4
+91  +         }
+92  +         pc, pc_size = table["cache_work"]
+93  +         data, data_size = table["cache_matrix"]
+94  |         if data_size != 16384 or data % 64:
+    -             raise ValueError('matrix size/alignment mismatch')
+95  +             raise ValueError("matrix size/alignment mismatch")
+96  |         for number in range(1, 4):
+    -             run = directory / f'{variant}-{number}'
+97  +             run = directory / f"{variant}-{number}"
+98  |             run.mkdir()
+    -             for name in ['firmware.elf', 'firmware.map']:
+99  +             for name in ["firmware.elf", "firmware.map"]:
+100 |                 shutil.copyfile(elf.parent / name, run / name)
+    -             (run / 'symbols.txt').write_text(symbols)
+    -             args = (f'{plugin},pc_start={pc:x},pc_end={pc+pc_size:x},'
+    -                     f'data_start={data:x},data_end={data+data_size:x},out=accesses.csv')
+    -             command = [qemu, *QEMU_FLAGS, '-kernel', str(run / 'firmware.elf'), '-plugin', args]
+    -             execute(command, run, run / 'qemu.log')
+    -             oracle = json.loads((run / 'oracle.json').read_text())
+    -             if (not oracle['complete'] or oracle['sent_ids'] != [8394752]
+    -                     or oracle['received_ids'] != [8394752]):
+    -                 raise ValueError('work checksum mismatch')
+    -             events = read_events(run / 'accesses.csv')
+    -             if (len(events) != 16384 or sum(e[2] == 'R' for e in events) != 8192
+    -                     or any(not (data <= a < data+data_size) or size != 4
+    -                            for a, size, _ in events)):
+    -                 raise ValueError('capture count/range mismatch')
+    -             if 'cache_capture_complete=16384' not in (run / 'qemu.log').read_text():
+    -                 raise ValueError('capture completion marker missing')
+    -             manifest = {'schema': 'cache-run-v1', 'variant': variant, 'repeat': number,
+    -                         'command': command, 'checksum': 8394752,
+    -                         'region': {'pc_start': pc, 'pc_size': pc_size,
+    -                                    'data_start': data, 'data_size': data_size},
+    -                         'files': {p.name: digest(p) for p in run.iterdir() if p.is_file()}}
+    -             (run / 'manifest.json').write_text(json.dumps(manifest, indent=2) + '\n')
+101 +             (run / "symbols.txt").write_text(symbols)
+102 +             args = (
+103 +                 f"{plugin},pc_start={pc:x},pc_end={pc + pc_size:x},"
+104 +                 f"data_start={data:x},data_end={data + data_size:x},out=accesses.csv"
+105 +             )
+106 +             command = [qemu, *QEMU_FLAGS, "-kernel", str(run / "firmware.elf"), "-plugin", args]
+107 +             execute(command, run, run / "qemu.log")
+108 +             oracle = json.loads((run / "oracle.json").read_text())
+109 +             if (
+110 +                 not oracle["complete"]
+111 +                 or oracle["sent_ids"] != [8394752]
+112 +                 or oracle["received_ids"] != [8394752]
+113 +             ):
+114 +                 raise ValueError("work checksum mismatch")
+115 +             events = read_events(run / "accesses.csv")
+116 +             if (
+117 +                 len(events) != 16384
+118 +                 or sum(e[2] == "R" for e in events) != 8192
+119 +                 or any(not (data <= a < data + data_size) or size != 4 for a, size, _ in events)
+120 +             ):
+121 +                 raise ValueError("capture count/range mismatch")
+122 +             if "cache_capture_complete=16384" not in (run / "qemu.log").read_text():
+123 +                 raise ValueError("capture completion marker missing")
+124 +             manifest = {
+125 +                 "schema": "cache-run-v1",
+126 +                 "variant": variant,
+127 +                 "repeat": number,
+128 +                 "command": command,
+129 +                 "checksum": 8394752,
+130 +                 "region": {
+131 +                     "pc_start": pc,
+132 +                     "pc_size": pc_size,
+133 +                     "data_start": data,
+134 +                     "data_size": data_size,
+135 +                 },
+136 +                 "files": {p.name: digest(p) for p in run.iterdir() if p.is_file()},
+137 +             }
+138 +             (run / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
+139 |             manifests.append(manifest)
+140 |     analyze(directory)
+    -     sources = [ROOT / 'tools/cache/addresses.c', ROOT / 'tools/cache/run.py',
+    -                ROOT / 'src/psf_lab/cache_model.py', ROOT / 'src/psf_lab/cache_report.py',
+    -                ROOT / 'firmware/Makefile',
+    -                *sorted((ROOT / 'firmware/app/cases').glob('cache*')),
+    -                *sorted((ROOT / 'third_party/qemu-cache').glob('*'))]
+    -     receipt = {'schema': 'cache-suite-v1', 'build_command': build,
+    -                'qemu_version': subprocess.check_output([qemu, '--version'], text=True),
+    -                'compiler': subprocess.check_output(['cc', '--version'], text=True),
+    -                'plugin_sha256': digest(plugin), 'sources': {
+    -                    str(p.relative_to(ROOT)): digest(p) for p in sources if p.is_file()},
+    -                'captures': len(manifests), 'host': platform.platform()}
+    -     (directory / 'suite.json').write_text(json.dumps(receipt, indent=2) + '\n')
+141 +     sources = [
+142 +         ROOT / "tools/cache/addresses.c",
+143 +         ROOT / "tools/cache/run.py",
+144 +         ROOT / "src/psf_lab/cache_model.py",
+145 +         ROOT / "src/psf_lab/cache_report.py",
+146 +         ROOT / "firmware/Makefile",
+147 +         *sorted((ROOT / "firmware/app/cases").glob("cache*")),
+148 +         *sorted((ROOT / "third_party/qemu-cache").glob("*")),
+149 +     ]
+150 +     receipt = {
+151 +         "schema": "cache-suite-v1",
+152 +         "build_command": build,
+153 +         "qemu_version": subprocess.check_output([qemu, "--version"], text=True),
+154 +         "compiler": subprocess.check_output(["cc", "--version"], text=True),
+155 +         "plugin_sha256": digest(plugin),
+156 +         "sources": {str(p.relative_to(ROOT)): digest(p) for p in sources if p.is_file()},
+157 +         "captures": len(manifests),
+158 +         "host": platform.platform(),
+159 +     }
+160 +     (directory / "suite.json").write_text(json.dumps(receipt, indent=2) + "\n")
+161 |     plugin.unlink()  # platform binary is reproducible from checked-in sources
+--------------------------------------------------------------------------------
+165 |     parser = argparse.ArgumentParser(description=__doc__)
+    -     parser.add_argument('--output', type=Path, required=True)
+    -     parser.add_argument('--replay-only', action='store_true')
+    -     parser.add_argument('--export-html', type=Path)
+    -     parser.add_argument('--toolchain', type=Path,
+    -                         default=ROOT / '.tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin')
+    -     parser.add_argument('--qemu', default='qemu-system-riscv32')
+166 +     parser.add_argument("--output", type=Path, required=True)
+167 +     parser.add_argument("--replay-only", action="store_true")
+168 +     parser.add_argument("--export-html", type=Path)
+169 +     parser.add_argument(
+170 +         "--toolchain", type=Path, default=ROOT / ".tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin"
+171 +     )
+172 +     parser.add_argument("--qemu", default="qemu-system-riscv32")
+173 |     args = parser.parse_args()
+--------------------------------------------------------------------------------
+181 |
+    - if __name__ == '__main__':
+182 + if __name__ == "__main__":
+183 |     main()
+    |
+
+unformatted: File would be reformatted
+   --> tools/cache/verify.py:11:23
+    |
+10  | ROOT = Path(__file__).resolve().parents[2]
+    - MODE = os.environ.get('CACHE_MODE', 'server')
+    - OUT = ROOT / 'artifacts/verification/cache-replay' / MODE
+    - SHOTS = ROOT / 'artifacts/screenshots/cache'
+    - SESSION = 'cache-accept-' + MODE
+11  + MODE = os.environ.get("CACHE_MODE", "server")
+12  + OUT = ROOT / "artifacts/verification/cache-replay" / MODE
+13  + SHOTS = ROOT / "artifacts/screenshots/cache"
+14  + SESSION = "cache-accept-" + MODE
+15  | LOG = []
+16  |
+17  |
+18  | def ab(*args):
+    -     if args[0] in {'click', 'select', 'download'}:
+19  +     if args[0] in {"click", "select", "download"}:
+20  |         selector = json.dumps(args[1])
+    -         ab('eval', f'document.querySelector({selector}).scrollIntoView({{block:"center"}})')
+    -     command = ['agent-browser', '--session', SESSION, *args]
+21  +         ab("eval", f'document.querySelector({selector}).scrollIntoView({{block:"center"}})')
+22  +     command = ["agent-browser", "--session", SESSION, *args]
+23  |     result = subprocess.run(command, capture_output=True, text=True, timeout=40)
+    -     LOG.append({'command': command, 'exit': result.returncode,
+    -                 'stdout': result.stdout, 'stderr': result.stderr})
+    -     (OUT / 'commands.json').write_text(json.dumps(LOG, ensure_ascii=False, indent=2) + '\n')
+24  +     LOG.append(
+25  +         {
+26  +             "command": command,
+27  +             "exit": result.returncode,
+28  +             "stdout": result.stdout,
+29  +             "stderr": result.stderr,
+30  +         }
+31  +     )
+32  +     (OUT / "commands.json").write_text(json.dumps(LOG, ensure_ascii=False, indent=2) + "\n")
+33  |     if result.returncode:
+--------------------------------------------------------------------------------
+38  | def evaluate(code):
+    -     return json.loads(ab('eval', '--json', code))['data']['result']
+39  +     return json.loads(ab("eval", "--json", code))["data"]["result"]
+40  |
+41  |
+42  | def shot(name):
+    -     ab('screenshot', '--full', str(SHOTS / f'{MODE}-{name}.png'))
+43  +     ab("screenshot", "--full", str(SHOTS / f"{MODE}-{name}.png"))
+44  |
+--------------------------------------------------------------------------------
+49  |         SHOTS.mkdir(parents=True, exist_ok=True)
+    -         if MODE == 'server':
+    -             response = subprocess.run(['curl', '--fail', '--silent', '--show-error',
+    -                                        'http://127.0.0.1:8765/api/cache'], capture_output=True,
+    -                                       text=True, timeout=20)
+50  +         if MODE == "server":
+51  +             response = subprocess.run(
+52  +                 ["curl", "--fail", "--silent", "--show-error", "http://127.0.0.1:8765/api/cache"],
+53  +                 capture_output=True,
+54  +                 text=True,
+55  +                 timeout=20,
+56  +             )
+57  |             self.assertEqual(response.returncode, 0, response.stderr)
+58  |             data = json.loads(response.stdout)
+    -             self.assertEqual(len(data['rows']), 18)
+    -             for row in data['rows']:
+    -                 expected = 256 if row['l1']['geometry']['size'] == 16384 else (
+    -                     512 if 'row' in row['run'] else 8192)
+    -                 self.assertEqual(row['l1']['misses'], expected)
+    -                 self.assertEqual(row['l2']['misses'], 256)
+    -             (OUT / 'curl-api.json').write_text(response.stdout)
+59  +             self.assertEqual(len(data["rows"]), 18)
+60  +             for row in data["rows"]:
+61  +                 expected = (
+62  +                     256
+63  +                     if row["l1"]["geometry"]["size"] == 16384
+64  +                     else (512 if "row" in row["run"] else 8192)
+65  +                 )
+66  +                 self.assertEqual(row["l1"]["misses"], expected)
+67  +                 self.assertEqual(row["l2"]["misses"], 256)
+68  +             (OUT / "curl-api.json").write_text(response.stdout)
+69  |         else:
+    -             result = subprocess.run(['curl', '--silent', '--max-time', '2',
+    -                                      'http://127.0.0.1:8765/api/cache'], capture_output=True)
+    -             self.assertNotEqual(result.returncode, 0, 'stop server before offline acceptance')
+70  +             result = subprocess.run(
+71  +                 ["curl", "--silent", "--max-time", "2", "http://127.0.0.1:8765/api/cache"],
+72  +                 capture_output=True,
+73  +             )
+74  +             self.assertNotEqual(result.returncode, 0, "stop server before offline acceptance")
+75  |         try:
+    -             ab('open', 'about:blank')
+    -             ab('set', 'viewport', '1600', '1050')
+    -             if MODE == 'offline':
+    -                 ab('set', 'offline', 'on')
+    -                 ab('network', 'route', 'http://*', '--abort')
+    -                 ab('network', 'route', 'https://*', '--abort')
+    -                 url = (ROOT / 'artifacts/offline/cache-comparison.html').as_uri()
+76  +             ab("open", "about:blank")
+77  +             ab("set", "viewport", "1600", "1050")
+78  +             if MODE == "offline":
+79  +                 ab("set", "offline", "on")
+80  +                 ab("network", "route", "http://*", "--abort")
+81  +                 ab("network", "route", "https://*", "--abort")
+82  +                 url = (ROOT / "artifacts/offline/cache-comparison.html").as_uri()
+83  |             else:
+    -                 url = 'http://127.0.0.1:8765/cache.html'
+    -             ab('open', url)
+    -             ab('wait', '--text', '目前 6 筆')
+84  +                 url = "http://127.0.0.1:8765/cache.html"
+85  +             ab("open", url)
+86  +             ab("wait", "--text", "目前 6 筆")
+87  |             self.assertEqual(evaluate('document.querySelectorAll(".chart svg").length'), 2)
+    -             shot('01-overview')
+    -             ab('select', '#size', '16384')
+    -             ab('wait', '--fn', 'document.querySelector("#size").value==="16384"')
+    -             shot('02-capacity')
+    -             ab('select', '#size', '4096')
+    -             ab('select', '#variant', 'cache_column')
+    -             ab('select', '#repeat', '1')
+    -             ab('wait', '--text', '目前 1 筆')
+    -             ab('click', '.tabulator-row .tabulator-cell[tabulator-field="run"]')
+    -             self.assertIn('psf_sha256', evaluate('document.querySelector("#evidence").textContent'))
+    -             shot('03-filter-evidence')
+    -             ab('download', '#csv', str(OUT / 'filtered.csv'))
+    -             with (OUT / 'filtered.csv').open(encoding='utf-8-sig') as stream:
+88  +             shot("01-overview")
+89  +             ab("select", "#size", "16384")
+90  +             ab("wait", "--fn", 'document.querySelector("#size").value==="16384"')
+91  +             shot("02-capacity")
+92  +             ab("select", "#size", "4096")
+93  +             ab("select", "#variant", "cache_column")
+94  +             ab("select", "#repeat", "1")
+95  +             ab("wait", "--text", "目前 1 筆")
+96  +             ab("click", '.tabulator-row .tabulator-cell[tabulator-field="run"]')
+97  +             self.assertIn("psf_sha256", evaluate('document.querySelector("#evidence").textContent'))
+98  +             shot("03-filter-evidence")
+99  +             ab("download", "#csv", str(OUT / "filtered.csv"))
+100 +             with (OUT / "filtered.csv").open(encoding="utf-8-sig") as stream:
+101 |                 rows = list(csv.DictReader(stream))
+102 |             self.assertEqual(len(rows), 1)
+    -             self.assertEqual(rows[0]['run'], 'cache_column-1')
+    -             self.assertEqual(rows[0]['misses'], '8192')
+    -             self.assertEqual(rows[0]['used'], '6.25')
+    -             ab('select', '#variant', 'all')
+    -             ab('select', '#repeat', 'all')
+    -             ab('wait', '--text', '目前 6 筆')
+    -             ab('click', '.tabulator-col[tabulator-field="misses"]')
+    -             ab('download', '#csv', str(OUT / 'sorted.csv'))
+    -             with (OUT / 'sorted.csv').open(encoding='utf-8-sig') as stream:
+    -                 values = [int(row['misses']) for row in csv.DictReader(stream)]
+103 +             self.assertEqual(rows[0]["run"], "cache_column-1")
+104 +             self.assertEqual(rows[0]["misses"], "8192")
+105 +             self.assertEqual(rows[0]["used"], "6.25")
+106 +             ab("select", "#variant", "all")
+107 +             ab("select", "#repeat", "all")
+108 +             ab("wait", "--text", "目前 6 筆")
+109 +             ab("click", '.tabulator-col[tabulator-field="misses"]')
+110 +             ab("download", "#csv", str(OUT / "sorted.csv"))
+111 +             with (OUT / "sorted.csv").open(encoding="utf-8-sig") as stream:
+112 +                 values = [int(row["misses"]) for row in csv.DictReader(stream)]
+113 |             self.assertEqual(values, sorted(values))
+    -             shot('04-sort')
+    -             errors = json.loads(ab('errors', '--json'))
+    -             self.assertEqual(errors['data'].get('errors', []), [])
+114 +             shot("04-sort")
+115 +             errors = json.loads(ab("errors", "--json"))
+116 +             self.assertEqual(errors["data"].get("errors", []), [])
+117 |         finally:
+    -             ab('close')
+118 +             ab("close")
+119 |
+120 |
+    - if __name__ == '__main__':
+121 + if __name__ == "__main__":
+122 |     unittest.main()
+    |
+
+unformatted: File would be reformatted
+   --> tools/cache/verify_restore.py:17:25
+    |
+16  |     parser = argparse.ArgumentParser(description=__doc__)
+    -     parser.add_argument('--rebuild', action='store_true')
+    -     parser.add_argument('--toolchain', type=Path,
+    -                         default=ROOT / '.tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin')
+17  +     parser.add_argument("--rebuild", action="store_true")
+18  +     parser.add_argument(
+19  +         "--toolchain", type=Path, default=ROOT / ".tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin"
+20  +     )
+21  |     args = parser.parse_args()
+    -     archive = ROOT / 'artifacts/restore/cache-replay-source.tar.gz'
+    -     out = ROOT / 'artifacts/verification/cache-replay'
+22  +     archive = ROOT / "artifacts/restore/cache-replay-source.tar.gz"
+23  +     out = ROOT / "artifacts/verification/cache-replay"
+24  |     out.mkdir(parents=True, exist_ok=True)
+    -     expected = json.loads(archive.with_name('cache-replay-source.json').read_text())
+25  +     expected = json.loads(archive.with_name("cache-replay-source.json").read_text())
+26  |     archive_hash = hashlib.sha256(archive.read_bytes()).hexdigest()
+    -     if expected['sha256'] != archive_hash:
+    -         raise ValueError('archive checksum mismatch')
+    -     with tempfile.TemporaryDirectory(prefix='cache-restore-') as name:
+27  +     if expected["sha256"] != archive_hash:
+28  +         raise ValueError("archive checksum mismatch")
+29  +     with tempfile.TemporaryDirectory(prefix="cache-restore-") as name:
+30  |         target = Path(name).resolve()
+31  |         with tarfile.open(archive) as stream:
+    -             stream.extractall(target, filter='data')
+    -         files = json.loads((target / 'RESTORE-SHA256.json').read_text())
+32  +             stream.extractall(target, filter="data")
+33  +         files = json.loads((target / "RESTORE-SHA256.json").read_text())
+34  |         for path, digest in files.items():
+35  |             item = (target / path).resolve()
+    -             if (not item.is_relative_to(target)
+    -                     or hashlib.sha256(item.read_bytes()).hexdigest() != digest):
+    -                 raise ValueError('restored file checksum mismatch')
+    -         env = dict(os.environ, PYTHONPATH=str(target / 'src'))
+36  +             if (
+37  +                 not item.is_relative_to(target)
+38  +                 or hashlib.sha256(item.read_bytes()).hexdigest() != digest
+39  +             ):
+40  +                 raise ValueError("restored file checksum mismatch")
+41  +         env = dict(os.environ, PYTHONPATH=str(target / "src"))
+42  |         commands = [
+    -             ['python3', 'tools/cache/run.py', '--output', 'runs/cache-relative-v3',
+    -              '--replay-only', '--export-html', 'artifacts/offline/rebuilt.html'],
+    -             ['python3', '-m', 'unittest', 'discover', '-s', 'tests/unit',
+    -              '-p', 'test_cache_model.py'],
+43  +             [
+44  +                 "python3",
+45  +                 "tools/cache/run.py",
+46  +                 "--output",
+47  +                 "runs/cache-relative-v3",
+48  +                 "--replay-only",
+49  +                 "--export-html",
+50  +                 "artifacts/offline/rebuilt.html",
+51  +             ],
+52  +             [
+53  +                 "python3",
+54  +                 "-m",
+55  +                 "unittest",
+56  +                 "discover",
+57  +                 "-s",
+58  +                 "tests/unit",
+59  +                 "-p",
+60  +                 "test_cache_model.py",
+61  +             ],
+62  |         ]
+63  |         if args.rebuild:
+    -             commands.append(['python3', 'tools/cache/run.py', '--toolchain',
+    -                              str(args.toolchain.resolve()), '--output', 'runs/local/restored-new'])
+64  +             commands.append(
+65  +                 [
+66  +                     "python3",
+67  +                     "tools/cache/run.py",
+68  +                     "--toolchain",
+69  +                     str(args.toolchain.resolve()),
+70  +                     "--output",
+71  +                     "runs/local/restored-new",
+72  +                 ]
+73  +             )
+74  |         results = []
+75  |         for index, command in enumerate(commands):
+    -             result = subprocess.run(command, cwd=target, env=env, capture_output=True,
+    -                                     text=True, timeout=180)
+    -             (out / f'restore-{index}.log').write_text(result.stdout + result.stderr)
+    -             results.append({'command': command, 'exit': result.returncode})
+76  +             result = subprocess.run(
+77  +                 command, cwd=target, env=env, capture_output=True, text=True, timeout=180
+78  +             )
+79  +             (out / f"restore-{index}.log").write_text(result.stdout + result.stderr)
+80  +             results.append({"command": command, "exit": result.returncode})
+81  |             if result.returncode:
+    -                 raise RuntimeError(f'restore command {index} failed; see logs')
+82  +                 raise RuntimeError(f"restore command {index} failed; see logs")
+83  |         comparison_matches = None
+84  |         if args.rebuild:
+    -             a = json.loads((target / 'runs/local/restored-new/comparison.json').read_text())
+    -             b = json.loads((ROOT / 'runs/cache-relative-v3/comparison.json').read_text())
+    -             comparison_matches = ([(r['run'], r['l1'], r['l2']) for r in a]
+    -                                   == [(r['run'], r['l1'], r['l2']) for r in b])
+85  +             a = json.loads((target / "runs/local/restored-new/comparison.json").read_text())
+86  +             b = json.loads((ROOT / "runs/cache-relative-v3/comparison.json").read_text())
+87  +             comparison_matches = [(r["run"], r["l1"], r["l2"]) for r in a] == [
+88  +                 (r["run"], r["l1"], r["l2"]) for r in b
+89  +             ]
+90  |             if not comparison_matches:
+    -                 raise ValueError('restored captures differ')
+    -         receipt = {'archive_sha256': archive_hash, 'files_verified': len(files),
+    -                    'commands': results, 'same_host': True,
+    -                    'comparison_matches': comparison_matches}
+    -         (out / 'restore.json').write_text(json.dumps(receipt, indent=2) + '\n')
+91  +                 raise ValueError("restored captures differ")
+92  +         receipt = {
+93  +             "archive_sha256": archive_hash,
+94  +             "files_verified": len(files),
+95  +             "commands": results,
+96  +             "same_host": True,
+97  +             "comparison_matches": comparison_matches,
+98  +         }
+99  +         (out / "restore.json").write_text(json.dumps(receipt, indent=2) + "\n")
+100 |         print(json.dumps(receipt))
+101 |
+102 |
+    - if __name__ == '__main__':
+103 + if __name__ == "__main__":
+104 |     main()
+    |
+
+10 files would be reformatted, 84 files already formatted

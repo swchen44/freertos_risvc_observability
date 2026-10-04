@@ -1,5 +1,7 @@
 # FreeRTOS／RISC-V PSF POC
 
+**最新 Z0：**[固定 request／response 的 zero-copy 基準](docs/tcp-session-z0.md)，三次 QEMU、RX／ACK／FIN／資源回收與分段指令量；[記憶體延遲研究](docs/research/QEMU分層記憶體延遲研究.md) 說明 L1／L2／system RAM timing 的待辦。
+
 **TCP 最佳化最新成果：**[實作比較、Web／離線畫面與重跑方法](docs/tcp-optimization.md)。真實 lwIP 握手／傳送／ACK／重傳、三配置各三次、45 個 I/D trace 區段。
 
 **新增 TCP/IP 實際元件研究：**[Stack 比較、公開案例與 RV32 checksum 實測](docs/research/TCP-IP與Cache最佳化案例.md)。第一輪 checksum 元件實驗已完成；後續真 TCP 與 16+16 / 64 KiB cache 模型也已完成，見下方新報告。
@@ -221,3 +223,6 @@ Dashboard 可先使用既有 PSF，不需要 FreeRTOS toolchain。重新模擬�
 仍待完成：instruction cache、function hot/cold、AoS／SoA、GEMM tiling、逐 task／PSF 時間同步，以及真機 PMU 接入。原始 PSF 未被修改成自訂 binary 格式；目前用 sidecar hash 關聯。
 
 本輪最終驗收：119 Python、5 Node、11 既有 browser tests、2 個 agent-browser 模式與 curl integration 通過；[completion.json](artifacts/verification/cache-replay/completion.json) 記錄被測 source commit、還原與截圖 hashes。
+## 新增實驗：zero-copy request／response
+
+[Z0 實測與重跑方式](docs/tcp-session-z0.md)：新增案例在 `firmware/app/cases/tcp_request_response.c`，執行入口為 `tools/tcp/run_session.py`，正式證據在 `runs/tcp-session-z0-v2/`，驗證紀錄在 `artifacts/verification/tcp-session-z0/`。已完成三次 QEMU 正常流程與資源回收；尚未加入新的 Dashboard、A/B 最佳化或記憶體等待模型。[L1／L2／system RAM 延遲研究](docs/research/QEMU分層記憶體延遲研究.md) 記錄可行方向與待驗收條件。

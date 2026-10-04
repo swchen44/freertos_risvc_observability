@@ -15,7 +15,9 @@
 #define IP_REASSEMBLY 0
 #define IP_FRAG 0
 #define LWIP_TIMERS 0
+#ifndef LWIP_STATS
 #define LWIP_STATS 0
+#endif
 #define MEM_SIZE (32*1024)
 #define TCP_MSS 1460
 #define TCP_SND_BUF (4*TCP_MSS)
