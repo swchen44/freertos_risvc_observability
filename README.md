@@ -19,7 +19,7 @@ TCP 本輪證據：[108 筆結果](runs/tcp-checksum-v2/results.json)、[manifes
 
 ## TCP 最佳化 Dashboard 與操作證據
 
-[完整教學與結果](docs/tcp-optimization.md)｜[離線 HTML](artifacts/offline/tcp-optimization.html)｜[原始 captures](runs/tcp-transfer-v2)｜[curl 與 agent-browser 紀錄](artifacts/verification/tcp-optimization)｜[內網還原包](artifacts/restore/tcp-transfer-source.tar.gz)
+[完整教學與結果](docs/tcp-optimization.md)｜[133 個 Python 回歸測試](artifacts/verification/tcp-optimization/full-tests.log)｜[還原驗證](artifacts/verification/tcp-optimization/restore.json)｜[離線 HTML](artifacts/offline/tcp-optimization.html)｜[原始 captures](runs/tcp-transfer-v2)｜[curl 與 agent-browser 紀錄](artifacts/verification/tcp-optimization)｜[內網還原包](artifacts/restore/tcp-transfer-source.tar.gz)
 
 本機啟動 `.venv/bin/python -m psf_lab serve --port 8765`，開啟 `/tcp.html`。先選正常傳送比較指令量，再切換重傳；點表格列看 `memcpy` / checksum 熱點。CSV 會保留篩選與排序結果。
 

@@ -1,0 +1,7 @@
+{
+  "archive": "tcp-transfer-source.tar.gz",
+  "sha256": "eee57497adb04d6e692619d7fcb4d02d4cf621b83144da977032a189719bd407",
+  "files": 1519,
+  "bytes": 12582043,
+  "excluded": "Host executables, Python wheels, NIC/DMA/timing model"
+}

@@ -1,0 +1,28 @@
+{
+  "scope": "bounded real lwIP TCP state machine; isolated TX instruction/locality comparison",
+  "code_commit": "a74eefc79779278574387d049f58370a639fa867",
+  "python_tests": 133,
+  "node_tests": 7,
+  "playwright_existing_ui_tests": 11,
+  "agent_browser_workflows": {
+    "server": "passed",
+    "offline_network_blocked": "passed"
+  },
+  "curl_integration": "API plus HTML/JS/CSS passed",
+  "ruff": "passed",
+  "tcp_sessions": 9,
+  "captured_phases": 45,
+  "screenshots": 8,
+  "restore": "eee57497adb04d6e692619d7fcb4d02d4cf621b83144da977032a189719bd407",
+  "restore_verified_files": 1519,
+  "restore_rebuilt_sessions": 9,
+  "restored_summary_rows_equal": 18,
+  "known_boundaries": [
+    "no NIC/DMA/real RTT or hardware cycles",
+    "64-byte line / 4-way / LRU are assumptions",
+    "cold restart per isolated TX phase",
+    "instruction trace has 11 more instrumentation instructions per phase than rdinstret interval"
+  ],
+  "review": "no Critical/Important; boundary difference documented",
+  "path_reproducibility_fix": "-ffile-prefix-map ROOT=/poc, verified via clean-directory full rebuild"
+}

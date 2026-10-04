@@ -1,0 +1,13 @@
+{
+  "archive_sha256": "eee57497adb04d6e692619d7fcb4d02d4cf621b83144da977032a189719bd407",
+  "scope": "same-host clean-directory restore, not cross-machine verification",
+  "rebuild": true,
+  "logs": [
+    "..........\n----------------------------------------------------------------------\nRan 10 tests in 2.355s\n\nOK\n",
+    "PASS: 9 TCP sessions, 45 captured phases, 18 summary rows\n"
+  ],
+  "verified_files": 1519,
+  "recaptured_sessions": 9,
+  "recaptured_phases": 45,
+  "summary_rows_equal": 18
+}

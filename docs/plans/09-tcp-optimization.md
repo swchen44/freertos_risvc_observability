@@ -12,7 +12,7 @@
 - [x] 每個隔離 TX 區段 cold-start replay，ACK 與驗證在區段外；不把未追蹤區段的 cache 狀態推估成 warm-cache。
 - [x] 每配置3次重跑；保存 ELF、PSF、trace、JSON、source/tool hashes。
 - [x] 新 TCP Web 與離線 HTML，篩選、SVG、sortable table、CSV；curl integration、agent-browser E2E、截圖。
-- [ ] unittest/Ruff、review、README、還原來源與 Git push。
+- [x] unittest/Ruff、review、README 與還原來源。GitHub 發布狀態另由 completion 收據與遠端 commit 核對。
 
 ## 決策紀錄
 
@@ -27,3 +27,5 @@
 - Review：無 Important/Critical；Minor 為 trace 與 rdinstret 每phase固定11指令的邊界差，保留既有量測定義並在報告說明。
 - 判定：NIC/DMA/真實RTT、第二個完整peer與長期連線清理不在本輪測試內，不以此阻擋 bounded testcase。代價是結果無法直接代表實機吞吐量。
 - UI沿用現有ECharts/Tabulator風格；Web與離線實際操作皆由agent-browser驗證，API由curl驗證。
+
+最終回歸：Python133/133、Node7/7、原Dashboard Playwright11/11；新TCP Web/離線agent-browser各1個完整工作流程通過。
