@@ -1,6 +1,8 @@
 # FreeRTOS／RISC-V Observability：研究與可重跑 POC
 
-**新增 TCP/IP 實際元件研究：**[Stack 比較、公開案例與 RV32 checksum 實測](poc/docs/research/TCP-IP與Cache最佳化案例.md)。三種 lwIP 演算法、9 份 PSF、108 筆量測；完整 TCP 與 16+16 / 64 KiB cache 模型仍列為後續工作。
+**TCP 最佳化最新成果：**[實作比較、Web／離線畫面與重跑方法](poc/docs/tcp-optimization.md)。真實 lwIP 握手／傳送／ACK／重傳、三配置各三次、45 個 I/D trace 區段。
+
+**新增 TCP/IP 實際元件研究：**[Stack 比較、公開案例與 RV32 checksum 實測](poc/docs/research/TCP-IP與Cache最佳化案例.md)。第一輪 checksum 元件實驗已完成；後續真 TCP 與 16+16 / 64 KiB cache 模型也已完成，見下方新報告。
 
 這個 repository 保存 SDK／PDF／影片研究，以及能實際產生、解碼、驗證 PSF 的 FreeRTOS／RISC-V POC。
 
