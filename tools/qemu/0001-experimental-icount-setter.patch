@@ -1,0 +1,57 @@
+--- a/include/sysemu/cpu-timers.h
++++ b/include/sysemu/cpu-timers.h
+@@ -48,6 +48,8 @@
+ 
+ /* return the virtual CPU time in ns, based on the instruction counter. */
+ int64_t icount_get(void);
++/* Experimental single-vCPU fixed-icount clock control. */
++void icount_set_virtual_clock(int64_t new_time);
+ /*
+  * convert an instruction counter value to ns, based on the icount shift.
+  * This shift is set as a fixed value with the icount "shift" option
+--- a/accel/tcg/tcg-accel-ops.c
++++ b/accel/tcg/tcg-accel-ops.c
+@@ -209,6 +209,7 @@
+         if (icount_enabled()) {
+             ops->handle_interrupt = icount_handle_interrupt;
+             ops->get_virtual_clock = icount_get;
++            ops->set_virtual_clock = icount_set_virtual_clock;
+             ops->get_elapsed_ticks = icount_get;
+         } else {
+             ops->handle_interrupt = tcg_handle_interrupt;
+--- a/accel/tcg/icount-common.c
++++ b/accel/tcg/icount-common.c
+@@ -150,6 +150,33 @@
+     } while (seqlock_read_retry(&timers_state.vm_clock_seqlock, start));
+ 
+     return icount;
++}
++
++/* Research-only: plugin async work runs outside cpu_exec with the BQL held. */
++void icount_set_virtual_clock(int64_t new_time)
++{
++    CPUState *cpu;
++    unsigned cpus = 0;
++    int64_t now;
++
++    CPU_FOREACH(cpu) {
++        cpus++;
++    }
++    if (icount_enabled() != ICOUNT_PRECISE || cpus != 1 ||
++        (current_cpu && current_cpu->running) || new_time < 0) {
++        error_report("experimental clock requires one stopped vCPU and fixed icount");
++        exit(1);
++    }
++    seqlock_write_lock(&timers_state.vm_clock_seqlock,
++                       &timers_state.vm_clock_lock);
++    now = icount_get_locked();
++    /* An already-passed absolute target is a no-op, never a clock reversal. */
++    if (new_time > now) {
++        qatomic_set_i64(&timers_state.qemu_icount_bias,
++                        timers_state.qemu_icount_bias + (new_time - now));
++    }
++    seqlock_write_unlock(&timers_state.vm_clock_seqlock,
++                         &timers_state.vm_clock_lock);
+ }
+ 
+ int64_t icount_to_ns(int64_t icount)

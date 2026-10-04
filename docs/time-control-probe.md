@@ -1,5 +1,7 @@
 # T2a：QEMU guest time 注入可行性探針
 
+**後續更新：**[T2b 獨立 QEMU 基本探針已通過](qemu-clock-t2b.md)。本頁保留前一階段的調查與待辦狀態；逐次 cache stall 尚未完成。
+
 **探針已執行；時間注入未通過。** T1 仍僅提供 sidecar 記憶體服務成本。尚未完成會影響 FreeRTOS tick／排程的 L1／L2 stall，也未把這項結果接上 Dashboard。
 
 ## 目的與驗收

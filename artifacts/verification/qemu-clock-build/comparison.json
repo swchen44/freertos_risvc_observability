@@ -1,0 +1,124 @@
+{
+  "host": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+  "stages": [
+    {
+      "stage": "baseline",
+      "binary_sha256": "200e8da8d871c92dd5e9507deccbc9e1ac55be80bbf804f9f234c933f1d851d6",
+      "version": "QEMU emulator version 9.2.0",
+      "results_sha256": "b7484462f41b05ffa1a25ce63bc6bf39c466aa162d2c120ddb88e187f73ba14a",
+      "supported": false,
+      "status_counts": {
+        "completed": 3,
+        "timeout": 6,
+        "failed": 0
+      },
+      "comparisons": []
+    },
+    {
+      "stage": "setter",
+      "binary_sha256": "778b18e6cdc2ea2e5487caac6a8cfc1a1a74351b48c6cf4d4f119a10dfdeaf12",
+      "version": "QEMU emulator version 9.2.0",
+      "results_sha256": "5d9b7f73f03b9ded9ba986adb5293b2208e7152f0a688e83d44e2021ea555e25",
+      "supported": false,
+      "status_counts": {
+        "completed": 9,
+        "timeout": 0,
+        "failed": 0
+      },
+      "comparisons": [
+        {
+          "requested_ns": 1000000,
+          "additional_guest_ns": 996700,
+          "guest_clock_pass": true,
+          "scheduler_pass": true,
+          "tick_delta": 1,
+          "immediate_additional_ns": 996700
+        },
+        {
+          "requested_ns": 1000000,
+          "additional_guest_ns": 996700,
+          "guest_clock_pass": true,
+          "scheduler_pass": true,
+          "tick_delta": 1,
+          "immediate_additional_ns": 996700
+        },
+        {
+          "requested_ns": 1000000,
+          "additional_guest_ns": 996700,
+          "guest_clock_pass": true,
+          "scheduler_pass": true,
+          "tick_delta": 1,
+          "immediate_additional_ns": 996700
+        }
+      ]
+    },
+    {
+      "stage": "clock",
+      "binary_sha256": "895edec8bbfb7e69a9e9a6d6a0715b216b496cf240e0e6cfbd2ff10f0aad0c13",
+      "version": "QEMU emulator version 9.2.0",
+      "results_sha256": "ac1e5e7e0fa7b3acbd01a66cf598534152e80b008623462f6255018027e13d59",
+      "supported": true,
+      "status_counts": {
+        "completed": 9,
+        "timeout": 0,
+        "failed": 0
+      },
+      "comparisons": [
+        {
+          "requested_ns": 1000000,
+          "additional_guest_ns": 1000300,
+          "guest_clock_pass": true,
+          "scheduler_pass": true,
+          "tick_delta": 1,
+          "immediate_additional_ns": 1000300
+        },
+        {
+          "requested_ns": 1000000,
+          "additional_guest_ns": 1000300,
+          "guest_clock_pass": true,
+          "scheduler_pass": true,
+          "tick_delta": 1,
+          "immediate_additional_ns": 1000300
+        },
+        {
+          "requested_ns": 1000000,
+          "additional_guest_ns": 1000300,
+          "guest_clock_pass": true,
+          "scheduler_pass": true,
+          "tick_delta": 1,
+          "immediate_additional_ns": 1000300
+        },
+        {
+          "requested_ns": 5000000,
+          "additional_guest_ns": 5002400,
+          "guest_clock_pass": true,
+          "scheduler_pass": true,
+          "tick_delta": 5,
+          "immediate_additional_ns": 5002500
+        },
+        {
+          "requested_ns": 5000000,
+          "additional_guest_ns": 5002400,
+          "guest_clock_pass": true,
+          "scheduler_pass": true,
+          "tick_delta": 5,
+          "immediate_additional_ns": 5002500
+        },
+        {
+          "requested_ns": 5000000,
+          "additional_guest_ns": 5002400,
+          "guest_clock_pass": true,
+          "scheduler_pass": true,
+          "tick_delta": 5,
+          "immediate_additional_ns": 5002500
+        }
+      ]
+    }
+  ],
+  "patches": {
+    "0002-clock-advance-without-pending-timer.patch": "b2f057dd2ce0b50494df9bb363e4bb351fbb405b7f50da404a5bfb288a195b06",
+    "0001-experimental-icount-setter.patch": "944844a4384b8fbeda92091bb4c926995bfd89e7eda3fe2e528c94bdc6b6f5ae"
+  },
+  "patch_reconstruction_matches_built_source": true,
+  "build_script_validation": "sh -n; constituent build commands executed, wrapper not re-run end-to-end"
+}

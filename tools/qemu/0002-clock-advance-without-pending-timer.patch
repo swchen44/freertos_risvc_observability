@@ -1,0 +1,16 @@
+--- a/util/qemu-timer.c
++++ b/util/qemu-timer.c
+@@ -697,6 +697,13 @@
+         deadline = qemu_clock_deadline_ns_all(QEMU_CLOCK_VIRTUAL,
+                                               QEMU_TIMER_ATTR_ALL);
+     }
++    /* Research clock control must also reach dest after the final timer fires.
++     * The guest cannot re-arm its timer while this async callback is running.
++     */
++    if (deadline < 0 && clock < dest) {
++        qemu_virtual_clock_set_ns(dest);
++        clock = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
++    }
+     qemu_clock_notify(QEMU_CLOCK_VIRTUAL);
+ 
+     return clock;

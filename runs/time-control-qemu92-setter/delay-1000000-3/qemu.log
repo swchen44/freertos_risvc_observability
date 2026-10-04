@@ -1,0 +1,2 @@
+time_control_request insns=187741 delay_ns=1000000 target_ns=1187741
+time_control_update_queued

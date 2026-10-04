@@ -1,0 +1,216 @@
+{
+  "probe_executed": true,
+  "time_control_supported": false,
+  "cases": [
+    {
+      "run": "delay-0-1",
+      "delay_ns": 0,
+      "repeat": 1,
+      "timeout_seconds": 3,
+      "exit_code": 0,
+      "status": "completed",
+      "measurement": {
+        "case": "time_control_probe",
+        "mtime_hz": 10000000,
+        "tick_hz": 1000,
+        "delta_mtime": 62,
+        "immediate_mtime": 0,
+        "delta_ticks": 0,
+        "observer_woke": false,
+        "observer_mtime": 0,
+        "before_mtime": 1877,
+        "work": 523776
+      }
+    },
+    {
+      "run": "delay-0-2",
+      "delay_ns": 0,
+      "repeat": 2,
+      "timeout_seconds": 3,
+      "exit_code": 0,
+      "status": "completed",
+      "measurement": {
+        "case": "time_control_probe",
+        "mtime_hz": 10000000,
+        "tick_hz": 1000,
+        "delta_mtime": 62,
+        "immediate_mtime": 0,
+        "delta_ticks": 0,
+        "observer_woke": false,
+        "observer_mtime": 0,
+        "before_mtime": 1877,
+        "work": 523776
+      }
+    },
+    {
+      "run": "delay-0-3",
+      "delay_ns": 0,
+      "repeat": 3,
+      "timeout_seconds": 3,
+      "exit_code": 0,
+      "status": "completed",
+      "measurement": {
+        "case": "time_control_probe",
+        "mtime_hz": 10000000,
+        "tick_hz": 1000,
+        "delta_mtime": 62,
+        "immediate_mtime": 0,
+        "delta_ticks": 0,
+        "observer_woke": false,
+        "observer_mtime": 0,
+        "before_mtime": 1877,
+        "work": 523776
+      }
+    },
+    {
+      "run": "delay-1000000-1",
+      "delay_ns": 1000000,
+      "repeat": 1,
+      "timeout_seconds": 3,
+      "exit_code": 0,
+      "status": "completed",
+      "measurement": {
+        "case": "time_control_probe",
+        "mtime_hz": 10000000,
+        "tick_hz": 1000,
+        "delta_mtime": 10029,
+        "immediate_mtime": 9967,
+        "delta_ticks": 1,
+        "observer_woke": false,
+        "observer_mtime": 0,
+        "before_mtime": 1877,
+        "work": 523776
+      }
+    },
+    {
+      "run": "delay-1000000-2",
+      "delay_ns": 1000000,
+      "repeat": 2,
+      "timeout_seconds": 3,
+      "exit_code": 0,
+      "status": "completed",
+      "measurement": {
+        "case": "time_control_probe",
+        "mtime_hz": 10000000,
+        "tick_hz": 1000,
+        "delta_mtime": 10029,
+        "immediate_mtime": 9967,
+        "delta_ticks": 1,
+        "observer_woke": false,
+        "observer_mtime": 0,
+        "before_mtime": 1877,
+        "work": 523776
+      }
+    },
+    {
+      "run": "delay-1000000-3",
+      "delay_ns": 1000000,
+      "repeat": 3,
+      "timeout_seconds": 3,
+      "exit_code": 0,
+      "status": "completed",
+      "measurement": {
+        "case": "time_control_probe",
+        "mtime_hz": 10000000,
+        "tick_hz": 1000,
+        "delta_mtime": 10029,
+        "immediate_mtime": 9967,
+        "delta_ticks": 1,
+        "observer_woke": false,
+        "observer_mtime": 0,
+        "before_mtime": 1877,
+        "work": 523776
+      }
+    },
+    {
+      "run": "delay-5000000-1",
+      "delay_ns": 5000000,
+      "repeat": 1,
+      "timeout_seconds": 3,
+      "exit_code": 0,
+      "status": "completed",
+      "measurement": {
+        "case": "time_control_probe",
+        "mtime_hz": 10000000,
+        "tick_hz": 1000,
+        "delta_mtime": 10029,
+        "immediate_mtime": 9967,
+        "delta_ticks": 1,
+        "observer_woke": false,
+        "observer_mtime": 0,
+        "before_mtime": 1877,
+        "work": 523776
+      },
+      "acceptance_error": "Injected time did not match guest clock"
+    },
+    {
+      "run": "delay-5000000-2",
+      "delay_ns": 5000000,
+      "repeat": 2,
+      "timeout_seconds": 3,
+      "exit_code": 0,
+      "status": "completed",
+      "measurement": {
+        "case": "time_control_probe",
+        "mtime_hz": 10000000,
+        "tick_hz": 1000,
+        "delta_mtime": 10029,
+        "immediate_mtime": 9967,
+        "delta_ticks": 1,
+        "observer_woke": false,
+        "observer_mtime": 0,
+        "before_mtime": 1877,
+        "work": 523776
+      },
+      "acceptance_error": "Injected time did not match guest clock"
+    },
+    {
+      "run": "delay-5000000-3",
+      "delay_ns": 5000000,
+      "repeat": 3,
+      "timeout_seconds": 3,
+      "exit_code": 0,
+      "status": "completed",
+      "measurement": {
+        "case": "time_control_probe",
+        "mtime_hz": 10000000,
+        "tick_hz": 1000,
+        "delta_mtime": 10029,
+        "immediate_mtime": 9967,
+        "delta_ticks": 1,
+        "observer_woke": false,
+        "observer_mtime": 0,
+        "before_mtime": 1877,
+        "work": 523776
+      },
+      "acceptance_error": "Injected time did not match guest clock"
+    }
+  ],
+  "comparisons": [
+    {
+      "requested_ns": 1000000,
+      "additional_guest_ns": 996700,
+      "guest_clock_pass": true,
+      "scheduler_pass": true,
+      "tick_delta": 1,
+      "immediate_additional_ns": 996700
+    },
+    {
+      "requested_ns": 1000000,
+      "additional_guest_ns": 996700,
+      "guest_clock_pass": true,
+      "scheduler_pass": true,
+      "tick_delta": 1,
+      "immediate_additional_ns": 996700
+    },
+    {
+      "requested_ns": 1000000,
+      "additional_guest_ns": 996700,
+      "guest_clock_pass": true,
+      "scheduler_pass": true,
+      "tick_delta": 1,
+      "immediate_additional_ns": 996700
+    }
+  ],
+  "boundary": "Fixed-jump API probe only; no cache model and no per-load stall"
+}

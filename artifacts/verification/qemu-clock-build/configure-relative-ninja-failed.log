@@ -1,0 +1,549 @@
+python determined to be '../build-venv/bin/python'
+python version: Python 3.13.2
+mkvenv: Creating isolated virtual environment (with packages from '/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/build-venv/lib/python3.13/site-packages') at 'pyvenv'
+mkvenv: checking for meson>=1.5.0
+mkvenv: checking for pycotap>=1.1.0
+mkvenv: installing pycotap==1.3.1
+Disabling PIE due to missing toolchain support
+The Meson build system
+Version: 1.12.1
+Source dir: /Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-9.2.0
+Build dir: /Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/build
+Build type: native build
+Project name: qemu
+Project version: 9.2.0
+C compiler for the host machine: cc (clang 17.0.0 "Apple clang version 17.0.0 (clang-1700.0.13.5)")
+C linker for the host machine: cc ld64 1167.5
+Host machine cpu family: aarch64
+Host machine cpu: aarch64
+Program scripts/symlink-install-tree.py found: YES (/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/build/pyvenv/bin/python3.13 /Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-9.2.0/scripts/symlink-install-tree.py)
+Program sh found: YES (/bin/sh)
+Program python3 found: YES (/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/build/pyvenv/bin/python3.13)
+Objective-C compiler for the host machine: clang (clang 17.0.0)
+Objective-C linker for the host machine: clang ld64 1167.5
+Compiler for language rust skipped: feature rust disabled
+Program iasl found: NO
+Compiler for C supports arguments -fno-pie: YES 
+Compiler for C supports arguments -no-pie: NO 
+Compiler for C supports link arguments -Wl,-z,relro: NO 
+Compiler for C supports link arguments -Wl,-z,now: NO 
+Checking if "-fzero-call-used-regs=used-gpr" compiles: YES 
+Compiler for C supports arguments -ftrivial-auto-var-init=zero: YES 
+Compiler for C supports arguments -fzero-call-used-regs=used-gpr: YES 
+Compiler for C supports arguments -Wempty-body: YES 
+Compiler for C supports arguments -Wendif-labels: YES 
+Compiler for C supports arguments -Wexpansion-to-defined: YES 
+Compiler for C supports arguments -Wformat-security: YES 
+Compiler for C supports arguments -Wformat-y2k: YES 
+Compiler for C supports arguments -Wignored-qualifiers: YES 
+Compiler for C supports arguments -Wimplicit-fallthrough=2: NO 
+Compiler for C supports arguments -Winit-self: YES 
+Compiler for C supports arguments -Wmissing-format-attribute: YES 
+Compiler for C supports arguments -Wmissing-prototypes: YES 
+Compiler for C supports arguments -Wnested-externs: YES 
+Compiler for C supports arguments -Wold-style-declaration: NO 
+Compiler for C supports arguments -Wold-style-definition: YES 
+Compiler for C supports arguments -Wredundant-decls: YES 
+Compiler for C supports arguments -Wshadow=local: NO 
+Compiler for C supports arguments -Wstrict-prototypes: YES 
+Compiler for C supports arguments -Wtype-limits: YES 
+Compiler for C supports arguments -Wundef: YES 
+Compiler for C supports arguments -Wvla: YES 
+Compiler for C supports arguments -Wwrite-strings: YES 
+Compiler for C supports arguments -Wno-gnu-variable-sized-type-not-at-end: YES 
+Compiler for C supports arguments -Wno-initializer-overrides: YES 
+Compiler for C supports arguments -Wno-missing-include-dirs: YES 
+Compiler for C supports arguments -Wno-psabi: YES 
+Compiler for C supports arguments -Wno-shift-negative-value: YES 
+Compiler for C supports arguments -Wno-string-plus-int: YES 
+Compiler for C supports arguments -Wno-tautological-type-limit-compare: YES 
+Compiler for C supports arguments -Wno-typedef-redefinition: YES 
+Compiler for Objective-C supports arguments -Wempty-body: YES 
+Compiler for Objective-C supports arguments -Wendif-labels: YES 
+Compiler for Objective-C supports arguments -Wexpansion-to-defined: YES 
+Compiler for Objective-C supports arguments -Wformat-security: YES 
+Compiler for Objective-C supports arguments -Wformat-y2k: YES 
+Compiler for Objective-C supports arguments -Wignored-qualifiers: YES 
+Compiler for Objective-C supports arguments -Wimplicit-fallthrough=2: NO 
+Compiler for Objective-C supports arguments -Winit-self: YES 
+Compiler for Objective-C supports arguments -Wmissing-format-attribute: YES 
+Compiler for Objective-C supports arguments -Wmissing-prototypes: YES 
+Compiler for Objective-C supports arguments -Wnested-externs: YES 
+Compiler for Objective-C supports arguments -Wold-style-declaration: NO 
+Compiler for Objective-C supports arguments -Wold-style-definition: YES 
+Compiler for Objective-C supports arguments -Wredundant-decls: YES 
+Compiler for Objective-C supports arguments -Wshadow=local: NO 
+Compiler for Objective-C supports arguments -Wstrict-prototypes: YES 
+Compiler for Objective-C supports arguments -Wtype-limits: YES 
+Compiler for Objective-C supports arguments -Wundef: YES 
+Compiler for Objective-C supports arguments -Wvla: YES 
+Compiler for Objective-C supports arguments -Wwrite-strings: YES 
+Compiler for Objective-C supports arguments -Wno-gnu-variable-sized-type-not-at-end: YES 
+Compiler for Objective-C supports arguments -Wno-initializer-overrides: YES 
+Compiler for Objective-C supports arguments -Wno-missing-include-dirs: YES 
+Compiler for Objective-C supports arguments -Wno-psabi: YES 
+Compiler for Objective-C supports arguments -Wno-shift-negative-value: YES 
+Compiler for Objective-C supports arguments -Wno-string-plus-int: YES 
+Compiler for Objective-C supports arguments -Wno-tautological-type-limit-compare: YES 
+Compiler for Objective-C supports arguments -Wno-typedef-redefinition: YES 
+Program cgcc skipped: feature sparse disabled
+Library m found: YES
+Run-time dependency threads found: YES
+Library util found: YES
+Run-time dependency appleframeworks found: YES (CoreFoundation)
+Run-time dependency appleframeworks found: YES (IOKit)
+Found pkg-config: YES (/opt/homebrew/bin/pkg-config) 2.5.1
+Run-time dependency glib-2.0 found: YES 2.90.0
+Run-time dependency gmodule-no-export-2.0 found: YES 2.90.0
+Dependency gio-2.0 for host machine skipped: feature gio disabled
+Program scripts/xml-preprocess.py found: YES (/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/build/pyvenv/bin/python3.13 /Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-9.2.0/scripts/xml-preprocess.py)
+Dependency pixman-1 for host machine skipped: feature pixman disabled
+Run-time dependency zlib found: YES 1.2.12
+Library aio skipped: feature linux_aio disabled
+Dependency liburing for host machine skipped: feature linux_io_uring disabled
+Dependency libnfs for host machine skipped: feature libnfs disabled
+Dependency appleframeworks(modules: Cocoa, CoreVideo, QuartzCore) for host machine skipped: feature cocoa disabled
+Dependency appleframeworks(modules: vmnet) for host machine skipped: feature vmnet disabled
+Dependency libseccomp for host machine skipped: feature seccomp disabled
+Library cap-ng skipped: feature cap_ng disabled
+Dependency xkbcommon for host machine skipped: feature xkbcommon disabled
+Dependency slirp for host machine skipped: feature slirp disabled
+Library vdeplug skipped: feature vde disabled
+Dependency libpulse for host machine skipped: feature pa disabled
+Dependency alsa for host machine skipped: feature alsa disabled
+Dependency jack for host machine skipped: feature jack disabled
+Dependency libpipewire-0.3 for host machine skipped: feature pipewire disabled
+Dependency sndio for host machine skipped: feature sndio disabled
+Dependency spice-protocol for host machine skipped: feature spice_protocol disabled
+Library rt found: NO
+Dependency libiscsi for host machine skipped: feature libiscsi disabled
+Dependency libzstd for host machine skipped: feature zstd disabled
+Dependency qpl for host machine skipped: feature qpl disabled
+Dependency libwd for host machine skipped: feature uadk disabled
+Dependency libwd_comp for host machine skipped: feature uadk disabled
+Dependency qatzip for host machine skipped: feature qatzip disabled
+Dependency virglrenderer for host machine skipped: feature virglrenderer disabled
+Dependency rutabaga_gfx_ffi for host machine skipped: feature rutabaga_gfx disabled
+Dependency blkio for host machine skipped: feature blkio disabled
+Dependency libcurl for host machine skipped: feature curl disabled
+Library brlapi skipped: feature brlapi disabled
+Dependency sdl2 for host machine skipped: feature sdl disabled
+Library rados skipped: feature rbd disabled
+Library rbd skipped: feature rbd disabled
+Dependency glusterfs-api for host machine skipped: feature glusterfs disabled
+Dependency libssh for host machine skipped: feature libssh disabled
+Library bz2 skipped: feature bzip2 disabled
+Library lzfse skipped: feature lzfse disabled
+Initialized empty Git repository in /Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-9.2.0/subprojects/dtc/.git/
+From https://gitlab.com/qemu-project/dtc
+ * branch            b6910bec11614980a21e46fbccc35934b671bd81 -> FETCH_HEAD
+HEAD is now at b6910be Bump version to v1.6.1
+Has header "dsound.h" : NO 
+Dependency appleframeworks(modules: CoreAudio) for host machine skipped: feature coreaudio disabled
+Dependency epoxy for host machine skipped: feature opengl disabled
+Has header "epoxy/egl.h" with dependency epoxy: NO 
+Dependency libcbor for host machine skipped: feature libcbor disabled
+Dependency libgcrypt for host machine skipped: feature gcrypt disabled
+Dependency nettle for host machine skipped: feature nettle disabled
+Dependency capstone for host machine skipped: feature capstone disabled
+Run-time dependency gmp found: YES 6.3.0
+Library pam skipped: feature auth_pam disabled
+Library snappy skipped: feature snappy disabled
+Library lzo2 skipped: feature lzo disabled
+Library numa skipped: feature numa disabled
+
+Executing subproject dtc for machine: host 
+
+dtc| Project name: dtc
+dtc| Project version: 1.6.0
+dtc| C compiler for the host machine: cc (clang 17.0.0 "Apple clang version 17.0.0 (clang-1700.0.13.5)")
+dtc| C linker for the host machine: cc ld64 1167.5
+dtc| Compiler for C supports arguments -Wpointer-arith: YES
+dtc| Compiler for C supports arguments -Wcast-qual: YES
+dtc| Compiler for C supports arguments -Wnested-externs: YES (cached)
+dtc| Compiler for C supports arguments -Wstrict-prototypes: YES (cached)
+dtc| Compiler for C supports arguments -Wmissing-prototypes: YES (cached)
+dtc| Compiler for C supports arguments -Wredundant-decls: YES (cached)
+dtc| Compiler for C supports arguments -Wshadow: YES
+dtc| Dependency yaml-0.1 for host machine skipped: feature yaml disabled
+dtc| Dependency valgrind for host machine skipped: feature valgrind disabled
+dtc| Program python found: NO (disabled by: python )
+dtc| Program swig skipped: feature python disabled
+dtc| Found git repository at /Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-9.2.0/subprojects/dtc
+dtc| Compiler for C supports link arguments -Wl,--version-script=/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-9.2.0/subprojects/dtc/libfdt/version.lds: NO
+dtc| Found pkg-config: YES (/opt/homebrew/bin/pkg-config) 2.5.1
+dtc| Build targets in project: 2
+dtc| Subproject dtc finished.
+
+Library rdmacm skipped: feature rdma disabled
+Library ibverbs skipped: feature rdma disabled
+Dependency libcacard for host machine skipped: feature smartcard disabled
+Dependency u2f-emu for host machine skipped: feature u2f disabled
+Dependency canokey-qemu for host machine skipped: feature canokey disabled
+Dependency libusbredirparser-0.5 for host machine skipped: feature usb_redir disabled
+Dependency libusb-1.0 for host machine skipped: feature libusb disabled
+Dependency libpmem for host machine skipped: feature libpmem disabled
+Dependency libdaxctl for host machine skipped: feature libdaxctl disabled
+Dependency libkeyutils for host machine skipped: feature libkeyutils disabled
+Checking for function "gettid" : NO 
+Dependency libselinux for host machine skipped: feature selinux disabled
+Header "sys/stat.h" has symbol "STATX_BASIC_STATS" : NO 
+Header "sys/stat.h" has symbol "STATX_MNT_ID" : NO 
+Dependency fuse3 for host machine skipped: feature fuse disabled
+Dependency libbpf for host machine skipped: feature bpf disabled
+Dependency libdw for host machine skipped: feature libdw disabled
+Has header "IOKit/storage/IOMedia.h" : YES 
+Checking for function "pthread_fchdir_np" : YES 
+Has header "sys/epoll.h" : NO 
+Has header "linux/magic.h" : NO 
+Has header "valgrind/valgrind.h" : NO 
+Has header "linux/btrfs.h" : NO 
+Has header "libdrm/drm.h" : NO 
+Has header "linux/openat2.h" : NO 
+Has header "pty.h" : NO 
+Has header "sys/disk.h" : YES 
+Has header "sys/ioccom.h" : YES 
+Has header "sys/kcov.h" : NO 
+Checking for function "close_range" : NO 
+Checking for function "accept4" : NO 
+Checking for function "clock_adjtime" : NO 
+Checking for function "dup3" : NO 
+Checking for function "fallocate" : NO 
+Checking for function "posix_fallocate" : NO 
+Checking for function "getcpu" : NO 
+Checking for function "sched_getcpu" : NO 
+Checking for function "posix_memalign" : YES 
+Checking for function "_aligned_malloc" : NO 
+Checking for function "valloc" : YES 
+Checking for function "memalign" : NO 
+Checking for function "ppoll" : NO 
+Checking for function "preadv" : YES 
+Checking for function "pthread_fchdir_np" : YES (cached)
+Checking for function "sendfile" : YES 
+Checking for function "setns" : NO 
+Checking for function "syncfs" : NO 
+Checking for function "sync_file_range" : NO 
+Checking for function "timerfd_create" : NO 
+Checking for function "copy_file_range" : NO 
+Checking for function "getifaddrs" : YES 
+Checking for function "openpty" with dependency -lutil: YES 
+Checking for function "strchrnul" : YES 
+Checking for function "system" : YES 
+Header "sys/inotify.h" has symbol "inotify_init" : NO 
+Header "sys/inotify.h" has symbol "inotify_init1" : NO 
+Header "linux/blkzoned.h" has symbol "BLKOPENZONE" : NO 
+Header "sys/epoll.h" has symbol "epoll_create1" : NO 
+Header "linux/falloc.h" has symbol "FALLOC_FL_PUNCH_HOLE" : NO 
+Header "linux/falloc.h" has symbol "FALLOC_FL_ZERO_RANGE" : NO 
+Has header "linux/fiemap.h" : NO 
+Checking for function "getrandom" : NO 
+Header "sys/prctl.h" has symbol "PR_SET_TIMERSLACK" : NO 
+Header "linux/rtnetlink.h" has symbol "IFLA_PROTO_DOWN" : NO 
+Header "sys/sysmacros.h" has symbol "makedev" : NO 
+Header "getopt.h" has symbol "optreset" : YES 
+Header "netinet/in.h" has symbol "IPPROTO_MPTCP" : NO 
+Checking whether type "struct sigevent" has member "sigev_notify_thread_id" : NO 
+Checking whether type "struct stat" has member "st_atim" : NO 
+Checking whether type "struct blk_zone" has member "capacity" : NO 
+Checking for type "struct iovec" : YES 
+Checking for type "struct utmpx" : YES 
+Header "asm/hwprobe.h" has symbol "RISCV_HWPROBE_EXT_ZBA" : NO 
+Header "linux/vm_sockets.h" has symbol "AF_VSOCK" : NO 
+Program scripts/minikconf.py found: YES (/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/build/pyvenv/bin/python3.13 /Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-9.2.0/scripts/minikconf.py)
+Configuring riscv32-softmmu-config-target.h using configuration
+Configuring riscv32-softmmu-config-devices.mak with command
+Reading depfile: /Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/build/meson-private/riscv32-softmmu-config-devices.mak.d
+Configuring riscv32-softmmu-config-devices.h using configuration
+Program scripts/make-config-poison.sh found: YES (/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-9.2.0/scripts/make-config-poison.sh)
+Configuring config-host.h using configuration
+Program scripts/hxtool found: YES (/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-9.2.0/scripts/hxtool)
+Program scripts/shaderinclude.py found: YES (/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/build/pyvenv/bin/python3.13 /Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-9.2.0/scripts/shaderinclude.py)
+Program scripts/qapi-gen.py found: YES (/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/build/pyvenv/bin/python3.13 /Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-9.2.0/scripts/qapi-gen.py)
+Program scripts/qemu-version.sh found: YES (/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-9.2.0/scripts/qemu-version.sh)
+
+Executing subproject keycodemapdb for machine: host 
+
+keycodemapdb| Project name: keycodemapdb
+keycodemapdb| Project version: undefined
+keycodemapdb| Program tools/keymap-gen found: YES (/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-9.2.0/subprojects/keycodemapdb/tools/keymap-gen)
+keycodemapdb| Build targets in project: 268
+keycodemapdb| Subproject keycodemapdb finished.
+
+Program scripts/decodetree.py found: YES (/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/build/pyvenv/bin/python3.13 /Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-9.2.0/scripts/decodetree.py)
+Program ../scripts/modules/module_block.py found: YES (/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/build/pyvenv/bin/python3.13 /Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-9.2.0/block/../scripts/modules/module_block.py)
+Program ../scripts/block-coroutine-wrapper.py found: YES (/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/build/pyvenv/bin/python3.13 /Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-9.2.0/block/../scripts/block-coroutine-wrapper.py)
+Configuring qemu-plugin.symbols with command
+Configuring qemu-plugins-ld64.symbols with command
+Program scripts/modinfo-collect.py found: YES (/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/build/pyvenv/bin/python3.13 /Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-9.2.0/scripts/modinfo-collect.py)
+Program scripts/modinfo-generate.py found: YES (/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/build/pyvenv/bin/python3.13 /Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-9.2.0/scripts/modinfo-generate.py)
+Program nm found: YES
+Program scripts/undefsym.py found: YES (/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/build/pyvenv/bin/python3.13 /Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-9.2.0/scripts/undefsym.py)
+Program scripts/feature_to_c.py found: YES (/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/build/pyvenv/bin/python3.13 /Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-9.2.0/scripts/feature_to_c.py)
+Program scripts/rust/rust_root_crate.sh found: YES (/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-9.2.0/scripts/rust/rust_root_crate.sh)
+Program scripts/entitlement.sh found: YES (/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-9.2.0/scripts/entitlement.sh)
+Program dtc found: YES (/opt/homebrew/bin/dtc)
+Program qemu-keymap found: NO
+Program /Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/build/pyvenv/bin/sphinx-build skipped: feature docs disabled
+Program /Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-9.2.0/scripts/decodetree.py found: YES (/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/build/pyvenv/bin/python3.13 /Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-9.2.0/scripts/decodetree.py)
+
+Executing subproject berkeley-softfloat-3 for machine: host 
+
+berkeley-softfloat-3| Project name: berkeley-softfloat-3
+berkeley-softfloat-3| Project version: undefined
+berkeley-softfloat-3| C compiler for the host machine: cc (clang 17.0.0 "Apple clang version 17.0.0 (clang-1700.0.13.5)")
+berkeley-softfloat-3| C linker for the host machine: cc ld64 1167.5
+berkeley-softfloat-3| Configuring platform.h using configuration
+berkeley-softfloat-3| Build targets in project: 373
+berkeley-softfloat-3| Subproject berkeley-softfloat-3 finished.
+
+
+Executing subproject berkeley-testfloat-3 for machine: host 
+
+berkeley-testfloat-3| Project name: berkeley-testfloat-3
+berkeley-testfloat-3| Project version: undefined
+berkeley-testfloat-3| C compiler for the host machine: cc (clang 17.0.0 "Apple clang version 17.0.0 (clang-1700.0.13.5)")
+berkeley-testfloat-3| C linker for the host machine: cc ld64 1167.5
+berkeley-testfloat-3| Configuring platform.h using configuration
+berkeley-testfloat-3| Compiler for C supports arguments -Wno-ignored-pragmas: YES
+berkeley-testfloat-3| Build targets in project: 375
+berkeley-testfloat-3| Subproject berkeley-testfloat-3 finished.
+
+Program diff found: YES (/usr/bin/diff)
+Program dbus-daemon found: NO
+Run-time dependency sysprof-capture-4 found: NO  (tried pkg-config)
+WARNING: Static library 'iconv' not found for dependency 'glib-2.0', may not be statically linked
+Run-time dependency glib-2.0 found: YES 2.90.0
+Program initrd-stress.sh found: YES (/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-9.2.0/tests/migration/initrd-stress.sh)
+Build targets in project: 501
+
+qemu 9.2.0
+
+  Build environment
+    Build directory                 : /Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/build
+    Source path                     : /Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-9.2.0
+    Download dependencies           : YES
+
+  Directories
+    Build directory                 : /Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/build
+    Source path                     : /Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-9.2.0
+    Download dependencies           : YES
+    Install prefix                  : /usr/local
+    BIOS directory                  : share/qemu
+    firmware path                   : share/qemu-firmware
+    binary directory                : /usr/local/bin
+    library directory               : /usr/local/lib
+    module directory                : lib/qemu
+    libexec directory               : /usr/local/libexec
+    include directory               : /usr/local/include
+    config directory                : /usr/local/etc
+    local state directory           : /var/local
+    Manual directory                : /usr/local/share/man
+    Doc directory                   : /usr/local/share/doc
+
+  Host binaries
+    python                          : /Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/build/pyvenv/bin/python3.13 (version: 3.13)
+    sphinx-build                    : NO
+    gdb                             : 
+    iasl                            : NO
+    genisoimage                     : 
+
+  Configurable features
+    Documentation                   : NO
+    system-mode emulation           : YES
+    user-mode emulation             : NO
+    block layer                     : YES
+    Install blobs                   : YES
+    module support                  : NO
+    fuzzing support                 : NO
+    Audio drivers                   : 
+    Trace backends                  : log
+    D-Bus display                   : NO
+    QOM debugging                   : YES
+    Relocatable install             : YES
+    vhost-kernel support            : NO
+    vhost-net support               : NO
+    vhost-user support              : NO
+    vhost-user-crypto support       : NO
+    vhost-user-blk server support   : NO
+    vhost-vdpa support              : NO
+    build guest agent               : NO
+
+  Compilation
+    host CPU                        : aarch64
+    host endianness                 : little
+    C compiler                      : cc
+    Host C compiler                 : cc
+    C++ compiler                    : NO
+    Objective-C compiler            : clang
+    Rust support                    : NO
+    CFLAGS                          : -g -O2
+    OBJCFLAGS                       : -g -O2
+    QEMU_CFLAGS                     : -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -fno-strict-aliasing -fno-common -fwrapv -fno-pie -ftrivial-auto-var-init=zero -fzero-call-used-regs=used-gpr
+    QEMU_OBJCFLAGS                  : -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -fno-strict-aliasing -fno-common -fwrapv -fno-pie -ftrivial-auto-var-init=zero -fzero-call-used-regs=used-gpr
+    QEMU_LDFLAGS                    : 
+    link-time optimization (LTO)    : NO
+    PIE                             : NO
+    static build                    : NO
+    malloc trim support             : NO
+    membarrier                      : NO
+    debug graph lock                : NO
+    debug stack usage               : NO
+    mutex debugging                 : NO
+    memory allocator                : system
+    avx2 optimization               : NO
+    avx512bw optimization           : NO
+    gcov                            : NO
+    thread sanitizer                : NO
+    CFI support                     : NO
+    strip binaries                  : NO
+    sparse                          : NO
+    mingw32 support                 : NO
+
+  Targets and accelerators
+    KVM support                     : NO
+    HVF support                     : NO
+    WHPX support                    : NO
+    NVMM support                    : NO
+    Xen support                     : NO
+    Xen emulation                   : NO
+    TCG support                     : YES
+    TCG backend                     : native (aarch64)
+    TCG plugins                     : YES
+    TCG debug enabled               : NO
+    target list                     : riscv32-softmmu
+    default devices                 : YES
+    out of process emulation        : NO
+    vfio-user server                : NO
+
+  Block layer support
+    coroutine backend               : sigaltstack
+    coroutine pool                  : YES
+    Block whitelist (rw)            : 
+    Block whitelist (ro)            : 
+    Use block whitelist in tools    : NO
+    VirtFS (9P) support             : NO
+    replication support             : NO
+    bochs support                   : NO
+    cloop support                   : NO
+    dmg support                     : NO
+    qcow v1 support                 : NO
+    vdi support                     : NO
+    vhdx support                    : NO
+    vmdk support                    : NO
+    vpc support                     : NO
+    vvfat support                   : NO
+    qed support                     : NO
+    parallels support               : NO
+    FUSE exports                    : NO
+    VDUSE block exports             : NO
+
+  Crypto
+    TLS priority                    : NORMAL
+    GNUTLS support                  : NO
+    libgcrypt                       : NO
+    nettle                          : NO
+    SM4 ALG support                 : NO
+    SM3 ALG support                 : NO
+    AF_ALG support                  : NO
+    rng-none                        : NO
+    Linux keyring                   : NO
+    Linux keyutils                  : NO
+
+  User interface
+    Cocoa support                   : NO
+    SDL support                     : NO
+    SDL image support               : NO
+    GTK support                     : NO
+    pixman                          : NO
+    VTE support                     : NO
+    PNG support                     : NO
+    VNC support                     : NO
+    spice protocol support          : NO
+    curses support                  : NO
+    brlapi support                  : NO
+
+  Graphics backends
+    VirGL support                   : NO
+    Rutabaga support                : NO
+
+  Audio backends
+    CoreAudio support               : NO
+    PipeWire support                : NO
+    JACK support                    : NO
+
+  Network backends
+    vmnet.framework support         : NO
+    AF_XDP support                  : NO
+    slirp support                   : NO
+    vde support                     : NO
+    netmap support                  : NO
+    l2tpv3 support                  : NO
+
+  Dependencies
+    libtasn1                        : NO
+    PAM                             : NO
+    iconv support                   : NO
+    blkio support                   : NO
+    curl support                    : NO
+    Multipath support               : NO
+    Linux AIO support               : NO
+    Linux io_uring support          : NO
+    ATTR/XATTR support              : NO
+    RDMA support                    : NO
+    fdt support                     : internal
+    libcap-ng support               : NO
+    bpf support                     : NO
+    rbd support                     : NO
+    smartcard support               : NO
+    U2F support                     : NO
+    libusb                          : NO
+    usb net redir                   : NO
+    OpenGL support (epoxy)          : NO
+    GBM                             : NO
+    libiscsi support                : NO
+    libnfs support                  : NO
+    seccomp support                 : NO
+    GlusterFS support               : NO
+    hv-balloon support              : NO
+    TPM support                     : NO
+    libssh support                  : NO
+    lzo support                     : NO
+    snappy support                  : NO
+    bzip2 support                   : NO
+    lzfse support                   : NO
+    zstd support                    : NO
+    Query Processing Library support: NO
+    UADK Library support            : NO
+    qatzip support                  : NO
+    NUMA host support               : NO
+    capstone                        : NO
+    libpmem support                 : NO
+    libdaxctl support               : NO
+    libcbor support                 : NO
+    libudev                         : NO
+    FUSE lseek                      : NO
+    selinux                         : NO
+    libdw                           : NO
+
+  Subprojects (for host machine)
+    berkeley-softfloat-3            : YES
+    berkeley-testfloat-3            : YES
+    dtc                             : YES
+    keycodemapdb                    : YES
+
+  User defined options
+    Native files                    : config-meson.cross
+    auto_features                   : disabled
+    b_pie                           : false
+    docs                            : disabled
+    fdt                             : internal
+    plugins                         : true
+    werror                          : false
+
+
+ERROR: Could not detect Ninja v1.8.2 or newer
+
+A full log can be found at /Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/build/meson-logs/meson-log.txt
+
+ERROR: meson setup failed
+

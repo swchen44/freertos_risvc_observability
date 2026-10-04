@@ -1,0 +1,89 @@
+ninja: Entering directory `.tools/qemu-time-control/build'
+[1/34] Generating qemu-version.h with a custom command (wrapped by meson to capture output)
+[2/33] Compiling C object libqemuutil.a.p/stubs_cpu-get-clock.c.o
+[3/33] Compiling C object libqemuutil.a.p/util_main-loop.c.o
+In file included from ../qemu-9.2.0/util/main-loop.c:27:
+/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-9.2.0/include/qemu/cutils.h:144:12: warning: 'strchrnul' is only available on macOS 15.4 or newer [-Wunguarded-availability-new]
+  144 |     return strchrnul(s, c);
+      |            ^~~~~~~~~
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_string.h:198:9: note: 'strchrnul' has been marked as being introduced in macOS 15.4 here, but the deployment target is macOS 15.0.0
+  198 |         strchrnul(const char *__s, int __c);
+      |         ^
+/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-9.2.0/include/qemu/cutils.h:144:12: note: enclose 'strchrnul' in a __builtin_available check to silence this warning
+  144 |     return strchrnul(s, c);
+      |            ^~~~~~~~~       
+1 warning generated.
+[4/33] Compiling C object libqemuutil.a.p/util_async.c.o
+[5/33] Compiling C object libqemuutil.a.p/util_qemu-timer.c.o
+[6/33] Compiling C object libqemuutil.a.p/stubs_cpus-virtual-clock.c.o
+[7/33] Compiling C object libqemuutil.a.p/stubs_icount.c.o
+[8/33] Compiling C object libqemuutil.a.p/stubs_qemu-timer-notify-cb.c.o
+[9/33] Compiling C object libcommon.a.p/system_cpu-timers.c.o
+In file included from ../qemu-9.2.0/system/cpu-timers.c:26:
+/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-9.2.0/include/qemu/cutils.h:144:12: warning: 'strchrnul' is only available on macOS 15.4 or newer [-Wunguarded-availability-new]
+  144 |     return strchrnul(s, c);
+      |            ^~~~~~~~~
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_string.h:198:9: note: 'strchrnul' has been marked as being introduced in macOS 15.4 here, but the deployment target is macOS 15.0.0
+  198 |         strchrnul(const char *__s, int __c);
+      |         ^
+/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-9.2.0/include/qemu/cutils.h:144:12: note: enclose 'strchrnul' in a __builtin_available check to silence this warning
+  144 |     return strchrnul(s, c);
+      |            ^~~~~~~~~       
+1 warning generated.
+[10/33] Compiling C object libcommon.a.p/system_cpus.c.o
+[11/33] Compiling C object libcommon.a.p/system_dma-helpers.c.o
+[12/33] Compiling C object libcommon.a.p/replay_replay.c.o
+[13/33] Linking static target libqemuutil.a
+[14/33] Compiling C object libcommon.a.p/system_qtest.c.o
+In file included from ../qemu-9.2.0/system/qtest.c:31:
+/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-9.2.0/include/qemu/cutils.h:144:12: warning: 'strchrnul' is only available on macOS 15.4 or newer [-Wunguarded-availability-new]
+  144 |     return strchrnul(s, c);
+      |            ^~~~~~~~~
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_string.h:198:9: note: 'strchrnul' has been marked as being introduced in macOS 15.4 here, but the deployment target is macOS 15.0.0
+  198 |         strchrnul(const char *__s, int __c);
+      |         ^
+/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-9.2.0/include/qemu/cutils.h:144:12: note: enclose 'strchrnul' in a __builtin_available check to silence this warning
+  144 |     return strchrnul(s, c);
+      |            ^~~~~~~~~       
+1 warning generated.
+[15/33] Generating block.syms with a custom command (wrapped by meson to capture output)
+[16/33] Generating qemu.syms with a custom command (wrapped by meson to capture output)
+[17/33] Compiling C object libcommon.a.p/accel_tcg_icount-common.c.o
+In file included from ../qemu-9.2.0/accel/tcg/icount-common.c:26:
+/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-9.2.0/include/qemu/cutils.h:144:12: warning: 'strchrnul' is only available on macOS 15.4 or newer [-Wunguarded-availability-new]
+  144 |     return strchrnul(s, c);
+      |            ^~~~~~~~~
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_string.h:198:9: note: 'strchrnul' has been marked as being introduced in macOS 15.4 here, but the deployment target is macOS 15.0.0
+  198 |         strchrnul(const char *__s, int __c);
+      |         ^
+/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-9.2.0/include/qemu/cutils.h:144:12: note: enclose 'strchrnul' in a __builtin_available check to silence this warning
+  144 |     return strchrnul(s, c);
+      |            ^~~~~~~~~       
+1 warning generated.
+[18/33] Compiling C object libqemu-riscv32-softmmu.a.p/target_riscv_machine.c.o
+[19/33] Compiling C object libcommon.a.p/accel_tcg_monitor.c.o
+[20/33] Compiling C object libcommon.a.p/system_vl.c.o
+In file included from ../qemu-9.2.0/system/vl.c:38:
+/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-9.2.0/include/qemu/cutils.h:144:12: warning: 'strchrnul' is only available on macOS 15.4 or newer [-Wunguarded-availability-new]
+  144 |     return strchrnul(s, c);
+      |            ^~~~~~~~~
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_string.h:198:9: note: 'strchrnul' has been marked as being introduced in macOS 15.4 here, but the deployment target is macOS 15.0.0
+  198 |         strchrnul(const char *__s, int __c);
+      |         ^
+/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-9.2.0/include/qemu/cutils.h:144:12: note: enclose 'strchrnul' in a __builtin_available check to silence this warning
+  144 |     return strchrnul(s, c);
+      |            ^~~~~~~~~       
+1 warning generated.
+[21/33] Compiling C object libqemu-riscv32-softmmu.a.p/target_riscv_debug.c.o
+[22/33] Compiling C object libqemu-riscv32-softmmu.a.p/target_riscv_pmu.c.o
+[23/33] Compiling C object libqemu-riscv32-softmmu.a.p/accel_tcg_tcg-all.c.o
+[24/33] Compiling C object libqemu-riscv32-softmmu.a.p/target_riscv_cpu_helper.c.o
+[25/33] Compiling C object libqemu-riscv32-softmmu.a.p/accel_tcg_cpu-exec.c.o
+[26/33] Compiling C object libqemu-riscv32-softmmu.a.p/accel_tcg_translate-all.c.o
+[27/33] Compiling C object libqemu-riscv32-softmmu.a.p/target_riscv_csr.c.o
+[28/33] Compiling C object libqemu-riscv32-softmmu.a.p/accel_tcg_tcg-accel-ops.c.o
+[29/33] Compiling C object libqemu-riscv32-softmmu.a.p/accel_tcg_tcg-accel-ops-mttcg.c.o
+[30/33] Compiling C object libqemu-riscv32-softmmu.a.p/accel_tcg_tcg-accel-ops-icount.c.o
+[31/33] Compiling C object libqemu-riscv32-softmmu.a.p/accel_tcg_tcg-accel-ops-rr.c.o
+[32/33] Linking target qemu-system-riscv32-unsigned
+[33/33] Generating qemu-system-riscv32 with a custom command

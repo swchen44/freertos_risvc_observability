@@ -24,7 +24,9 @@ def main():
     parser.add_argument(
         "--toolchain", type=Path, default=ROOT / ".tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin"
     )
+    parser.add_argument("--plugin-include", type=Path, default=ROOT / "third_party/qemu-cache")
     args = parser.parse_args()
+    plugin_include = args.plugin_include.resolve()
     dest = args.output.resolve()
     dest.mkdir(parents=True, exist_ok=False)
     toolchain = args.toolchain.resolve()
@@ -52,7 +54,7 @@ def main():
         "-Wall",
         "-Wextra",
         "-Werror",
-        "-I" + str(ROOT / "third_party/qemu-cache"),
+        "-I" + str(plugin_include),
         str(ROOT / "tools/tcp/time_probe.c"),
         "-o",
         str(plugin),
@@ -85,7 +87,7 @@ def main():
         ROOT / "tools/tcp/run_transfer.py",
         ROOT / "src/psf_lab/time_control.py",
         ROOT / "src/psf_lab/runner.py",
-        ROOT / "third_party/qemu-cache/qemu-plugin.h",
+        plugin_include / "qemu-plugin.h",
         ROOT / "third_party/FreeRTOS/FreeRTOS/Demo/RISC-V_RV32_QEMU_VIRT_GCC/build/gcc/fake_rom.ld",
     }
     for dep in build.glob("*.d"):

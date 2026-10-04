@@ -1,0 +1,8 @@
+Using Python 3.13.2 environment at: .tools/qemu-time-control/build-venv
+Resolved 2 packages in 1.46s
+Downloading meson (1.1MiB)
+ Downloaded meson
+Prepared 2 packages in 11.18s
+Installed 2 packages in 11ms
+ + meson==1.12.1
+ + ninja==1.13.2

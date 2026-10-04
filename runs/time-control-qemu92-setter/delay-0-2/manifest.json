@@ -1,0 +1,61 @@
+{
+  "command": [
+    "/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-system-riscv32-setter",
+    "-machine",
+    "virt",
+    "-cpu",
+    "rv32",
+    "-smp",
+    "1",
+    "-m",
+    "128M",
+    "-bios",
+    "none",
+    "-display",
+    "none",
+    "-monitor",
+    "none",
+    "-serial",
+    "file:console.log",
+    "-accel",
+    "tcg,thread=single",
+    "-icount",
+    "shift=0,align=off,sleep=off",
+    "-semihosting-config",
+    "enable=on,target=native",
+    "-plugin",
+    "/Users/swchen.tw/git/percepio/poc/runs/time-control-qemu92-setter/time_probe.dylib,trigger=80002b10,delay=0,out=/Users/swchen.tw/git/percepio/poc/runs/time-control-qemu92-setter/delay-0-2/plugin.json",
+    "-kernel",
+    "/Users/swchen.tw/git/percepio/poc/runs/time-control-qemu92-setter/delay-0-2/firmware.elf"
+  ],
+  "result": {
+    "run": "delay-0-2",
+    "delay_ns": 0,
+    "repeat": 2,
+    "timeout_seconds": 3,
+    "exit_code": 0,
+    "status": "completed",
+    "measurement": {
+      "case": "time_control_probe",
+      "mtime_hz": 10000000,
+      "tick_hz": 1000,
+      "delta_mtime": 62,
+      "immediate_mtime": 0,
+      "delta_ticks": 0,
+      "observer_woke": false,
+      "observer_mtime": 0,
+      "before_mtime": 1877,
+      "work": 523776
+    }
+  },
+  "files": {
+    "symbols.txt": "76b1236281e84cc848e5de5019c12593edc9ae9d1e65e68fbe0dadd20eab5c7f",
+    "trace.psf": "300bbc681a617bca2f5307e88e042d3fe658a5cfb6ad85b68639def6d951d9d9",
+    "time-probe.json": "e91b79b531f52454560aab98d51646699928952c38a3dc796fca8994eb64d993",
+    "firmware.elf": "b9cc61b10e52e16f77429a8b60c999e878dcffe6122d579ce7d1f0b81b690f81",
+    "console.log": "c5651757c2aa7a4dab804a23a69ade3527d450e87c3fc55fe000fb5970721126",
+    "oracle.json": "cdfb42e79b3869ccc6503e44363012b7e48c3b97a16120f0a8ece49ce626f896",
+    "plugin.json": "5bf03b1d13d41dc6c197d15e60c2694e181b0b7bc2a59dacc559c7806529a75c",
+    "qemu.log": "8f0a40a12b1c4de534c207b69087f23b3ad124a283a8589e254a07db54349129"
+  }
+}

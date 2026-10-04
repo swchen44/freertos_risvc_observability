@@ -1,0 +1,61 @@
+{
+  "command": [
+    "/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-system-riscv32-clock",
+    "-machine",
+    "virt",
+    "-cpu",
+    "rv32",
+    "-smp",
+    "1",
+    "-m",
+    "128M",
+    "-bios",
+    "none",
+    "-display",
+    "none",
+    "-monitor",
+    "none",
+    "-serial",
+    "file:console.log",
+    "-accel",
+    "tcg,thread=single",
+    "-icount",
+    "shift=0,align=off,sleep=off",
+    "-semihosting-config",
+    "enable=on,target=native",
+    "-plugin",
+    "/Users/swchen.tw/git/percepio/poc/runs/time-control-qemu92-clock/time_probe.dylib,trigger=80002b10,delay=1000000,out=/Users/swchen.tw/git/percepio/poc/runs/time-control-qemu92-clock/delay-1000000-2/plugin.json",
+    "-kernel",
+    "/Users/swchen.tw/git/percepio/poc/runs/time-control-qemu92-clock/delay-1000000-2/firmware.elf"
+  ],
+  "result": {
+    "run": "delay-1000000-2",
+    "delay_ns": 1000000,
+    "repeat": 2,
+    "timeout_seconds": 3,
+    "exit_code": 0,
+    "status": "completed",
+    "measurement": {
+      "case": "time_control_probe",
+      "mtime_hz": 10000000,
+      "tick_hz": 1000,
+      "delta_mtime": 10065,
+      "immediate_mtime": 10003,
+      "delta_ticks": 1,
+      "observer_woke": false,
+      "observer_mtime": 0,
+      "before_mtime": 1877,
+      "work": 523776
+    }
+  },
+  "files": {
+    "symbols.txt": "76b1236281e84cc848e5de5019c12593edc9ae9d1e65e68fbe0dadd20eab5c7f",
+    "trace.psf": "a1605efb47d11558fe126e860f279ffbafb0d1bfbbc0dda3f96200d7e7b198de",
+    "time-probe.json": "2fc7be05ad1164064e805f9437c6e3d124a826d71184906384a2d409e44782f4",
+    "firmware.elf": "b9cc61b10e52e16f77429a8b60c999e878dcffe6122d579ce7d1f0b81b690f81",
+    "console.log": "c5651757c2aa7a4dab804a23a69ade3527d450e87c3fc55fe000fb5970721126",
+    "oracle.json": "428d6df14eb22d946c93aafb563d013d1ce2bbb7338d54e5827d3de8613b680a",
+    "plugin.json": "a61752fce3964ddb51f2fa795a756cc61bd984e45336474d45e2e559d7c65297",
+    "qemu.log": "1d5b35fc09d2e3c7f8a229c0d1381bd6a1d76bfd7acee94ac9eaa04ba206abc2"
+  }
+}

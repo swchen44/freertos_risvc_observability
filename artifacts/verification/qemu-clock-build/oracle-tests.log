@@ -1,0 +1,10 @@
+test_guest_clock_without_ticks_is_rejected (tests.unit.test_time_control.TimeControlTests.test_guest_clock_without_ticks_is_rejected) ... ok
+test_guest_time_ticks_and_task_wakeup_all_advance (tests.unit.test_time_control.TimeControlTests.test_guest_time_ticks_and_task_wakeup_all_advance) ... ok
+test_host_delay_without_guest_advance_is_rejected (tests.unit.test_time_control.TimeControlTests.test_host_delay_without_guest_advance_is_rejected) ... ok
+test_short_delay_does_not_require_two_tick_wakeup (tests.unit.test_time_control.TimeControlTests.test_short_delay_does_not_require_two_tick_wakeup) ... ok
+test_tick_advance_without_task_wakeup_is_rejected (tests.unit.test_time_control.TimeControlTests.test_tick_advance_without_task_wakeup_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK

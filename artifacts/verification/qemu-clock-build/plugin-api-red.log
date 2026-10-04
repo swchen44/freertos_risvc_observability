@@ -1,0 +1,18 @@
+tools/tcp/time_probe.c:55:53: error: too many arguments to function call, expected 2, have 3
+   55 |  qemu_plugin_register_vcpu_tb_trans_cb(id,translate,NULL);
+      |  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~              ^~~~
+/Library/Developer/CommandLineTools/usr/lib/clang/17/include/__stddef_null.h:26:14: note: expanded from macro 'NULL'
+   26 | #define NULL ((void*)0)
+      |              ^~~~~~~~~~
+.tools/qemu-time-control/qemu-9.2.0/include/qemu/qemu-plugin.h:340:6: note: 'qemu_plugin_register_vcpu_tb_trans_cb' declared here
+  340 | void qemu_plugin_register_vcpu_tb_trans_cb(qemu_plugin_id_t id,
+      |      ^                                     ~~~~~~~~~~~~~~~~~~~~
+  341 |                                            qemu_plugin_vcpu_tb_trans_cb_t cb);
+      |                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+tools/tcp/time_probe.c:56:36: error: incompatible function pointer types passing 'void (void *)' to parameter of type 'qemu_plugin_udata_cb_t' (aka 'void (*)(unsigned long long, void *)') [-Wincompatible-function-pointer-types]
+   56 |  qemu_plugin_register_atexit_cb(id,finish,NULL);return 0;
+      |                                    ^~~~~~
+.tools/qemu-time-control/qemu-9.2.0/include/qemu/qemu-plugin.h:803:60: note: passing argument to parameter 'cb' here
+  803 |                                     qemu_plugin_udata_cb_t cb, void *userdata);
+      |                                                            ^
+2 errors generated.

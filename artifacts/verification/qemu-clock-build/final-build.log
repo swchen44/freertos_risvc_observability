@@ -1,0 +1,8 @@
+ninja: Entering directory `.tools/qemu-time-control/build'
+[1/9] Generating qemu-version.h with a custom command (wrapped by meson to capture output)
+[2/7] Compiling C object libqemuutil.a.p/util_qemu-timer.c.o
+[3/7] Linking static target libqemuutil.a
+[4/7] Generating block.syms with a custom command (wrapped by meson to capture output)
+[5/7] Generating qemu.syms with a custom command (wrapped by meson to capture output)
+[6/7] Linking target qemu-system-riscv32-unsigned
+[7/7] Generating qemu-system-riscv32 with a custom command

@@ -1,5 +1,7 @@
 # QEMU clock 接合：固定 source 的後續研究
 
+**後續更新：**[T2b 獨立 QEMU 基本探針已通過](../qemu-clock-t2b.md)。本頁保留前一階段的調查與待辦狀態；逐次 cache stall 尚未完成。
+
 前一輪時間注入 probe 在目前安裝版 QEMU 的 icount 模式逾時。本輪進一步保存 QEMU v9.2.0 固定 commit `ae35f033b874c627d81d51070187fbf55f0bf1a7` 的相關原始碼，核對 getter／setter／timer 路徑。這份 source 用於研究；尚未完成獨立 QEMU build 或 patch 驗收。
 
 [來源與逐檔 hashes](../../references/qemu-time-control/SOURCE.json)；原始檔保留各自授權，並附 COPYING。取得部分檔案，不是完整 QEMU 建置包。v9.2.0 與安裝版 11.1.2 不同，後續必須在同一固定 source 的未修改／修改 binary 間做 A/B。
