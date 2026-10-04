@@ -1,0 +1,10 @@
+{
+  "tested_commit": "72d04aa405d6dd946cdee0e92ea3c53636c48521",
+  "python_tests": 158,
+  "result": "passed",
+  "time_control_supported": false,
+  "positive_delay_runs_timed_out": 6,
+  "controls_completed": 3,
+  "full_tests_sha256": "7bf47605f11fcdc1c01ff2fc023b3b4deba8f9ff24053305d609b3a91f3fb1a9",
+  "boundary": "Regression tests pass; actual guest-time injection acceptance failed."
+}

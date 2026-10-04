@@ -230,3 +230,5 @@ Dashboard 可先使用既有 PSF，不需要 FreeRTOS toolchain。重新模擬�
 ## 新增實驗：zero-copy request／response
 
 [Z0 實測與重跑方式](docs/tcp-session-z0.md)：新增案例在 `firmware/app/cases/tcp_request_response.c`，執行入口為 `tools/tcp/run_session.py`，正式證據在 `runs/tcp-session-z0-v2/`，驗證紀錄在 `artifacts/verification/tcp-session-z0/`。已完成三次 QEMU 正常流程與資源回收；尚未加入新的 Dashboard、A/B 最佳化或記憶體等待模型。[L1／L2／system RAM 延遲研究](docs/research/QEMU分層記憶體延遲研究.md) 記錄可行方向與待驗收條件。
+
+T2a 本輪回歸：158 Python tests 通過，Ruff lint 與新增 Python 檔案格式檢查通過。[驗證紀錄](artifacts/verification/time-control/completion.json) 保存被測 commit；[完整 log](artifacts/verification/time-control/full-tests.log)。這項回歸通過不代表時間注入驗收通過。

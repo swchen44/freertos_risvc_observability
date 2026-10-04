@@ -95,3 +95,7 @@ Web／離線 HTML 都應能選 timing profile，顯示 L1、L2、RAM 各自的�
 - [ ] Dashboard：顯示 profile、分層成本與假設，完成 Web／離線互動驗收。
 
 這項研究的目的，是讓 cache locality 改善能映射成可比較的成本，並逐步驗證時序效應；目前尚未證明它能準確預測產品吞吐或最差延遲。
+
+## T2a 最新實驗
+
+[時間注入探針](../time-control-probe.md) 已執行：control 三次正常，1／5 ms 各三次逾時。T2 驗收仍未通過，下一步先在獨立 QEMU build 接合 clock setter。[Cache 延遲參考值](Cache延遲參考值與校準.md) 區分原廠規格、測量與示範設定。
