@@ -1,0 +1,20 @@
+{
+  "tested_commit": "0878281aaeabd697bfa84e0fe68ab5f2c029bbb2",
+  "python_tests_passed": 192,
+  "full_tests_sha256": "882348c1e3aab6320abac14b36127e8e9348cd43ba9a7a7d3082f3667effc8fb",
+  "formal_qemu_runs": 12,
+  "synthetic_pairs": 3,
+  "tcp_pairs": 3,
+  "frequency_hz": 500000000,
+  "sysram_read_startup_cycles": 10,
+  "sysram_write_startup_cycles": 10,
+  "icount_shift": 0,
+  "ruff": "passed",
+  "changed_python_format": "passed",
+  "live_memory_cost_accumulation_verified": true,
+  "per_instruction_stall_order_verified": false,
+  "irq_enabled_live_cache_verified": false,
+  "hardware_timing_calibrated": false,
+  "dashboard_timing_views_updated": false,
+  "review": "self review; no independent reviewer"
+}

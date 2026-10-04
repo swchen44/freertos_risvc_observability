@@ -109,4 +109,8 @@ print(audit_accesses(Path("runs/live-tcp-v2/enabled-1-1/accesses.csv.gz")))
 - [ ] Web 與離線 HTML timing views、互動篩選與 CSV 匯出。
 - [ ] 多 memory region／uncached SRAM／可變 sysram 延遲、SMP 與產品校準。
 
+完整回歸 **192／192 通過**，Ruff 與四個新增 Python 檔案格式檢查通過。測試 log 與 tested commit 均保存在下方完成紀錄。
+
+TCP 使用 `NO_SYS=1` raw API 與程式內 peer；沒有實體 NIC、DMA 或真實 RTT。
+
 本輪沒有修改 UI，因此未執行瀏覽器驗收或新增畫面截圖。最終測試與來源完整性見 [完成紀錄](../artifacts/verification/live-cache/completion.json)。Review 為作者自行檢查，沒有獨立 reviewer。
