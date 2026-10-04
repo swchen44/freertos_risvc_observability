@@ -38,6 +38,14 @@
     "include/qemu/qemu-plugin.h": {
       "url": "https://raw.githubusercontent.com/qemu/qemu/ae35f033b874c627d81d51070187fbf55f0bf1a7/include/qemu/qemu-plugin.h",
       "sha256": "e4c5bf7e92075d7c1e6b1dcb6164bca6c549b2912a62b56ce1a777be4c7b8788"
+    },
+    "system/cpus.c": {
+      "url": "https://raw.githubusercontent.com/qemu/qemu/ae35f033b874c627d81d51070187fbf55f0bf1a7/system/cpus.c",
+      "sha256": "c4a262c13c8e7170e022062aa49cf33b2c87e1c21625a27650da94058a565540"
+    },
+    "accel/tcg/tcg-accel-ops-rr.c": {
+      "url": "https://raw.githubusercontent.com/qemu/qemu/ae35f033b874c627d81d51070187fbf55f0bf1a7/accel/tcg/tcg-accel-ops-rr.c",
+      "sha256": "13338b5c8fa9b5953c471de646c16fdbd42ca22d3a5e31bbcaf42b2cee4cddbf"
     }
   }
 }

@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "formal_results_sha256": "4b5d0bb04c1acd49e4c7bc3113dd4fcb3f00a2dc780233ccc009effc08294ebb",
+  "formal_runs": 6,
+  "all_source_and_capture_hashes_verified": true,
+  "guest_measurements_identical_per_mode": true,
+  "qemu_binary_unchanged_from_t2b": true,
+  "psf_mtime_crosscheck": "all 5 windows per run passed",
+  "review": "self review; no independent reviewer"
+}

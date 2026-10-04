@@ -1,0 +1,17 @@
+test_shutdown_wfi_does_not_change_measured_window (tests.unit.test_clock_edges.ClockEdgesTests.test_shutdown_wfi_does_not_change_measured_window) ... ERROR
+
+======================================================================
+ERROR: test_shutdown_wfi_does_not_change_measured_window (tests.unit.test_clock_edges.ClockEdgesTests.test_shutdown_wfi_does_not_change_measured_window)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_clock_edges.py", line 94, in test_shutdown_wfi_does_not_change_measured_window
+    self.assertTrue(validate_edges(m, r, True)["passed"])
+                    ~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "/Users/swchen.tw/git/percepio/poc/src/psf_lab/clock_edges.py", line 50, in validate_edges
+    raise ValueError("Missing WFI instruction/time-warp evidence")
+ValueError: Missing WFI instruction/time-warp evidence
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (errors=1)

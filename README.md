@@ -1,5 +1,7 @@
 # FreeRTOS／RISC-V PSF POC
 
+**T2c clock 邊界通過：**[無 timer、連續／過期請求、IRQ 遮蔽與 WFI 後注入](docs/qemu-clock-edges-t2c.md)。正式六次執行通過，新增 cycles → ns 餘數累計；數十 ns 級與逐次 cache 成本接合仍待驗證。
+
 **T2b 基本 clock probe 已通過：**[獨立 QEMU 建置、兩項 patch 與三階段對照](docs/qemu-clock-t2b.md)。5 ms 注入使 guest 前進約 5.0024 ms、5 ticks 並喚醒等待 task。逐次 cache stall／sysram 時間接合仍待驗證。
 
 **Sysram 10 cycles：**[獨立 read／write 設定、重播比較與使用方法](docs/sysram-10.md)。設定在 `cases/timing/sysram-10.json`，證據在 `runs/timing-sysram-10-v1/`；[QEMU clock 接合研究](docs/research/QEMU-clock接合下一步.md) 保存固定版本來源與後續驗收。

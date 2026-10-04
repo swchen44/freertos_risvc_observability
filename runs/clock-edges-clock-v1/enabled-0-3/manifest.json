@@ -1,0 +1,50 @@
+{
+  "command": [
+    "/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-system-riscv32-clock",
+    "-machine",
+    "virt",
+    "-cpu",
+    "rv32",
+    "-smp",
+    "1",
+    "-m",
+    "128M",
+    "-bios",
+    "none",
+    "-display",
+    "none",
+    "-monitor",
+    "none",
+    "-serial",
+    "file:console.log",
+    "-accel",
+    "tcg,thread=single",
+    "-icount",
+    "shift=0,align=off,sleep=off",
+    "-semihosting-config",
+    "enable=on,target=native",
+    "-plugin",
+    "/Users/swchen.tw/git/percepio/poc/runs/clock-edges-clock-v1/clock_edges.dylib,trigger=80002b22,enabled=0,out=/Users/swchen.tw/git/percepio/poc/runs/clock-edges-clock-v1/enabled-0-3/plugin.json",
+    "-kernel",
+    "/Users/swchen.tw/git/percepio/poc/runs/clock-edges-clock-v1/enabled-0-3/firmware.elf"
+  ],
+  "result": {
+    "run": "enabled-0-3",
+    "enabled": false,
+    "repeat": 3,
+    "accepted": false,
+    "exit_code": 0,
+    "status": "completed",
+    "acceptance_error": "Missing WFI instruction/time-warp evidence"
+  },
+  "files": {
+    "symbols.txt": "975fd9f56c07eeb62e14695eba96e27773cf972e2efe08c10bf8ac06fca0f008",
+    "trace.psf": "95034c614887690e3cf82c6137ccde5f1ec47a0ffa8ed1e1f85bb296a5c176f9",
+    "firmware.elf": "dd7ccfac29526487aa3c915481bced42dee2e289c9d00c29072bfae4e1c59c5b",
+    "console.log": "c5651757c2aa7a4dab804a23a69ade3527d450e87c3fc55fe000fb5970721126",
+    "oracle.json": "cc53437c81f12b7e167a62f323cae1d78e0c2c188c52b239ec665a449b012b26",
+    "plugin.json": "539d35857c138aaf78551fdcade13ba30522490b235ac87ab306bcf916215977",
+    "qemu.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "clock-edges.json": "e7bf3c7e23136472f4dc998dbf35f43383717f7997c21cce1ea1dde9113ddbbf"
+  }
+}

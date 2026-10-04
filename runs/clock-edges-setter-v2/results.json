@@ -1,0 +1,36 @@
+{
+  "accepted": false,
+  "cases": [
+    {
+      "run": "enabled-0-1",
+      "enabled": false,
+      "repeat": 1,
+      "accepted": true,
+      "exit_code": 0,
+      "status": "completed",
+      "acceptance": {
+        "passed": true,
+        "enabled": false,
+        "phase_elapsed_ns": [
+          3600,
+          3600,
+          3600,
+          3700,
+          3600
+        ],
+        "restored_ticks": 0,
+        "wfi_elapsed_ns": 987900
+      }
+    },
+    {
+      "run": "enabled-1-1",
+      "enabled": true,
+      "repeat": 1,
+      "accepted": false,
+      "exit_code": 0,
+      "status": "completed",
+      "acceptance_error": "Incorrect elapsed time in phase 0"
+    }
+  ],
+  "boundary": "Clock API, not cache stalls"
+}

@@ -1,5 +1,7 @@
 # T2b：固定時間注入已影響 guest mtime／FreeRTOS 排程
 
+**後續進展：**[T2c 邊界矩陣已通過](qemu-clock-edges-t2c.md)。本頁保留基本探針階段的結果；最新待辦以 T2c 為準。
+
 **獨立 QEMU 9.2.0 的基本 clock probe 已通過。** 0／1／5 ms 各三次，總共九次正常完成；5 ms 注入讓 guest 增加約 5.0024 ms、前進 5 ticks，等待 2 ticks 的高優先序 task 醒來。這是固定 PC 的單次時間注入，尚未接上逐次 cache miss、sysram 10 cycles 或 TCP 效能比較。
 
 全域 Homebrew QEMU 未修改。兩個研究 patch 位於 `tools/qemu/`；三階段 binary 位於忽略的 `.tools/qemu-time-control/`，其 hash 與重建來源已保存。

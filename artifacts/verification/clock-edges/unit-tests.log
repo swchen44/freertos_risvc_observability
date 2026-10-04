@@ -1,0 +1,21 @@
+test_control_without_injection (tests.unit.test_clock_edges.ClockEdgesTests.test_control_without_injection) ... ok
+test_enabled_guest_clock_irq_and_wfi (tests.unit.test_clock_edges.ClockEdgesTests.test_enabled_guest_clock_irq_and_wfi) ... ok
+test_masked_irq_must_not_deliver_tick (tests.unit.test_clock_edges.ClockEdgesTests.test_masked_irq_must_not_deliver_tick) ... ok
+test_no_timer_does_not_advance (tests.unit.test_clock_edges.ClockEdgesTests.test_no_timer_does_not_advance) ... ok
+test_restore_must_wake_task (tests.unit.test_clock_edges.ClockEdgesTests.test_restore_must_wake_task) ... ok
+test_shutdown_wfi_does_not_change_measured_window (tests.unit.test_clock_edges.ClockEdgesTests.test_shutdown_wfi_does_not_change_measured_window) ... ok
+test_stale_request_must_not_reverse_time (tests.unit.test_clock_edges.ClockEdgesTests.test_stale_request_must_not_reverse_time) ... ok
+test_target_must_match_guest_anchor (tests.unit.test_clock_edges.ClockEdgesTests.test_target_must_match_guest_anchor) ... ok
+test_wfi_must_really_idle (tests.unit.test_clock_edges.ClockEdgesTests.test_wfi_must_really_idle) ... ok
+test_fractional_cycles_carry_between_events (tests.unit.test_cycle_budget.CycleBudgetTests.test_fractional_cycles_carry_between_events) ... ok
+test_invalid_cost_preserves_state (tests.unit.test_cycle_budget.CycleBudgetTests.test_invalid_cost_preserves_state) ... ok
+test_invalid_frequency (tests.unit.test_cycle_budget.CycleBudgetTests.test_invalid_frequency) ... ok
+test_partition_does_not_change_total (tests.unit.test_cycle_budget.CycleBudgetTests.test_partition_does_not_change_total) ... ok
+test_signed_ns_overflow_preserves_state (tests.unit.test_cycle_budget.CycleBudgetTests.test_signed_ns_overflow_preserves_state) ... ok
+test_ten_cycles_at_500mhz (tests.unit.test_cycle_budget.CycleBudgetTests.test_ten_cycles_at_500mhz) ... ok
+test_zero_cost_does_not_advance (tests.unit.test_cycle_budget.CycleBudgetTests.test_zero_cost_does_not_advance) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.002s
+
+OK

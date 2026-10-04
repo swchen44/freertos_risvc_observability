@@ -1,0 +1,50 @@
+{
+  "command": [
+    "/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-system-riscv32-setter",
+    "-machine",
+    "virt",
+    "-cpu",
+    "rv32",
+    "-smp",
+    "1",
+    "-m",
+    "128M",
+    "-bios",
+    "none",
+    "-display",
+    "none",
+    "-monitor",
+    "none",
+    "-serial",
+    "file:console.log",
+    "-accel",
+    "tcg,thread=single",
+    "-icount",
+    "shift=0,align=off,sleep=off",
+    "-semihosting-config",
+    "enable=on,target=native",
+    "-plugin",
+    "/Users/swchen.tw/git/percepio/poc/runs/clock-edges-setter-v2/clock_edges.dylib,trigger=80002b22,enabled=1,out=/Users/swchen.tw/git/percepio/poc/runs/clock-edges-setter-v2/enabled-1-1/plugin.json",
+    "-kernel",
+    "/Users/swchen.tw/git/percepio/poc/runs/clock-edges-setter-v2/enabled-1-1/firmware.elf"
+  ],
+  "result": {
+    "run": "enabled-1-1",
+    "enabled": true,
+    "repeat": 1,
+    "accepted": false,
+    "exit_code": 0,
+    "status": "completed",
+    "acceptance_error": "Incorrect elapsed time in phase 0"
+  },
+  "files": {
+    "symbols.txt": "975fd9f56c07eeb62e14695eba96e27773cf972e2efe08c10bf8ac06fca0f008",
+    "trace.psf": "6ee2318be0b9407e23f7dcca08edb3c69ffe83d7d9b17256fb111d040ac8997e",
+    "firmware.elf": "dd7ccfac29526487aa3c915481bced42dee2e289c9d00c29072bfae4e1c59c5b",
+    "console.log": "c5651757c2aa7a4dab804a23a69ade3527d450e87c3fc55fe000fb5970721126",
+    "oracle.json": "7105702a64368a8a3e71ebe69084d374f62a23ff0a0316064a0cfaf170ce6387",
+    "plugin.json": "51edd9c4bded7fd522b60fe9d5333e5cb38980b45d79ad0191336f9efa321870",
+    "qemu.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "clock-edges.json": "049641953422684c05da217929cca4fa46cf9a4091f53eb07508b9182737b718"
+  }
+}

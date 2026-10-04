@@ -1,0 +1,24 @@
+{
+  "accepted": false,
+  "cases": [
+    {
+      "run": "enabled-0-1",
+      "enabled": false,
+      "repeat": 1,
+      "accepted": false,
+      "exit_code": 0,
+      "status": "completed",
+      "acceptance_error": "PSF boundaries missing or out of order"
+    },
+    {
+      "run": "enabled-1-1",
+      "enabled": true,
+      "repeat": 1,
+      "accepted": false,
+      "exit_code": 0,
+      "status": "completed",
+      "acceptance_error": "PSF boundaries missing or out of order"
+    }
+  ],
+  "boundary": "Clock API, not cache stalls"
+}

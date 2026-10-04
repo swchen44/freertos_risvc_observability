@@ -1,0 +1,60 @@
+{
+  "accepted": false,
+  "cases": [
+    {
+      "run": "enabled-0-1",
+      "enabled": false,
+      "repeat": 1,
+      "accepted": false,
+      "exit_code": 0,
+      "status": "completed",
+      "acceptance_error": "Missing WFI instruction/time-warp evidence"
+    },
+    {
+      "run": "enabled-0-2",
+      "enabled": false,
+      "repeat": 2,
+      "accepted": false,
+      "exit_code": 0,
+      "status": "completed",
+      "acceptance_error": "Missing WFI instruction/time-warp evidence"
+    },
+    {
+      "run": "enabled-0-3",
+      "enabled": false,
+      "repeat": 3,
+      "accepted": false,
+      "exit_code": 0,
+      "status": "completed",
+      "acceptance_error": "Missing WFI instruction/time-warp evidence"
+    },
+    {
+      "run": "enabled-1-1",
+      "enabled": true,
+      "repeat": 1,
+      "accepted": false,
+      "exit_code": 0,
+      "status": "completed",
+      "acceptance_error": "Missing WFI instruction/time-warp evidence"
+    },
+    {
+      "run": "enabled-1-2",
+      "enabled": true,
+      "repeat": 2,
+      "accepted": false,
+      "exit_code": 0,
+      "status": "completed",
+      "acceptance_error": "Missing WFI instruction/time-warp evidence"
+    },
+    {
+      "run": "enabled-1-3",
+      "enabled": true,
+      "repeat": 3,
+      "accepted": false,
+      "exit_code": 0,
+      "status": "completed",
+      "acceptance_error": "Missing WFI instruction/time-warp evidence"
+    }
+  ],
+  "boundary": "Clock API, not cache stalls"
+}
