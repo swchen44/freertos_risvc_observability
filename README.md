@@ -1,5 +1,7 @@
 # FreeRTOS／RISC-V Observability：研究與可重跑 POC
 
+**Sysram 已可獨立設為 10 cycles：**[設定、讀寫對照與重跑證據](poc/docs/sysram-10.md)。本輪為 sidecar 成本比較，尚未改變 guest 時間；[clock 接合研究](poc/docs/research/QEMU-clock接合下一步.md) 保存固定來源與後續驗收。
+
 **Cache 延遲研究更新：**[L1 格式、原廠參考值與校準](poc/docs/research/Cache延遲參考值與校準.md)；[QEMU 時間注入探針](poc/docs/time-control-probe.md)。158 個 Python 回歸測試通過；正增量注入仍逾時，guest stall 尚未完成，原始證據與下一步已保存。
 
 **TCP 最佳化最新成果：**[實作比較、Web／離線畫面與重跑方法](poc/docs/tcp-optimization.md)。真實 lwIP 握手／傳送／ACK／重傳、三配置各三次、45 個 I/D trace 區段。
