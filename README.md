@@ -1,5 +1,7 @@
 # FreeRTOS／RISC-V Observability：研究與可重跑 POC
 
+**T2e 逐筆成本接合通過：**[500 MHz cache／sysram → guest 時間與完整 TCP 驗證](poc/docs/live-cache-t2e.md)。兩種案例共 12 次正式執行；模型與 guest 差分誤差分別 -74 ns／+32 ns。以下「尚未接合」為歷史階段；IRQ 開啟的逐筆 stall 與 Dashboard timing views 仍待做。
+
 **頻率決策已確定：**[500 MHz 換算基準與後續驗收](poc/docs/timing-500mhz.md)。每 cycle 2 ns；sysram 起始延遲 10 cycles = 20 ns。逐筆 cache 成本接合尚未完成。以下 T2d 的待選頻率描述為歷史狀態。
 
 **T2d 小延遲累計已修正：**[10～1,000 ns 對照、POC 相對成本 API 與多筆排隊](poc/docs/qemu-clock-nano-t2d.md)。18 次 nano、6 次 IRQ／WFI 與 182 個回歸測試通過；cache 接合前待選定 cycles → ns 的頻率基準。
