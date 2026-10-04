@@ -440,3 +440,17 @@ Q1／Q2 回答後的具體架構、parser 範圍、案例、SVG／JavaScript 介
 - [M4 六階段計畫](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/plans/04-cache-relative-optimization.md)
 
 下一步先釐清 instruction／data address 語意、驗證手算 cache oracle，再做相同工作量 A/B；產品 U01～U16 與暫緩的跨機工作仍維持原狀態。
+
+
+## Cache 效率研究與內網還原
+
+已新增 data-region 相對比較：RV32 FreeRTOS row／column 各三次、三組 L1D geometry、相同 checksum，並提供本機 Web 和離線 HTML Cache Dashboard。
+
+- [研究：什麼是 cache 效率、PSF counter 接入與論文／論壇來源](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/research/Cache效率與PSF擴充.md)
+- [操作、實際截圖與內網還原方式](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/cache-replay.md)
+- [離線 Cache Dashboard](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/artifacts/offline/cache-comparison.html)
+- [source 還原包](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/artifacts/restore/cache-replay-source.tar.gz)／[SHA-256](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/artifacts/restore/cache-replay-source.json)
+
+![Cache Web Dashboard](https://raw.githubusercontent.com/swchen44/freertos_risvc_observability/poc-history/artifacts/screenshots/cache/server-01-overview.png)
+
+4 KiB L1D 模型中，改成連續存取使 misses 從 8,192 降至 512，line byte-use 從 6.25% 升至 100%。這是可供最佳化參考的模型內相對結果，不能直接換算時間加速倍數。L1I、hot/cold function、資料拆分與逐 task cache 對時仍為後續。

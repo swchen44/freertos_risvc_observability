@@ -1678,3 +1678,10 @@ R02 同時問功能與解決問題，主要歸 M1；資料夾／port 細節交�
 使用者後續要求將研究推進到可執行驗證：以 RISC-V／FreeRTOS／SDK 模擬產生 PSF，Python 解析 JSON、harness 檢查案例，再建立互動 HTML；Python 需包含 `unittest` 與 `ruff`。不購買 Tracealyzer，參考其公開功能與 UI 設計。
 
 此階段的[研究索引與需求狀態](next-phase/README.md)、[PSF 格式分析](next-phase/PSF格式與解析研究.md)、[模擬環境研究](next-phase/RISC-V模擬環境研究.md)及[Dashboard 功能／設計研究](next-phase/Dashboard功能與設計研究.md)另列，保留上面 24 章原始研究的範圍與證據。使用者已更正 PDF 為 PSF，確認先建立本機 Python 服務，以 HTML／SVG＋JavaScript 呈現，離線 HTML 留待後續。具體架構與驗收見 [PSF Lab 設計規格](next-phase/PSF-Lab-設計規格.md)；新 decoder、模擬 firmware、harness 與 Dashboard 尚未實作。
+
+
+## 2026-10-04 延伸：Cache 效率與 PSF counter
+
+新增 [完整 Cache 研究與案例](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/research/Cache效率與PSF擴充.md)，包含 cache line 使用比例、大 function／資料結構拆分的條件、Callgrind／LLVM／BOLT／PolyBenchC 參考、SDK user-event 寫入 cache counter 的方法與兩種 Dashboard。
+
+目前實作用原始 PSF + hash 關聯的 cache sidecar，保留真正的 PSF、ELF、map、存取 CSV 與 source；未實作 host counter 注入 PSF 或硬體 PMU reader。[內網還原與驗證](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/cache-replay.md)。
