@@ -1,5 +1,7 @@
 # FreeRTOS／RISC-V Observability：研究與可重跑 POC
 
+**T2d 小延遲累計已修正：**[10～1,000 ns 對照、POC 相對成本 API 與多筆排隊](poc/docs/qemu-clock-nano-t2d.md)。18 次 nano、6 次 IRQ／WFI 與 182 個回歸測試通過；cache 接合前待選定 cycles → ns 的頻率基準。
+
 **T2c clock 邊界驗證通過：**[無 timer、連續／過期請求、IRQ mask／restore、WFI 後注入與餘數換算](poc/docs/qemu-clock-edges-t2c.md)。正式六次執行、174 個回歸測試通過；下一步驗證數十 ns 級注入，再接 sysram／cache 成本。
 
 **T2b 基本時間注入通過：**[QEMU 獨立建置、兩項 patch、三階段對照與重跑方法](poc/docs/qemu-clock-t2b.md)。5 ms 注入使 guest 前進約 5.0024 ms、5 ticks 並喚醒等待 task；158 個回歸測試通過。逐次 cache stall 與 sysram 10-cycle guest 接合仍待驗證。
