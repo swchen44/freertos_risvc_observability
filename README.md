@@ -198,3 +198,5 @@ Dashboard 可先使用既有 PSF，不需要 FreeRTOS toolchain。重新模擬�
 - [驗證紀錄](artifacts/verification/cache-replay/)：unittest、Ruff、curl、agent-browser、CSV、restore。
 
 仍待完成：instruction cache、function hot/cold、AoS／SoA、GEMM tiling、逐 task／PSF 時間同步，以及真機 PMU 接入。原始 PSF 未被修改成自訂 binary 格式；目前用 sidecar hash 關聯。
+
+本輪最終驗收：119 Python、5 Node、11 既有 browser tests、2 個 agent-browser 模式與 curl integration 通過；[completion.json](artifacts/verification/cache-replay/completion.json) 記錄被測 source commit、還原與截圖 hashes。

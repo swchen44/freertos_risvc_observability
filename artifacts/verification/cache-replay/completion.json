@@ -1,0 +1,104 @@
+{
+  "status": "locally_verified",
+  "tested_commit": "5470a42ae551da883a9d57d74bec742da9cf887e",
+  "python_tests": 119,
+  "node_tests": 5,
+  "existing_browser_tests": 11,
+  "agent_browser_flows": {
+    "server": "pass",
+    "offline_server_stopped_network_blocked": "pass"
+  },
+  "curl_integration": "pass",
+  "ruff": "pass",
+  "captures": 6,
+  "geometries": 3,
+  "rows": 18,
+  "screenshots": [
+    {
+      "path": "artifacts/screenshots/cache/offline-01-overview.png",
+      "sha256": "b4be6fe2890b72889deaf7be38f514f9d87f43b5e5c0379976e12ffdead97b22"
+    },
+    {
+      "path": "artifacts/screenshots/cache/offline-02-capacity.png",
+      "sha256": "4d52369677776f3308856ee957501dd919f288ed8396ec0e9d46580bc2904b5a"
+    },
+    {
+      "path": "artifacts/screenshots/cache/offline-03-filter-evidence.png",
+      "sha256": "2bc2abd3bb47451596c199dbb923df639a0ac492b691a213ad2af26041a58c21"
+    },
+    {
+      "path": "artifacts/screenshots/cache/offline-04-sort.png",
+      "sha256": "74fef4f6d0bc282fd6f20061ba89a8b4148b896d04b01e84debba75013272f00"
+    },
+    {
+      "path": "artifacts/screenshots/cache/server-01-overview.png",
+      "sha256": "a5459674aef42243da17b43f0b93f4b108b0296105ba26cf9decf94d6c7b2e64"
+    },
+    {
+      "path": "artifacts/screenshots/cache/server-02-capacity.png",
+      "sha256": "c3eba367082f598c29c26dac1b17389c8e4f48b453e62b1e49755b002042446e"
+    },
+    {
+      "path": "artifacts/screenshots/cache/server-03-filter-evidence.png",
+      "sha256": "b9039b6fab07b817b8d4bc1e5def957d70416bb3fb204307c51d92319564b9c7"
+    },
+    {
+      "path": "artifacts/screenshots/cache/server-04-sort.png",
+      "sha256": "d97f871d6637da9b2a38da71664b8f51210171ad36f0a80e19ec638d0e367206"
+    }
+  ],
+  "restore": {
+    "archive_sha256": "c0f968db4e5845613a6dcbb06e4a8eede84168a2b26a439dfde3adf773235fa7",
+    "files_verified": 1172,
+    "commands": [
+      {
+        "command": [
+          "python3",
+          "tools/cache/run.py",
+          "--output",
+          "runs/cache-relative-v3",
+          "--replay-only",
+          "--export-html",
+          "artifacts/offline/rebuilt.html"
+        ],
+        "exit": 0
+      },
+      {
+        "command": [
+          "python3",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests/unit",
+          "-p",
+          "test_cache_model.py"
+        ],
+        "exit": 0
+      },
+      {
+        "command": [
+          "python3",
+          "tools/cache/run.py",
+          "--toolchain",
+          "/Users/swchen.tw/git/percepio/poc/.tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin",
+          "--output",
+          "runs/local/restored-new"
+        ],
+        "exit": 0
+      }
+    ],
+    "same_host": true,
+    "comparison_matches": true
+  },
+  "review": "docs/reviews/cache-replay-review.md",
+  "deferred": [
+    "L1I instruction utilization",
+    "hot/cold function and AoS/SoA experiments",
+    "GEMM tiling port",
+    "PSF per-event/task cache time alignment",
+    "PMU or simulator counter injection into PSF",
+    "writeback/bus/coherence/penalty calibration",
+    "cross-machine execution"
+  ]
+}

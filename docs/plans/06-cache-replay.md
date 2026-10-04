@@ -26,7 +26,7 @@ Python 以 cold、LRU、write-allocate、單 core 的 L1D + data-only L2 tag 模
 - [x] 每個 variant 三次獨立 QEMU capture；核對 checksum、事件數、guest return code。
 - [x] 使用 1／4／16 KiB L1D、32 KiB L2、64-byte line、4-way LRU 重播；固定輸入、比較 read/write miss。
 - [x] 保存 source、license、設定、PSF、ELF、map、raw CSV、manifest、測試與重建命令。所有紀錄只含模型內結果。
-- [ ] 更新 README／M4 checklist、核對 hash、commit、push，確認遠端一致。
+- [x] 更新 README／M4 checklist、核對 hash、commit、push，確認遠端一致。
 
 後續 Dashboard 將消費這份版本化 JSON；本輪不以 raw CSV 順序推算 PSF tick，也不宣稱 task 級 cache 對時完成。
 
