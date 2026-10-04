@@ -1,0 +1,12 @@
+{
+  "tested_commit": "4fa1afdd49be1d765bcf7513667fcd2992abc460",
+  "python_tests_passed": 174,
+  "new_unit_tests": 16,
+  "formal_qemu_runs_passed": 6,
+  "full_tests_sha256": "025be44c42b66aa6f7791f03f951ffaff68c9ee80ea7a2a422f767e623968317",
+  "ruff": "passed",
+  "format_new_python_files": "passed",
+  "cycle_budget_injected_into_qemu": false,
+  "nanosecond_stall_validated": false,
+  "review": "self review"
+}

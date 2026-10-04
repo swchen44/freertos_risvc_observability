@@ -115,3 +115,5 @@ assert budget.add(10) == 20      # 10 cycles -> 20 ns
 - [ ] SMP、adaptive icount、record/replay／migration、實體硬體校準仍不在本輪驗證範圍。
 
 本輪增加 16 個 unit tests，沒有修改 Dashboard；本報告不能解讀為已完成產品記憶體模型。
+
+提交後完整回歸 **174／174 通過**，Ruff lint 與新增 Python 檔案格式檢查通過。[完成紀錄](../artifacts/verification/clock-edges/completion.json)、[完整 log](../artifacts/verification/clock-edges/full-tests.log)、[正式檔案 hashes／重跑核對](../artifacts/verification/clock-edges/receipt.json)。
