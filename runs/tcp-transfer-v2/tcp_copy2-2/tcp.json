@@ -1,0 +1,1 @@
+{"case":"tcp_copy2","acked_bytes":5840,"retransmits":1,"packet_count":6,"phases":[{"phase":0,"kind":"send","instructions":14258},{"phase":1,"kind":"send","instructions":14258},{"phase":2,"kind":"send","instructions":14258},{"phase":3,"kind":"retransmit","instructions":6109},{"phase":4,"kind":"send","instructions":14258}]}

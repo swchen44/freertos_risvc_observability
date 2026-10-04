@@ -1,10 +1,12 @@
 # FreeRTOS／RISC-V PSF POC
 
-**新增 TCP/IP 實際元件研究：**[Stack 比較、公開案例與 RV32 checksum 實測](docs/research/TCP-IP與Cache最佳化案例.md)。三種 lwIP 演算法、9 份 PSF、108 筆量測；完整 TCP 與 16+16 / 64 KiB cache 模型仍列為後續工作。
+**TCP 最佳化最新成果：**[實作比較、Web／離線畫面與重跑方法](docs/tcp-optimization.md)。真實 lwIP 握手／傳送／ACK／重傳、三配置各三次、45 個 I/D trace 區段。
+
+**新增 TCP/IP 實際元件研究：**[Stack 比較、公開案例與 RV32 checksum 實測](docs/research/TCP-IP與Cache最佳化案例.md)。第一輪 checksum 元件實驗已完成；後續真 TCP 與 16+16 / 64 KiB cache 模型也已完成，見下方新報告。
 
 TCP 本輪證據：[108 筆結果](runs/tcp-checksum-v2/results.json)、[manifest 與 hashes](runs/tcp-checksum-v2/manifest.json)、[125 個完整回歸測試](artifacts/verification/tcp/full-tests.log)、[獨立 review](artifacts/verification/tcp/review.md)、[內網原始碼還原包](artifacts/restore/tcp-checksum-source.tar.gz)、[乾淨目錄重新編譯與 108 筆對照證據](artifacts/verification/tcp/restore.json)。`tools/tcp/` 放擷取與打包腳本，`references/tcp/` 放上游原始碼與授權，`firmware/app/cases/tcp_checksum*` 是 guest 測試，`runs/tcp-checksum-v2/` 保存 PSF/ELF/反組譯。
 
-TODO：完整 TCP 連線、I/D 共用 L2 模型、TCP 專用 Web／離線圖表。先前 AoS/SoA 草稿保存在 [plan 07](docs/plans/07-cache-layout.md)，尚未實跑。
+以上 TODO 已於本輪完成 bounded TCP 實驗與雙模式圖表；NIC/DMA、window調整、較大working set與實機PMU仍未做。先前 AoS/SoA 草稿保存在 [plan 07](docs/plans/07-cache-layout.md)，尚未實跑。
 
 
 
@@ -14,6 +16,18 @@ TODO：完整 TCP 連線、I/D 共用 L2 模型、TCP 專用 Web／離線圖表�
 **這裡是後續實驗與文件的主要入口，使用獨立 Git 管理。**
 
 目前已固定工具鏈、完成 PSF parser，並在 RISC-V QEMU 跑通 FreeRTOS Queue／clock probe。正式 harness 與七配置三次重跑已通過；本機 Dashboard 已通過瀏覽器驗收；獨立 review 的 3 個 Important 已修正，最後全套回歸驗證通過。建立日期：2026-10-03。
+
+## TCP 最佳化 Dashboard 與操作證據
+
+[完整教學與結果](docs/tcp-optimization.md)｜[離線 HTML](artifacts/offline/tcp-optimization.html)｜[原始 captures](runs/tcp-transfer-v2)｜[curl 與 agent-browser 紀錄](artifacts/verification/tcp-optimization)｜[內網還原包](artifacts/restore/tcp-transfer-source.tar.gz)
+
+本機啟動 `.venv/bin/python -m psf_lab serve --port 8765`，開啟 `/tcp.html`。先選正常傳送比較指令量，再切換重傳；點表格列看 `memcpy` / checksum 熱點。CSV 會保留篩選與排序結果。
+
+![TCP Web：正常傳送與函式熱點](artifacts/screenshots/tcp/server-01-overview.png)
+
+![TCP 離線：重傳對照](artifacts/screenshots/tcp/offline-03-retransmit.png)
+
+`tools/tcp/run_transfer.py` 是擷取入口；`firmware/app/cases/tcp_transfer.h` 是實際 C 測試；`firmware/tcp_stack/` 保存 lwIP 設定；`src/psf_lab/tcp_{cache,packets,report}.py` 負責 cache、封包與證據驗證；`web/tcp.html` / `web/src/tcp*` 是前端。所有實驗文件放 `docs/`，原研究資料仍在 `docs/research/`。
 
 ## 離線 HTML 與實際畫面
 

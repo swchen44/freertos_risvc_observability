@@ -1,0 +1,4 @@
+﻿variant,repeat,kind,bytes,instructions,reads,writes,l1i_misses,l1d_misses,l2_misses,text_bytes
+"tcp_copy3",1,"retransmit",1460,3898,836,304,59,41,100,37280
+"tcp_nocopy3",1,"retransmit",1460,3955,842,305,59,42,101,37280
+"tcp_copy2",1,"retransmit",1460,6109,1206,304,58,41,99,37024

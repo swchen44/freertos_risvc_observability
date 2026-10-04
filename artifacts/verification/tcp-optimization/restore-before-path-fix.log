@@ -1,0 +1,20 @@
+0 PASS: 9 TCP sessions, 45 captured phases, 18 summary rows
+ 
+tcp_copy2 send
+text_bytes 37084 37168
+l1d_misses 248 252
+l2_misses 540 544
+tcp_copy2 retransmit
+text_bytes 37084 37168
+tcp_copy3 send
+text_bytes 37340 37424
+l1d_misses 248 252
+l2_misses 536 540
+tcp_copy3 retransmit
+text_bytes 37340 37424
+tcp_nocopy3 send
+text_bytes 37340 37424
+l1d_misses 160 164
+l2_misses 448 452
+tcp_nocopy3 retransmit
+text_bytes 37340 37424

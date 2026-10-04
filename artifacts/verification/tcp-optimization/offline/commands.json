@@ -1,0 +1,481 @@
+[
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "tcp-accept-offline",
+      "open",
+      "about:blank"
+    ],
+    "exit": 0,
+    "stdout": "✓ \n  about:blank\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "tcp-accept-offline",
+      "set",
+      "viewport",
+      "1600",
+      "1050"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "tcp-accept-offline",
+      "set",
+      "offline",
+      "on"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "tcp-accept-offline",
+      "network",
+      "route",
+      "http://*",
+      "--abort"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "tcp-accept-offline",
+      "network",
+      "route",
+      "https://*",
+      "--abort"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "tcp-accept-offline",
+      "open",
+      "file:///Users/swchen.tw/git/percepio/poc/artifacts/offline/tcp-optimization.html"
+    ],
+    "exit": 0,
+    "stdout": "✓ PSF Lab · TCP 最佳化實驗\n  file:///Users/swchen.tw/git/percepio/poc/artifacts/offline/tcp-optimization.html\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "tcp-accept-offline",
+      "wait",
+      "--fn",
+      "window.tcpReady === true"
+    ],
+    "exit": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "tcp-accept-offline",
+      "eval",
+      "--json",
+      "document.querySelectorAll(\".chart svg\").length"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/offline/tcp-optimization.html\",\"result\":3},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "tcp-accept-offline",
+      "screenshot",
+      "--full",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/screenshots/tcp/offline-01-overview.png"
+    ],
+    "exit": 0,
+    "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/screenshots/tcp/offline-01-overview.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "tcp-accept-offline",
+      "eval",
+      "document.querySelector(\"#variant\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "tcp-accept-offline",
+      "select",
+      "#variant",
+      "tcp_nocopy3"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "tcp-accept-offline",
+      "wait",
+      "--text",
+      "目前 1 筆"
+    ],
+    "exit": 0,
+    "stdout": "目前 1 筆\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "tcp-accept-offline",
+      "eval",
+      "document.querySelector(\".tabulator-row .tabulator-cell[tabulator-field=\\\"variant\\\"]\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "tcp-accept-offline",
+      "click",
+      ".tabulator-row .tabulator-cell[tabulator-field=\"variant\"]"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "tcp-accept-offline",
+      "eval",
+      "document.querySelector(\"summary\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "tcp-accept-offline",
+      "click",
+      "summary"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "tcp-accept-offline",
+      "eval",
+      "--json",
+      "document.querySelector(\"#evidence\").textContent"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/offline/tcp-optimization.html\",\"result\":\"{\\n  \\\"run\\\": \\\"tcp_nocopy3-1\\\",\\n  \\\"variant\\\": \\\"tcp_nocopy3\\\",\\n  \\\"repeat\\\": 1,\\n  \\\"kind\\\": \\\"send\\\",\\n  \\\"bytes\\\": 5840,\\n  \\\"phases\\\": 4,\\n  \\\"instructions\\\": 13712,\\n  \\\"text_bytes\\\": 37280,\\n  \\\"reads\\\": 2424,\\n  \\\"writes\\\": 720,\\n  \\\"hotspots\\\": [\\n    {\\n      \\\"function\\\": \\\"lwip_standard_chksum\\\",\\n      \\\"instructions\\\": 9168\\n    },\\n    {\\n      \\\"function\\\": \\\"tcp_output\\\",\\n      \\\"instructions\\\": 972\\n    },\\n    {\\n      \\\"function\\\": \\\"tcp_write\\\",\\n      \\\"instructions\\\": 612\\n    },\\n    {\\n      \\\"function\\\": \\\"ip4_output_if_src\\\",\\n      \\\"instructions\\\": 408\\n    },\\n    {\\n      \\\"function\\\": \\\"inet_chksum_pseudo\\\",\\n      \\\"instructions\\\": 352\\n    },\\n    {\\n      \\\"function\\\": \\\"tcp_create_segment\\\",\\n      \\\"instructions\\\": 312\\n    },\\n    {\\n      \\\"function\\\": \\\"lwip_htonl\\\",\\n      \\\"instructions\\\": 312\\n    },\\n    {\\n      \\\"function\\\": \\\"pbuf_alloc\\\",\\n      \\\"instructions\\\": 308\\n    },\\n    {\\n      \\\"function\\\": \\\"lwip_htons\\\",\\n      \\\"instructions\\\": 288\\n    },\\n    {\\n      \\\"function\\\": \\\"pbuf_add_header_impl\\\",\\n      \\\"instructions\\\": 216\\n    },\\n    {\\n      \\\"function\\\": \\\"mem_malloc\\\",\\n      \\\"instructions\\\": 212\\n    },\\n    {\\n      \\\"function\\\": \\\"memp_malloc\\\",\\n      \\\"instructions\\\": 104\\n    }\\n  ],\\n  \\\"models\\\": [\\n    {\\n      \\\"schema\\\": \\\"tcp-split-cache-v1\\\",\\n      \\\"initial_state\\\": \\\"cold-per-TX-phase\\\",\\n      \\\"policy\\\": \\\"LRU, write-allocate tags, non-inclusive; no dirty/writeback timing\\\",\\n      \\\"cycles\\\": null,\\n      \\\"events\\\": {\\n        \\\"I\\\": 3439,\\n        \\\"R\\\": 606,\\n        \\\"W\\\": 180\\n      },\\n      \\\"l1i\\\": {\\n        \\\"geometry\\\": {\\n          \\\"size\\\": 16384,\\n          \\\"line\\\": 64,\\n          \\\"ways\\\": 4\\n        },\\n        \\\"accesses\\\": 3455,\\n        \\\"misses\\\": 72,\\n        \\\"reads\\\": 3455,\\n        \\\"writes\\\": 0,\\n        \\\"read_misses\\\": 72,\\n        \\\"write_misses\\\": 0,\\n        \\\"spatial\\\": {\\n          \\\"observed_used_bytes\\\": 2708,\\n          \\\"filled_bytes\\\": 4608,\\n          \\\"evicted_unused_bytes\\\": 0,\\n          \\\"resident_unobserved_bytes\\\": 1900,\\n          \\\"observed_utilization\\\": 0.5876736111111112\\n        },\\n        \\\"miss_rate\\\": 0.020839363241678725\\n      },\\n      \\\"l1d\\\": {\\n        \\\"geometry\\\": {\\n          \\\"size\\\": 16384,\\n          \\\"line\\\": 64,\\n          \\\"ways\\\": 4\\n        },\\n        \\\"accesses\\\": 786,\\n        \\\"misses\\\": 40,\\n        \\\"reads\\\": 606,\\n        \\\"writes\\\": 180,\\n        \\\"read_misses\\\": 34,\\n        \\\"write_misses\\\": 6,\\n        \\\"spatial\\\": {\\n          \\\"observed_used_bytes\\\": 1828,\\n          \\\"filled_bytes\\\": 2560,\\n          \\\"evicted_unused_bytes\\\": 0,\\n          \\\"resident_unobserved_bytes\\\": 732,\\n          \\\"observed_utilization\\\": 0.7140625\\n        },\\n        \\\"miss_rate\\\": 0.05089058524173028\\n      },\\n      \\\"l2\\\": {\\n        \\\"geometry\\\": {\\n          \\\"size\\\": 65536,\\n          \\\"line\\\": 64,\\n          \\\"ways\\\": 4\\n        },\\n        \\\"accesses\\\": 112,\\n        \\\"misses\\\": 112,\\n        \\\"reads\\\": 106,\\n        \\\"writes\\\": 6,\\n        \\\"read_misses\\\": 106,\\n        \\\"write_misses\\\": 6,\\n        \\\"miss_rate\\\": 1\\n      }\\n    },\\n    {\\n      \\\"schema\\\": \\\"tcp-split-cache-v1\\\",\\n      \\\"initial_state\\\": \\\"cold-per-TX-phase\\\",\\n      \\\"policy\\\": \\\"LRU, write-allocate tags, non-inclusive; no dirty/writeback timing\\\",\\n      \\\"cycles\\\": null,\\n      \\\"events\\\": {\\n        \\\"I\\\": 3439,\\n        \\\"R\\\": 606,\\n        \\\"W\\\": 180\\n      },\\n      \\\"l1i\\\": {\\n        \\\"geometry\\\": {\\n          \\\"size\\\": 16384,\\n          \\\"line\\\": 64,\\n          \\\"ways\\\": 4\\n        },\\n        \\\"accesses\\\": 3455,\\n        \\\"misses\\\": 72,\\n        \\\"reads\\\": 3455,\\n        \\\"writes\\\": 0,\\n        \\\"read_misses\\\": 72,\\n        \\\"write_misses\\\": 0,\\n        \\\"spatial\\\": {\\n          \\\"observed_used_bytes\\\": 2708,\\n          \\\"filled_bytes\\\": 4608,\\n          \\\"evicted_unused_bytes\\\": 0,\\n          \\\"resident_unobserved_bytes\\\": 1900,\\n          \\\"observed_utilization\\\": 0.5876736111111112\\n        },\\n        \\\"miss_rate\\\": 0.020839363241678725\\n      },\\n      \\\"l1d\\\": {\\n        \\\"geometry\\\": {\\n          \\\"size\\\": 16384,\\n          \\\"line\\\": 64,\\n          \\\"ways\\\": 4\\n        },\\n        \\\"accesses\\\": 786,\\n        \\\"misses\\\": 40,\\n        \\\"reads\\\": 606,\\n        \\\"writes\\\": 180,\\n        \\\"read_misses\\\": 34,\\n        \\\"write_misses\\\": 6,\\n        \\\"spatial\\\": {\\n          \\\"observed_used_bytes\\\": 1828,\\n          \\\"filled_bytes\\\": 2560,\\n          \\\"evicted_unused_bytes\\\": 0,\\n          \\\"resident_unobserved_bytes\\\": 732,\\n          \\\"observed_utilization\\\": 0.7140625\\n        },\\n        \\\"miss_rate\\\": 0.05089058524173028\\n      },\\n      \\\"l2\\\": {\\n        \\\"geometry\\\": {\\n          \\\"size\\\": 65536,\\n          \\\"line\\\": 64,\\n          \\\"ways\\\": 4\\n        },\\n        \\\"accesses\\\": 112,\\n        \\\"misses\\\": 112,\\n        \\\"reads\\\": 106,\\n        \\\"writes\\\": 6,\\n        \\\"read_misses\\\": 106,\\n        \\\"write_misses\\\": 6,\\n        \\\"miss_rate\\\": 1\\n      }\\n    },\\n    {\\n      \\\"schema\\\": \\\"tcp-split-cache-v1\\\",\\n      \\\"initial_state\\\": \\\"cold-per-TX-phase\\\",\\n      \\\"policy\\\": \\\"LRU, write-allocate tags, non-inclusive; no dirty/writeback timing\\\",\\n      \\\"cycles\\\": null,\\n      \\\"events\\\": {\\n        \\\"I\\\": 3439,\\n        \\\"R\\\": 606,\\n        \\\"W\\\": 180\\n      },\\n      \\\"l1i\\\": {\\n        \\\"geometry\\\": {\\n          \\\"size\\\": 16384,\\n          \\\"line\\\": 64,\\n          \\\"ways\\\": 4\\n        },\\n        \\\"accesses\\\": 3455,\\n        \\\"misses\\\": 72,\\n        \\\"reads\\\": 3455,\\n        \\\"writes\\\": 0,\\n        \\\"read_misses\\\": 72,\\n        \\\"write_misses\\\": 0,\\n        \\\"spatial\\\": {\\n          \\\"observed_used_bytes\\\": 2708,\\n          \\\"filled_bytes\\\": 4608,\\n          \\\"evicted_unused_bytes\\\": 0,\\n          \\\"resident_unobserved_bytes\\\": 1900,\\n          \\\"observed_utilization\\\": 0.5876736111111112\\n        },\\n        \\\"miss_rate\\\": 0.020839363241678725\\n      },\\n      \\\"l1d\\\": {\\n        \\\"geometry\\\": {\\n          \\\"size\\\": 16384,\\n          \\\"line\\\": 64,\\n          \\\"ways\\\": 4\\n        },\\n        \\\"accesses\\\": 786,\\n        \\\"misses\\\": 40,\\n        \\\"reads\\\": 606,\\n        \\\"writes\\\": 180,\\n        \\\"read_misses\\\": 34,\\n        \\\"write_misses\\\": 6,\\n        \\\"spatial\\\": {\\n          \\\"observed_used_bytes\\\": 1828,\\n          \\\"filled_bytes\\\": 2560,\\n          \\\"evicted_unused_bytes\\\": 0,\\n          \\\"resident_unobserved_bytes\\\": 732,\\n          \\\"observed_utilization\\\": 0.7140625\\n        },\\n        \\\"miss_rate\\\": 0.05089058524173028\\n      },\\n      \\\"l2\\\": {\\n        \\\"geometry\\\": {\\n          \\\"size\\\": 65536,\\n          \\\"line\\\": 64,\\n          \\\"ways\\\": 4\\n        },\\n        \\\"accesses\\\": 112,\\n        \\\"misses\\\": 112,\\n        \\\"reads\\\": 106,\\n        \\\"writes\\\": 6,\\n        \\\"read_misses\\\": 106,\\n        \\\"write_misses\\\": 6,\\n        \\\"miss_rate\\\": 1\\n      }\\n    },\\n    {\\n      \\\"schema\\\": \\\"tcp-split-cache-v1\\\",\\n      \\\"initial_state\\\": \\\"cold-per-TX-phase\\\",\\n      \\\"policy\\\": \\\"LRU, write-allocate tags, non-inclusive; no dirty/writeback timing\\\",\\n      \\\"cycles\\\": null,\\n      \\\"events\\\": {\\n        \\\"I\\\": 3439,\\n        \\\"R\\\": 606,\\n        \\\"W\\\": 180\\n      },\\n      \\\"l1i\\\": {\\n        \\\"geometry\\\": {\\n          \\\"size\\\": 16384,\\n          \\\"line\\\": 64,\\n          \\\"ways\\\": 4\\n        },\\n        \\\"accesses\\\": 3455,\\n        \\\"misses\\\": 72,\\n        \\\"reads\\\": 3455,\\n        \\\"writes\\\": 0,\\n        \\\"read_misses\\\": 72,\\n        \\\"write_misses\\\": 0,\\n        \\\"spatial\\\": {\\n          \\\"observed_used_bytes\\\": 2708,\\n          \\\"filled_bytes\\\": 4608,\\n          \\\"evicted_unused_bytes\\\": 0,\\n          \\\"resident_unobserved_bytes\\\": 1900,\\n          \\\"observed_utilization\\\": 0.5876736111111112\\n        },\\n        \\\"miss_rate\\\": 0.020839363241678725\\n      },\\n      \\\"l1d\\\": {\\n        \\\"geometry\\\": {\\n          \\\"size\\\": 16384,\\n          \\\"line\\\": 64,\\n          \\\"ways\\\": 4\\n        },\\n        \\\"accesses\\\": 786,\\n        \\\"misses\\\": 40,\\n        \\\"reads\\\": 606,\\n        \\\"writes\\\": 180,\\n        \\\"read_misses\\\": 34,\\n        \\\"write_misses\\\": 6,\\n        \\\"spatial\\\": {\\n          \\\"observed_used_bytes\\\": 1828,\\n          \\\"filled_bytes\\\": 2560,\\n          \\\"evicted_unused_bytes\\\": 0,\\n          \\\"resident_unobserved_bytes\\\": 732,\\n          \\\"observed_utilization\\\": 0.7140625\\n        },\\n        \\\"miss_rate\\\": 0.05089058524173028\\n      },\\n      \\\"l2\\\": {\\n        \\\"geometry\\\": {\\n          \\\"size\\\": 65536,\\n          \\\"line\\\": 64,\\n          \\\"ways\\\": 4\\n        },\\n        \\\"accesses\\\": 112,\\n        \\\"misses\\\": 112,\\n        \\\"reads\\\": 106,\\n        \\\"writes\\\": 6,\\n        \\\"read_misses\\\": 106,\\n        \\\"write_misses\\\": 6,\\n        \\\"miss_rate\\\": 1\\n      }\\n    }\\n  ],\\n  \\\"evidence\\\": {\\n    \\\"manifest\\\": \\\"tcp_nocopy3-1/manifest.json\\\",\\n    \\\"psf\\\": \\\"tcp_nocopy3-1/trace.psf\\\",\\n    \\\"packets_validated\\\": 6,\\n    \\\"acked_bytes\\\": 5840,\\n    \\\"retransmits\\\": 1,\\n    \\\"cache_scope\\\": \\\"cold reset per isolated TX; no ACK cache state, no cycles\\\"\\n  },\\n  \\\"l1i_misses\\\": 288,\\n  \\\"l1d_misses\\\": 160,\\n  \\\"l2_misses\\\": 448\\n}\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "tcp-accept-offline",
+      "screenshot",
+      "--full",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/screenshots/tcp/offline-02-zero-copy.png"
+    ],
+    "exit": 0,
+    "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/screenshots/tcp/offline-02-zero-copy.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "tcp-accept-offline",
+      "eval",
+      "document.querySelector(\"#csv\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "tcp-accept-offline",
+      "download",
+      "#csv",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/verification/tcp-optimization/offline/filtered.csv"
+    ],
+    "exit": 0,
+    "stdout": "✓ Download saved to /Users/swchen.tw/git/percepio/poc/artifacts/verification/tcp-optimization/offline/filtered.csv\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "tcp-accept-offline",
+      "eval",
+      "document.querySelector(\"#variant\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "tcp-accept-offline",
+      "select",
+      "#variant",
+      "all"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "tcp-accept-offline",
+      "eval",
+      "document.querySelector(\"#kind\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "tcp-accept-offline",
+      "select",
+      "#kind",
+      "retransmit"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "tcp-accept-offline",
+      "wait",
+      "--text",
+      "目前 3 筆"
+    ],
+    "exit": 0,
+    "stdout": "目前 3 筆\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "tcp-accept-offline",
+      "screenshot",
+      "--full",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/screenshots/tcp/offline-03-retransmit.png"
+    ],
+    "exit": 0,
+    "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/screenshots/tcp/offline-03-retransmit.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "tcp-accept-offline",
+      "eval",
+      "document.querySelector(\".tabulator-col[tabulator-field=\\\"instructions\\\"]\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "tcp-accept-offline",
+      "click",
+      ".tabulator-col[tabulator-field=\"instructions\"]"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "tcp-accept-offline",
+      "eval",
+      "document.querySelector(\"#csv\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "tcp-accept-offline",
+      "download",
+      "#csv",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/verification/tcp-optimization/offline/sorted.csv"
+    ],
+    "exit": 0,
+    "stdout": "✓ Download saved to /Users/swchen.tw/git/percepio/poc/artifacts/verification/tcp-optimization/offline/sorted.csv\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "tcp-accept-offline",
+      "eval",
+      "document.querySelector(\"#repeat\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "tcp-accept-offline",
+      "select",
+      "#repeat",
+      "all"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "tcp-accept-offline",
+      "eval",
+      "document.querySelector(\"#kind\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "tcp-accept-offline",
+      "select",
+      "#kind",
+      "all"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "tcp-accept-offline",
+      "wait",
+      "--text",
+      "目前 18 筆"
+    ],
+    "exit": 0,
+    "stdout": "目前 18 筆\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "tcp-accept-offline",
+      "screenshot",
+      "--full",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/screenshots/tcp/offline-04-all-results.png"
+    ],
+    "exit": 0,
+    "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/screenshots/tcp/offline-04-all-results.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "tcp-accept-offline",
+      "errors",
+      "--json"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"errors\":[]},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "tcp-accept-offline",
+      "close"
+    ],
+    "exit": 0,
+    "stdout": "✓ Browser closed\n",
+    "stderr": ""
+  }
+]

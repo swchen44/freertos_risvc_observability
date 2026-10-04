@@ -1,0 +1,2 @@
+   text	   data	    bss	    dec	    hex	filename
+  37024	    144	 237856	 275024	  43250	/Users/swchen.tw/git/percepio/poc/runs/tcp-transfer-v2/.build/tcp_copy2/firmware.elf

@@ -21,6 +21,7 @@ from psf_lab.parser.errors import ParseError
 from psf_lab.query import query_events, query_view
 from psf_lab.runner import CASE_IDS, check_run, digest, load_run
 from psf_lab.store import StoreError, create_trace, list_traces, load_trace, trace_path
+from psf_lab.tcp_report import load_transfer
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -138,6 +139,10 @@ def create_app(
     @app.get("/api/cache")
     def cache_comparison():
         return load_comparison(ROOT / "runs/cache-relative-v3")
+
+    @app.get("/api/tcp")
+    def tcp_comparison():
+        return load_transfer(ROOT / "runs/tcp-transfer-v2")
 
     @app.get("/api/traces")
     def traces():

@@ -1,0 +1,2 @@
+﻿variant,repeat,kind,bytes,instructions,reads,writes,l1i_misses,l1d_misses,l2_misses,text_bytes
+"tcp_nocopy3",1,"send",5840,13712,2424,720,288,160,448,37280

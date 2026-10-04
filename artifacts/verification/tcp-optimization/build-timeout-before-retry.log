@@ -1,0 +1,23 @@
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tools/tcp/run_transfer.py", line 180, in <module>
+    main()
+    ~~~~^^
+  File "/Users/swchen.tw/git/percepio/poc/tools/tcp/run_transfer.py", line 94, in main
+    command(build_command, ROOT, dest / (variant + "-build.log"))
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/swchen.tw/git/percepio/poc/tools/tcp/run_transfer.py", line 22, in command
+    run = subprocess.run(args, cwd=cwd, capture_output=True, timeout=180)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/subprocess.py", line 558, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/subprocess.py", line 1221, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/subprocess.py", line 2131, in _communicate
+    self._check_timeout(endtime, orig_timeout, stdout, stderr)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/subprocess.py", line 1265, in _check_timeout
+    raise TimeoutExpired(
+    ...<2 lines>...
+            stderr=b''.join(stderr_seq) if stderr_seq else None)
+subprocess.TimeoutExpired: Command '['make', '-C', '/Users/swchen.tw/git/percepio/poc/firmware', 'CASE=tcp_copy2', 'OUT=/Users/swchen.tw/git/percepio/poc/runs/tcp-transfer-v2/.build/tcp_copy2', 'TOOLCHAIN=/Users/swchen.tw/git/percepio/poc/.tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin']' timed out after 180 seconds

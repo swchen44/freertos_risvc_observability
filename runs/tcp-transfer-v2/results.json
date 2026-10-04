@@ -1,0 +1,4370 @@
+{
+  "schema": "tcp-dashboard-v1",
+  "rows": [
+    {
+      "run": "tcp_copy2-1",
+      "variant": "tcp_copy2",
+      "repeat": 1,
+      "kind": "send",
+      "bytes": 5840,
+      "phases": 4,
+      "instructions": 57032,
+      "text_bytes": 37024,
+      "reads": 9648,
+      "writes": 6464,
+      "hotspots": [
+        {
+          "function": "memcpy",
+          "instructions": 35052
+        },
+        {
+          "function": "lwip_standard_chksum",
+          "instructions": 17844
+        },
+        {
+          "function": "tcp_output",
+          "instructions": 972
+        },
+        {
+          "function": "tcp_write",
+          "instructions": 580
+        },
+        {
+          "function": "ip4_output_if_src",
+          "instructions": 408
+        },
+        {
+          "function": "tcp_create_segment",
+          "instructions": 312
+        },
+        {
+          "function": "lwip_htonl",
+          "instructions": 312
+        },
+        {
+          "function": "inet_chksum_pseudo",
+          "instructions": 292
+        },
+        {
+          "function": "lwip_htons",
+          "instructions": 288
+        },
+        {
+          "function": "pbuf_add_header_impl",
+          "instructions": 216
+        },
+        {
+          "function": "mem_malloc",
+          "instructions": 212
+        },
+        {
+          "function": "pbuf_alloc",
+          "instructions": 200
+        }
+      ],
+      "models": [
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 14269,
+            "R": 2412,
+            "W": 1616
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 14282,
+            "misses": 73,
+            "reads": 14282,
+            "writes": 0,
+            "read_misses": 73,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2540,
+              "filled_bytes": 4672,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 2132,
+              "observed_utilization": 0.5436643835616438
+            },
+            "miss_rate": 0.0051113289455258365
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 4028,
+            "misses": 62,
+            "reads": 2412,
+            "writes": 1616,
+            "read_misses": 33,
+            "write_misses": 29,
+            "spatial": {
+              "observed_used_bytes": 3260,
+              "filled_bytes": 3968,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 708,
+              "observed_utilization": 0.8215725806451613
+            },
+            "miss_rate": 0.015392254220456803
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 135,
+            "misses": 135,
+            "reads": 106,
+            "writes": 29,
+            "read_misses": 106,
+            "write_misses": 29,
+            "miss_rate": 1.0
+          }
+        },
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 14269,
+            "R": 2412,
+            "W": 1616
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 14282,
+            "misses": 73,
+            "reads": 14282,
+            "writes": 0,
+            "read_misses": 73,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2540,
+              "filled_bytes": 4672,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 2132,
+              "observed_utilization": 0.5436643835616438
+            },
+            "miss_rate": 0.0051113289455258365
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 4028,
+            "misses": 62,
+            "reads": 2412,
+            "writes": 1616,
+            "read_misses": 33,
+            "write_misses": 29,
+            "spatial": {
+              "observed_used_bytes": 3260,
+              "filled_bytes": 3968,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 708,
+              "observed_utilization": 0.8215725806451613
+            },
+            "miss_rate": 0.015392254220456803
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 135,
+            "misses": 135,
+            "reads": 106,
+            "writes": 29,
+            "read_misses": 106,
+            "write_misses": 29,
+            "miss_rate": 1.0
+          }
+        },
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 14269,
+            "R": 2412,
+            "W": 1616
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 14282,
+            "misses": 73,
+            "reads": 14282,
+            "writes": 0,
+            "read_misses": 73,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2540,
+              "filled_bytes": 4672,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 2132,
+              "observed_utilization": 0.5436643835616438
+            },
+            "miss_rate": 0.0051113289455258365
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 4028,
+            "misses": 62,
+            "reads": 2412,
+            "writes": 1616,
+            "read_misses": 33,
+            "write_misses": 29,
+            "spatial": {
+              "observed_used_bytes": 3260,
+              "filled_bytes": 3968,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 708,
+              "observed_utilization": 0.8215725806451613
+            },
+            "miss_rate": 0.015392254220456803
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 135,
+            "misses": 135,
+            "reads": 106,
+            "writes": 29,
+            "read_misses": 106,
+            "write_misses": 29,
+            "miss_rate": 1.0
+          }
+        },
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 14269,
+            "R": 2412,
+            "W": 1616
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 14282,
+            "misses": 73,
+            "reads": 14282,
+            "writes": 0,
+            "read_misses": 73,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2540,
+              "filled_bytes": 4672,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 2132,
+              "observed_utilization": 0.5436643835616438
+            },
+            "miss_rate": 0.0051113289455258365
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 4028,
+            "misses": 62,
+            "reads": 2412,
+            "writes": 1616,
+            "read_misses": 33,
+            "write_misses": 29,
+            "spatial": {
+              "observed_used_bytes": 3260,
+              "filled_bytes": 3968,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 708,
+              "observed_utilization": 0.8215725806451613
+            },
+            "miss_rate": 0.015392254220456803
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 135,
+            "misses": 135,
+            "reads": 106,
+            "writes": 29,
+            "read_misses": 106,
+            "write_misses": 29,
+            "miss_rate": 1.0
+          }
+        }
+      ],
+      "evidence": {
+        "manifest": "tcp_copy2-1/manifest.json",
+        "psf": "tcp_copy2-1/trace.psf",
+        "packets_validated": 6,
+        "acked_bytes": 5840,
+        "retransmits": 1,
+        "cache_scope": "cold reset per isolated TX; no ACK cache state, no cycles"
+      },
+      "l1i_misses": 292,
+      "l1d_misses": 248,
+      "l2_misses": 540
+    },
+    {
+      "run": "tcp_copy2-1",
+      "variant": "tcp_copy2",
+      "repeat": 1,
+      "kind": "retransmit",
+      "bytes": 1460,
+      "phases": 1,
+      "instructions": 6109,
+      "text_bytes": 37024,
+      "reads": 1206,
+      "writes": 304,
+      "hotspots": [
+        {
+          "function": "lwip_standard_chksum",
+          "instructions": 4461
+        },
+        {
+          "function": "tcp_slowtmr",
+          "instructions": 677
+        },
+        {
+          "function": "tcp_output",
+          "instructions": 487
+        },
+        {
+          "function": "ip4_output_if_src",
+          "instructions": 102
+        },
+        {
+          "function": "lwip_htonl",
+          "instructions": 78
+        },
+        {
+          "function": "inet_chksum_pseudo",
+          "instructions": 73
+        },
+        {
+          "function": "tcp_rexmit_rto_prepare",
+          "instructions": 62
+        },
+        {
+          "function": "lwip_htons",
+          "instructions": 54
+        },
+        {
+          "function": "measure",
+          "instructions": 44
+        },
+        {
+          "function": "pbuf_add_header_impl",
+          "instructions": 27
+        },
+        {
+          "function": "ip4_route",
+          "instructions": 17
+        },
+        {
+          "function": "output_packet",
+          "instructions": 17
+        }
+      ],
+      "models": [
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 6120,
+            "R": 1206,
+            "W": 304
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 6136,
+            "misses": 58,
+            "reads": 6136,
+            "writes": 0,
+            "read_misses": 58,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2162,
+              "filled_bytes": 3712,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 1550,
+              "observed_utilization": 0.5824353448275862
+            },
+            "miss_rate": 0.009452411994784877
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 1510,
+            "misses": 41,
+            "reads": 1206,
+            "writes": 304,
+            "read_misses": 35,
+            "write_misses": 6,
+            "spatial": {
+              "observed_used_bytes": 1826,
+              "filled_bytes": 2624,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 798,
+              "observed_utilization": 0.6958841463414634
+            },
+            "miss_rate": 0.027152317880794703
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 99,
+            "misses": 99,
+            "reads": 93,
+            "writes": 6,
+            "read_misses": 93,
+            "write_misses": 6,
+            "miss_rate": 1.0
+          }
+        }
+      ],
+      "evidence": {
+        "manifest": "tcp_copy2-1/manifest.json",
+        "psf": "tcp_copy2-1/trace.psf",
+        "packets_validated": 6,
+        "acked_bytes": 5840,
+        "retransmits": 1,
+        "cache_scope": "cold reset per isolated TX; no ACK cache state, no cycles"
+      },
+      "l1i_misses": 58,
+      "l1d_misses": 41,
+      "l2_misses": 99
+    },
+    {
+      "run": "tcp_copy2-2",
+      "variant": "tcp_copy2",
+      "repeat": 2,
+      "kind": "send",
+      "bytes": 5840,
+      "phases": 4,
+      "instructions": 57032,
+      "text_bytes": 37024,
+      "reads": 9648,
+      "writes": 6464,
+      "hotspots": [
+        {
+          "function": "memcpy",
+          "instructions": 35052
+        },
+        {
+          "function": "lwip_standard_chksum",
+          "instructions": 17844
+        },
+        {
+          "function": "tcp_output",
+          "instructions": 972
+        },
+        {
+          "function": "tcp_write",
+          "instructions": 580
+        },
+        {
+          "function": "ip4_output_if_src",
+          "instructions": 408
+        },
+        {
+          "function": "tcp_create_segment",
+          "instructions": 312
+        },
+        {
+          "function": "lwip_htonl",
+          "instructions": 312
+        },
+        {
+          "function": "inet_chksum_pseudo",
+          "instructions": 292
+        },
+        {
+          "function": "lwip_htons",
+          "instructions": 288
+        },
+        {
+          "function": "pbuf_add_header_impl",
+          "instructions": 216
+        },
+        {
+          "function": "mem_malloc",
+          "instructions": 212
+        },
+        {
+          "function": "pbuf_alloc",
+          "instructions": 200
+        }
+      ],
+      "models": [
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 14269,
+            "R": 2412,
+            "W": 1616
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 14282,
+            "misses": 73,
+            "reads": 14282,
+            "writes": 0,
+            "read_misses": 73,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2540,
+              "filled_bytes": 4672,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 2132,
+              "observed_utilization": 0.5436643835616438
+            },
+            "miss_rate": 0.0051113289455258365
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 4028,
+            "misses": 62,
+            "reads": 2412,
+            "writes": 1616,
+            "read_misses": 33,
+            "write_misses": 29,
+            "spatial": {
+              "observed_used_bytes": 3260,
+              "filled_bytes": 3968,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 708,
+              "observed_utilization": 0.8215725806451613
+            },
+            "miss_rate": 0.015392254220456803
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 135,
+            "misses": 135,
+            "reads": 106,
+            "writes": 29,
+            "read_misses": 106,
+            "write_misses": 29,
+            "miss_rate": 1.0
+          }
+        },
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 14269,
+            "R": 2412,
+            "W": 1616
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 14282,
+            "misses": 73,
+            "reads": 14282,
+            "writes": 0,
+            "read_misses": 73,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2540,
+              "filled_bytes": 4672,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 2132,
+              "observed_utilization": 0.5436643835616438
+            },
+            "miss_rate": 0.0051113289455258365
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 4028,
+            "misses": 62,
+            "reads": 2412,
+            "writes": 1616,
+            "read_misses": 33,
+            "write_misses": 29,
+            "spatial": {
+              "observed_used_bytes": 3260,
+              "filled_bytes": 3968,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 708,
+              "observed_utilization": 0.8215725806451613
+            },
+            "miss_rate": 0.015392254220456803
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 135,
+            "misses": 135,
+            "reads": 106,
+            "writes": 29,
+            "read_misses": 106,
+            "write_misses": 29,
+            "miss_rate": 1.0
+          }
+        },
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 14269,
+            "R": 2412,
+            "W": 1616
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 14282,
+            "misses": 73,
+            "reads": 14282,
+            "writes": 0,
+            "read_misses": 73,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2540,
+              "filled_bytes": 4672,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 2132,
+              "observed_utilization": 0.5436643835616438
+            },
+            "miss_rate": 0.0051113289455258365
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 4028,
+            "misses": 62,
+            "reads": 2412,
+            "writes": 1616,
+            "read_misses": 33,
+            "write_misses": 29,
+            "spatial": {
+              "observed_used_bytes": 3260,
+              "filled_bytes": 3968,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 708,
+              "observed_utilization": 0.8215725806451613
+            },
+            "miss_rate": 0.015392254220456803
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 135,
+            "misses": 135,
+            "reads": 106,
+            "writes": 29,
+            "read_misses": 106,
+            "write_misses": 29,
+            "miss_rate": 1.0
+          }
+        },
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 14269,
+            "R": 2412,
+            "W": 1616
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 14282,
+            "misses": 73,
+            "reads": 14282,
+            "writes": 0,
+            "read_misses": 73,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2540,
+              "filled_bytes": 4672,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 2132,
+              "observed_utilization": 0.5436643835616438
+            },
+            "miss_rate": 0.0051113289455258365
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 4028,
+            "misses": 62,
+            "reads": 2412,
+            "writes": 1616,
+            "read_misses": 33,
+            "write_misses": 29,
+            "spatial": {
+              "observed_used_bytes": 3260,
+              "filled_bytes": 3968,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 708,
+              "observed_utilization": 0.8215725806451613
+            },
+            "miss_rate": 0.015392254220456803
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 135,
+            "misses": 135,
+            "reads": 106,
+            "writes": 29,
+            "read_misses": 106,
+            "write_misses": 29,
+            "miss_rate": 1.0
+          }
+        }
+      ],
+      "evidence": {
+        "manifest": "tcp_copy2-2/manifest.json",
+        "psf": "tcp_copy2-2/trace.psf",
+        "packets_validated": 6,
+        "acked_bytes": 5840,
+        "retransmits": 1,
+        "cache_scope": "cold reset per isolated TX; no ACK cache state, no cycles"
+      },
+      "l1i_misses": 292,
+      "l1d_misses": 248,
+      "l2_misses": 540
+    },
+    {
+      "run": "tcp_copy2-2",
+      "variant": "tcp_copy2",
+      "repeat": 2,
+      "kind": "retransmit",
+      "bytes": 1460,
+      "phases": 1,
+      "instructions": 6109,
+      "text_bytes": 37024,
+      "reads": 1206,
+      "writes": 304,
+      "hotspots": [
+        {
+          "function": "lwip_standard_chksum",
+          "instructions": 4461
+        },
+        {
+          "function": "tcp_slowtmr",
+          "instructions": 677
+        },
+        {
+          "function": "tcp_output",
+          "instructions": 487
+        },
+        {
+          "function": "ip4_output_if_src",
+          "instructions": 102
+        },
+        {
+          "function": "lwip_htonl",
+          "instructions": 78
+        },
+        {
+          "function": "inet_chksum_pseudo",
+          "instructions": 73
+        },
+        {
+          "function": "tcp_rexmit_rto_prepare",
+          "instructions": 62
+        },
+        {
+          "function": "lwip_htons",
+          "instructions": 54
+        },
+        {
+          "function": "measure",
+          "instructions": 44
+        },
+        {
+          "function": "pbuf_add_header_impl",
+          "instructions": 27
+        },
+        {
+          "function": "ip4_route",
+          "instructions": 17
+        },
+        {
+          "function": "output_packet",
+          "instructions": 17
+        }
+      ],
+      "models": [
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 6120,
+            "R": 1206,
+            "W": 304
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 6136,
+            "misses": 58,
+            "reads": 6136,
+            "writes": 0,
+            "read_misses": 58,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2162,
+              "filled_bytes": 3712,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 1550,
+              "observed_utilization": 0.5824353448275862
+            },
+            "miss_rate": 0.009452411994784877
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 1510,
+            "misses": 41,
+            "reads": 1206,
+            "writes": 304,
+            "read_misses": 35,
+            "write_misses": 6,
+            "spatial": {
+              "observed_used_bytes": 1826,
+              "filled_bytes": 2624,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 798,
+              "observed_utilization": 0.6958841463414634
+            },
+            "miss_rate": 0.027152317880794703
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 99,
+            "misses": 99,
+            "reads": 93,
+            "writes": 6,
+            "read_misses": 93,
+            "write_misses": 6,
+            "miss_rate": 1.0
+          }
+        }
+      ],
+      "evidence": {
+        "manifest": "tcp_copy2-2/manifest.json",
+        "psf": "tcp_copy2-2/trace.psf",
+        "packets_validated": 6,
+        "acked_bytes": 5840,
+        "retransmits": 1,
+        "cache_scope": "cold reset per isolated TX; no ACK cache state, no cycles"
+      },
+      "l1i_misses": 58,
+      "l1d_misses": 41,
+      "l2_misses": 99
+    },
+    {
+      "run": "tcp_copy2-3",
+      "variant": "tcp_copy2",
+      "repeat": 3,
+      "kind": "send",
+      "bytes": 5840,
+      "phases": 4,
+      "instructions": 57032,
+      "text_bytes": 37024,
+      "reads": 9648,
+      "writes": 6464,
+      "hotspots": [
+        {
+          "function": "memcpy",
+          "instructions": 35052
+        },
+        {
+          "function": "lwip_standard_chksum",
+          "instructions": 17844
+        },
+        {
+          "function": "tcp_output",
+          "instructions": 972
+        },
+        {
+          "function": "tcp_write",
+          "instructions": 580
+        },
+        {
+          "function": "ip4_output_if_src",
+          "instructions": 408
+        },
+        {
+          "function": "tcp_create_segment",
+          "instructions": 312
+        },
+        {
+          "function": "lwip_htonl",
+          "instructions": 312
+        },
+        {
+          "function": "inet_chksum_pseudo",
+          "instructions": 292
+        },
+        {
+          "function": "lwip_htons",
+          "instructions": 288
+        },
+        {
+          "function": "pbuf_add_header_impl",
+          "instructions": 216
+        },
+        {
+          "function": "mem_malloc",
+          "instructions": 212
+        },
+        {
+          "function": "pbuf_alloc",
+          "instructions": 200
+        }
+      ],
+      "models": [
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 14269,
+            "R": 2412,
+            "W": 1616
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 14282,
+            "misses": 73,
+            "reads": 14282,
+            "writes": 0,
+            "read_misses": 73,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2540,
+              "filled_bytes": 4672,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 2132,
+              "observed_utilization": 0.5436643835616438
+            },
+            "miss_rate": 0.0051113289455258365
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 4028,
+            "misses": 62,
+            "reads": 2412,
+            "writes": 1616,
+            "read_misses": 33,
+            "write_misses": 29,
+            "spatial": {
+              "observed_used_bytes": 3260,
+              "filled_bytes": 3968,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 708,
+              "observed_utilization": 0.8215725806451613
+            },
+            "miss_rate": 0.015392254220456803
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 135,
+            "misses": 135,
+            "reads": 106,
+            "writes": 29,
+            "read_misses": 106,
+            "write_misses": 29,
+            "miss_rate": 1.0
+          }
+        },
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 14269,
+            "R": 2412,
+            "W": 1616
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 14282,
+            "misses": 73,
+            "reads": 14282,
+            "writes": 0,
+            "read_misses": 73,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2540,
+              "filled_bytes": 4672,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 2132,
+              "observed_utilization": 0.5436643835616438
+            },
+            "miss_rate": 0.0051113289455258365
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 4028,
+            "misses": 62,
+            "reads": 2412,
+            "writes": 1616,
+            "read_misses": 33,
+            "write_misses": 29,
+            "spatial": {
+              "observed_used_bytes": 3260,
+              "filled_bytes": 3968,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 708,
+              "observed_utilization": 0.8215725806451613
+            },
+            "miss_rate": 0.015392254220456803
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 135,
+            "misses": 135,
+            "reads": 106,
+            "writes": 29,
+            "read_misses": 106,
+            "write_misses": 29,
+            "miss_rate": 1.0
+          }
+        },
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 14269,
+            "R": 2412,
+            "W": 1616
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 14282,
+            "misses": 73,
+            "reads": 14282,
+            "writes": 0,
+            "read_misses": 73,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2540,
+              "filled_bytes": 4672,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 2132,
+              "observed_utilization": 0.5436643835616438
+            },
+            "miss_rate": 0.0051113289455258365
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 4028,
+            "misses": 62,
+            "reads": 2412,
+            "writes": 1616,
+            "read_misses": 33,
+            "write_misses": 29,
+            "spatial": {
+              "observed_used_bytes": 3260,
+              "filled_bytes": 3968,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 708,
+              "observed_utilization": 0.8215725806451613
+            },
+            "miss_rate": 0.015392254220456803
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 135,
+            "misses": 135,
+            "reads": 106,
+            "writes": 29,
+            "read_misses": 106,
+            "write_misses": 29,
+            "miss_rate": 1.0
+          }
+        },
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 14269,
+            "R": 2412,
+            "W": 1616
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 14282,
+            "misses": 73,
+            "reads": 14282,
+            "writes": 0,
+            "read_misses": 73,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2540,
+              "filled_bytes": 4672,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 2132,
+              "observed_utilization": 0.5436643835616438
+            },
+            "miss_rate": 0.0051113289455258365
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 4028,
+            "misses": 62,
+            "reads": 2412,
+            "writes": 1616,
+            "read_misses": 33,
+            "write_misses": 29,
+            "spatial": {
+              "observed_used_bytes": 3260,
+              "filled_bytes": 3968,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 708,
+              "observed_utilization": 0.8215725806451613
+            },
+            "miss_rate": 0.015392254220456803
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 135,
+            "misses": 135,
+            "reads": 106,
+            "writes": 29,
+            "read_misses": 106,
+            "write_misses": 29,
+            "miss_rate": 1.0
+          }
+        }
+      ],
+      "evidence": {
+        "manifest": "tcp_copy2-3/manifest.json",
+        "psf": "tcp_copy2-3/trace.psf",
+        "packets_validated": 6,
+        "acked_bytes": 5840,
+        "retransmits": 1,
+        "cache_scope": "cold reset per isolated TX; no ACK cache state, no cycles"
+      },
+      "l1i_misses": 292,
+      "l1d_misses": 248,
+      "l2_misses": 540
+    },
+    {
+      "run": "tcp_copy2-3",
+      "variant": "tcp_copy2",
+      "repeat": 3,
+      "kind": "retransmit",
+      "bytes": 1460,
+      "phases": 1,
+      "instructions": 6109,
+      "text_bytes": 37024,
+      "reads": 1206,
+      "writes": 304,
+      "hotspots": [
+        {
+          "function": "lwip_standard_chksum",
+          "instructions": 4461
+        },
+        {
+          "function": "tcp_slowtmr",
+          "instructions": 677
+        },
+        {
+          "function": "tcp_output",
+          "instructions": 487
+        },
+        {
+          "function": "ip4_output_if_src",
+          "instructions": 102
+        },
+        {
+          "function": "lwip_htonl",
+          "instructions": 78
+        },
+        {
+          "function": "inet_chksum_pseudo",
+          "instructions": 73
+        },
+        {
+          "function": "tcp_rexmit_rto_prepare",
+          "instructions": 62
+        },
+        {
+          "function": "lwip_htons",
+          "instructions": 54
+        },
+        {
+          "function": "measure",
+          "instructions": 44
+        },
+        {
+          "function": "pbuf_add_header_impl",
+          "instructions": 27
+        },
+        {
+          "function": "ip4_route",
+          "instructions": 17
+        },
+        {
+          "function": "output_packet",
+          "instructions": 17
+        }
+      ],
+      "models": [
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 6120,
+            "R": 1206,
+            "W": 304
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 6136,
+            "misses": 58,
+            "reads": 6136,
+            "writes": 0,
+            "read_misses": 58,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2162,
+              "filled_bytes": 3712,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 1550,
+              "observed_utilization": 0.5824353448275862
+            },
+            "miss_rate": 0.009452411994784877
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 1510,
+            "misses": 41,
+            "reads": 1206,
+            "writes": 304,
+            "read_misses": 35,
+            "write_misses": 6,
+            "spatial": {
+              "observed_used_bytes": 1826,
+              "filled_bytes": 2624,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 798,
+              "observed_utilization": 0.6958841463414634
+            },
+            "miss_rate": 0.027152317880794703
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 99,
+            "misses": 99,
+            "reads": 93,
+            "writes": 6,
+            "read_misses": 93,
+            "write_misses": 6,
+            "miss_rate": 1.0
+          }
+        }
+      ],
+      "evidence": {
+        "manifest": "tcp_copy2-3/manifest.json",
+        "psf": "tcp_copy2-3/trace.psf",
+        "packets_validated": 6,
+        "acked_bytes": 5840,
+        "retransmits": 1,
+        "cache_scope": "cold reset per isolated TX; no ACK cache state, no cycles"
+      },
+      "l1i_misses": 58,
+      "l1d_misses": 41,
+      "l2_misses": 99
+    },
+    {
+      "run": "tcp_copy3-1",
+      "variant": "tcp_copy3",
+      "repeat": 1,
+      "kind": "send",
+      "bytes": 5840,
+      "phases": 4,
+      "instructions": 48188,
+      "text_bytes": 37280,
+      "reads": 8168,
+      "writes": 6464,
+      "hotspots": [
+        {
+          "function": "memcpy",
+          "instructions": 35052
+        },
+        {
+          "function": "lwip_standard_chksum",
+          "instructions": 9000
+        },
+        {
+          "function": "tcp_output",
+          "instructions": 972
+        },
+        {
+          "function": "tcp_write",
+          "instructions": 580
+        },
+        {
+          "function": "ip4_output_if_src",
+          "instructions": 408
+        },
+        {
+          "function": "tcp_create_segment",
+          "instructions": 312
+        },
+        {
+          "function": "lwip_htonl",
+          "instructions": 312
+        },
+        {
+          "function": "inet_chksum_pseudo",
+          "instructions": 292
+        },
+        {
+          "function": "lwip_htons",
+          "instructions": 288
+        },
+        {
+          "function": "pbuf_add_header_impl",
+          "instructions": 216
+        },
+        {
+          "function": "mem_malloc",
+          "instructions": 212
+        },
+        {
+          "function": "pbuf_alloc",
+          "instructions": 200
+        }
+      ],
+      "models": [
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 12058,
+            "R": 2042,
+            "W": 1616
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 12071,
+            "misses": 72,
+            "reads": 12071,
+            "writes": 0,
+            "read_misses": 72,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2580,
+              "filled_bytes": 4608,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 2028,
+              "observed_utilization": 0.5598958333333334
+            },
+            "miss_rate": 0.005964708806229807
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 3658,
+            "misses": 62,
+            "reads": 2042,
+            "writes": 1616,
+            "read_misses": 33,
+            "write_misses": 29,
+            "spatial": {
+              "observed_used_bytes": 3260,
+              "filled_bytes": 3968,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 708,
+              "observed_utilization": 0.8215725806451613
+            },
+            "miss_rate": 0.01694915254237288
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 134,
+            "misses": 134,
+            "reads": 105,
+            "writes": 29,
+            "read_misses": 105,
+            "write_misses": 29,
+            "miss_rate": 1.0
+          }
+        },
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 12058,
+            "R": 2042,
+            "W": 1616
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 12071,
+            "misses": 72,
+            "reads": 12071,
+            "writes": 0,
+            "read_misses": 72,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2580,
+              "filled_bytes": 4608,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 2028,
+              "observed_utilization": 0.5598958333333334
+            },
+            "miss_rate": 0.005964708806229807
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 3658,
+            "misses": 62,
+            "reads": 2042,
+            "writes": 1616,
+            "read_misses": 33,
+            "write_misses": 29,
+            "spatial": {
+              "observed_used_bytes": 3260,
+              "filled_bytes": 3968,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 708,
+              "observed_utilization": 0.8215725806451613
+            },
+            "miss_rate": 0.01694915254237288
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 134,
+            "misses": 134,
+            "reads": 105,
+            "writes": 29,
+            "read_misses": 105,
+            "write_misses": 29,
+            "miss_rate": 1.0
+          }
+        },
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 12058,
+            "R": 2042,
+            "W": 1616
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 12071,
+            "misses": 72,
+            "reads": 12071,
+            "writes": 0,
+            "read_misses": 72,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2580,
+              "filled_bytes": 4608,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 2028,
+              "observed_utilization": 0.5598958333333334
+            },
+            "miss_rate": 0.005964708806229807
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 3658,
+            "misses": 62,
+            "reads": 2042,
+            "writes": 1616,
+            "read_misses": 33,
+            "write_misses": 29,
+            "spatial": {
+              "observed_used_bytes": 3260,
+              "filled_bytes": 3968,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 708,
+              "observed_utilization": 0.8215725806451613
+            },
+            "miss_rate": 0.01694915254237288
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 134,
+            "misses": 134,
+            "reads": 105,
+            "writes": 29,
+            "read_misses": 105,
+            "write_misses": 29,
+            "miss_rate": 1.0
+          }
+        },
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 12058,
+            "R": 2042,
+            "W": 1616
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 12071,
+            "misses": 72,
+            "reads": 12071,
+            "writes": 0,
+            "read_misses": 72,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2580,
+              "filled_bytes": 4608,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 2028,
+              "observed_utilization": 0.5598958333333334
+            },
+            "miss_rate": 0.005964708806229807
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 3658,
+            "misses": 62,
+            "reads": 2042,
+            "writes": 1616,
+            "read_misses": 33,
+            "write_misses": 29,
+            "spatial": {
+              "observed_used_bytes": 3260,
+              "filled_bytes": 3968,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 708,
+              "observed_utilization": 0.8215725806451613
+            },
+            "miss_rate": 0.01694915254237288
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 134,
+            "misses": 134,
+            "reads": 105,
+            "writes": 29,
+            "read_misses": 105,
+            "write_misses": 29,
+            "miss_rate": 1.0
+          }
+        }
+      ],
+      "evidence": {
+        "manifest": "tcp_copy3-1/manifest.json",
+        "psf": "tcp_copy3-1/trace.psf",
+        "packets_validated": 6,
+        "acked_bytes": 5840,
+        "retransmits": 1,
+        "cache_scope": "cold reset per isolated TX; no ACK cache state, no cycles"
+      },
+      "l1i_misses": 288,
+      "l1d_misses": 248,
+      "l2_misses": 536
+    },
+    {
+      "run": "tcp_copy3-1",
+      "variant": "tcp_copy3",
+      "repeat": 1,
+      "kind": "retransmit",
+      "bytes": 1460,
+      "phases": 1,
+      "instructions": 3898,
+      "text_bytes": 37280,
+      "reads": 836,
+      "writes": 304,
+      "hotspots": [
+        {
+          "function": "lwip_standard_chksum",
+          "instructions": 2250
+        },
+        {
+          "function": "tcp_slowtmr",
+          "instructions": 677
+        },
+        {
+          "function": "tcp_output",
+          "instructions": 487
+        },
+        {
+          "function": "ip4_output_if_src",
+          "instructions": 102
+        },
+        {
+          "function": "lwip_htonl",
+          "instructions": 78
+        },
+        {
+          "function": "inet_chksum_pseudo",
+          "instructions": 73
+        },
+        {
+          "function": "tcp_rexmit_rto_prepare",
+          "instructions": 62
+        },
+        {
+          "function": "lwip_htons",
+          "instructions": 54
+        },
+        {
+          "function": "measure",
+          "instructions": 44
+        },
+        {
+          "function": "pbuf_add_header_impl",
+          "instructions": 27
+        },
+        {
+          "function": "ip4_route",
+          "instructions": 17
+        },
+        {
+          "function": "output_packet",
+          "instructions": 17
+        }
+      ],
+      "models": [
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 3909,
+            "R": 836,
+            "W": 304
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 3919,
+            "misses": 59,
+            "reads": 3919,
+            "writes": 0,
+            "read_misses": 59,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2202,
+              "filled_bytes": 3776,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 1574,
+              "observed_utilization": 0.583156779661017
+            },
+            "miss_rate": 0.015054860933911712
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 1140,
+            "misses": 41,
+            "reads": 836,
+            "writes": 304,
+            "read_misses": 35,
+            "write_misses": 6,
+            "spatial": {
+              "observed_used_bytes": 1826,
+              "filled_bytes": 2624,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 798,
+              "observed_utilization": 0.6958841463414634
+            },
+            "miss_rate": 0.035964912280701755
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 100,
+            "misses": 100,
+            "reads": 94,
+            "writes": 6,
+            "read_misses": 94,
+            "write_misses": 6,
+            "miss_rate": 1.0
+          }
+        }
+      ],
+      "evidence": {
+        "manifest": "tcp_copy3-1/manifest.json",
+        "psf": "tcp_copy3-1/trace.psf",
+        "packets_validated": 6,
+        "acked_bytes": 5840,
+        "retransmits": 1,
+        "cache_scope": "cold reset per isolated TX; no ACK cache state, no cycles"
+      },
+      "l1i_misses": 59,
+      "l1d_misses": 41,
+      "l2_misses": 100
+    },
+    {
+      "run": "tcp_copy3-2",
+      "variant": "tcp_copy3",
+      "repeat": 2,
+      "kind": "send",
+      "bytes": 5840,
+      "phases": 4,
+      "instructions": 48188,
+      "text_bytes": 37280,
+      "reads": 8168,
+      "writes": 6464,
+      "hotspots": [
+        {
+          "function": "memcpy",
+          "instructions": 35052
+        },
+        {
+          "function": "lwip_standard_chksum",
+          "instructions": 9000
+        },
+        {
+          "function": "tcp_output",
+          "instructions": 972
+        },
+        {
+          "function": "tcp_write",
+          "instructions": 580
+        },
+        {
+          "function": "ip4_output_if_src",
+          "instructions": 408
+        },
+        {
+          "function": "tcp_create_segment",
+          "instructions": 312
+        },
+        {
+          "function": "lwip_htonl",
+          "instructions": 312
+        },
+        {
+          "function": "inet_chksum_pseudo",
+          "instructions": 292
+        },
+        {
+          "function": "lwip_htons",
+          "instructions": 288
+        },
+        {
+          "function": "pbuf_add_header_impl",
+          "instructions": 216
+        },
+        {
+          "function": "mem_malloc",
+          "instructions": 212
+        },
+        {
+          "function": "pbuf_alloc",
+          "instructions": 200
+        }
+      ],
+      "models": [
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 12058,
+            "R": 2042,
+            "W": 1616
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 12071,
+            "misses": 72,
+            "reads": 12071,
+            "writes": 0,
+            "read_misses": 72,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2580,
+              "filled_bytes": 4608,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 2028,
+              "observed_utilization": 0.5598958333333334
+            },
+            "miss_rate": 0.005964708806229807
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 3658,
+            "misses": 62,
+            "reads": 2042,
+            "writes": 1616,
+            "read_misses": 33,
+            "write_misses": 29,
+            "spatial": {
+              "observed_used_bytes": 3260,
+              "filled_bytes": 3968,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 708,
+              "observed_utilization": 0.8215725806451613
+            },
+            "miss_rate": 0.01694915254237288
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 134,
+            "misses": 134,
+            "reads": 105,
+            "writes": 29,
+            "read_misses": 105,
+            "write_misses": 29,
+            "miss_rate": 1.0
+          }
+        },
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 12058,
+            "R": 2042,
+            "W": 1616
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 12071,
+            "misses": 72,
+            "reads": 12071,
+            "writes": 0,
+            "read_misses": 72,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2580,
+              "filled_bytes": 4608,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 2028,
+              "observed_utilization": 0.5598958333333334
+            },
+            "miss_rate": 0.005964708806229807
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 3658,
+            "misses": 62,
+            "reads": 2042,
+            "writes": 1616,
+            "read_misses": 33,
+            "write_misses": 29,
+            "spatial": {
+              "observed_used_bytes": 3260,
+              "filled_bytes": 3968,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 708,
+              "observed_utilization": 0.8215725806451613
+            },
+            "miss_rate": 0.01694915254237288
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 134,
+            "misses": 134,
+            "reads": 105,
+            "writes": 29,
+            "read_misses": 105,
+            "write_misses": 29,
+            "miss_rate": 1.0
+          }
+        },
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 12058,
+            "R": 2042,
+            "W": 1616
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 12071,
+            "misses": 72,
+            "reads": 12071,
+            "writes": 0,
+            "read_misses": 72,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2580,
+              "filled_bytes": 4608,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 2028,
+              "observed_utilization": 0.5598958333333334
+            },
+            "miss_rate": 0.005964708806229807
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 3658,
+            "misses": 62,
+            "reads": 2042,
+            "writes": 1616,
+            "read_misses": 33,
+            "write_misses": 29,
+            "spatial": {
+              "observed_used_bytes": 3260,
+              "filled_bytes": 3968,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 708,
+              "observed_utilization": 0.8215725806451613
+            },
+            "miss_rate": 0.01694915254237288
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 134,
+            "misses": 134,
+            "reads": 105,
+            "writes": 29,
+            "read_misses": 105,
+            "write_misses": 29,
+            "miss_rate": 1.0
+          }
+        },
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 12058,
+            "R": 2042,
+            "W": 1616
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 12071,
+            "misses": 72,
+            "reads": 12071,
+            "writes": 0,
+            "read_misses": 72,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2580,
+              "filled_bytes": 4608,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 2028,
+              "observed_utilization": 0.5598958333333334
+            },
+            "miss_rate": 0.005964708806229807
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 3658,
+            "misses": 62,
+            "reads": 2042,
+            "writes": 1616,
+            "read_misses": 33,
+            "write_misses": 29,
+            "spatial": {
+              "observed_used_bytes": 3260,
+              "filled_bytes": 3968,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 708,
+              "observed_utilization": 0.8215725806451613
+            },
+            "miss_rate": 0.01694915254237288
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 134,
+            "misses": 134,
+            "reads": 105,
+            "writes": 29,
+            "read_misses": 105,
+            "write_misses": 29,
+            "miss_rate": 1.0
+          }
+        }
+      ],
+      "evidence": {
+        "manifest": "tcp_copy3-2/manifest.json",
+        "psf": "tcp_copy3-2/trace.psf",
+        "packets_validated": 6,
+        "acked_bytes": 5840,
+        "retransmits": 1,
+        "cache_scope": "cold reset per isolated TX; no ACK cache state, no cycles"
+      },
+      "l1i_misses": 288,
+      "l1d_misses": 248,
+      "l2_misses": 536
+    },
+    {
+      "run": "tcp_copy3-2",
+      "variant": "tcp_copy3",
+      "repeat": 2,
+      "kind": "retransmit",
+      "bytes": 1460,
+      "phases": 1,
+      "instructions": 3898,
+      "text_bytes": 37280,
+      "reads": 836,
+      "writes": 304,
+      "hotspots": [
+        {
+          "function": "lwip_standard_chksum",
+          "instructions": 2250
+        },
+        {
+          "function": "tcp_slowtmr",
+          "instructions": 677
+        },
+        {
+          "function": "tcp_output",
+          "instructions": 487
+        },
+        {
+          "function": "ip4_output_if_src",
+          "instructions": 102
+        },
+        {
+          "function": "lwip_htonl",
+          "instructions": 78
+        },
+        {
+          "function": "inet_chksum_pseudo",
+          "instructions": 73
+        },
+        {
+          "function": "tcp_rexmit_rto_prepare",
+          "instructions": 62
+        },
+        {
+          "function": "lwip_htons",
+          "instructions": 54
+        },
+        {
+          "function": "measure",
+          "instructions": 44
+        },
+        {
+          "function": "pbuf_add_header_impl",
+          "instructions": 27
+        },
+        {
+          "function": "ip4_route",
+          "instructions": 17
+        },
+        {
+          "function": "output_packet",
+          "instructions": 17
+        }
+      ],
+      "models": [
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 3909,
+            "R": 836,
+            "W": 304
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 3919,
+            "misses": 59,
+            "reads": 3919,
+            "writes": 0,
+            "read_misses": 59,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2202,
+              "filled_bytes": 3776,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 1574,
+              "observed_utilization": 0.583156779661017
+            },
+            "miss_rate": 0.015054860933911712
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 1140,
+            "misses": 41,
+            "reads": 836,
+            "writes": 304,
+            "read_misses": 35,
+            "write_misses": 6,
+            "spatial": {
+              "observed_used_bytes": 1826,
+              "filled_bytes": 2624,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 798,
+              "observed_utilization": 0.6958841463414634
+            },
+            "miss_rate": 0.035964912280701755
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 100,
+            "misses": 100,
+            "reads": 94,
+            "writes": 6,
+            "read_misses": 94,
+            "write_misses": 6,
+            "miss_rate": 1.0
+          }
+        }
+      ],
+      "evidence": {
+        "manifest": "tcp_copy3-2/manifest.json",
+        "psf": "tcp_copy3-2/trace.psf",
+        "packets_validated": 6,
+        "acked_bytes": 5840,
+        "retransmits": 1,
+        "cache_scope": "cold reset per isolated TX; no ACK cache state, no cycles"
+      },
+      "l1i_misses": 59,
+      "l1d_misses": 41,
+      "l2_misses": 100
+    },
+    {
+      "run": "tcp_copy3-3",
+      "variant": "tcp_copy3",
+      "repeat": 3,
+      "kind": "send",
+      "bytes": 5840,
+      "phases": 4,
+      "instructions": 48188,
+      "text_bytes": 37280,
+      "reads": 8168,
+      "writes": 6464,
+      "hotspots": [
+        {
+          "function": "memcpy",
+          "instructions": 35052
+        },
+        {
+          "function": "lwip_standard_chksum",
+          "instructions": 9000
+        },
+        {
+          "function": "tcp_output",
+          "instructions": 972
+        },
+        {
+          "function": "tcp_write",
+          "instructions": 580
+        },
+        {
+          "function": "ip4_output_if_src",
+          "instructions": 408
+        },
+        {
+          "function": "tcp_create_segment",
+          "instructions": 312
+        },
+        {
+          "function": "lwip_htonl",
+          "instructions": 312
+        },
+        {
+          "function": "inet_chksum_pseudo",
+          "instructions": 292
+        },
+        {
+          "function": "lwip_htons",
+          "instructions": 288
+        },
+        {
+          "function": "pbuf_add_header_impl",
+          "instructions": 216
+        },
+        {
+          "function": "mem_malloc",
+          "instructions": 212
+        },
+        {
+          "function": "pbuf_alloc",
+          "instructions": 200
+        }
+      ],
+      "models": [
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 12058,
+            "R": 2042,
+            "W": 1616
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 12071,
+            "misses": 72,
+            "reads": 12071,
+            "writes": 0,
+            "read_misses": 72,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2580,
+              "filled_bytes": 4608,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 2028,
+              "observed_utilization": 0.5598958333333334
+            },
+            "miss_rate": 0.005964708806229807
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 3658,
+            "misses": 62,
+            "reads": 2042,
+            "writes": 1616,
+            "read_misses": 33,
+            "write_misses": 29,
+            "spatial": {
+              "observed_used_bytes": 3260,
+              "filled_bytes": 3968,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 708,
+              "observed_utilization": 0.8215725806451613
+            },
+            "miss_rate": 0.01694915254237288
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 134,
+            "misses": 134,
+            "reads": 105,
+            "writes": 29,
+            "read_misses": 105,
+            "write_misses": 29,
+            "miss_rate": 1.0
+          }
+        },
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 12058,
+            "R": 2042,
+            "W": 1616
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 12071,
+            "misses": 72,
+            "reads": 12071,
+            "writes": 0,
+            "read_misses": 72,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2580,
+              "filled_bytes": 4608,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 2028,
+              "observed_utilization": 0.5598958333333334
+            },
+            "miss_rate": 0.005964708806229807
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 3658,
+            "misses": 62,
+            "reads": 2042,
+            "writes": 1616,
+            "read_misses": 33,
+            "write_misses": 29,
+            "spatial": {
+              "observed_used_bytes": 3260,
+              "filled_bytes": 3968,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 708,
+              "observed_utilization": 0.8215725806451613
+            },
+            "miss_rate": 0.01694915254237288
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 134,
+            "misses": 134,
+            "reads": 105,
+            "writes": 29,
+            "read_misses": 105,
+            "write_misses": 29,
+            "miss_rate": 1.0
+          }
+        },
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 12058,
+            "R": 2042,
+            "W": 1616
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 12071,
+            "misses": 72,
+            "reads": 12071,
+            "writes": 0,
+            "read_misses": 72,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2580,
+              "filled_bytes": 4608,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 2028,
+              "observed_utilization": 0.5598958333333334
+            },
+            "miss_rate": 0.005964708806229807
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 3658,
+            "misses": 62,
+            "reads": 2042,
+            "writes": 1616,
+            "read_misses": 33,
+            "write_misses": 29,
+            "spatial": {
+              "observed_used_bytes": 3260,
+              "filled_bytes": 3968,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 708,
+              "observed_utilization": 0.8215725806451613
+            },
+            "miss_rate": 0.01694915254237288
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 134,
+            "misses": 134,
+            "reads": 105,
+            "writes": 29,
+            "read_misses": 105,
+            "write_misses": 29,
+            "miss_rate": 1.0
+          }
+        },
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 12058,
+            "R": 2042,
+            "W": 1616
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 12071,
+            "misses": 72,
+            "reads": 12071,
+            "writes": 0,
+            "read_misses": 72,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2580,
+              "filled_bytes": 4608,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 2028,
+              "observed_utilization": 0.5598958333333334
+            },
+            "miss_rate": 0.005964708806229807
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 3658,
+            "misses": 62,
+            "reads": 2042,
+            "writes": 1616,
+            "read_misses": 33,
+            "write_misses": 29,
+            "spatial": {
+              "observed_used_bytes": 3260,
+              "filled_bytes": 3968,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 708,
+              "observed_utilization": 0.8215725806451613
+            },
+            "miss_rate": 0.01694915254237288
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 134,
+            "misses": 134,
+            "reads": 105,
+            "writes": 29,
+            "read_misses": 105,
+            "write_misses": 29,
+            "miss_rate": 1.0
+          }
+        }
+      ],
+      "evidence": {
+        "manifest": "tcp_copy3-3/manifest.json",
+        "psf": "tcp_copy3-3/trace.psf",
+        "packets_validated": 6,
+        "acked_bytes": 5840,
+        "retransmits": 1,
+        "cache_scope": "cold reset per isolated TX; no ACK cache state, no cycles"
+      },
+      "l1i_misses": 288,
+      "l1d_misses": 248,
+      "l2_misses": 536
+    },
+    {
+      "run": "tcp_copy3-3",
+      "variant": "tcp_copy3",
+      "repeat": 3,
+      "kind": "retransmit",
+      "bytes": 1460,
+      "phases": 1,
+      "instructions": 3898,
+      "text_bytes": 37280,
+      "reads": 836,
+      "writes": 304,
+      "hotspots": [
+        {
+          "function": "lwip_standard_chksum",
+          "instructions": 2250
+        },
+        {
+          "function": "tcp_slowtmr",
+          "instructions": 677
+        },
+        {
+          "function": "tcp_output",
+          "instructions": 487
+        },
+        {
+          "function": "ip4_output_if_src",
+          "instructions": 102
+        },
+        {
+          "function": "lwip_htonl",
+          "instructions": 78
+        },
+        {
+          "function": "inet_chksum_pseudo",
+          "instructions": 73
+        },
+        {
+          "function": "tcp_rexmit_rto_prepare",
+          "instructions": 62
+        },
+        {
+          "function": "lwip_htons",
+          "instructions": 54
+        },
+        {
+          "function": "measure",
+          "instructions": 44
+        },
+        {
+          "function": "pbuf_add_header_impl",
+          "instructions": 27
+        },
+        {
+          "function": "ip4_route",
+          "instructions": 17
+        },
+        {
+          "function": "output_packet",
+          "instructions": 17
+        }
+      ],
+      "models": [
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 3909,
+            "R": 836,
+            "W": 304
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 3919,
+            "misses": 59,
+            "reads": 3919,
+            "writes": 0,
+            "read_misses": 59,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2202,
+              "filled_bytes": 3776,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 1574,
+              "observed_utilization": 0.583156779661017
+            },
+            "miss_rate": 0.015054860933911712
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 1140,
+            "misses": 41,
+            "reads": 836,
+            "writes": 304,
+            "read_misses": 35,
+            "write_misses": 6,
+            "spatial": {
+              "observed_used_bytes": 1826,
+              "filled_bytes": 2624,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 798,
+              "observed_utilization": 0.6958841463414634
+            },
+            "miss_rate": 0.035964912280701755
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 100,
+            "misses": 100,
+            "reads": 94,
+            "writes": 6,
+            "read_misses": 94,
+            "write_misses": 6,
+            "miss_rate": 1.0
+          }
+        }
+      ],
+      "evidence": {
+        "manifest": "tcp_copy3-3/manifest.json",
+        "psf": "tcp_copy3-3/trace.psf",
+        "packets_validated": 6,
+        "acked_bytes": 5840,
+        "retransmits": 1,
+        "cache_scope": "cold reset per isolated TX; no ACK cache state, no cycles"
+      },
+      "l1i_misses": 59,
+      "l1d_misses": 41,
+      "l2_misses": 100
+    },
+    {
+      "run": "tcp_nocopy3-1",
+      "variant": "tcp_nocopy3",
+      "repeat": 1,
+      "kind": "send",
+      "bytes": 5840,
+      "phases": 4,
+      "instructions": 13712,
+      "text_bytes": 37280,
+      "reads": 2424,
+      "writes": 720,
+      "hotspots": [
+        {
+          "function": "lwip_standard_chksum",
+          "instructions": 9168
+        },
+        {
+          "function": "tcp_output",
+          "instructions": 972
+        },
+        {
+          "function": "tcp_write",
+          "instructions": 612
+        },
+        {
+          "function": "ip4_output_if_src",
+          "instructions": 408
+        },
+        {
+          "function": "inet_chksum_pseudo",
+          "instructions": 352
+        },
+        {
+          "function": "tcp_create_segment",
+          "instructions": 312
+        },
+        {
+          "function": "lwip_htonl",
+          "instructions": 312
+        },
+        {
+          "function": "pbuf_alloc",
+          "instructions": 308
+        },
+        {
+          "function": "lwip_htons",
+          "instructions": 288
+        },
+        {
+          "function": "pbuf_add_header_impl",
+          "instructions": 216
+        },
+        {
+          "function": "mem_malloc",
+          "instructions": 212
+        },
+        {
+          "function": "memp_malloc",
+          "instructions": 104
+        }
+      ],
+      "models": [
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 3439,
+            "R": 606,
+            "W": 180
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 3455,
+            "misses": 72,
+            "reads": 3455,
+            "writes": 0,
+            "read_misses": 72,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2708,
+              "filled_bytes": 4608,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 1900,
+              "observed_utilization": 0.5876736111111112
+            },
+            "miss_rate": 0.020839363241678725
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 786,
+            "misses": 40,
+            "reads": 606,
+            "writes": 180,
+            "read_misses": 34,
+            "write_misses": 6,
+            "spatial": {
+              "observed_used_bytes": 1828,
+              "filled_bytes": 2560,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 732,
+              "observed_utilization": 0.7140625
+            },
+            "miss_rate": 0.05089058524173028
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 112,
+            "misses": 112,
+            "reads": 106,
+            "writes": 6,
+            "read_misses": 106,
+            "write_misses": 6,
+            "miss_rate": 1.0
+          }
+        },
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 3439,
+            "R": 606,
+            "W": 180
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 3455,
+            "misses": 72,
+            "reads": 3455,
+            "writes": 0,
+            "read_misses": 72,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2708,
+              "filled_bytes": 4608,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 1900,
+              "observed_utilization": 0.5876736111111112
+            },
+            "miss_rate": 0.020839363241678725
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 786,
+            "misses": 40,
+            "reads": 606,
+            "writes": 180,
+            "read_misses": 34,
+            "write_misses": 6,
+            "spatial": {
+              "observed_used_bytes": 1828,
+              "filled_bytes": 2560,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 732,
+              "observed_utilization": 0.7140625
+            },
+            "miss_rate": 0.05089058524173028
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 112,
+            "misses": 112,
+            "reads": 106,
+            "writes": 6,
+            "read_misses": 106,
+            "write_misses": 6,
+            "miss_rate": 1.0
+          }
+        },
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 3439,
+            "R": 606,
+            "W": 180
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 3455,
+            "misses": 72,
+            "reads": 3455,
+            "writes": 0,
+            "read_misses": 72,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2708,
+              "filled_bytes": 4608,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 1900,
+              "observed_utilization": 0.5876736111111112
+            },
+            "miss_rate": 0.020839363241678725
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 786,
+            "misses": 40,
+            "reads": 606,
+            "writes": 180,
+            "read_misses": 34,
+            "write_misses": 6,
+            "spatial": {
+              "observed_used_bytes": 1828,
+              "filled_bytes": 2560,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 732,
+              "observed_utilization": 0.7140625
+            },
+            "miss_rate": 0.05089058524173028
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 112,
+            "misses": 112,
+            "reads": 106,
+            "writes": 6,
+            "read_misses": 106,
+            "write_misses": 6,
+            "miss_rate": 1.0
+          }
+        },
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 3439,
+            "R": 606,
+            "W": 180
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 3455,
+            "misses": 72,
+            "reads": 3455,
+            "writes": 0,
+            "read_misses": 72,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2708,
+              "filled_bytes": 4608,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 1900,
+              "observed_utilization": 0.5876736111111112
+            },
+            "miss_rate": 0.020839363241678725
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 786,
+            "misses": 40,
+            "reads": 606,
+            "writes": 180,
+            "read_misses": 34,
+            "write_misses": 6,
+            "spatial": {
+              "observed_used_bytes": 1828,
+              "filled_bytes": 2560,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 732,
+              "observed_utilization": 0.7140625
+            },
+            "miss_rate": 0.05089058524173028
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 112,
+            "misses": 112,
+            "reads": 106,
+            "writes": 6,
+            "read_misses": 106,
+            "write_misses": 6,
+            "miss_rate": 1.0
+          }
+        }
+      ],
+      "evidence": {
+        "manifest": "tcp_nocopy3-1/manifest.json",
+        "psf": "tcp_nocopy3-1/trace.psf",
+        "packets_validated": 6,
+        "acked_bytes": 5840,
+        "retransmits": 1,
+        "cache_scope": "cold reset per isolated TX; no ACK cache state, no cycles"
+      },
+      "l1i_misses": 288,
+      "l1d_misses": 160,
+      "l2_misses": 448
+    },
+    {
+      "run": "tcp_nocopy3-1",
+      "variant": "tcp_nocopy3",
+      "repeat": 1,
+      "kind": "retransmit",
+      "bytes": 1460,
+      "phases": 1,
+      "instructions": 3955,
+      "text_bytes": 37280,
+      "reads": 842,
+      "writes": 305,
+      "hotspots": [
+        {
+          "function": "lwip_standard_chksum",
+          "instructions": 2292
+        },
+        {
+          "function": "tcp_slowtmr",
+          "instructions": 677
+        },
+        {
+          "function": "tcp_output",
+          "instructions": 487
+        },
+        {
+          "function": "ip4_output_if_src",
+          "instructions": 102
+        },
+        {
+          "function": "inet_chksum_pseudo",
+          "instructions": 88
+        },
+        {
+          "function": "lwip_htonl",
+          "instructions": 78
+        },
+        {
+          "function": "tcp_rexmit_rto_prepare",
+          "instructions": 62
+        },
+        {
+          "function": "lwip_htons",
+          "instructions": 54
+        },
+        {
+          "function": "measure",
+          "instructions": 44
+        },
+        {
+          "function": "pbuf_add_header_impl",
+          "instructions": 27
+        },
+        {
+          "function": "ip4_route",
+          "instructions": 17
+        },
+        {
+          "function": "output_packet",
+          "instructions": 17
+        }
+      ],
+      "models": [
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 3966,
+            "R": 842,
+            "W": 305
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 3977,
+            "misses": 59,
+            "reads": 3977,
+            "writes": 0,
+            "read_misses": 59,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2214,
+              "filled_bytes": 3776,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 1562,
+              "observed_utilization": 0.5863347457627118
+            },
+            "miss_rate": 0.014835302992205179
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 1147,
+            "misses": 42,
+            "reads": 842,
+            "writes": 305,
+            "read_misses": 36,
+            "write_misses": 6,
+            "spatial": {
+              "observed_used_bytes": 1836,
+              "filled_bytes": 2688,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 852,
+              "observed_utilization": 0.6830357142857143
+            },
+            "miss_rate": 0.036617262423714034
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 101,
+            "misses": 101,
+            "reads": 95,
+            "writes": 6,
+            "read_misses": 95,
+            "write_misses": 6,
+            "miss_rate": 1.0
+          }
+        }
+      ],
+      "evidence": {
+        "manifest": "tcp_nocopy3-1/manifest.json",
+        "psf": "tcp_nocopy3-1/trace.psf",
+        "packets_validated": 6,
+        "acked_bytes": 5840,
+        "retransmits": 1,
+        "cache_scope": "cold reset per isolated TX; no ACK cache state, no cycles"
+      },
+      "l1i_misses": 59,
+      "l1d_misses": 42,
+      "l2_misses": 101
+    },
+    {
+      "run": "tcp_nocopy3-2",
+      "variant": "tcp_nocopy3",
+      "repeat": 2,
+      "kind": "send",
+      "bytes": 5840,
+      "phases": 4,
+      "instructions": 13712,
+      "text_bytes": 37280,
+      "reads": 2424,
+      "writes": 720,
+      "hotspots": [
+        {
+          "function": "lwip_standard_chksum",
+          "instructions": 9168
+        },
+        {
+          "function": "tcp_output",
+          "instructions": 972
+        },
+        {
+          "function": "tcp_write",
+          "instructions": 612
+        },
+        {
+          "function": "ip4_output_if_src",
+          "instructions": 408
+        },
+        {
+          "function": "inet_chksum_pseudo",
+          "instructions": 352
+        },
+        {
+          "function": "tcp_create_segment",
+          "instructions": 312
+        },
+        {
+          "function": "lwip_htonl",
+          "instructions": 312
+        },
+        {
+          "function": "pbuf_alloc",
+          "instructions": 308
+        },
+        {
+          "function": "lwip_htons",
+          "instructions": 288
+        },
+        {
+          "function": "pbuf_add_header_impl",
+          "instructions": 216
+        },
+        {
+          "function": "mem_malloc",
+          "instructions": 212
+        },
+        {
+          "function": "memp_malloc",
+          "instructions": 104
+        }
+      ],
+      "models": [
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 3439,
+            "R": 606,
+            "W": 180
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 3455,
+            "misses": 72,
+            "reads": 3455,
+            "writes": 0,
+            "read_misses": 72,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2708,
+              "filled_bytes": 4608,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 1900,
+              "observed_utilization": 0.5876736111111112
+            },
+            "miss_rate": 0.020839363241678725
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 786,
+            "misses": 40,
+            "reads": 606,
+            "writes": 180,
+            "read_misses": 34,
+            "write_misses": 6,
+            "spatial": {
+              "observed_used_bytes": 1828,
+              "filled_bytes": 2560,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 732,
+              "observed_utilization": 0.7140625
+            },
+            "miss_rate": 0.05089058524173028
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 112,
+            "misses": 112,
+            "reads": 106,
+            "writes": 6,
+            "read_misses": 106,
+            "write_misses": 6,
+            "miss_rate": 1.0
+          }
+        },
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 3439,
+            "R": 606,
+            "W": 180
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 3455,
+            "misses": 72,
+            "reads": 3455,
+            "writes": 0,
+            "read_misses": 72,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2708,
+              "filled_bytes": 4608,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 1900,
+              "observed_utilization": 0.5876736111111112
+            },
+            "miss_rate": 0.020839363241678725
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 786,
+            "misses": 40,
+            "reads": 606,
+            "writes": 180,
+            "read_misses": 34,
+            "write_misses": 6,
+            "spatial": {
+              "observed_used_bytes": 1828,
+              "filled_bytes": 2560,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 732,
+              "observed_utilization": 0.7140625
+            },
+            "miss_rate": 0.05089058524173028
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 112,
+            "misses": 112,
+            "reads": 106,
+            "writes": 6,
+            "read_misses": 106,
+            "write_misses": 6,
+            "miss_rate": 1.0
+          }
+        },
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 3439,
+            "R": 606,
+            "W": 180
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 3455,
+            "misses": 72,
+            "reads": 3455,
+            "writes": 0,
+            "read_misses": 72,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2708,
+              "filled_bytes": 4608,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 1900,
+              "observed_utilization": 0.5876736111111112
+            },
+            "miss_rate": 0.020839363241678725
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 786,
+            "misses": 40,
+            "reads": 606,
+            "writes": 180,
+            "read_misses": 34,
+            "write_misses": 6,
+            "spatial": {
+              "observed_used_bytes": 1828,
+              "filled_bytes": 2560,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 732,
+              "observed_utilization": 0.7140625
+            },
+            "miss_rate": 0.05089058524173028
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 112,
+            "misses": 112,
+            "reads": 106,
+            "writes": 6,
+            "read_misses": 106,
+            "write_misses": 6,
+            "miss_rate": 1.0
+          }
+        },
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 3439,
+            "R": 606,
+            "W": 180
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 3455,
+            "misses": 72,
+            "reads": 3455,
+            "writes": 0,
+            "read_misses": 72,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2708,
+              "filled_bytes": 4608,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 1900,
+              "observed_utilization": 0.5876736111111112
+            },
+            "miss_rate": 0.020839363241678725
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 786,
+            "misses": 40,
+            "reads": 606,
+            "writes": 180,
+            "read_misses": 34,
+            "write_misses": 6,
+            "spatial": {
+              "observed_used_bytes": 1828,
+              "filled_bytes": 2560,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 732,
+              "observed_utilization": 0.7140625
+            },
+            "miss_rate": 0.05089058524173028
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 112,
+            "misses": 112,
+            "reads": 106,
+            "writes": 6,
+            "read_misses": 106,
+            "write_misses": 6,
+            "miss_rate": 1.0
+          }
+        }
+      ],
+      "evidence": {
+        "manifest": "tcp_nocopy3-2/manifest.json",
+        "psf": "tcp_nocopy3-2/trace.psf",
+        "packets_validated": 6,
+        "acked_bytes": 5840,
+        "retransmits": 1,
+        "cache_scope": "cold reset per isolated TX; no ACK cache state, no cycles"
+      },
+      "l1i_misses": 288,
+      "l1d_misses": 160,
+      "l2_misses": 448
+    },
+    {
+      "run": "tcp_nocopy3-2",
+      "variant": "tcp_nocopy3",
+      "repeat": 2,
+      "kind": "retransmit",
+      "bytes": 1460,
+      "phases": 1,
+      "instructions": 3955,
+      "text_bytes": 37280,
+      "reads": 842,
+      "writes": 305,
+      "hotspots": [
+        {
+          "function": "lwip_standard_chksum",
+          "instructions": 2292
+        },
+        {
+          "function": "tcp_slowtmr",
+          "instructions": 677
+        },
+        {
+          "function": "tcp_output",
+          "instructions": 487
+        },
+        {
+          "function": "ip4_output_if_src",
+          "instructions": 102
+        },
+        {
+          "function": "inet_chksum_pseudo",
+          "instructions": 88
+        },
+        {
+          "function": "lwip_htonl",
+          "instructions": 78
+        },
+        {
+          "function": "tcp_rexmit_rto_prepare",
+          "instructions": 62
+        },
+        {
+          "function": "lwip_htons",
+          "instructions": 54
+        },
+        {
+          "function": "measure",
+          "instructions": 44
+        },
+        {
+          "function": "pbuf_add_header_impl",
+          "instructions": 27
+        },
+        {
+          "function": "ip4_route",
+          "instructions": 17
+        },
+        {
+          "function": "output_packet",
+          "instructions": 17
+        }
+      ],
+      "models": [
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 3966,
+            "R": 842,
+            "W": 305
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 3977,
+            "misses": 59,
+            "reads": 3977,
+            "writes": 0,
+            "read_misses": 59,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2214,
+              "filled_bytes": 3776,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 1562,
+              "observed_utilization": 0.5863347457627118
+            },
+            "miss_rate": 0.014835302992205179
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 1147,
+            "misses": 42,
+            "reads": 842,
+            "writes": 305,
+            "read_misses": 36,
+            "write_misses": 6,
+            "spatial": {
+              "observed_used_bytes": 1836,
+              "filled_bytes": 2688,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 852,
+              "observed_utilization": 0.6830357142857143
+            },
+            "miss_rate": 0.036617262423714034
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 101,
+            "misses": 101,
+            "reads": 95,
+            "writes": 6,
+            "read_misses": 95,
+            "write_misses": 6,
+            "miss_rate": 1.0
+          }
+        }
+      ],
+      "evidence": {
+        "manifest": "tcp_nocopy3-2/manifest.json",
+        "psf": "tcp_nocopy3-2/trace.psf",
+        "packets_validated": 6,
+        "acked_bytes": 5840,
+        "retransmits": 1,
+        "cache_scope": "cold reset per isolated TX; no ACK cache state, no cycles"
+      },
+      "l1i_misses": 59,
+      "l1d_misses": 42,
+      "l2_misses": 101
+    },
+    {
+      "run": "tcp_nocopy3-3",
+      "variant": "tcp_nocopy3",
+      "repeat": 3,
+      "kind": "send",
+      "bytes": 5840,
+      "phases": 4,
+      "instructions": 13712,
+      "text_bytes": 37280,
+      "reads": 2424,
+      "writes": 720,
+      "hotspots": [
+        {
+          "function": "lwip_standard_chksum",
+          "instructions": 9168
+        },
+        {
+          "function": "tcp_output",
+          "instructions": 972
+        },
+        {
+          "function": "tcp_write",
+          "instructions": 612
+        },
+        {
+          "function": "ip4_output_if_src",
+          "instructions": 408
+        },
+        {
+          "function": "inet_chksum_pseudo",
+          "instructions": 352
+        },
+        {
+          "function": "tcp_create_segment",
+          "instructions": 312
+        },
+        {
+          "function": "lwip_htonl",
+          "instructions": 312
+        },
+        {
+          "function": "pbuf_alloc",
+          "instructions": 308
+        },
+        {
+          "function": "lwip_htons",
+          "instructions": 288
+        },
+        {
+          "function": "pbuf_add_header_impl",
+          "instructions": 216
+        },
+        {
+          "function": "mem_malloc",
+          "instructions": 212
+        },
+        {
+          "function": "memp_malloc",
+          "instructions": 104
+        }
+      ],
+      "models": [
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 3439,
+            "R": 606,
+            "W": 180
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 3455,
+            "misses": 72,
+            "reads": 3455,
+            "writes": 0,
+            "read_misses": 72,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2708,
+              "filled_bytes": 4608,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 1900,
+              "observed_utilization": 0.5876736111111112
+            },
+            "miss_rate": 0.020839363241678725
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 786,
+            "misses": 40,
+            "reads": 606,
+            "writes": 180,
+            "read_misses": 34,
+            "write_misses": 6,
+            "spatial": {
+              "observed_used_bytes": 1828,
+              "filled_bytes": 2560,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 732,
+              "observed_utilization": 0.7140625
+            },
+            "miss_rate": 0.05089058524173028
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 112,
+            "misses": 112,
+            "reads": 106,
+            "writes": 6,
+            "read_misses": 106,
+            "write_misses": 6,
+            "miss_rate": 1.0
+          }
+        },
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 3439,
+            "R": 606,
+            "W": 180
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 3455,
+            "misses": 72,
+            "reads": 3455,
+            "writes": 0,
+            "read_misses": 72,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2708,
+              "filled_bytes": 4608,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 1900,
+              "observed_utilization": 0.5876736111111112
+            },
+            "miss_rate": 0.020839363241678725
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 786,
+            "misses": 40,
+            "reads": 606,
+            "writes": 180,
+            "read_misses": 34,
+            "write_misses": 6,
+            "spatial": {
+              "observed_used_bytes": 1828,
+              "filled_bytes": 2560,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 732,
+              "observed_utilization": 0.7140625
+            },
+            "miss_rate": 0.05089058524173028
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 112,
+            "misses": 112,
+            "reads": 106,
+            "writes": 6,
+            "read_misses": 106,
+            "write_misses": 6,
+            "miss_rate": 1.0
+          }
+        },
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 3439,
+            "R": 606,
+            "W": 180
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 3455,
+            "misses": 72,
+            "reads": 3455,
+            "writes": 0,
+            "read_misses": 72,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2708,
+              "filled_bytes": 4608,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 1900,
+              "observed_utilization": 0.5876736111111112
+            },
+            "miss_rate": 0.020839363241678725
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 786,
+            "misses": 40,
+            "reads": 606,
+            "writes": 180,
+            "read_misses": 34,
+            "write_misses": 6,
+            "spatial": {
+              "observed_used_bytes": 1828,
+              "filled_bytes": 2560,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 732,
+              "observed_utilization": 0.7140625
+            },
+            "miss_rate": 0.05089058524173028
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 112,
+            "misses": 112,
+            "reads": 106,
+            "writes": 6,
+            "read_misses": 106,
+            "write_misses": 6,
+            "miss_rate": 1.0
+          }
+        },
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 3439,
+            "R": 606,
+            "W": 180
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 3455,
+            "misses": 72,
+            "reads": 3455,
+            "writes": 0,
+            "read_misses": 72,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2708,
+              "filled_bytes": 4608,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 1900,
+              "observed_utilization": 0.5876736111111112
+            },
+            "miss_rate": 0.020839363241678725
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 786,
+            "misses": 40,
+            "reads": 606,
+            "writes": 180,
+            "read_misses": 34,
+            "write_misses": 6,
+            "spatial": {
+              "observed_used_bytes": 1828,
+              "filled_bytes": 2560,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 732,
+              "observed_utilization": 0.7140625
+            },
+            "miss_rate": 0.05089058524173028
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 112,
+            "misses": 112,
+            "reads": 106,
+            "writes": 6,
+            "read_misses": 106,
+            "write_misses": 6,
+            "miss_rate": 1.0
+          }
+        }
+      ],
+      "evidence": {
+        "manifest": "tcp_nocopy3-3/manifest.json",
+        "psf": "tcp_nocopy3-3/trace.psf",
+        "packets_validated": 6,
+        "acked_bytes": 5840,
+        "retransmits": 1,
+        "cache_scope": "cold reset per isolated TX; no ACK cache state, no cycles"
+      },
+      "l1i_misses": 288,
+      "l1d_misses": 160,
+      "l2_misses": 448
+    },
+    {
+      "run": "tcp_nocopy3-3",
+      "variant": "tcp_nocopy3",
+      "repeat": 3,
+      "kind": "retransmit",
+      "bytes": 1460,
+      "phases": 1,
+      "instructions": 3955,
+      "text_bytes": 37280,
+      "reads": 842,
+      "writes": 305,
+      "hotspots": [
+        {
+          "function": "lwip_standard_chksum",
+          "instructions": 2292
+        },
+        {
+          "function": "tcp_slowtmr",
+          "instructions": 677
+        },
+        {
+          "function": "tcp_output",
+          "instructions": 487
+        },
+        {
+          "function": "ip4_output_if_src",
+          "instructions": 102
+        },
+        {
+          "function": "inet_chksum_pseudo",
+          "instructions": 88
+        },
+        {
+          "function": "lwip_htonl",
+          "instructions": 78
+        },
+        {
+          "function": "tcp_rexmit_rto_prepare",
+          "instructions": 62
+        },
+        {
+          "function": "lwip_htons",
+          "instructions": 54
+        },
+        {
+          "function": "measure",
+          "instructions": 44
+        },
+        {
+          "function": "pbuf_add_header_impl",
+          "instructions": 27
+        },
+        {
+          "function": "ip4_route",
+          "instructions": 17
+        },
+        {
+          "function": "output_packet",
+          "instructions": 17
+        }
+      ],
+      "models": [
+        {
+          "schema": "tcp-split-cache-v1",
+          "initial_state": "cold-per-TX-phase",
+          "policy": "LRU, write-allocate tags, non-inclusive; no dirty/writeback timing",
+          "cycles": null,
+          "events": {
+            "I": 3966,
+            "R": 842,
+            "W": 305
+          },
+          "l1i": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 3977,
+            "misses": 59,
+            "reads": 3977,
+            "writes": 0,
+            "read_misses": 59,
+            "write_misses": 0,
+            "spatial": {
+              "observed_used_bytes": 2214,
+              "filled_bytes": 3776,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 1562,
+              "observed_utilization": 0.5863347457627118
+            },
+            "miss_rate": 0.014835302992205179
+          },
+          "l1d": {
+            "geometry": {
+              "size": 16384,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 1147,
+            "misses": 42,
+            "reads": 842,
+            "writes": 305,
+            "read_misses": 36,
+            "write_misses": 6,
+            "spatial": {
+              "observed_used_bytes": 1836,
+              "filled_bytes": 2688,
+              "evicted_unused_bytes": 0,
+              "resident_unobserved_bytes": 852,
+              "observed_utilization": 0.6830357142857143
+            },
+            "miss_rate": 0.036617262423714034
+          },
+          "l2": {
+            "geometry": {
+              "size": 65536,
+              "line": 64,
+              "ways": 4
+            },
+            "accesses": 101,
+            "misses": 101,
+            "reads": 95,
+            "writes": 6,
+            "read_misses": 95,
+            "write_misses": 6,
+            "miss_rate": 1.0
+          }
+        }
+      ],
+      "evidence": {
+        "manifest": "tcp_nocopy3-3/manifest.json",
+        "psf": "tcp_nocopy3-3/trace.psf",
+        "packets_validated": 6,
+        "acked_bytes": 5840,
+        "retransmits": 1,
+        "cache_scope": "cold reset per isolated TX; no ACK cache state, no cycles"
+      },
+      "l1i_misses": 59,
+      "l1d_misses": 42,
+      "l2_misses": 101
+    }
+  ]
+}
