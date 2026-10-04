@@ -1,0 +1,47 @@
+{
+  "command": [
+    "/opt/homebrew/bin/qemu-system-riscv32",
+    "-machine",
+    "virt",
+    "-cpu",
+    "rv32",
+    "-smp",
+    "1",
+    "-m",
+    "128M",
+    "-bios",
+    "none",
+    "-display",
+    "none",
+    "-monitor",
+    "none",
+    "-serial",
+    "file:console.log",
+    "-accel",
+    "tcg,thread=single",
+    "-icount",
+    "shift=0,align=off,sleep=off",
+    "-semihosting-config",
+    "enable=on,target=native",
+    "-plugin",
+    "/Users/swchen.tw/git/percepio/poc/runs/time-control-probe-v2/time_probe.dylib,trigger=80002b10,delay=1000000,out=/Users/swchen.tw/git/percepio/poc/runs/time-control-probe-v2/delay-1000000-1/plugin.json",
+    "-kernel",
+    "/Users/swchen.tw/git/percepio/poc/runs/time-control-probe-v2/delay-1000000-1/firmware.elf"
+  ],
+  "result": {
+    "run": "delay-1000000-1",
+    "delay_ns": 1000000,
+    "repeat": 1,
+    "timeout_seconds": 3,
+    "exit_code": null,
+    "status": "timeout"
+  },
+  "files": {
+    "symbols.txt": "76b1236281e84cc848e5de5019c12593edc9ae9d1e65e68fbe0dadd20eab5c7f",
+    "trace.psf": "2d0c2eea74b1042d29d5a23b36dd34ddb19ea55f817e194f41323d1ee59fc6c2",
+    "firmware.elf": "b9cc61b10e52e16f77429a8b60c999e878dcffe6122d579ce7d1f0b81b690f81",
+    "console.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "plugin.json": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "qemu.log": "1d5b35fc09d2e3c7f8a229c0d1381bd6a1d76bfd7acee94ac9eaa04ba206abc2"
+  }
+}
