@@ -430,3 +430,13 @@ python3 research/package_report.py
 Q1／Q2 回答後的具體架構、parser 範圍、案例、SVG／JavaScript 介面與驗收，集中於 [PSF Lab 設計規格](research/next-phase/PSF-Lab-設計規格.md)。
 
 後續實驗與文件的主要入口已改為 [poc/README.md](poc/README.md)。本目錄本身仍不是 Git repository；`poc/` 是獨立 repository。
+
+
+## 2026-10-04：M4 前置實驗
+
+官方 cache plugin 已在 QEMU 11.1.2 RV32 FreeRTOS Queue baseline 成功載入，取得 L1I／L1D／L2 統計，guest oracle 與原案例一致。這是 M4.1 smoke；尚未完成 cache 模型校驗、相對 A/B 或 Dashboard cache 視圖。
+
+- [POC 原始 log、manifest 與限制](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/artifacts/verification/cache/README.md)
+- [M4 六階段計畫](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/plans/04-cache-relative-optimization.md)
+
+下一步先釐清 instruction／data address 語意、驗證手算 cache oracle，再做相同工作量 A/B；產品 U01～U16 與暫緩的跨機工作仍維持原狀態。
