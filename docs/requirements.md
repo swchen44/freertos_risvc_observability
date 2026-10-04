@@ -36,7 +36,7 @@ QEMU 可以驗證指定軟體行為與資料流程；實體效能、最差 IRQ�
 
 ## 2026-10-03 新增要求：cache／bus 與分析功能完整性
 
-- C01：研究 L1I／L1D／L2 read/write miss、miss rate、penalty；官方 QEMU plugin 能力已查，尚未實跑。
+- C01：研究 L1I／L1D／L2 read/write miss、miss rate、penalty；官方 plugin smoke 已實跑；data-region L1D／L2 replay 與相對 A/B 已完成。L1I／penalty 與逐 task 對時仍待完成。
 - C02：研究 bus latency／仲裁與 timing feedback，明確區分 functional QEMU、cache 模型與實體量測。
 - C03：PSF task usage 的公式、ISR／idle／unknown 邊界與視覺化必須列入 Dashboard；不以事件數當 CPU 百分比。
 - C04：持續維護 Tracealyzer 功能對照，不只 CPU 百分比；execution／response、事件、同步物件、user data、記憶體等逐項標示資料需求與完成狀態。
@@ -54,3 +54,6 @@ M3 驗證：90 unit、6 integration、5 Node、11 Playwright 全通過，Ruff／
 使用者已確認 **1A／2B**：Python 先將 PSF 匯出成單檔 HTML，離線觀看時不需要 Python 服務；跨機重現整項暫緩，不要求目標平台。同步原本一篇知識庫、整理 README 歷史／現況，至少 14 張實際操作截圖。驗證指定 **agent-browser E2E** 與 **curl API integration**，另保留 unittest／Ruff／Node 和既有回歸。
 
 [實作計畫](plans/05-offline-portability-documentation.md) 已記錄；離線匯出、curl integration 與 agent-browser E2E 已實作並驗證；知識庫已同步並核對遠端；見本輪 completion.json。M4 與產品 U01～U16 繼續列為後續。
+
+
+2026-10-04 更新：新增 cache line byte-use 研究、相同 checksum 六次模擬、三組 geometry、Web／HTML cache 工作區、source/evidence 還原包。詳見 [研究](research/Cache效率與PSF擴充.md) 與 [操作](cache-replay.md)；119 Python tests 與其他驗收見 cache-replay completion.json。

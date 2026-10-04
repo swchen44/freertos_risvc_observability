@@ -53,3 +53,8 @@ flowchart TD
 ## 尚未等價的 Tracealyzer 功能
 
 目前有 task timeline、execution share、request response／execution、事件、部分 user signal、filters／CSV 與三組對照。完整 ISR、SMP、所有同步物件分析、memory allocation／heap、state machine、自動根因、任意 user plot、所有 PSF 版本尚未支援。功能矩陣見 [Cache／CPU 與 Tracealyzer 對照](research/Cache-Bus與CPU使用率.md) 與 [Dashboard 研究](research/Dashboard功能與設計研究.md)。
+
+
+## Cache 子階段已完成的交接材料
+
+[還原指南](cache-replay.md) 提供 source archive、六次 PSF／ELF／map／CSV、模型版本與乾淨還原驗證。現有 Web 與 HTML 支援 data-region cache 比較；後續內網 AI 可接續 L1I、PC／symbol、hot/cold、AoS／SoA、tiling、PMU user events 與同步。這些未完成事項詳列於 [研究表](research/Cache效率與PSF擴充.md)。

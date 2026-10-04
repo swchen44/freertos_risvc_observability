@@ -12,7 +12,7 @@
 | 一致鎖定順序避免本案例 ABBA | [deadlock／ordered locks](case-results.md) | 兩個 mutex，根據 take/block/give 重建 owner/wait，supervisor 驗獨立結果 | 一般化 deadlock proof、遞迴／任意 OS primitive |
 | Dashboard filter／CSV 語意一致 | query／export unittest、Playwright 真實 HTTP／CSV parser | 表格 20 筆分頁，CSV 包含全部符合列；保留相同排序 | 無上限資料集、所有瀏覽器 |
 | 100k events 可解析與聚合顯示 | [benchmarks](benchmarks.md) | 固定合成 switch pattern，記 hash／時間／memory；不是實際 recorder workload | 產品事件分布、長期運行與 worst case |
-| QEMU cache plugin 可作後續相對研究 | [cache 研究](research/Cache-Bus與CPU使用率.md)、[M4](plans/04-cache-relative-optimization.md) | 已查官方模型說明，尚未在此 POC 實跑 | 模型與平台的相對排名一致、penalty feedback |
+| QEMU cache plugin 可作後續相對研究 | [cache 研究](research/Cache-Bus與CPU使用率.md)、[M4](plans/04-cache-relative-optimization.md) | 已完成原版 plugin smoke；另以 guest physical data replay 完成六次 A/B，見 [實驗與還原](cache-replay.md) | 真機相對排名、L1I 校驗、逐 task 對時、penalty feedback |
 
 ## 如何從案例讀圖
 
