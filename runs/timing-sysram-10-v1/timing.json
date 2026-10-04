@@ -1,0 +1,3434 @@
+{
+  "schema": "timing-comparison-v1",
+  "reports": [
+    {
+      "schema": "timing-report-v1",
+      "run": "z0-1",
+      "profile": {
+        "schema": "memory-timing-profile-v1",
+        "name": "illustrative-ram-80",
+        "assumptions": "Synthetic sensitivity scenario, not measured hardware. Serial accesses; no overlap, DMA, coherence, store buffer or dirty writeback. RAM latency precedes data beats.",
+        "write_policy": "write-through-write-allocate",
+        "caches": {
+          "l1i": {
+            "size": 16384,
+            "line": 64,
+            "ways": 4,
+            "lookup_cycles": 1
+          },
+          "l1d": {
+            "size": 16384,
+            "line": 64,
+            "ways": 4,
+            "lookup_cycles": 1
+          },
+          "l2": {
+            "size": 65536,
+            "line": 64,
+            "ways": 4,
+            "lookup_cycles": 8
+          }
+        },
+        "regions": [
+          {
+            "name": "system_ram",
+            "start": 2147483648,
+            "end": 2281701376,
+            "cacheable": true,
+            "read_latency_cycles": 80,
+            "write_latency_cycles": 20,
+            "bus_bytes_per_cycle": 8
+          }
+        ]
+      },
+      "profile_sha256": "ba95afef1cadb33c997d302f8b93194ad3926637312f929cbab09a67e8ef49a8",
+      "evidence": {
+        "accesses.csv.gz": "11c81af3f27352b04b6bc269ab8c0f5fcbea1e0bd25327a6def633e462fd574f",
+        "manifest.json": "8773394426ead23ac5039982244ea80367d8db3dcb8e043fd8cf99778305f8a3",
+        "qemu.log": "8456721495eafaaf6203806d4f7bef68b4cc6c7c66cfee2deb4b4a85971a36b4",
+        "symbols.txt": "74531f8976352de95b46d525a654253740be3ac2903e229dd805d27262704bca"
+      },
+      "events": 382441,
+      "stack_windows": 27,
+      "scope_cost_cycles": {
+        "stack_window": 230823,
+        "harness": 1131578
+      },
+      "model": {
+        "schema": "memory-service-v1",
+        "estimated_memory_service_cycles": 1362401,
+        "cpu_cycles": null,
+        "guest_time_changed": false,
+        "policy": "serial LRU; non-inclusive; write-through + write-allocate at both levels",
+        "initial_state": "cold; continuous input trace",
+        "cost_cycles": {
+          "l1i": 303420,
+          "l1d": 80677,
+          "l2": 258032,
+          "ram_read": 49280,
+          "ram_write": 670992
+        },
+        "operations": {
+          "I": 301764,
+          "R": 48725,
+          "W": 31952
+        },
+        "regions": [
+          {
+            "name": "system_ram",
+            "start": 2147483648,
+            "end": 2281701376,
+            "cacheable": true,
+            "read_latency_cycles": 80,
+            "write_latency_cycles": 20,
+            "bus_bytes_per_cycle": 8
+          }
+        ],
+        "lookup_cycles": {
+          "l1i": 1,
+          "l1d": 1,
+          "l2": 8
+        },
+        "region_cost_cycles": {
+          "system_ram": {
+            "ram_read": 49280,
+            "ram_write": 670992
+          }
+        },
+        "ram_read_transactions": 560,
+        "ram_write_transactions": 31952,
+        "l1i": {
+          "geometry": {
+            "size": 16384,
+            "line": 64,
+            "ways": 4
+          },
+          "accesses": 303420,
+          "misses": 280,
+          "reads": 303420,
+          "writes": 0,
+          "read_misses": 280,
+          "write_misses": 0,
+          "miss_rate": 0.0009228132621448817
+        },
+        "l1d": {
+          "geometry": {
+            "size": 16384,
+            "line": 64,
+            "ways": 4
+          },
+          "accesses": 80677,
+          "misses": 309,
+          "reads": 48725,
+          "writes": 31952,
+          "read_misses": 22,
+          "write_misses": 287,
+          "miss_rate": 0.003830087881304461
+        },
+        "l2": {
+          "geometry": {
+            "size": 65536,
+            "line": 64,
+            "ways": 4
+          },
+          "accesses": 32254,
+          "misses": 560,
+          "reads": 302,
+          "writes": 31952,
+          "read_misses": 277,
+          "write_misses": 283,
+          "miss_rate": 0.017362187635642092
+        }
+      },
+      "attribution": "self PC; stack windows include callbacks/assertions; cache state includes harness",
+      "functions": [
+        {
+          "scope": "harness",
+          "function": "memcpy",
+          "l1i": 77769,
+          "l1d": 25888,
+          "l2": 103552,
+          "ram_read": 20768,
+          "ram_write": 271824,
+          "total": 499801
+        },
+        {
+          "scope": "harness",
+          "function": "session_task",
+          "l1i": 71479,
+          "l1d": 11942,
+          "l2": 94696,
+          "ram_read": 3256,
+          "ram_write": 248304,
+          "total": 429677
+        },
+        {
+          "scope": "harness",
+          "function": "memcmp",
+          "l1i": 81792,
+          "l1d": 23360,
+          "l2": 8,
+          "ram_read": 88,
+          "ram_write": 0,
+          "total": 105248
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_input",
+          "l1i": 3876,
+          "l1d": 1742,
+          "l2": 5744,
+          "ram_read": 3520,
+          "ram_write": 14259,
+          "total": 29141
+        },
+        {
+          "scope": "harness",
+          "function": "memset",
+          "l1i": 3502,
+          "l1d": 692,
+          "l2": 5536,
+          "ram_read": 0,
+          "ram_write": 14532,
+          "total": 24262
+        },
+        {
+          "scope": "stack_window",
+          "function": "lwip_standard_chksum",
+          "l1i": 20555,
+          "l1d": 3198,
+          "l2": 0,
+          "ram_read": 0,
+          "ram_write": 0,
+          "total": 23753
+        },
+        {
+          "scope": "harness",
+          "function": "inject",
+          "l1i": 2256,
+          "l1d": 802,
+          "l2": 5368,
+          "ram_read": 792,
+          "ram_write": 13902,
+          "total": 23120
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_output",
+          "l1i": 3035,
+          "l1d": 1706,
+          "l2": 4736,
+          "ram_read": 1408,
+          "ram_write": 12012,
+          "total": 22897
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_receive",
+          "l1i": 1694,
+          "l1d": 797,
+          "l2": 2296,
+          "ram_read": 1936,
+          "ram_write": 5502,
+          "total": 12225
+        },
+        {
+          "scope": "stack_window",
+          "function": "ip4_output_if_src",
+          "l1i": 1199,
+          "l1d": 528,
+          "l2": 2776,
+          "ram_read": 528,
+          "ram_write": 7161,
+          "total": 12192
+        },
+        {
+          "scope": "stack_window",
+          "function": "ip4_input",
+          "l1i": 1820,
+          "l1d": 714,
+          "l2": 2432,
+          "ram_read": 880,
+          "ram_write": 6174,
+          "total": 12020
+        },
+        {
+          "scope": "stack_window",
+          "function": "memset",
+          "l1i": 1606,
+          "l1d": 320,
+          "l2": 2576,
+          "ram_read": 440,
+          "ram_write": 6720,
+          "total": 11662
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_create_segment",
+          "l1i": 790,
+          "l1d": 420,
+          "l2": 2048,
+          "ram_read": 528,
+          "ram_write": 5250,
+          "total": 9036
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_write",
+          "l1i": 1248,
+          "l1d": 456,
+          "l2": 1816,
+          "ram_read": 1144,
+          "ram_write": 4368,
+          "total": 9032
+        },
+        {
+          "scope": "stack_window",
+          "function": "inet_chksum_pseudo",
+          "l1i": 1970,
+          "l1d": 515,
+          "l2": 1464,
+          "ram_read": 88,
+          "ram_write": 3843,
+          "total": 7880
+        },
+        {
+          "scope": "harness",
+          "function": "snapshot",
+          "l1i": 1100,
+          "l1d": 425,
+          "l2": 1432,
+          "ram_read": 704,
+          "ram_write": 3675,
+          "total": 7336
+        },
+        {
+          "scope": "stack_window",
+          "function": "pbuf_alloc",
+          "l1i": 766,
+          "l1d": 321,
+          "l2": 1504,
+          "ram_read": 88,
+          "ram_write": 3948,
+          "total": 6627
+        },
+        {
+          "scope": "harness",
+          "function": "pbuf_copy_partial",
+          "l1i": 1416,
+          "l1d": 415,
+          "l2": 1280,
+          "ram_read": 176,
+          "ram_write": 3318,
+          "total": 6605
+        },
+        {
+          "scope": "harness",
+          "function": "pbuf_alloc",
+          "l1i": 700,
+          "l1d": 266,
+          "l2": 1376,
+          "ram_read": 440,
+          "ram_write": 3528,
+          "total": 6310
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_free_acked_segments.isra.0",
+          "l1i": 850,
+          "l1d": 450,
+          "l2": 1304,
+          "ram_read": 264,
+          "ram_write": 3360,
+          "total": 6228
+        },
+        {
+          "scope": "stack_window",
+          "function": "pbuf_free",
+          "l1i": 1081,
+          "l1d": 380,
+          "l2": 1272,
+          "ram_read": 88,
+          "ram_write": 3318,
+          "total": 6139
+        },
+        {
+          "scope": "stack_window",
+          "function": "pbuf_get_at",
+          "l1i": 1280,
+          "l1d": 256,
+          "l2": 1032,
+          "ram_read": 88,
+          "ram_write": 2688,
+          "total": 5344
+        },
+        {
+          "scope": "harness",
+          "function": "mem_malloc",
+          "l1i": 878,
+          "l1d": 263,
+          "l2": 824,
+          "ram_read": 792,
+          "ram_write": 1995,
+          "total": 4752
+        },
+        {
+          "scope": "harness",
+          "function": "phase",
+          "l1i": 567,
+          "l1d": 297,
+          "l2": 880,
+          "ram_read": 704,
+          "ram_write": 2268,
+          "total": 4716
+        },
+        {
+          "scope": "stack_window",
+          "function": "mem_free",
+          "l1i": 1276,
+          "l1d": 413,
+          "l2": 720,
+          "ram_read": 440,
+          "ram_write": 1785,
+          "total": 4634
+        },
+        {
+          "scope": "harness",
+          "function": "inet_chksum_pseudo",
+          "l1i": 1036,
+          "l1d": 266,
+          "l2": 800,
+          "ram_read": 176,
+          "ram_write": 2058,
+          "total": 4336
+        },
+        {
+          "scope": "harness",
+          "function": "consume",
+          "l1i": 786,
+          "l1d": 271,
+          "l2": 656,
+          "ram_read": 440,
+          "ram_write": 1617,
+          "total": 3770
+        },
+        {
+          "scope": "stack_window",
+          "function": "phase",
+          "l1i": 270,
+          "l1d": 108,
+          "l2": 864,
+          "ram_read": 0,
+          "ram_write": 2268,
+          "total": 3510
+        },
+        {
+          "scope": "stack_window",
+          "function": "mem_malloc",
+          "l1i": 695,
+          "l1d": 210,
+          "l2": 624,
+          "ram_read": 88,
+          "ram_write": 1638,
+          "total": 3255
+        },
+        {
+          "scope": "stack_window",
+          "function": "pbuf_remove_header",
+          "l1i": 560,
+          "l1d": 168,
+          "l2": 672,
+          "ram_read": 0,
+          "ram_write": 1764,
+          "total": 3164
+        },
+        {
+          "scope": "stack_window",
+          "function": "do_memp_malloc_pool",
+          "l1i": 319,
+          "l1d": 214,
+          "l2": 472,
+          "ram_read": 1144,
+          "ram_write": 966,
+          "total": 3115
+        },
+        {
+          "scope": "stack_window",
+          "function": "pbuf_alloc_reference",
+          "l1i": 184,
+          "l1d": 120,
+          "l2": 704,
+          "ram_read": 0,
+          "ram_write": 1848,
+          "total": 2856
+        },
+        {
+          "scope": "stack_window",
+          "function": "pbuf_add_header_impl",
+          "l1i": 567,
+          "l1d": 147,
+          "l2": 504,
+          "ram_read": 0,
+          "ram_write": 1323,
+          "total": 2541
+        },
+        {
+          "scope": "stack_window",
+          "function": "memp_free",
+          "l1i": 378,
+          "l1d": 189,
+          "l2": 528,
+          "ram_read": 88,
+          "ram_write": 1323,
+          "total": 2506
+        },
+        {
+          "scope": "harness",
+          "function": "lwip_standard_chksum",
+          "l1i": 1996,
+          "l1d": 202,
+          "l2": 24,
+          "ram_read": 264,
+          "ram_write": 0,
+          "total": 2486
+        },
+        {
+          "scope": "harness",
+          "function": "pbuf_free",
+          "l1i": 288,
+          "l1d": 134,
+          "l2": 528,
+          "ram_read": 0,
+          "ram_write": 1386,
+          "total": 2336
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_slowtmr",
+          "l1i": 208,
+          "l1d": 102,
+          "l2": 416,
+          "ram_read": 792,
+          "ram_write": 798,
+          "total": 2316
+        },
+        {
+          "scope": "stack_window",
+          "function": "on_recv",
+          "l1i": 1372,
+          "l1d": 173,
+          "l2": 176,
+          "ram_read": 88,
+          "ram_write": 441,
+          "total": 2250
+        },
+        {
+          "scope": "harness",
+          "function": "pbuf_add_header_impl",
+          "l1i": 378,
+          "l1d": 98,
+          "l2": 352,
+          "ram_read": 176,
+          "ram_write": 882,
+          "total": 1886
+        },
+        {
+          "scope": "harness",
+          "function": "pbuf_remove_header",
+          "l1i": 280,
+          "l1d": 84,
+          "l2": 352,
+          "ram_read": 176,
+          "ram_write": 882,
+          "total": 1774
+        },
+        {
+          "scope": "stack_window",
+          "function": "output_packet",
+          "l1i": 187,
+          "l1d": 88,
+          "l2": 368,
+          "ram_read": 88,
+          "ram_write": 924,
+          "total": 1655
+        },
+        {
+          "scope": "stack_window",
+          "function": "session_task",
+          "l1i": 202,
+          "l1d": 57,
+          "l2": 264,
+          "ram_read": 528,
+          "ram_write": 588,
+          "total": 1639
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_alloc",
+          "l1i": 102,
+          "l1d": 44,
+          "l2": 288,
+          "ram_read": 440,
+          "ram_write": 672,
+          "total": 1546
+        },
+        {
+          "scope": "stack_window",
+          "function": "lwip_htons",
+          "l1i": 1524,
+          "l1d": 0,
+          "l2": 0,
+          "ram_read": 0,
+          "ram_write": 0,
+          "total": 1524
+        },
+        {
+          "scope": "stack_window",
+          "function": "pbuf_try_get_at",
+          "l1i": 1024,
+          "l1d": 384,
+          "l2": 0,
+          "ram_read": 0,
+          "ram_write": 0,
+          "total": 1408
+        },
+        {
+          "scope": "stack_window",
+          "function": "lwip_htonl",
+          "l1i": 1313,
+          "l1d": 0,
+          "l2": 0,
+          "ram_read": 0,
+          "ram_write": 0,
+          "total": 1313
+        },
+        {
+          "scope": "stack_window",
+          "function": "on_sent",
+          "l1i": 152,
+          "l1d": 72,
+          "l2": 264,
+          "ram_read": 88,
+          "ram_write": 672,
+          "total": 1248
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_output_alloc_header_common.constprop.0",
+          "l1i": 77,
+          "l1d": 39,
+          "l2": 256,
+          "ram_read": 264,
+          "ram_write": 609,
+          "total": 1245
+        },
+        {
+          "scope": "harness",
+          "function": "lwip_htons",
+          "l1i": 936,
+          "l1d": 0,
+          "l2": 8,
+          "ram_read": 88,
+          "ram_write": 0,
+          "total": 1032
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_enqueue_flags",
+          "l1i": 89,
+          "l1d": 34,
+          "l2": 152,
+          "ram_read": 352,
+          "ram_write": 315,
+          "total": 942
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_seg_free",
+          "l1i": 130,
+          "l1d": 50,
+          "l2": 168,
+          "ram_read": 88,
+          "ram_write": 420,
+          "total": 856
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_listen_with_backlog_and_err",
+          "l1i": 62,
+          "l1d": 35,
+          "l2": 160,
+          "ram_read": 176,
+          "ram_write": 378,
+          "total": 811
+        },
+        {
+          "scope": "harness",
+          "function": "lwip_htonl",
+          "l1i": 780,
+          "l1d": 0,
+          "l2": 0,
+          "ram_read": 0,
+          "ram_write": 0,
+          "total": 780
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_fasttmr",
+          "l1i": 64,
+          "l1d": 34,
+          "l2": 128,
+          "ram_read": 264,
+          "ram_write": 252,
+          "total": 742
+        },
+        {
+          "scope": "stack_window",
+          "function": "pbuf_cat",
+          "l1i": 80,
+          "l1d": 40,
+          "l2": 136,
+          "ram_read": 88,
+          "ram_write": 336,
+          "total": 680
+        },
+        {
+          "scope": "harness",
+          "function": "inet_chksum",
+          "l1i": 126,
+          "l1d": 28,
+          "l2": 120,
+          "ram_read": 88,
+          "ram_write": 294,
+          "total": 656
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_close_shutdown",
+          "l1i": 68,
+          "l1d": 22,
+          "l2": 80,
+          "ram_read": 352,
+          "ram_write": 126,
+          "total": 648
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_pcb_remove",
+          "l1i": 45,
+          "l1d": 23,
+          "l2": 112,
+          "ram_read": 176,
+          "ram_write": 252,
+          "total": 608
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_bind",
+          "l1i": 50,
+          "l1d": 18,
+          "l2": 72,
+          "ram_read": 352,
+          "ram_write": 105,
+          "total": 597
+        },
+        {
+          "scope": "stack_window",
+          "function": "inject",
+          "l1i": 308,
+          "l1d": 168,
+          "l2": 8,
+          "ram_read": 88,
+          "ram_write": 0,
+          "total": 572
+        },
+        {
+          "scope": "stack_window",
+          "function": "inet_chksum",
+          "l1i": 126,
+          "l1d": 28,
+          "l2": 112,
+          "ram_read": 0,
+          "ram_write": 294,
+          "total": 560
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_parseopt.part.0",
+          "l1i": 43,
+          "l1d": 17,
+          "l2": 80,
+          "ram_read": 264,
+          "ram_write": 147,
+          "total": 551
+        },
+        {
+          "scope": "stack_window",
+          "function": "ip4_input_accept",
+          "l1i": 196,
+          "l1d": 42,
+          "l2": 24,
+          "ram_read": 264,
+          "ram_write": 0,
+          "total": 526
+        },
+        {
+          "scope": "stack_window",
+          "function": "memp_malloc",
+          "l1i": 189,
+          "l1d": 21,
+          "l2": 24,
+          "ram_read": 264,
+          "ram_write": 0,
+          "total": 498
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_output_control_segment_netif",
+          "l1i": 48,
+          "l1d": 22,
+          "l2": 88,
+          "ram_read": 88,
+          "ram_write": 210,
+          "total": 456
+        },
+        {
+          "scope": "stack_window",
+          "function": "ip4_addr_isbroadcast_u32",
+          "l1i": 224,
+          "l1d": 28,
+          "l2": 16,
+          "ram_read": 176,
+          "ram_write": 0,
+          "total": 444
+        },
+        {
+          "scope": "stack_window",
+          "function": "pbuf_clen",
+          "l1i": 296,
+          "l1d": 36,
+          "l2": 8,
+          "ram_read": 88,
+          "ram_write": 0,
+          "total": 428
+        },
+        {
+          "scope": "stack_window",
+          "function": "pbuf_ref",
+          "l1i": 55,
+          "l1d": 22,
+          "l2": 88,
+          "ram_read": 0,
+          "ram_write": 231,
+          "total": 396
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_update_rcv_ann_wnd",
+          "l1i": 100,
+          "l1d": 25,
+          "l2": 48,
+          "ram_read": 88,
+          "ram_write": 105,
+          "total": 366
+        },
+        {
+          "scope": "stack_window",
+          "function": "ip4_route",
+          "l1i": 204,
+          "l1d": 60,
+          "l2": 8,
+          "ram_read": 88,
+          "ram_write": 0,
+          "total": 360
+        },
+        {
+          "scope": "stack_window",
+          "function": "on_accept",
+          "l1i": 22,
+          "l1d": 7,
+          "l2": 48,
+          "ram_read": 176,
+          "ram_write": 84,
+          "total": 337
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_recved",
+          "l1i": 42,
+          "l1d": 12,
+          "l2": 56,
+          "ram_read": 88,
+          "ram_write": 126,
+          "total": 324
+        },
+        {
+          "scope": "harness",
+          "function": "resources",
+          "l1i": 20,
+          "l1d": 17,
+          "l2": 64,
+          "ram_read": 88,
+          "ram_write": 126,
+          "total": 315
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_output_alloc_header.constprop.0",
+          "l1i": 19,
+          "l1d": 11,
+          "l2": 40,
+          "ram_read": 176,
+          "ram_write": 63,
+          "total": 309
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_pcb_purge",
+          "l1i": 35,
+          "l1d": 13,
+          "l2": 48,
+          "ram_read": 88,
+          "ram_write": 105,
+          "total": 289
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_get_next_optbyte",
+          "l1i": 36,
+          "l1d": 20,
+          "l2": 40,
+          "ram_read": 88,
+          "ram_write": 84,
+          "total": 268
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_send_fin",
+          "l1i": 16,
+          "l1d": 9,
+          "l2": 40,
+          "ram_read": 88,
+          "ram_write": 84,
+          "total": 237
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_input_delayed_close",
+          "l1i": 140,
+          "l1d": 30,
+          "l2": 16,
+          "ram_read": 0,
+          "ram_write": 42,
+          "total": 228
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_send_empty_ack",
+          "l1i": 24,
+          "l1d": 7,
+          "l2": 32,
+          "ram_read": 88,
+          "ram_write": 63,
+          "total": 214
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_close_shutdown_fin",
+          "l1i": 20,
+          "l1d": 6,
+          "l2": 32,
+          "ram_read": 88,
+          "ram_write": 63,
+          "total": 209
+        },
+        {
+          "scope": "harness",
+          "function": "mem_free",
+          "l1i": 63,
+          "l1d": 21,
+          "l2": 32,
+          "ram_read": 0,
+          "ram_write": 84,
+          "total": 200
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_output_control_segment",
+          "l1i": 23,
+          "l1d": 11,
+          "l2": 40,
+          "ram_read": 0,
+          "ram_write": 105,
+          "total": 179
+        },
+        {
+          "scope": "stack_window",
+          "function": "z0_stack_begin",
+          "l1i": 54,
+          "l1d": 0,
+          "l2": 8,
+          "ram_read": 88,
+          "ram_write": 0,
+          "total": 150
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_close",
+          "l1i": 15,
+          "l1d": 4,
+          "l2": 16,
+          "ram_read": 88,
+          "ram_write": 21,
+          "total": 144
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_next_iss",
+          "l1i": 6,
+          "l1d": 3,
+          "l2": 16,
+          "ram_read": 88,
+          "ram_write": 21,
+          "total": 134
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_accept",
+          "l1i": 6,
+          "l1d": 2,
+          "l2": 16,
+          "ram_read": 88,
+          "ram_write": 21,
+          "total": 133
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_recv",
+          "l1i": 3,
+          "l1d": 1,
+          "l2": 16,
+          "ram_read": 88,
+          "ram_write": 21,
+          "total": 129
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_eff_send_mss_netif",
+          "l1i": 28,
+          "l1d": 2,
+          "l2": 8,
+          "ram_read": 88,
+          "ram_write": 0,
+          "total": 126
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_timer_needed",
+          "l1i": 3,
+          "l1d": 0,
+          "l2": 8,
+          "ram_read": 88,
+          "ram_write": 0,
+          "total": 99
+        },
+        {
+          "scope": "harness",
+          "function": "tcp_capture_begin",
+          "l1i": 2,
+          "l1d": 0,
+          "l2": 8,
+          "ram_read": 88,
+          "ram_write": 0,
+          "total": 98
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_listen_with_backlog",
+          "l1i": 2,
+          "l1d": 0,
+          "l2": 8,
+          "ram_read": 88,
+          "ram_write": 0,
+          "total": 98
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_new",
+          "l1i": 2,
+          "l1d": 0,
+          "l2": 8,
+          "ram_read": 88,
+          "ram_write": 0,
+          "total": 98
+        },
+        {
+          "scope": "stack_window",
+          "function": "ip4_output_if",
+          "l1i": 55,
+          "l1d": 11,
+          "l2": 0,
+          "ram_read": 0,
+          "ram_write": 0,
+          "total": 66
+        },
+        {
+          "scope": "harness",
+          "function": "z0_stack_end",
+          "l1i": 54,
+          "l1d": 0,
+          "l2": 0,
+          "ram_read": 0,
+          "ram_write": 0,
+          "total": 54
+        },
+        {
+          "scope": "stack_window",
+          "function": "pbuf_add_header",
+          "l1i": 42,
+          "l1d": 0,
+          "l2": 0,
+          "ram_read": 0,
+          "ram_write": 0,
+          "total": 42
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_sent",
+          "l1i": 3,
+          "l1d": 1,
+          "l2": 8,
+          "ram_read": 0,
+          "ram_write": 21,
+          "total": 33
+        },
+        {
+          "scope": "harness",
+          "function": "pbuf_add_header",
+          "l1i": 28,
+          "l1d": 0,
+          "l2": 0,
+          "ram_read": 0,
+          "ram_write": 0,
+          "total": 28
+        },
+        {
+          "scope": "stack_window",
+          "function": "ip_chksum_pseudo",
+          "l1i": 25,
+          "l1d": 0,
+          "l2": 0,
+          "ram_read": 0,
+          "ram_write": 0,
+          "total": 25
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_free",
+          "l1i": 6,
+          "l1d": 0,
+          "l2": 0,
+          "ram_read": 0,
+          "ram_write": 0,
+          "total": 6
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_segs_free",
+          "l1i": 4,
+          "l1d": 0,
+          "l2": 0,
+          "ram_read": 0,
+          "ram_write": 0,
+          "total": 4
+        }
+      ]
+    },
+    {
+      "schema": "timing-report-v1",
+      "run": "z0-1",
+      "profile": {
+        "schema": "memory-timing-profile-v1",
+        "name": "sysram-read-10-write-20",
+        "assumptions": "User-requested sysram latency scenario; read/write startup cycles exclude data beats. Not hardware calibration. Serial write-through/write-allocate; no overlap, DMA, coherence, store buffer or dirty writeback.",
+        "write_policy": "write-through-write-allocate",
+        "caches": {
+          "l1i": {
+            "size": 16384,
+            "line": 64,
+            "ways": 4,
+            "lookup_cycles": 1
+          },
+          "l1d": {
+            "size": 16384,
+            "line": 64,
+            "ways": 4,
+            "lookup_cycles": 1
+          },
+          "l2": {
+            "size": 65536,
+            "line": 64,
+            "ways": 4,
+            "lookup_cycles": 8
+          }
+        },
+        "regions": [
+          {
+            "name": "system_ram",
+            "start": 2147483648,
+            "end": 2281701376,
+            "cacheable": true,
+            "read_latency_cycles": 10,
+            "write_latency_cycles": 20,
+            "bus_bytes_per_cycle": 8
+          }
+        ]
+      },
+      "profile_sha256": "88e83b4f586d8f2fb6b1702938987b04edd8741b09c29e0bb1d9ffcf313cb7e2",
+      "evidence": {
+        "accesses.csv.gz": "11c81af3f27352b04b6bc269ab8c0f5fcbea1e0bd25327a6def633e462fd574f",
+        "manifest.json": "8773394426ead23ac5039982244ea80367d8db3dcb8e043fd8cf99778305f8a3",
+        "qemu.log": "8456721495eafaaf6203806d4f7bef68b4cc6c7c66cfee2deb4b4a85971a36b4",
+        "symbols.txt": "74531f8976352de95b46d525a654253740be3ac2903e229dd805d27262704bca"
+      },
+      "events": 382441,
+      "stack_windows": 27,
+      "scope_cost_cycles": {
+        "stack_window": 214933,
+        "harness": 1108268
+      },
+      "model": {
+        "schema": "memory-service-v1",
+        "estimated_memory_service_cycles": 1323201,
+        "cpu_cycles": null,
+        "guest_time_changed": false,
+        "policy": "serial LRU; non-inclusive; write-through + write-allocate at both levels",
+        "initial_state": "cold; continuous input trace",
+        "cost_cycles": {
+          "l1i": 303420,
+          "l1d": 80677,
+          "l2": 258032,
+          "ram_read": 10080,
+          "ram_write": 670992
+        },
+        "operations": {
+          "I": 301764,
+          "R": 48725,
+          "W": 31952
+        },
+        "regions": [
+          {
+            "name": "system_ram",
+            "start": 2147483648,
+            "end": 2281701376,
+            "cacheable": true,
+            "read_latency_cycles": 10,
+            "write_latency_cycles": 20,
+            "bus_bytes_per_cycle": 8
+          }
+        ],
+        "lookup_cycles": {
+          "l1i": 1,
+          "l1d": 1,
+          "l2": 8
+        },
+        "region_cost_cycles": {
+          "system_ram": {
+            "ram_read": 10080,
+            "ram_write": 670992
+          }
+        },
+        "ram_read_transactions": 560,
+        "ram_write_transactions": 31952,
+        "l1i": {
+          "geometry": {
+            "size": 16384,
+            "line": 64,
+            "ways": 4
+          },
+          "accesses": 303420,
+          "misses": 280,
+          "reads": 303420,
+          "writes": 0,
+          "read_misses": 280,
+          "write_misses": 0,
+          "miss_rate": 0.0009228132621448817
+        },
+        "l1d": {
+          "geometry": {
+            "size": 16384,
+            "line": 64,
+            "ways": 4
+          },
+          "accesses": 80677,
+          "misses": 309,
+          "reads": 48725,
+          "writes": 31952,
+          "read_misses": 22,
+          "write_misses": 287,
+          "miss_rate": 0.003830087881304461
+        },
+        "l2": {
+          "geometry": {
+            "size": 65536,
+            "line": 64,
+            "ways": 4
+          },
+          "accesses": 32254,
+          "misses": 560,
+          "reads": 302,
+          "writes": 31952,
+          "read_misses": 277,
+          "write_misses": 283,
+          "miss_rate": 0.017362187635642092
+        }
+      },
+      "attribution": "self PC; stack windows include callbacks/assertions; cache state includes harness",
+      "functions": [
+        {
+          "scope": "harness",
+          "function": "memcpy",
+          "l1i": 77769,
+          "l1d": 25888,
+          "l2": 103552,
+          "ram_read": 4248,
+          "ram_write": 271824,
+          "total": 483281
+        },
+        {
+          "scope": "harness",
+          "function": "session_task",
+          "l1i": 71479,
+          "l1d": 11942,
+          "l2": 94696,
+          "ram_read": 666,
+          "ram_write": 248304,
+          "total": 427087
+        },
+        {
+          "scope": "harness",
+          "function": "memcmp",
+          "l1i": 81792,
+          "l1d": 23360,
+          "l2": 8,
+          "ram_read": 18,
+          "ram_write": 0,
+          "total": 105178
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_input",
+          "l1i": 3876,
+          "l1d": 1742,
+          "l2": 5744,
+          "ram_read": 720,
+          "ram_write": 14259,
+          "total": 26341
+        },
+        {
+          "scope": "harness",
+          "function": "memset",
+          "l1i": 3502,
+          "l1d": 692,
+          "l2": 5536,
+          "ram_read": 0,
+          "ram_write": 14532,
+          "total": 24262
+        },
+        {
+          "scope": "stack_window",
+          "function": "lwip_standard_chksum",
+          "l1i": 20555,
+          "l1d": 3198,
+          "l2": 0,
+          "ram_read": 0,
+          "ram_write": 0,
+          "total": 23753
+        },
+        {
+          "scope": "harness",
+          "function": "inject",
+          "l1i": 2256,
+          "l1d": 802,
+          "l2": 5368,
+          "ram_read": 162,
+          "ram_write": 13902,
+          "total": 22490
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_output",
+          "l1i": 3035,
+          "l1d": 1706,
+          "l2": 4736,
+          "ram_read": 288,
+          "ram_write": 12012,
+          "total": 21777
+        },
+        {
+          "scope": "stack_window",
+          "function": "ip4_output_if_src",
+          "l1i": 1199,
+          "l1d": 528,
+          "l2": 2776,
+          "ram_read": 108,
+          "ram_write": 7161,
+          "total": 11772
+        },
+        {
+          "scope": "stack_window",
+          "function": "ip4_input",
+          "l1i": 1820,
+          "l1d": 714,
+          "l2": 2432,
+          "ram_read": 180,
+          "ram_write": 6174,
+          "total": 11320
+        },
+        {
+          "scope": "stack_window",
+          "function": "memset",
+          "l1i": 1606,
+          "l1d": 320,
+          "l2": 2576,
+          "ram_read": 90,
+          "ram_write": 6720,
+          "total": 11312
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_receive",
+          "l1i": 1694,
+          "l1d": 797,
+          "l2": 2296,
+          "ram_read": 396,
+          "ram_write": 5502,
+          "total": 10685
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_create_segment",
+          "l1i": 790,
+          "l1d": 420,
+          "l2": 2048,
+          "ram_read": 108,
+          "ram_write": 5250,
+          "total": 8616
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_write",
+          "l1i": 1248,
+          "l1d": 456,
+          "l2": 1816,
+          "ram_read": 234,
+          "ram_write": 4368,
+          "total": 8122
+        },
+        {
+          "scope": "stack_window",
+          "function": "inet_chksum_pseudo",
+          "l1i": 1970,
+          "l1d": 515,
+          "l2": 1464,
+          "ram_read": 18,
+          "ram_write": 3843,
+          "total": 7810
+        },
+        {
+          "scope": "harness",
+          "function": "snapshot",
+          "l1i": 1100,
+          "l1d": 425,
+          "l2": 1432,
+          "ram_read": 144,
+          "ram_write": 3675,
+          "total": 6776
+        },
+        {
+          "scope": "stack_window",
+          "function": "pbuf_alloc",
+          "l1i": 766,
+          "l1d": 321,
+          "l2": 1504,
+          "ram_read": 18,
+          "ram_write": 3948,
+          "total": 6557
+        },
+        {
+          "scope": "harness",
+          "function": "pbuf_copy_partial",
+          "l1i": 1416,
+          "l1d": 415,
+          "l2": 1280,
+          "ram_read": 36,
+          "ram_write": 3318,
+          "total": 6465
+        },
+        {
+          "scope": "stack_window",
+          "function": "pbuf_free",
+          "l1i": 1081,
+          "l1d": 380,
+          "l2": 1272,
+          "ram_read": 18,
+          "ram_write": 3318,
+          "total": 6069
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_free_acked_segments.isra.0",
+          "l1i": 850,
+          "l1d": 450,
+          "l2": 1304,
+          "ram_read": 54,
+          "ram_write": 3360,
+          "total": 6018
+        },
+        {
+          "scope": "harness",
+          "function": "pbuf_alloc",
+          "l1i": 700,
+          "l1d": 266,
+          "l2": 1376,
+          "ram_read": 90,
+          "ram_write": 3528,
+          "total": 5960
+        },
+        {
+          "scope": "stack_window",
+          "function": "pbuf_get_at",
+          "l1i": 1280,
+          "l1d": 256,
+          "l2": 1032,
+          "ram_read": 18,
+          "ram_write": 2688,
+          "total": 5274
+        },
+        {
+          "scope": "stack_window",
+          "function": "mem_free",
+          "l1i": 1276,
+          "l1d": 413,
+          "l2": 720,
+          "ram_read": 90,
+          "ram_write": 1785,
+          "total": 4284
+        },
+        {
+          "scope": "harness",
+          "function": "inet_chksum_pseudo",
+          "l1i": 1036,
+          "l1d": 266,
+          "l2": 800,
+          "ram_read": 36,
+          "ram_write": 2058,
+          "total": 4196
+        },
+        {
+          "scope": "harness",
+          "function": "phase",
+          "l1i": 567,
+          "l1d": 297,
+          "l2": 880,
+          "ram_read": 144,
+          "ram_write": 2268,
+          "total": 4156
+        },
+        {
+          "scope": "harness",
+          "function": "mem_malloc",
+          "l1i": 878,
+          "l1d": 263,
+          "l2": 824,
+          "ram_read": 162,
+          "ram_write": 1995,
+          "total": 4122
+        },
+        {
+          "scope": "stack_window",
+          "function": "phase",
+          "l1i": 270,
+          "l1d": 108,
+          "l2": 864,
+          "ram_read": 0,
+          "ram_write": 2268,
+          "total": 3510
+        },
+        {
+          "scope": "harness",
+          "function": "consume",
+          "l1i": 786,
+          "l1d": 271,
+          "l2": 656,
+          "ram_read": 90,
+          "ram_write": 1617,
+          "total": 3420
+        },
+        {
+          "scope": "stack_window",
+          "function": "mem_malloc",
+          "l1i": 695,
+          "l1d": 210,
+          "l2": 624,
+          "ram_read": 18,
+          "ram_write": 1638,
+          "total": 3185
+        },
+        {
+          "scope": "stack_window",
+          "function": "pbuf_remove_header",
+          "l1i": 560,
+          "l1d": 168,
+          "l2": 672,
+          "ram_read": 0,
+          "ram_write": 1764,
+          "total": 3164
+        },
+        {
+          "scope": "stack_window",
+          "function": "pbuf_alloc_reference",
+          "l1i": 184,
+          "l1d": 120,
+          "l2": 704,
+          "ram_read": 0,
+          "ram_write": 1848,
+          "total": 2856
+        },
+        {
+          "scope": "stack_window",
+          "function": "pbuf_add_header_impl",
+          "l1i": 567,
+          "l1d": 147,
+          "l2": 504,
+          "ram_read": 0,
+          "ram_write": 1323,
+          "total": 2541
+        },
+        {
+          "scope": "stack_window",
+          "function": "memp_free",
+          "l1i": 378,
+          "l1d": 189,
+          "l2": 528,
+          "ram_read": 18,
+          "ram_write": 1323,
+          "total": 2436
+        },
+        {
+          "scope": "harness",
+          "function": "pbuf_free",
+          "l1i": 288,
+          "l1d": 134,
+          "l2": 528,
+          "ram_read": 0,
+          "ram_write": 1386,
+          "total": 2336
+        },
+        {
+          "scope": "harness",
+          "function": "lwip_standard_chksum",
+          "l1i": 1996,
+          "l1d": 202,
+          "l2": 24,
+          "ram_read": 54,
+          "ram_write": 0,
+          "total": 2276
+        },
+        {
+          "scope": "stack_window",
+          "function": "do_memp_malloc_pool",
+          "l1i": 319,
+          "l1d": 214,
+          "l2": 472,
+          "ram_read": 234,
+          "ram_write": 966,
+          "total": 2205
+        },
+        {
+          "scope": "stack_window",
+          "function": "on_recv",
+          "l1i": 1372,
+          "l1d": 173,
+          "l2": 176,
+          "ram_read": 18,
+          "ram_write": 441,
+          "total": 2180
+        },
+        {
+          "scope": "harness",
+          "function": "pbuf_add_header_impl",
+          "l1i": 378,
+          "l1d": 98,
+          "l2": 352,
+          "ram_read": 36,
+          "ram_write": 882,
+          "total": 1746
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_slowtmr",
+          "l1i": 208,
+          "l1d": 102,
+          "l2": 416,
+          "ram_read": 162,
+          "ram_write": 798,
+          "total": 1686
+        },
+        {
+          "scope": "harness",
+          "function": "pbuf_remove_header",
+          "l1i": 280,
+          "l1d": 84,
+          "l2": 352,
+          "ram_read": 36,
+          "ram_write": 882,
+          "total": 1634
+        },
+        {
+          "scope": "stack_window",
+          "function": "output_packet",
+          "l1i": 187,
+          "l1d": 88,
+          "l2": 368,
+          "ram_read": 18,
+          "ram_write": 924,
+          "total": 1585
+        },
+        {
+          "scope": "stack_window",
+          "function": "lwip_htons",
+          "l1i": 1524,
+          "l1d": 0,
+          "l2": 0,
+          "ram_read": 0,
+          "ram_write": 0,
+          "total": 1524
+        },
+        {
+          "scope": "stack_window",
+          "function": "pbuf_try_get_at",
+          "l1i": 1024,
+          "l1d": 384,
+          "l2": 0,
+          "ram_read": 0,
+          "ram_write": 0,
+          "total": 1408
+        },
+        {
+          "scope": "stack_window",
+          "function": "lwip_htonl",
+          "l1i": 1313,
+          "l1d": 0,
+          "l2": 0,
+          "ram_read": 0,
+          "ram_write": 0,
+          "total": 1313
+        },
+        {
+          "scope": "stack_window",
+          "function": "session_task",
+          "l1i": 202,
+          "l1d": 57,
+          "l2": 264,
+          "ram_read": 108,
+          "ram_write": 588,
+          "total": 1219
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_alloc",
+          "l1i": 102,
+          "l1d": 44,
+          "l2": 288,
+          "ram_read": 90,
+          "ram_write": 672,
+          "total": 1196
+        },
+        {
+          "scope": "stack_window",
+          "function": "on_sent",
+          "l1i": 152,
+          "l1d": 72,
+          "l2": 264,
+          "ram_read": 18,
+          "ram_write": 672,
+          "total": 1178
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_output_alloc_header_common.constprop.0",
+          "l1i": 77,
+          "l1d": 39,
+          "l2": 256,
+          "ram_read": 54,
+          "ram_write": 609,
+          "total": 1035
+        },
+        {
+          "scope": "harness",
+          "function": "lwip_htons",
+          "l1i": 936,
+          "l1d": 0,
+          "l2": 8,
+          "ram_read": 18,
+          "ram_write": 0,
+          "total": 962
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_seg_free",
+          "l1i": 130,
+          "l1d": 50,
+          "l2": 168,
+          "ram_read": 18,
+          "ram_write": 420,
+          "total": 786
+        },
+        {
+          "scope": "harness",
+          "function": "lwip_htonl",
+          "l1i": 780,
+          "l1d": 0,
+          "l2": 0,
+          "ram_read": 0,
+          "ram_write": 0,
+          "total": 780
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_listen_with_backlog_and_err",
+          "l1i": 62,
+          "l1d": 35,
+          "l2": 160,
+          "ram_read": 36,
+          "ram_write": 378,
+          "total": 671
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_enqueue_flags",
+          "l1i": 89,
+          "l1d": 34,
+          "l2": 152,
+          "ram_read": 72,
+          "ram_write": 315,
+          "total": 662
+        },
+        {
+          "scope": "stack_window",
+          "function": "pbuf_cat",
+          "l1i": 80,
+          "l1d": 40,
+          "l2": 136,
+          "ram_read": 18,
+          "ram_write": 336,
+          "total": 610
+        },
+        {
+          "scope": "harness",
+          "function": "inet_chksum",
+          "l1i": 126,
+          "l1d": 28,
+          "l2": 120,
+          "ram_read": 18,
+          "ram_write": 294,
+          "total": 586
+        },
+        {
+          "scope": "stack_window",
+          "function": "inet_chksum",
+          "l1i": 126,
+          "l1d": 28,
+          "l2": 112,
+          "ram_read": 0,
+          "ram_write": 294,
+          "total": 560
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_fasttmr",
+          "l1i": 64,
+          "l1d": 34,
+          "l2": 128,
+          "ram_read": 54,
+          "ram_write": 252,
+          "total": 532
+        },
+        {
+          "scope": "stack_window",
+          "function": "inject",
+          "l1i": 308,
+          "l1d": 168,
+          "l2": 8,
+          "ram_read": 18,
+          "ram_write": 0,
+          "total": 502
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_pcb_remove",
+          "l1i": 45,
+          "l1d": 23,
+          "l2": 112,
+          "ram_read": 36,
+          "ram_write": 252,
+          "total": 468
+        },
+        {
+          "scope": "stack_window",
+          "function": "pbuf_ref",
+          "l1i": 55,
+          "l1d": 22,
+          "l2": 88,
+          "ram_read": 0,
+          "ram_write": 231,
+          "total": 396
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_output_control_segment_netif",
+          "l1i": 48,
+          "l1d": 22,
+          "l2": 88,
+          "ram_read": 18,
+          "ram_write": 210,
+          "total": 386
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_close_shutdown",
+          "l1i": 68,
+          "l1d": 22,
+          "l2": 80,
+          "ram_read": 72,
+          "ram_write": 126,
+          "total": 368
+        },
+        {
+          "scope": "stack_window",
+          "function": "pbuf_clen",
+          "l1i": 296,
+          "l1d": 36,
+          "l2": 8,
+          "ram_read": 18,
+          "ram_write": 0,
+          "total": 358
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_parseopt.part.0",
+          "l1i": 43,
+          "l1d": 17,
+          "l2": 80,
+          "ram_read": 54,
+          "ram_write": 147,
+          "total": 341
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_bind",
+          "l1i": 50,
+          "l1d": 18,
+          "l2": 72,
+          "ram_read": 72,
+          "ram_write": 105,
+          "total": 317
+        },
+        {
+          "scope": "stack_window",
+          "function": "ip4_input_accept",
+          "l1i": 196,
+          "l1d": 42,
+          "l2": 24,
+          "ram_read": 54,
+          "ram_write": 0,
+          "total": 316
+        },
+        {
+          "scope": "stack_window",
+          "function": "ip4_addr_isbroadcast_u32",
+          "l1i": 224,
+          "l1d": 28,
+          "l2": 16,
+          "ram_read": 36,
+          "ram_write": 0,
+          "total": 304
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_update_rcv_ann_wnd",
+          "l1i": 100,
+          "l1d": 25,
+          "l2": 48,
+          "ram_read": 18,
+          "ram_write": 105,
+          "total": 296
+        },
+        {
+          "scope": "stack_window",
+          "function": "ip4_route",
+          "l1i": 204,
+          "l1d": 60,
+          "l2": 8,
+          "ram_read": 18,
+          "ram_write": 0,
+          "total": 290
+        },
+        {
+          "scope": "stack_window",
+          "function": "memp_malloc",
+          "l1i": 189,
+          "l1d": 21,
+          "l2": 24,
+          "ram_read": 54,
+          "ram_write": 0,
+          "total": 288
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_recved",
+          "l1i": 42,
+          "l1d": 12,
+          "l2": 56,
+          "ram_read": 18,
+          "ram_write": 126,
+          "total": 254
+        },
+        {
+          "scope": "harness",
+          "function": "resources",
+          "l1i": 20,
+          "l1d": 17,
+          "l2": 64,
+          "ram_read": 18,
+          "ram_write": 126,
+          "total": 245
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_input_delayed_close",
+          "l1i": 140,
+          "l1d": 30,
+          "l2": 16,
+          "ram_read": 0,
+          "ram_write": 42,
+          "total": 228
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_pcb_purge",
+          "l1i": 35,
+          "l1d": 13,
+          "l2": 48,
+          "ram_read": 18,
+          "ram_write": 105,
+          "total": 219
+        },
+        {
+          "scope": "harness",
+          "function": "mem_free",
+          "l1i": 63,
+          "l1d": 21,
+          "l2": 32,
+          "ram_read": 0,
+          "ram_write": 84,
+          "total": 200
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_get_next_optbyte",
+          "l1i": 36,
+          "l1d": 20,
+          "l2": 40,
+          "ram_read": 18,
+          "ram_write": 84,
+          "total": 198
+        },
+        {
+          "scope": "stack_window",
+          "function": "on_accept",
+          "l1i": 22,
+          "l1d": 7,
+          "l2": 48,
+          "ram_read": 36,
+          "ram_write": 84,
+          "total": 197
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_output_control_segment",
+          "l1i": 23,
+          "l1d": 11,
+          "l2": 40,
+          "ram_read": 0,
+          "ram_write": 105,
+          "total": 179
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_output_alloc_header.constprop.0",
+          "l1i": 19,
+          "l1d": 11,
+          "l2": 40,
+          "ram_read": 36,
+          "ram_write": 63,
+          "total": 169
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_send_fin",
+          "l1i": 16,
+          "l1d": 9,
+          "l2": 40,
+          "ram_read": 18,
+          "ram_write": 84,
+          "total": 167
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_send_empty_ack",
+          "l1i": 24,
+          "l1d": 7,
+          "l2": 32,
+          "ram_read": 18,
+          "ram_write": 63,
+          "total": 144
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_close_shutdown_fin",
+          "l1i": 20,
+          "l1d": 6,
+          "l2": 32,
+          "ram_read": 18,
+          "ram_write": 63,
+          "total": 139
+        },
+        {
+          "scope": "stack_window",
+          "function": "z0_stack_begin",
+          "l1i": 54,
+          "l1d": 0,
+          "l2": 8,
+          "ram_read": 18,
+          "ram_write": 0,
+          "total": 80
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_close",
+          "l1i": 15,
+          "l1d": 4,
+          "l2": 16,
+          "ram_read": 18,
+          "ram_write": 21,
+          "total": 74
+        },
+        {
+          "scope": "stack_window",
+          "function": "ip4_output_if",
+          "l1i": 55,
+          "l1d": 11,
+          "l2": 0,
+          "ram_read": 0,
+          "ram_write": 0,
+          "total": 66
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_next_iss",
+          "l1i": 6,
+          "l1d": 3,
+          "l2": 16,
+          "ram_read": 18,
+          "ram_write": 21,
+          "total": 64
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_accept",
+          "l1i": 6,
+          "l1d": 2,
+          "l2": 16,
+          "ram_read": 18,
+          "ram_write": 21,
+          "total": 63
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_recv",
+          "l1i": 3,
+          "l1d": 1,
+          "l2": 16,
+          "ram_read": 18,
+          "ram_write": 21,
+          "total": 59
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_eff_send_mss_netif",
+          "l1i": 28,
+          "l1d": 2,
+          "l2": 8,
+          "ram_read": 18,
+          "ram_write": 0,
+          "total": 56
+        },
+        {
+          "scope": "harness",
+          "function": "z0_stack_end",
+          "l1i": 54,
+          "l1d": 0,
+          "l2": 0,
+          "ram_read": 0,
+          "ram_write": 0,
+          "total": 54
+        },
+        {
+          "scope": "stack_window",
+          "function": "pbuf_add_header",
+          "l1i": 42,
+          "l1d": 0,
+          "l2": 0,
+          "ram_read": 0,
+          "ram_write": 0,
+          "total": 42
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_sent",
+          "l1i": 3,
+          "l1d": 1,
+          "l2": 8,
+          "ram_read": 0,
+          "ram_write": 21,
+          "total": 33
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_timer_needed",
+          "l1i": 3,
+          "l1d": 0,
+          "l2": 8,
+          "ram_read": 18,
+          "ram_write": 0,
+          "total": 29
+        },
+        {
+          "scope": "harness",
+          "function": "pbuf_add_header",
+          "l1i": 28,
+          "l1d": 0,
+          "l2": 0,
+          "ram_read": 0,
+          "ram_write": 0,
+          "total": 28
+        },
+        {
+          "scope": "harness",
+          "function": "tcp_capture_begin",
+          "l1i": 2,
+          "l1d": 0,
+          "l2": 8,
+          "ram_read": 18,
+          "ram_write": 0,
+          "total": 28
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_listen_with_backlog",
+          "l1i": 2,
+          "l1d": 0,
+          "l2": 8,
+          "ram_read": 18,
+          "ram_write": 0,
+          "total": 28
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_new",
+          "l1i": 2,
+          "l1d": 0,
+          "l2": 8,
+          "ram_read": 18,
+          "ram_write": 0,
+          "total": 28
+        },
+        {
+          "scope": "stack_window",
+          "function": "ip_chksum_pseudo",
+          "l1i": 25,
+          "l1d": 0,
+          "l2": 0,
+          "ram_read": 0,
+          "ram_write": 0,
+          "total": 25
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_free",
+          "l1i": 6,
+          "l1d": 0,
+          "l2": 0,
+          "ram_read": 0,
+          "ram_write": 0,
+          "total": 6
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_segs_free",
+          "l1i": 4,
+          "l1d": 0,
+          "l2": 0,
+          "ram_read": 0,
+          "ram_write": 0,
+          "total": 4
+        }
+      ]
+    },
+    {
+      "schema": "timing-report-v1",
+      "run": "z0-1",
+      "profile": {
+        "schema": "memory-timing-profile-v1",
+        "name": "sysram-10",
+        "assumptions": "User-requested sysram latency scenario; read/write startup cycles exclude data beats. Not hardware calibration. Serial write-through/write-allocate; no overlap, DMA, coherence, store buffer or dirty writeback.",
+        "write_policy": "write-through-write-allocate",
+        "caches": {
+          "l1i": {
+            "size": 16384,
+            "line": 64,
+            "ways": 4,
+            "lookup_cycles": 1
+          },
+          "l1d": {
+            "size": 16384,
+            "line": 64,
+            "ways": 4,
+            "lookup_cycles": 1
+          },
+          "l2": {
+            "size": 65536,
+            "line": 64,
+            "ways": 4,
+            "lookup_cycles": 8
+          }
+        },
+        "regions": [
+          {
+            "name": "system_ram",
+            "start": 2147483648,
+            "end": 2281701376,
+            "cacheable": true,
+            "read_latency_cycles": 10,
+            "write_latency_cycles": 10,
+            "bus_bytes_per_cycle": 8
+          }
+        ]
+      },
+      "profile_sha256": "7ce529923403b728a0042ccd05ea12f35ba9eadaff12989a6583726cd7825899",
+      "evidence": {
+        "accesses.csv.gz": "11c81af3f27352b04b6bc269ab8c0f5fcbea1e0bd25327a6def633e462fd574f",
+        "manifest.json": "8773394426ead23ac5039982244ea80367d8db3dcb8e043fd8cf99778305f8a3",
+        "qemu.log": "8456721495eafaaf6203806d4f7bef68b4cc6c7c66cfee2deb4b4a85971a36b4",
+        "symbols.txt": "74531f8976352de95b46d525a654253740be3ac2903e229dd805d27262704bca"
+      },
+      "events": 382441,
+      "stack_windows": 27,
+      "scope_cost_cycles": {
+        "stack_window": 167163,
+        "harness": 836518
+      },
+      "model": {
+        "schema": "memory-service-v1",
+        "estimated_memory_service_cycles": 1003681,
+        "cpu_cycles": null,
+        "guest_time_changed": false,
+        "policy": "serial LRU; non-inclusive; write-through + write-allocate at both levels",
+        "initial_state": "cold; continuous input trace",
+        "cost_cycles": {
+          "l1i": 303420,
+          "l1d": 80677,
+          "l2": 258032,
+          "ram_read": 10080,
+          "ram_write": 351472
+        },
+        "operations": {
+          "I": 301764,
+          "R": 48725,
+          "W": 31952
+        },
+        "regions": [
+          {
+            "name": "system_ram",
+            "start": 2147483648,
+            "end": 2281701376,
+            "cacheable": true,
+            "read_latency_cycles": 10,
+            "write_latency_cycles": 10,
+            "bus_bytes_per_cycle": 8
+          }
+        ],
+        "lookup_cycles": {
+          "l1i": 1,
+          "l1d": 1,
+          "l2": 8
+        },
+        "region_cost_cycles": {
+          "system_ram": {
+            "ram_read": 10080,
+            "ram_write": 351472
+          }
+        },
+        "ram_read_transactions": 560,
+        "ram_write_transactions": 31952,
+        "l1i": {
+          "geometry": {
+            "size": 16384,
+            "line": 64,
+            "ways": 4
+          },
+          "accesses": 303420,
+          "misses": 280,
+          "reads": 303420,
+          "writes": 0,
+          "read_misses": 280,
+          "write_misses": 0,
+          "miss_rate": 0.0009228132621448817
+        },
+        "l1d": {
+          "geometry": {
+            "size": 16384,
+            "line": 64,
+            "ways": 4
+          },
+          "accesses": 80677,
+          "misses": 309,
+          "reads": 48725,
+          "writes": 31952,
+          "read_misses": 22,
+          "write_misses": 287,
+          "miss_rate": 0.003830087881304461
+        },
+        "l2": {
+          "geometry": {
+            "size": 65536,
+            "line": 64,
+            "ways": 4
+          },
+          "accesses": 32254,
+          "misses": 560,
+          "reads": 302,
+          "writes": 31952,
+          "read_misses": 277,
+          "write_misses": 283,
+          "miss_rate": 0.017362187635642092
+        }
+      },
+      "attribution": "self PC; stack windows include callbacks/assertions; cache state includes harness",
+      "functions": [
+        {
+          "scope": "harness",
+          "function": "memcpy",
+          "l1i": 77769,
+          "l1d": 25888,
+          "l2": 103552,
+          "ram_read": 4248,
+          "ram_write": 142384,
+          "total": 353841
+        },
+        {
+          "scope": "harness",
+          "function": "session_task",
+          "l1i": 71479,
+          "l1d": 11942,
+          "l2": 94696,
+          "ram_read": 666,
+          "ram_write": 130064,
+          "total": 308847
+        },
+        {
+          "scope": "harness",
+          "function": "memcmp",
+          "l1i": 81792,
+          "l1d": 23360,
+          "l2": 8,
+          "ram_read": 18,
+          "ram_write": 0,
+          "total": 105178
+        },
+        {
+          "scope": "stack_window",
+          "function": "lwip_standard_chksum",
+          "l1i": 20555,
+          "l1d": 3198,
+          "l2": 0,
+          "ram_read": 0,
+          "ram_write": 0,
+          "total": 23753
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_input",
+          "l1i": 3876,
+          "l1d": 1742,
+          "l2": 5744,
+          "ram_read": 720,
+          "ram_write": 7469,
+          "total": 19551
+        },
+        {
+          "scope": "harness",
+          "function": "memset",
+          "l1i": 3502,
+          "l1d": 692,
+          "l2": 5536,
+          "ram_read": 0,
+          "ram_write": 7612,
+          "total": 17342
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_output",
+          "l1i": 3035,
+          "l1d": 1706,
+          "l2": 4736,
+          "ram_read": 288,
+          "ram_write": 6292,
+          "total": 16057
+        },
+        {
+          "scope": "harness",
+          "function": "inject",
+          "l1i": 2256,
+          "l1d": 802,
+          "l2": 5368,
+          "ram_read": 162,
+          "ram_write": 7282,
+          "total": 15870
+        },
+        {
+          "scope": "stack_window",
+          "function": "ip4_input",
+          "l1i": 1820,
+          "l1d": 714,
+          "l2": 2432,
+          "ram_read": 180,
+          "ram_write": 3234,
+          "total": 8380
+        },
+        {
+          "scope": "stack_window",
+          "function": "ip4_output_if_src",
+          "l1i": 1199,
+          "l1d": 528,
+          "l2": 2776,
+          "ram_read": 108,
+          "ram_write": 3751,
+          "total": 8362
+        },
+        {
+          "scope": "stack_window",
+          "function": "memset",
+          "l1i": 1606,
+          "l1d": 320,
+          "l2": 2576,
+          "ram_read": 90,
+          "ram_write": 3520,
+          "total": 8112
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_receive",
+          "l1i": 1694,
+          "l1d": 797,
+          "l2": 2296,
+          "ram_read": 396,
+          "ram_write": 2882,
+          "total": 8065
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_create_segment",
+          "l1i": 790,
+          "l1d": 420,
+          "l2": 2048,
+          "ram_read": 108,
+          "ram_write": 2750,
+          "total": 6116
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_write",
+          "l1i": 1248,
+          "l1d": 456,
+          "l2": 1816,
+          "ram_read": 234,
+          "ram_write": 2288,
+          "total": 6042
+        },
+        {
+          "scope": "stack_window",
+          "function": "inet_chksum_pseudo",
+          "l1i": 1970,
+          "l1d": 515,
+          "l2": 1464,
+          "ram_read": 18,
+          "ram_write": 2013,
+          "total": 5980
+        },
+        {
+          "scope": "harness",
+          "function": "snapshot",
+          "l1i": 1100,
+          "l1d": 425,
+          "l2": 1432,
+          "ram_read": 144,
+          "ram_write": 1925,
+          "total": 5026
+        },
+        {
+          "scope": "harness",
+          "function": "pbuf_copy_partial",
+          "l1i": 1416,
+          "l1d": 415,
+          "l2": 1280,
+          "ram_read": 36,
+          "ram_write": 1738,
+          "total": 4885
+        },
+        {
+          "scope": "stack_window",
+          "function": "pbuf_alloc",
+          "l1i": 766,
+          "l1d": 321,
+          "l2": 1504,
+          "ram_read": 18,
+          "ram_write": 2068,
+          "total": 4677
+        },
+        {
+          "scope": "stack_window",
+          "function": "pbuf_free",
+          "l1i": 1081,
+          "l1d": 380,
+          "l2": 1272,
+          "ram_read": 18,
+          "ram_write": 1738,
+          "total": 4489
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_free_acked_segments.isra.0",
+          "l1i": 850,
+          "l1d": 450,
+          "l2": 1304,
+          "ram_read": 54,
+          "ram_write": 1760,
+          "total": 4418
+        },
+        {
+          "scope": "harness",
+          "function": "pbuf_alloc",
+          "l1i": 700,
+          "l1d": 266,
+          "l2": 1376,
+          "ram_read": 90,
+          "ram_write": 1848,
+          "total": 4280
+        },
+        {
+          "scope": "stack_window",
+          "function": "pbuf_get_at",
+          "l1i": 1280,
+          "l1d": 256,
+          "l2": 1032,
+          "ram_read": 18,
+          "ram_write": 1408,
+          "total": 3994
+        },
+        {
+          "scope": "stack_window",
+          "function": "mem_free",
+          "l1i": 1276,
+          "l1d": 413,
+          "l2": 720,
+          "ram_read": 90,
+          "ram_write": 935,
+          "total": 3434
+        },
+        {
+          "scope": "harness",
+          "function": "inet_chksum_pseudo",
+          "l1i": 1036,
+          "l1d": 266,
+          "l2": 800,
+          "ram_read": 36,
+          "ram_write": 1078,
+          "total": 3216
+        },
+        {
+          "scope": "harness",
+          "function": "mem_malloc",
+          "l1i": 878,
+          "l1d": 263,
+          "l2": 824,
+          "ram_read": 162,
+          "ram_write": 1045,
+          "total": 3172
+        },
+        {
+          "scope": "harness",
+          "function": "phase",
+          "l1i": 567,
+          "l1d": 297,
+          "l2": 880,
+          "ram_read": 144,
+          "ram_write": 1188,
+          "total": 3076
+        },
+        {
+          "scope": "harness",
+          "function": "consume",
+          "l1i": 786,
+          "l1d": 271,
+          "l2": 656,
+          "ram_read": 90,
+          "ram_write": 847,
+          "total": 2650
+        },
+        {
+          "scope": "stack_window",
+          "function": "phase",
+          "l1i": 270,
+          "l1d": 108,
+          "l2": 864,
+          "ram_read": 0,
+          "ram_write": 1188,
+          "total": 2430
+        },
+        {
+          "scope": "stack_window",
+          "function": "mem_malloc",
+          "l1i": 695,
+          "l1d": 210,
+          "l2": 624,
+          "ram_read": 18,
+          "ram_write": 858,
+          "total": 2405
+        },
+        {
+          "scope": "stack_window",
+          "function": "pbuf_remove_header",
+          "l1i": 560,
+          "l1d": 168,
+          "l2": 672,
+          "ram_read": 0,
+          "ram_write": 924,
+          "total": 2324
+        },
+        {
+          "scope": "harness",
+          "function": "lwip_standard_chksum",
+          "l1i": 1996,
+          "l1d": 202,
+          "l2": 24,
+          "ram_read": 54,
+          "ram_write": 0,
+          "total": 2276
+        },
+        {
+          "scope": "stack_window",
+          "function": "pbuf_alloc_reference",
+          "l1i": 184,
+          "l1d": 120,
+          "l2": 704,
+          "ram_read": 0,
+          "ram_write": 968,
+          "total": 1976
+        },
+        {
+          "scope": "stack_window",
+          "function": "on_recv",
+          "l1i": 1372,
+          "l1d": 173,
+          "l2": 176,
+          "ram_read": 18,
+          "ram_write": 231,
+          "total": 1970
+        },
+        {
+          "scope": "stack_window",
+          "function": "pbuf_add_header_impl",
+          "l1i": 567,
+          "l1d": 147,
+          "l2": 504,
+          "ram_read": 0,
+          "ram_write": 693,
+          "total": 1911
+        },
+        {
+          "scope": "stack_window",
+          "function": "memp_free",
+          "l1i": 378,
+          "l1d": 189,
+          "l2": 528,
+          "ram_read": 18,
+          "ram_write": 693,
+          "total": 1806
+        },
+        {
+          "scope": "stack_window",
+          "function": "do_memp_malloc_pool",
+          "l1i": 319,
+          "l1d": 214,
+          "l2": 472,
+          "ram_read": 234,
+          "ram_write": 506,
+          "total": 1745
+        },
+        {
+          "scope": "harness",
+          "function": "pbuf_free",
+          "l1i": 288,
+          "l1d": 134,
+          "l2": 528,
+          "ram_read": 0,
+          "ram_write": 726,
+          "total": 1676
+        },
+        {
+          "scope": "stack_window",
+          "function": "lwip_htons",
+          "l1i": 1524,
+          "l1d": 0,
+          "l2": 0,
+          "ram_read": 0,
+          "ram_write": 0,
+          "total": 1524
+        },
+        {
+          "scope": "stack_window",
+          "function": "pbuf_try_get_at",
+          "l1i": 1024,
+          "l1d": 384,
+          "l2": 0,
+          "ram_read": 0,
+          "ram_write": 0,
+          "total": 1408
+        },
+        {
+          "scope": "harness",
+          "function": "pbuf_add_header_impl",
+          "l1i": 378,
+          "l1d": 98,
+          "l2": 352,
+          "ram_read": 36,
+          "ram_write": 462,
+          "total": 1326
+        },
+        {
+          "scope": "stack_window",
+          "function": "lwip_htonl",
+          "l1i": 1313,
+          "l1d": 0,
+          "l2": 0,
+          "ram_read": 0,
+          "ram_write": 0,
+          "total": 1313
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_slowtmr",
+          "l1i": 208,
+          "l1d": 102,
+          "l2": 416,
+          "ram_read": 162,
+          "ram_write": 418,
+          "total": 1306
+        },
+        {
+          "scope": "harness",
+          "function": "pbuf_remove_header",
+          "l1i": 280,
+          "l1d": 84,
+          "l2": 352,
+          "ram_read": 36,
+          "ram_write": 462,
+          "total": 1214
+        },
+        {
+          "scope": "stack_window",
+          "function": "output_packet",
+          "l1i": 187,
+          "l1d": 88,
+          "l2": 368,
+          "ram_read": 18,
+          "ram_write": 484,
+          "total": 1145
+        },
+        {
+          "scope": "harness",
+          "function": "lwip_htons",
+          "l1i": 936,
+          "l1d": 0,
+          "l2": 8,
+          "ram_read": 18,
+          "ram_write": 0,
+          "total": 962
+        },
+        {
+          "scope": "stack_window",
+          "function": "session_task",
+          "l1i": 202,
+          "l1d": 57,
+          "l2": 264,
+          "ram_read": 108,
+          "ram_write": 308,
+          "total": 939
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_alloc",
+          "l1i": 102,
+          "l1d": 44,
+          "l2": 288,
+          "ram_read": 90,
+          "ram_write": 352,
+          "total": 876
+        },
+        {
+          "scope": "stack_window",
+          "function": "on_sent",
+          "l1i": 152,
+          "l1d": 72,
+          "l2": 264,
+          "ram_read": 18,
+          "ram_write": 352,
+          "total": 858
+        },
+        {
+          "scope": "harness",
+          "function": "lwip_htonl",
+          "l1i": 780,
+          "l1d": 0,
+          "l2": 0,
+          "ram_read": 0,
+          "ram_write": 0,
+          "total": 780
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_output_alloc_header_common.constprop.0",
+          "l1i": 77,
+          "l1d": 39,
+          "l2": 256,
+          "ram_read": 54,
+          "ram_write": 319,
+          "total": 745
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_seg_free",
+          "l1i": 130,
+          "l1d": 50,
+          "l2": 168,
+          "ram_read": 18,
+          "ram_write": 220,
+          "total": 586
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_enqueue_flags",
+          "l1i": 89,
+          "l1d": 34,
+          "l2": 152,
+          "ram_read": 72,
+          "ram_write": 165,
+          "total": 512
+        },
+        {
+          "scope": "stack_window",
+          "function": "inject",
+          "l1i": 308,
+          "l1d": 168,
+          "l2": 8,
+          "ram_read": 18,
+          "ram_write": 0,
+          "total": 502
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_listen_with_backlog_and_err",
+          "l1i": 62,
+          "l1d": 35,
+          "l2": 160,
+          "ram_read": 36,
+          "ram_write": 198,
+          "total": 491
+        },
+        {
+          "scope": "stack_window",
+          "function": "pbuf_cat",
+          "l1i": 80,
+          "l1d": 40,
+          "l2": 136,
+          "ram_read": 18,
+          "ram_write": 176,
+          "total": 450
+        },
+        {
+          "scope": "harness",
+          "function": "inet_chksum",
+          "l1i": 126,
+          "l1d": 28,
+          "l2": 120,
+          "ram_read": 18,
+          "ram_write": 154,
+          "total": 446
+        },
+        {
+          "scope": "stack_window",
+          "function": "inet_chksum",
+          "l1i": 126,
+          "l1d": 28,
+          "l2": 112,
+          "ram_read": 0,
+          "ram_write": 154,
+          "total": 420
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_fasttmr",
+          "l1i": 64,
+          "l1d": 34,
+          "l2": 128,
+          "ram_read": 54,
+          "ram_write": 132,
+          "total": 412
+        },
+        {
+          "scope": "stack_window",
+          "function": "pbuf_clen",
+          "l1i": 296,
+          "l1d": 36,
+          "l2": 8,
+          "ram_read": 18,
+          "ram_write": 0,
+          "total": 358
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_pcb_remove",
+          "l1i": 45,
+          "l1d": 23,
+          "l2": 112,
+          "ram_read": 36,
+          "ram_write": 132,
+          "total": 348
+        },
+        {
+          "scope": "stack_window",
+          "function": "ip4_input_accept",
+          "l1i": 196,
+          "l1d": 42,
+          "l2": 24,
+          "ram_read": 54,
+          "ram_write": 0,
+          "total": 316
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_close_shutdown",
+          "l1i": 68,
+          "l1d": 22,
+          "l2": 80,
+          "ram_read": 72,
+          "ram_write": 66,
+          "total": 308
+        },
+        {
+          "scope": "stack_window",
+          "function": "ip4_addr_isbroadcast_u32",
+          "l1i": 224,
+          "l1d": 28,
+          "l2": 16,
+          "ram_read": 36,
+          "ram_write": 0,
+          "total": 304
+        },
+        {
+          "scope": "stack_window",
+          "function": "ip4_route",
+          "l1i": 204,
+          "l1d": 60,
+          "l2": 8,
+          "ram_read": 18,
+          "ram_write": 0,
+          "total": 290
+        },
+        {
+          "scope": "stack_window",
+          "function": "memp_malloc",
+          "l1i": 189,
+          "l1d": 21,
+          "l2": 24,
+          "ram_read": 54,
+          "ram_write": 0,
+          "total": 288
+        },
+        {
+          "scope": "stack_window",
+          "function": "pbuf_ref",
+          "l1i": 55,
+          "l1d": 22,
+          "l2": 88,
+          "ram_read": 0,
+          "ram_write": 121,
+          "total": 286
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_output_control_segment_netif",
+          "l1i": 48,
+          "l1d": 22,
+          "l2": 88,
+          "ram_read": 18,
+          "ram_write": 110,
+          "total": 286
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_parseopt.part.0",
+          "l1i": 43,
+          "l1d": 17,
+          "l2": 80,
+          "ram_read": 54,
+          "ram_write": 77,
+          "total": 271
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_bind",
+          "l1i": 50,
+          "l1d": 18,
+          "l2": 72,
+          "ram_read": 72,
+          "ram_write": 55,
+          "total": 267
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_update_rcv_ann_wnd",
+          "l1i": 100,
+          "l1d": 25,
+          "l2": 48,
+          "ram_read": 18,
+          "ram_write": 55,
+          "total": 246
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_input_delayed_close",
+          "l1i": 140,
+          "l1d": 30,
+          "l2": 16,
+          "ram_read": 0,
+          "ram_write": 22,
+          "total": 208
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_recved",
+          "l1i": 42,
+          "l1d": 12,
+          "l2": 56,
+          "ram_read": 18,
+          "ram_write": 66,
+          "total": 194
+        },
+        {
+          "scope": "harness",
+          "function": "resources",
+          "l1i": 20,
+          "l1d": 17,
+          "l2": 64,
+          "ram_read": 18,
+          "ram_write": 66,
+          "total": 185
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_pcb_purge",
+          "l1i": 35,
+          "l1d": 13,
+          "l2": 48,
+          "ram_read": 18,
+          "ram_write": 55,
+          "total": 169
+        },
+        {
+          "scope": "harness",
+          "function": "mem_free",
+          "l1i": 63,
+          "l1d": 21,
+          "l2": 32,
+          "ram_read": 0,
+          "ram_write": 44,
+          "total": 160
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_get_next_optbyte",
+          "l1i": 36,
+          "l1d": 20,
+          "l2": 40,
+          "ram_read": 18,
+          "ram_write": 44,
+          "total": 158
+        },
+        {
+          "scope": "stack_window",
+          "function": "on_accept",
+          "l1i": 22,
+          "l1d": 7,
+          "l2": 48,
+          "ram_read": 36,
+          "ram_write": 44,
+          "total": 157
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_output_alloc_header.constprop.0",
+          "l1i": 19,
+          "l1d": 11,
+          "l2": 40,
+          "ram_read": 36,
+          "ram_write": 33,
+          "total": 139
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_output_control_segment",
+          "l1i": 23,
+          "l1d": 11,
+          "l2": 40,
+          "ram_read": 0,
+          "ram_write": 55,
+          "total": 129
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_send_fin",
+          "l1i": 16,
+          "l1d": 9,
+          "l2": 40,
+          "ram_read": 18,
+          "ram_write": 44,
+          "total": 127
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_send_empty_ack",
+          "l1i": 24,
+          "l1d": 7,
+          "l2": 32,
+          "ram_read": 18,
+          "ram_write": 33,
+          "total": 114
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_close_shutdown_fin",
+          "l1i": 20,
+          "l1d": 6,
+          "l2": 32,
+          "ram_read": 18,
+          "ram_write": 33,
+          "total": 109
+        },
+        {
+          "scope": "stack_window",
+          "function": "z0_stack_begin",
+          "l1i": 54,
+          "l1d": 0,
+          "l2": 8,
+          "ram_read": 18,
+          "ram_write": 0,
+          "total": 80
+        },
+        {
+          "scope": "stack_window",
+          "function": "ip4_output_if",
+          "l1i": 55,
+          "l1d": 11,
+          "l2": 0,
+          "ram_read": 0,
+          "ram_write": 0,
+          "total": 66
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_close",
+          "l1i": 15,
+          "l1d": 4,
+          "l2": 16,
+          "ram_read": 18,
+          "ram_write": 11,
+          "total": 64
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_eff_send_mss_netif",
+          "l1i": 28,
+          "l1d": 2,
+          "l2": 8,
+          "ram_read": 18,
+          "ram_write": 0,
+          "total": 56
+        },
+        {
+          "scope": "harness",
+          "function": "z0_stack_end",
+          "l1i": 54,
+          "l1d": 0,
+          "l2": 0,
+          "ram_read": 0,
+          "ram_write": 0,
+          "total": 54
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_next_iss",
+          "l1i": 6,
+          "l1d": 3,
+          "l2": 16,
+          "ram_read": 18,
+          "ram_write": 11,
+          "total": 54
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_accept",
+          "l1i": 6,
+          "l1d": 2,
+          "l2": 16,
+          "ram_read": 18,
+          "ram_write": 11,
+          "total": 53
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_recv",
+          "l1i": 3,
+          "l1d": 1,
+          "l2": 16,
+          "ram_read": 18,
+          "ram_write": 11,
+          "total": 49
+        },
+        {
+          "scope": "stack_window",
+          "function": "pbuf_add_header",
+          "l1i": 42,
+          "l1d": 0,
+          "l2": 0,
+          "ram_read": 0,
+          "ram_write": 0,
+          "total": 42
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_timer_needed",
+          "l1i": 3,
+          "l1d": 0,
+          "l2": 8,
+          "ram_read": 18,
+          "ram_write": 0,
+          "total": 29
+        },
+        {
+          "scope": "harness",
+          "function": "pbuf_add_header",
+          "l1i": 28,
+          "l1d": 0,
+          "l2": 0,
+          "ram_read": 0,
+          "ram_write": 0,
+          "total": 28
+        },
+        {
+          "scope": "harness",
+          "function": "tcp_capture_begin",
+          "l1i": 2,
+          "l1d": 0,
+          "l2": 8,
+          "ram_read": 18,
+          "ram_write": 0,
+          "total": 28
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_listen_with_backlog",
+          "l1i": 2,
+          "l1d": 0,
+          "l2": 8,
+          "ram_read": 18,
+          "ram_write": 0,
+          "total": 28
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_new",
+          "l1i": 2,
+          "l1d": 0,
+          "l2": 8,
+          "ram_read": 18,
+          "ram_write": 0,
+          "total": 28
+        },
+        {
+          "scope": "stack_window",
+          "function": "ip_chksum_pseudo",
+          "l1i": 25,
+          "l1d": 0,
+          "l2": 0,
+          "ram_read": 0,
+          "ram_write": 0,
+          "total": 25
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_sent",
+          "l1i": 3,
+          "l1d": 1,
+          "l2": 8,
+          "ram_read": 0,
+          "ram_write": 11,
+          "total": 23
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_free",
+          "l1i": 6,
+          "l1d": 0,
+          "l2": 0,
+          "ram_read": 0,
+          "ram_write": 0,
+          "total": 6
+        },
+        {
+          "scope": "stack_window",
+          "function": "tcp_segs_free",
+          "l1i": 4,
+          "l1d": 0,
+          "l2": 0,
+          "ram_read": 0,
+          "ram_write": 0,
+          "total": 4
+        }
+      ]
+    }
+  ]
+}

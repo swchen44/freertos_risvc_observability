@@ -1,0 +1,19 @@
+test_cold_l1_hit_and_l2_hit_have_distinct_costs (tests.unit.test_memory_timing.TimingTests.test_cold_l1_hit_and_l2_hit_have_distinct_costs) ... ok
+test_cross_line_access_pays_two_lookups_and_two_fills (tests.unit.test_memory_timing.TimingTests.test_cross_line_access_pays_two_lookups_and_two_fills) ... ok
+test_instruction_and_data_l1_share_l2_only (tests.unit.test_memory_timing.TimingTests.test_instruction_and_data_l1_share_l2_only) ... ok
+test_invalid_or_unmapped_access_is_rejected_before_state_changes (tests.unit.test_memory_timing.TimingTests.test_invalid_or_unmapped_access_is_rejected_before_state_changes) ... ok
+test_l2_eviction_requires_ram_again (tests.unit.test_memory_timing.TimingTests.test_l2_eviction_requires_ram_again) ... ok
+test_overlapping_regions_and_invalid_profiles_are_rejected (tests.unit.test_memory_timing.TimingTests.test_overlapping_regions_and_invalid_profiles_are_rejected) ... ok
+test_region_latencies_are_selected_by_address (tests.unit.test_memory_timing.TimingTests.test_region_latencies_are_selected_by_address) ... ok
+test_slower_ram_changes_only_ram_service_cost (tests.unit.test_memory_timing.TimingTests.test_slower_ram_changes_only_ram_service_cost) ... ok
+test_uncached_region_bypasses_all_cache_levels (tests.unit.test_memory_timing.TimingTests.test_uncached_region_bypasses_all_cache_levels) ... ok
+test_write_allocate_and_write_through_not_free_stores (tests.unit.test_memory_timing.TimingTests.test_write_allocate_and_write_through_not_free_stores) ... ok
+test_missing_completion_or_incomplete_capture_is_rejected (tests.unit.test_timing_report.TimingReportTests.test_missing_completion_or_incomplete_capture_is_rejected) ... ok
+test_stream_replay_separates_stack_and_harness (tests.unit.test_timing_report.TimingReportTests.test_stream_replay_separates_stack_and_harness) ... ok
+test_tampered_trace_is_rejected (tests.unit.test_timing_report.TimingReportTests.test_tampered_trace_is_rejected) ... ok
+test_unsupported_write_policy_is_rejected (tests.unit.test_timing_report.TimingReportTests.test_unsupported_write_policy_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.009s
+
+OK

@@ -1,0 +1,39 @@
+{
+  "revision": "ae35f033b874c627d81d51070187fbf55f0bf1a7",
+  "tag": "v9.2.0",
+  "purpose": "Pinned source inspection; not a built or patched emulator",
+  "files": {
+    "accel/tcg/icount-common.c": {
+      "url": "https://raw.githubusercontent.com/qemu/qemu/ae35f033b874c627d81d51070187fbf55f0bf1a7/accel/tcg/icount-common.c",
+      "sha256": "d72c1515b7e098c2651caada5106d091b55ba8ee5ec4e23ae1f02167a2bcf2a5"
+    },
+    "accel/tcg/tcg-accel-ops.c": {
+      "url": "https://raw.githubusercontent.com/qemu/qemu/ae35f033b874c627d81d51070187fbf55f0bf1a7/accel/tcg/tcg-accel-ops.c",
+      "sha256": "12b872cdfa23cd2337d8a76bfb6a28bc532f85f94736d0076c27c842d930dd09"
+    },
+    "system/qtest.c": {
+      "url": "https://raw.githubusercontent.com/qemu/qemu/ae35f033b874c627d81d51070187fbf55f0bf1a7/system/qtest.c",
+      "sha256": "f84ec52dfdf715dbf673896c6a166cec058986028a991ddcfb5b6d8e22dd83f1"
+    },
+    "util/qemu-timer.c": {
+      "url": "https://raw.githubusercontent.com/qemu/qemu/ae35f033b874c627d81d51070187fbf55f0bf1a7/util/qemu-timer.c",
+      "sha256": "9b0732cfe1cde5ccec64e3b56e4e4d421618705e4e148ba1873b506dc0983f77"
+    },
+    "plugins/api.c": {
+      "url": "https://raw.githubusercontent.com/qemu/qemu/ae35f033b874c627d81d51070187fbf55f0bf1a7/plugins/api.c",
+      "sha256": "f63fa30a077e47263e47c28bb609f843e8dd61420a7c31113d3cb3b58bd6a2da"
+    },
+    "include/sysemu/cpu-timers.h": {
+      "url": "https://raw.githubusercontent.com/qemu/qemu/ae35f033b874c627d81d51070187fbf55f0bf1a7/include/sysemu/cpu-timers.h",
+      "sha256": "378af1f4f39ee477ef52de118c57d56cb4eba09a59f6821176532b63cb733200"
+    },
+    "accel/qtest/qtest.c": {
+      "url": "https://raw.githubusercontent.com/qemu/qemu/ae35f033b874c627d81d51070187fbf55f0bf1a7/accel/qtest/qtest.c",
+      "sha256": "8eaa1de33696209cd193a1ec0db75ba304b5ecceee4c59ef28fae155070019ee"
+    },
+    "COPYING": {
+      "url": "https://raw.githubusercontent.com/qemu/qemu/ae35f033b874c627d81d51070187fbf55f0bf1a7/COPYING",
+      "sha256": "6f04ae8364d0079a192b14635f4b1da294ce18724c034c39a6a41d1b09df6100"
+    }
+  }
+}

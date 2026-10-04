@@ -102,3 +102,7 @@ Commit `5005204` 後的乾淨來源全套 **153／153 測試通過**，原始結
 - 確認產品 write policy；有必要時新增 write-back／dirty eviction／store buffer，不能沿用本版寫入數字。
 - Web／離線 Dashboard 的 profile selector、分層圖與互動 CSV 篩選。本輪提供 JSON／CSV，未修改 UI。
 - 真實 TCP 軟體 A/B 最佳化；本輪只比較相同 trace 在不同 RAM 延遲下的敏感度。
+
+## 新增 sysram 10-cycle 情境
+
+[設定與三組比較](sysram-10.md)：read／write 起始延遲均為 10 cycles，bandwidth 維持 8 bytes/cycle。舊 80／20 profile 保留。這項設定已重播驗證，guest clock 仍未改變。

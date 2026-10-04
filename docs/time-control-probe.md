@@ -62,3 +62,5 @@ PYTHONPATH=src .venv/bin/python tools/tcp/run_time_probe.py --output runs/time-c
 - [ ] 接入 L1／L2／RAM 模型、CPU frequency 與累計時間，驗證單調性、重跑一致性及 timer deadline。
 - [ ] 跑相同 zero-copy TCP 流程 A/B；對照封包、PSF、guest tick 與模型成本。
 - [ ] Web／離線 Dashboard 顯示模型版本、latency profile 與假設，避免把估計當作硬體測量。
+
+後續進展：[固定 QEMU source 的 clock 接合研究](research/QEMU-clock接合下一步.md) 與 [sysram 10-cycle replay](sysram-10.md)。Clock patch／獨立 build 仍未完成。

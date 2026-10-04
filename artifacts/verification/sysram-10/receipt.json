@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "timing_sha256": "f2b402614fe27a11d54eaf9bf333cb50fb596be2b0e6addee86f312ac0d9bdf6",
+  "read_only_reduction_cycles": 39200,
+  "additional_write_reduction_cycles": 319520,
+  "cold_read_cycles": 27,
+  "warm_read_cycles": 1,
+  "cache_counts_unchanged": true,
+  "scope_totals": [
+    {
+      "illustrative-ram-80": {
+        "stack_window": 230823,
+        "harness": 1131578
+      }
+    },
+    {
+      "sysram-read-10-write-20": {
+        "stack_window": 214933,
+        "harness": 1108268
+      }
+    },
+    {
+      "sysram-10": {
+        "stack_window": 167163,
+        "harness": 836518
+      }
+    }
+  ],
+  "cpu_cycles": null,
+  "guest_time_changed": false
+}
