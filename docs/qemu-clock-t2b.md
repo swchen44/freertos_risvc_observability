@@ -90,3 +90,5 @@ QEMU 9.2 的 plugin API 4 callback 簽名與現行 API 7 不同。原 probe 先�
 - [ ] 完整 TCP A/B 重新擷取 PSF，再接 Web／離線 Dashboard。
 
 目前 TCP 的 sysram 結果仍是 sidecar 估算；本頁的時間注入成功不會自動使舊 PSF 或舊成本報告變成 cycle-accurate。
+
+本輪提交後完整回歸 **158／158 通過**，全庫 Ruff lint 通過。[完成紀錄](../artifacts/verification/qemu-clock-build/completion.json) 保存被測 commit；[完整 log](../artifacts/verification/qemu-clock-build/full-tests.log)。

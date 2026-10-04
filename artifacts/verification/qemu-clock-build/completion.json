@@ -1,0 +1,13 @@
+{
+  "tested_commit": "bf0bd66f06b89443fc57f24447628fb3fad9de6d",
+  "python_tests_passed": 158,
+  "full_tests_sha256": "75b618cc39586ac471fac4ffe77a57c0afaa7c10fb3ed745bc7f451850a6f8da",
+  "ruff": "passed",
+  "qemu_probe_runs": 27,
+  "baseline_positive_timeouts": 6,
+  "setter_only_5ms_rejections": 3,
+  "final_probe_completed": 9,
+  "final_probe_time_control_supported": true,
+  "cache_stall_implemented": false,
+  "review": "self review; no independent reviewer"
+}
