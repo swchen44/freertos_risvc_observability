@@ -7,25 +7,25 @@
   "rows": [
     {
       "count": 1000,
-      "first_upload_to_render_ms": 194,
-      "render_ms": 145.7999999821186,
-      "filter_to_settled_ms": 42,
+      "first_upload_to_render_ms": 1540,
+      "render_ms": 871.5,
+      "filter_to_settled_ms": 662.3999999761581,
       "svg_elements": 1037,
       "table_rows": 20
     },
     {
       "count": 10000,
-      "first_upload_to_render_ms": 423,
-      "render_ms": 285,
-      "filter_to_settled_ms": 193.40000000596046,
+      "first_upload_to_render_ms": 3807,
+      "render_ms": 2219.600000023842,
+      "filter_to_settled_ms": 974,
       "svg_elements": 2038,
       "table_rows": 20
     },
     {
       "count": 100000,
-      "first_upload_to_render_ms": 5038,
-      "render_ms": 2792.800000011921,
-      "filter_to_settled_ms": 1448,
+      "first_upload_to_render_ms": 15920,
+      "render_ms": 10830.800000011921,
+      "filter_to_settled_ms": 6877.099999964237,
       "svg_elements": 2038,
       "table_rows": 20
     }
