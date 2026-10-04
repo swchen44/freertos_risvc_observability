@@ -1,5 +1,7 @@
 # T2e：500 MHz 記憶體成本已接進 QEMU guest 時間
 
+**後續更新：**[T2f](live-cache-irq-t2f.md) 已完成小案例 IRQ 開啟的 timer／scheduler 驗證；本文保留 T2e 當時的完成邊界。
+
 本輪完成兩種案例的逐筆 I／R／W 成本注入：固定小案例，以及既有 lwIP zero-copy request／response 流程。各跑 control／注入三次，共 12 次，全部通過。
 
 **這是串行成本研究模型。** 500 MHz 用於 memory-service cycles → ns；QEMU 基礎時間仍為 `-icount shift=0` 的 1 ns／instruction。不能把合計時間解讀成真實 500 MHz CPU 的執行時間。

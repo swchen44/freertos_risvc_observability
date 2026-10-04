@@ -1,0 +1,3 @@
+usage: run_live_cache.py [-h] --qemu QEMU --output OUTPUT [--repeats {1,3}]
+                         [--case {synthetic,tcp}]
+run_live_cache.py: error: argument --case: invalid choice: 'irq' (choose from synthetic, tcp)

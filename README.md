@@ -1,5 +1,7 @@
 # FreeRTOS／RISC-V PSF POC
 
+**T2f IRQ／排程接合通過：**[逐筆 cache 成本觸發 timer、喚醒高優先序 task 與 PSF 證據](docs/live-cache-irq-t2f.md)。三次注入皆前進 3 ticks、observer 在第 2 tick 執行；核算 ISR 額外指令後誤差 +10 ns。以下 IRQ 待驗證描述為歷史階段；硬體逐筆 stall 與完整 TCP IRQ 版本仍待做。
+
 **T2e 逐筆成本接合通過：**[500 MHz cache／sysram → guest 時間與完整 TCP 驗證](docs/live-cache-t2e.md)。兩種案例共 12 次正式執行；模型與 guest 差分誤差分別 -74 ns／+32 ns。以下「尚未接合」為歷史階段；IRQ 開啟的逐筆 stall 與 Dashboard timing views 仍待做。
 
 **頻率決策已確定：**[500 MHz 換算基準與後續驗收](docs/timing-500mhz.md)。每 cycle 2 ns；sysram 起始延遲 10 cycles = 20 ns。逐筆 cache 成本接合尚未完成。以下 T2d 的待選頻率描述為歷史狀態。

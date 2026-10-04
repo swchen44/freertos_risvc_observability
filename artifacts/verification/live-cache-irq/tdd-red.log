@@ -1,0 +1,60 @@
+FFFFF
+======================================================================
+FAIL: test_clock_conservation_accounts_for_extra_isr_instructions (tests.unit.test_live_cache_irq.LiveIRQTests.test_clock_conservation_accounts_for_extra_isr_instructions)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_live_cache_irq.py", line 9, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.live_cache_irq'),
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                         'IRQ validator not implemented')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : IRQ validator not implemented
+
+======================================================================
+FAIL: test_no_wakeup_or_no_ticks_is_rejected (tests.unit.test_live_cache_irq.LiveIRQTests.test_no_wakeup_or_no_ticks_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_live_cache_irq.py", line 9, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.live_cache_irq'),
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                         'IRQ validator not implemented')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : IRQ validator not implemented
+
+======================================================================
+FAIL: test_only_clint_mtime_read_and_mtimecmp_write_are_exempt (tests.unit.test_live_cache_irq.LiveIRQTests.test_only_clint_mtime_read_and_mtimecmp_write_are_exempt)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_live_cache_irq.py", line 9, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.live_cache_irq'),
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                         'IRQ validator not implemented')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : IRQ validator not implemented
+
+======================================================================
+FAIL: test_time_cost_loss_is_rejected (tests.unit.test_live_cache_irq.LiveIRQTests.test_time_cost_loss_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_live_cache_irq.py", line 9, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.live_cache_irq'),
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                         'IRQ validator not implemented')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : IRQ validator not implemented
+
+======================================================================
+FAIL: test_unexpected_control_wakeup_is_rejected (tests.unit.test_live_cache_irq.LiveIRQTests.test_unexpected_control_wakeup_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_live_cache_irq.py", line 9, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.live_cache_irq'),
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                         'IRQ validator not implemented')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : IRQ validator not implemented
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.002s
+
+FAILED (failures=5)

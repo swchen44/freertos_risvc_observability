@@ -1,0 +1,240 @@
+80080110 00000004 B RecorderInitialized
+800023d6 00000010 t TzCtrl
+80003ed8 00000100 R __clz_tab
+80002dd2 0000006e T __clzsi2
+80002ea8 00000006 T __errno
+80080850 D __global_pointer$
+80080150 00000001 B __lock___malloc_recursive_mutex
+8008014c 00000004 B __malloc_free_list
+8000373e 00000006 T __malloc_lock
+80080148 00000004 B __malloc_sbrk_start
+80003744 00000006 T __malloc_unlock
+800037f8 00000002 T __retarget_lock_acquire_recursive
+800037fa 00000002 T __retarget_lock_release_recursive
+80002efe 000000f0 T __ssputs_r
+00001000 A __stack_size
+8008007c B _bss
+800040ac A _bss_lma
+80080000 D _data
+80004030 A _data_lma
+800b2140 B _ebss
+8008007c D _edata
+800b2140 B _end
+80004030 R _erodata
+800038d8 R _etext
+80003822 000000a2 T _free_r
+80080000 0000004c D _impure_data
+80080068 00000004 D _impure_ptr
+800032aa 0000011a T _malloc_r
+800038c4 00000014 T _malloc_usable_size_r
+800033c4 00000112 T _printf_common
+800034d6 00000268 T _printf_i
+8000374a 0000006c T _realloc_r
+800038d8 R _rodata
+800038d8 A _rodata_lma
+8000254c 0000003a T _sbrk
+800037d0 00000028 T _sbrk_r
+800b3140 B _stack_top
+80000000 T _start
+80002fee 0000026c T _svfiprintf_r
+80002fee 0000026c T _svfprintf_r
+80000000 T _text
+80002cc6 t application_exception_handler
+80002cb4 t application_interrupt_handler
+800a1840 00002000 b arena
+80002c60 t asynchronous_interrupt
+800024b6 0000000e t call
+8008012c 00000004 b channel
+80002b36 t chip_specific_stack_frame
+800a8140 0000a000 b data
+80080154 00000004 B errno
+80002586 0000001a t failed
+80080060 00000004 d fd
+80002ba4 W freertos_risc_v_application_exception_handler
+80002bb2 W freertos_risc_v_application_interrupt_handler
+80002c00 T freertos_risc_v_trap_handler
+80002cba t handle_exception
+80002c72 t handle_interrupt
+800029d6 00000004 T live_cache_begin
+800029da 00000004 T live_cache_end
+80000100 0000004e T main
+800037b6 0000001a T memchr
+80002ebe 00000016 T memcpy
+800037fc 00000026 T memmove
+80002eae 00000010 T memset
+800a3840 00004000 b output
+800a7ec0 00000258 b output
+80080130 00000004 b phase_count
+800a7840 00000600 b phases
+800029de 00000128 T poc_case_run
+80002476 00000022 T poc_console
+80080138 00000004 B poc_delta_mtime
+8008013c 00000004 B poc_delta_ticks
+80002498 0000001e T poc_finish
+80001ae2 00000010 t poc_irq_restore
+80000e74 00000010 t poc_irq_restore
+800011ae 00000010 t poc_irq_restore
+80080134 00000004 B poc_irq_restore_ok
+80002656 0000004c T poc_mark
+8000245e 00000018 T poc_mtime
+80002734 000002a2 T poc_oracle_finish
+800026d4 00000060 T poc_oracle_record
+80080064 00000004 D poc_outcome
+800a7e40 00000040 B poc_received
+80080140 00000004 B poc_received_count
+800a7e80 00000040 B poc_sent
+80080144 00000004 B poc_sent_count
+800024e0 00000012 T poc_sh_close
+800024c4 0000001c T poc_sh_open
+800024f2 00000018 T poc_sh_write
+8008005c 00000004 D poc_transport_ok
+8000250a 00000042 T poc_write_all
+80002ccc t processed_source
+8000014e 000000c4 t prvAddCurrentTaskToDelayedList
+80000230 00000078 t prvCheckTasksWaitingTermination
+800002a8 00000008 t prvIdleTask
+80000212 0000001e t prvResetNextTaskUnblockTime
+80001f3a 00000036 t prvSetRecorderDisabled
+80001e6e 000000cc t prvSetRecorderEnabled
+80000fd6 000000ac t prvTraceErrorGetDescription
+80001082 0000006e t prvTraceErrorPrint
+80001c46 00000130 t prvTraceVPrintF
+800800dc 00000004 B pullMachineTimerCompareRegister
+80080058 00000004 D pullNextTime
+800009dc 000001fe T pvPortMalloc
+800800e8 00000004 b pxCounterData
+80080050 00000004 D pxCriticalNesting
+800800b8 00000004 B pxCurrentTCB
+800800b4 00000004 b pxDelayedTaskList
+800800ec 00000004 b pxDiagnostics
+800800cc 00000004 b pxEnd
+800800f4 00000004 b pxEntryTable
+800800f8 00000004 b pxErrorInfo
+80080100 00000004 b pxExtensionData
+80080114 00000004 b pxHeader
+800800f0 00000004 b pxIndexTable
+80080124 00000004 b pxKernelPortData
+800800b0 00000004 b pxOverflowDelayedTaskList
+80002b06 T pxPortInitialiseStack
+80080108 00000004 b pxPrintData
+800801bc 000000a0 b pxReadyTasksLists
+800800fc 00000004 B pxTraceEventDataTable
+80080104 00000004 B pxTraceISRData
+80080118 00000004 B pxTraceRecorderData
+8008010c 00000004 B pxTraceStaticBufferTable
+8008011c 00000004 B pxTraceTaskData
+80080120 00000004 B pxTraceTimestamp
+8000325a 00000050 t sbrk_aligned
+80000074 t secondary
+80002e40 00000068 T sniprintf
+80002e40 00000068 T snprintf
+80002ee6 00000018 T strcmp
+80002ed4 00000012 T strlen
+80002c68 t synchronous_exception
+80002c72 t test_if_mtimer
+8008025c 00020000 b ucHeap
+800800e0 00000008 B ullNextTime
+80080128 00000004 b used
+800800a8 00000004 b uxCurrentNumberOfTasks
+800800ac 00000004 b uxDeletedTasksWaitingCleanUp
+800009be 0000001e T uxListRemove
+80080080 00000004 b uxSchedulerSuspended
+8008008c 00000004 b uxTaskNumber
+80080074 00000004 D uxTimerIncrementsForOneTick
+800800a0 00000004 b uxTopReadyPriority
+80080070 00000004 d uxTopUsedPriority
+800026a2 00000016 T vApplicationMallocFailedHook
+800026b8 0000001c T vApplicationStackOverflowHook
+80002630 00000026 T vAssertCalled
+80000976 00000014 T vListInitialise
+8000098a 00000006 T vListInitialiseItem
+80000990 0000002e T vListInsert
+80000bda 00000132 T vPortFree
+80000d0c 00000064 W vPortSetupTimerInterrupt
+80000866 00000054 T vTaskDelay
+800004ba 00000082 T vTaskStartScheduler
+8000053c 00000010 T vTaskSuspendAll
+800008ba 000000bc T vTaskSwitchContext
+80080054 00000004 D xCriticalNesting
+800801a8 00000014 b xDelayedTaskList1
+80080194 00000014 b xDelayedTaskList2
+800800c8 00000004 b xFreeBytesRemaining
+800a0260 00000800 b xISRStack
+80080078 00000004 D xISRStackTop
+80080084 00000004 b xIdleTaskHandles
+800800c4 00000004 b xMinimumEverFreeBytesRemaining
+80080088 00000004 b xNextTaskUnblockTime
+80080090 00000004 b xNumOfOverflows
+800800c0 00000004 b xNumberOfSuccessfulAllocations
+800800bc 00000004 b xNumberOfSuccessfulFrees
+80080098 00000004 b xPendedTicks
+80080180 00000014 b xPendingReadyList
+80002b4a T xPortStartFirstTask
+80000d70 00000032 T xPortStartScheduler
+800a0a60 00000dd4 b xRecorderData
+8008009c 00000004 b xSchedulerRunning
+800800d0 00000008 b xStart
+80080158 00000014 b xSuspendedTaskList
+800002b0 0000020a T xTaskCreate
+8000054c 00000006 T xTaskGetTickCount
+80000552 000001bc T xTaskIncrementTick
+8000070e 00000158 T xTaskResumeAll
+800800d8 00000004 B xTaskReturnAddress
+8008016c 00000014 b xTasksWaitingTermination
+800800a4 00000004 b xTickCount
+80000da2 0000001a T xTraceCounterInitialize
+80000de4 00000012 T xTraceDiagnosticsAdd
+80000e0e 00000066 T xTraceDiagnosticsCheckStatus
+80000df6 00000004 T xTraceDiagnosticsIncrease
+80000dbc 00000028 T xTraceDiagnosticsInitialize
+80000dfa 00000014 T xTraceDiagnosticsSetIfHigher
+8000220a 00000010 T xTraceDisable
+80002128 000000e2 T xTraceEnable
+80000eec 0000007e T xTraceEntryCreate
+80000fc0 00000016 T xTraceEntryGetAtIndex
+80000fae 00000012 T xTraceEntryGetCount
+80000e84 0000001e T xTraceEntryIndexTableInitialize
+80000f6a 00000044 T xTraceEntrySetSymbol
+80000ea2 0000004a T xTraceEntryTableInitialize
+8000114c 00000062 T xTraceError
+800010f0 00000020 T xTraceErrorInitialize
+800011d6 00000088 T xTraceEventCreate1
+8000125e 0000008e T xTraceEventCreate2
+800012ec 00000094 T xTraceEventCreate3
+80001380 000000a6 T xTraceEventCreate4
+80001528 000000be T xTraceEventCreateData1
+800015e6 000000c4 T xTraceEventCreateData2
+800016aa 000000d6 T xTraceEventCreateData3
+80001780 000000f0 T xTraceEventCreateData4
+80001870 000000fe T xTraceEventCreateData5
+8000196e 00000108 T xTraceEventCreateData6
+8000148c 0000009c T xTraceEventCreateDataOffline0
+80001426 00000066 T xTraceEventCreateRawBlocking
+800011be 00000018 T xTraceEventInitialize
+80001a76 0000001a T xTraceExtensionInitialize
+80001f70 00000058 T xTraceHeaderInitialize
+80001a90 00000024 T xTraceHeapCreate
+80001ab4 0000002e T xTraceISRInitialize
+80001fc8 00000160 T xTraceInitialize
+800023fc 00000062 T xTraceKernelPortEnable
+800023e6 00000016 T xTraceKernelPortInitialize
+80001b46 000000e8 T xTraceObjectRegisterInternal
+80001c2e 00000018 T xTraceObjectRegisterWithoutHandle
+80001af2 00000054 T xTraceObjectSetName
+80001d92 0000003c T xTracePrint
+80001e2a 0000002e T xTracePrintF
+80001d76 0000001c T xTracePrintInitialize
+80001e58 00000016 T xTraceStaticBufferInitialize
+800025a0 00000008 T xTraceStreamPortInitialize
+800025a8 00000024 T xTraceStreamPortOnTraceBegin
+800025cc 00000028 T xTraceStreamPortOnTraceEnd
+80002628 00000008 T xTraceStreamPortReadData
+800025f4 00000034 T xTraceStreamPortWriteData
+800022d4 00000054 T xTraceStringRegister
+80002328 0000001a T xTraceTaskInitialize
+80002342 00000060 T xTraceTaskSwitch
+800023a2 00000034 T xTraceTimestampInitialize
+8000221a 000000ba T xTraceTzCtrl
+80001dce 0000005c T xTraceVPrintF
+80001110 0000003c T xTraceWarning
+80080094 00000004 b xYieldPendings

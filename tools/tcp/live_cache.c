@@ -12,6 +12,9 @@
 QEMU_PLUGIN_EXPORT int qemu_plugin_version=QEMU_PLUGIN_VERSION;
 typedef struct { uint64_t pc; unsigned size; } Instruction;
 static uint64_t begin_pc,end_pc,events,cycles,api_calls;
+#ifdef POC_LIVE_IRQ
+static unsigned mmio_count;
+#endif
 static unsigned active,windows,enabled;
 static FILE *out;
 static const void *handle;
@@ -42,7 +45,19 @@ static void memory(unsigned cpu,qemu_plugin_meminfo_t info,uint64_t va,void *arg
  Instruction *i=arg;
  struct qemu_plugin_hwaddr *h=qemu_plugin_get_hwaddr(info,va);
  unsigned shift=qemu_plugin_mem_size_shift(info);
- if(!h || qemu_plugin_hwaddr_is_io(h) || shift>12) fail("unsupported memory access");
+ if(!h || shift>12) fail("unsupported memory access");
+ if(qemu_plugin_hwaddr_is_io(h)) {
+#ifdef POC_LIVE_IRQ
+  uint64_t address=qemu_plugin_hwaddr_phys_addr(h);
+  int write=qemu_plugin_mem_is_store(info);
+  if(shift!=2 || !(write ? (address==0x02004000 || address==0x02004004) :
+                           (address==0x0200bff8 || address==0x0200bffc))) fail("unsupported MMIO");
+  fprintf(stderr,"live_cache_mmio pc=%"PRIu64" address=%"PRIu64" size=4 op=%c\n",i->pc,address,write?'W':'R');
+  mmio_count++;return;
+#else
+  fail("unsupported MMIO");
+#endif
+ }
  charge(i->pc,qemu_plugin_hwaddr_phys_addr(h),1u<<shift,qemu_plugin_mem_is_store(info)?'W':'R');
 }
 static void translate(qemu_plugin_id_t id,struct qemu_plugin_tb *tb) {
@@ -60,6 +75,9 @@ static void finish(qemu_plugin_id_t id,void *arg) {
  (void)id;(void)arg;
  if(active || windows!=1 || !events || fclose(out)) fail("incomplete capture");
  fprintf(stderr,"live_cache_complete events=%"PRIu64" cycles=%"PRIu64" api_calls=%"PRIu64"\n",events,cycles,api_calls);
+#ifdef POC_LIVE_IRQ
+ fprintf(stderr,"live_cache_mmio_count=%u\n",mmio_count);
+#endif
  g_ptr_array_free(instructions,TRUE);
 }
 QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,const qemu_info_t *info,int argc,char **argv) {

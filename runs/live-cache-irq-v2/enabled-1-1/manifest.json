@@ -1,0 +1,89 @@
+{
+  "command": [
+    "/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-system-riscv32-relative",
+    "-machine",
+    "virt",
+    "-cpu",
+    "rv32",
+    "-smp",
+    "1",
+    "-m",
+    "128M",
+    "-bios",
+    "none",
+    "-display",
+    "none",
+    "-monitor",
+    "none",
+    "-serial",
+    "file:console.log",
+    "-accel",
+    "tcg,thread=single",
+    "-icount",
+    "shift=0,align=off,sleep=off",
+    "-semihosting-config",
+    "enable=on,target=native",
+    "-plugin",
+    "/Users/swchen.tw/git/percepio/poc/runs/live-cache-irq-v2/live_cache.dylib,begin=80002b56,end=80002b5a,enabled=1,out=/Users/swchen.tw/git/percepio/poc/runs/live-cache-irq-v2/enabled-1-1/accesses.csv",
+    "-kernel",
+    "/Users/swchen.tw/git/percepio/poc/runs/live-cache-irq-v2/enabled-1-1/firmware.elf"
+  ],
+  "result": {
+    "run": "enabled-1-1",
+    "enabled": true,
+    "repeat": 1,
+    "accepted": true,
+    "exit_code": 0,
+    "host_wall_seconds": 0.4518812079913914,
+    "clint_mmio_excluded": 39,
+    "switches": [
+      {
+        "name": "cache_observer",
+        "mtime": 22395
+      },
+      {
+        "name": "cache_worker",
+        "mtime": 22733
+      }
+    ],
+    "audit": {
+      "events": 416155,
+      "operations": {
+        "I": 332428,
+        "R": 41998,
+        "W": 41729
+      },
+      "cycles": 1552272,
+      "ns": 3104544,
+      "costs": {
+        "l1i": 332490,
+        "l1d": 83727,
+        "l2": 662528,
+        "ram_read": 14508,
+        "ram_write": 459019
+      },
+      "stream_sha256": "9db218b41c8ac80c9269e8a1a8aec00c160521232284af6b7af68075c59ff297"
+    },
+    "measurement": {
+      "case": "live_cache_irq",
+      "before": 2860,
+      "after": 37232,
+      "before_tick": 0,
+      "ticks": 3,
+      "work": 210677760,
+      "woke": 1,
+      "observer_tick": 2,
+      "observer_mtime": 22414
+    }
+  },
+  "files": {
+    "symbols.txt": "2bfac52876ea73ff79336a95400f370e14ab6b19ba3e67c7936ad45f9209ffb1",
+    "trace.psf": "d42225c510d7ed5128c3f45df301016aea1d227278f25e0f27dd3238bf3ebeeb",
+    "accesses.csv.gz": "6e833fcf836928f26109e0419ce9b60c35fe0114ac11dd36f5777ffc0518b878",
+    "firmware.elf": "48610588557b60f1d44a19a2d13b26aa351ca0fac90984ccbf7922ba463c29a9",
+    "console.log": "c5651757c2aa7a4dab804a23a69ade3527d450e87c3fc55fe000fb5970721126",
+    "oracle.json": "0432e49f84f38db863bef5374aac8ba4c161d250af03100d2425294797f903c9",
+    "qemu.log": "22e44da3a8de34c1eca39370fa45b8f86fc7428be64a7d997f93df42ebdf7611",
+    "live-cache.json": "b52090169a4e435d25345f92ad91f6708b15083fda7e5a00907702e6d7b4f607"
+  }
+}

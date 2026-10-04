@@ -1,0 +1,80 @@
+{
+  "command": [
+    "/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-system-riscv32-relative",
+    "-machine",
+    "virt",
+    "-cpu",
+    "rv32",
+    "-smp",
+    "1",
+    "-m",
+    "128M",
+    "-bios",
+    "none",
+    "-display",
+    "none",
+    "-monitor",
+    "none",
+    "-serial",
+    "file:console.log",
+    "-accel",
+    "tcg,thread=single",
+    "-icount",
+    "shift=0,align=off,sleep=off",
+    "-semihosting-config",
+    "enable=on,target=native",
+    "-plugin",
+    "/Users/swchen.tw/git/percepio/poc/runs/live-cache-irq-v2/live_cache.dylib,begin=80002b56,end=80002b5a,enabled=0,out=/Users/swchen.tw/git/percepio/poc/runs/live-cache-irq-v2/enabled-0-1/accesses.csv",
+    "-kernel",
+    "/Users/swchen.tw/git/percepio/poc/runs/live-cache-irq-v2/enabled-0-1/firmware.elf"
+  ],
+  "result": {
+    "run": "enabled-0-1",
+    "enabled": false,
+    "repeat": 1,
+    "accepted": true,
+    "exit_code": 0,
+    "host_wall_seconds": 0.44889770803274587,
+    "clint_mmio_excluded": 0,
+    "switches": [],
+    "audit": {
+      "events": 409802,
+      "operations": {
+        "I": 327882,
+        "R": 40960,
+        "W": 40960
+      },
+      "cycles": 1527320,
+      "ns": 3054640,
+      "costs": {
+        "l1i": 327882,
+        "l1d": 81920,
+        "l2": 655384,
+        "ram_read": 11574,
+        "ram_write": 450560
+      },
+      "stream_sha256": "eda2ba1f979fc91782c517487ab12d0fcb4ad51ee877bf0b05e1061f2bd1e3d6"
+    },
+    "measurement": {
+      "case": "live_cache_irq",
+      "before": 2860,
+      "after": 6141,
+      "before_tick": 0,
+      "ticks": 0,
+      "work": 210677760,
+      "woke": 0,
+      "observer_tick": 0,
+      "observer_mtime": 0
+    }
+  },
+  "files": {
+    "symbols.txt": "2bfac52876ea73ff79336a95400f370e14ab6b19ba3e67c7936ad45f9209ffb1",
+    "trace.psf": "a66fcd55100fd4bbb8604fa57cac6b76ca217dc127a300df0a5ac088240e2929",
+    "accesses.csv.gz": "f031df66ef3a8720762c016e3997486a8ba06152d135dbb7b54bf9a94e078533",
+    "firmware.elf": "48610588557b60f1d44a19a2d13b26aa351ca0fac90984ccbf7922ba463c29a9",
+    "console.log": "c5651757c2aa7a4dab804a23a69ade3527d450e87c3fc55fe000fb5970721126",
+    "oracle.json": "81462bd6325f234f228530461ef357f87c959dd35c38c12cb279e277e01d7ecd",
+    "qemu.log": "49ed7f8b2cea141a7c615114abe92b79f8795cc414720aadaccb76739d652fa8",
+    "live-cache.json": "f667fc27201e26b7726d10e17065ca033ef4b6d28f157084001b77798bbbe139"
+  }
+}

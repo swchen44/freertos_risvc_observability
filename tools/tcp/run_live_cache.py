@@ -14,6 +14,7 @@ from pathlib import Path
 from run_transfer import command
 
 from psf_lab.live_cache import audit_accesses, compare_guest
+from psf_lab.live_cache_irq import compare_irq, validate_irq_trace, validate_mmio
 from psf_lab.parser.semantic import parse_trace
 from psf_lab.runner import QEMU_FLAGS, digest, write_json
 from psf_lab.tcp_packets import decode_packet
@@ -27,9 +28,11 @@ def main():
     parser.add_argument("--qemu", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--repeats", type=int, choices=(1, 3), default=3)
-    parser.add_argument("--case", choices=("synthetic", "tcp"), default="synthetic")
+    parser.add_argument("--case", choices=("synthetic", "tcp", "irq"), default="synthetic")
     args = parser.parse_args()
-    case = "live_cache" if args.case == "synthetic" else "tcp_request_response"
+    case = {"synthetic": "live_cache", "tcp": "tcp_request_response", "irq": "live_cache_irq"}[
+        args.case
+    ]
     dest, qemu = args.output.resolve(), args.qemu.resolve()
     decision = json.loads((ROOT / "cases/timing-experiments/500mhz.json").read_text())
     if (
@@ -78,6 +81,8 @@ def main():
         str(plugin),
         *shlex.split(subprocess.check_output(["pkg-config", "--cflags", "glib-2.0"], text=True)),
     ]
+    if args.case == "irq":
+        plugin_cmd.append("-DPOC_LIVE_IRQ")
     command(plugin_cmd, ROOT, dest / "plugin-build.log")
     elf = build / "firmware.elf"
     symbols = subprocess.check_output(
@@ -88,7 +93,7 @@ def main():
     }
     markers = (
         ("live_cache_begin", "live_cache_end")
-        if args.case == "synthetic"
+        if args.case != "tcp"
         else ("tcp_capture_begin", "tcp_capture_end")
     )
     begin, end = (addresses[n] for n in markers)
@@ -103,6 +108,7 @@ def main():
             "tools/qemu/live_timing.h",
             "tools/qemu/poc-clock-api.h",
             "src/psf_lab/live_cache.py",
+            "src/psf_lab/live_cache_irq.py",
             "src/psf_lab/memory_timing.py",
             "src/psf_lab/cache_model.py",
             "src/psf_lab/tcp_packets.py",
@@ -168,6 +174,21 @@ def main():
                 )
                 if receipt is None:
                     raise ValueError("Missing completion receipt")
+                if args.case == "irq":
+                    mmio = re.findall(
+                        r"live_cache_mmio pc=(\d+) address=(\d+) size=(\d+) op=([RW])",
+                        (run / "qemu.log").read_text(),
+                    )
+                    count = re.search(
+                        r"live_cache_mmio_count=(\d+)", (run / "qemu.log").read_text()
+                    )
+                    if count is None or int(count[1]) != len(mmio):
+                        raise ValueError("Missing MMIO audit receipt")
+                    for pc, address, size, op in mmio:
+                        if not 0x80000000 <= int(pc) < 0x88000000:
+                            raise ValueError("MMIO instruction PC outside RAM")
+                        validate_mmio(int(address), int(size), op)
+                    result["clint_mmio_excluded"] = len(mmio)
                 audit = audit_accesses(run / "accesses.csv")
                 if tuple(map(int, receipt.groups())) != (
                     audit["events"],
@@ -183,7 +204,7 @@ def main():
                 oracle = json.loads((run / "oracle.json").read_text())
                 if m["case"] != case or not oracle["complete"] or oracle["case_id"] != m["case"]:
                     raise ValueError("Guest did not complete")
-                if m["work"] != (13090560 if args.case == "synthetic" else 11680):
+                if m["work"] != {"synthetic": 13090560, "tcp": 11680, "irq": 210677760}[args.case]:
                     raise ValueError("Unexpected work checksum")
                 if args.case == "tcp":
                     metrics = json.loads((run / "session.json").read_text())
@@ -214,17 +235,20 @@ def main():
                     for e in trace["events"]
                     if e["fields"].get("phase")
                 ]
-                begin_mark, end_mark = (
-                    ("CACHE_BEGIN", "CACHE_END")
-                    if args.case == "synthetic"
-                    else ("TCP_SESSION_BEGIN", "TCP_SESSION_END")
-                )
-                if [(n, i) for n, i, _ in marks] != [
-                    (begin_mark, 0),
-                    (end_mark, 0),
-                    ("COMPLETE", 0),
-                ] or not marks[0][2] <= m["before"] <= m["after"] <= marks[1][2]:
-                    raise ValueError("PSF boundaries disagree with guest clock")
+                if args.case == "irq":
+                    result["switches"] = validate_irq_trace(trace, m)
+                else:
+                    begin_mark, end_mark = (
+                        ("CACHE_BEGIN", "CACHE_END")
+                        if args.case == "synthetic"
+                        else ("TCP_SESSION_BEGIN", "TCP_SESSION_END")
+                    )
+                    if [(n, i) for n, i, _ in marks] != [
+                        (begin_mark, 0),
+                        (end_mark, 0),
+                        ("COMPLETE", 0),
+                    ] or not marks[0][2] <= m["before"] <= m["after"] <= marks[1][2]:
+                        raise ValueError("PSF boundaries disagree with guest clock")
                 result.update(accepted=True, audit=audit, measurement=m)
             except (ValueError, KeyError, OSError) as error:
                 result["error"] = str(error)
@@ -245,21 +269,31 @@ def main():
             control = next(r for r in results if not r["enabled"] and r["repeat"] == repeat)
             active = next(r for r in results if r["enabled"] and r["repeat"] == repeat)
             try:
-                if control["audit"] != active["audit"]:
+                if args.case != "irq" and control["audit"] != active["audit"]:
                     raise ValueError("Control and injection access streams differ")
                 comparisons.append(
                     dict(
                         accepted=True,
                         repeat=repeat,
-                        **compare_guest(
-                            control["measurement"], active["measurement"], active["audit"]["ns"]
+                        **(
+                            compare_irq(
+                                control["measurement"],
+                                active["measurement"],
+                                control["audit"],
+                                active["audit"],
+                            )
+                            if args.case == "irq"
+                            else compare_guest(
+                                control["measurement"], active["measurement"], active["audit"]["ns"]
+                            )
                         ),
                     )
                 )
             except ValueError as error:
                 comparisons.append(dict(accepted=False, repeat=repeat, error=str(error)))
     repeatable = all(r["accepted"] for r in results) and all(
-        r["audit"] == results[0]["audit"] for r in results
+        r["audit"] == next(x["audit"] for x in results if x["enabled"] == r["enabled"])
+        for r in results
     )
     passed = (
         repeatable and len(comparisons) == args.repeats and all(c["accepted"] for c in comparisons)

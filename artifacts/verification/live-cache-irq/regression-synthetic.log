@@ -1,0 +1,14 @@
+{"run": "enabled-0-1", "enabled": false, "repeat": 1, "accepted": true, "exit_code": 0, "host_wall_seconds": 0.2910113749676384, "audit": {"events": 25619, "operations": {"I": 20499, "R": 2560, "W": 2560}, "cycles": 106337, "ns": 212674, "costs": {"l1i": 20499, "l1d": 5120, "l2": 40984, "ram_read": 11574, "ram_write": 28160}, "stream_sha256": "d7dc524e932f49f509b00faf2329baad1d1143a8f57564351cd3e9fcf0c6b939"}, "measurement": {"case": "live_cache", "before": 2178, "after": 2386, "ticks": 0, "work": 13090560}}
+{"run": "enabled-1-1", "enabled": true, "repeat": 1, "accepted": true, "exit_code": 0, "host_wall_seconds": 0.07620616699568927, "audit": {"events": 25619, "operations": {"I": 20499, "R": 2560, "W": 2560}, "cycles": 106337, "ns": 212674, "costs": {"l1i": 20499, "l1d": 5120, "l2": 40984, "ram_read": 11574, "ram_write": 28160}, "stream_sha256": "d7dc524e932f49f509b00faf2329baad1d1143a8f57564351cd3e9fcf0c6b939"}, "measurement": {"case": "live_cache", "before": 2178, "after": 4512, "ticks": 0, "work": 13090560}}
+[
+  {
+    "accepted": true,
+    "repeat": 1,
+    "control_ns": 20800,
+    "active_ns": 233400,
+    "extra_guest_ns": 212600,
+    "expected_extra_ns": 212674,
+    "error_ns": -74,
+    "tolerance_ns": 200
+  }
+]

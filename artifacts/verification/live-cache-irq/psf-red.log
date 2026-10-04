@@ -1,0 +1,38 @@
+FFF.....
+======================================================================
+FAIL: test_missing_resume_or_bad_guest_timestamp_rejected (tests.unit.test_live_cache_irq.IRQPSFTests.test_missing_resume_or_bad_guest_timestamp_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_live_cache_irq.py", line 82, in setUp
+    self.assertTrue(hasattr(live_cache_irq, 'validate_irq_trace'),
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                    'PSF task interval validator not exposed')
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : PSF task interval validator not exposed
+
+======================================================================
+FAIL: test_preempt_and_resume_interval_matches_guest (tests.unit.test_live_cache_irq.IRQPSFTests.test_preempt_and_resume_interval_matches_guest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_live_cache_irq.py", line 82, in setUp
+    self.assertTrue(hasattr(live_cache_irq, 'validate_irq_trace'),
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                    'PSF task interval validator not exposed')
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : PSF task interval validator not exposed
+
+======================================================================
+FAIL: test_wrong_marker_order_rejected (tests.unit.test_live_cache_irq.IRQPSFTests.test_wrong_marker_order_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_live_cache_irq.py", line 82, in setUp
+    self.assertTrue(hasattr(live_cache_irq, 'validate_irq_trace'),
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                    'PSF task interval validator not exposed')
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : PSF task interval validator not exposed
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.002s
+
+FAILED (failures=3)

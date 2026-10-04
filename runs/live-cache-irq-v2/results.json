@@ -1,0 +1,305 @@
+{
+  "passed": true,
+  "repeatable": true,
+  "runs": [
+    {
+      "run": "enabled-0-1",
+      "enabled": false,
+      "repeat": 1,
+      "accepted": true,
+      "exit_code": 0,
+      "host_wall_seconds": 0.44889770803274587,
+      "clint_mmio_excluded": 0,
+      "switches": [],
+      "audit": {
+        "events": 409802,
+        "operations": {
+          "I": 327882,
+          "R": 40960,
+          "W": 40960
+        },
+        "cycles": 1527320,
+        "ns": 3054640,
+        "costs": {
+          "l1i": 327882,
+          "l1d": 81920,
+          "l2": 655384,
+          "ram_read": 11574,
+          "ram_write": 450560
+        },
+        "stream_sha256": "eda2ba1f979fc91782c517487ab12d0fcb4ad51ee877bf0b05e1061f2bd1e3d6"
+      },
+      "measurement": {
+        "case": "live_cache_irq",
+        "before": 2860,
+        "after": 6141,
+        "before_tick": 0,
+        "ticks": 0,
+        "work": 210677760,
+        "woke": 0,
+        "observer_tick": 0,
+        "observer_mtime": 0
+      }
+    },
+    {
+      "run": "enabled-0-2",
+      "enabled": false,
+      "repeat": 2,
+      "accepted": true,
+      "exit_code": 0,
+      "host_wall_seconds": 0.18315041600726545,
+      "clint_mmio_excluded": 0,
+      "switches": [],
+      "audit": {
+        "events": 409802,
+        "operations": {
+          "I": 327882,
+          "R": 40960,
+          "W": 40960
+        },
+        "cycles": 1527320,
+        "ns": 3054640,
+        "costs": {
+          "l1i": 327882,
+          "l1d": 81920,
+          "l2": 655384,
+          "ram_read": 11574,
+          "ram_write": 450560
+        },
+        "stream_sha256": "eda2ba1f979fc91782c517487ab12d0fcb4ad51ee877bf0b05e1061f2bd1e3d6"
+      },
+      "measurement": {
+        "case": "live_cache_irq",
+        "before": 2860,
+        "after": 6141,
+        "before_tick": 0,
+        "ticks": 0,
+        "work": 210677760,
+        "woke": 0,
+        "observer_tick": 0,
+        "observer_mtime": 0
+      }
+    },
+    {
+      "run": "enabled-0-3",
+      "enabled": false,
+      "repeat": 3,
+      "accepted": true,
+      "exit_code": 0,
+      "host_wall_seconds": 0.17506174999289215,
+      "clint_mmio_excluded": 0,
+      "switches": [],
+      "audit": {
+        "events": 409802,
+        "operations": {
+          "I": 327882,
+          "R": 40960,
+          "W": 40960
+        },
+        "cycles": 1527320,
+        "ns": 3054640,
+        "costs": {
+          "l1i": 327882,
+          "l1d": 81920,
+          "l2": 655384,
+          "ram_read": 11574,
+          "ram_write": 450560
+        },
+        "stream_sha256": "eda2ba1f979fc91782c517487ab12d0fcb4ad51ee877bf0b05e1061f2bd1e3d6"
+      },
+      "measurement": {
+        "case": "live_cache_irq",
+        "before": 2860,
+        "after": 6141,
+        "before_tick": 0,
+        "ticks": 0,
+        "work": 210677760,
+        "woke": 0,
+        "observer_tick": 0,
+        "observer_mtime": 0
+      }
+    },
+    {
+      "run": "enabled-1-1",
+      "enabled": true,
+      "repeat": 1,
+      "accepted": true,
+      "exit_code": 0,
+      "host_wall_seconds": 0.4518812079913914,
+      "clint_mmio_excluded": 39,
+      "switches": [
+        {
+          "name": "cache_observer",
+          "mtime": 22395
+        },
+        {
+          "name": "cache_worker",
+          "mtime": 22733
+        }
+      ],
+      "audit": {
+        "events": 416155,
+        "operations": {
+          "I": 332428,
+          "R": 41998,
+          "W": 41729
+        },
+        "cycles": 1552272,
+        "ns": 3104544,
+        "costs": {
+          "l1i": 332490,
+          "l1d": 83727,
+          "l2": 662528,
+          "ram_read": 14508,
+          "ram_write": 459019
+        },
+        "stream_sha256": "9db218b41c8ac80c9269e8a1a8aec00c160521232284af6b7af68075c59ff297"
+      },
+      "measurement": {
+        "case": "live_cache_irq",
+        "before": 2860,
+        "after": 37232,
+        "before_tick": 0,
+        "ticks": 3,
+        "work": 210677760,
+        "woke": 1,
+        "observer_tick": 2,
+        "observer_mtime": 22414
+      }
+    },
+    {
+      "run": "enabled-1-2",
+      "enabled": true,
+      "repeat": 2,
+      "accepted": true,
+      "exit_code": 0,
+      "host_wall_seconds": 0.4496654579997994,
+      "clint_mmio_excluded": 39,
+      "switches": [
+        {
+          "name": "cache_observer",
+          "mtime": 22395
+        },
+        {
+          "name": "cache_worker",
+          "mtime": 22733
+        }
+      ],
+      "audit": {
+        "events": 416155,
+        "operations": {
+          "I": 332428,
+          "R": 41998,
+          "W": 41729
+        },
+        "cycles": 1552272,
+        "ns": 3104544,
+        "costs": {
+          "l1i": 332490,
+          "l1d": 83727,
+          "l2": 662528,
+          "ram_read": 14508,
+          "ram_write": 459019
+        },
+        "stream_sha256": "9db218b41c8ac80c9269e8a1a8aec00c160521232284af6b7af68075c59ff297"
+      },
+      "measurement": {
+        "case": "live_cache_irq",
+        "before": 2860,
+        "after": 37232,
+        "before_tick": 0,
+        "ticks": 3,
+        "work": 210677760,
+        "woke": 1,
+        "observer_tick": 2,
+        "observer_mtime": 22414
+      }
+    },
+    {
+      "run": "enabled-1-3",
+      "enabled": true,
+      "repeat": 3,
+      "accepted": true,
+      "exit_code": 0,
+      "host_wall_seconds": 0.4431905000237748,
+      "clint_mmio_excluded": 39,
+      "switches": [
+        {
+          "name": "cache_observer",
+          "mtime": 22395
+        },
+        {
+          "name": "cache_worker",
+          "mtime": 22733
+        }
+      ],
+      "audit": {
+        "events": 416155,
+        "operations": {
+          "I": 332428,
+          "R": 41998,
+          "W": 41729
+        },
+        "cycles": 1552272,
+        "ns": 3104544,
+        "costs": {
+          "l1i": 332490,
+          "l1d": 83727,
+          "l2": 662528,
+          "ram_read": 14508,
+          "ram_write": 459019
+        },
+        "stream_sha256": "9db218b41c8ac80c9269e8a1a8aec00c160521232284af6b7af68075c59ff297"
+      },
+      "measurement": {
+        "case": "live_cache_irq",
+        "before": 2860,
+        "after": 37232,
+        "before_tick": 0,
+        "ticks": 3,
+        "work": 210677760,
+        "woke": 1,
+        "observer_tick": 2,
+        "observer_mtime": 22414
+      }
+    }
+  ],
+  "comparisons": [
+    {
+      "accepted": true,
+      "repeat": 1,
+      "extra_guest_ns": 3109100,
+      "injected_service_ns": 3104544,
+      "extra_instruction_ns": 4546,
+      "expected_extra_ns": 3109090,
+      "error_ns": 10,
+      "tolerance_ns": 200,
+      "active_ticks": 3,
+      "observer_tick": 2
+    },
+    {
+      "accepted": true,
+      "repeat": 2,
+      "extra_guest_ns": 3109100,
+      "injected_service_ns": 3104544,
+      "extra_instruction_ns": 4546,
+      "expected_extra_ns": 3109090,
+      "error_ns": 10,
+      "tolerance_ns": 200,
+      "active_ticks": 3,
+      "observer_tick": 2
+    },
+    {
+      "accepted": true,
+      "repeat": 3,
+      "extra_guest_ns": 3109100,
+      "injected_service_ns": 3104544,
+      "extra_instruction_ns": 4546,
+      "expected_extra_ns": 3109090,
+      "error_ns": 10,
+      "tolerance_ns": 200,
+      "active_ticks": 3,
+      "observer_tick": 2
+    }
+  ]
+}
