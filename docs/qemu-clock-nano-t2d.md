@@ -106,3 +106,5 @@ Firmware 位於 `firmware/app/cases/clock_nano.c`，plugin 位於 `tools/tcp/clo
 - 每筆額外 async work 的 host CPU／記憶體代價與大 trace 吞吐；不能把本輪成本比例當作 SDK CPU loading。
 - 真實 TCP A/B 再擷取 PSF；Web／離線 timing dashboard。
 - SMP、adaptive icount、record/replay、migration 及產品硬體校準。
+
+提交後完整回歸 **182／182 通過**，Ruff 與本輪 Python 格式檢查通過。[完成紀錄](../artifacts/verification/clock-nano/completion.json)、[完整 log](../artifacts/verification/clock-nano/full-tests.log)、[三種模式／patch／hash 核對](../artifacts/verification/clock-nano/receipt.json)。CPU 頻率或情境矩陣待使用者選定；尚未開始依賴該選擇的 cache 接合。
