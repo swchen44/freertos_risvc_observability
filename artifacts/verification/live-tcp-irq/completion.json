@@ -1,0 +1,16 @@
+{
+  "tested_commit": "e621df2f88b4a30d51102545f79df92a6756fe02",
+  "python_tests_passed": 204,
+  "full_tests_sha256": "9903c1a423143b76d97f33bc99644d1a2e26be252340f418fe62e97152a99dfc",
+  "formal_tcp_irq_runs": 6,
+  "regression_runs": 4,
+  "packet_bytes_identical_across_modes": true,
+  "ruff": "passed",
+  "changed_python_format": "passed",
+  "tcp_irq_preemption_and_cleanup_verified": true,
+  "lwip_wall_clock_timers_integrated": false,
+  "hardware_timing_calibrated": false,
+  "software_optimization_applied": false,
+  "dashboard_updated": false,
+  "review": "self review; no independent reviewer"
+}

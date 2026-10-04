@@ -113,6 +113,8 @@ output 必須是新目錄；預設 control／注入各三次。完整安裝與 Q
 
 記憶體 IRQ case 重跑一組，原 +10 ns 結果維持；IRQ 遮蔽 TCP 重跑一組，原 +32 ns 結果維持。正式六次加回歸四次，共 10 次 QEMU 執行通過。
 
+完整回歸 **204／204 通過**，Ruff 與本輪 Python 格式檢查通過。
+
 後處理 audit 初稿忘記傳 `scenario="tcp"`，被既有 work checksum 檢查拒絕；已修正並重驗，guest 與捕捉資料未改動。[錯誤紀錄](../artifacts/verification/live-tcp-irq/audit-initial-failure.txt)。Review 為作者自行檢查，沒有獨立 reviewer。完整回歸數與 tested commit 見 [completion](../artifacts/verification/live-tcp-irq/completion.json)。
 
 - [x] 完整 TCP IRQ／cache timing／observer／資源生命週期。
