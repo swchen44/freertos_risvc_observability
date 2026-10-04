@@ -1,5 +1,9 @@
 # FreeRTOS／RISC-V PSF POC
 
+
+**新增 Cache 相對最佳化實驗：**[操作與內網還原](docs/cache-replay.md) · [研究報告：cache 效率與 PSF 擴充](docs/research/Cache效率與PSF擴充.md) · [離線 Cache Dashboard](artifacts/offline/cache-comparison.html)。本機服務開啟 `/cache.html`，原 PSF 頁也提供「Cache 比較」入口。
+
+
 **這裡是後續實驗與文件的主要入口，使用獨立 Git 管理。**
 
 目前已固定工具鏈、完成 PSF parser，並在 RISC-V QEMU 跑通 FreeRTOS Queue／clock probe。正式 harness 與七配置三次重跑已通過；本機 Dashboard 已通過瀏覽器驗收；獨立 review 的 3 個 Important 已修正，最後全套回歸驗證通過。建立日期：2026-10-03。
@@ -178,3 +182,19 @@ Dashboard 可先使用既有 PSF，不需要 FreeRTOS toolchain。重新模擬�
 - M4.1 已建置官方 cache plugin 並在 RV32 Queue baseline 實跑；正常結束、oracle 相同，取得 L1I／L1D／L2 統計。見 [原始證據與限制](artifacts/verification/cache/README.md)。
 - [M4 計畫](docs/plans/04-cache-relative-optimization.md) 已拆成六階段。下一步先校驗地址語意、cache oracle 與 read/write 邊界，再做 A/B 和 Dashboard。
 - 產品 U01～U16 仍待內網 source／硬體；跨機工作維持暫緩。此 smoke 不代表已完成產品 cache 模型或效能最佳化。
+
+
+## Cache 實驗與內網還原
+
+相同 checksum 的 row／column 各三次 RV32 實跑，共 18 組模型結果。4 KiB L1D 下，連續存取由 8,192 降至 512 misses，byte utilization 由 6.25% 升至 100%；這是 data-region 模型內比較。
+
+![本機 Cache Dashboard](artifacts/screenshots/cache/server-01-overview.png)
+
+![離線 Cache Dashboard](artifacts/screenshots/cache/offline-01-overview.png)
+
+- [篩選、容量比較、來源與更多截圖](docs/cache-replay.md)
+- [source 還原包](artifacts/restore/cache-replay-source.tar.gz)／[archive SHA-256](artifacts/restore/cache-replay-source.json)：含 FreeRTOS、SDK、plugin source、六次原始 captures 與 viewer；未含 host toolchain 執行檔。已在同機乾淨目錄核對逐檔 hash、重播並重新建置模擬。
+- [正式原始 evidence](runs/cache-relative-v3/)：每輪 PSF、ELF、map、oracle、access CSV、manifest；`suite.json` 保存擷取來源，`analysis-receipt.json` 保存分析來源。
+- [驗證紀錄](artifacts/verification/cache-replay/)：unittest、Ruff、curl、agent-browser、CSV、restore。
+
+仍待完成：instruction cache、function hot/cold、AoS／SoA、GEMM tiling、逐 task／PSF 時間同步，以及真機 PMU 接入。原始 PSF 未被修改成自訂 binary 格式；目前用 sidecar hash 關聯。

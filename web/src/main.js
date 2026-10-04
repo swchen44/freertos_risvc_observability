@@ -15,6 +15,7 @@ if (offlineNode) {
   document.querySelector(".local-badge").textContent = "離線 HTML · 已內嵌資料";
   for (const selector of [
     ".upload",
+    ".cache-link",
     "#run-select",
     "#load-run",
     ".compare-controls",

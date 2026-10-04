@@ -71,3 +71,8 @@ Task execution share_i = T_i / (b-a) × 100%
 ## 待取得的產品資訊
 
 CPU core／SoC、核數、L1I／L1D／L2 容量／line／ways、L2 private/shared、write policy、prefetch、cache maintenance、DMA coherence、bus 類型／寬度／時脈／仲裁、SRAM／DRAM latency、可用效能計數器。此清單供內部 AI／原始碼研究延續；不阻塞目前軟體 POC。
+
+
+## 後續實測更新
+
+已新增 [Cache 效率與 PSF 擴充研究](Cache效率與PSF擴充.md)，含 data-region A/B、雙模式 Dashboard、來源 snapshot 與內網還原。早期「尚未實跑」敘述屬歷史狀態，最新驗證以該文及 `docs/cache-replay.md` 為準。

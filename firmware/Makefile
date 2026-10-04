@@ -30,7 +30,7 @@ VPATH := $(sort $(dir $(SRC) $(ASM)))
 all: $(OUT)/firmware.elf $(OUT)/tasks.i $(OUT)/queue.i
 $(OUT):
 	mkdir -p $@
-$(OUT)/%.o: %.c Makefile $(wildcard config/*.h port/*.h app/*.h) | $(OUT)
+$(OUT)/%.o: %.c Makefile $(wildcard config/*.h port/*.h app/*.h app/cases/*.h) | $(OUT)
 	$(CC) $(CFLAGS) -MMD -MP -c $< -o $@
 $(OUT)/%.o: %.S Makefile | $(OUT)
 	$(CC) $(CFLAGS) -MMD -MP -c $< -o $@

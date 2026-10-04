@@ -1,0 +1,173 @@
+[
+  {
+    "schema": "psf-lab-cache-replay-v1",
+    "scope": "data-only-region",
+    "initial_state": "cold",
+    "replacement": "LRU",
+    "write_policy": "tag-allocate",
+    "timing_feedback": false,
+    "memory_operations": 16384,
+    "l1": {
+      "geometry": {
+        "size": 1024,
+        "line": 64,
+        "ways": 4
+      },
+      "accesses": 16384,
+      "misses": 8192,
+      "reads": 8192,
+      "writes": 8192,
+      "read_misses": 8192,
+      "write_misses": 0,
+      "spatial": {
+        "observed_used_bytes": 32768,
+        "filled_bytes": 524288,
+        "evicted_unused_bytes": 490560,
+        "resident_unobserved_bytes": 960,
+        "observed_utilization": 0.0625
+      },
+      "miss_rate": 0.5
+    },
+    "l2": {
+      "geometry": {
+        "size": 32768,
+        "line": 64,
+        "ways": 4
+      },
+      "accesses": 8192,
+      "misses": 256,
+      "reads": 8192,
+      "writes": 0,
+      "read_misses": 256,
+      "write_misses": 0,
+      "miss_rate": 0.03125
+    },
+    "run": "cache_column-3",
+    "checksum": 8394752,
+    "psf_sha256": "f2bbd4a54055e73ebd31a770a6a17b4669acb11fdfe9c5484ace8189ab749e05",
+    "source_sha256": "ac94b5ff2ab9f3721f45b259f7df4205bbafdc631b982e3561606924e5d8a87a",
+    "model_sha256": "10a26afa98f4b2f8267d35ea7ff3c1bcaa89d8345996dbc840ecbc9be7af9717",
+    "function": "cache_work",
+    "object": "cache_matrix",
+    "region": {
+      "pc_start": 2147494352,
+      "pc_size": 62,
+      "data_start": 2148171456,
+      "data_size": 16384
+    }
+  },
+  {
+    "schema": "psf-lab-cache-replay-v1",
+    "scope": "data-only-region",
+    "initial_state": "cold",
+    "replacement": "LRU",
+    "write_policy": "tag-allocate",
+    "timing_feedback": false,
+    "memory_operations": 16384,
+    "l1": {
+      "geometry": {
+        "size": 4096,
+        "line": 64,
+        "ways": 4
+      },
+      "accesses": 16384,
+      "misses": 8192,
+      "reads": 8192,
+      "writes": 8192,
+      "read_misses": 8192,
+      "write_misses": 0,
+      "spatial": {
+        "observed_used_bytes": 32768,
+        "filled_bytes": 524288,
+        "evicted_unused_bytes": 487680,
+        "resident_unobserved_bytes": 3840,
+        "observed_utilization": 0.0625
+      },
+      "miss_rate": 0.5
+    },
+    "l2": {
+      "geometry": {
+        "size": 32768,
+        "line": 64,
+        "ways": 4
+      },
+      "accesses": 8192,
+      "misses": 256,
+      "reads": 8192,
+      "writes": 0,
+      "read_misses": 256,
+      "write_misses": 0,
+      "miss_rate": 0.03125
+    },
+    "run": "cache_column-3",
+    "checksum": 8394752,
+    "psf_sha256": "f2bbd4a54055e73ebd31a770a6a17b4669acb11fdfe9c5484ace8189ab749e05",
+    "source_sha256": "ac94b5ff2ab9f3721f45b259f7df4205bbafdc631b982e3561606924e5d8a87a",
+    "model_sha256": "10a26afa98f4b2f8267d35ea7ff3c1bcaa89d8345996dbc840ecbc9be7af9717",
+    "function": "cache_work",
+    "object": "cache_matrix",
+    "region": {
+      "pc_start": 2147494352,
+      "pc_size": 62,
+      "data_start": 2148171456,
+      "data_size": 16384
+    }
+  },
+  {
+    "schema": "psf-lab-cache-replay-v1",
+    "scope": "data-only-region",
+    "initial_state": "cold",
+    "replacement": "LRU",
+    "write_policy": "tag-allocate",
+    "timing_feedback": false,
+    "memory_operations": 16384,
+    "l1": {
+      "geometry": {
+        "size": 16384,
+        "line": 64,
+        "ways": 4
+      },
+      "accesses": 16384,
+      "misses": 256,
+      "reads": 8192,
+      "writes": 8192,
+      "read_misses": 256,
+      "write_misses": 0,
+      "spatial": {
+        "observed_used_bytes": 16384,
+        "filled_bytes": 16384,
+        "evicted_unused_bytes": 0,
+        "resident_unobserved_bytes": 0,
+        "observed_utilization": 1.0
+      },
+      "miss_rate": 0.015625
+    },
+    "l2": {
+      "geometry": {
+        "size": 32768,
+        "line": 64,
+        "ways": 4
+      },
+      "accesses": 256,
+      "misses": 256,
+      "reads": 256,
+      "writes": 0,
+      "read_misses": 256,
+      "write_misses": 0,
+      "miss_rate": 1.0
+    },
+    "run": "cache_column-3",
+    "checksum": 8394752,
+    "psf_sha256": "f2bbd4a54055e73ebd31a770a6a17b4669acb11fdfe9c5484ace8189ab749e05",
+    "source_sha256": "ac94b5ff2ab9f3721f45b259f7df4205bbafdc631b982e3561606924e5d8a87a",
+    "model_sha256": "10a26afa98f4b2f8267d35ea7ff3c1bcaa89d8345996dbc840ecbc9be7af9717",
+    "function": "cache_work",
+    "object": "cache_matrix",
+    "region": {
+      "pc_start": 2147494352,
+      "pc_size": 62,
+      "data_start": 2148171456,
+      "data_size": 16384
+    }
+  }
+]

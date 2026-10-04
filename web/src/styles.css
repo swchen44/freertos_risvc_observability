@@ -602,3 +602,5 @@ fieldset input {
 [hidden] {
   display: none !important;
 }
+
+.cache-link { color: var(--text, #1e6970); font-size: 13px; padding: 8px; }

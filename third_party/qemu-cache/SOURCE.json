@@ -1,0 +1,10 @@
+{
+  "version": "v11.1.2",
+  "cache_source": "https://github.com/qemu/qemu/blob/v11.1.2/contrib/plugins/cache.c",
+  "header_source": "Homebrew QEMU 11.1.2 installed include/qemu-plugin.h; API 7",
+  "files": {
+    "qemu-plugin.h": "335d4e472067e914add598b60d1f7cf0dc029cd48f62f66656d6a88c54d8d9f9",
+    "COPYING": "dd3ce02338c3a48abb6ba59b48809f7108a8bd242cb0cc8be90daafa30707c28",
+    "cache.c": "be39d6daefdf564e43bf70d288fa6e132d8956d7b5a8da37cae98174f172ce6a"
+  }
+}

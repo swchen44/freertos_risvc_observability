@@ -1,0 +1,37 @@
+{
+  "repo": "ferrandi/PolyBenchC",
+  "commit": "d3a15bb1725afaaa33bcf3a4db6087ebf557c9b8",
+  "files": [
+    {
+      "path": "LICENSE.txt",
+      "sha256": "051cd26bce2f040209767780e375fb048efb14eb97001b24259f532f54917a4f",
+      "url": "https://raw.githubusercontent.com/ferrandi/PolyBenchC/d3a15bb1725afaaa33bcf3a4db6087ebf557c9b8/LICENSE.txt"
+    },
+    {
+      "path": "README",
+      "sha256": "73f8389b3582df0f055d1784d48ab8d3a06da76d8bd8410898976daef3aabeb3",
+      "url": "https://raw.githubusercontent.com/ferrandi/PolyBenchC/d3a15bb1725afaaa33bcf3a4db6087ebf557c9b8/README"
+    },
+    {
+      "path": "linear-algebra/blas/gemm/gemm.c",
+      "sha256": "1568eec3636bbca13d576643eb9d44b280fb37409679a747ae89123e5f310acc",
+      "url": "https://raw.githubusercontent.com/ferrandi/PolyBenchC/d3a15bb1725afaaa33bcf3a4db6087ebf557c9b8/linear-algebra/blas/gemm/gemm.c"
+    },
+    {
+      "path": "linear-algebra/blas/gemm/gemm.h",
+      "sha256": "69147d88e4d87e4e5e0be1fdfa0e766863072bc23aa73739a9d3fc378304ba52",
+      "url": "https://raw.githubusercontent.com/ferrandi/PolyBenchC/d3a15bb1725afaaa33bcf3a4db6087ebf557c9b8/linear-algebra/blas/gemm/gemm.h"
+    },
+    {
+      "path": "utilities/polybench.h",
+      "sha256": "a709a71b20ae86e46215c2645c604ea0296771bc3e8efbce63bcd9676f58b521",
+      "url": "https://raw.githubusercontent.com/ferrandi/PolyBenchC/d3a15bb1725afaaa33bcf3a4db6087ebf557c9b8/utilities/polybench.h"
+    },
+    {
+      "path": "utilities/polybench.c",
+      "sha256": "5de1de319495831bdb589a1ae8c2bfaf336f55c5549ab428c83d9d5905177f58",
+      "url": "https://raw.githubusercontent.com/ferrandi/PolyBenchC/d3a15bb1725afaaa33bcf3a4db6087ebf557c9b8/utilities/polybench.c"
+    }
+  ],
+  "status": "reference only; not ported or executed in RV32 POC"
+}

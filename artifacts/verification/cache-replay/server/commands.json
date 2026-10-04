@@ -1,0 +1,441 @@
+[
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "cache-accept-server",
+      "open",
+      "about:blank"
+    ],
+    "exit": 0,
+    "stdout": "✓ \n  about:blank\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "cache-accept-server",
+      "set",
+      "viewport",
+      "1600",
+      "1050"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "cache-accept-server",
+      "open",
+      "http://127.0.0.1:8765/cache.html"
+    ],
+    "exit": 0,
+    "stdout": "✓ PSF Lab · Cache 效率研究\n  http://127.0.0.1:8765/cache.html\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "cache-accept-server",
+      "wait",
+      "--text",
+      "目前 6 筆"
+    ],
+    "exit": 0,
+    "stdout": "目前 6 筆\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "cache-accept-server",
+      "eval",
+      "--json",
+      "document.querySelectorAll(\".chart svg\").length"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8765/cache.html\",\"result\":2},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "cache-accept-server",
+      "screenshot",
+      "--full",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/screenshots/cache/server-01-overview.png"
+    ],
+    "exit": 0,
+    "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/screenshots/cache/server-01-overview.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "cache-accept-server",
+      "eval",
+      "document.querySelector(\"#size\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "cache-accept-server",
+      "select",
+      "#size",
+      "16384"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "cache-accept-server",
+      "wait",
+      "--fn",
+      "document.querySelector(\"#size\").value===\"16384\""
+    ],
+    "exit": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "cache-accept-server",
+      "screenshot",
+      "--full",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/screenshots/cache/server-02-capacity.png"
+    ],
+    "exit": 0,
+    "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/screenshots/cache/server-02-capacity.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "cache-accept-server",
+      "eval",
+      "document.querySelector(\"#size\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "cache-accept-server",
+      "select",
+      "#size",
+      "4096"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "cache-accept-server",
+      "eval",
+      "document.querySelector(\"#variant\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "cache-accept-server",
+      "select",
+      "#variant",
+      "cache_column"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "cache-accept-server",
+      "eval",
+      "document.querySelector(\"#repeat\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "cache-accept-server",
+      "select",
+      "#repeat",
+      "1"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "cache-accept-server",
+      "wait",
+      "--text",
+      "目前 1 筆"
+    ],
+    "exit": 0,
+    "stdout": "目前 1 筆\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "cache-accept-server",
+      "eval",
+      "document.querySelector(\".tabulator-row .tabulator-cell[tabulator-field=\\\"run\\\"]\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "cache-accept-server",
+      "click",
+      ".tabulator-row .tabulator-cell[tabulator-field=\"run\"]"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "cache-accept-server",
+      "eval",
+      "--json",
+      "document.querySelector(\"#evidence\").textContent"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8765/cache.html\",\"result\":\"{\\n  \\\"schema\\\": \\\"psf-lab-cache-replay-v1\\\",\\n  \\\"scope\\\": \\\"data-only-region\\\",\\n  \\\"initial_state\\\": \\\"cold\\\",\\n  \\\"replacement\\\": \\\"LRU\\\",\\n  \\\"write_policy\\\": \\\"tag-allocate\\\",\\n  \\\"timing_feedback\\\": false,\\n  \\\"memory_operations\\\": 16384,\\n  \\\"l1\\\": {\\n    \\\"geometry\\\": {\\n      \\\"size\\\": 4096,\\n      \\\"line\\\": 64,\\n      \\\"ways\\\": 4\\n    },\\n    \\\"accesses\\\": 16384,\\n    \\\"misses\\\": 8192,\\n    \\\"reads\\\": 8192,\\n    \\\"writes\\\": 8192,\\n    \\\"read_misses\\\": 8192,\\n    \\\"write_misses\\\": 0,\\n    \\\"spatial\\\": {\\n      \\\"observed_used_bytes\\\": 32768,\\n      \\\"filled_bytes\\\": 524288,\\n      \\\"evicted_unused_bytes\\\": 487680,\\n      \\\"resident_unobserved_bytes\\\": 3840,\\n      \\\"observed_utilization\\\": 0.0625\\n    },\\n    \\\"miss_rate\\\": 0.5\\n  },\\n  \\\"l2\\\": {\\n    \\\"geometry\\\": {\\n      \\\"size\\\": 32768,\\n      \\\"line\\\": 64,\\n      \\\"ways\\\": 4\\n    },\\n    \\\"accesses\\\": 8192,\\n    \\\"misses\\\": 256,\\n    \\\"reads\\\": 8192,\\n    \\\"writes\\\": 0,\\n    \\\"read_misses\\\": 256,\\n    \\\"write_misses\\\": 0,\\n    \\\"miss_rate\\\": 0.03125\\n  },\\n  \\\"run\\\": \\\"cache_column-1\\\",\\n  \\\"checksum\\\": 8394752,\\n  \\\"psf_sha256\\\": \\\"f2bbd4a54055e73ebd31a770a6a17b4669acb11fdfe9c5484ace8189ab749e05\\\",\\n  \\\"source_sha256\\\": \\\"ac94b5ff2ab9f3721f45b259f7df4205bbafdc631b982e3561606924e5d8a87a\\\",\\n  \\\"model_sha256\\\": \\\"10a26afa98f4b2f8267d35ea7ff3c1bcaa89d8345996dbc840ecbc9be7af9717\\\",\\n  \\\"function\\\": \\\"cache_work\\\",\\n  \\\"object\\\": \\\"cache_matrix\\\",\\n  \\\"region\\\": {\\n    \\\"pc_start\\\": 2147494352,\\n    \\\"pc_size\\\": 62,\\n    \\\"data_start\\\": 2148171456,\\n    \\\"data_size\\\": 16384\\n  }\\n}\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "cache-accept-server",
+      "screenshot",
+      "--full",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/screenshots/cache/server-03-filter-evidence.png"
+    ],
+    "exit": 0,
+    "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/screenshots/cache/server-03-filter-evidence.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "cache-accept-server",
+      "eval",
+      "document.querySelector(\"#csv\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "cache-accept-server",
+      "download",
+      "#csv",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/verification/cache-replay/server/filtered.csv"
+    ],
+    "exit": 0,
+    "stdout": "✓ Download saved to /Users/swchen.tw/git/percepio/poc/artifacts/verification/cache-replay/server/filtered.csv\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "cache-accept-server",
+      "eval",
+      "document.querySelector(\"#variant\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "cache-accept-server",
+      "select",
+      "#variant",
+      "all"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "cache-accept-server",
+      "eval",
+      "document.querySelector(\"#repeat\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "cache-accept-server",
+      "select",
+      "#repeat",
+      "all"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "cache-accept-server",
+      "wait",
+      "--text",
+      "目前 6 筆"
+    ],
+    "exit": 0,
+    "stdout": "目前 6 筆\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "cache-accept-server",
+      "eval",
+      "document.querySelector(\".tabulator-col[tabulator-field=\\\"misses\\\"]\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "cache-accept-server",
+      "click",
+      ".tabulator-col[tabulator-field=\"misses\"]"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "cache-accept-server",
+      "eval",
+      "document.querySelector(\"#csv\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "cache-accept-server",
+      "download",
+      "#csv",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/verification/cache-replay/server/sorted.csv"
+    ],
+    "exit": 0,
+    "stdout": "✓ Download saved to /Users/swchen.tw/git/percepio/poc/artifacts/verification/cache-replay/server/sorted.csv\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "cache-accept-server",
+      "screenshot",
+      "--full",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/screenshots/cache/server-04-sort.png"
+    ],
+    "exit": 0,
+    "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/screenshots/cache/server-04-sort.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "cache-accept-server",
+      "errors",
+      "--json"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"errors\":[]},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "cache-accept-server",
+      "close"
+    ],
+    "exit": 0,
+    "stdout": "✓ Browser closed\n",
+    "stderr": ""
+  }
+]

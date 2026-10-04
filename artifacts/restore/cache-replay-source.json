@@ -1,0 +1,16 @@
+{
+  "archive": "cache-replay-source.tar.gz",
+  "sha256": "c0f968db4e5845613a6dcbb06e4a8eede84168a2b26a439dfde3adf773235fa7",
+  "bytes": 7007084,
+  "files": 1172,
+  "includes": "source, FreeRTOS/SDK source dependencies, captures, offline HTML",
+  "external_tools": [
+    "Python 3.13",
+    "QEMU 11.1.2 API 7",
+    "RISC-V GCC 15.2",
+    "C compiler",
+    "pkg-config",
+    "GLib headers"
+  ],
+  "excluded": "host executables, Python wheels, cross-platform validation"
+}

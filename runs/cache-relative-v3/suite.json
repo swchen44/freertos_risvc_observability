@@ -1,0 +1,40 @@
+{
+  "schema": "cache-suite-v1",
+  "build_command": [
+    "cc",
+    "-dynamiclib",
+    "-undefined",
+    "dynamic_lookup",
+    "-O2",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-I/Users/swchen.tw/git/percepio/poc/third_party/qemu-cache",
+    "/Users/swchen.tw/git/percepio/poc/tools/cache/addresses.c",
+    "-o",
+    "/Users/swchen.tw/git/percepio/poc/runs/cache-relative-v3/addresses.dylib",
+    "-I/opt/homebrew/Cellar/glib/2.90.0/include/glib-2.0",
+    "-I/opt/homebrew/Cellar/glib/2.90.0/lib/glib-2.0/include",
+    "-I/opt/homebrew/opt/gettext/include",
+    "-I/opt/homebrew/Cellar/pcre2/10.49/include"
+  ],
+  "qemu_version": "QEMU emulator version 11.1.2\nCopyright (c) 2003-2026 Fabrice Bellard and the QEMU Project developers\n",
+  "compiler": "Apple clang version 17.0.0 (clang-1700.0.13.5)\nTarget: arm64-apple-darwin24.6.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin\n",
+  "plugin_sha256": "9c9017ef3bdef3b2aed1438d5e9e41e1dbd5c673c7a8f78177b0fd6ec0f68bb0",
+  "sources": {
+    "tools/cache/addresses.c": "8412a0620d4861a17a365add9fb4cd06786f4df99edc0e46ef7f6b34b7199bb3",
+    "tools/cache/run.py": "aed7b6144fdb7c89e2a785292323d3c0be088b9bd651f38b79a226bc5336627e",
+    "src/psf_lab/cache_model.py": "10a26afa98f4b2f8267d35ea7ff3c1bcaa89d8345996dbc840ecbc9be7af9717",
+    "src/psf_lab/cache_report.py": "3f363ab2536065bcc0af017d8c2ec5a771fbc6fefd382cca45469e35316ab30c",
+    "firmware/Makefile": "cf25e4fecd19db367fd4133ecad8d5376f7617e8bd042b8f2111bae2e3231d33",
+    "firmware/app/cases/cache_column.c": "1f49effe0ec4c1d13f8f1aa1a174feb39c34461aec2f3debda46dded0a326684",
+    "firmware/app/cases/cache_row.c": "f4826bf7545f86a17fc9d28da3a8ad5af7b8ecdadc73f7a0860769919422165a",
+    "firmware/app/cases/cache_workload.h": "e0201b679b74c0033a5229590d1ac5f7f246680e7c39c4f5e09037f5f5fe29c1",
+    "third_party/qemu-cache/COPYING": "dd3ce02338c3a48abb6ba59b48809f7108a8bd242cb0cc8be90daafa30707c28",
+    "third_party/qemu-cache/SOURCE.json": "732ec222152cf506ce9ddf96ac1d99393cc189925709f8b8b0d9f9cc8f0b470b",
+    "third_party/qemu-cache/cache.c": "be39d6daefdf564e43bf70d288fa6e132d8956d7b5a8da37cae98174f172ce6a",
+    "third_party/qemu-cache/qemu-plugin.h": "335d4e472067e914add598b60d1f7cf0dc029cd48f62f66656d6a88c54d8d9f9"
+  },
+  "captures": 6,
+  "host": "macOS-15.7.7-arm64-arm-64bit-Mach-O"
+}

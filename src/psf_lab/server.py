@@ -14,6 +14,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictInt
 from starlette.concurrency import run_in_threadpool
 from starlette.exceptions import HTTPException
 
+from psf_lab.cache_report import load_comparison
 from psf_lab.export import export_csv
 from psf_lab.harness import compare_cases
 from psf_lab.parser.errors import ParseError
@@ -133,6 +134,10 @@ def create_app(
     @lru_cache(maxsize=2)
     def data(id_):
         return load_trace(store, id_)
+
+    @app.get("/api/cache")
+    def cache_comparison():
+        return load_comparison(ROOT / "runs/cache-relative-v3")
 
     @app.get("/api/traces")
     def traces():

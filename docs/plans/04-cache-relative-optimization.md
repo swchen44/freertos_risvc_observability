@@ -1,6 +1,6 @@
 # 後續階段：Cache 相對效能最佳化
 
-狀態：M4.1 plugin 載入 smoke 已完成；模型校驗、A/B 與 Dashboard 尚未實作。
+狀態：M4.1 與 data-only M4.2／M4.3 已完成，M4.4／M4.5 已有區域整段分析與雙模式 Dashboard；L1I、逐 task 對時及完整 M4.6 尚未完成。
 
 使用者明確目的：最佳化軟體 data 與程式碼，使執行更快。接受非 cycle-accurate 模型，要求在可取得資訊下儘量接近平台，主要比較同一模型下修改前後的相對差異。此需求不阻塞目前 PSF／案例／Dashboard。
 
@@ -84,3 +84,13 @@ flowchart TD
 先完成 M4.1 的實測，再依固定版本輸出制定 parser 欄位與逐步實作計畫；目前不預設上游輸出具備 load/store miss 分流或 PSF 同步功能。
 
 實跑發現 system mode instruction address 使用 `qemu_plugin_insn_haddr()`，而 data 使用 guest physical address。M4.2 必須先驗證地址語意與 L2 一致性；未完成前只宣稱 plugin 可執行。
+
+
+## 2026-10-04 data-region 實作更新
+
+[實作與還原指南](../cache-replay.md)、[實際研究](../research/Cache效率與PSF擴充.md)、[執行計畫](06-cache-replay.md)。
+
+- 已完成：guest physical data capture、十個 cache model tests、六次同 checksum row/column 實跑、三組 geometry、L1D per-residency byte-use、manifest/hash 驗證、Web 與 HTML cache 頁面、來源與 evidence 還原包。
+- M4.2／M4.3 的 data-region 子範圍已驗收；官方原版 unified instruction/data 模型仍未校驗完成。
+- M4.4／M4.5 只對應整段 workload 與 PSF hash，沒有逐事件 timestamp 或一般 task cache attribution。
+- M4.6、L1I hot/cold 拆分、AoS／SoA、tiling、硬體抽查繼續保留未完成，不以目前 data-only 結果結清。

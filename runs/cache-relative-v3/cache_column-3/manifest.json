@@ -1,0 +1,51 @@
+{
+  "schema": "cache-run-v1",
+  "variant": "cache_column",
+  "repeat": 3,
+  "command": [
+    "qemu-system-riscv32",
+    "-machine",
+    "virt",
+    "-cpu",
+    "rv32",
+    "-smp",
+    "1",
+    "-m",
+    "128M",
+    "-bios",
+    "none",
+    "-display",
+    "none",
+    "-monitor",
+    "none",
+    "-serial",
+    "file:console.log",
+    "-accel",
+    "tcg,thread=single",
+    "-icount",
+    "shift=0,align=off,sleep=off",
+    "-semihosting-config",
+    "enable=on,target=native",
+    "-kernel",
+    "/Users/swchen.tw/git/percepio/poc/runs/cache-relative-v3/cache_column-3/firmware.elf",
+    "-plugin",
+    "/Users/swchen.tw/git/percepio/poc/runs/cache-relative-v3/addresses.dylib,pc_start=800029d0,pc_end=80002a0e,data_start=800a7ec0,data_end=800abec0,out=accesses.csv"
+  ],
+  "checksum": 8394752,
+  "region": {
+    "pc_start": 2147494352,
+    "pc_size": 62,
+    "data_start": 2148171456,
+    "data_size": 16384
+  },
+  "files": {
+    "symbols.txt": "d389c731160f0420fd83a448201ee70e627b653db0507bbb10fe6955ab119ddc",
+    "trace.psf": "f2bbd4a54055e73ebd31a770a6a17b4669acb11fdfe9c5484ace8189ab749e05",
+    "firmware.map": "6f78bfd601a5a414d3008344f84f42b300a938b972031c618ecf90f4aaf35305",
+    "firmware.elf": "27a97a75ebdb06b5b9957a13722e38b20d7f5f0093a396423581367c6c619868",
+    "console.log": "c5651757c2aa7a4dab804a23a69ade3527d450e87c3fc55fe000fb5970721126",
+    "oracle.json": "f34abd7d194fd230ca4285043cd099a024c3bee3637683ff95f5b4640a9737cc",
+    "qemu.log": "f23f9c2e5ed918bd381a69fd8b0d99327f8e00622cbd553925b47820c517d88e",
+    "accesses.csv": "ac94b5ff2ab9f3721f45b259f7df4205bbafdc631b982e3561606924e5d8a87a"
+  }
+}
