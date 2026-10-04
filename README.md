@@ -170,3 +170,11 @@ Dashboard 可先使用既有 PSF，不需要 FreeRTOS toolchain。重新模擬�
 本次上傳前重新執行 96 Python tests 和 11 browser tests；[checklist 與來源 commit](artifacts/verification/github-upload/checklist.json)、[Python log](artifacts/verification/github-upload/python-tests.log)、[browser log](artifacts/verification/github-upload/browser-tests.log) 可複查。M1～M3 共 13 tasks 的步驟勾選已核對，該次上傳時 offline 尚未實作；目前已提供單 trace 離線 HTML。M4／U01～U16 與跨機重現仍待後續。
 
 重要程式入口：`src/psf_lab/cli.py`、`parser/semantic.py`、`analysis.py`、`runner.py`、`harness.py`、`server.py`；前端 `web/src/main.js`；韌體 `firmware/config/FreeRTOSConfig.h`、`firmware/app/main.c`、`firmware/app/cases/`。文件集中於 `docs/`，驗證 logs 在 `artifacts/verification/`，正式 capture 與原始 PSF 在 `runs/`。
+
+
+## 2026-10-04 接續工作
+
+- 修正 Dashboard 指南仍稱離線 HTML 尚未提供的舊描述。
+- M4.1 已建置官方 cache plugin 並在 RV32 Queue baseline 實跑；正常結束、oracle 相同，取得 L1I／L1D／L2 統計。見 [原始證據與限制](artifacts/verification/cache/README.md)。
+- [M4 計畫](docs/plans/04-cache-relative-optimization.md) 已拆成六階段。下一步先校驗地址語意、cache oracle 與 read/write 邊界，再做 A/B 和 Dashboard。
+- 產品 U01～U16 仍待內網 source／硬體；跨機工作維持暫緩。此 smoke 不代表已完成產品 cache 模型或效能最佳化。

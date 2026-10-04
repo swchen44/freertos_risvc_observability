@@ -1,0 +1,104 @@
+core #, data accesses, data misses, dmiss rate, insn accesses, insn misses, imiss rate, l2 accesses, l2 misses, l2 miss rate
+0       9119873        2894            0.0317%  16312105       228             0.0014%  3122         2810           90.0064%
+
+address, data misses, instruction
+0x1058d8056 (_start), 2555, sw                      zero,0(a0)
+0x1058dbcb2 (memset), 192, sb                      a1,0(t1)
+0x1058dc614 (memmove), 30, sb                      t2,0(t1)
+0x1058d9ac6 (xTraceEntryTableInitialize), 28, sw                      zero,0(a5)
+0x1058d9ad6 (xTraceEntryTableInitialize), 14, sb                      zero,20(a5)
+0x1058d9766 (pvPortMalloc), 11, sw                      a5,4(s4)
+0x1058dbe74 (_svfiprintf_r), 6, lbu                     a5,0(s0)
+0x1058d9566 (vListInitialise), 4, sw                      a5,4(a0)
+0x1058d8036 (_start), 3, lw                      t0,0(a0)
+0x1058dc5c4 (memchr), 3, lbu                     a5,0(a0)
+0x1058db3c8 (poc_oracle_record), 3, sw                      s2,0(a5)
+0x1058da75a (xTraceObjectSetName), 2, lbu                     a4,0(a4)
+0x1058d803a (_start), 2, sw                      t0,0(a1)
+0x1058db3d0 (poc_oracle_record), 2, sw                      a0,8(a5)
+0x1058db3cc (poc_oracle_record), 2, sw                      s3,4(a5)
+0x1058da7e0 (xTraceObjectRegisterInternal), 1, lbu                     a5,0(s3)
+0x1058d9668 (pvPortMalloc), 1, sw                      a5,0(a4)
+0x1058d9658 (pvPortMalloc), 1, sw                      zero,4(a5)
+0x1058d84c8 (vTaskStartScheduler), 1, lbu                     a3,0(a4)
+0x1058dbbf6 (__clzsi2), 1, lbu                     a0,0(a5)
+0x1058da78e (xTraceObjectRegisterInternal), 1, sw                      s3,44(sp)
+0x10390000c, 1, lw                      a1,32(t0)
+0x1058da16c (xTraceEventCreateData1), 1, sw                      s0,40(sp)
+0x1058d8710 (xTaskResumeAll), 1, lw                      a5,0(s0)
+0x1058daf96 (xTraceStringRegister), 1, lbu                     a4,0(a4)
+0x1058d9568 (vListInitialise), 1, sw                      a4,8(a0)
+0x1058d8102 (main), 1, sw                      ra,12(sp)
+0x1058dac9c (xTraceInitialize), 1, sw                      zero,-440(a5)
+0x1058d9e04 (xTraceEventInitialize), 1, sw                      zero,0(a0)
+0x1058dac70 (xTraceInitialize), 1, lw                      a5,0(s2)
+0x1058d9afc (xTraceEntryCreate), 1, sw                      ra,12(sp)
+0x1058d8f54 (xQueueGenericCreate), 1, sw                      a1,64(s0)
+
+address, fetch misses, instruction
+0x1058d9a8a (xTraceEntryIndexTableInitialize), 1, sw                      a0,-1888(gp)
+0x1058dc500 (_printf_i), 1, jalr                    ra,s1,0
+0x1058dbc40 (snprintf), 1, addi                    sp,sp,-160
+0x1058da212 (xTraceEventCreateData1), 1, lw                      ra,44(sp)
+0x1058db382 (poc_oracle_record), 1, lw                      a4,0(s1)
+0x1058db37a (poc_oracle_record), 1, addi                    sp,sp,-32
+0x1058dbf1c (_svfiprintf_r), 1, addi                    s0,s0,1
+0x1058d8ac0 (xTaskRemoveFromEventList), 1, lw                      a4,32(s0)
+0x1058d8da8 (prvCopyDataFromQueue), 1, mv                      a5,a0
+0x1058dc202 (_printf_common), 1, beqz                    a5,12                   # 0x8000420e
+0x1058d908e (xQueueGenericSend), 1, jal                     ra,-1124                # 0x80000c2a
+0x1058d8200 (prvAddCurrentTaskToDelayedList), 1, addi                    a5,gp,-1992
+0x1058d9f16 (xTraceEventCreate2), 1, lw                      ra,44(sp)
+0x1058db088 (xTraceKernelPortInitialize), 1, beqz                    a0,18                   # 0x8000309a
+0x1058db652 (poc_oracle_finish), 1, addi                    s1,s1,12
+0x1058da7c0 (xTraceObjectRegisterInternal), 1, slli                    a5,s2,2
+0x1058d964a (pvPortMalloc), 1, add                     a5,a5,a4
+0x1058dc4d2 (_printf_i), 1, lw                      a5,0(a4)
+0x1058dad80 (xTraceInitialize), 1, beq                     a0,s1,-200              # 0x80002cb8
+0x1058d84c2 (vTaskStartScheduler), 1, addi                    a4,a4,618
+0x1058d81d8 (prvAddCurrentTaskToDelayedList), 1, lw                      a5,0(s0)
+0x1058d9c00 (xTraceEntryGetAtIndex), 1, mul                     a0,a0,a5
+0x1058d9342 (xQueueReceive), 1, addi                    a4,zero,3
+0x1058d9912 (vPortSetupTimerInterrupt), 1, addi                    sp,sp,-16
+0x1058daa84 (xTraceVPrintF), 1, mv                      a3,zero
+0x1058d8a82 (vTaskPlaceOnEventList), 1, lw                      a1,-1944(gp)
+0x1058dc1c4 (_printf_common), 1, addi                    sp,sp,-48
+0x1058da1c0 (xTraceEventCreateData1), 1, slli                    a5,a5,6
+0x1058d8d60 (prvCopyDataToQueue), 1, bnez                    s2,30                   # 0x80000d7e
+0x1058db900, 1, lw                      s9,88(sp)
+0x1058db044 (xTraceTimestampInitialize), 1, sw                      a0,-1840(gp)
+0x1058da788 (xTraceObjectRegisterInternal), 1, addi                    sp,sp,-64
+
+address, L2 misses, instruction
+0x1058d8056 (_start), 2555, sw                      zero,0(a0)
+0x1058dbe74 (_svfiprintf_r), 5, lbu                     a5,0(s0)
+0x1058d8036 (_start), 3, lw                      t0,0(a0)
+0x1058dc5c4 (memchr), 2, lbu                     a5,0(a0)
+0x1058da75a (xTraceObjectSetName), 2, lbu                     a4,0(a4)
+0x1058d803a (_start), 2, sw                      t0,0(a1)
+0x1058d9a8a (xTraceEntryIndexTableInitialize), 1, sw                      a0,-1888(gp)
+0x1058dc500 (_printf_i), 1, jalr                    ra,s1,0
+0x1058dbc40 (snprintf), 1, addi                    sp,sp,-160
+0x1058da212 (xTraceEventCreateData1), 1, lw                      ra,44(sp)
+0x1058db382 (poc_oracle_record), 1, lw                      a4,0(s1)
+0x1058db37a (poc_oracle_record), 1, addi                    sp,sp,-32
+0x1058dbf1c (_svfiprintf_r), 1, addi                    s0,s0,1
+0x1058d8ac0 (xTaskRemoveFromEventList), 1, lw                      a4,32(s0)
+0x1058d8da8 (prvCopyDataFromQueue), 1, mv                      a5,a0
+0x1058dc202 (_printf_common), 1, beqz                    a5,12                   # 0x8000420e
+0x1058d908e (xQueueGenericSend), 1, jal                     ra,-1124                # 0x80000c2a
+0x1058d8200 (prvAddCurrentTaskToDelayedList), 1, addi                    a5,gp,-1992
+0x1058d9f16 (xTraceEventCreate2), 1, lw                      ra,44(sp)
+0x1058db088 (xTraceKernelPortInitialize), 1, beqz                    a0,18                   # 0x8000309a
+0x1058db652 (poc_oracle_finish), 1, addi                    s1,s1,12
+0x1058da7c0 (xTraceObjectRegisterInternal), 1, slli                    a5,s2,2
+0x1058d964a (pvPortMalloc), 1, add                     a5,a5,a4
+0x1058dc4d2 (_printf_i), 1, lw                      a5,0(a4)
+0x1058dad80 (xTraceInitialize), 1, beq                     a0,s1,-200              # 0x80002cb8
+0x1058d84c2 (vTaskStartScheduler), 1, addi                    a4,a4,618
+0x1058d81d8 (prvAddCurrentTaskToDelayedList), 1, lw                      a5,0(s0)
+0x1058d9c00 (xTraceEntryGetAtIndex), 1, mul                     a0,a0,a5
+0x1058d9342 (xQueueReceive), 1, addi                    a4,zero,3
+0x1058d9912 (vPortSetupTimerInterrupt), 1, addi                    sp,sp,-16
+0x1058daa84 (xTraceVPrintF), 1, mv                      a3,zero
+0x1058d8a82 (vTaskPlaceOnEventList), 1, lw                      a1,-1944(gp)
