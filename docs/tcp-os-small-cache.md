@@ -147,7 +147,7 @@ ELF 總量相同不代表所有函式一樣大。Padding、GC 與 relaxation 都
 
 另有 6 次 checksum v1 探索結果。這些是確定性模型重複，不是硬體統計信賴區間。
 
-新增 tests 涵蓋兩種 cache geometry 的 C/Python 差分、3C 分類、跨 line write、錯用 profile 的拒絕、checksum alignment/tail/carry、RV32 無除法檢查與 pbuf chain 邊界。完整回歸測試與 review 收據將列於本文件末段。
+新增 tests 涵蓋兩種 cache geometry 的 C/Python 差分、3C 分類、跨 line write、錯用 profile 的拒絕、checksum alignment/tail/carry、RV32 無除法檢查與 pbuf chain 邊界。完整回歸 **220/220** 通過，44.777 秒；Ruff 與七個修改 Python 檔案的格式檢查通過。驗證基準 commit `b21d040`。見 [測試 log](../artifacts/verification/tcp-os-small-cache/full-tests.log)、[completion.json](../artifacts/verification/tcp-os-small-cache/completion.json)、[自我 review](../artifacts/verification/tcp-os-small-cache/review.md)。測試保留一則既有 Starlette/httpx deprecation warning，沒有測試失敗。
 
 ```sh
 # 在 poc 根目錄，先依原有環境文件準備 .venv、pinned toolchain 與 patched QEMU。

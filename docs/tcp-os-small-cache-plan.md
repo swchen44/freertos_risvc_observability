@@ -23,10 +23,10 @@
 - [x] layout 獨立實驗。
 - [x] checksum 獨立實驗。
 - [x] pbuf 獨立實驗。
-- [ ] 結果報告、完整測試、Git 證據。
+- [x] 結果報告、完整測試、Git 證據。
 
 Ruling: 使用既有 POC 實驗分支，保留預設行為，以選項隔離本輪；不另切換目前 workspace 分支。縮小 cache 是壓力情境，不能將改善幅度推論成產品效能。
 
 Ruling: checksum v1 的 signed 除法會被未校準的 instruction timing 掩蓋；保留六次探索與原始 source snapshot，正式比較改用無 div/rem 的 v2。三種改法不疊加，沒有獨立 reviewer。
 
-執行：26 次正式 QEMU、6 次探索完成，所有封包相同；layout 變慢也保留。完整 suite 待 clean snapshot 後執行。
+執行：26 次正式 QEMU、6 次探索完成，所有封包相同；layout 變慢也保留。完整 suite 在 clean snapshot `b21d040` 上執行，220/220 通過；Ruff 和格式檢查通過。

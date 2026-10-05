@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "tested_commit": "b21d040f10845aae17b4348fa6ebdb4094f86081",
+  "unittest": {
+    "passed": 220,
+    "seconds": 44.777,
+    "log": "full-tests.log",
+    "sha256": "710f705bd2dcdfcfe257f6a1f8f0034b30c1fd0686f26811174d4aed38b0b773"
+  },
+  "ruff": "passed; src tests tools and verify_v1.py",
+  "format": "7 changed Python files passed",
+  "formal_qemu_runs": 26,
+  "exploratory_qemu_runs": 6,
+  "formal_packets_byte_identical": true,
+  "default_regression": "audit including stream hash and guest measurements equal T3a",
+  "review": "self-review only; no independent reviewer",
+  "known_limitations": [
+    "single connection workload",
+    "model time, not calibrated hardware",
+    "no new Dashboard view",
+    "no guest pbuf fragmentation matrix"
+  ]
+}

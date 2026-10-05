@@ -12,6 +12,6 @@
 - 分析僅量函式 self cost；stack window 含 preemption；沒有聲稱獨占 CPU usage 或硬體速度。
 - 調整了程式碼後的地址與跨 line fetch 成本仍是混合因素。checksum v2 self cost 增加，報告未只挑總時間改善。
 - 舊 references 不變。新 map/assembly/ELF/trace 都保留；v1 需使用 archived source；新 profile 可重跑，未宣稱完整離線 host toolchain 套件。
-- 完整 suite：待 clean Git snapshot 後執行，以 completion.json 和 full-tests.log 為準。
+- 完整 suite：clean Git snapshot `b21d040`，220/220 通過；Ruff 及修改 Python 檔案 format 通過。見 completion.json 和 full-tests.log。
 
 未做：實機 PMU、不同流量與多段 guest pbuf workload、三改法疊加、linker 多排列搜尋、Dashboard view。這些不阻擋本輪三個獨立實驗的結論。
