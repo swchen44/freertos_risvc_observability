@@ -1,0 +1,10 @@
+{
+  "repository": "poc",
+  "local_sha": "88723c35868504010a7cb6a9b3c32d96bcf62ee6",
+  "push_exit": 0,
+  "remote_sha": "88723c35868504010a7cb6a9b3c32d96bcf62ee6",
+  "verified": true,
+  "ref": "refs/heads/poc-history",
+  "completion": "poc/artifacts/verification/tcp-workload-matrix/completion.json",
+  "note": "Root commit records this verified POC gitlink; compare root HEAD with refs/heads/main after push."
+}
