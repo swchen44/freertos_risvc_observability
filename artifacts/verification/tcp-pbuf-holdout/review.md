@@ -13,4 +13,4 @@
 - D/L2 misses 下降而 rate 略升是分母變化，報告沒有隱藏。48.31% 是 request_rx 指令差，不是整體速度或 CPU loading。
 - No NIC/DMA、IP fragmentation、跨 pbuf headers、多 connection、任意 request sizes。新 workload 的分配／複製屬 harness，不是推薦產品 zero-copy RX 作法。
 - 所有 guest C build commands 為 -Os；references/ 與 third_party/ 未修改；JSON/CSV/maps/ELF/PSF/raw traces 均保存。
-- 完整 suite 等待 clean snapshot 執行，以 full-tests.log 和 completion.json 為準。
+- 完整 suite 在 clean snapshot `c931bfb` 執行，224/224 通過，46.842 秒；Ruff 與 format 通過。見 full-tests.log 和 completion.json。

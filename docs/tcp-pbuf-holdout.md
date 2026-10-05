@@ -111,7 +111,7 @@ L1I conflict 由 266 降到 191，capacity 則由 1,112 增到 1,127。分析採
 
 分段 baseline／pbuf 的 on_recv 差為 +46 B；ELF text 總量相同還受 GC、padding、relaxation 影響。不同版本的 maps 與 assembly 全數保存。
 
-建構 chain 在 harness window，為保持同一份 wire data 會額外分配與複製。這不代表產品的 zero-copy RX 必須如此實作。兩個版本都 執行同一建構流程；跨「單段／分段」的總時間差還包含觀測程式與配置影響，不是純 fragmentation penalty。
+建構 chain 在 harness window，為保持同一份 wire data 會額外分配與複製。這不代表產品的 zero-copy RX 必須如此實作。兩個版本都執行同一建構流程；跨「單段／分段」的總時間差還包含觀測程式與配置影響，不是純 fragmentation penalty。
 
 ## 使用與複查
 
@@ -153,4 +153,4 @@ PYTHONPATH=src .venv/bin/python artifacts/verification/tcp-pbuf-holdout/verify_p
 - 未驗證任意 chain 長度、跨 pbuf 的 protocol headers、不同 payload 長度、多連線、IP fragmentation、out-of-order／retransmission 或 NIC/DMA。
 - 沒有改預設，也沒有新增 Dashboard；這次交付可重跑的下一組驗證與研究文件。
 - 模型沒有 pipeline、prefetch、write-back／store buffer、真實 bus overlap，結果可作相對研究，不是產品效能數據。
-- 本 side conversation 依限制自行 review，沒有獨立 reviewer。完整測試收據在完成驗證後補入。
+- 本 side conversation 依限制自行 review，沒有獨立 reviewer。完整回歸 **224/224** 通過，46.842 秒，tested commit `c931bfb`；Ruff 與五個 Python 檔案的格式檢查通過。見 [completion.json](../artifacts/verification/tcp-pbuf-holdout/completion.json)、[完整測試 log](../artifacts/verification/tcp-pbuf-holdout/full-tests.log)、[自我 review](../artifacts/verification/tcp-pbuf-holdout/review.md)。Log 保留既有 Starlette/httpx deprecation warning，沒有測試失敗。
