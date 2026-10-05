@@ -12,3 +12,5 @@ Pre-flight: A1 workload contract 由 A2 runner/guest 及 A3 oracle 消費；新�
 - A4: 未開始。
 
 Ruling: 正式捕捉輸出目錄暫列本 repo info/exclude，避免前一組 artifacts 使下一組 clean-source gate 失敗；結束時 force-add 所有成果，來源本身每組仍要求 clean。輸出目錄保留原路徑，不搬移造成 manifest path 失效。
+
+Ruling: A08 首次探針觸發 pending ACK assertion。移除 plugin 並開 UART 診斷確認 guest assertion line 277；lwIP tcp_recved 的 receive-window update 可立即 ACK。新 matrix peer 消費最多一個正確 ACK，host oracle 檢查 seq/ack/flags/empty payload，舊 API 不放寬。新增正/負測試先紅後綠；不改 IRQ guard。

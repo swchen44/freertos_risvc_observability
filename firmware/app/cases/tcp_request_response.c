@@ -274,7 +274,12 @@ static void session_task(void *arg) {
  for(round_id=0;round_id<2;round_id++) {
   for(unsigned i=0;i<POC_REQUEST_BYTES;i++) request[i]=(uint8_t)(round_id+i);
   inject(client_seq,server_seq,TCP_ACK|TCP_PSH,request,POC_REQUEST_BYTES,"request_rx");client_seq+=POC_REQUEST_BYTES;
+#ifdef POC_MATRIX_REQUEST
+  configASSERT(received==(round_id+1)*POC_REQUEST_BYTES);
+  if(pending) consume(0,server_seq,TCP_ACK);
+#else
   configASSERT(received==(round_id+1)*POC_REQUEST_BYTES&&!pending);
+#endif
   for(unsigned chunk=0;chunk<4;chunk++) {
    configASSERT(retained==0);
    for(unsigned i=0;i<1460;i++) payload[i]=(uint8_t)(i*17+round_id+chunk);

@@ -85,3 +85,13 @@ class WorkloadTests(unittest.TestCase):
                 bad[3]["payload"] = bytes(65)
             with self.assertRaises(ValueError):
                 validate_session(bad, metrics, workload=w)
+
+    def test_valid_standalone_request_ack_and_bad_ack(self):
+        packets, metrics = fixture()
+        w = load_workload(REGISTRY, "A01")
+        ack = dict(direction="tx", seq=9001, ack=1065, flags=16, payload=b"")
+        packets.insert(4, ack)
+        self.assertEqual(validate_session(packets, metrics, workload=w)["packets"], 26)
+        ack["ack"] += 1
+        with self.assertRaises(ValueError):
+            validate_session(packets, metrics, workload=w)

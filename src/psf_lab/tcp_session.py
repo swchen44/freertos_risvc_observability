@@ -34,6 +34,10 @@ def validate_session(packets, metrics, *, workload=None):
         request = bytes((round_id + i) % 256 for i in range(request_size))
         expect("rx", client, server, 16, request)
         client += request_size
+        if workload is not None and position < len(packets):
+            next_packet = packets[position]
+            if next_packet["direction"] == "tx" and not next_packet["payload"]:
+                expect("tx", server, client, 16)
         for chunk in range(4):
             payload = bytes((i * 17 + round_id + chunk) % 256 for i in range(1460))
             expect("tx", server, client, 16, payload)
