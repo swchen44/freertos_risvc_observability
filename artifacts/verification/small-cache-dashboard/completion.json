@@ -1,0 +1,11 @@
+{
+  "status": "awaiting-clean-commit-regression",
+  "passed": false,
+  "base_commit": "1d8f256",
+  "scope": "T3b/T3c dashboard only; no new guest experiment",
+  "review": "Independent timing_dashboard_review: no findings",
+  "web_e2e": "passed",
+  "offline_e2e": "passed",
+  "existing_ui_e2e": 11,
+  "node_tests": 9
+}

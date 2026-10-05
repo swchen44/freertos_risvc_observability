@@ -33,9 +33,13 @@
 
 詳盡原驗收保留在 [內部 AI 任務](../references/baseline/research/內部AI-接續研究任務.md)。不能以本機 unit tests 取代 U01～U16 的產品證據。
 
-## 後續順序
+## 現況與後續順序 · 2026-10-06
 
-使用者新增的相對最佳化需求排在目前 M1～M3 之後，見 [M4 cache 計畫](plans/04-cache-relative-optimization.md)。接受非 cycle-accurate，先用可校驗的 L1I／L1D／L2 模型比較相同工作量 A/B，再考慮 penalty／bus 估計與硬體抽查。PSF 和 cache plugin 必須有同步關係；cache 統計不會自動改變 QEMU guest 的時間。
+M4 已完成多輪相對比較，進度到 [T3b 小 Cache -Os](tcp-os-small-cache.md) 與 [T3c pbuf chain](tcp-pbuf-holdout.md)。最新實驗設定為 L1I 8 KiB、L1D 8 KiB、L2 32 KiB；原 16/16/64 預設與歷史結果保留。
+
+修改版 QEMU 已把 cache/sysram 模型成本接入 guest 時間，並驗證 IRQ/task 搶占與完整 TCP，見 [T2g](live-tcp-irq-t2g.md)。原版 QEMU 或單純 sidecar 統計不會自動做到這件事。500 MHz 僅用於 memory cycle→2 ns 換算，另有 1 ns/instruction 基底；不是完整 CPU pipeline。
+
+[新 Dashboard](small-cache-dashboard.md) 呈現 T3b/T3c；舊 TCP TX 頁仍保留。接續工作為更多 workload、成本歸因分離與逐事件/函式執行熱點；不要重做已通過的 T2/T3。
 
 單 trace 離線 HTML 已提供，見 [離線指南](offline-guide.md)：產生時需要 Python 與建好的 Web assets，觀看時不需要 Server／網路。跨機重現與內網安裝材料依使用者 2B 暫緩；產品部署仍是後續任務。
 
@@ -57,4 +61,4 @@ flowchart TD
 
 ## Cache 子階段已完成的交接材料
 
-[還原指南](cache-replay.md) 提供 source archive、六次 PSF／ELF／map／CSV、模型版本與乾淨還原驗證。現有 Web 與 HTML 支援 data-region cache 比較；後續內網 AI 可接續 L1I、PC／symbol、hot/cold、AoS／SoA、tiling、PMU user events 與同步。這些未完成事項詳列於 [研究表](research/Cache效率與PSF擴充.md)。
+[還原指南](cache-replay.md) 提供 source archive、六次 PSF／ELF／map／CSV、模型版本與乾淨還原驗證。早期 Web 與 HTML 提供 data-region 比較；後續 T3 已增加 L1I/L1D/L2、miss 分類、symbol/code size 與最佳化驗證。hot/cold、AoS／SoA、tiling、PMU 與更細同步仍需另訂案例。歷史研究項目保留於 [研究表](research/Cache效率與PSF擴充.md)。

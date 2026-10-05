@@ -1,5 +1,29 @@
 # FreeRTOS／RISC-V PSF POC
 
+## 現況入口 · 2026-10-06
+
+目前實驗進度到 **T3c**；最新比較採 **L1I 8 KiB + L1D 8 KiB + L2 32 KiB**，設定檔為 [cases/timing/sysram-10-small.json](cases/timing/sysram-10-small.json)。舊 16/16/64 KiB 保留作預設與歷史對照，不與小 Cache 同組計算改善率。
+
+- **新比較頁面：**[小 Cache Dashboard 指南與截圖](docs/small-cache-dashboard.md)，涵蓋 T3b/T3c 的模型時間、3C misses、記憶體成本與 code size。Web 與離線 HTML 共用資料；驗收見指南。
+- **韌體成果：**[T3c pbuf chain](docs/tcp-pbuf-holdout.md)、[T3b -Os 實作比較](docs/tcp-os-small-cache.md)。目前未增加新的 firmware workload。
+- **待做：**更多 request 長度/pbuf chain、ISR/observer/recorder/task-exclusive 成本分離、新 timing 資料的逐事件時間軸與函式執行熱點。產品 U01～U16 仍需內網原始碼或硬體。
+- **已暫緩：**跨機驗證與內網安裝材料；不能把它們列成本輪必做項目。
+
+以下為各階段當時紀錄。「尚未完成」僅表示該階段結束時的狀態；最新現況以本節、Dashboard 指南與 T3c 報告為準。
+
+### 最新頁面預覽
+
+Web：T3b 四種 `-Os` 實作，在同一組 8/8/32 KiB Cache 下比較時間、指令與 miss 成本。
+
+![小 Cache Web 總覽](artifacts/screenshots/timing/server-01-overview.png)
+
+離線 HTML：篩選 pbuf chain 候選、查看來源與精確數值；不需要 Python server。完整操作與重建命令見 [指南](docs/small-cache-dashboard.md)。
+
+![離線 pbuf chain 證據](artifacts/screenshots/timing/offline-03-filtered-evidence.png)
+
+## 歷史階段紀錄
+
+
 **T3c guest pbuf chain 驗證：**[13 + 0 + 51 bytes、完整 TCP 與 cache 比較](docs/tcp-pbuf-holdout.md)。單次走訪使每次 request_rx 指令減少 48.31%，完整模型時間改善 0.816%；單段兩版回歸結果不變。這是接收驗證 callback 的改善。
 
 **T3b 小 Cache／-Os 三種實作比較：**[8/8/32 KiB、miss 歸因、code size 與重跑證據](docs/tcp-os-small-cache.md)。layout 慢 0.077%、checksum 快 0.106%、pbuf 接收驗證快 0.513%；皆為模型結果。已完成 C 改寫實驗，保留 baseline 預設；下方未完成敘述屬歷史，timing Dashboard 仍待做。
@@ -26,9 +50,9 @@
 
 **新增 T1 記憶體成本估算：**[設定 L1／L2／RAM 延遲、三組重播結果與 CLI](docs/memory-timing-t1.md)。程式在 `src/psf_lab/memory_timing.py`／`timing_report.py`，設定在 `cases/timing/`，JSON／CSV 證據在 `runs/timing-z0-v2/`。這是 sidecar 成本估算；尚未改變 QEMU guest 時間或更新 Dashboard。
 
-**最新 Z0：**[固定 request／response 的 zero-copy 基準](docs/tcp-session-z0.md)，三次 QEMU、RX／ACK／FIN／資源回收與分段指令量；[記憶體延遲研究](docs/research/QEMU分層記憶體延遲研究.md) 說明 L1／L2／system RAM timing 的待辦。
+**歷史 Z0：**[固定 request／response 的 zero-copy 基準](docs/tcp-session-z0.md)，三次 QEMU、RX／ACK／FIN／資源回收與分段指令量；[記憶體延遲研究](docs/research/QEMU分層記憶體延遲研究.md) 說明 L1／L2／system RAM timing 的待辦。
 
-**TCP 最佳化最新成果：**[實作比較、Web／離線畫面與重跑方法](docs/tcp-optimization.md)。真實 lwIP 握手／傳送／ACK／重傳、三配置各三次、45 個 I/D trace 區段。
+**歷史 TCP TX 成果：**[實作比較、Web／離線畫面與重跑方法](docs/tcp-optimization.md)。真實 lwIP 握手／傳送／ACK／重傳、三配置各三次、45 個 I/D trace 區段。
 
 **新增 TCP/IP 實際元件研究：**[Stack 比較、公開案例與 RV32 checksum 實測](docs/research/TCP-IP與Cache最佳化案例.md)。第一輪 checksum 元件實驗已完成；後續真 TCP 與 16+16 / 64 KiB cache 模型也已完成，見下方新報告。
 
