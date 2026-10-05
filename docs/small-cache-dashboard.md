@@ -103,3 +103,5 @@ TIMING_MODE=offline .venv/bin/python tools/tcp/verify_timing_dashboard.py
 ```
 
 驗證結果與工作版本見 [completion.json](../artifacts/verification/small-cache-dashboard/completion.json)。初期測試失敗為尚未建立 loader/JS；資料接合時亦發現舊 geometry 對照列缺省零值，不將其納入新頁面數值驗證。T3b/T3c 原始證據未改寫。
+
+最終驗收：clean commit `5955ce6` 的 **230/230 Python tests** 通過；Node **9/9**、既有 Dashboard E2E **11/11**、新頁 Web/離線 agent-browser 各一個完整流程通過，包含真實 hover、CSV 下載與窄螢幕。Ruff、format 與文件連結通過。原始 422 份研究快照 hashes 不變。

@@ -1,11 +1,57 @@
 {
-  "status": "awaiting-clean-commit-regression",
-  "passed": false,
-  "base_commit": "1d8f256",
-  "scope": "T3b/T3c dashboard only; no new guest experiment",
-  "review": "Independent timing_dashboard_review: no findings",
-  "web_e2e": "passed",
-  "offline_e2e": "passed",
+  "passed": true,
+  "tested_commit": "5955ce61128db22c5fc46c63e64bef17a2f6ef9a",
+  "clean_tree_before_full_tests": true,
+  "tests": {
+    "passed": 230,
+    "seconds": 46.483,
+    "log": "full-tests.log",
+    "sha256": "8f0f6cdb3237d5db9b657a9da97a6aa36ec089cb1af5d7ef5690d0c694d7a28b"
+  },
+  "ruff": "passed",
+  "format": "4 files passed",
+  "node_tests": 9,
   "existing_ui_e2e": 11,
-  "node_tests": 9
+  "agent_browser": {
+    "web": "passed",
+    "offline": "passed",
+    "hover": "miss/access denominator verified",
+    "csv": "downloaded filtered and sorted CSV checked",
+    "mobile": "390px no document overflow",
+    "offline_server_stopped": true,
+    "offline_http_blocked": true
+  },
+  "review": "Independent timing_dashboard_review: no findings",
+  "scope": "T3b/T3c dashboard; original experiment files unchanged; no new guest workload",
+  "limitations": [
+    "No task-exclusive cost attribution",
+    "Function table shows code size, not execution hotspots",
+    "No new per-event timing timeline",
+    "Fixed workload; not product performance"
+  ],
+  "evidence_sha256": {
+    "offline-e2e.log": "81cfe42de40ff85a132b1ee8a2391704c1405a2e6b671abf3e6e6a93cd91688c",
+    "existing-ui-results.json": "679b12e6635322cab52f3d316b98c2f3a4a77f473f8de630ca20706c29a036ab",
+    "format.log": "177f260a5645724013185e4b140c7045cc39e56c0c97b120f5cb23599f85f0de",
+    "existing-ui-capacity.json": "afbbd01dd391bf46deb57af309370fedbfe9af2cf00e0ab7e4792b69ecac5adc",
+    "curl-api.json": "e0ec776645db657816f63b0956cb26b09c62752f5fab7868ffb4f665f1f2a63e",
+    "web-e2e.log": "5416e4a55c01607f4beab7cf44c68d13d9a00bef2fd1024f13f5dd51652e6a09",
+    "full-tests.log": "8f0f6cdb3237d5db9b657a9da97a6aa36ec089cb1af5d7ef5690d0c694d7a28b",
+    "ruff.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "node-tests.log": "bcaeea445395aa67f2b89f4b91f9fe0af003aebfa845c6b818cd2fd556f97b36",
+    "precommit-tests.log": "64c9e8f4c695bd84d5c3c65dfcae2f6d2471946109e87fccfabfc1c1acc262f3",
+    "new-tests.log": "b87977061128817753b8c235261adb9ee7c7cf3cf310f6eef104809b2c5d4022",
+    "review.md": "f4ab3027e0ea0eeadc71b5d8c4e31a21acdeafe032051609b3fbe0d64ec33917",
+    "existing-ui.log": "9a5ac333c26cd661710b977d0e61b61fa2e6c200260e0d570af37c589fcfcd01",
+    "build.log": "c7b38c31664fbcfa98e2a01a8eb3dcfb8acd8ef1f2039ba1c491dc4213bea945",
+    "server/curl.json": "8cc4cc8508e483eb5a0dae21d96824be02ff64a1f1f2e331cdf99b8308012e27",
+    "server/commands.json": "7385ad1a505389ac946d1263cce6091ad499933a03f136844c60293842d6d1dd",
+    "server/filtered.csv": "36e286133ddab83f0f7cef9fc755f1613ea04a95ae792f4cc309589207b5c8eb",
+    "server/sorted.csv": "8aa455aa80e9be97bed164a1d4fa78231fb3b5d0054440155faa115487bb66d6",
+    "server/assertions.json": "037195b0c0ca4fc89143cb91853498397478484e2ef125c5e3eafc7de264d9e3",
+    "offline/commands.json": "5d258d8245bd47421734d7453329fa1a3df82ccd0b1b020c56c2f2f1c3a95897",
+    "offline/filtered.csv": "36e286133ddab83f0f7cef9fc755f1613ea04a95ae792f4cc309589207b5c8eb",
+    "offline/sorted.csv": "8aa455aa80e9be97bed164a1d4fa78231fb3b5d0054440155faa115487bb66d6",
+    "offline/assertions.json": "d624781012687e0646d033d9acdf1380f5482f7be5033432b1f62a8102babfe1"
+  }
 }
