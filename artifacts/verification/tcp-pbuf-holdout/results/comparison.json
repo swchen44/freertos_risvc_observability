@@ -1,0 +1,365 @@
+{
+  "schema": "tcp-pbuf-holdout-v1",
+  "passed": true,
+  "environment": {
+    "qemu_sha256": "69969c3ec8cce8f9340215fc340c5c01f81c3ef978252d3766937d2d176816db",
+    "gcc_sha256": "d21f58713e7f2f9a9ef9de8762b2c2d1995cd4cdeda724d5fe4834f3af4737b2",
+    "frequency_hz": 500000000,
+    "icount_shift": 0
+  },
+  "packet_hashes": [
+    "3cb937abecae970dc13ce5eb0d353a64f65c97062e213bd1ed9c1ea4088d4db8",
+    "7f3b0a151e215b122793526b92d23ece2da8dbe7954be58de7029c2f117abe2b",
+    "62a82edfed215f935746c367d8621e7a87f81760817104088d8adb89f0cae2e4",
+    "1c650bffc59d990f2db9da746920418508b497169a902a250fedac51e92b4e57",
+    "2776c1bfa4ef49ea59f4d33be979643e468a1f930e5f76826fd21df91034b6c8",
+    "3c9bd25bd46a93cf7d36ddac49e660ceff796536dc226a20f5cf8df47f292507",
+    "245c781ce7ab596f96b7af79f14e7793e893cf0fe4b25b8dc090e77b3811d7d6",
+    "14a7a1960e75628f9dce97377be423b58ed92441caba8f01e91b877e0049e725",
+    "22e444a6a5a1790ff174faf5d7e22f8e7414697fe4201c70fb371e6df6811ecb",
+    "83cc8a20f9376b3f3579bf494ff5393e64ba5930e4edc8f79aca3b8a85a2fd77",
+    "57af0dd7394bdb5fa3ab3a788684e3ac283042d36b5e566518ce64d8063dc299",
+    "fbb0f2466e518cc07e6aa1c561b962d31425fc557aba46d68f67887c181098e9",
+    "e4a60ae4e9768ad617bc0d4fdd7efbf22a1052b05ec521adeb7e33c9769a7873",
+    "b006ae9d915168f54bed94fb726fff76e1e16435f002bb96949220ac3c2f7c81",
+    "1c0cb07197453c9d0e60312aed453e4aabb25a810bd93839dd822b8642bc3672",
+    "d35d15d3723306f8ecdb3120e38311c400e4a56d845057903c21ea2b5f5ae277",
+    "f1208d52242f432cce00be649dcd16292397975323eccd4a58efa2b9acc6351c",
+    "2743cb73e580dce22456a0a9c74a91971334eb6f12b2aff63a8bd160836ccc65",
+    "8fd57d7dd62a27452e0483c789cc7f9fda0c921b3f165226251d3bd54e5439e6",
+    "8f67fa4863d3ec452b52491a3d25cf43b1a469a170c318f5ac6f15bc3780e825",
+    "00d85ed1d140f45c30e722f2be0722998da0674f7b150505e0f494df59ae6402",
+    "1f5e6bf012072248f01c7e446f60b9f4a8f251c1453f9eb8d72cf82608d33838",
+    "bacdfbf9e4fdc9bd5222bcd30acc7927bb3d69772345d378f79330814351a0fa",
+    "83376dd97a1b37856f41e82029f524bcf03cdb4a34ef38bf3463ee676987ad9d",
+    "61a53aeeb77ccd1b08971c4fc8c5d88feb9dbfb69a775afc4a729b07c684e6b5"
+  ],
+  "results": [
+    {
+      "label": "linear-baseline",
+      "run": "runs/tcp-chain-linear-base-v1",
+      "repeats": 1,
+      "guest_ns": 2456000,
+      "text": 41128,
+      "data": 144,
+      "bss": 296736,
+      "ticks": 2,
+      "pbuf_receipt": {
+        "requests": 2,
+        "nodes": null,
+        "empty_nodes": null
+      },
+      "request_pbufs": null,
+      "request_phase_instructions": [
+        2977,
+        2977
+      ],
+      "l1i_accesses": 331881,
+      "l1i_misses": 1715,
+      "l1i_compulsory": 338,
+      "l2_accesses": 34468,
+      "l2_misses": 751,
+      "l2_compulsory": 671,
+      "cycles": 1062936,
+      "instructions": 329805,
+      "l1d_accesses": 82412,
+      "l1d_misses": 392,
+      "l1d_compulsory": 333,
+      "l1i_conflict": 272,
+      "l1i_capacity": 1105,
+      "l2_conflict": 63,
+      "l1d_conflict": 36,
+      "l1d_capacity": 23,
+      "l2_capacity": 17,
+      "stack_cycles": 176816,
+      "harness_cycles": 886120,
+      "cost_cycles": {
+        "l1i": 331881,
+        "l1d": 82412,
+        "l2": 275744,
+        "ram_read": 13518,
+        "ram_write": 359381
+      },
+      "function_sizes": {
+        "lwip_standard_chksum": {
+          "address": "0x80003bd4",
+          "size": 164
+        },
+        "on_recv": {
+          "address": "0x80002ec8",
+          "size": 172
+        },
+        "tcp_input": {
+          "address": "0x80006260",
+          "size": 3052
+        },
+        "tcp_output": {
+          "address": "0x80007a18",
+          "size": 1118
+        },
+        "tcp_receive": {
+          "address": "0x800058f2",
+          "size": 2414
+        }
+      }
+    },
+    {
+      "label": "linear-pbuf",
+      "run": "runs/tcp-chain-linear-pbuf-v1",
+      "repeats": 1,
+      "guest_ns": 2443400,
+      "text": 41128,
+      "data": 144,
+      "bss": 296736,
+      "ticks": 2,
+      "pbuf_receipt": {
+        "requests": 2,
+        "nodes": null,
+        "empty_nodes": null
+      },
+      "request_pbufs": null,
+      "request_phase_instructions": [
+        1771,
+        1771
+      ],
+      "l1i_accesses": 330585,
+      "l1i_misses": 1634,
+      "l1i_compulsory": 340,
+      "l2_accesses": 34253,
+      "l2_misses": 755,
+      "l2_compulsory": 673,
+      "cycles": 1057874,
+      "instructions": 327389,
+      "l1d_accesses": 81768,
+      "l1d_misses": 393,
+      "l1d_compulsory": 333,
+      "l1i_conflict": 255,
+      "l1i_capacity": 1039,
+      "l2_conflict": 62,
+      "l1d_conflict": 37,
+      "l1d_capacity": 23,
+      "l2_capacity": 20,
+      "stack_cycles": 171973,
+      "harness_cycles": 885901,
+      "cost_cycles": {
+        "l1i": 330585,
+        "l1d": 81768,
+        "l2": 274024,
+        "ram_read": 13590,
+        "ram_write": 357907
+      },
+      "function_sizes": {
+        "lwip_standard_chksum": {
+          "address": "0x80003bfa",
+          "size": 164
+        },
+        "on_recv": {
+          "address": "0x80002ec8",
+          "size": 210
+        },
+        "tcp_input": {
+          "address": "0x8000624a",
+          "size": 3052
+        },
+        "tcp_output": {
+          "address": "0x80007a02",
+          "size": 1118
+        },
+        "tcp_receive": {
+          "address": "0x800058dc",
+          "size": 2414
+        }
+      }
+    },
+    {
+      "label": "fragmented-baseline",
+      "run": "runs/tcp-chain-baseline-v1",
+      "repeats": 3,
+      "guest_ns": 2489000,
+      "text": 41712,
+      "data": 144,
+      "bss": 296800,
+      "ticks": 2,
+      "pbuf_receipt": {
+        "requests": 2,
+        "nodes": 6,
+        "empty_nodes": 2
+      },
+      "request_pbufs": [
+        {
+          "lengths": [
+            13,
+            0,
+            51
+          ],
+          "totals": [
+            64,
+            51,
+            51
+          ]
+        },
+        {
+          "lengths": [
+            13,
+            0,
+            51
+          ],
+          "totals": [
+            64,
+            51,
+            51
+          ]
+        }
+      ],
+      "request_phase_instructions": [
+        4132,
+        4132
+      ],
+      "l1i_accesses": 336381,
+      "l1i_misses": 1724,
+      "l1i_compulsory": 346,
+      "l2_accesses": 34904,
+      "l2_misses": 750,
+      "l2_compulsory": 666,
+      "cycles": 1077003,
+      "instructions": 334721,
+      "l1d_accesses": 83823,
+      "l1d_misses": 388,
+      "l1d_compulsory": 320,
+      "l1i_conflict": 266,
+      "l1i_capacity": 1112,
+      "l1d_conflict": 47,
+      "l1d_capacity": 21,
+      "l2_conflict": 67,
+      "l2_capacity": 17,
+      "stack_cycles": 180159,
+      "harness_cycles": 896844,
+      "cost_cycles": {
+        "l1i": 336381,
+        "l1d": 83823,
+        "l2": 279232,
+        "ram_read": 13500,
+        "ram_write": 364067
+      },
+      "function_sizes": {
+        "lwip_standard_chksum": {
+          "address": "0x80003e0a",
+          "size": 164
+        },
+        "on_recv": {
+          "address": "0x80002c80",
+          "size": 318
+        },
+        "tcp_input": {
+          "address": "0x80006496",
+          "size": 3052
+        },
+        "tcp_output": {
+          "address": "0x80007c4e",
+          "size": 1118
+        },
+        "tcp_receive": {
+          "address": "0x80005b28",
+          "size": 2414
+        }
+      }
+    },
+    {
+      "label": "fragmented-pbuf",
+      "run": "runs/tcp-chain-pbuf-v1",
+      "repeats": 3,
+      "guest_ns": 2468700,
+      "text": 41712,
+      "data": 144,
+      "bss": 296800,
+      "ticks": 2,
+      "pbuf_receipt": {
+        "requests": 2,
+        "nodes": 6,
+        "empty_nodes": 2
+      },
+      "request_pbufs": [
+        {
+          "lengths": [
+            13,
+            0,
+            51
+          ],
+          "totals": [
+            64,
+            51,
+            51
+          ]
+        },
+        {
+          "lengths": [
+            13,
+            0,
+            51
+          ],
+          "totals": [
+            64,
+            51,
+            51
+          ]
+        }
+      ],
+      "request_phase_instructions": [
+        2136,
+        2136
+      ],
+      "l1i_accesses": 332309,
+      "l1i_misses": 1662,
+      "l1i_compulsory": 344,
+      "l2_accesses": 34713,
+      "l2_misses": 746,
+      "l2_compulsory": 664,
+      "cycles": 1068897,
+      "instructions": 330729,
+      "l1d_accesses": 82797,
+      "l1d_misses": 387,
+      "l1d_compulsory": 320,
+      "l1i_conflict": 191,
+      "l1i_capacity": 1127,
+      "l1d_conflict": 45,
+      "l1d_capacity": 22,
+      "l2_conflict": 63,
+      "l2_capacity": 19,
+      "stack_cycles": 172810,
+      "harness_cycles": 896087,
+      "cost_cycles": {
+        "l1i": 332309,
+        "l1d": 82797,
+        "l2": 277704,
+        "ram_read": 13428,
+        "ram_write": 362659
+      },
+      "function_sizes": {
+        "lwip_standard_chksum": {
+          "address": "0x80003e38",
+          "size": 164
+        },
+        "on_recv": {
+          "address": "0x80002ec8",
+          "size": 364
+        },
+        "tcp_input": {
+          "address": "0x80006488",
+          "size": 3052
+        },
+        "tcp_output": {
+          "address": "0x80007c40",
+          "size": 1118
+        },
+        "tcp_receive": {
+          "address": "0x80005b1a",
+          "size": 2414
+        }
+      }
+    }
+  ],
+  "analysis_sources": {
+    "tools/tcp/analyze_pbuf_holdout.py": "6c04915d5a319b95e923fa4f93bc147368fe7658a4127a7f82b600785f8d8101",
+    "src/psf_lab/tcp_hotspots.py": "cef8b9e1275e14b25f478ec7b7b661b14d6a64784b7c56662a097d2096cc6d54"
+  }
+}

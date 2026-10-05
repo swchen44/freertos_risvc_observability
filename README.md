@@ -1,5 +1,7 @@
 # FreeRTOS／RISC-V PSF POC
 
+**T3c guest pbuf chain 驗證：**[13 + 0 + 51 bytes、完整 TCP 與 cache 比較](docs/tcp-pbuf-holdout.md)。單次走訪使每次 request_rx 指令減少 48.31%，完整模型時間改善 0.816%；單段兩版回歸結果不變。這是接收驗證 callback 的改善。
+
 **T3b 小 Cache／-Os 三種實作比較：**[8/8/32 KiB、miss 歸因、code size 與重跑證據](docs/tcp-os-small-cache.md)。layout 慢 0.077%、checksum 快 0.106%、pbuf 接收驗證快 0.513%；皆為模型結果。已完成 C 改寫實驗，保留 baseline 預設；下方未完成敘述屬歷史，timing Dashboard 仍待做。
 
 **T3a 首組最佳化 A/B 完成：**[checksum Os／O2、熱點、code size 與長度／對齊取捨](docs/tcp-checksum-optimization-t3a.md)。完整模型流程改善約 0.24%，stack 呼叫區間成本下降約 1.56%；20-byte header 反而較慢，保留 Os 預設。下方「尚未做 A/B」為歷史狀態；C 改寫與 timing Dashboard 仍待做。

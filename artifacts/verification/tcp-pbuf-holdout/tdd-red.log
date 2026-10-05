@@ -1,0 +1,65 @@
+test_linear_does_not_claim_chain_evidence (tests.unit.test_tcp_pbuf_holdout.PbufReceiptTests.test_linear_does_not_claim_chain_evidence) ... FAIL
+test_missing_single_segment_or_bad_total_rejected (tests.unit.test_tcp_pbuf_holdout.PbufReceiptTests.test_missing_single_segment_or_bad_total_rejected) ... FAIL
+test_two_real_chains (tests.unit.test_tcp_pbuf_holdout.PbufReceiptTests.test_two_real_chains) ... FAIL
+test_unknown_workload_is_rejected (tests.unit.test_tcp_pbuf_holdout.PbufReceiptTests.test_unknown_workload_is_rejected) ... FAIL
+
+======================================================================
+FAIL: test_linear_does_not_claim_chain_evidence (tests.unit.test_tcp_pbuf_holdout.PbufReceiptTests.test_linear_does_not_claim_chain_evidence)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_tcp_pbuf_holdout.py", line 34, in test_linear_does_not_claim_chain_evidence
+    self.assertEqual(self.validate({}, "linear"), {"requests": 2, "nodes": None,
+                     ~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_tcp_pbuf_holdout.py", line 11, in validate
+    self.assertTrue(hasattr(tcp_session, "validate_request_pbufs"),
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                    "Guest chain receipt validator not implemented")
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Guest chain receipt validator not implemented
+
+======================================================================
+FAIL: test_missing_single_segment_or_bad_total_rejected (tests.unit.test_tcp_pbuf_holdout.PbufReceiptTests.test_missing_single_segment_or_bad_total_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_tcp_pbuf_holdout.py", line 27, in test_missing_single_segment_or_bad_total_rejected
+    self.validate(metrics, "fragmented")
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_tcp_pbuf_holdout.py", line 11, in validate
+    self.assertTrue(hasattr(tcp_session, "validate_request_pbufs"),
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                    "Guest chain receipt validator not implemented")
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Guest chain receipt validator not implemented
+
+======================================================================
+FAIL: test_two_real_chains (tests.unit.test_tcp_pbuf_holdout.PbufReceiptTests.test_two_real_chains)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_tcp_pbuf_holdout.py", line 17, in test_two_real_chains
+    self.assertEqual(self.validate(metrics, "fragmented"), {"requests": 2, "nodes": 6,
+                     ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_tcp_pbuf_holdout.py", line 11, in validate
+    self.assertTrue(hasattr(tcp_session, "validate_request_pbufs"),
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                    "Guest chain receipt validator not implemented")
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Guest chain receipt validator not implemented
+
+======================================================================
+FAIL: test_unknown_workload_is_rejected (tests.unit.test_tcp_pbuf_holdout.PbufReceiptTests.test_unknown_workload_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_tcp_pbuf_holdout.py", line 31, in test_unknown_workload_is_rejected
+    self.validate({}, "wrong")
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_tcp_pbuf_holdout.py", line 11, in validate
+    self.assertTrue(hasattr(tcp_session, "validate_request_pbufs"),
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                    "Guest chain receipt validator not implemented")
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Guest chain receipt validator not implemented
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+FAILED (failures=4)

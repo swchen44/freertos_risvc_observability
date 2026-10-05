@@ -1,0 +1,18 @@
+test_linear_does_not_claim_chain_evidence (tests.unit.test_tcp_pbuf_holdout.PbufReceiptTests.test_linear_does_not_claim_chain_evidence) ... ok
+test_missing_single_segment_or_bad_total_rejected (tests.unit.test_tcp_pbuf_holdout.PbufReceiptTests.test_missing_single_segment_or_bad_total_rejected) ... FAIL
+test_two_real_chains (tests.unit.test_tcp_pbuf_holdout.PbufReceiptTests.test_two_real_chains) ... ok
+test_unknown_workload_is_rejected (tests.unit.test_tcp_pbuf_holdout.PbufReceiptTests.test_unknown_workload_is_rejected) ... ok
+
+======================================================================
+FAIL: test_missing_single_segment_or_bad_total_rejected (tests.unit.test_tcp_pbuf_holdout.PbufReceiptTests.test_missing_single_segment_or_bad_total_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_tcp_pbuf_holdout.py", line 36, in test_missing_single_segment_or_bad_total_rejected
+    with self.assertRaisesRegex(ValueError, "pbuf"):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+FAILED (failures=1)

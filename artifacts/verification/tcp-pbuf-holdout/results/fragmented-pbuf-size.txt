@@ -1,0 +1,2 @@
+   text	   data	    bss	    dec	    hex	filename
+  41712	    144	 296800	 338656	  52ae0	runs/tcp-chain-pbuf-v1/enabled-1-1/firmware.elf

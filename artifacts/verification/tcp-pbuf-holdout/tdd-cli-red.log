@@ -1,0 +1,6 @@
+usage: run_live_cache.py [-h] --qemu QEMU --output OUTPUT [--repeats {1,3}]
+                         [--case {synthetic,tcp,irq,tcp-irq}]
+                         [--checksum-opt {Os,O2}]
+                         [--cache-profile {standard,small}]
+                         [--tcp-variant {baseline,layout,checksum,pbuf}]
+run_live_cache.py: error: unrecognized arguments: --tcp-workload fragmented

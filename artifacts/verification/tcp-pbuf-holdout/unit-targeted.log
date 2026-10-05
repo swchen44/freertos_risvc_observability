@@ -1,0 +1,18 @@
+test_linear_does_not_claim_chain_evidence (tests.unit.test_tcp_pbuf_holdout.PbufReceiptTests.test_linear_does_not_claim_chain_evidence) ... ok
+test_missing_single_segment_or_bad_total_rejected (tests.unit.test_tcp_pbuf_holdout.PbufReceiptTests.test_missing_single_segment_or_bad_total_rejected) ... ok
+test_two_real_chains (tests.unit.test_tcp_pbuf_holdout.PbufReceiptTests.test_two_real_chains) ... ok
+test_unknown_workload_is_rejected (tests.unit.test_tcp_pbuf_holdout.PbufReceiptTests.test_unknown_workload_is_rejected) ... ok
+test_ack_beyond_transmitted_data_rejected (tests.unit.test_tcp_session.SessionTests.test_ack_beyond_transmitted_data_rejected) ... ok
+test_complete_bidirectional_session (tests.unit.test_tcp_session.SessionTests.test_complete_bidirectional_session) ... ok
+test_missing_final_ack_rejected (tests.unit.test_tcp_session.SessionTests.test_missing_final_ack_rejected) ... ok
+test_resource_leak_and_retained_buffer_rejected (tests.unit.test_tcp_session.SessionTests.test_resource_leak_and_retained_buffer_rejected) ... ok
+test_unexpected_extra_packet_rejected (tests.unit.test_tcp_session.SessionTests.test_unexpected_extra_packet_rejected) ... ok
+test_wrong_payload_rejected_even_if_length_matches (tests.unit.test_tcp_session.SessionTests.test_wrong_payload_rejected_even_if_length_matches) ... ok
+test_checksum_alignment_tail_and_carry (tests.unit.test_tcp_os_candidates.OsCandidateTests.test_checksum_alignment_tail_and_carry) ... ok
+test_pbuf_chain_empty_segments_and_bad_payload (tests.unit.test_tcp_os_candidates.OsCandidateTests.test_pbuf_chain_empty_segments_and_bad_payload) ... ok
+test_rv32_endpoint_avoids_division_setup (tests.unit.test_tcp_os_candidates.OsCandidateTests.test_rv32_endpoint_avoids_division_setup) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 1.650s
+
+OK

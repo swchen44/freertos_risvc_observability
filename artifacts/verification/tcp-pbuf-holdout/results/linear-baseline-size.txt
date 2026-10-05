@@ -1,0 +1,2 @@
+   text	   data	    bss	    dec	    hex	filename
+  41128	    144	 296736	 338008	  52858	runs/tcp-chain-linear-base-v1/enabled-1-1/firmware.elf

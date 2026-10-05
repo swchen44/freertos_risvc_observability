@@ -37,6 +37,13 @@ CFLAGS += -DPOC_TCP_COPY=$(if $(filter tcp_nocopy3,$(CASE)),0,1)
 SRC += $(wildcard $(LWIP)/src/core/*.c) $(wildcard $(LWIP)/src/core/ipv4/*.c)
 endif
 # Independent -Os experiments. Default firmware and downloaded lwIP stay unchanged.
+TCP_WORKLOAD ?= linear
+ifeq ($(filter $(TCP_WORKLOAD),linear fragmented),)
+$(error TCP_WORKLOAD must be linear or fragmented)
+endif
+ifeq ($(TCP_WORKLOAD),fragmented)
+CFLAGS += -DPOC_FRAGMENTED_REQUEST
+endif
 TCP_VARIANT ?= baseline
 ifeq ($(filter $(TCP_VARIANT),baseline layout checksum pbuf),)
 $(error TCP_VARIANT must be baseline, layout, checksum or pbuf)

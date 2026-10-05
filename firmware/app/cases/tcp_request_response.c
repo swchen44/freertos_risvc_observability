@@ -31,6 +31,9 @@ typedef struct { const char *kind; unsigned round; uint32_t instructions; } Phas
 static Phase phases[40];
 static unsigned phase_count;
 static char output[16384];
+#ifdef POC_FRAGMENTED_REQUEST
+static unsigned request_lengths[2][3], request_totals[2][3];
+#endif
 #ifdef POC_LIVE_TIMING
 static uint32_t timing_before,timing_after,timing_ticks;
 #ifdef POC_LIVE_IRQ
@@ -77,6 +80,17 @@ static err_t on_recv(void *arg,struct tcp_pcb *pcb,struct pbuf *p,err_t err) {
  (void)arg; configASSERT(err==ERR_OK);
  if(!p) { peer_closed=1;return ERR_OK; }
  configASSERT(p->tot_len==64);
+#ifdef POC_FRAGMENTED_REQUEST
+ unsigned nodes=0;
+ configASSERT(round_id<2);
+ for(const struct pbuf *q=p;q;q=q->next) {
+  configASSERT(nodes<3);
+  request_lengths[round_id][nodes]=q->len;
+  request_totals[round_id][nodes]=q->tot_len;
+  nodes++;
+ }
+ configASSERT(nodes==3);
+#endif
 #ifdef POC_PBUF_WALK
  configASSERT(poc_validate_request(p,round_id,64));
 #else
@@ -96,6 +110,21 @@ static void resources(unsigned *out) {
  out[4]=lwip_stats.memp[MEMP_PBUF]->used;
  out[5]=lwip_stats.memp[MEMP_PBUF_POOL]->used;
 }
+#ifdef POC_FRAGMENTED_REQUEST
+/* One IP packet, three memory buffers; first buffer retains both protocol headers. */
+static struct pbuf *fragment_request(struct pbuf *packet) {
+ configASSERT(packet->tot_len==104);
+ struct pbuf *head=pbuf_alloc(PBUF_RAW,53,PBUF_RAM);
+ struct pbuf *empty=pbuf_alloc(PBUF_RAW,0,PBUF_RAM);
+ struct pbuf *tail=pbuf_alloc(PBUF_RAW,51,PBUF_RAM);
+ configASSERT(head&&empty&&tail);
+ configASSERT(pbuf_copy_partial(packet,head->payload,53,0)==53);
+ configASSERT(pbuf_copy_partial(packet,tail->payload,51,53)==51);
+ pbuf_cat(head,empty);pbuf_cat(head,tail);
+ configASSERT(head->tot_len==104&&head->len==53&&empty->len==0&&tail->len==51);
+ pbuf_free(packet);return head;
+}
+#endif
 /* Peer construction + snapshot happen outside the stack instruction window. */
 static void inject(uint32_t seq,uint32_t ack,unsigned flags,const uint8_t *data,unsigned length,const char *kind) {
  unsigned header=(flags&TCP_SYN)?24:20;
@@ -112,7 +141,11 @@ static void inject(uint32_t seq,uint32_t ack,unsigned flags,const uint8_t *data,
  if(flags&TCP_SYN) {uint8_t *o=(uint8_t*)tcp+20;o[0]=2;o[1]=4;o[2]=5;o[3]=180;}
  if(length) memcpy((uint8_t*)tcp+header,data,length);
  tcp->chksum=inet_chksum_pseudo(p,6,p->tot_len,&peer_ip,&local_ip);
- configASSERT(pbuf_add_header(p,20)==0);snapshot(p,1);
+ configASSERT(pbuf_add_header(p,20)==0);
+#ifdef POC_FRAGMENTED_REQUEST
+ if(length) {configASSERT(length==64);p=fragment_request(p);}
+#endif
+ snapshot(p,1);
  uint32_t start=phase_start();configASSERT(ip4_input(p,&interface)==ERR_OK);phase(kind,start);
 }
 static uint32_t consume(unsigned size,uint32_t expected,unsigned flags) {
@@ -139,7 +172,18 @@ static void save(void) {
   int fd=poc_sh_open(name);configASSERT(fd>=0&&poc_write_all(fd,packets[i],lengths[i])==0&&poc_sh_close(fd)==0);
   n+=snprintf(output+n,sizeof(output)-n,"%s{\"file\":\"%s\",\"direction\":\"%s\"}",i?",":"",name,directions[i]?"rx":"tx");
  }
- n+=snprintf(output+n,sizeof(output)-n,"]}\n");configASSERT(n>0&&n<(int)sizeof(output));
+#ifdef POC_FRAGMENTED_REQUEST
+ n+=snprintf(output+n,sizeof(output)-n,"]");
+ n+=snprintf(output+n,sizeof(output)-n,",\"request_pbufs\":[");
+ for(unsigned i=0;i<2;i++) n+=snprintf(output+n,sizeof(output)-n,
+  "%s{\"lengths\":[%u,%u,%u],\"totals\":[%u,%u,%u]}",i?",":"",
+  request_lengths[i][0],request_lengths[i][1],request_lengths[i][2],
+  request_totals[i][0],request_totals[i][1],request_totals[i][2]);
+ n+=snprintf(output+n,sizeof(output)-n,"]}\n");
+#else
+ n+=snprintf(output+n,sizeof(output)-n,"]}\n");
+#endif
+ configASSERT(n>0&&n<(int)sizeof(output));
  int fd=poc_sh_open("session.json");configASSERT(fd>=0&&poc_write_all(fd,output,n)==0&&poc_sh_close(fd)==0);
 }
 static void session_task(void *arg) {

@@ -55,3 +55,20 @@ def validate_session(packets, metrics):
     if before != [0] * 6 or after != before:
         raise ValueError("Resource cleanup mismatch")
     return {"request_bytes": 128, "unique_response_bytes": 11680, "packets": position}
+
+
+def validate_request_pbufs(metrics, workload):
+    """Require callback-observed chain shape; not a claim about wire fragmentation."""
+    if workload == "linear":
+        if "request_pbufs" in metrics:
+            raise ValueError("Unexpected pbuf chain receipt for linear workload")
+        return dict(requests=2, nodes=None, empty_nodes=None)
+    if workload != "fragmented":
+        raise ValueError("Unknown TCP workload")
+    expected = [dict(lengths=[13, 0, 51], totals=[64, 51, 51]) for _ in range(2)]
+    shapes = metrics.get("request_pbufs")
+    if shapes != expected or any(
+        type(value) is not int for shape in shapes for values in shape.values() for value in values
+    ):
+        raise ValueError("Guest pbuf chain receipt mismatch")
+    return dict(requests=2, nodes=6, empty_nodes=2)

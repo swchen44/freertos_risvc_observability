@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "runs": 2,
+  "source_overrides": {
+    "firmware/app/cases/tcp_request_response.c": "artifacts/verification/tcp-pbuf-holdout/probe-source.c",
+    "src/psf_lab/tcp_session.py": "artifacts/verification/tcp-pbuf-holdout/probe-validator.py"
+  },
+  "reason": "Exploratory probe before strict receipt typing and preserving linear save path."
+}

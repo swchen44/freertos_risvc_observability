@@ -1,5 +1,7 @@
 # T3b：8/8/32 KiB Cache 下，三種 -Os 改法的實作比較
 
+後續已補上 [T3c：RISC-V guest 三段 pbuf／空段 holdout 驗證](tcp-pbuf-holdout.md)。本篇「guest 多段 pbuf 尚未驗證」保留為 T3b 當時狀態；任意 chain／payload 矩陣仍未完成。
+
 **已完成三種獨立改法。小 cache 使 L1I miss 增至原本約 3.25 倍，但最佳化仍有正反結果：目前這個函式排列慢 0.077%，checksum 迴圈快 0.106%，pbuf 單次走訪快 0.513%。** 最後一項改善的是應用／測試接收驗證 callback，不能宣稱 lwIP TCP 演算法本身快了 0.513%。所有數字都是本模型與固定工作負載的比較。
 
 [計畫與執行紀錄](tcp-os-small-cache-plan.md) · [完整比較 JSON](../artifacts/verification/tcp-os-small-cache/results/comparison.json) · [比較 CSV](../artifacts/verification/tcp-os-small-cache/results/comparison.csv)

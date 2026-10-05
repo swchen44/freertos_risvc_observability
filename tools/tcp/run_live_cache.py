@@ -18,7 +18,7 @@ from psf_lab.live_cache_irq import compare_irq, validate_irq_trace, validate_mmi
 from psf_lab.parser.semantic import parse_trace
 from psf_lab.runner import QEMU_FLAGS, digest, write_json
 from psf_lab.tcp_packets import decode_packet
-from psf_lab.tcp_session import validate_session
+from psf_lab.tcp_session import validate_request_pbufs, validate_session
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -36,12 +36,15 @@ def main():
     parser.add_argument(
         "--tcp-variant", choices=("baseline", "layout", "checksum", "pbuf"), default="baseline"
     )
+    parser.add_argument("--tcp-workload", choices=("linear", "fragmented"), default="linear")
     args = parser.parse_args()
     is_tcp = args.case in ("tcp", "tcp-irq")
     if args.checksum_opt != "Os" and not is_tcp:
         parser.error("--checksum-opt requires tcp or tcp-irq")
     if args.tcp_variant != "baseline" and (not is_tcp or args.checksum_opt != "Os"):
         parser.error("TCP variants require tcp/tcp-irq and -Os")
+    if args.tcp_workload != "linear" and not is_tcp:
+        parser.error("--tcp-workload requires tcp or tcp-irq")
     has_irq = args.case in ("irq", "tcp-irq")
     irq_scenario = "tcp" if is_tcp else "memory"
     case = "tcp_request_response" if is_tcp else ("live_cache_irq" if has_irq else "live_cache")
@@ -80,6 +83,7 @@ def main():
         "CASE=" + case,
         "CHECKSUM_OPT=" + args.checksum_opt,
         "TCP_VARIANT=" + args.tcp_variant,
+        "TCP_WORKLOAD=" + args.tcp_workload,
         "OUT=" + str(build),
         "TOOLCHAIN=" + str(toolchain),
     ]
@@ -168,6 +172,7 @@ def main():
         frequency_hz=500000000,
         checksum_opt=args.checksum_opt,
         tcp_variant=args.tcp_variant,
+        tcp_workload=args.tcp_workload,
         cache_profile=profile_path,
         icount_shift=0,
         time_policy="existing 1 ns/instruction plus full serial memory service",
@@ -267,6 +272,7 @@ def main():
                             raise ValueError("Peer address mismatch")
                         packets.append(dict(packet, direction=entry["direction"]))
                     result["tcp"] = validate_session(packets, metrics)
+                    result["pbuf_receipt"] = validate_request_pbufs(metrics, args.tcp_workload)
                     if oracle["sent_ids"] != [11680] or oracle["received_ids"] != [11680]:
                         raise ValueError("Incomplete TCP firmware oracle")
                 trace = parse_trace((run / "trace.psf").read_bytes())
