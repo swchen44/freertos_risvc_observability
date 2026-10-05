@@ -1,5 +1,7 @@
 # FreeRTOS／RISC-V Observability：研究與可重跑 POC
 
+**T3b 小 Cache／-Os 三種實作比較：**[8/8/32 KiB、miss 歸因、code size 與重跑證據](poc/docs/tcp-os-small-cache.md)。layout 慢 0.077%、checksum 快 0.106%、pbuf 接收驗證快 0.513%；皆為模型結果。已完成 C 改寫實驗，保留 baseline 預設；下方未完成敘述屬歷史，timing Dashboard 仍待做。
+
 **T3a 首組最佳化 A/B 完成：**[checksum Os／O2、熱點、code size 與長度／對齊取捨](poc/docs/tcp-checksum-optimization-t3a.md)。完整模型流程改善約 0.24%，stack 呼叫區間成本下降約 1.56%；20-byte header 反而較慢，保留 Os 預設。下方「尚未做 A/B」為歷史狀態；C 改寫與 timing Dashboard 仍待做。
 
 **T2g 完整 TCP IRQ 版本通過：**[zero-copy 流程、task 搶占、封包與 PSF 驗證](poc/docs/live-tcp-irq-t2g.md)。三次配對皆完成 25 個封包、11,680 bytes 回應；observer 在第 2 tick 執行，核算後誤差 +57 ns。以下完整 TCP IRQ 待辦為歷史狀態；真正程式碼最佳化 A/B 與 timing Dashboard 尚未完成。
