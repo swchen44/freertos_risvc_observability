@@ -2,12 +2,12 @@
 
 ## 現況入口 · 2026-10-06
 
-目前實驗進度到 **T3c**；最新比較採 **L1I 8 KiB + L1D 8 KiB + L2 32 KiB**，設定檔為 [poc/cases/timing/sysram-10-small.json](poc/cases/timing/sysram-10-small.json)。舊 16/16/64 KiB 保留作預設與歷史對照，不與小 Cache 同組計算改善率。
+目前實驗進度到 **T3c**；最新比較採 **L1I 8 KiB + L1D 8 KiB + L2 32 KiB**，設定檔為 [poc/cases/timing/sysram-10-small.json](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/cases/timing/sysram-10-small.json)。舊 16/16/64 KiB 保留作預設與歷史對照，不與小 Cache 同組計算改善率。
 
-- **新比較頁面：**[小 Cache Dashboard 指南與截圖](poc/docs/small-cache-dashboard.md)，涵蓋 T3b/T3c 的模型時間、3C misses、記憶體成本與 code size。Web 與離線 HTML 共用資料；驗收見指南。
-- **韌體成果：**[T3c pbuf chain](poc/docs/tcp-pbuf-holdout.md)、[T3b -Os 實作比較](poc/docs/tcp-os-small-cache.md)。目前未增加新的 firmware workload。
+- **新比較頁面：**[小 Cache Dashboard 指南與截圖](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/small-cache-dashboard.md)，涵蓋 T3b/T3c 的模型時間、3C misses、記憶體成本與 code size。Web 與離線 HTML 共用資料；驗收見指南。
+- **韌體成果：**[T3c pbuf chain](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/tcp-pbuf-holdout.md)、[T3b -Os 實作比較](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/tcp-os-small-cache.md)。目前未增加新的 firmware workload。
 - **待做：**更多 request 長度/pbuf chain、ISR/observer/recorder/task-exclusive 成本分離、新 timing 資料的逐事件時間軸與函式執行熱點。產品 U01～U16 仍需內網原始碼或硬體。
-- **本輪驗收：**230/230 Python tests、9/9 Node tests、11/11 既有 UI E2E；新頁 Web/離線均由 agent-browser 驗證，API 用 curl。見 [驗收收據](poc/artifacts/verification/small-cache-dashboard/completion.json)。
+- **本輪驗收：**230/230 Python tests、9/9 Node tests、11/11 既有 UI E2E；新頁 Web/離線均由 agent-browser 驗證，API 用 curl。見 [驗收收據](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/artifacts/verification/small-cache-dashboard/completion.json)。
 - **已暫緩：**跨機驗證與內網安裝材料；不能把它們列成本輪必做項目。
 
 以下為各階段當時紀錄。「尚未完成」僅表示該階段結束時的狀態；最新現況以本節、Dashboard 指南與 T3c 報告為準。
@@ -16,11 +16,11 @@
 
 Web：T3b 四種 `-Os` 實作，在同一組 8/8/32 KiB Cache 下比較時間、指令與 miss 成本。
 
-![小 Cache Web 總覽](poc/artifacts/screenshots/timing/server-01-overview.png)
+![小 Cache Web 總覽](https://raw.githubusercontent.com/swchen44/freertos_risvc_observability/poc-history/artifacts/screenshots/timing/server-01-overview.png)
 
-離線 HTML：篩選 pbuf chain 候選、查看來源與精確數值；不需要 Python server。完整操作與重建命令見 [指南](poc/docs/small-cache-dashboard.md)。
+離線 HTML：篩選 pbuf chain 候選、查看來源與精確數值；不需要 Python server。完整操作與重建命令見 [指南](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/small-cache-dashboard.md)。
 
-![離線 pbuf chain 證據](poc/artifacts/screenshots/timing/offline-03-filtered-evidence.png)
+![離線 pbuf chain 證據](https://raw.githubusercontent.com/swchen44/freertos_risvc_observability/poc-history/artifacts/screenshots/timing/offline-03-filtered-evidence.png)
 
 ## 歷史階段紀錄
 
