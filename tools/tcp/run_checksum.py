@@ -27,7 +27,9 @@ def main():
     parser.add_argument(
         "--toolchain", type=Path, default=ROOT / ".tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin"
     )
+    parser.add_argument("--checksum-opt", choices=("Os", "O2"), default="Os")
     args = parser.parse_args()
+    args.qemu = str(Path(args.qemu).resolve())
     output = args.output.resolve()
     output.mkdir(parents=True, exist_ok=False)
     provenance = json.loads((ROOT / "references/tcp/lwip/SOURCE.json").read_text())
@@ -36,6 +38,7 @@ def main():
             raise ValueError("Upstream checksum source changed: " + name)
     manifest = {
         "scope": "checksum component only; no TCP connection or modeled caches",
+        "checksum_opt": args.checksum_opt,
         "cache_target": {
             "l1i_bytes": 16384,
             "l1d_bytes": 16384,
@@ -80,6 +83,7 @@ def main():
             "-C",
             str(ROOT / "firmware"),
             "CASE=" + case,
+            "CHECKSUM_OPT=" + args.checksum_opt,
             "OUT=" + str(build_dir),
             "TOOLCHAIN=" + str(args.toolchain.resolve()),
         ]

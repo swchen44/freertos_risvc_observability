@@ -1,5 +1,7 @@
 # FreeRTOS／RISC-V PSF POC
 
+**T3a 首組最佳化 A/B 完成：**[checksum Os／O2、熱點、code size 與長度／對齊取捨](docs/tcp-checksum-optimization-t3a.md)。完整模型流程改善約 0.24%，stack 呼叫區間成本下降約 1.56%；20-byte header 反而較慢，保留 Os 預設。下方「尚未做 A/B」為歷史狀態；C 改寫與 timing Dashboard 仍待做。
+
 **T2g 完整 TCP IRQ 版本通過：**[zero-copy 流程、task 搶占、封包與 PSF 驗證](docs/live-tcp-irq-t2g.md)。三次配對皆完成 25 個封包、11,680 bytes 回應；observer 在第 2 tick 執行，核算後誤差 +57 ns。以下完整 TCP IRQ 待辦為歷史狀態；真正程式碼最佳化 A/B 與 timing Dashboard 尚未完成。
 
 **T2f IRQ／排程接合通過：**[逐筆 cache 成本觸發 timer、喚醒高優先序 task 與 PSF 證據](docs/live-cache-irq-t2f.md)。三次注入皆前進 3 ticks、observer 在第 2 tick 執行；核算 ISR 額外指令後誤差 +10 ns。以下 IRQ 待驗證描述為歷史階段；硬體逐筆 stall 與完整 TCP IRQ 版本仍待做。

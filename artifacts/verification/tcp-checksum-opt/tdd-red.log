@@ -1,0 +1,23 @@
+FF
+======================================================================
+FAIL: test_end_exclusive_and_unresolved_are_not_attributed_to_previous_function (tests.unit.test_tcp_hotspots.HotspotTests.test_end_exclusive_and_unresolved_are_not_attributed_to_previous_function)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_tcp_hotspots.py", line 7, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.tcp_hotspots'))
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None
+
+======================================================================
+FAIL: test_self_cost_includes_data_access_pc_not_data_address (tests.unit.test_tcp_hotspots.HotspotTests.test_self_cost_includes_data_access_pc_not_data_address)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_tcp_hotspots.py", line 7, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.tcp_hotspots'))
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+FAILED (failures=2)

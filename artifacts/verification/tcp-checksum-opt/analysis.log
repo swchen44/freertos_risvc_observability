@@ -1,0 +1,28 @@
+{
+  "Os": {
+    "run": "tcp-opt-os-v1",
+    "manifest_sha256": "4ce28cbe58f0db7569088f97e17df24cd5533f737073aa783f791fd9bf3863da",
+    "guest_interval_ns": 2433600,
+    "instructions": 329805,
+    "memory_service_cycles": 1051746,
+    "checksum_function_bytes": 164,
+    "checksum_object_text": 790,
+    "elf_text": 41128,
+    "elf_data": 144,
+    "elf_bss": 296736,
+    "text_section_padding": 214
+  },
+  "O2": {
+    "run": "tcp-opt-o2-v1",
+    "manifest_sha256": "a8c0f49cd9ba25289748a7dff8ae30e5f80c0d153b3437ee1f8de3a17287f6fa",
+    "guest_interval_ns": 2427800,
+    "instructions": 328307,
+    "memory_service_cycles": 1049591,
+    "checksum_function_bytes": 246,
+    "checksum_object_text": 970,
+    "elf_text": 41128,
+    "elf_data": 144,
+    "elf_bss": 296736,
+    "text_section_padding": 64
+  }
+}

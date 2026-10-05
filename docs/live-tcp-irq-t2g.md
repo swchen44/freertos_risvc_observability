@@ -1,5 +1,7 @@
 # T2g：完整 zero-copy TCP 流程在 IRQ 開啟下通過
 
+**後續更新：**[T3a](tcp-checksum-optimization-t3a.md) 已完成 checksum 編譯策略的第一組 A/B 與熱點歸因；本文保留 T2g 的功能驗證。
+
 **完整 TCP request／response 流程已在 cache 延遲注入及 IRQ 開啟下通過。** 三組 control／注入配對全部完成握手、25 個封包、11,680 bytes 回應、ACK、FIN 與資源回收。注入模式的高優先序 observer 在第 2 tick 搶占 TCP task，之後 TCP task 恢復並完成流程。
 
 這輪完成的是 timing harness 的功能驗證；尚未修改 TCP 演算法，也沒有把模型時間當成產品效能。

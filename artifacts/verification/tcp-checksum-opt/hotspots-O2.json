@@ -1,0 +1,962 @@
+{
+  "total_cycles": 1049591,
+  "functions": [
+    {
+      "name": "memcpy",
+      "cycles": 355062,
+      "instructions": 78060,
+      "scope_cycles": {
+        "harness_window": 355062
+      }
+    },
+    {
+      "name": "session_task",
+      "cycles": 333466,
+      "instructions": 95158,
+      "scope_cycles": {
+        "harness_window": 332547,
+        "stack_window_including_preemption": 919
+      }
+    },
+    {
+      "name": "memcmp",
+      "cycles": 105242,
+      "instructions": 81792,
+      "scope_cycles": {
+        "harness_window": 105242
+      }
+    },
+    {
+      "name": "memset",
+      "cycles": 25462,
+      "instructions": 4096,
+      "scope_cycles": {
+        "stack_window_including_preemption": 8112,
+        "harness_window": 17350
+      }
+    },
+    {
+      "name": "lwip_standard_chksum",
+      "cycles": 24297,
+      "instructions": 20767,
+      "scope_cycles": {
+        "harness_window": 2742,
+        "stack_window_including_preemption": 21555
+      }
+    },
+    {
+      "name": "tcp_input",
+      "cycles": 19733,
+      "instructions": 3817,
+      "scope_cycles": {
+        "stack_window_including_preemption": 19733
+      }
+    },
+    {
+      "name": "inject",
+      "cycles": 16356,
+      "instructions": 2494,
+      "scope_cycles": {
+        "harness_window": 15854,
+        "stack_window_including_preemption": 502
+      }
+    },
+    {
+      "name": "tcp_output",
+      "cycles": 16296,
+      "instructions": 3005,
+      "scope_cycles": {
+        "stack_window_including_preemption": 16296
+      }
+    },
+    {
+      "name": "inet_chksum_pseudo",
+      "cycles": 9247,
+      "instructions": 3178,
+      "scope_cycles": {
+        "harness_window": 3286,
+        "stack_window_including_preemption": 5961
+      }
+    },
+    {
+      "name": "pbuf_alloc",
+      "cycles": 8929,
+      "instructions": 1466,
+      "scope_cycles": {
+        "harness_window": 4262,
+        "stack_window_including_preemption": 4667
+      }
+    },
+    {
+      "name": "ip4_input",
+      "cycles": 8470,
+      "instructions": 1806,
+      "scope_cycles": {
+        "stack_window_including_preemption": 8470
+      }
+    },
+    {
+      "name": "ip4_output_if_src",
+      "cycles": 8369,
+      "instructions": 1177,
+      "scope_cycles": {
+        "stack_window_including_preemption": 8369
+      }
+    },
+    {
+      "name": "tcp_receive",
+      "cycles": 8051,
+      "instructions": 1641,
+      "scope_cycles": {
+        "stack_window_including_preemption": 8051
+      }
+    },
+    {
+      "name": "pbuf_free",
+      "cycles": 6165,
+      "instructions": 1369,
+      "scope_cycles": {
+        "stack_window_including_preemption": 4489,
+        "harness_window": 1676
+      }
+    },
+    {
+      "name": "tcp_create_segment",
+      "cycles": 6088,
+      "instructions": 780,
+      "scope_cycles": {
+        "stack_window_including_preemption": 6088
+      }
+    },
+    {
+      "name": "tcp_write",
+      "cycles": 6058,
+      "instructions": 1232,
+      "scope_cycles": {
+        "stack_window_including_preemption": 6058
+      }
+    },
+    {
+      "name": "mem_malloc",
+      "cycles": 5551,
+      "instructions": 1548,
+      "scope_cycles": {
+        "harness_window": 3146,
+        "stack_window_including_preemption": 2405
+      }
+    },
+    {
+      "name": "phase",
+      "cycles": 5533,
+      "instructions": 837,
+      "scope_cycles": {
+        "stack_window_including_preemption": 2456,
+        "harness_window": 3077
+      }
+    },
+    {
+      "name": "snapshot",
+      "cycles": 5026,
+      "instructions": 1100,
+      "scope_cycles": {
+        "harness_window": 5026
+      }
+    },
+    {
+      "name": "pbuf_copy_partial",
+      "cycles": 4962,
+      "instructions": 1416,
+      "scope_cycles": {
+        "harness_window": 4962
+      }
+    },
+    {
+      "name": "tcp_free_acked_segments.isra.0",
+      "cycles": 4436,
+      "instructions": 840,
+      "scope_cycles": {
+        "stack_window_including_preemption": 4436
+      }
+    },
+    {
+      "name": "pbuf_get_at",
+      "cycles": 3994,
+      "instructions": 1280,
+      "scope_cycles": {
+        "stack_window_including_preemption": 3994
+      }
+    },
+    {
+      "name": "mem_free",
+      "cycles": 3612,
+      "instructions": 1314,
+      "scope_cycles": {
+        "stack_window_including_preemption": 3451,
+        "harness_window": 161
+      }
+    },
+    {
+      "name": "pbuf_remove_header",
+      "cycles": 3538,
+      "instructions": 840,
+      "scope_cycles": {
+        "harness_window": 1214,
+        "stack_window_including_preemption": 2324
+      }
+    },
+    {
+      "name": "pbuf_add_header_impl",
+      "cycles": 3263,
+      "instructions": 945,
+      "scope_cycles": {
+        "harness_window": 1352,
+        "stack_window_including_preemption": 1911
+      }
+    },
+    {
+      "name": "assembly/unresolved",
+      "cycles": 2770,
+      "instructions": 293,
+      "scope_cycles": {
+        "harness_window": 2770
+      }
+    },
+    {
+      "name": "consume",
+      "cycles": 2693,
+      "instructions": 786,
+      "scope_cycles": {
+        "harness_window": 2693
+      }
+    },
+    {
+      "name": "__ssputs_r",
+      "cycles": 2542,
+      "instructions": 370,
+      "scope_cycles": {
+        "harness_window": 2542
+      }
+    },
+    {
+      "name": "lwip_htons",
+      "cycles": 2486,
+      "instructions": 2460,
+      "scope_cycles": {
+        "harness_window": 962,
+        "stack_window_including_preemption": 1524
+      }
+    },
+    {
+      "name": "lwip_htonl",
+      "cycles": 2254,
+      "instructions": 2093,
+      "scope_cycles": {
+        "harness_window": 840,
+        "stack_window_including_preemption": 1414
+      }
+    },
+    {
+      "name": "on_recv",
+      "cycles": 2124,
+      "instructions": 1372,
+      "scope_cycles": {
+        "stack_window_including_preemption": 2124
+      }
+    },
+    {
+      "name": "pbuf_alloc_reference",
+      "cycles": 1976,
+      "instructions": 184,
+      "scope_cycles": {
+        "stack_window_including_preemption": 1976
+      }
+    },
+    {
+      "name": "do_memp_malloc_pool",
+      "cycles": 1797,
+      "instructions": 319,
+      "scope_cycles": {
+        "stack_window_including_preemption": 1797
+      }
+    },
+    {
+      "name": "memp_free",
+      "cycles": 1772,
+      "instructions": 378,
+      "scope_cycles": {
+        "stack_window_including_preemption": 1772
+      }
+    },
+    {
+      "name": "_svfprintf_r",
+      "cycles": 1738,
+      "instructions": 360,
+      "scope_cycles": {
+        "harness_window": 1738
+      }
+    },
+    {
+      "name": "xTaskIncrementTick",
+      "cycles": 1428,
+      "instructions": 194,
+      "scope_cycles": {
+        "harness_window": 1428
+      }
+    },
+    {
+      "name": "xTraceEventCreate1",
+      "cycles": 1324,
+      "instructions": 220,
+      "scope_cycles": {
+        "harness_window": 1324
+      }
+    },
+    {
+      "name": "tcp_slowtmr",
+      "cycles": 1304,
+      "instructions": 204,
+      "scope_cycles": {
+        "stack_window_including_preemption": 1304
+      }
+    },
+    {
+      "name": "pbuf_try_get_at",
+      "cycles": 1280,
+      "instructions": 896,
+      "scope_cycles": {
+        "stack_window_including_preemption": 1280
+      }
+    },
+    {
+      "name": "memmove",
+      "cycles": 1257,
+      "instructions": 333,
+      "scope_cycles": {
+        "harness_window": 1257
+      }
+    },
+    {
+      "name": "output_packet",
+      "cycles": 1111,
+      "instructions": 187,
+      "scope_cycles": {
+        "stack_window_including_preemption": 1111
+      }
+    },
+    {
+      "name": "_printf_i",
+      "cycles": 1111,
+      "instructions": 212,
+      "scope_cycles": {
+        "harness_window": 1111
+      }
+    },
+    {
+      "name": "_printf_common",
+      "cycles": 1010,
+      "instructions": 207,
+      "scope_cycles": {
+        "harness_window": 1010
+      }
+    },
+    {
+      "name": "poc_write_all",
+      "cycles": 990,
+      "instructions": 203,
+      "scope_cycles": {
+        "harness_window": 990
+      }
+    },
+    {
+      "name": "xTraceStreamPortWriteData",
+      "cycles": 938,
+      "instructions": 140,
+      "scope_cycles": {
+        "harness_window": 938
+      }
+    },
+    {
+      "name": "inet_chksum",
+      "cycles": 900,
+      "instructions": 252,
+      "scope_cycles": {
+        "harness_window": 480,
+        "stack_window_including_preemption": 420
+      }
+    },
+    {
+      "name": "tcp_alloc",
+      "cycles": 876,
+      "instructions": 100,
+      "scope_cycles": {
+        "stack_window_including_preemption": 876
+      }
+    },
+    {
+      "name": "on_sent",
+      "cycles": 874,
+      "instructions": 144,
+      "scope_cycles": {
+        "stack_window_including_preemption": 874
+      }
+    },
+    {
+      "name": "tcp_output_alloc_header_common.constprop.0",
+      "cycles": 772,
+      "instructions": 76,
+      "scope_cycles": {
+        "stack_window_including_preemption": 772
+      }
+    },
+    {
+      "name": "xTraceEventCreate2",
+      "cycles": 752,
+      "instructions": 118,
+      "scope_cycles": {
+        "harness_window": 752
+      }
+    },
+    {
+      "name": "poc_sh_write",
+      "cycles": 695,
+      "instructions": 77,
+      "scope_cycles": {
+        "harness_window": 695
+      }
+    },
+    {
+      "name": "vTaskSwitchContext",
+      "cycles": 635,
+      "instructions": 110,
+      "scope_cycles": {
+        "harness_window": 635
+      }
+    },
+    {
+      "name": "memchr",
+      "cycles": 605,
+      "instructions": 447,
+      "scope_cycles": {
+        "harness_window": 605
+      }
+    },
+    {
+      "name": "tcp_seg_free",
+      "cycles": 594,
+      "instructions": 130,
+      "scope_cycles": {
+        "stack_window_including_preemption": 594
+      }
+    },
+    {
+      "name": "xTraceEventCreateData2",
+      "cycles": 525,
+      "instructions": 74,
+      "scope_cycles": {
+        "harness_window": 525
+      }
+    },
+    {
+      "name": "tcp_listen_with_backlog_and_err",
+      "cycles": 516,
+      "instructions": 60,
+      "scope_cycles": {
+        "stack_window_including_preemption": 516
+      }
+    },
+    {
+      "name": "tcp_enqueue_flags",
+      "cycles": 504,
+      "instructions": 89,
+      "scope_cycles": {
+        "stack_window_including_preemption": 504
+      }
+    },
+    {
+      "name": "xTraceVPrintF",
+      "cycles": 478,
+      "instructions": 406,
+      "scope_cycles": {
+        "harness_window": 478
+      }
+    },
+    {
+      "name": "pbuf_cat",
+      "cycles": 450,
+      "instructions": 80,
+      "scope_cycles": {
+        "stack_window_including_preemption": 450
+      }
+    },
+    {
+      "name": "tcp_fasttmr",
+      "cycles": 430,
+      "instructions": 64,
+      "scope_cycles": {
+        "stack_window_including_preemption": 430
+      }
+    },
+    {
+      "name": "snprintf",
+      "cycles": 425,
+      "instructions": 38,
+      "scope_cycles": {
+        "harness_window": 425
+      }
+    },
+    {
+      "name": "vTaskSuspend",
+      "cycles": 414,
+      "instructions": 70,
+      "scope_cycles": {
+        "harness_window": 414
+      }
+    },
+    {
+      "name": "xTraceTaskSwitch",
+      "cycles": 400,
+      "instructions": 66,
+      "scope_cycles": {
+        "harness_window": 400
+      }
+    },
+    {
+      "name": "tcp_pcb_remove",
+      "cycles": 374,
+      "instructions": 45,
+      "scope_cycles": {
+        "stack_window_including_preemption": 374
+      }
+    },
+    {
+      "name": "pbuf_clen",
+      "cycles": 358,
+      "instructions": 296,
+      "scope_cycles": {
+        "stack_window_including_preemption": 358
+      }
+    },
+    {
+      "name": "ip4_route",
+      "cycles": 322,
+      "instructions": 204,
+      "scope_cycles": {
+        "stack_window_including_preemption": 322
+      }
+    },
+    {
+      "name": "ip4_addr_isbroadcast_u32",
+      "cycles": 304,
+      "instructions": 224,
+      "scope_cycles": {
+        "stack_window_including_preemption": 304
+      }
+    },
+    {
+      "name": "ip4_input_accept",
+      "cycles": 302,
+      "instructions": 182,
+      "scope_cycles": {
+        "stack_window_including_preemption": 302
+      }
+    },
+    {
+      "name": "poc_oracle_record",
+      "cycles": 288,
+      "instructions": 31,
+      "scope_cycles": {
+        "harness_window": 288
+      }
+    },
+    {
+      "name": "pbuf_ref",
+      "cycles": 286,
+      "instructions": 55,
+      "scope_cycles": {
+        "stack_window_including_preemption": 286
+      }
+    },
+    {
+      "name": "tcp_output_control_segment_netif",
+      "cycles": 286,
+      "instructions": 48,
+      "scope_cycles": {
+        "stack_window_including_preemption": 286
+      }
+    },
+    {
+      "name": "tcp_close_shutdown",
+      "cycles": 283,
+      "instructions": 68,
+      "scope_cycles": {
+        "stack_window_including_preemption": 283
+      }
+    },
+    {
+      "name": "tcp_parseopt.part.0",
+      "cycles": 271,
+      "instructions": 43,
+      "scope_cycles": {
+        "stack_window_including_preemption": 271
+      }
+    },
+    {
+      "name": "memp_malloc",
+      "cycles": 267,
+      "instructions": 168,
+      "scope_cycles": {
+        "stack_window_including_preemption": 267
+      }
+    },
+    {
+      "name": "tcp_update_rcv_ann_wnd",
+      "cycles": 246,
+      "instructions": 100,
+      "scope_cycles": {
+        "stack_window_including_preemption": 246
+      }
+    },
+    {
+      "name": "tcp_bind",
+      "cycles": 240,
+      "instructions": 49,
+      "scope_cycles": {
+        "stack_window_including_preemption": 240
+      }
+    },
+    {
+      "name": "xTracePrintF",
+      "cycles": 232,
+      "instructions": 18,
+      "scope_cycles": {
+        "harness_window": 232
+      }
+    },
+    {
+      "name": "resources",
+      "cycles": 222,
+      "instructions": 20,
+      "scope_cycles": {
+        "harness_window": 222
+      }
+    },
+    {
+      "name": "prvTraceVPrintF",
+      "cycles": 217,
+      "instructions": 32,
+      "scope_cycles": {
+        "harness_window": 217
+      }
+    },
+    {
+      "name": "tcp_input_delayed_close",
+      "cycles": 216,
+      "instructions": 140,
+      "scope_cycles": {
+        "stack_window_including_preemption": 216
+      }
+    },
+    {
+      "name": "tcp_recved",
+      "cycles": 196,
+      "instructions": 42,
+      "scope_cycles": {
+        "stack_window_including_preemption": 196
+      }
+    },
+    {
+      "name": "vListInsertEnd",
+      "cycles": 160,
+      "instructions": 11,
+      "scope_cycles": {
+        "harness_window": 160
+      }
+    },
+    {
+      "name": "tcp_get_next_optbyte",
+      "cycles": 158,
+      "instructions": 36,
+      "scope_cycles": {
+        "stack_window_including_preemption": 158
+      }
+    },
+    {
+      "name": "on_accept",
+      "cycles": 157,
+      "instructions": 22,
+      "scope_cycles": {
+        "stack_window_including_preemption": 157
+      }
+    },
+    {
+      "name": "tcp_output_control_segment",
+      "cycles": 155,
+      "instructions": 23,
+      "scope_cycles": {
+        "stack_window_including_preemption": 155
+      }
+    },
+    {
+      "name": "tcp_pcb_purge",
+      "cycles": 149,
+      "instructions": 33,
+      "scope_cycles": {
+        "stack_window_including_preemption": 149
+      }
+    },
+    {
+      "name": "uxListRemove",
+      "cycles": 148,
+      "instructions": 15,
+      "scope_cycles": {
+        "harness_window": 148
+      }
+    },
+    {
+      "name": "tcp_close_shutdown_fin",
+      "cycles": 143,
+      "instructions": 20,
+      "scope_cycles": {
+        "stack_window_including_preemption": 143
+      }
+    },
+    {
+      "name": "poc_mark",
+      "cycles": 139,
+      "instructions": 23,
+      "scope_cycles": {
+        "harness_window": 139
+      }
+    },
+    {
+      "name": "tcp_send_fin",
+      "cycles": 135,
+      "instructions": 16,
+      "scope_cycles": {
+        "stack_window_including_preemption": 135
+      }
+    },
+    {
+      "name": "poc_mtime",
+      "cycles": 115,
+      "instructions": 81,
+      "scope_cycles": {
+        "harness_window": 115
+      }
+    },
+    {
+      "name": "tcp_send_empty_ack",
+      "cycles": 114,
+      "instructions": 24,
+      "scope_cycles": {
+        "stack_window_including_preemption": 114
+      }
+    },
+    {
+      "name": "tcp_output_alloc_header.constprop.0",
+      "cycles": 113,
+      "instructions": 19,
+      "scope_cycles": {
+        "stack_window_including_preemption": 113
+      }
+    },
+    {
+      "name": "ip4_output_if",
+      "cycles": 100,
+      "instructions": 55,
+      "scope_cycles": {
+        "stack_window_including_preemption": 100
+      }
+    },
+    {
+      "name": "tcp_close",
+      "cycles": 90,
+      "instructions": 15,
+      "scope_cycles": {
+        "stack_window_including_preemption": 90
+      }
+    },
+    {
+      "name": "timing_observer",
+      "cycles": 76,
+      "instructions": 14,
+      "scope_cycles": {
+        "harness_window": 76
+      }
+    },
+    {
+      "name": "pbuf_add_header",
+      "cycles": 70,
+      "instructions": 70,
+      "scope_cycles": {
+        "harness_window": 28,
+        "stack_window_including_preemption": 42
+      }
+    },
+    {
+      "name": "call",
+      "cycles": 62,
+      "instructions": 28,
+      "scope_cycles": {
+        "harness_window": 62
+      }
+    },
+    {
+      "name": "tcp_eff_send_mss_netif",
+      "cycles": 58,
+      "instructions": 28,
+      "scope_cycles": {
+        "stack_window_including_preemption": 58
+      }
+    },
+    {
+      "name": "__clzsi2",
+      "cycles": 56,
+      "instructions": 28,
+      "scope_cycles": {
+        "harness_window": 56
+      }
+    },
+    {
+      "name": "prvResetNextTaskUnblockTime",
+      "cycles": 55,
+      "instructions": 7,
+      "scope_cycles": {
+        "harness_window": 55
+      }
+    },
+    {
+      "name": "z0_stack_begin",
+      "cycles": 54,
+      "instructions": 54,
+      "scope_cycles": {
+        "stack_window_including_preemption": 54
+      }
+    },
+    {
+      "name": "z0_stack_end",
+      "cycles": 54,
+      "instructions": 54,
+      "scope_cycles": {
+        "harness_window": 54
+      }
+    },
+    {
+      "name": "tcp_next_iss",
+      "cycles": 54,
+      "instructions": 6,
+      "scope_cycles": {
+        "stack_window_including_preemption": 54
+      }
+    },
+    {
+      "name": "tcp_accept",
+      "cycles": 53,
+      "instructions": 6,
+      "scope_cycles": {
+        "stack_window_including_preemption": 53
+      }
+    },
+    {
+      "name": "tcp_sent",
+      "cycles": 49,
+      "instructions": 3,
+      "scope_cycles": {
+        "stack_window_including_preemption": 49
+      }
+    },
+    {
+      "name": "tcp_timer_needed",
+      "cycles": 29,
+      "instructions": 3,
+      "scope_cycles": {
+        "stack_window_including_preemption": 29
+      }
+    },
+    {
+      "name": "tcp_capture_begin",
+      "cycles": 28,
+      "instructions": 2,
+      "scope_cycles": {
+        "harness_window": 28
+      }
+    },
+    {
+      "name": "tcp_new",
+      "cycles": 28,
+      "instructions": 2,
+      "scope_cycles": {
+        "stack_window_including_preemption": 28
+      }
+    },
+    {
+      "name": "tcp_listen_with_backlog",
+      "cycles": 28,
+      "instructions": 2,
+      "scope_cycles": {
+        "stack_window_including_preemption": 28
+      }
+    },
+    {
+      "name": "poc_irq_restore",
+      "cycles": 28,
+      "instructions": 28,
+      "scope_cycles": {
+        "harness_window": 28
+      }
+    },
+    {
+      "name": "ip_chksum_pseudo",
+      "cycles": 25,
+      "instructions": 25,
+      "scope_cycles": {
+        "stack_window_including_preemption": 25
+      }
+    },
+    {
+      "name": "tcp_recv",
+      "cycles": 23,
+      "instructions": 3,
+      "scope_cycles": {
+        "stack_window_including_preemption": 23
+      }
+    },
+    {
+      "name": "tcp_free",
+      "cycles": 6,
+      "instructions": 6,
+      "scope_cycles": {
+        "stack_window_including_preemption": 6
+      }
+    },
+    {
+      "name": "vTaskDelay",
+      "cycles": 6,
+      "instructions": 4,
+      "scope_cycles": {
+        "harness_window": 6
+      }
+    },
+    {
+      "name": "tcp_segs_free",
+      "cycles": 4,
+      "instructions": 4,
+      "scope_cycles": {
+        "stack_window_including_preemption": 4
+      }
+    },
+    {
+      "name": "xTaskGetTickCount",
+      "cycles": 3,
+      "instructions": 2,
+      "scope_cycles": {
+        "harness_window": 3
+      }
+    }
+  ],
+  "windows": 27,
+  "scope_cycles": {
+    "harness_window": 883888,
+    "stack_window_including_preemption": 165703
+  }
+}

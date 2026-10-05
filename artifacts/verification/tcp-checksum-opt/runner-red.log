@@ -1,0 +1,3 @@
+usage: run_live_cache.py [-h] --qemu QEMU --output OUTPUT [--repeats {1,3}]
+                         [--case {synthetic,tcp,irq,tcp-irq}]
+run_live_cache.py: error: unrecognized arguments: --checksum-opt O2

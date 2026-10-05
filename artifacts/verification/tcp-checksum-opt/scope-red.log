@@ -1,0 +1,13 @@
+..E
+======================================================================
+ERROR: test_stack_window_is_distinguished_from_harness (tests.unit.test_tcp_hotspots.HotspotTests.test_stack_window_is_distinguished_from_harness)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_tcp_hotspots.py", line 32, in test_stack_window_is_distinguished_from_harness
+    result = self.rank(rows, [(100,10,'stack'), (110,4,'harness')], stack_markers=(100,110))
+TypeError: rank_self_costs() got an unexpected keyword argument 'stack_markers'
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.004s
+
+FAILED (errors=1)

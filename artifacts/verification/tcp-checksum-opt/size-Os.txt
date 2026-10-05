@@ -1,0 +1,3 @@
+   text	   data	    bss	    dec	    hex	filename
+  41128	    144	 296736	 338008	  52858	/Users/swchen.tw/git/percepio/poc/runs/tcp-opt-os-v1/enabled-1-1/firmware.elf
+    790	      0	      0	    790	    316	/Users/swchen.tw/git/percepio/poc/artifacts/verification/tcp-checksum-opt/inputs/Os/inet_chksum.o

@@ -31,8 +31,11 @@ def main():
     parser.add_argument(
         "--case", choices=("synthetic", "tcp", "irq", "tcp-irq"), default="synthetic"
     )
+    parser.add_argument("--checksum-opt", choices=("Os", "O2"), default="Os")
     args = parser.parse_args()
     is_tcp = args.case in ("tcp", "tcp-irq")
+    if args.checksum_opt != "Os" and not is_tcp:
+        parser.error("--checksum-opt requires tcp or tcp-irq")
     has_irq = args.case in ("irq", "tcp-irq")
     irq_scenario = "tcp" if is_tcp else "memory"
     case = "tcp_request_response" if is_tcp else ("live_cache_irq" if has_irq else "live_cache")
@@ -58,6 +61,7 @@ def main():
         "-C",
         str(ROOT / "firmware"),
         "CASE=" + case,
+        "CHECKSUM_OPT=" + args.checksum_opt,
         "OUT=" + str(build),
         "TOOLCHAIN=" + str(toolchain),
     ]
@@ -139,6 +143,7 @@ def main():
         plugin_sha256=digest(plugin),
         gcc_sha256=digest(toolchain / "riscv-none-elf-gcc"),
         frequency_hz=500000000,
+        checksum_opt=args.checksum_opt,
         icount_shift=0,
         time_policy="existing 1 ns/instruction plus full serial memory service",
         sources={str(p.relative_to(ROOT)): digest(p) for p in dependencies},

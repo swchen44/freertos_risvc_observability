@@ -40,6 +40,12 @@ ASM := $(PORT)/portASM.S $(DEMO)/build/gcc/start.S
 ifeq ($(CASE),tcp_request_response)
 CFLAGS += -DLWIP_STATS=1
 endif
+# Bounded experiment: only the checksum translation unit changes optimization.
+CHECKSUM_OPT ?= Os
+ifeq ($(filter $(CHECKSUM_OPT),Os O2),)
+$(error CHECKSUM_OPT must be Os or O2)
+endif
+$(OUT)/inet_chksum.o: CFLAGS += -$(CHECKSUM_OPT)
 OBJ := $(addprefix $(OUT)/,$(notdir $(SRC:.c=.o) $(ASM:.S=.o)))
 VPATH := $(sort $(dir $(SRC) $(ASM)))
 all: $(OUT)/firmware.elf $(OUT)/tasks.i $(OUT)/queue.i

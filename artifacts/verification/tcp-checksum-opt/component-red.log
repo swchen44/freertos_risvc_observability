@@ -1,0 +1,3 @@
+usage: run_checksum.py [-h] --output OUTPUT [--qemu QEMU]
+                       [--toolchain TOOLCHAIN]
+run_checksum.py: error: unrecognized arguments: --checksum-opt O2

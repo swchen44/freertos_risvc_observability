@@ -1,0 +1,14 @@
+[
+  {
+    "variant": "Os",
+    "runs": 9,
+    "measurements": 108,
+    "manifest_sha256": "21548a27d761760f9d09f68e66fc4cb3a871ee99ad5d9b34d47ee8de5fdbaa33"
+  },
+  {
+    "variant": "O2",
+    "runs": 9,
+    "measurements": 108,
+    "manifest_sha256": "b5a0d5c1acf31cca4a46fa58bb1f269c919e00fed8881f657418d71ae7f3dc62"
+  }
+]
