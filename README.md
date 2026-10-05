@@ -9,6 +9,7 @@
 - [案例契約](cases/tcp/workload-matrix-v1.json)：63、64、65、256、1460 bytes，以及空節點／八節點 chain。
 - [正式 capture](runs/tcp-workload-matrix-v1/)：16 組、96 次，包含 PSF、raw trace、ELF、map、封包、generated header 與來源 hashes。
 - [探索與失敗紀錄](runs/tcp-workload-probe-v1/)；[分析／驗收收據](artifacts/verification/tcp-workload-matrix/)；[離線 HTML](artifacts/offline/tcp-workload-matrix.html)。
+- **驗收：**Python 251/251、Node 10/10、既有 UI 11/11、agent-browser Web／離線與 curl 均通過；[完成收據](artifacts/verification/tcp-workload-matrix/completion.json)。
 - **暫緩：**跨機驗證與內網安裝材料；產品 U01～U16 仍需內網原始碼或硬體。
 
 ### POC 怎麼使用

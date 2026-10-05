@@ -126,3 +126,5 @@ A07 八節點 chain 與窄螢幕版：
 ![窄螢幕離線](../artifacts/screenshots/tcp-workload-matrix/offline-04-mobile.png)
 
 可重跑驗收腳本：`tools/tcp/verify_workload_dashboard.py`。先啟動 port 8016 跑預設模式，再停止 server，以 `TIMING_MODE=offline` 跑離線。收據保存 curl response bytes、agent-browser 每步命令、排序／篩選 CSV、4 張 SVG、browser errors 與網路資源清單。舊 T4 驗收腳本依舊對應 frozen T4 頁面，不用它驗新版 24 列矩陣。
+
+最終驗收：Python 251/251、Node 10/10、既有 UI 11/11、新版 agent-browser Web/離線均通過。Ruff check涵蓋全部src/tests/tools；format check涵蓋15個本輪Python檔案，10個既存格式差異保留。610個本地連結、422個baseline hashes通過。完整 [完成收據](../artifacts/verification/tcp-workload-matrix/completion.json) 與 [review](../artifacts/verification/tcp-workload-matrix/review.md) 可複查。

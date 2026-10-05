@@ -8,7 +8,7 @@
 
 **Tech Stack:** Python 3.13、unittest、Ruff；RV32IMAC、-Os、現有 patched QEMU/GCC；本機 Web 與離線 HTML、curl、agent-browser。
 
-**Spec:** [下一輪 Cache／TCP 研究設計提案](../design/next-cache-experiments.md)。狀態：順序已確認為 A → B → C；A 已完成 96 次擷取、分析與 Web/離線驗收；最後回歸與發佈收據整理中。
+**Spec:** [下一輪 Cache／TCP 研究設計提案](../design/next-cache-experiments.md)。狀態：順序已確認為 A → B → C；A 已完成 96 次擷取、分析與 Web/離線驗收；251 tests 與最終驗收通過。
 
 ## Global Constraints
 
@@ -91,19 +91,19 @@
 - [ ] 對齊測試至少涵蓋 IRQ 搶占、同 timestamp 多事件、缺失邊界、非零 capture 起點；保存對齊誤差及拒絕條件。
 - [ ] 時間語意驗證後，再做區間拖拉/zoom、context filter、hover、CSV 和 Web/離線一致性。
 
-## 各工作線共用完成條件
+## 各工作線共用完成條件：本次勾選僅代表 A
 
 - [x] 工作線順序已由使用者指定 A → B → C。
 - [x] A 的具體設計與計畫已審閱；B/C 到階段開始時再核對詳細設計。
-- [ ] 先失敗再通過的單元測試，Ruff、必要 Node tests；正式回歸在 clean commit 上執行，log 放 repo 外避免造成 dirty source。
-- [ ] 新 capture、來源/工具 hashes、restore 所需設定與程式已納入 Git；review 重要問題處理完成。
-- [ ] README 更新需求、過程、已完成/未完成及截圖，連結驗證通過；不得把計畫當成結果。
-- [ ] 最終 completion.json 記錄 tested commit、log SHA-256、實際 count、成功及失敗範圍。
-- [ ] POC commit 後更新 root gitlink；依既有授權 push POC/root，遠端 SHA 查核一致。
+- [x] 先失敗再通過的單元測試，Ruff、必要 Node tests；正式回歸在 clean commit 上執行，log 放 repo 外避免造成 dirty source。
+- [x] 新 capture、來源/工具 hashes、restore 所需設定與程式已納入 Git；review 重要問題處理完成。
+- [x] README 更新需求、過程、已完成/未完成及截圖，連結驗證通過；不得把計畫當成結果。
+- [x] 最終 completion.json 記錄 tested commit、log SHA-256、實際 count、成功及失敗範圍。
+- [x] POC commit 後更新 root gitlink；依既有授權 push POC/root，遠端 SHA 查核一致。
 
 ## 本次規劃產物與狀態
 
-A 實作、96 次正式 capture、16 份詳細 replay、Web/離線驗收已完成；結果與反例見 [A 報告](../tcp-workload-matrix.md)。最後全套回歸與 Git 發佈尚在收尾。B/C 尚未實作。
+A 實作、96 次正式 capture、16 份詳細 replay、Web/離線驗收已完成；結果與反例見 [A 報告](../tcp-workload-matrix.md)。251 tests 與最終驗收通過；Git 發佈見 root HEAD 與遠端 ref。B/C 尚未實作。
 
 ## A 實作時的測試契約範例
 

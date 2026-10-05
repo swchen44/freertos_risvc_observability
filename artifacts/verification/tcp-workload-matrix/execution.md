@@ -20,8 +20,10 @@ Review：獨立 reviewer 檢查 A source 與 UI，指出 plugin/hash map complet
 
 分析時發現 checksum compile command 含重複 `-Os -Os`；原檢查誤以為只能出現一次。修正為所有 optimization flags 的集合必須恰為 `{-Os}`，不接受其他 optimization level。
 
-驗證：全 repo Ruff check 通過。本輪變更 Python format check 通過；全 repo format check 有10個既存檔案差異，未修改已釘選的歷史 source。文件606個本地連結、422個baseline hashes通過。
+驗證：全 repo Ruff check 通過。本輪變更 Python format check 通過；全 repo format check 有10個既存檔案差異，未修改已釘選的歷史 source。文件610個本地連結、422個baseline hashes通過。
 
 正式擷取 source commit：6a0ef47；正式 driver wall time 保留於 logs/percepio-matrix-execution.json；原始失敗輸出與 TDD red/green 也保存。最終回歸數量及 tested commit 以 completion.json 為準。
 
 首次 full regression 251 tests有3 errors：並行舊UI產物使2個clean-tree integration拒絕；batch unit test的macOS symlink temp path錯配造成1 error。保留失敗log；恢復原歷史UI產物、另外保存本輪結果、resolve測試root後，改成單獨完整重跑。
+
+最終單獨回歸：8c1f8dd clean tree，251 tests / 70.116s / OK；Node10、legacy UI11、Web/offline各一條完整workflow均通過。詳見 completion.json。

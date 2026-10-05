@@ -1,0 +1,8 @@
+test_unignored_sibling_logs_are_rejected_before_creation (tests.unit.test_workload_batch.BatchTests.test_unignored_sibling_logs_are_rejected_before_creation) ... usage: batch [-h] --output OUTPUT
+batch: error: Sibling log directory must also be ignored
+ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+OK
