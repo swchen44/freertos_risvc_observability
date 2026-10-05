@@ -1,0 +1,81 @@
+{
+  "schema": "tcp-workloads-v1",
+  "cases": [
+    {
+      "id": "A01",
+      "request_bytes": 64,
+      "request_segments": [
+        64
+      ],
+      "rounds": 2
+    },
+    {
+      "id": "A02",
+      "request_bytes": 64,
+      "request_segments": [
+        13,
+        0,
+        51
+      ],
+      "rounds": 2
+    },
+    {
+      "id": "A03",
+      "request_bytes": 63,
+      "request_segments": [
+        63
+      ],
+      "rounds": 2
+    },
+    {
+      "id": "A04",
+      "request_bytes": 65,
+      "request_segments": [
+        65
+      ],
+      "rounds": 2
+    },
+    {
+      "id": "A05",
+      "request_bytes": 256,
+      "request_segments": [
+        256
+      ],
+      "rounds": 2
+    },
+    {
+      "id": "A06",
+      "request_bytes": 256,
+      "request_segments": [
+        63,
+        0,
+        64,
+        129
+      ],
+      "rounds": 2
+    },
+    {
+      "id": "A07",
+      "request_bytes": 64,
+      "request_segments": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        57
+      ],
+      "rounds": 2
+    },
+    {
+      "id": "A08",
+      "request_bytes": 1460,
+      "request_segments": [
+        1460
+      ],
+      "rounds": 2
+    }
+  ]
+}

@@ -85,3 +85,7 @@ $(OUT)/%.i: $(KERNEL)/%.c $(wildcard config/*.h port/*.h) | $(OUT)
 	$(CC) $(CFLAGS) -E $< -o $@
 -include $(wildcard $(OUT)/*.d)
 .PHONY: all
+
+ifneq ($(WORKLOAD_HEADER),)
+CFLAGS += -include $(WORKLOAD_HEADER)
+endif

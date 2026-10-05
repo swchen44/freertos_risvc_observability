@@ -16,9 +16,11 @@ from run_transfer import command
 from psf_lab.live_cache import audit_accesses, compare_guest
 from psf_lab.live_cache_irq import compare_irq, validate_irq_trace, validate_mmio
 from psf_lab.parser.semantic import parse_trace
+from psf_lab.provenance import require_clean_tree
 from psf_lab.runner import QEMU_FLAGS, digest, write_json
 from psf_lab.tcp_packets import decode_packet
 from psf_lab.tcp_session import validate_request_pbufs, validate_session
+from psf_lab.tcp_workload import load_workload
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -37,7 +39,20 @@ def main():
         "--tcp-variant", choices=("baseline", "layout", "checksum", "pbuf"), default="baseline"
     )
     parser.add_argument("--tcp-workload", choices=("linear", "fragmented"), default="linear")
+    parser.add_argument("--workload-id")
     args = parser.parse_args()
+    workload = None
+    if args.workload_id:
+        if args.tcp_workload != "linear":
+            parser.error("--workload-id and --tcp-workload fragmented are mutually exclusive")
+        if args.case != "tcp-irq" or args.tcp_variant not in ("baseline", "pbuf"):
+            parser.error("Matrix requires tcp-irq and baseline/pbuf")
+        if args.cache_profile != "small" or args.checksum_opt != "Os":
+            parser.error("Matrix requires small cache and Os")
+        try:
+            workload = load_workload(ROOT / "cases/tcp/workload-matrix-v1.json", args.workload_id)
+        except ValueError as error:
+            parser.error(str(error))
     is_tcp = args.case in ("tcp", "tcp-irq")
     if args.checksum_opt != "Os" and not is_tcp:
         parser.error("--checksum-opt requires tcp or tcp-irq")
@@ -72,6 +87,7 @@ def main():
             cache["size"] //= 2
     if profile != expected:
         parser.error("Unsupported native timing profile")
+    source_commit = require_clean_tree(ROOT) if workload else None
     dest.mkdir(parents=True, exist_ok=False)
     toolchain = ROOT / ".tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin"
     build = dest / "build"
@@ -91,6 +107,16 @@ def main():
         build_cmd.append(
             "CASE_SRC=" + ("tcp_request_response_irq" if has_irq else "tcp_request_response_live")
         )
+    if workload:
+        header = dest / "workload.h"
+        header.write_text(
+            "#define POC_MATRIX_REQUEST 1\n#define POC_REQUEST_BYTES "
+            + str(workload["request_bytes"])
+            + "\n#define POC_REQUEST_SEGMENTS "
+            + ",".join(map(str, workload["request_segments"]))
+            + "\n"
+        )
+        build_cmd.append("WORKLOAD_HEADER=" + str(header))
     command(build_cmd, ROOT, dest / "build.log")
     plugin = dest / ("live_cache.dylib" if platform.system() == "Darwin" else "live_cache.so")
     flags = (
@@ -155,6 +181,14 @@ def main():
         )
     }
     dependencies.add(ROOT / profile_path)
+    if workload:
+        dependencies.update(
+            {
+                ROOT / "cases/tcp/workload-matrix-v1.json",
+                ROOT / "src/psf_lab/tcp_workload.py",
+                header,
+            }
+        )
     if args.tcp_variant == "layout":
         dependencies.add(ROOT / "firmware/tcp_stack/hot-layout.ld")
     dependencies.update((ROOT / "src/psf_lab/parser").glob("*.py"))
@@ -179,6 +213,12 @@ def main():
         sources={str(p.relative_to(ROOT)): digest(p) for p in dependencies},
         runs=[],
     )
+    if workload:
+        manifest.update(
+            workload=workload,
+            source_commit=source_commit,
+            registry_sha256=digest(ROOT / "cases/tcp/workload-matrix-v1.json"),
+        )
     results = []
     for enabled in (0, 1):
         for repeat in range(1, args.repeats + 1):
@@ -271,8 +311,10 @@ def main():
                         ):
                             raise ValueError("Peer address mismatch")
                         packets.append(dict(packet, direction=entry["direction"]))
-                    result["tcp"] = validate_session(packets, metrics)
-                    result["pbuf_receipt"] = validate_request_pbufs(metrics, args.tcp_workload)
+                    result["tcp"] = validate_session(packets, metrics, workload=workload)
+                    result["pbuf_receipt"] = validate_request_pbufs(
+                        metrics, args.tcp_workload, workload=workload
+                    )
                     if oracle["sent_ids"] != [11680] or oracle["received_ids"] != [11680]:
                         raise ValueError("Incomplete TCP firmware oracle")
                 trace = parse_trace((run / "trace.psf").read_bytes())

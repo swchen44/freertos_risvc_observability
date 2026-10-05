@@ -13,6 +13,7 @@
 #ifdef POC_PBUF_WALK
 #include "os_pbuf.h"
 #endif
+#include <stdarg.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -21,7 +22,10 @@ static struct tcp_pcb *connection;
 static struct pbuf *pending;
 static ip4_addr_t local_ip, peer_ip;
 static uint8_t payload[1460] __attribute__((aligned(64)));
-static uint8_t request[64];
+#ifndef POC_REQUEST_BYTES
+#define POC_REQUEST_BYTES 64
+#endif
+static uint8_t request[POC_REQUEST_BYTES];
 static uint8_t packets[32][1600] __attribute__((aligned(4)));
 static unsigned lengths[32], directions[32], packet_count;
 static unsigned received, acked, retained, peak_retained, round_id, peer_closed;
@@ -31,7 +35,11 @@ typedef struct { const char *kind; unsigned round; uint32_t instructions; } Phas
 static Phase phases[40];
 static unsigned phase_count;
 static char output[16384];
-#ifdef POC_FRAGMENTED_REQUEST
+#ifdef POC_MATRIX_REQUEST
+static const unsigned request_segments[] = {POC_REQUEST_SEGMENTS};
+#define REQUEST_NODES (sizeof(request_segments)/sizeof(request_segments[0]))
+static unsigned request_lengths[2][8], request_totals[2][8], request_addresses[2][8];
+#elif defined(POC_FRAGMENTED_REQUEST)
 static unsigned request_lengths[2][3], request_totals[2][3];
 #endif
 #ifdef POC_LIVE_TIMING
@@ -79,8 +87,19 @@ static err_t on_sent(void *arg,struct tcp_pcb *pcb,u16_t len) {
 static err_t on_recv(void *arg,struct tcp_pcb *pcb,struct pbuf *p,err_t err) {
  (void)arg; configASSERT(err==ERR_OK);
  if(!p) { peer_closed=1;return ERR_OK; }
- configASSERT(p->tot_len==64);
-#ifdef POC_FRAGMENTED_REQUEST
+ configASSERT(p->tot_len==POC_REQUEST_BYTES);
+#ifdef POC_MATRIX_REQUEST
+ unsigned nodes=0;
+ configASSERT(round_id<2);
+ for(const struct pbuf *q=p;q;q=q->next) {
+  configASSERT(nodes<REQUEST_NODES);
+  request_lengths[round_id][nodes]=q->len;
+  request_totals[round_id][nodes]=q->tot_len;
+  request_addresses[round_id][nodes]=(unsigned)(uintptr_t)q->payload;
+  nodes++;
+ }
+ configASSERT(nodes==REQUEST_NODES);
+#elif defined(POC_FRAGMENTED_REQUEST)
  unsigned nodes=0;
  configASSERT(round_id<2);
  for(const struct pbuf *q=p;q;q=q->next) {
@@ -92,9 +111,9 @@ static err_t on_recv(void *arg,struct tcp_pcb *pcb,struct pbuf *p,err_t err) {
  configASSERT(nodes==3);
 #endif
 #ifdef POC_PBUF_WALK
- configASSERT(poc_validate_request(p,round_id,64));
+ configASSERT(poc_validate_request(p,round_id,POC_REQUEST_BYTES));
 #else
- for(unsigned i=0;i<64;i++) configASSERT(pbuf_get_at(p,i)==(uint8_t)(round_id+i));
+ for(unsigned i=0;i<POC_REQUEST_BYTES;i++) configASSERT(pbuf_get_at(p,i)==(uint8_t)(round_id+i));
 #endif
  received+=p->tot_len;tcp_recved(pcb,p->tot_len);pbuf_free(p);return ERR_OK;
 }
@@ -110,7 +129,24 @@ static void resources(unsigned *out) {
  out[4]=lwip_stats.memp[MEMP_PBUF]->used;
  out[5]=lwip_stats.memp[MEMP_PBUF_POOL]->used;
 }
-#ifdef POC_FRAGMENTED_REQUEST
+#ifdef POC_MATRIX_REQUEST
+static struct pbuf *fragment_request(struct pbuf *packet) {
+ if(REQUEST_NODES==1) return packet;
+ configASSERT(packet->tot_len==40+POC_REQUEST_BYTES);
+ struct pbuf *head=NULL;
+ unsigned offset=0;
+ for(unsigned i=0;i<REQUEST_NODES;i++) {
+  unsigned len=request_segments[i]+(i==0?40:0);
+  struct pbuf *part=pbuf_alloc(PBUF_RAW,len,PBUF_RAM);
+  configASSERT(part);
+  if(len) configASSERT(pbuf_copy_partial(packet,part->payload,len,offset)==len);
+  if(head) pbuf_cat(head,part);else head=part;
+  offset+=len;
+ }
+ configASSERT(offset==packet->tot_len);
+ pbuf_free(packet);return head;
+}
+#elif defined(POC_FRAGMENTED_REQUEST)
 /* One IP packet, three memory buffers; first buffer retains both protocol headers. */
 static struct pbuf *fragment_request(struct pbuf *packet) {
  configASSERT(packet->tot_len==104);
@@ -142,8 +178,8 @@ static void inject(uint32_t seq,uint32_t ack,unsigned flags,const uint8_t *data,
  if(length) memcpy((uint8_t*)tcp+header,data,length);
  tcp->chksum=inet_chksum_pseudo(p,6,p->tot_len,&peer_ip,&local_ip);
  configASSERT(pbuf_add_header(p,20)==0);
-#ifdef POC_FRAGMENTED_REQUEST
- if(length) {configASSERT(length==64);p=fragment_request(p);}
+#if defined(POC_FRAGMENTED_REQUEST) || defined(POC_MATRIX_REQUEST)
+ if(length) {configASSERT(length==POC_REQUEST_BYTES);p=fragment_request(p);}
 #endif
  snapshot(p,1);
  uint32_t start=phase_start();configASSERT(ip4_input(p,&interface)==ERR_OK);phase(kind,start);
@@ -159,29 +195,53 @@ static uint32_t consume(unsigned size,uint32_t expected,unsigned flags) {
  if(size) configASSERT(memcmp((uint8_t*)tcp+TCPH_HDRLEN(tcp)*4,payload,size)==0);
  return lwip_ntohl(tcp->seqno);
 }
+#ifdef POC_MATRIX_REQUEST
+static int save_format(int offset,const char *format,...) {
+ configASSERT(offset>=0&&(unsigned)offset<sizeof(output));
+ va_list ap;va_start(ap,format);
+ int n=vsnprintf(output+offset,sizeof(output)-(unsigned)offset,format,ap);
+ va_end(ap);
+ configASSERT(n>=0&&(unsigned)n<sizeof(output)-(unsigned)offset);
+ return n;
+}
+#else
+#define save_format(offset,...) snprintf(output+(offset),sizeof(output)-(offset),__VA_ARGS__)
+#endif
 static void save(void) {
- int n=snprintf(output,sizeof output,"{\"case\":\"tcp_request_response\",\"request_bytes\":%u,\"acked_bytes\":%u,\"retained_bytes\":%u,\"peak_retained_bytes\":%u,\"peer_closed\":%s,\"active_pcbs\":0,\"timewait_pcbs\":0,\"resources_before\":[",received,acked,retained,peak_retained,peer_closed?"true":"false");
- for(unsigned i=0;i<6;i++) n+=snprintf(output+n,sizeof(output)-n,"%s%u",i?",":"",resources_before[i]);
- n+=snprintf(output+n,sizeof(output)-n,"],\"resources_after\":[");
- for(unsigned i=0;i<6;i++) n+=snprintf(output+n,sizeof(output)-n,"%s%u",i?",":"",resources_after[i]);
- n+=snprintf(output+n,sizeof(output)-n,"],\"phases\":[");
- for(unsigned i=0;i<phase_count;i++) n+=snprintf(output+n,sizeof(output)-n,"%s{\"kind\":\"%s\",\"round\":%u,\"instructions\":%u}",i?",":"",phases[i].kind,phases[i].round,phases[i].instructions);
- n+=snprintf(output+n,sizeof(output)-n,"],\"packets\":[");
+ int n=save_format(0,"{\"case\":\"tcp_request_response\",\"request_bytes\":%u,\"acked_bytes\":%u,\"retained_bytes\":%u,\"peak_retained_bytes\":%u,\"peer_closed\":%s,\"active_pcbs\":0,\"timewait_pcbs\":0,\"resources_before\":[",received,acked,retained,peak_retained,peer_closed?"true":"false");
+ for(unsigned i=0;i<6;i++) n+=save_format(n,"%s%u",i?",":"",resources_before[i]);
+ n+=save_format(n,"],\"resources_after\":[");
+ for(unsigned i=0;i<6;i++) n+=save_format(n,"%s%u",i?",":"",resources_after[i]);
+ n+=save_format(n,"],\"phases\":[");
+ for(unsigned i=0;i<phase_count;i++) n+=save_format(n,"%s{\"kind\":\"%s\",\"round\":%u,\"instructions\":%u}",i?",":"",phases[i].kind,phases[i].round,phases[i].instructions);
+ n+=save_format(n,"],\"packets\":[");
  for(unsigned i=0;i<packet_count;i++) {
   char name[32];snprintf(name,sizeof name,"packet-%u.bin",i);
   int fd=poc_sh_open(name);configASSERT(fd>=0&&poc_write_all(fd,packets[i],lengths[i])==0&&poc_sh_close(fd)==0);
-  n+=snprintf(output+n,sizeof(output)-n,"%s{\"file\":\"%s\",\"direction\":\"%s\"}",i?",":"",name,directions[i]?"rx":"tx");
+  n+=save_format(n,"%s{\"file\":\"%s\",\"direction\":\"%s\"}",i?",":"",name,directions[i]?"rx":"tx");
  }
-#ifdef POC_FRAGMENTED_REQUEST
- n+=snprintf(output+n,sizeof(output)-n,"]");
- n+=snprintf(output+n,sizeof(output)-n,",\"request_pbufs\":[");
- for(unsigned i=0;i<2;i++) n+=snprintf(output+n,sizeof(output)-n,
+#ifdef POC_MATRIX_REQUEST
+ n+=save_format(n,"],\"request_pbufs\":[");
+ for(unsigned r=0;r<2;r++) {
+  n+=save_format(n,"%s{",r?",":"");
+  for(unsigned field=0;field<3;field++) {
+   n+=save_format(n,"%s\"%s\":[",field?",":"",field==0?"lengths":field==1?"totals":"addresses");
+   for(unsigned i=0;i<REQUEST_NODES;i++) n+=save_format(n,"%s%u",i?",":"",field==0?request_lengths[r][i]:field==1?request_totals[r][i]:request_addresses[r][i]);
+   n+=save_format(n,"]");
+  }
+  n+=save_format(n,"}");
+ }
+ n+=save_format(n,"]}\n");
+#elif defined(POC_FRAGMENTED_REQUEST)
+ n+=save_format(n,"]");
+ n+=save_format(n,",\"request_pbufs\":[");
+ for(unsigned i=0;i<2;i++) n+=save_format(n,
   "%s{\"lengths\":[%u,%u,%u],\"totals\":[%u,%u,%u]}",i?",":"",
   request_lengths[i][0],request_lengths[i][1],request_lengths[i][2],
   request_totals[i][0],request_totals[i][1],request_totals[i][2]);
- n+=snprintf(output+n,sizeof(output)-n,"]}\n");
+ n+=save_format(n,"]}\n");
 #else
- n+=snprintf(output+n,sizeof(output)-n,"]}\n");
+ n+=save_format(n,"]}\n");
 #endif
  configASSERT(n>0&&n<(int)sizeof(output));
  int fd=poc_sh_open("session.json");configASSERT(fd>=0&&poc_write_all(fd,output,n)==0&&poc_sh_close(fd)==0);
@@ -212,9 +272,9 @@ static void session_task(void *arg) {
  inject(client_seq,server_seq,TCP_ACK,NULL,0,"establish");
  configASSERT(connection&&connection->state==ESTABLISHED&&!pending);
  for(round_id=0;round_id<2;round_id++) {
-  for(unsigned i=0;i<64;i++) request[i]=(uint8_t)(round_id+i);
-  inject(client_seq,server_seq,TCP_ACK|TCP_PSH,request,64,"request_rx");client_seq+=64;
-  configASSERT(received==(round_id+1)*64&&!pending);
+  for(unsigned i=0;i<POC_REQUEST_BYTES;i++) request[i]=(uint8_t)(round_id+i);
+  inject(client_seq,server_seq,TCP_ACK|TCP_PSH,request,POC_REQUEST_BYTES,"request_rx");client_seq+=POC_REQUEST_BYTES;
+  configASSERT(received==(round_id+1)*POC_REQUEST_BYTES&&!pending);
   for(unsigned chunk=0;chunk<4;chunk++) {
    configASSERT(retained==0);
    for(unsigned i=0;i<1460;i++) payload[i]=(uint8_t)(i*17+round_id+chunk);
