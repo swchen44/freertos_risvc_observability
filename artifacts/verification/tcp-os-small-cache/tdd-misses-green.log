@@ -1,0 +1,9 @@
+test_compulsory_conflict_capacity (tests.unit.test_tcp_misses.MissTests.test_compulsory_conflict_capacity) ... ok
+test_cross_line_write_misses_and_pc_attribution (tests.unit.test_tcp_misses.MissTests.test_cross_line_write_misses_and_pc_attribution) ... ok
+test_hit_updates_shadow_recency (tests.unit.test_tcp_misses.MissTests.test_hit_updates_shadow_recency) ... ok
+test_native_cost_mismatch_is_rejected (tests.unit.test_tcp_misses.MissTests.test_native_cost_mismatch_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.007s
+
+OK

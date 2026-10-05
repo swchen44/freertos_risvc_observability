@@ -1,0 +1,25 @@
+test_checksum_alignment_tail_and_carry (tests.unit.test_tcp_os_candidates.OsCandidateTests.test_checksum_alignment_tail_and_carry) ... FAIL
+test_pbuf_chain_empty_segments_and_bad_payload (tests.unit.test_tcp_os_candidates.OsCandidateTests.test_pbuf_chain_empty_segments_and_bad_payload) ... FAIL
+
+======================================================================
+FAIL: test_checksum_alignment_tail_and_carry (tests.unit.test_tcp_os_candidates.OsCandidateTests.test_checksum_alignment_tail_and_carry)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_tcp_os_candidates.py", line 15, in test_checksum_alignment_tail_and_carry
+    self.assertTrue(source.exists(), 'Endpoint checksum candidate not implemented')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Endpoint checksum candidate not implemented
+
+======================================================================
+FAIL: test_pbuf_chain_empty_segments_and_bad_payload (tests.unit.test_tcp_os_candidates.OsCandidateTests.test_pbuf_chain_empty_segments_and_bad_payload)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_tcp_os_candidates.py", line 38, in test_pbuf_chain_empty_segments_and_bad_payload
+    self.assertTrue(header.exists(), 'Single-walk pbuf candidate not implemented')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Single-walk pbuf candidate not implemented
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.002s
+
+FAILED (failures=2)

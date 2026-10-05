@@ -1,0 +1,67 @@
+test_cold_warm_split_l1_and_write_through (tests.unit.test_live_timing.LiveTimingTests.test_cold_warm_split_l1_and_write_through) ... ok
+test_cross_line_and_lru_conflicts (tests.unit.test_live_timing.LiveTimingTests.test_cross_line_and_lru_conflicts) ... ok
+test_invalid_request_preserves_cache_state (tests.unit.test_live_timing.LiveTimingTests.test_invalid_request_preserves_cache_state) ... ok
+test_mixed_seeded_stream (tests.unit.test_live_timing.LiveTimingTests.test_mixed_seeded_stream) ... ok
+test_cold_warm_split_l1_and_write_through (tests.unit.test_live_timing.SmallLiveTimingTests.test_cold_warm_split_l1_and_write_through) ... ok
+test_cross_line_and_lru_conflicts (tests.unit.test_live_timing.SmallLiveTimingTests.test_cross_line_and_lru_conflicts) ... ok
+test_invalid_request_preserves_cache_state (tests.unit.test_live_timing.SmallLiveTimingTests.test_invalid_request_preserves_cache_state) ... ok
+test_mixed_seeded_stream (tests.unit.test_live_timing.SmallLiveTimingTests.test_mixed_seeded_stream) ... FAIL
+test_small_cache_eviction_differs_from_original (tests.unit.test_live_timing.SmallLiveTimingTests.test_small_cache_eviction_differs_from_original) ... FAIL
+
+======================================================================
+FAIL: test_mixed_seeded_stream (tests.unit.test_live_timing.SmallLiveTimingTests.test_mixed_seeded_stream)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_live_timing.py", line 82, in test_mixed_seeded_stream
+    self.check_stream(
+    ~~~~~~~~~~~~~~~~~^
+        [
+        ^
+    ...<6 lines>...
+        ]
+        ^
+    )
+    ^
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_live_timing.py", line 70, in check_stream
+    self.assertEqual(costs, [expected[k] for k in COSTS], (address, size, operation))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [0, 1, 8, 0, 0] != [0, 1, 8, 18, 0]
+
+First differing element 3:
+0
+18
+
+- [0, 1, 8, 0, 0]
+?           ^
+
++ [0, 1, 8, 18, 0]
+?           ^^
+ : (2147529866, 2, 'R')
+
+======================================================================
+FAIL: test_small_cache_eviction_differs_from_original (tests.unit.test_live_timing.SmallLiveTimingTests.test_small_cache_eviction_differs_from_original)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_live_timing.py", line 110, in test_small_cache_eviction_differs_from_original
+    self.check_stream([(0x80000000 + i * 2048, 4, "R") for i in (0, 1, 2, 3, 4, 0)])
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_live_timing.py", line 70, in check_stream
+    self.assertEqual(costs, [expected[k] for k in COSTS], (address, size, operation))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [0, 1, 0, 0, 0] != [0, 1, 8, 0, 0]
+
+First differing element 2:
+0
+8
+
+- [0, 1, 0, 0, 0]
+?           ---
+
++ [0, 1, 8, 0, 0]
+?        +++
+ : (2147483648, 4, 'R')
+
+----------------------------------------------------------------------
+Ran 9 tests in 1.282s
+
+FAILED (failures=2)

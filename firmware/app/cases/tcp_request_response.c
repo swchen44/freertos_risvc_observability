@@ -10,6 +10,9 @@
 #include "lwip/prot/ip4.h"
 #include "lwip/inet_chksum.h"
 #include "lwip/stats.h"
+#ifdef POC_PBUF_WALK
+#include "os_pbuf.h"
+#endif
 #include <stdio.h>
 #include <string.h>
 
@@ -74,7 +77,11 @@ static err_t on_recv(void *arg,struct tcp_pcb *pcb,struct pbuf *p,err_t err) {
  (void)arg; configASSERT(err==ERR_OK);
  if(!p) { peer_closed=1;return ERR_OK; }
  configASSERT(p->tot_len==64);
+#ifdef POC_PBUF_WALK
+ configASSERT(poc_validate_request(p,round_id,64));
+#else
  for(unsigned i=0;i<64;i++) configASSERT(pbuf_get_at(p,i)==(uint8_t)(round_id+i));
+#endif
  received+=p->tot_len;tcp_recved(pcb,p->tot_len);pbuf_free(p);return ERR_OK;
 }
 static err_t on_accept(void *arg,struct tcp_pcb *pcb,err_t err) {

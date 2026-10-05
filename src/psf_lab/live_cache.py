@@ -5,10 +5,10 @@ import gzip
 import hashlib
 
 from psf_lab.cache_model import Geometry
-from psf_lab.memory_timing import COSTS, MemoryTiming, Region
+from psf_lab.memory_timing import COSTS, MemoryTiming, Region, from_profile
 
 
-def audit_accesses(path):
+def audit_accesses(path, *, profile=None):
     model = MemoryTiming(
         l1i=Geometry(16384, 64, 4),
         l1d=Geometry(16384, 64, 4),
@@ -18,6 +18,8 @@ def audit_accesses(path):
         l2_cycles=8,
         regions=[Region("system_ram", 0x80000000, 0x88000000, True, 10, 10, 8)],
     )
+    if profile is not None:
+        model = from_profile(profile)
     count = 0
     operations = dict.fromkeys("IRW", 0)
     total = 0

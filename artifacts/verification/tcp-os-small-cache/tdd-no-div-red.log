@@ -1,0 +1,21 @@
+test_rv32_endpoint_avoids_division_setup (tests.unit.test_tcp_os_candidates.OsCandidateTests.test_rv32_endpoint_avoids_division_setup) ... FAIL
+
+======================================================================
+FAIL: test_rv32_endpoint_avoids_division_setup (tests.unit.test_tcp_os_candidates.OsCandidateTests.test_rv32_endpoint_avoids_division_setup)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_tcp_os_candidates.py", line 113, in test_rv32_endpoint_avoids_division_setup
+    self.assertFalse(
+    ~~~~~~~~~~~~~~~~^
+        re.search(r"\t(?:divu?|remu?)\s", asm),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        "Loop setup must not introduce integer division",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+AssertionError: <re.Match object; span=(869, 874), match='\tdiv\t'> is not false : Loop setup must not introduce integer division
+
+----------------------------------------------------------------------
+Ran 1 test in 0.343s
+
+FAILED (failures=1)

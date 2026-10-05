@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "reference": "runs/tcp-opt-os-v1",
+  "current": "runs/tcp-standard-os-v1",
+  "checks": [
+    "control/injection audit equality including decompressed-stream SHA256",
+    "guest measurements exact equality"
+  ]
+}

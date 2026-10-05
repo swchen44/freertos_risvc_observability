@@ -1,0 +1,7 @@
+test_checksum_alignment_tail_and_carry (tests.unit.test_tcp_os_candidates.OsCandidateTests.test_checksum_alignment_tail_and_carry) ... ok
+test_pbuf_chain_empty_segments_and_bad_payload (tests.unit.test_tcp_os_candidates.OsCandidateTests.test_pbuf_chain_empty_segments_and_bad_payload) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 1.174s
+
+OK

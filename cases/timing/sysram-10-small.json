@@ -1,0 +1,37 @@
+{
+  "schema": "memory-timing-profile-v1",
+  "name": "sysram-10-small",
+  "assumptions": "User-requested sysram latency scenario; read/write startup cycles exclude data beats. Not hardware calibration. Serial write-through/write-allocate; no overlap, DMA, coherence, store buffer or dirty writeback.",
+  "write_policy": "write-through-write-allocate",
+  "caches": {
+    "l1i": {
+      "size": 8192,
+      "line": 64,
+      "ways": 4,
+      "lookup_cycles": 1
+    },
+    "l1d": {
+      "size": 8192,
+      "line": 64,
+      "ways": 4,
+      "lookup_cycles": 1
+    },
+    "l2": {
+      "size": 32768,
+      "line": 64,
+      "ways": 4,
+      "lookup_cycles": 8
+    }
+  },
+  "regions": [
+    {
+      "name": "system_ram",
+      "start": 2147483648,
+      "end": 2281701376,
+      "cacheable": true,
+      "read_latency_cycles": 10,
+      "write_latency_cycles": 10,
+      "bus_bytes_per_cycle": 8
+    }
+  ]
+}

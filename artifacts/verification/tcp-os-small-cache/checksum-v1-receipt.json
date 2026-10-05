@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "runs": 6,
+  "source_override": {
+    "firmware/tcp_stack/os_checksum.c": "artifacts/verification/tcp-os-small-cache/checksum-v1-source.c"
+  },
+  "reason": "Signed division rejected after binary inspection; v2 uses unsigned endpoint arithmetic."
+}

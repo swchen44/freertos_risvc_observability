@@ -36,6 +36,22 @@ CFLAGS += -DLWIP_CHKSUM_ALGORITHM=$(if $(filter tcp_copy2,$(CASE)),2,3)
 CFLAGS += -DPOC_TCP_COPY=$(if $(filter tcp_nocopy3,$(CASE)),0,1)
 SRC += $(wildcard $(LWIP)/src/core/*.c) $(wildcard $(LWIP)/src/core/ipv4/*.c)
 endif
+# Independent -Os experiments. Default firmware and downloaded lwIP stay unchanged.
+TCP_VARIANT ?= baseline
+ifeq ($(filter $(TCP_VARIANT),baseline layout checksum pbuf),)
+$(error TCP_VARIANT must be baseline, layout, checksum or pbuf)
+endif
+LINKER := $(DEMO)/build/gcc/fake_rom.ld
+ifeq ($(TCP_VARIANT),layout)
+LINKER := tcp_stack/hot-layout.ld
+endif
+ifeq ($(TCP_VARIANT),checksum)
+CFLAGS += -DPOC_ENDPOINT_CHECKSUM
+SRC += tcp_stack/os_checksum.c
+endif
+ifeq ($(TCP_VARIANT),pbuf)
+CFLAGS += -DPOC_PBUF_WALK
+endif
 ASM := $(PORT)/portASM.S $(DEMO)/build/gcc/start.S
 ifeq ($(CASE),tcp_request_response)
 CFLAGS += -DLWIP_STATS=1
@@ -55,8 +71,8 @@ $(OUT)/%.o: %.c Makefile $(wildcard config/*.h port/*.h app/*.h app/cases/*.h) |
 	$(CC) $(CFLAGS) -MMD -MP -c $< -o $@
 $(OUT)/%.o: %.S Makefile | $(OUT)
 	$(CC) $(CFLAGS) -MMD -MP -c $< -o $@
-$(OUT)/firmware.elf: $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -T$(DEMO)/build/gcc/fake_rom.ld -Wl,--gc-sections,-Map,$(OUT)/firmware.map,--defsym=__stack_size=4096 --specs=nosys.specs -o $@
+$(OUT)/firmware.elf: $(OBJ) $(LINKER)
+	$(CC) $(CFLAGS) $(OBJ) -T$(LINKER) -Wl,--gc-sections,-Map,$(OUT)/firmware.map,--defsym=__stack_size=4096 --specs=nosys.specs -o $@
 	$(SIZE) $@
 $(OUT)/%.i: $(KERNEL)/%.c $(wildcard config/*.h port/*.h) | $(OUT)
 	$(CC) $(CFLAGS) -E $< -o $@

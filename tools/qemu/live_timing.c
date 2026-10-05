@@ -2,7 +2,14 @@
 #include "live_timing.h"
 #include <string.h>
 typedef struct { uint64_t block; unsigned valid; } Line;
-static Line l1i[64][4], l1d[64][4], l2[256][4];
+#ifdef POC_SMALL_CACHE
+#define L1_SETS 32
+#define L2_SETS 128
+#else
+#define L1_SETS 64
+#define L2_SETS 256
+#endif
+static Line l1i[L1_SETS][4], l1d[L1_SETS][4], l2[L2_SETS][4];
 void timing_reset(void) {
  memset(l1i,0,sizeof l1i);memset(l1d,0,sizeof l1d);memset(l2,0,sizeof l2);
 }
@@ -29,10 +36,10 @@ int timing_access(uint64_t address,unsigned size,char op,uint64_t costs[5]) {
   unsigned length=(unsigned)(next-start);
   unsigned level=op=='I'?0:1;
   costs[level]++;
-  int hit=access_line(op=='I'?l1i:l1d,64,start/64);
+  int hit=access_line(op=='I'?l1i:l1d,L1_SETS,start/64);
   if(!hit || op=='W') {
    costs[2]+=8;
-   if(!access_line(l2,256,start/64)) costs[3]+=18;
+   if(!access_line(l2,L2_SETS,start/64)) costs[3]+=18;
   }
   if(op=='W') costs[4]+=10+(length+7)/8;
   start=next;

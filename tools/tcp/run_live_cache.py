@@ -32,10 +32,16 @@ def main():
         "--case", choices=("synthetic", "tcp", "irq", "tcp-irq"), default="synthetic"
     )
     parser.add_argument("--checksum-opt", choices=("Os", "O2"), default="Os")
+    parser.add_argument("--cache-profile", choices=("standard", "small"), default="standard")
+    parser.add_argument(
+        "--tcp-variant", choices=("baseline", "layout", "checksum", "pbuf"), default="baseline"
+    )
     args = parser.parse_args()
     is_tcp = args.case in ("tcp", "tcp-irq")
     if args.checksum_opt != "Os" and not is_tcp:
         parser.error("--checksum-opt requires tcp or tcp-irq")
+    if args.tcp_variant != "baseline" and (not is_tcp or args.checksum_opt != "Os"):
+        parser.error("TCP variants require tcp/tcp-irq and -Os")
     has_irq = args.case in ("irq", "tcp-irq")
     irq_scenario = "tcp" if is_tcp else "memory"
     case = "tcp_request_response" if is_tcp else ("live_cache_irq" if has_irq else "live_cache")
@@ -52,6 +58,17 @@ def main():
     )["profile_sha256"]
     if digest(ROOT / decision["profile"]) != expected_profile:
         parser.error("Fixed native model profile changed; revalidate before running")
+    profile_path = (
+        "cases/timing/sysram-10" + ("-small" if args.cache_profile == "small" else "") + ".json"
+    )
+    profile = json.loads((ROOT / profile_path).read_text())
+    expected = json.loads((ROOT / decision["profile"]).read_text())
+    if args.cache_profile == "small":
+        expected["name"] = "sysram-10-small"
+        for cache in expected["caches"].values():
+            cache["size"] //= 2
+    if profile != expected:
+        parser.error("Unsupported native timing profile")
     dest.mkdir(parents=True, exist_ok=False)
     toolchain = ROOT / ".tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin"
     build = dest / "build"
@@ -62,6 +79,7 @@ def main():
         str(ROOT / "firmware"),
         "CASE=" + case,
         "CHECKSUM_OPT=" + args.checksum_opt,
+        "TCP_VARIANT=" + args.tcp_variant,
         "OUT=" + str(build),
         "TOOLCHAIN=" + str(toolchain),
     ]
@@ -90,6 +108,8 @@ def main():
         str(plugin),
         *shlex.split(subprocess.check_output(["pkg-config", "--cflags", "glib-2.0"], text=True)),
     ]
+    if args.cache_profile == "small":
+        plugin_cmd.append("-DPOC_SMALL_CACHE")
     if has_irq:
         plugin_cmd.append("-DPOC_LIVE_IRQ")
     command(plugin_cmd, ROOT, dest / "plugin-build.log")
@@ -130,6 +150,9 @@ def main():
             "third_party/FreeRTOS/FreeRTOS/Demo/RISC-V_RV32_QEMU_VIRT_GCC/build/gcc/fake_rom.ld",
         )
     }
+    dependencies.add(ROOT / profile_path)
+    if args.tcp_variant == "layout":
+        dependencies.add(ROOT / "firmware/tcp_stack/hot-layout.ld")
     dependencies.update((ROOT / "src/psf_lab/parser").glob("*.py"))
     for dep in build.glob("*.d"):
         for token in shlex.split(dep.read_text().replace("\\\n", " ").split(":", 1)[1]):
@@ -144,6 +167,8 @@ def main():
         gcc_sha256=digest(toolchain / "riscv-none-elf-gcc"),
         frequency_hz=500000000,
         checksum_opt=args.checksum_opt,
+        tcp_variant=args.tcp_variant,
+        cache_profile=profile_path,
         icount_shift=0,
         time_policy="existing 1 ns/instruction plus full serial memory service",
         sources={str(p.relative_to(ROOT)): digest(p) for p in dependencies},
@@ -199,7 +224,7 @@ def main():
                             raise ValueError("MMIO instruction PC outside RAM")
                         validate_mmio(int(address), int(size), op)
                     result["clint_mmio_excluded"] = len(mmio)
-                audit = audit_accesses(run / "accesses.csv")
+                audit = audit_accesses(run / "accesses.csv", profile=profile)
                 if tuple(map(int, receipt.groups())) != (
                     audit["events"],
                     audit["cycles"],

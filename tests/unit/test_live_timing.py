@@ -14,6 +14,8 @@ ROOT = Path(__file__).resolve().parents[2]
 
 
 class LiveTimingTests(unittest.TestCase):
+    small = False
+
     @classmethod
     def setUpClass(cls):
         cls.temp = tempfile.TemporaryDirectory()
@@ -31,6 +33,7 @@ class LiveTimingTests(unittest.TestCase):
                 "-Wall",
                 "-Wextra",
                 "-Werror",
+                *(["-DPOC_SMALL_CACHE"] if cls.small else []),
                 str(cls.source),
                 "-o",
                 str(lib),
@@ -49,7 +52,11 @@ class LiveTimingTests(unittest.TestCase):
     def setUp(self):
         self.assertTrue(self.source.exists(), "Native timing kernel not implemented")
         self.lib.timing_reset()
-        self.model = from_profile(json.loads((ROOT / "cases/timing/sysram-10.json").read_text()))
+        profile = json.loads((ROOT / "cases/timing/sysram-10.json").read_text())
+        if self.small:
+            for cache in profile["caches"].values():
+                cache["size"] //= 2
+        self.model = from_profile(profile)
 
     def access(self, address, size, operation):
         costs = (ctypes.c_uint64 * 5)()
@@ -95,3 +102,10 @@ class LiveTimingTests(unittest.TestCase):
         ]:
             self.assertEqual(self.access(*args)[0], -1)
         self.check_stream([(0x80000000, 4, "R"), (0x87FFFFFC, 4, "W")])
+
+
+class SmallLiveTimingTests(LiveTimingTests):
+    small = True
+
+    def test_small_cache_eviction_differs_from_original(self):
+        self.check_stream([(0x80000000 + i * 2048, 4, "R") for i in (0, 1, 2, 3, 4, 0)])

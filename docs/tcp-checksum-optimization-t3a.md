@@ -1,5 +1,7 @@
 # T3a：第一組完整 TCP 最佳化 A/B：checksum 的 Os／O2 取捨
 
+後續已完成：[T3b：保持 -Os、8/8/32 KiB cache 與三種實作改法](tcp-os-small-cache.md)。本篇保留先前 Os／O2 編譯策略比較。
+
 **只將 lwIP checksum 編譯單元從 `-Os` 改成 `-O2`，完整 TCP IRQ 案例的模型 guest interval 減少 5,800 ns，約 0.24%。** stack 呼叫區間的 memory-service 成本下降約 1.56%。但 20-byte checksum 的指令數增加，函式與 object 也變大，因此保留 `-Os` 為預設，提供 `-O2` 作可選實驗。
 
 這次修改的是產生機器碼的編譯策略，沒有重寫 TCP／checksum 演算法、關閉 checksum 或更改 zero-copy buffer 語意。結果適用本工作負載與模型，不能當作產品速度提升百分比。
