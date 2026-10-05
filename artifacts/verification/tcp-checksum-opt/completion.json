@@ -1,0 +1,19 @@
+{
+  "tested_commit": "d6a879880b42738ce42b492041239a2237366fda",
+  "python_tests_passed": 207,
+  "full_tests_sha256": "94d298e00c4e88375ec6fc00973e4d0402681d5c06aa9d33fb564f4c424b372a",
+  "formal_tcp_qemu_runs": 12,
+  "formal_component_qemu_runs": 18,
+  "checksum_measurements": 216,
+  "packet_bytes_identical_across_variants": true,
+  "ruff": "passed",
+  "changed_python_format": "passed",
+  "default_checksum_optimization": "Os",
+  "optional_checksum_optimization": "O2",
+  "guest_interval_reduction_ns": 5800,
+  "guest_interval_reduction_percent": 0.23833004602235372,
+  "checksum_function_growth_bytes": 82,
+  "hardware_performance_claim": false,
+  "dashboard_changed": false,
+  "review": "self review; no independent reviewer"
+}

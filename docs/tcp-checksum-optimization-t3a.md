@@ -136,4 +136,6 @@ checksum 元件 runner 原先把相對 QEMU 路徑帶進 run 工作目錄，第�
 - [ ] Web／離線 timing Dashboard 與畫面驗收；本輪沒有 UI 變更。
 - [ ] 真實產品工作負載、硬體量測與 lwIP timer／RTO／RTT。
 
+完整回歸 **207／207 通過**，Ruff 與本輪 Python 格式檢查通過。
+
 Review 為自行檢查，沒有獨立 reviewer。完整回歸與 tested commit 見 [完成紀錄](../artifacts/verification/tcp-checksum-opt/completion.json)。
