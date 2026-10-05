@@ -1,5 +1,30 @@
 # FreeRTOS／RISC-V Observability：研究與可重跑 POC
 
+## 現況入口 · 2026-10-06
+
+目前實驗進度到 **T3c**；最新比較採 **L1I 8 KiB + L1D 8 KiB + L2 32 KiB**，設定檔為 [poc/cases/timing/sysram-10-small.json](poc/cases/timing/sysram-10-small.json)。舊 16/16/64 KiB 保留作預設與歷史對照，不與小 Cache 同組計算改善率。
+
+- **新比較頁面：**[小 Cache Dashboard 指南與截圖](poc/docs/small-cache-dashboard.md)，涵蓋 T3b/T3c 的模型時間、3C misses、記憶體成本與 code size。Web 與離線 HTML 共用資料；驗收見指南。
+- **韌體成果：**[T3c pbuf chain](poc/docs/tcp-pbuf-holdout.md)、[T3b -Os 實作比較](poc/docs/tcp-os-small-cache.md)。目前未增加新的 firmware workload。
+- **待做：**更多 request 長度/pbuf chain、ISR/observer/recorder/task-exclusive 成本分離、新 timing 資料的逐事件時間軸與函式執行熱點。產品 U01～U16 仍需內網原始碼或硬體。
+- **本輪驗收：**230/230 Python tests、9/9 Node tests、11/11 既有 UI E2E；新頁 Web/離線均由 agent-browser 驗證，API 用 curl。見 [驗收收據](poc/artifacts/verification/small-cache-dashboard/completion.json)。
+- **已暫緩：**跨機驗證與內網安裝材料；不能把它們列成本輪必做項目。
+
+以下為各階段當時紀錄。「尚未完成」僅表示該階段結束時的狀態；最新現況以本節、Dashboard 指南與 T3c 報告為準。
+
+### 最新頁面預覽
+
+Web：T3b 四種 `-Os` 實作，在同一組 8/8/32 KiB Cache 下比較時間、指令與 miss 成本。
+
+![小 Cache Web 總覽](poc/artifacts/screenshots/timing/server-01-overview.png)
+
+離線 HTML：篩選 pbuf chain 候選、查看來源與精確數值；不需要 Python server。完整操作與重建命令見 [指南](poc/docs/small-cache-dashboard.md)。
+
+![離線 pbuf chain 證據](poc/artifacts/screenshots/timing/offline-03-filtered-evidence.png)
+
+## 歷史階段紀錄
+
+
 **T3c guest pbuf chain 驗證：**[13 + 0 + 51 bytes、完整 TCP 與 cache 比較](poc/docs/tcp-pbuf-holdout.md)。單次走訪使每次 request_rx 指令減少 48.31%，完整模型時間改善 0.816%；單段兩版回歸結果不變。這是接收驗證 callback 的改善。
 
 **T3b 小 Cache／-Os 三種實作比較：**[8/8/32 KiB、miss 歸因、code size 與重跑證據](poc/docs/tcp-os-small-cache.md)。layout 慢 0.077%、checksum 快 0.106%、pbuf 接收驗證快 0.513%；皆為模型結果。已完成 C 改寫實驗，保留 baseline 預設；下方未完成敘述屬歷史，timing Dashboard 仍待做。
@@ -24,7 +49,7 @@
 
 **Cache 延遲研究更新：**[L1 格式、原廠參考值與校準](poc/docs/research/Cache延遲參考值與校準.md)；[QEMU 時間注入探針](poc/docs/time-control-probe.md)。T2a 原版 QEMU 正增量注入逾時的歷史證據已保存；新版實驗結果見上方 T2b，逐次 cache stall 尚未完成。
 
-**TCP 最佳化最新成果：**[實作比較、Web／離線畫面與重跑方法](poc/docs/tcp-optimization.md)。真實 lwIP 握手／傳送／ACK／重傳、三配置各三次、45 個 I/D trace 區段。
+**歷史 TCP TX 成果：**[實作比較、Web／離線畫面與重跑方法](poc/docs/tcp-optimization.md)。真實 lwIP 握手／傳送／ACK／重傳、三配置各三次、45 個 I/D trace 區段。
 
 **新增 TCP/IP 實際元件研究：**[Stack 比較、公開案例與 RV32 checksum 實測](poc/docs/research/TCP-IP與Cache最佳化案例.md)。第一輪 checksum 元件實驗已完成；後續真 TCP 與 16+16 / 64 KiB cache 模型也已完成，見下方新報告。
 
@@ -411,7 +436,7 @@ MECE 檢查的範圍是本次已提出的研究與待辦，沒有宣稱涵蓋未
 
 分享 ZIP 時保留原相對目錄，讓圖片、原始 PDF、SDK source 與 README 連結持續有效。套件含本次 recorder／DFM source 快照、完整 GCC 桌面 demo 與引用的 SWO README／原始附圖；未收錄完整 STM32 或 IAR 專案。原始 SDK 與 PDF 的授權／著作權資訊保留。
 
-目前工作目錄不是 Git repository，沒有可填寫的 root commit ID。後續產品比對應另外記錄產品 commit／build ID、compiler、FreeRTOS／BSP 版本、clock、core 數、收集配置與 workload，並附真正量測結果。
+研究初期尚未建立 root Git；目前 root 與 poc 均已納入 Git，請用 git log 查核當前 commit。後續產品比對應另外記錄產品 commit／build ID、compiler、FreeRTOS／BSP 版本、clock、core 數、收集配置與 workload，並附真正量測結果。
 
 既有重現工具：
 
@@ -457,7 +482,7 @@ python3 research/package_report.py
 
 Q1／Q2 回答後的具體架構、parser 範圍、案例、SVG／JavaScript 介面與驗收，集中於 [PSF Lab 設計規格](research/next-phase/PSF-Lab-設計規格.md)。
 
-後續實驗與文件的主要入口已改為 [poc/README.md](poc/README.md)。本目錄本身仍不是 Git repository；`poc/` 是獨立 repository。
+後續實驗與文件的主要入口已改為 [poc/README.md](poc/README.md)。此句原記錄研究初期狀態；目前 root 為 Git repository，`poc/` 以 gitlink 連結獨立歷史。
 
 
 ## 2026-10-04：M4 前置實驗
