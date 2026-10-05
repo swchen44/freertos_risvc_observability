@@ -1,5 +1,7 @@
 # FreeRTOS／RISC-V PSF POC
 
+**下一輪規劃：**[Cache／TCP 工作線與驗收計畫](docs/plans/11-next-cache-research.md)，[設計與候選矩陣](docs/design/next-cache-experiments.md)。目前僅規劃，順序已確認 A → B → C；A 詳細設計待審閱；尚未新增 firmware 案例。
+
 ## 現況入口 · 2026-10-06
 
 目前實驗進度到 **T3c**；最新比較採 **L1I 8 KiB + L1D 8 KiB + L2 32 KiB**，設定檔為 [cases/timing/sysram-10-small.json](cases/timing/sysram-10-small.json)。舊 16/16/64 KiB 保留作預設與歷史對照，不與小 Cache 同組計算改善率。

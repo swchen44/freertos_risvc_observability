@@ -1,5 +1,7 @@
 # PSF Lab 實作計畫入口
 
+最新接續提案：[11 下一輪 Cache／TCP 研究](11-next-cache-research.md)。此處舊 M1～M3 計畫保留歷史；順序已確認 A → B → C，尚未開始新實作。
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** 在 RISC-V QEMU 執行 FreeRTOS＋TraceRecorder，收集正常／異常 PSF，完成可驗證的 JSON 與本機互動 Dashboard。
