@@ -1,0 +1,21 @@
+test_matrix_integrity_pending (unittest.loader._FailedTest.test_matrix_integrity_pending) ... ERROR
+
+======================================================================
+ERROR: test_matrix_integrity_pending (unittest.loader._FailedTest.test_matrix_integrity_pending)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_matrix_integrity_pending
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/tmp/test_matrix_integrity_pending.py", line 6, in <module>
+    from psf_lab.tcp_workload_matrix import plugin_contract, require_keys
+ImportError: cannot import name 'plugin_contract' from 'psf_lab.tcp_workload_matrix' (/Users/swchen.tw/git/percepio/poc/src/psf_lab/tcp_workload_matrix.py)
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)

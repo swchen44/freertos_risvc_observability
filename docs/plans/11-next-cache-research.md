@@ -1,6 +1,6 @@
 # 下一輪 Cache／TCP 研究 Implementation Plan
 
-> **For agentic workers:** 實作時使用 `superpowers:executing-plans` 逐項執行。使用者已指定 A → B → C；A 詳細計畫待審閱，B/C 為後續里程碑，未勾選的工作不能宣稱完成。
+> **For agentic workers:** 實作時使用 `superpowers:executing-plans` 逐項執行。使用者已指定 A → B → C；A 詳細計畫已由使用者 OK 核准，B/C 為後續里程碑，未勾選的工作不能宣稱完成。
 
 **Goal:** 驗證 pbuf 最佳化跨 workload 的有效性，並逐步建立可守恆的成本歸屬及定位視圖。
 
@@ -8,7 +8,7 @@
 
 **Tech Stack:** Python 3.13、unittest、Ruff；RV32IMAC、-Os、現有 patched QEMU/GCC；本機 Web 與離線 HTML、curl、agent-browser。
 
-**Spec:** [下一輪 Cache／TCP 研究設計提案](../design/next-cache-experiments.md)。狀態：順序已確認為 A → B → C；A 設計與實作計畫待審閱，尚未開始新實作或模擬。
+**Spec:** [下一輪 Cache／TCP 研究設計提案](../design/next-cache-experiments.md)。狀態：順序已確認為 A → B → C；A 已完成 96 次擷取、分析與 Web/離線驗收；最後回歸與發佈收據整理中。
 
 ## Global Constraints
 
@@ -31,14 +31,14 @@
 
 ### A1：版本化案例契約及獨立 oracle
 
-**檔案：** 新增 `cases/tcp/workload-matrix-v1.json`、`src/psf_lab/tcp_workload.py`、`tests/unit/test_tcp_workload.py`；延伸 `src/psf_lab/tcp_session.py`。前述新增檔案目前尚不存在。
+**檔案：** 新增 `cases/tcp/workload-matrix-v1.json`、`src/psf_lab/tcp_workload.py`、`tests/unit/test_tcp_workload.py`；延伸 `src/psf_lab/tcp_session.py`。檔案已新增。
 
 **介面提案：** `load_workload(path, case_id) -> dict` 回傳 `id, request_bytes, request_segments, rounds`；`validate_session(packets, metrics, *, workload=None)` 保留既有省略參數行為；host 依固定測試契約推導 payload/seq/ACK，不以 guest 結果作 expected。
 
-- [ ] 先寫錯誤設定測試：0/負值/bool/float 長度、總和不符、超過8段、首段0、未知欄位；明確拒絕。
-- [ ] 寫資料被修改的 oracle 測試：錯誤 ACK、少1 byte、同長錯內容、chain receipt 遺漏/錯 totals，必須失敗。
-- [ ] 實作契約及 oracle，讓 64-byte 舊 API 與既有 fixtures 全部保留。
-- [ ] 使用 `python -m unittest discover -s tests/unit -p test_tcp_workload.py -v` 驗證，執行 Ruff，commit。
+- [x] 先寫錯誤設定測試：0/負值/bool/float 長度、總和不符、超過8段、首段0、未知欄位；明確拒絕。
+- [x] 寫資料被修改的 oracle 測試：錯誤 ACK、少1 byte、同長錯內容、chain receipt 遺漏/錯 totals，必須失敗。
+- [x] 實作契約及 oracle，讓 64-byte 舊 API 與既有 fixtures 全部保留。
+- [x] 使用 `python -m unittest discover -s tests/unit -p test_tcp_workload.py -v` 驗證，執行 Ruff，commit。
 
 ### A2：Guest 參數化及擷取
 
@@ -46,12 +46,12 @@
 
 **介面提案：** runner 新增 `--workload-id`，從版本化 registry 取參數；與既有 `--tcp-workload` 的非預設值互斥。manifest 保存完整 workload 與 registry hash。
 
-- [ ] 先測 CLI 互斥、未知案例、manifest 缺少 workload/hash 的拒絕行為。
-- [ ] request buffer、收到的累積 bytes、client_seq、receipt array 改用有限 compile-time 參數；保留舊設定編譯路徑。
-- [ ] callback 遍歷實際 `len/tot_len` 保存 receipt；最多8段，輸出 buffer 寫入要逐次檢查剩餘容量。
-- [ ] 相同 wire packet 在 harness 建立 chain；首段容納完整 IP/TCP headers，callback 才驗 payload shape。
-- [ ] 先建置 baseline/pbuf；保存 text/data/BSS/map/assembly，不執行正式 capture 前先 commit。
-- [ ] 使用最大 request A08 的 4 次探索測試記錄 wall time、artifact bytes、control/injection tick 行為；若 IRQ 假設不成立，停止該案例正式量測並記錄，另訂 oracle 校驗，不增加容差掩蓋原因。
+- [x] 先測 CLI 互斥、未知案例、manifest 缺少 workload/hash 的拒絕行為。
+- [x] request buffer、收到的累積 bytes、client_seq、receipt array 改用有限 compile-time 參數；保留舊設定編譯路徑。
+- [x] callback 遍歷實際 `len/tot_len` 保存 receipt；最多8段，輸出 buffer 寫入要逐次檢查剩餘容量。
+- [x] 相同 wire packet 在 harness 建立 chain；首段容納完整 IP/TCP headers，callback 才驗 payload shape。
+- [x] 先建置 baseline/pbuf；保存 text/data/BSS/map/assembly，不執行正式 capture 前先 commit。
+- [x] 使用最大 request A08 的 4 次探索測試記錄 wall time、artifact bytes、control/injection tick 行為；若 IRQ 假設不成立，停止該案例正式量測並記錄，另訂 oracle 校驗，不增加容差掩蓋原因。
 
 ### A3：成對矩陣與重現證據
 
@@ -59,19 +59,19 @@
 
 **輸出契約提案：** `tcp-workload-matrix-v1`；每列包含 `workload_id, variant, repeat, timing_mode, request_bytes, request_segments, guest_ns, instructions, memory_cycles, cache counters, oracle_verdict, evidence paths/hashes`。
 
-- [ ] 測試缺 repeat、不同工具/profile、跨 workload 比較、竄改 packet/source/hash，必須拒絕或明確隔離。
-- [ ] 第一批 A01～A04，48 次正式執行；每組同 workload baseline/pbuf wire bytes 一致、兩個 request/response/ACK/FIN/資源歸零。
-- [ ] 驗證 PSF 邊界、event 完整性、native/Python 成本守恆；三次重跑差異逐筆保存，不能只留下最好結果。
-- [ ] 第一批通過才執行 A05～A08；每組改善率以相同 workload baseline 為分母，同時保存絕對值及 code size。
-- [ ] 任一案例變慢也保留；報告解釋可證明的原因，未能歸因就標記未知。
+- [x] 測試缺 repeat、不同工具/profile、跨 workload 比較、竄改 packet/source/hash，必須拒絕或明確隔離。
+- [x] 第一批 A01～A04，48 次正式執行；每組同 workload baseline/pbuf wire bytes 一致、兩個 request/response/ACK/FIN/資源歸零。
+- [x] 驗證 PSF 邊界、event 完整性、native/Python 成本守恆；三次重跑差異逐筆保存，不能只留下最好結果。
+- [x] 第一批通過才執行 A05～A08；每組改善率以相同 workload baseline 為分母，同時保存絕對值及 code size。
+- [x] 任一案例變慢也保留；報告解釋可證明的原因，未能歸因就標記未知。
 
 ### A4：結果進入 Web／離線
 
 **檔案：** `src/psf_lab/timing_dashboard.py`、`web/src/timing-view.js`、`web/src/timing.js`、`web/timing.html`、相關 Python/Node tests 與 `tools/tcp/verify_timing_dashboard.py`。
 
-- [ ] 測試每個 workload 獨立 baseline、篩選後分母不變、錯誤/未通過結果不混入成功比較。
-- [ ] 增加 workload 選擇及 request shape；沿用 SVG/表格/CSV，不改既有 T3b/T3c frozen reports。
-- [ ] curl 核對 API 數值；agent-browser 核對 Web/離線組別切換、hover、排序、CSV 下載，保存截圖。
+- [x] 測試每個 workload 獨立 baseline、篩選後分母不變、錯誤/未通過結果不混入成功比較。
+- [x] 增加 workload 選擇及 request shape；沿用 SVG/表格/CSV，不改既有 T3b/T3c frozen reports。
+- [x] curl 核對 API 數值；agent-browser 核對 Web/離線組別切換、hover、排序、CSV 下載，保存截圖。
 
 ## B：成本歸屬，獨立里程碑
 
@@ -94,7 +94,7 @@
 ## 各工作線共用完成條件
 
 - [x] 工作線順序已由使用者指定 A → B → C。
-- [ ] A 的具體設計與計畫已審閱；B/C 到階段開始時再核對詳細設計。
+- [x] A 的具體設計與計畫已審閱；B/C 到階段開始時再核對詳細設計。
 - [ ] 先失敗再通過的單元測試，Ruff、必要 Node tests；正式回歸在 clean commit 上執行，log 放 repo 外避免造成 dirty source。
 - [ ] 新 capture、來源/工具 hashes、restore 所需設定與程式已納入 Git；review 重要問題處理完成。
 - [ ] README 更新需求、過程、已完成/未完成及截圖，連結驗證通過；不得把計畫當成結果。
@@ -103,11 +103,11 @@
 
 ## 本次規劃產物與狀態
 
-僅新增設計與計畫文件、更新 README 入口；未改動 firmware/parser/UI，未新增模擬結果。已記錄使用者選擇 A → B → C。接下來審閱 A 的具體規格及計畫，完成 A 的證據與報告後才接 B，再接 C。
+A 實作、96 次正式 capture、16 份詳細 replay、Web/離線驗收已完成；結果與反例見 [A 報告](../tcp-workload-matrix.md)。最後全套回歸與 Git 發佈尚在收尾。B/C 尚未實作。
 
 ## A 實作時的測試契約範例
 
-以下程式碼是規格範例，尚未新增到 production/tests。`validate_workload(value)` 在 A1 的 `tcp_workload.py` 定義，輸入單一 registry entry，回傳驗證後的新 dict；不能原地修改輸入。僅接受 `id, request_bytes, request_segments, rounds`，其中 rounds 固定2、id 必須為 registry 唯一識別。
+以下保留原設計的契約範例；實際測試已在 tests/unit/test_tcp_workload.py。`validate_workload(value)` 在 A1 的 `tcp_workload.py` 定義，輸入單一 registry entry，回傳驗證後的新 dict；不能原地修改輸入。僅接受 `id, request_bytes, request_segments, rounds`，其中 rounds 固定2、id 必須為 registry 唯一識別。
 
 ```python
 # tests/unit/test_tcp_workload.py 的核心測試
@@ -129,7 +129,7 @@ class WorkloadContractTests(unittest.TestCase):
 
 A1 其餘測試包含未知欄位、request大於1460、超過8段、rounds不是2、同名id；A3 比較器不能把拒絕或缺少repeat的資料當成功列。
 
-實作後的正式命令範例，**新 `--workload-id` 目前尚不存在，不可視為已驗證命令**：
+實作後的正式命令範例，`--workload-id` 已實作；正式 96 次執行使用此介面：
 
 ```sh
 # poc/；來源須先 commit，目錄不得已存在。
@@ -142,6 +142,13 @@ Baseline/pbuf 各一個 output；runner 一次輸出 control/injection 配對。
 
 - 已確認 A 的互相依賴：registry → guest/receipt → oracle → 成對比較 → Dashboard。
 - 已修正原流程圖的平行分支，改為使用者指定的 A → B → C。
-- 已分開「順序已確認」與「A 具體設計待審閱」，沒有預先勾選實作。
+- 已分開「順序已確認」與「A 具體設計已核准」，完成項目依實際收據勾選。
 - 已補最大 workload 探索、IRQ guard、payload位址影響、同組wire hash、舊schema相容及失敗結果保留。
 - B/C 目前為後續里程碑；在 A 尚未完成時，不把它們當成本輪實作項目。
+
+## A 實作裁定
+
+- 實際比較報告每組提供 injection repeat 1 代表列；`attempts` 保留完整 control/injection × 3，不丟棄重跑資料。
+- A08 額外 receive-window ACK 已納入 oracle；未調整 IRQ guard。首次失敗 probe 也保留。
+- 原始 96 次均做 native/Python audit；彙整重新 hash 全部 raw streams，另 replay 16 份代表 trace。
+- `run_workload_matrix.py` 為後續重跑批次入口；正式本輪排程原始 log 保存於 verification/logs。

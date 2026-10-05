@@ -1,27 +1,33 @@
 # FreeRTOS／RISC-V PSF POC
 
-**下一輪規劃：**[Cache／TCP 工作線與驗收計畫](docs/plans/11-next-cache-research.md)，[設計與候選矩陣](docs/design/next-cache-experiments.md)。目前僅規劃，順序已確認 A → B → C；A 詳細設計待審閱；尚未新增 firmware 案例。
-
 ## 現況入口 · 2026-10-06
 
-目前實驗進度到 **T3c**；最新比較採 **L1I 8 KiB + L1D 8 KiB + L2 32 KiB**，設定檔為 [cases/timing/sysram-10-small.json](cases/timing/sysram-10-small.json)。舊 16/16/64 KiB 保留作預設與歷史對照，不與小 Cache 同組計算改善率。
+**A：八種 TCP workload 的 pbuf 最佳化驗證**已完成 96 次正式執行、原始資料分析與 Web／離線操作驗收。固定 **L1I 8 KiB + L1D 8 KiB + L2 32 KiB**，結果是相同模型下的軟體比較。
 
-- **新比較頁面：**[小 Cache Dashboard 指南與截圖](docs/small-cache-dashboard.md)，涵蓋 T3b/T3c 的模型時間、3C misses、記憶體成本與 code size。Web 與離線 HTML 共用資料；驗收見指南。
-- **韌體成果：**[T3c pbuf chain](docs/tcp-pbuf-holdout.md)、[T3b -Os 實作比較](docs/tcp-os-small-cache.md)。目前未增加新的 firmware workload。
-- **待做：**更多 request 長度/pbuf chain、ISR/observer/recorder/task-exclusive 成本分離、新 timing 資料的逐事件時間軸與函式執行熱點。產品 U01～U16 仍需內網原始碼或硬體。
-- **已暫緩：**跨機驗證與內網安裝材料；不能把它們列成本輪必做項目。
+- [完整 A 研究報告、數值與重跑命令](docs/tcp-workload-matrix.md)：7/8 組模型時間改善；A08 改善 8.339%，A02 反而慢 0.218%，反例保留，原因待 B 歸因。
+- [設計與 A → B → C 計畫](docs/plans/11-next-cache-research.md)：A 已實作；B 成本歸屬、C 熱點／逐事件時間軸仍未完成。
+- [案例契約](cases/tcp/workload-matrix-v1.json)：63、64、65、256、1460 bytes，以及空節點／八節點 chain。
+- [正式 capture](runs/tcp-workload-matrix-v1/)：16 組、96 次，包含 PSF、raw trace、ELF、map、封包、generated header 與來源 hashes。
+- [探索與失敗紀錄](runs/tcp-workload-probe-v1/)；[分析／驗收收據](artifacts/verification/tcp-workload-matrix/)；[離線 HTML](artifacts/offline/tcp-workload-matrix.html)。
+- **暫緩：**跨機驗證與內網安裝材料；產品 U01～U16 仍需內網原始碼或硬體。
 
-以下為各階段當時紀錄。「尚未完成」僅表示該階段結束時的狀態；最新現況以本節、Dashboard 指南與 T3c 報告為準。
+### POC 怎麼使用
+
+工作與文件都在 `poc/`。在該目錄啟動 `.venv/bin/python -m psf_lab serve --port 8016`，開啟 `http://127.0.0.1:8016/timing.html`。離線版直接開啟 `artifacts/offline/tcp-workload-matrix.html`，不需 Python server 或 CDN。
+
+`firmware/` 是 guest 與 hooks，`cases/` 是輸入契約，`src/psf_lab/` 是 parser／oracle／分析服務，`tools/tcp/` 是擷取與重播工具，`tests/` 保存 unittest，`web/` 是 SVG／表格頁面，`docs/` 保存研究、設計、計畫，`runs/` 保存執行資料，`artifacts/verification/` 與 `artifacts/screenshots/` 保存驗收與畫面。完整工具安裝／還原沿用下方 POC 文件入口。
 
 ### 最新頁面預覽
 
-Web：T3b 四種 `-Os` 實作，在同一組 8/8/32 KiB Cache 下比較時間、指令與 miss 成本。
+Web：選 workload 比較相同 request 的兩版；可切換 Cache 層級、看 hover 分母、排序與匯出 CSV。
 
-![小 Cache Web 總覽](artifacts/screenshots/timing/server-01-overview.png)
+![TCP workload Web](artifacts/screenshots/tcp-workload-matrix/server-01-overview.png)
 
-離線 HTML：篩選 pbuf chain 候選、查看來源與精確數值；不需要 Python server。完整操作與重建命令見 [指南](docs/small-cache-dashboard.md)。
+離線：停止 Python server 並封鎖網路後，仍能篩選 A08-pbuf、看來源與匯出 CSV。
 
-![離線 pbuf chain 證據](artifacts/screenshots/timing/offline-03-filtered-evidence.png)
+![TCP workload 離線](artifacts/screenshots/tcp-workload-matrix/offline-03-filtered-evidence.png)
+
+以下為各階段當時紀錄。「尚未完成」僅表示當時狀態；最新結果以上述 A 報告與驗收收據為準。
 
 ## 歷史階段紀錄
 

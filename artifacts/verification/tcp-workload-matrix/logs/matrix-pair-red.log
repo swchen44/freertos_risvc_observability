@@ -1,0 +1,18 @@
+test_complete_matrix_accepted (tests.unit.test_matrix_dashboard.MatrixDashboardTests.test_complete_matrix_accepted) ... ok
+test_missing_candidate_rejected (tests.unit.test_matrix_dashboard.MatrixDashboardTests.test_missing_candidate_rejected) ... ok
+test_same_id_different_workload_rejected (tests.unit.test_matrix_dashboard.MatrixDashboardTests.test_same_id_different_workload_rejected) ... FAIL
+test_wrong_workload_identity_rejected (tests.unit.test_matrix_dashboard.MatrixDashboardTests.test_wrong_workload_identity_rejected) ... ok
+
+======================================================================
+FAIL: test_same_id_different_workload_rejected (tests.unit.test_matrix_dashboard.MatrixDashboardTests.test_same_id_different_workload_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_matrix_dashboard.py", line 51, in test_same_id_different_workload_rejected
+    with self.assertRaisesRegex(ValueError, 'workload'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.033s
+
+FAILED (failures=1)

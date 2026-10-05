@@ -1,0 +1,10 @@
+test_complete_matrix_accepted (test_matrix_dashboard.MatrixDashboardTests.test_complete_matrix_accepted) ... ok
+test_missing_candidate_rejected (test_matrix_dashboard.MatrixDashboardTests.test_missing_candidate_rejected) ... ok
+test_wrong_workload_identity_rejected (test_matrix_dashboard.MatrixDashboardTests.test_wrong_workload_identity_rejected) ... ok
+test_hash_maps_cannot_omit_required_artifacts (test_matrix_integrity.MatrixIntegrityTests.test_hash_maps_cannot_omit_required_artifacts) ... ok
+test_plugin_tamper_and_output_path_rejected (test_matrix_integrity.MatrixIntegrityTests.test_plugin_tamper_and_output_path_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.022s
+
+OK

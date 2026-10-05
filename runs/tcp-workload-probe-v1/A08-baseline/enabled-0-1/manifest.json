@@ -1,0 +1,48 @@
+{
+  "command": [
+    "/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-system-riscv32-relative",
+    "-machine",
+    "virt",
+    "-cpu",
+    "rv32",
+    "-smp",
+    "1",
+    "-m",
+    "128M",
+    "-bios",
+    "none",
+    "-display",
+    "none",
+    "-monitor",
+    "none",
+    "-serial",
+    "file:console.log",
+    "-accel",
+    "tcg,thread=single",
+    "-icount",
+    "shift=0,align=off,sleep=off",
+    "-semihosting-config",
+    "enable=on,target=native",
+    "-plugin",
+    "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-probe-v1/A08-baseline/live_cache.dylib,begin=8000307c,end=80003080,enabled=0,out=/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-probe-v1/A08-baseline/enabled-0-1/accesses.csv",
+    "-kernel",
+    "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-probe-v1/A08-baseline/enabled-0-1/firmware.elf"
+  ],
+  "result": {
+    "run": "enabled-0-1",
+    "enabled": false,
+    "repeat": 1,
+    "accepted": false,
+    "exit_code": 2,
+    "host_wall_seconds": 0.5593759589828551,
+    "error": "QEMU failed or timed out"
+  },
+  "files": {
+    "symbols.txt": "4aa4bc949b0e3912236210694919fadce5496b7a7e0672dab96e2a1eee2987c8",
+    "trace.psf": "eb20b5572e66ac3d7022f9551e4526ba4ee7e2afccdf1ca7fdb091854c836080",
+    "accesses.csv.gz": "658ffc7771c18a6e81c4d440a83a8e2bec87c2848a6c532cc2259c8041bfaffa",
+    "firmware.elf": "2f52436b00259ce23798a505b3eaeff225f525adf4ed49f3477f4b14d6246a6d",
+    "console.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "qemu.log": "cf2373fc5146b2a1639c566c3ff494ecc1a59ac6302fefe5bb2d320806f2269c"
+  }
+}

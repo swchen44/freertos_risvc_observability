@@ -1,0 +1,35 @@
+live_cache_mmio pc=2147519372 address=33570816 size=4 op=W
+live_cache_mmio pc=2147519374 address=33570820 size=4 op=W
+live_cache_mmio pc=2147519376 address=33570816 size=4 op=W
+live_cache_mmio pc=2147493412 address=33603580 size=4 op=R
+live_cache_mmio pc=2147493414 address=33603576 size=4 op=R
+live_cache_mmio pc=2147493416 address=33603580 size=4 op=R
+live_cache_mmio pc=2147519372 address=33570816 size=4 op=W
+live_cache_mmio pc=2147519374 address=33570820 size=4 op=W
+live_cache_mmio pc=2147519376 address=33570816 size=4 op=W
+live_cache_mmio pc=2147493412 address=33603580 size=4 op=R
+live_cache_mmio pc=2147493414 address=33603576 size=4 op=R
+live_cache_mmio pc=2147493416 address=33603580 size=4 op=R
+live_cache_mmio pc=2147493412 address=33603580 size=4 op=R
+live_cache_mmio pc=2147493414 address=33603576 size=4 op=R
+live_cache_mmio pc=2147493416 address=33603580 size=4 op=R
+live_cache_mmio pc=2147493412 address=33603580 size=4 op=R
+live_cache_mmio pc=2147493414 address=33603576 size=4 op=R
+live_cache_mmio pc=2147493416 address=33603580 size=4 op=R
+live_cache_mmio pc=2147493412 address=33603580 size=4 op=R
+live_cache_mmio pc=2147493414 address=33603576 size=4 op=R
+live_cache_mmio pc=2147493416 address=33603580 size=4 op=R
+live_cache_mmio pc=2147493412 address=33603580 size=4 op=R
+live_cache_mmio pc=2147493414 address=33603576 size=4 op=R
+live_cache_mmio pc=2147493416 address=33603580 size=4 op=R
+live_cache_mmio pc=2147493412 address=33603580 size=4 op=R
+live_cache_mmio pc=2147493414 address=33603576 size=4 op=R
+live_cache_mmio pc=2147493416 address=33603580 size=4 op=R
+live_cache_mmio pc=2147493412 address=33603580 size=4 op=R
+live_cache_mmio pc=2147493414 address=33603576 size=4 op=R
+live_cache_mmio pc=2147493416 address=33603580 size=4 op=R
+live_cache_mmio pc=2147493412 address=33603580 size=4 op=R
+live_cache_mmio pc=2147493414 address=33603576 size=4 op=R
+live_cache_mmio pc=2147493416 address=33603580 size=4 op=R
+live_cache_complete events=437296 cycles=1112701 api_calls=437296
+live_cache_mmio_count=33

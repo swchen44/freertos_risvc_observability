@@ -1,0 +1,15 @@
+test_hash_maps_cannot_omit_required_artifacts (tests.unit.test_matrix_integrity.MatrixIntegrityTests.test_hash_maps_cannot_omit_required_artifacts) ... ok
+test_plugin_tamper_and_output_path_rejected (tests.unit.test_matrix_integrity.MatrixIntegrityTests.test_plugin_tamper_and_output_path_rejected) ... ok
+test_wrong_workload_and_profile_are_rejected_before_replay (tests.unit.test_matrix_integrity.MatrixIntegrityTests.test_wrong_workload_and_profile_are_rejected_before_replay) ... ok
+test_complete_matrix_accepted (tests.unit.test_matrix_dashboard.MatrixDashboardTests.test_complete_matrix_accepted) ... ok
+test_missing_candidate_rejected (tests.unit.test_matrix_dashboard.MatrixDashboardTests.test_missing_candidate_rejected) ... ok
+test_wrong_workload_identity_rejected (tests.unit.test_matrix_dashboard.MatrixDashboardTests.test_wrong_workload_identity_rejected) ... ok
+test_boolean_repeat_and_duplicate_rejected (tests.unit.test_tcp_workload_matrix.MatrixTests.test_boolean_repeat_and_duplicate_rejected) ... ok
+test_complete_pairs_and_missing_repeat (tests.unit.test_tcp_workload_matrix.MatrixTests.test_complete_pairs_and_missing_repeat) ... ok
+test_evidence_hash_tamper_is_rejected (tests.unit.test_tcp_workload_matrix.MatrixTests.test_evidence_hash_tamper_is_rejected) ... ok
+test_missing_group_is_rejected (tests.unit.test_tcp_workload_matrix.MatrixTests.test_missing_group_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.116s
+
+OK

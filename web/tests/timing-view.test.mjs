@@ -15,3 +15,13 @@ test('CSV preserves displayed order and the measured denominator',()=>{
  assert.match(csv,/2468700/);
  assert.ok(fields.some(([f])=>f==='l1i_accesses'));
 });
+
+test('workload filter preserves paired baseline and CSV request shape',()=>{
+ const rows=[{group:'A08',label:'A08-baseline',baseline:'A08-baseline',request_shape:'1460',improvement_pct:0},{group:'A08',label:'A08-pbuf',baseline:'A08-baseline',request_shape:'1460',improvement_pct:8.3},{group:'A07',label:'A07-pbuf',baseline:'A07-baseline'}];
+ const selected=selectTiming(rows,'A08','A08-pbuf');
+ assert.equal(selected.length,1);
+ assert.equal(selected[0].baseline,'A08-baseline');
+ assert.equal(selected[0].improvement_pct,8.3);
+ assert.match(timingCsv(selected),/1460/);
+ assert.ok(fields.some(([f])=>f==='request_shape'));
+});

@@ -1,0 +1,125 @@
+{
+  "command": [
+    "/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-system-riscv32-relative",
+    "-machine",
+    "virt",
+    "-cpu",
+    "rv32",
+    "-smp",
+    "1",
+    "-m",
+    "128M",
+    "-bios",
+    "none",
+    "-display",
+    "none",
+    "-monitor",
+    "none",
+    "-serial",
+    "file:console.log",
+    "-accel",
+    "tcg,thread=single",
+    "-icount",
+    "shift=0,align=off,sleep=off",
+    "-semihosting-config",
+    "enable=on,target=native",
+    "-plugin",
+    "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A04-baseline/live_cache.dylib,begin=8000307c,end=80003080,enabled=1,out=/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A04-baseline/enabled-1-1/accesses.csv",
+    "-kernel",
+    "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A04-baseline/enabled-1-1/firmware.elf"
+  ],
+  "result": {
+    "run": "enabled-1-1",
+    "enabled": true,
+    "repeat": 1,
+    "accepted": true,
+    "exit_code": 0,
+    "host_wall_seconds": 0.9980096250073984,
+    "clint_mmio_excluded": 33,
+    "tcp": {
+      "request_bytes": 130,
+      "unique_response_bytes": 11680,
+      "packets": 25
+    },
+    "pbuf_receipt": {
+      "requests": 2,
+      "nodes": 2,
+      "empty_nodes": 0
+    },
+    "switches": [
+      {
+        "name": "tcp_observer",
+        "mtime": 23059
+      },
+      {
+        "name": "tcp_session",
+        "mtime": 23413
+      }
+    ],
+    "audit": {
+      "events": 424060,
+      "operations": {
+        "I": 341584,
+        "R": 49780,
+        "W": 32696
+      },
+      "cycles": 1073722,
+      "ns": 2147444,
+      "costs": {
+        "l1i": 342424,
+        "l1d": 82476,
+        "l2": 275720,
+        "ram_read": 13446,
+        "ram_write": 359656
+      },
+      "stream_sha256": "1f288e9228b07da7f1a17e972e1e81f4fa58c2d1743cf063057ba24ee2ce8bf9"
+    },
+    "measurement": {
+      "case": "tcp_request_response",
+      "before": 3016,
+      "after": 27908,
+      "before_tick": 0,
+      "ticks": 2,
+      "work": 11680,
+      "woke": 1,
+      "observer_tick": 2,
+      "observer_mtime": 23077
+    }
+  },
+  "files": {
+    "symbols.txt": "f39aa17d63b47fc770b58a6f4ed68abfc835dfe35fe2b85a82918965bd4f7276",
+    "packet-7.bin": "a14dc798c37ce627982cc45ae6d528d25a6065d01d5525ac71e2e3d670944415",
+    "packet-13.bin": "e29b3b21da46ff191d97eec800404aed4026b57eef0fbac40be705217378b557",
+    "packet-12.bin": "d292df93037a7faba09f2a89c3b2e35e9c7d99f8ff0abaef35de3a45a322bc57",
+    "packet-6.bin": "7ee23526c84068d0ffac7dd18a4b37e42aefc3871b005f274b656c8fa6bed101",
+    "packet-10.bin": "b45f22e4b32e5ea38b3a36fb914dd82ad1523c224d209a546f3ba37493e9b30d",
+    "packet-4.bin": "b26db8e37314e27aee1927c60dca85ac4200826d62443f8d9e1238655d445549",
+    "packet-5.bin": "be877a59e155541e76f556efe69034d0f1b4b28bc386b0eb75cefd5e944591d7",
+    "packet-11.bin": "bddad4b33e61163519d28e81a13c369f4b9ad08ad75e7e0d387c8380da54d987",
+    "packet-15.bin": "748c420b1ea099d59e014c18ef0d2397cf4f6536bc6b05ec4df2c7be68019bc1",
+    "packet-1.bin": "7f3b0a151e215b122793526b92d23ece2da8dbe7954be58de7029c2f117abe2b",
+    "trace.psf": "807a869c6b3f57fba7fb8c929e18e2770b353eff6d7819c93bd5cfba4a448d59",
+    "session.json": "6b4dde0aa782fa8fe2ab9e44fd2d733cea9afb06c0852c4fd822d8c6f2534f29",
+    "packet-0.bin": "3cb937abecae970dc13ce5eb0d353a64f65c97062e213bd1ed9c1ea4088d4db8",
+    "packet-14.bin": "e276665b707a9b9a2892af71fffb7ae31aed08035f8f11df28fa84ef7e92cd84",
+    "packet-2.bin": "62a82edfed215f935746c367d8621e7a87f81760817104088d8adb89f0cae2e4",
+    "packet-16.bin": "f4cd389a2fc8cbce2d5e80c5ff755365334e90d25fc1087bded0bbbbb4365968",
+    "packet-17.bin": "5d9ee557362783ec6549562359b20d4364f3c89b0f87f25ca1cc6b26d1d324da",
+    "packet-3.bin": "25dbfe28ee8d93d5cd714995419c3a4df7d306bc22ad5bb1ceab4378615b2a5d",
+    "accesses.csv.gz": "c2a7247314ed915200026d1c91cd08de7169573668ed68fa558681bed009def2",
+    "firmware.elf": "346c12023432da6f37aa7d80c49a68924c9cade2b62dbf040517b4916afe599d",
+    "console.log": "c5651757c2aa7a4dab804a23a69ade3527d450e87c3fc55fe000fb5970721126",
+    "oracle.json": "516b2f3fb3ceb5cebda3331aea9d580b3770095f1e61a4bacf7a331f9c375cbf",
+    "qemu.log": "582112793d8a7a21b91115f8a642b8a7a1c39b757589c809b963728c0e39838a",
+    "packet-19.bin": "075c51972f92fc0e0b5a54c72277b731aa3da77c9748ddffed0b0df3fe042a19",
+    "live-cache.json": "47a8671a97dfb7f41681adbf616c6f7a0643c0c7017f966143af1b4c2a855c65",
+    "packet-18.bin": "a43078896a1253268849499aa5cdc3fbf5ec93b503d846c1a75034961dd1d6cd",
+    "packet-24.bin": "7b6a0d72560ec7f04f2eab9238f1265f5dcf46683ea9db4cd0a342cb195f7ec1",
+    "packet-8.bin": "cd0addc0800fa6086672bb1832b9b65934d9270f2776f868c7bc9b821839a4d1",
+    "packet-20.bin": "cf527a30100e1ce038461e7518b0c0cc029e390ed264f2f8e3f296fa9a7eb8d5",
+    "packet-21.bin": "0eda8710f42dea76d6c7fa7ff32037fb1fae1fac8df8387bb5d1f909d96f1798",
+    "packet-9.bin": "97daad3d6f5a3da4a3206bb4bdd0344da64e9f23808d32d7ff3a964cb8356d4f",
+    "packet-23.bin": "f67ca82ab7b83ea9369805663a3b8b2605982b20a53a572f1bbf5265db7d7b7d",
+    "packet-22.bin": "ff6e7fc557216207dc542b4b7230994478fa250520ca92d92ab900891e894bb5"
+  }
+}

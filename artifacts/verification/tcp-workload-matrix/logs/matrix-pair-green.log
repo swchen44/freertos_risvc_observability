@@ -1,0 +1,10 @@
+test_complete_matrix_accepted (tests.unit.test_matrix_dashboard.MatrixDashboardTests.test_complete_matrix_accepted) ... ok
+test_missing_candidate_rejected (tests.unit.test_matrix_dashboard.MatrixDashboardTests.test_missing_candidate_rejected) ... ok
+test_missing_report_hash_rejected (tests.unit.test_matrix_dashboard.MatrixDashboardTests.test_missing_report_hash_rejected) ... ok
+test_same_id_different_workload_rejected (tests.unit.test_matrix_dashboard.MatrixDashboardTests.test_same_id_different_workload_rejected) ... ok
+test_wrong_workload_identity_rejected (tests.unit.test_matrix_dashboard.MatrixDashboardTests.test_wrong_workload_identity_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.033s
+
+OK

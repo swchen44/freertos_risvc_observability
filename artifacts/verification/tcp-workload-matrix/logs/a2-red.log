@@ -1,0 +1,32 @@
+FFF
+======================================================================
+FAIL: test_invalid_matrix_options_rejected_before_build (tests.unit.test_tcp_workload_runner.WorkloadRunnerTests.test_invalid_matrix_options_rejected_before_build) (args=['--workload-id', 'A01', '--tcp-workload', 'fragmented'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_tcp_workload_runner.py", line 21, in test_invalid_matrix_options_rejected_before_build
+    self.assertIn(message,result.stderr)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'mutually exclusive' not found in 'usage: run_live_cache.py [-h] --qemu QEMU --output OUTPUT [--repeats {1,3}]\n                         [--case {synthetic,tcp,irq,tcp-irq}]\n                         [--checksum-opt {Os,O2}]\n                         [--cache-profile {standard,small}]\n                         [--tcp-variant {baseline,layout,checksum,pbuf}]\n                         [--tcp-workload {linear,fragmented}]\nrun_live_cache.py: error: unrecognized arguments: --workload-id A01\n'
+
+======================================================================
+FAIL: test_invalid_matrix_options_rejected_before_build (tests.unit.test_tcp_workload_runner.WorkloadRunnerTests.test_invalid_matrix_options_rejected_before_build) (args=['--workload-id', 'missing'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_tcp_workload_runner.py", line 21, in test_invalid_matrix_options_rejected_before_build
+    self.assertIn(message,result.stderr)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'Unknown workload' not found in 'usage: run_live_cache.py [-h] --qemu QEMU --output OUTPUT [--repeats {1,3}]\n                         [--case {synthetic,tcp,irq,tcp-irq}]\n                         [--checksum-opt {Os,O2}]\n                         [--cache-profile {standard,small}]\n                         [--tcp-variant {baseline,layout,checksum,pbuf}]\n                         [--tcp-workload {linear,fragmented}]\nrun_live_cache.py: error: unrecognized arguments: --workload-id missing\n'
+
+======================================================================
+FAIL: test_invalid_matrix_options_rejected_before_build (tests.unit.test_tcp_workload_runner.WorkloadRunnerTests.test_invalid_matrix_options_rejected_before_build) (args=['--workload-id', 'A01', '--tcp-variant', 'checksum'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_tcp_workload_runner.py", line 21, in test_invalid_matrix_options_rejected_before_build
+    self.assertIn(message,result.stderr)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'baseline/pbuf' not found in 'usage: run_live_cache.py [-h] --qemu QEMU --output OUTPUT [--repeats {1,3}]\n                         [--case {synthetic,tcp,irq,tcp-irq}]\n                         [--checksum-opt {Os,O2}]\n                         [--cache-profile {standard,small}]\n                         [--tcp-variant {baseline,layout,checksum,pbuf}]\n                         [--tcp-workload {linear,fragmented}]\nrun_live_cache.py: error: unrecognized arguments: --workload-id A01\n'
+
+----------------------------------------------------------------------
+Ran 1 test in 0.767s
+
+FAILED (failures=3)

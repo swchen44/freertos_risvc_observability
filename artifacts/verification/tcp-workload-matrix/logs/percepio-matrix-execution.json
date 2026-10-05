@@ -1,0 +1,98 @@
+[
+  {
+    "name": "A01-baseline",
+    "exit": 0,
+    "seconds": 43.01744562498061,
+    "log": "/tmp/percepio-matrix-A01-baseline.log"
+  },
+  {
+    "name": "A01-pbuf",
+    "exit": 0,
+    "seconds": 42.98123345797649,
+    "log": "/tmp/percepio-matrix-A01-pbuf.log"
+  },
+  {
+    "name": "A02-baseline",
+    "exit": 0,
+    "seconds": 53.72897408303106,
+    "log": "/tmp/percepio-matrix-A02-baseline.log"
+  },
+  {
+    "name": "A02-pbuf",
+    "exit": 0,
+    "seconds": 53.80357687501237,
+    "log": "/tmp/percepio-matrix-A02-pbuf.log"
+  },
+  {
+    "name": "A03-baseline",
+    "exit": 0,
+    "seconds": 55.696907832985744,
+    "log": "/tmp/percepio-matrix-A03-baseline.log"
+  },
+  {
+    "name": "A03-pbuf",
+    "exit": 0,
+    "seconds": 55.56569266697625,
+    "log": "/tmp/percepio-matrix-A03-pbuf.log"
+  },
+  {
+    "name": "A04-baseline",
+    "exit": 0,
+    "seconds": 48.68114649999188,
+    "log": "/tmp/percepio-matrix-A04-baseline.log"
+  },
+  {
+    "name": "A04-pbuf",
+    "exit": 0,
+    "seconds": 48.525530000042636,
+    "log": "/tmp/percepio-matrix-A04-pbuf.log"
+  },
+  {
+    "name": "A05-baseline",
+    "exit": 0,
+    "seconds": 53.01903779199347,
+    "log": "/tmp/percepio-matrix-A05-baseline.log"
+  },
+  {
+    "name": "A05-pbuf",
+    "exit": 0,
+    "seconds": 52.53761575004319,
+    "log": "/tmp/percepio-matrix-A05-pbuf.log"
+  },
+  {
+    "name": "A06-baseline",
+    "exit": 0,
+    "seconds": 61.966611541982275,
+    "log": "/tmp/percepio-matrix-A06-baseline.log"
+  },
+  {
+    "name": "A06-pbuf",
+    "exit": 0,
+    "seconds": 58.16834987496259,
+    "log": "/tmp/percepio-matrix-A06-pbuf.log"
+  },
+  {
+    "name": "A07-baseline",
+    "exit": 0,
+    "seconds": 95.75651554198703,
+    "log": "/tmp/percepio-matrix-A07-baseline.log"
+  },
+  {
+    "name": "A07-pbuf",
+    "exit": 0,
+    "seconds": 89.96411920903483,
+    "log": "/tmp/percepio-matrix-A07-pbuf.log"
+  },
+  {
+    "name": "A08-baseline",
+    "exit": 0,
+    "seconds": 104.50741650001146,
+    "log": "/tmp/percepio-matrix-A08-baseline.log"
+  },
+  {
+    "name": "A08-pbuf",
+    "exit": 0,
+    "seconds": 95.79444633302046,
+    "log": "/tmp/percepio-matrix-A08-pbuf.log"
+  }
+]

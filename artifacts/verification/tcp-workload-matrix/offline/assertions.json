@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "mode": "offline",
+  "svg_charts": 4,
+  "filtered_csv_rows": 1,
+  "sorted_values": [
+    3270100,
+    3567600
+  ],
+  "offline_network_blocked": true,
+  "resources": [],
+  "errors": []
+}

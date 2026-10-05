@@ -1,0 +1,16 @@
+E..
+======================================================================
+ERROR: test_complete_matrix_accepted (__main__.MatrixDashboardTests.test_complete_matrix_accepted)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/test_matrix_dashboard_pending.py", line 17, in test_complete_matrix_accepted
+    validate_comparison(self.data(),'tcp-workload-matrix-v1')
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/swchen.tw/git/percepio/poc/src/psf_lab/timing_dashboard.py", line 24, in validate_comparison
+    raise ValueError("Unexpected comparison candidates")
+ValueError: Unexpected comparison candidates
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.079s
+
+FAILED (errors=1)

@@ -5,7 +5,7 @@ import {fields,selectTiming,timingCsv} from './timing-view.js';
 const $=id=>document.getElementById(id);
 const offline=Boolean($('timing-data').textContent.trim());
 if(offline)$('mode').textContent='離線 HTML · 無網路依賴';
-const table=new Tabulator('#table',{data:[],columns:fields.map(([field,title])=>({field,title,minWidth:135,sorter:['group','label','baseline'].includes(field)?'string':'number',formatter:field.endsWith('_pct')?cell=>cell.getValue().toFixed(3):undefined})),movableColumns:true,layout:'fitDataStretch',height:260});
+const table=new Tabulator('#table',{data:[],columns:fields.map(([field,title])=>({field,title,minWidth:135,sorter:['group','label','baseline','request_shape'].includes(field)?'string':'number',formatter:field.endsWith('_pct')?cell=>cell.getValue().toFixed(3):undefined})),movableColumns:true,layout:'fitDataStretch',height:260});
 const ready=new Promise(resolve=>table.on('tableBuilt',resolve));
 const charts=Object.fromEntries(['time','work','miss','cost'].map(id=>[id,echarts.init($(id),null,{renderer:'svg'})]));
 const palette=['#326c89','#16826c','#bd7032','#785996','#8c5353'];
@@ -24,12 +24,17 @@ function failed(error){window.timingReady=false;$('csv').disabled=true;$('status
 async function start(data){
  if(data.schema!=='timing-dashboard-v1')throw Error('不支援的資料格式');
  await ready;
+ for(const row of data.rows.filter(r=>r.workload && r.variant==='baseline')){
+  $('group').append(new Option(`${row.workload_id} · ${row.request_bytes} B · ${row.request_shape}`,row.workload_id));
+ }
+ if(data.rows.some(r=>r.group==='A01'))$('group').value='A01';
  table.on('rowClick',(_,row)=>details(row.getData(),data));
  function candidates(){const options=[new Option('全部候選','all'),...data.rows.filter(r=>r.group===$('group').value).map(r=>new Option(r.label,r.label))];$('candidate').replaceChildren(...options);}
  async function render(){
   window.timingReady=false;
   const rows=selectTiming(data.rows,$('group').value,$('candidate').value),level=$('level').value;
   await table.setData(rows);
+  if(rows.length)$('workload-scope').textContent=`每次 session：${rows[0].packets} 個 wire packets、兩個 ${rows[0].request_bytes}-byte request、11,680-byte response。Chain 是記憶體分段，沒有 NIC/DMA 或 IP fragmentation。`;
   charts.time.setOption(option(rows,[series(rows,'guest_ms','完整模型時間 ms',0,{label:{show:true,position:'top',formatter:p=>p.value.toFixed(4)+' ms'}})],{type:'value',name:'ms',min:0}),true);
   charts.work.setOption(option(rows,[series(rows,'instructions','Guest 指令',0),series(rows,'cycles','記憶體 cycles',1,{yAxisIndex:1})],[{type:'value',name:'指令',min:0},{type:'value',name:'cycles',min:0}]),true);
   const miss=option(rows,['compulsory','conflict','capacity'].map((k,i)=>series(rows,`${level}_${k}`,['首次','衝突','容量'][i],i,{stack:'3c'})),{type:'value',name:'miss 次數',min:0});

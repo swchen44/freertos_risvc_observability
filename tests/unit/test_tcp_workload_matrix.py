@@ -16,3 +16,33 @@ class MatrixTests(unittest.TestCase):
         rows[0]["repeat"] = True
         with self.assertRaises(ValueError):
             validate_attempts(rows)
+
+    def test_evidence_hash_tamper_is_rejected(self):
+        from pathlib import Path
+        from tempfile import TemporaryDirectory
+
+        from psf_lab.runner import digest
+        from psf_lab.tcp_workload_matrix import checked
+
+        with TemporaryDirectory() as temp:
+            path = Path(temp) / "packet.bin"
+            path.write_bytes(b"original")
+            expected = digest(path)
+            checked(path, expected)
+            path.write_bytes(b"modified")
+            with self.assertRaisesRegex(ValueError, "Evidence hash mismatch"):
+                checked(path, expected)
+
+    def test_missing_group_is_rejected(self):
+        from pathlib import Path
+        from tempfile import TemporaryDirectory
+
+        from psf_lab.tcp_workload_matrix import analyze_matrix
+
+        with TemporaryDirectory() as temp:
+            root = Path(temp)
+            runs = root / "runs"
+            runs.mkdir()
+            (runs / "A01-baseline").mkdir()
+            with self.assertRaisesRegex(ValueError, "sixteen"):
+                analyze_matrix(root, runs, root / "results")

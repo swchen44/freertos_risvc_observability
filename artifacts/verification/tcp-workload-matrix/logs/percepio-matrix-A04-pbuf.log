@@ -1,0 +1,44 @@
+{"run": "enabled-0-1", "enabled": false, "repeat": 1, "accepted": true, "exit_code": 0, "host_wall_seconds": 0.8231510840123519, "clint_mmio_excluded": 0, "tcp": {"request_bytes": 130, "unique_response_bytes": 11680, "packets": 25}, "pbuf_receipt": {"requests": 2, "nodes": 2, "empty_nodes": 0}, "switches": [], "audit": {"events": 414698, "operations": {"I": 334595, "R": 48255, "W": 31848}, "cycles": 1042358, "ns": 2084716, "costs": {"l1i": 335419, "l1d": 80103, "l2": 266176, "ram_read": 10332, "ram_write": 350328}, "stream_sha256": "3cdfe12ea45c349b18608cebaaf3852351567cf09eafbe37069cf16100ccf283"}, "measurement": {"case": "tcp_request_response", "before": 3016, "after": 6364, "before_tick": 0, "ticks": 0, "work": 11680, "woke": 0, "observer_tick": 0, "observer_mtime": 0}}
+{"run": "enabled-0-2", "enabled": false, "repeat": 2, "accepted": true, "exit_code": 0, "host_wall_seconds": 0.34148791700135916, "clint_mmio_excluded": 0, "tcp": {"request_bytes": 130, "unique_response_bytes": 11680, "packets": 25}, "pbuf_receipt": {"requests": 2, "nodes": 2, "empty_nodes": 0}, "switches": [], "audit": {"events": 414698, "operations": {"I": 334595, "R": 48255, "W": 31848}, "cycles": 1042358, "ns": 2084716, "costs": {"l1i": 335419, "l1d": 80103, "l2": 266176, "ram_read": 10332, "ram_write": 350328}, "stream_sha256": "3cdfe12ea45c349b18608cebaaf3852351567cf09eafbe37069cf16100ccf283"}, "measurement": {"case": "tcp_request_response", "before": 3016, "after": 6364, "before_tick": 0, "ticks": 0, "work": 11680, "woke": 0, "observer_tick": 0, "observer_mtime": 0}}
+{"run": "enabled-0-3", "enabled": false, "repeat": 3, "accepted": true, "exit_code": 0, "host_wall_seconds": 0.3371822080225684, "clint_mmio_excluded": 0, "tcp": {"request_bytes": 130, "unique_response_bytes": 11680, "packets": 25}, "pbuf_receipt": {"requests": 2, "nodes": 2, "empty_nodes": 0}, "switches": [], "audit": {"events": 414698, "operations": {"I": 334595, "R": 48255, "W": 31848}, "cycles": 1042358, "ns": 2084716, "costs": {"l1i": 335419, "l1d": 80103, "l2": 266176, "ram_read": 10332, "ram_write": 350328}, "stream_sha256": "3cdfe12ea45c349b18608cebaaf3852351567cf09eafbe37069cf16100ccf283"}, "measurement": {"case": "tcp_request_response", "before": 3016, "after": 6364, "before_tick": 0, "ticks": 0, "work": 11680, "woke": 0, "observer_tick": 0, "observer_mtime": 0}}
+{"run": "enabled-1-1", "enabled": true, "repeat": 1, "accepted": true, "exit_code": 0, "host_wall_seconds": 0.9673266670433804, "clint_mmio_excluded": 33, "tcp": {"request_bytes": 130, "unique_response_bytes": 11680, "packets": 25}, "pbuf_receipt": {"requests": 2, "nodes": 2, "empty_nodes": 0}, "switches": [{"name": "tcp_observer", "mtime": 23059}, {"name": "tcp_session", "mtime": 23413}], "audit": {"events": 420982, "operations": {"I": 339146, "R": 49270, "W": 32566}, "cycles": 1067434, "ns": 2134868, "costs": {"l1i": 339988, "l1d": 81836, "l2": 273776, "ram_read": 13608, "ram_write": 358226}, "stream_sha256": "9591c8203a86708413664819087c3a5ea9fc474deb437e6b50c04f932b20ed1d"}, "measurement": {"case": "tcp_request_response", "before": 3016, "after": 27758, "before_tick": 0, "ticks": 2, "work": 11680, "woke": 1, "observer_tick": 2, "observer_mtime": 23077}}
+{"run": "enabled-1-2", "enabled": true, "repeat": 2, "accepted": true, "exit_code": 0, "host_wall_seconds": 0.8709001669776626, "clint_mmio_excluded": 33, "tcp": {"request_bytes": 130, "unique_response_bytes": 11680, "packets": 25}, "pbuf_receipt": {"requests": 2, "nodes": 2, "empty_nodes": 0}, "switches": [{"name": "tcp_observer", "mtime": 23059}, {"name": "tcp_session", "mtime": 23413}], "audit": {"events": 420982, "operations": {"I": 339146, "R": 49270, "W": 32566}, "cycles": 1067434, "ns": 2134868, "costs": {"l1i": 339988, "l1d": 81836, "l2": 273776, "ram_read": 13608, "ram_write": 358226}, "stream_sha256": "9591c8203a86708413664819087c3a5ea9fc474deb437e6b50c04f932b20ed1d"}, "measurement": {"case": "tcp_request_response", "before": 3016, "after": 27758, "before_tick": 0, "ticks": 2, "work": 11680, "woke": 1, "observer_tick": 2, "observer_mtime": 23077}}
+{"run": "enabled-1-3", "enabled": true, "repeat": 3, "accepted": true, "exit_code": 0, "host_wall_seconds": 0.980749083973933, "clint_mmio_excluded": 33, "tcp": {"request_bytes": 130, "unique_response_bytes": 11680, "packets": 25}, "pbuf_receipt": {"requests": 2, "nodes": 2, "empty_nodes": 0}, "switches": [{"name": "tcp_observer", "mtime": 23059}, {"name": "tcp_session", "mtime": 23413}], "audit": {"events": 420982, "operations": {"I": 339146, "R": 49270, "W": 32566}, "cycles": 1067434, "ns": 2134868, "costs": {"l1i": 339988, "l1d": 81836, "l2": 273776, "ram_read": 13608, "ram_write": 358226}, "stream_sha256": "9591c8203a86708413664819087c3a5ea9fc474deb437e6b50c04f932b20ed1d"}, "measurement": {"case": "tcp_request_response", "before": 3016, "after": 27758, "before_tick": 0, "ticks": 2, "work": 11680, "woke": 1, "observer_tick": 2, "observer_mtime": 23077}}
+[
+  {
+    "accepted": true,
+    "repeat": 1,
+    "extra_guest_ns": 2139400,
+    "injected_service_ns": 2134868,
+    "extra_instruction_ns": 4551,
+    "expected_extra_ns": 2139419,
+    "error_ns": -19,
+    "tolerance_ns": 200,
+    "active_ticks": 2,
+    "observer_tick": 2
+  },
+  {
+    "accepted": true,
+    "repeat": 2,
+    "extra_guest_ns": 2139400,
+    "injected_service_ns": 2134868,
+    "extra_instruction_ns": 4551,
+    "expected_extra_ns": 2139419,
+    "error_ns": -19,
+    "tolerance_ns": 200,
+    "active_ticks": 2,
+    "observer_tick": 2
+  },
+  {
+    "accepted": true,
+    "repeat": 3,
+    "extra_guest_ns": 2139400,
+    "injected_service_ns": 2134868,
+    "extra_instruction_ns": 4551,
+    "expected_extra_ns": 2139419,
+    "error_ns": -19,
+    "tolerance_ns": 200,
+    "active_ticks": 2,
+    "observer_tick": 2
+  }
+]

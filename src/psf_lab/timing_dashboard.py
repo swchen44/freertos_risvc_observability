@@ -8,6 +8,7 @@ ROOT = Path(__file__).resolve().parents[2]
 SOURCES = (
     ("tcp-os-small-cache", "tcp-os-small-cache-v1"),
     ("tcp-pbuf-holdout", "tcp-pbuf-holdout-v1"),
+    ("tcp-workload-matrix", "tcp-workload-matrix-v1"),
 )
 
 
@@ -15,11 +16,34 @@ def validate_comparison(data, schema):
     if data.get("schema") != schema or data.get("passed") is not True:
         raise ValueError("Invalid comparison schema or verdict")
     rows = data["results"]
-    expected = (
-        {"standard", "baseline", "layout", "checksum", "pbuf"}
-        if schema == "tcp-os-small-cache-v1"
-        else {"linear-baseline", "linear-pbuf", "fragmented-baseline", "fragmented-pbuf"}
-    )
+    expected = {
+        "tcp-os-small-cache-v1": {"standard", "baseline", "layout", "checksum", "pbuf"},
+        "tcp-pbuf-holdout-v1": {
+            "linear-baseline",
+            "linear-pbuf",
+            "fragmented-baseline",
+            "fragmented-pbuf",
+        },
+        "tcp-workload-matrix-v1": {
+            f"A{i:02}-{v}" for i in range(1, 9) for v in ("baseline", "pbuf")
+        },
+    }.get(schema)
+    if expected is None:
+        raise ValueError("Unsupported comparison schema")
+    if schema == "tcp-workload-matrix-v1":
+        from psf_lab.tcp_workload import validate_workload
+
+        workloads = {}
+        for row in rows:
+            workload = validate_workload(row["workload"])
+            if (
+                row["label"] != workload["id"] + "-" + row["variant"]
+                or row["workload_id"] != workload["id"]
+            ):
+                raise ValueError("Workload identity mismatch")
+            if workload["id"] in workloads and workloads[workload["id"]] != workload:
+                raise ValueError("Paired workload mismatch")
+            workloads[workload["id"]] = workload
     if len(rows) != len(expected) or {r["label"] for r in rows} != expected:
         raise ValueError("Unexpected comparison candidates")
     for row in rows:
@@ -49,6 +73,10 @@ def validate_comparison(data, schema):
 
 def load_dashboard(root=ROOT):
     manifest = json.loads((root / "cases/timing/dashboard-sources.json").read_text())
+    required = {f"artifacts/verification/{source}/results/comparison.json" for source, _ in SOURCES}
+    required.add("cases/timing/sysram-10-small.json")
+    if not required <= manifest["files"].keys():
+        raise ValueError("Missing required evidence hash")
     for name, expected in manifest["files"].items():
         path = Path(name)
         if path.is_absolute() or ".." in path.parts:
@@ -65,16 +93,20 @@ def load_dashboard(root=ROOT):
         for row in data["results"]:
             if row["label"] == "standard":
                 continue  # 16/16/64 KiB reference is not part of the small-cache view.
-            group = (
-                "T3b"
-                if source == SOURCES[0][0]
-                else ("T3c-linear" if row["label"].startswith("linear-") else "T3c-chain")
-            )
-            baseline_label = {
-                "T3b": "baseline",
-                "T3c-linear": "linear-baseline",
-                "T3c-chain": "fragmented-baseline",
-            }[group]
+            if schema == "tcp-workload-matrix-v1":
+                group = row["workload_id"]
+                baseline_label = group + "-baseline"
+            else:
+                group = (
+                    "T3b"
+                    if source == SOURCES[0][0]
+                    else ("T3c-linear" if row["label"].startswith("linear-") else "T3c-chain")
+                )
+                baseline_label = {
+                    "T3b": "baseline",
+                    "T3c-linear": "linear-baseline",
+                    "T3c-chain": "fragmented-baseline",
+                }[group]
             baseline = next(r for r in data["results"] if r["label"] == baseline_label)
             value = {
                 **row,
@@ -89,8 +121,21 @@ def load_dashboard(root=ROOT):
             }
             for level in ("l1i", "l1d", "l2"):
                 value[level + "_miss_pct"] = 100 * row[level + "_misses"] / row[level + "_accesses"]
+            value["request_bytes"] = row.get("workload", {}).get("request_bytes", 64)
+            value["request_shape"] = "+".join(
+                map(
+                    str,
+                    row.get("workload", {}).get(
+                        "request_segments",
+                        row.get("request_pbufs", [{}])[0].get("lengths", [64])
+                        if row.get("request_pbufs")
+                        else [64],
+                    ),
+                )
+            )
+            value["packets"] = row.get("packets", 25)
             rows.append(value)
-    if environments[0] != environments[1]:
+    if any(env != environments[0] for env in environments[1:]):
         raise ValueError("Mismatched experiment environments")
     return {
         "schema": "timing-dashboard-v1",

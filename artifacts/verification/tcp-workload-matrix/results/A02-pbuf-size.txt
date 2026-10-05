@@ -1,0 +1,2 @@
+   text	   data	    bss	    dec	    hex	filename
+  41824	    144	 296928	 338896	  52bd0	/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A02-pbuf/enabled-1-1/firmware.elf

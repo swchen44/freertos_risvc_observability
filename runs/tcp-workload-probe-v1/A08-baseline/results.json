@@ -1,0 +1,25 @@
+{
+  "passed": false,
+  "repeatable": false,
+  "runs": [
+    {
+      "run": "enabled-0-1",
+      "enabled": false,
+      "repeat": 1,
+      "accepted": false,
+      "exit_code": 2,
+      "host_wall_seconds": 0.5593759589828551,
+      "error": "QEMU failed or timed out"
+    },
+    {
+      "run": "enabled-1-1",
+      "enabled": true,
+      "repeat": 1,
+      "accepted": false,
+      "exit_code": 2,
+      "host_wall_seconds": 0.1840337910107337,
+      "error": "QEMU failed or timed out"
+    }
+  ],
+  "comparisons": []
+}

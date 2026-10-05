@@ -36,6 +36,25 @@ def checked(path, sha):
         raise ValueError("Evidence hash mismatch: " + str(path))
 
 
+def require_keys(mapping, expected):
+    if not isinstance(mapping, dict) or not set(expected) <= mapping.keys():
+        raise ValueError("Missing required hash entries")
+
+
+def plugin_contract(root, runset, manifest):
+    command = manifest["plugin_command"][:]
+    if command.count("-o") != 1:
+        raise ValueError("Invalid plugin output argument")
+    index = command.index("-o") + 1
+    path = Path(command[index])
+    # Saved absolute build paths are provenance; restored trees resolve the basename locally.
+    if path.name not in {"live_cache.dylib", "live_cache.so"} or path.parent.name != runset.name:
+        raise ValueError("Invalid plugin output path")
+    checked(runset / path.name, manifest["plugin_sha256"])
+    command[index] = "<plugin-output>"
+    return command
+
+
 def analyze_matrix(root, directory, output):
     output.mkdir(parents=True, exist_ok=False)
     registry = root / "cases/tcp/workload-matrix-v1.json"
@@ -45,6 +64,7 @@ def analyze_matrix(root, directory, output):
     profile = json.loads((root / "cases/timing/sysram-10-small.json").read_text())
     toolchain = root / ".tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin"
     environment, packet_references, rows, sources = None, {}, [], {}
+    plugin_reference, plugin_hashes, attempts = None, {}, {}
     for name in sorted(expected):
         runset = directory / name
         manifest = json.loads((runset / "manifest.json").read_text())
@@ -59,6 +79,27 @@ def analyze_matrix(root, directory, output):
         ):
             raise ValueError("Workload or tool configuration mismatch")
         checked(registry, manifest["registry_sha256"])
+        contract = plugin_contract(root, runset, manifest)
+        if plugin_reference is not None and contract != plugin_reference:
+            raise ValueError("Mixed plugin build commands")
+        plugin_reference = contract
+        plugin_hashes[name] = manifest["plugin_sha256"]
+        require_keys(
+            manifest["sources"],
+            {
+                "firmware/Makefile",
+                "firmware/app/cases/tcp_request_response.c",
+                "tools/tcp/live_cache.c",
+                "tools/qemu/live_timing.c",
+                "tools/qemu/live_timing.h",
+                "tools/tcp/run_live_cache.py",
+                "src/psf_lab/tcp_session.py",
+                "src/psf_lab/tcp_workload.py",
+                "cases/tcp/workload-matrix-v1.json",
+                "cases/timing/sysram-10-small.json",
+                str((runset / "workload.h").relative_to(root)),
+            },
+        )
         env = {
             k: manifest[k] for k in ("qemu_sha256", "gcc_sha256", "frequency_hz", "icount_shift")
         }
@@ -66,6 +107,8 @@ def analyze_matrix(root, directory, output):
             raise ValueError("Mixed tool environments")
         environment = env
         for path, sha in manifest["sources"].items():
+            if Path(path).is_absolute() or ".." in Path(path).parts:
+                raise ValueError("Invalid source path")
             checked(root / path, sha)
         sources[str((runset / "manifest.json").relative_to(root))] = digest(
             runset / "manifest.json"
@@ -73,6 +116,7 @@ def analyze_matrix(root, directory, output):
         checked(runset / "results.json", manifest["results_sha256"])
         results = json.loads((runset / "results.json").read_text())
         validate_attempts(results["runs"])
+        attempts[name] = results["runs"]
         if results["passed"] is not True or results["repeatable"] is not True:
             raise ValueError("Unsuccessful runset")
         compile_lines = [
@@ -81,7 +125,7 @@ def analyze_matrix(root, directory, output):
             if " -c " in line and "riscv-none-elf-gcc" in line
         ]
         if not compile_lines or any(
-            [w for w in line.split() if w.startswith("-O")] != ["-Os"] for line in compile_lines
+            {w for w in line.split() if w.startswith("-O")} != {"-Os"} for line in compile_lines
         ):
             raise ValueError("Compiler optimization mismatch")
         expected_names = {r["run"] for r in results["runs"]}
@@ -95,6 +139,18 @@ def analyze_matrix(root, directory, output):
             path = runset / record["name"]
             checked(path / "manifest.json", record["sha256"])
             receipt = json.loads((path / "manifest.json").read_text())
+            require_keys(
+                receipt["files"],
+                {
+                    "firmware.elf",
+                    "symbols.txt",
+                    "trace.psf",
+                    "session.json",
+                    "accesses.csv.gz",
+                    "oracle.json",
+                    "live-cache.json",
+                },
+            )
             for file, sha in receipt["files"].items():
                 if Path(file).name != file:
                     raise ValueError("Invalid evidence path")
@@ -103,6 +159,7 @@ def analyze_matrix(root, directory, output):
             if receipt["result"] != result:
                 raise ValueError("Per-run result mismatch")
             session = json.loads((path / "session.json").read_text())
+            require_keys(receipt["files"], {p["file"] for p in session["packets"]})
             packets = []
             for index, p in enumerate(session["packets"]):
                 if p["file"] != f"packet-{index}.bin":
@@ -240,6 +297,10 @@ def analyze_matrix(root, directory, output):
         packet_hashes_by_workload=packet_references,
         results=rows,
         sources=sources,
+        attempts=attempts,
+        representative="Each row is injection repeat 1; all six attempts per group are in attempts",
+        plugin_build_contract=plugin_reference,
+        plugin_hashes=plugin_hashes,
         analysis_sources={str(Path(__file__).resolve().relative_to(root)): digest(Path(__file__))},
     )
     write_json(output / "comparison.json", report)

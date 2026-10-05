@@ -2,6 +2,7 @@
   "files": {
     "cases/timing/sysram-10-small.json": "861d5b40c399a78512f71f6fab35ed163eecc0825482a8e096aa53252b8510f7",
     "artifacts/verification/tcp-os-small-cache/results/comparison.json": "bd6c10bcf03e4c472fc79b877267d91a9729ca076c7e84ad42336702de43b0c3",
-    "artifacts/verification/tcp-pbuf-holdout/results/comparison.json": "f956266a3927ca7a594666dd52f3be7dd4ceec3948a50109e2cdffa262dc997d"
+    "artifacts/verification/tcp-pbuf-holdout/results/comparison.json": "f956266a3927ca7a594666dd52f3be7dd4ceec3948a50109e2cdffa262dc997d",
+    "artifacts/verification/tcp-workload-matrix/results/comparison.json": "f451b7d663480f21b64d3f761727c4143a2a99908cbf4e8ed36d10bfc3fb3a51"
   }
 }

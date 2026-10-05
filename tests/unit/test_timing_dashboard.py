@@ -15,7 +15,7 @@ ROOT = Path(__file__).resolve().parents[2]
 class TimingDashboardTests(unittest.TestCase):
     def test_real_groups_and_denominators(self):
         data = load_dashboard(ROOT)
-        self.assertEqual(len(data["rows"]), 8)
+        self.assertEqual(len(data["rows"]), 24)
         row = next(r for r in data["rows"] if r["label"] == "fragmented-pbuf")
         self.assertAlmostEqual(row["improvement_pct"], 100 * 20300 / 2489000)
         self.assertEqual(row["l1i_miss_pct"], 100 * 1662 / 332309)

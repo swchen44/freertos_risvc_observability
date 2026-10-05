@@ -1,0 +1,19 @@
+test_unignored_sibling_logs_are_rejected_before_creation (tests.unit.test_workload_batch.BatchTests.test_unignored_sibling_logs_are_rejected_before_creation) ... ERROR
+
+======================================================================
+ERROR: test_unignored_sibling_logs_are_rejected_before_creation (tests.unit.test_workload_batch.BatchTests.test_unignored_sibling_logs_are_rejected_before_creation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_workload_batch.py", line 28, in test_unignored_sibling_logs_are_rejected_before_creation
+    batch.main()
+    ~~~~~~~~~~^^
+  File "/Users/swchen.tw/git/percepio/poc/tools/tcp/run_workload_matrix.py", line 19, in main
+    relative = output.relative_to(ROOT)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/_local.py", line 385, in relative_to
+    raise ValueError(f"{str(self)!r} is not in the subpath of {str(other)!r}")
+ValueError: '/private/var/folders/wj/3v8944vj0t714p6b5l9lmr_80000gq/T/tmpplajfh5p/runs/new' is not in the subpath of '/var/folders/wj/3v8944vj0t714p6b5l9lmr_80000gq/T/tmpplajfh5p'
+
+----------------------------------------------------------------------
+Ran 1 test in 0.004s
+
+FAILED (errors=1)

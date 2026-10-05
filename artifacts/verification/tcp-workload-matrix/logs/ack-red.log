@@ -1,0 +1,19 @@
+....E.
+======================================================================
+ERROR: test_valid_standalone_request_ack_and_bad_ack (tests.unit.test_tcp_workload.WorkloadTests.test_valid_standalone_request_ack_and_bad_ack)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_tcp_workload.py", line 94, in test_valid_standalone_request_ack_and_bad_ack
+    self.assertEqual(validate_session(packets,metrics,workload=w)['packets'],26)
+                     ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/swchen.tw/git/percepio/poc/src/psf_lab/tcp_session.py", line 39, in validate_session
+    expect("tx", server, client, 16, payload)
+    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/swchen.tw/git/percepio/poc/src/psf_lab/tcp_session.py", line 23, in expect
+    raise ValueError("TCP payload mismatch")
+ValueError: TCP payload mismatch
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.006s
+
+FAILED (errors=1)

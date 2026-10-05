@@ -1,0 +1,10 @@
+test_hash_maps_cannot_omit_required_artifacts (tests.unit.test_matrix_integrity.MatrixIntegrityTests.test_hash_maps_cannot_omit_required_artifacts) ... ok
+test_mixed_tool_environment_rejected (tests.unit.test_matrix_integrity.MatrixIntegrityTests.test_mixed_tool_environment_rejected) ... A01-baseline verified
+ok
+test_plugin_tamper_and_output_path_rejected (tests.unit.test_matrix_integrity.MatrixIntegrityTests.test_plugin_tamper_and_output_path_rejected) ... ok
+test_wrong_workload_and_profile_are_rejected_before_replay (tests.unit.test_matrix_integrity.MatrixIntegrityTests.test_wrong_workload_and_profile_are_rejected_before_replay) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.371s
+
+OK
