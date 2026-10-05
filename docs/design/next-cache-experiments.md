@@ -76,7 +76,7 @@ recorder 可在 task 或 ISR 內執行；因此 `ISR + recorder + task` 不能�
 ## 已確認與待審閱事項
 
 - 已確認：2026-10-06 使用者指定「A, then B, then C」，依序執行。
-- 本輪供審閱：A 的8個 workload、兩批正式量測、baseline/pbuf 成對比較及驗收。
+- 已核准並執行：A 的8個 workload、兩批正式量測、baseline/pbuf 成對比較及驗收。
 - 執行方式沿用本 session 主代理逐項實作，最後獨立 review；不另外增加平行實作流程。
 - 尚未取得內網真實流量，因此矩陣代表受控實驗；沒有把它當成產品流量模型。
 

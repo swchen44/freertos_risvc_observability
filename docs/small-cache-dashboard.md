@@ -1,5 +1,8 @@
 # 小 Cache 最佳化 Dashboard
 
+> 歷史 T4 指南。新版 24 列 workload Dashboard 與驗收請見 [A 報告](tcp-workload-matrix.md)。本頁舊 Web 驗收需使用當時的 tested commit `5955ce6`；保存的舊離線 HTML 仍可直接使用。
+
+
 這個頁面把 T3b/T3c 的實際模擬結果放在一起比較：**L1I 8 KiB、L1D 8 KiB、L2 32 KiB**。它提供本機 Web 與單檔離線 HTML；讀取既有 comparison.json，不需要重新跑 QEMU。
 
 ## 開啟與重建

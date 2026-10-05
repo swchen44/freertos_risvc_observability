@@ -9,7 +9,7 @@ from tools.tcp import run_workload_matrix as batch
 class BatchTests(unittest.TestCase):
     def test_unignored_sibling_logs_are_rejected_before_creation(self):
         with tempfile.TemporaryDirectory() as temp:
-            root = Path(temp)
+            root = Path(temp).resolve()
             with (
                 patch.object(batch, "ROOT", root),
                 patch("sys.argv", ["batch", "--output", str(root / "runs/new")]),
