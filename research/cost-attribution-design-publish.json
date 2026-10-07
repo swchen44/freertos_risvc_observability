@@ -1,0 +1,11 @@
+{
+  "repo": "poc",
+  "local_sha": "4ae35ec9bd64daa744fa46c648fbed60a1b8ce35",
+  "push_exit": 0,
+  "remote_sha": "4ae35ec9bd64daa744fa46c648fbed60a1b8ce35",
+  "verified": true,
+  "status": "design_ready_for_user_review",
+  "new_implementation": false,
+  "new_simulations": 0,
+  "design": "poc/docs/design/cost-attribution-b.md"
+}
