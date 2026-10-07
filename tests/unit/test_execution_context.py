@@ -114,3 +114,32 @@ class ContextTests(unittest.TestCase):
                 self.anchors(events, rows, config)
         with self.assertRaises(ValueError):
             self.anchors(events, [dict(pc=100, operation="I")], dict(config, evidence=[]))
+
+    def test_missing_boundary_or_delayed_return_rejected(self):
+        rows = [dict(pc=pc, operation="I") for pc in (100, 104, 108, 112, 116)]
+        config = dict(
+            capture_begin_pc=100,
+            capture_end_pc=120,
+            trap_entry_pc=104,
+            selected_task_pc=200,
+            mret_pcs=[108],
+            evidence=[
+                dict(pc=pc, opcode=0x30200073 if pc == 108 else 0x13)
+                for pc in (100, 104, 108, 112, 116, 120)
+            ],
+        )
+        events = [
+            event(0, 0, "begin", task=1),
+            event(1, 1, "trap_enter", cause=11, depth=1),
+            event(2, 2, "mret_pending", task=1, phase="after", depth=1),
+            event(3, 3, "return_commit", task=1),
+            event(4, 5, "end"),
+        ]
+        self.anchors(events, rows, config)
+        for missing in (1, 2, 3):
+            with self.subTest(missing=missing), self.assertRaises(ValueError):
+                self.anchors(events[:missing] + events[missing + 1 :], rows, config)
+        delayed = [dict(e) for e in events]
+        delayed[3].update(event_index=4, pc=116)
+        with self.assertRaises(ValueError):
+            self.anchors(delayed, rows, config)

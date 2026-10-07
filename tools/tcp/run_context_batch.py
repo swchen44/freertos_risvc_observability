@@ -35,47 +35,92 @@ def validate_context_batch(records: list[dict]) -> None:
         raise ValueError("Formal capture coverage mismatch")
 
 
-def run_batch(root: Path, probe: Path, output: Path) -> dict:
-    if output.exists():
-        raise ValueError("Formal output must be new")
-    if subprocess.run(["git", "check-ignore", "-q", str(output)], cwd=root).returncode:
-        raise ValueError("Formal output must be ignored until captures finish; use runs/local")
+def validate_probe_gate(probe: Path) -> None:
     gate = json.loads((probe / "probe-gate.json").read_text())
+    candidates = gate.get("candidates", [])
     if (
-        gate.get("passed") is not True
+        gate.get("schema") != "context-probe-gate-v1"
+        or gate.get("passed") is not True
         or gate.get("runs") != 8
-        or {r["candidate"] for r in gate["candidates"]} != set(CANDIDATES)
+        or len(candidates) != 4
+        or {r.get("candidate") for r in candidates} != set(CANDIDATES)
     ):
         raise ValueError("Invalid probe gate")
-    for candidate in gate["candidates"]:
+    collector = None
+    for candidate in candidates:
         folder = probe / candidate["candidate"]
         verify_file_hashes(
             folder, {"manifest.json": candidate["manifest_sha256"]}, {"manifest.json"}
         )
         manifest = json.loads((folder / "manifest.json").read_text())
-        for record in manifest["runs"]:
+        runs = manifest.get("runs", [])
+        if (
+            manifest.get("candidate") != candidate["candidate"]
+            or manifest.get("passed") is not True
+            or len(runs) != 2
+            or len(manifest.get("pair_checks", [])) != 1
+            or any(type(r.get("mode")) is not int or type(r.get("repeat")) is not int for r in runs)
+            or {(r["mode"], r["repeat"]) for r in runs} != {(0, 1), (1, 1)}
+        ):
+            raise ValueError("Expected two accepted probe modes per candidate")
+        plugin = (
+            "live_context.dylib" if (folder / "live_context.dylib").exists() else "live_context.so"
+        )
+        hashes = {
+            "boundaries.json": manifest["boundary_sha256"],
+            "boundaries.conf": manifest["boundary_config_sha256"],
+            plugin: manifest["plugin_sha256"],
+        }
+        verify_file_hashes(folder, hashes, set(hashes))
+        identity = (manifest["collector_source_commit"], manifest["collector_sources"])
+        if collector is not None and collector != identity:
+            raise ValueError("Mixed probe collector provenance")
+        collector = identity
+        for record in runs:
+            if record.get("candidate") != candidate["candidate"] or any(
+                record.get(k) is not True
+                for k in ("context_enabled", "accepted", "parity_passed", "context_exact")
+            ):
+                raise ValueError("Invalid probe identity/acceptance")
             run = folder / f"enabled-{record['mode']}-{record['repeat']}"
             verify_file_hashes(
                 run, {"manifest.json": record["run_manifest_sha256"]}, {"manifest.json"}
             )
             saved = json.loads((run / "manifest.json").read_text())
+            if saved["result"] != {k: v for k, v in record.items() if k != "run_manifest_sha256"}:
+                raise ValueError("Probe run/runset identity mismatch")
             verify_file_hashes(
                 run,
                 saved["files"],
                 {
                     "firmware.elf",
+                    "symbols.txt",
                     "accesses.csv.gz",
                     "trace.psf",
+                    "session.json",
+                    "oracle.json",
+                    "live-cache.json",
                     "context-events.jsonl",
                     "parity.json",
                     "context-intervals.json",
                 },
             )
-            if any(
-                record.get(k) is not True for k in ("accepted", "parity_passed", "context_exact")
-            ):
-                raise ValueError("Unaccepted probe")
+            if saved["files"]["firmware.elf"] != manifest["guest_elf_sha256"]:
+                raise ValueError("Probe ELF identity mismatch")
+            session = json.loads((run / "session.json").read_text())
+            verify_file_hashes(run, saved["files"], {p["file"] for p in session["packets"]})
+
+
+def run_batch(root: Path, probe: Path, output: Path) -> dict:
+    if output.exists():
+        raise ValueError("Formal output must be new")
+    if subprocess.run(["git", "check-ignore", "-q", str(output)], cwd=root).returncode:
+        raise ValueError("Formal output must be ignored until captures finish; use runs/local")
+    validate_probe_gate(probe)
     output.mkdir(parents=True)
+    collector_commit = subprocess.check_output(
+        ["git", "rev-parse", "HEAD"], cwd=root, text=True
+    ).strip()
     records = []
     for candidate in CANDIDATES:
         result = run_context_case(
@@ -85,6 +130,8 @@ def run_batch(root: Path, probe: Path, output: Path) -> dict:
             repeats=3,
             context_enabled=True,
         )
+        if result["collector_source_commit"] != collector_commit:
+            raise ValueError("Collector commit changed during formal batch")
         records.extend(result["runs"])
         write_json(output / "progress.json", dict(runs=records, complete=False))
         if not result["passed"]:

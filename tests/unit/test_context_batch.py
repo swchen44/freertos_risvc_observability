@@ -12,6 +12,7 @@ class BatchTests(unittest.TestCase):
         module = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(module)
         self.validate = module.validate_context_batch
+        self.module = module
         self.rows = [
             dict(
                 candidate=c,
@@ -45,3 +46,32 @@ class BatchTests(unittest.TestCase):
             rows[0][key] = value
             with self.subTest(key=key), self.assertRaises(ValueError):
                 self.validate(rows)
+
+    def test_empty_probe_runs_cannot_authorize_formal_capture(self):
+        import hashlib
+        import json
+        from tempfile import TemporaryDirectory
+
+        self.assertTrue(hasattr(self.module, "validate_probe_gate"))
+        with TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            candidates = []
+            for name in ("A02-baseline", "A02-pbuf", "A08-baseline", "A08-pbuf"):
+                folder = root / name
+                folder.mkdir()
+                path = folder / "manifest.json"
+                path.write_text(json.dumps(dict(candidate=name, passed=True, runs=[])))
+                candidates.append(
+                    dict(
+                        candidate=name,
+                        manifest_sha256=hashlib.sha256(path.read_bytes()).hexdigest(),
+                    )
+                )
+            (root / "probe-gate.json").write_text(
+                json.dumps(
+                    dict(schema="context-probe-gate-v1", passed=True, runs=8, candidates=candidates)
+                )
+            )
+            with self.assertRaises(ValueError):
+                self.module.validate_probe_gate(root)
+        self.module.validate_probe_gate(Path("runs/tcp-context-v1/probe"))

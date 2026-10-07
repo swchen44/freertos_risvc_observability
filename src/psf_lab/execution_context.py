@@ -117,11 +117,36 @@ def context_intervals(
 def validate_context_anchors(events: list[dict], rows, boundaries: dict) -> None:
     """Verify sidecar PCs against actual I rows and ELF-derived instruction evidence."""
     requested = {event["event_index"] for event in events if event["kind"] != "end"}
+    anchors = {}
+    for event in events:
+        key = (event["event_index"], event["kind"], event["phase"])
+        if key in anchors:
+            raise ValueError("Duplicate context anchor")
+        anchors[key] = event
+    expected = {(0, "begin", "before")}
+    pending_return = False
+    marker_kinds = {
+        boundaries.get("trap_entry_pc"): "trap_enter",
+        boundaries.get("selected_task_pc"): "selected_task",
+    }
     observed = {}
     count = 0
     for count, row in enumerate(rows, 1):
         if count - 1 in requested:
             observed[count - 1] = row
+        if row["operation"] == "I":
+            pc = int(row["pc"])
+            if pending_return:
+                expected.add((count - 1, "return_commit", "before"))
+                pending_return = False
+            if pc in marker_kinds:
+                expected.add((count - 1, marker_kinds[pc], "before"))
+            if pc in boundaries.get("mret_pcs", []):
+                expected.add((count - 1, "mret_pending", "after"))
+                pending_return = True
+    expected.add((count, "end", "before"))
+    if pending_return or set(anchors) != expected:
+        raise ValueError("Missing, extra, or delayed context boundary")
     opcodes = {entry["pc"]: entry["opcode"] for entry in boundaries["evidence"]}
     keys = {
         "begin": "capture_begin_pc",
