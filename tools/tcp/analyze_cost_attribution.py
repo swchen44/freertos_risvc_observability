@@ -45,6 +45,56 @@ def export_csv(path, result):
                 )
 
 
+def compare_cost_reports(a: dict, b: dict) -> dict:
+    """Signed complete deltas, including components that cancel in the total."""
+
+    def comparable(rows, dimension):
+        if dimension == "by_role":
+            return rows
+        groups = {}
+        for identity, row in rows.items():
+            owner = row["owner"]
+            object_name = Path(owner.get("object") or "unknown").name
+            key = f"{owner.get('source')}|{object_name}|{owner['function']}"
+            if owner.get("object") is None:
+                key += "|" + identity
+            target = groups.setdefault(
+                key, dict.fromkeys(METRICS, 0) | {"cost_cycles": dict.fromkeys(COST_KEYS, 0)}
+            )
+            for metric in METRICS:
+                target[metric] += row[metric]
+            for component in COST_KEYS:
+                target["cost_cycles"][component] += row["cost_cycles"][component]
+        return groups
+
+    result = {}
+    for dimension in ("by_role", "by_function"):
+        left, right = comparable(a[dimension], dimension), comparable(b[dimension], dimension)
+        result[dimension] = {}
+        for key in sorted(left.keys() | right.keys()):
+            old, new = left.get(key, {}), right.get(key, {})
+            result[dimension][key] = {m: new.get(m, 0) - old.get(m, 0) for m in METRICS} | {
+                "cost_cycles": {
+                    c: new.get("cost_cycles", {}).get(c, 0) - old.get("cost_cycles", {}).get(c, 0)
+                    for c in COST_KEYS
+                }
+            }
+        for component in COST_KEYS:
+            if sum(r["cost_cycles"][component] for r in result[dimension].values()) != (
+                b["totals"]["cost_cycles"][component] - a["totals"]["cost_cycles"][component]
+            ):
+                raise ValueError("Delta component conservation failure")
+    result["accounted_model_ns"] = (
+        b["totals"]["accounted_model_ns"] - a["totals"]["accounted_model_ns"]
+    )
+    result["mtime_elapsed_ns"] = 100 * (
+        (b["measurement"]["after"] - b["measurement"]["before"])
+        - (a["measurement"]["after"] - a["measurement"]["before"])
+    )
+    result["boundary_difference_ns"] = result["mtime_elapsed_ns"] - result["accounted_model_ns"]
+    return result
+
+
 def analyze_cost_batch(root: Path, runs: Path, output: Path) -> dict:
     root, runs, output = root.resolve(), runs.resolve(), output.resolve()
     expected = {f"A{i:02}-{v}" for i in range(1, 9) for v in ("baseline", "pbuf")}
@@ -98,44 +148,25 @@ def analyze_cost_batch(root: Path, runs: Path, output: Path) -> dict:
         workload = f"A{i:02}"
         a, b = reports[workload + "-baseline"], reports[workload + "-pbuf"]
 
-        def comparable(rows, dimension):
-            if dimension == "by_role":
-                return rows
-            groups = {}
-            for row in rows.values():
-                owner = row["owner"]
-                # Cross-ELF comparison uses source/object basename + function, not absolute PC.
-                object_name = Path(owner.get("object") or "unknown").name
-                key = f"{owner.get('source')}|{object_name}|{owner['function']}"
-                target = groups.setdefault(key, dict.fromkeys(METRICS, 0))
-                for metric in METRICS:
-                    target[metric] += row[metric]
-            return groups
-
-        delta = {}
-        for dimension in ("by_role", "by_function"):
-            left, right = comparable(a[dimension], dimension), comparable(b[dimension], dimension)
-            delta[dimension] = {
-                k: {m: right.get(k, {}).get(m, 0) - left.get(k, {}).get(m, 0) for m in METRICS}
-                for k in sorted(left.keys() | right.keys())
-            }
-        delta["accounted_model_ns"] = (
-            b["totals"]["accounted_model_ns"] - a["totals"]["accounted_model_ns"]
-        )
-        delta["mtime_elapsed_ns"] = 100 * (
-            (b["measurement"]["after"] - b["measurement"]["before"])
-            - (a["measurement"]["after"] - a["measurement"]["before"])
-        )
-        delta["boundary_difference_ns"] = delta["mtime_elapsed_ns"] - delta["accounted_model_ns"]
-        deltas[workload] = delta
+        deltas[workload] = compare_cost_reports(a, b)
     write_json(output / "deltas.json", deltas)
     with (output / "deltas.csv").open("w", newline="") as stream:
-        writer = csv.DictWriter(stream, fieldnames=["workload", "dimension", "key", *METRICS])
+        writer = csv.DictWriter(
+            stream, fieldnames=["workload", "dimension", "key", *METRICS, *COST_KEYS]
+        )
         writer.writeheader()
         for workload, delta in deltas.items():
             for dimension in ("by_role", "by_function"):
                 for key, values in delta[dimension].items():
-                    writer.writerow(dict(workload=workload, dimension=dimension, key=key, **values))
+                    writer.writerow(
+                        dict(
+                            workload=workload,
+                            dimension=dimension,
+                            key=key,
+                            **{k: values[k] for k in METRICS},
+                            **values["cost_cycles"],
+                        )
+                    )
     receipt = dict(
         schema="cost-attribution-b1-v1",
         passed=True,
