@@ -1,8 +1,8 @@
 # FreeRTOS／RISC-V Observability：研究與可重跑 POC
 
-## 現況入口 · 2026-10-07
+## 現況入口 · 2026-10-08
 
-**B 已開始設計盤點：**[成本歸屬規格](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/design/cost-attribution-b.md)。建議先做 code-role，再以同 ELF 的 host-side context 觀測核對 task／IRQ；尚未實作或重跑 B。A02 已找到指令減少但記憶體成本增加的證據，根因仍待驗證。
+**B 設計已核准，實作計畫待審閱：**[八項實作工作與驗收步驟](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/plans/12-cost-attribution.md)。[成本歸屬規格](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/design/cost-attribution-b.md)。建議先做 code-role，再以同 ELF 的 host-side context 觀測核對 task／IRQ；尚未實作或重跑 B。A02 已找到指令減少但記憶體成本增加的證據，根因仍待驗證。
 
 **A：八種 TCP workload 的 pbuf 最佳化驗證**已完成 96 次正式執行、原始資料分析與 Web／離線操作驗收。固定 **L1I 8 KiB + L1D 8 KiB + L2 32 KiB**，結果是相同模型下的軟體比較。
 

@@ -1,0 +1,12 @@
+{
+  "repository": "poc",
+  "local_sha": "978fa5854175ded4f9e4185da61f370c6aacb960",
+  "push_exit": 0,
+  "remote_sha": "978fa5854175ded4f9e4185da61f370c6aacb960",
+  "verified": true,
+  "status": "plan_ready_for_review",
+  "design_approved_date": "2026-10-08",
+  "plan_path": "poc/docs/plans/12-cost-attribution.md",
+  "new_implementation": false,
+  "new_simulations": 0
+}
