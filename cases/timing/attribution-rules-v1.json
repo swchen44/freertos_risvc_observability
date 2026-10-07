@@ -1,0 +1,61 @@
+{
+  "schema": "code-role-rules-v1",
+  "abi": "rv32",
+  "rules": [
+    {
+      "id": "recorder",
+      "match_kind": "source-root",
+      "value": "references/baseline/percepio/TraceRecorder",
+      "role": "recorder"
+    },
+    {
+      "id": "adapter",
+      "match_kind": "source",
+      "value": "firmware/port/trcStreamPort.c",
+      "role": "recorder"
+    },
+    {
+      "id": "observer",
+      "match_kind": "function",
+      "value": "timing_observer",
+      "role": "observer_entry",
+      "source": "firmware/cases/tcp_request_response.c"
+    },
+    {
+      "id": "lwip",
+      "match_kind": "source-root",
+      "value": "references/tcp/lwip",
+      "role": "lwip"
+    },
+    {
+      "id": "kernel",
+      "match_kind": "source-root",
+      "value": "third_party/FreeRTOS",
+      "role": "kernel_port"
+    },
+    {
+      "id": "harness",
+      "match_kind": "source-root",
+      "value": "firmware",
+      "role": "application_harness"
+    },
+    {
+      "id": "libg_nano.a",
+      "match_kind": "archive",
+      "value": "libg_nano.a",
+      "role": "runtime_library"
+    },
+    {
+      "id": "libc.a",
+      "match_kind": "archive",
+      "value": "libc.a",
+      "role": "runtime_library"
+    },
+    {
+      "id": "libgcc.a",
+      "match_kind": "archive",
+      "value": "libgcc.a",
+      "role": "runtime_library"
+    }
+  ]
+}
