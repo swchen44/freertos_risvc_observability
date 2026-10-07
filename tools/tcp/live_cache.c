@@ -9,6 +9,10 @@
 #include <inttypes.h>
 #include "../qemu/live_timing.h"
 #include "../qemu/poc-clock-api.h"
+#ifdef POC_CONTEXT
+#include "live_context.h"
+static unsigned context_enabled;
+#endif
 QEMU_PLUGIN_EXPORT int qemu_plugin_version=QEMU_PLUGIN_VERSION;
 typedef struct { uint64_t pc; unsigned size; } Instruction;
 static uint64_t begin_pc,end_pc,events,cycles,api_calls;
@@ -36,8 +40,22 @@ static void execute(unsigned cpu,void *arg) {
   if(active || windows) fail("one window required");
   timing_reset();active=1;windows++;
  }
- if(i->pc==end_pc) {if(!active) fail("unmatched end");active=0;}
- if(active) charge(i->pc,i->pc,i->size,'I');
+ if(i->pc==end_pc) {
+  if(!active) fail("unmatched end");
+#ifdef POC_CONTEXT
+  if(context_enabled) context_before_instruction(events,i->pc);
+#endif
+  active=0;
+ }
+ if(active) {
+#ifdef POC_CONTEXT
+  if(context_enabled) context_before_instruction(events,i->pc);
+#endif
+  charge(i->pc,i->pc,i->size,'I');
+#ifdef POC_CONTEXT
+  if(context_enabled) context_after_instruction(events-1,i->pc);
+#endif
+ }
 }
 static void memory(unsigned cpu,qemu_plugin_meminfo_t info,uint64_t va,void *arg) {
  if(cpu) fail("requires one vCPU");
@@ -67,12 +85,19 @@ static void translate(qemu_plugin_id_t id,struct qemu_plugin_tb *tb) {
   Instruction *data=g_new(Instruction,1);
   *data=(Instruction){qemu_plugin_insn_vaddr(i),qemu_plugin_insn_size(i)};
   g_ptr_array_add(instructions,data);
-  qemu_plugin_register_vcpu_insn_exec_cb(i,execute,QEMU_PLUGIN_CB_NO_REGS,data);
+  enum qemu_plugin_cb_flags flags=QEMU_PLUGIN_CB_NO_REGS;
+#ifdef POC_CONTEXT
+  if(context_enabled && context_needs_registers(data->pc)) flags=QEMU_PLUGIN_CB_R_REGS;
+#endif
+  qemu_plugin_register_vcpu_insn_exec_cb(i,execute,flags,data);
   qemu_plugin_register_vcpu_mem_cb(i,memory,QEMU_PLUGIN_CB_NO_REGS,QEMU_PLUGIN_MEM_RW,data);
  }
 }
 static void finish(qemu_plugin_id_t id,void *arg) {
  (void)id;(void)arg;
+ #ifdef POC_CONTEXT
+ if(context_enabled && context_finish(events)) fail("incomplete context evidence");
+#endif
  if(active || windows!=1 || !events || fclose(out)) fail("incomplete capture");
  fprintf(stderr,"live_cache_complete events=%"PRIu64" cycles=%"PRIu64" api_calls=%"PRIu64"\n",events,cycles,api_calls);
 #ifdef POC_LIVE_IRQ
@@ -81,7 +106,18 @@ static void finish(qemu_plugin_id_t id,void *arg) {
  g_ptr_array_free(instructions,TRUE);
 }
 QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,const qemu_info_t *info,int argc,char **argv) {
- if(!info->system_emulation || strcmp(info->target_name,"riscv32") || info->system.smp_vcpus!=1 || argc!=4) return -1;
+ if(!info->system_emulation || strcmp(info->target_name,"riscv32") || info->system.smp_vcpus!=1 ) return -1;
+#ifdef POC_CONTEXT
+ if(argc!=4 && argc!=6) return -1;
+ if(argc==6) {
+  if(strncmp(argv[4],"context-config=",15) || strncmp(argv[5],"context-out=",12)) return -1;
+  if(context_init(argv[4]+15,argv[5]+12)) return -1;
+  context_enabled=1;
+  qemu_plugin_register_vcpu_init_cb(id,context_vcpu_init);
+ }
+#else
+ if(argc!=4) return -1;
+#endif
  uint64_t *pcs[]={&begin_pc,&end_pc};const char *keys[]={"begin=","end="};
  for(unsigned k=0;k<2;k++) {
   size_t n=strlen(keys[k]);char *tail;errno=0;
