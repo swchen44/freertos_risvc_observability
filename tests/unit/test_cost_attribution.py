@@ -70,7 +70,7 @@ class CostAttributionTests(unittest.TestCase):
         fixtures = [
             ("firmware/port/trcStreamPort.c", "port.o", "write", "recorder"),
             (
-                "firmware/cases/tcp_request_response.c",
+                "firmware/app/cases/tcp_request_response.c",
                 "session.o",
                 "timing_observer",
                 "observer_entry",

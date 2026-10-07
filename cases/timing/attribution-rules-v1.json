@@ -19,7 +19,7 @@
       "match_kind": "function",
       "value": "timing_observer",
       "role": "observer_entry",
-      "source": "firmware/cases/tcp_request_response.c"
+      "source": "firmware/app/cases/tcp_request_response.c"
     },
     {
       "id": "lwip",
