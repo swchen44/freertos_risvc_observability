@@ -8,7 +8,7 @@
 
 **Tech Stack:** 既有 Python 3.13、unittest、Ruff、GCC/binutils、RV32 patched QEMU、C/GLib plugin；不新增 Python／Node dependency。
 
-**Spec:** [已核准 B 設計](../design/cost-attribution-b.md)。使用者於2026-10-08回覆 OK 核准設計；本實作計畫待審閱，尚未寫入 production code 或新增模擬。
+**Spec:** [已核准 B 設計](../design/cost-attribution-b.md)。使用者於2026-10-08回覆 OK 核准設計；使用者隨後以 go 核准執行。Task 1–7 已完成；Task 8 的 UI 回歸與發佈受環境限制，詳見 ../../artifacts/verification/cost-attribution/completion.json。
 
 ## Global Constraints
 
@@ -45,7 +45,7 @@ flowchart TD
  T7 --> T8[8 全回歸 / 文件 / review / publish]
 ```
 
-所有新增Python模組的public API在所屬Task定義；code blocks是實作指引及測試契約，尚未加入production。每個Task先確認前置Task測試通過再開始；不得平行修改collector與正在擷取的來源。
+所有新增Python模組的public API在所屬Task定義；code blocks保留原始實作指引及測試契約；目前實作以對應來源檔與驗證收據為準。每個Task先確認前置Task測試通過再開始；不得平行修改collector與正在擷取的來源。
 
 ## Task 1：互斥的code-role規則與PC範圍
 
@@ -71,7 +71,7 @@ def resolve_pc(ranges: list[dict], pc: int) -> dict: ...
 - firmware/其餘 → application_harness；libg_nano.a/libc.a/libgcc.a的可驗證archive成員 → runtime_library。
 - 其他來源 → unresolved；不以`mem`／`tcp`函式名稱prefix猜分類。
 
-- [ ] **先寫手算range測試**。測試方法放進unittest.TestCase；以下是核心斷言：
+- [x] **先寫手算range測試**。測試方法放進unittest.TestCase；以下是核心斷言：
 
 ```python
 records = [dict(start=100, end=110, role="lwip", function="f",
@@ -85,10 +85,10 @@ self.assertEqual(resolve_pc(ranges, 99)["reason"], "no_executable_owner")
 
 同檔另測duplicate aliases不重複計數、100..110與108..120衝突、同範圍不同role、zero-size拒絕、bool拒絕、runtime_library與recorder adapter明確規則。
 
-- [ ] **執行red**：`.venv/bin/python -m unittest tests.unit.test_cost_attribution -v`，保存缺介面或未通過行為的log。
-- [ ] **實作interval查詢**：依start建立sorted索引，但查詢必須檢查所有涵蓋PC的有效區間，不能只取bisect最後一個；以規則ID及evidence保留分類理由。
-- [ ] **驗證green與Ruff**：同一unittest；`ruff check`與`ruff format --check`涵蓋新增檔。
-- [ ] **Commit**：只加入本Task三個檔案，訊息 `Add provenance-based code role ranges`。
+- [x] **執行red**：`.venv/bin/python -m unittest tests.unit.test_cost_attribution -v`，保存缺介面或未通過行為的log。
+- [x] **實作interval查詢**：依start建立sorted索引，但查詢必須檢查所有涵蓋PC的有效區間，不能只取bisect最後一個；以規則ID及evidence保留分類理由。
+- [x] **驗證green與Ruff**：同一unittest；`ruff check`與`ruff format --check`涵蓋新增檔。
+- [x] **Commit**：只加入本Task三個檔案，訊息 `Add provenance-based code role ranges`。
 
 ## Task 2：擷取ELF/map/source ownership並驗證來源
 
@@ -111,7 +111,7 @@ def build_role_ranges(evidence: dict, rules: dict) -> list[dict]: ...
 
 使用既有toolchain的 `readelf -WS`、`nm -S -n`、`addr2line -a -f -i` 和保存的firmware.map。命令使用subprocess argument list；將工具版本/hash與stdout保存。map的discarded區段、0地址區段、非SHF_EXECINSTR範圍不進PC索引；input section必須落在ELF executable section內，符號size與section限制一致。map不匹配則失敗，不能僅替map補新hash。archive provenance缺失的PC維持unresolved。
 
-- [ ] **先寫parser／hash負向測試**，tmpdir保存最小map文字，並使用mock tool stdout測試GNU map換行形式與discarded標頭；以下hash測試直接用真實A fixture的複製檔：
+- [x] **先寫parser／hash負向測試**，tmpdir保存最小map文字，並使用mock tool stdout測試GNU map換行形式與discarded標頭；以下hash測試直接用真實A fixture的複製檔：
 
 ```python
 import hashlib
@@ -139,10 +139,10 @@ with TemporaryDirectory() as tmp:
 
 另外以獨立toy ELF/map text fixture測role解析：`memcpy`無DWARF但map指向newlib、portASM無symbol size但有有效input section、inline來源不同但role依實體object、同名static function分屬不同object。fixture不得呼叫production產生expected。
 
-- [ ] **執行red**：`.venv/bin/python -m unittest tests.unit.test_attribution_evidence -v`。
-- [ ] **實作讀取及正規化**：將`/poc/` debug prefix映射到manifest相對來源；未認得的外部路徑不讀任意host檔，保留為來源label。每個owner保存原始map line／symbol／debug evidence。
-- [ ] **驗證green**：同一unittest、Ruff；用A02兩版ELF讀取，應保留不同session_task起點，不以baseline地址套pbuf。
-- [ ] **Commit**：`Validate capture evidence and executable ownership`。
+- [x] **執行red**：`.venv/bin/python -m unittest tests.unit.test_attribution_evidence -v`。
+- [x] **實作讀取及正規化**：將`/poc/` debug prefix映射到manifest相對來源；未認得的外部路徑不讀任意host檔，保留為來源label。每個owner保存原始map line／symbol／debug evidence。
+- [x] **驗證green**：同一unittest、Ruff；用A02兩版ELF讀取，應保留不同session_task起點，不以baseline地址套pbuf。
+- [x] **Commit**：`Validate capture evidence and executable ownership`。
 
 ## Task 3：B1守恆分類與16份報告
 
@@ -168,10 +168,10 @@ instructions = int(row["operation"] == "I")
 accounted_model_ns = 2 * cycles + instructions
 ```
 
-- [ ] **先寫手算測試**：PC100的I成本27、PC102的W成本20、PC110的I成本1；前兩筆role lwip，最後一筆runtime_library。總memory_cycles=48、instructions=2、accounted_model_ns=98；lwip=47cycles／1instruction；data address即使落另一role仍按PC歸屬。未知PC加7cycles後分母必須變55而非丟棄。
-- [ ] **執行red**：`.venv/bin/python -m unittest tests.unit.test_attribution_report -v`。
-- [ ] **實作彙整和批次**：輸入固定16組A01..A08 baseline/pbuf各injection repeat1。逐筆audit成本與既有模型一致，再分類；核對role/function/PC/context/matrix的每個指標加總。control單元測試保留mode=0及shadow標記，不能輸出`guest_elapsed_ns`作假量測。
-- [ ] **驗證green、Ruff並commit code**，再執行下面的新CLI。output必須新目錄；每組保存ranges、tool evidence、完整JSON、完整CSV與unresolved理由。
+- [x] **先寫手算測試**：PC100的I成本27、PC102的W成本20、PC110的I成本1；前兩筆role lwip，最後一筆runtime_library。總memory_cycles=48、instructions=2、accounted_model_ns=98；lwip=47cycles／1instruction；data address即使落另一role仍按PC歸屬。未知PC加7cycles後分母必須變55而非丟棄。
+- [x] **執行red**：`.venv/bin/python -m unittest tests.unit.test_attribution_report -v`。
+- [x] **實作彙整和批次**：輸入固定16組A01..A08 baseline/pbuf各injection repeat1。逐筆audit成本與既有模型一致，再分類；核對role/function/PC/context/matrix的每個指標加總。control單元測試保留mode=0及shadow標記，不能輸出`guest_elapsed_ns`作假量測。
+- [x] **驗證green、Ruff並commit code**，再執行下面的新CLI。output必須新目錄；每組保存ranges、tool evidence、完整JSON、完整CSV與unresolved理由。
 
 ```sh
 .venv/bin/python tools/tcp/analyze_cost_attribution.py \
@@ -179,8 +179,8 @@ accounted_model_ns = 2 * cycles + instructions
   --output artifacts/verification/cost-attribution/b1
 ```
 
-- [ ] **核對16份與A02**：所有成本相加符合原audit；產生同workload的完整function/role delta，列明raw accounting +5470 ns與mtime +5500 ns之差。只寫有證據的成本位置，不宣稱layout因果。
-- [ ] **Commit結果與B1報告**：B整體仍標partial，直到Task 7/8通過。
+- [x] **核對16份與A02**：所有成本相加符合原audit；產生同workload的完整function/role delta，列明raw accounting +5470 ns與mtime +5500 ns之差。只寫有證據的成本位置，不宣稱layout因果。
+- [x] **Commit結果與B1報告**：B整體仍標partial，直到Task 7/8通過。
 
 ## Task 4：context sidecar契約與上下文狀態機
 
@@ -200,7 +200,7 @@ JSONL每筆完整欄位：`schema="context-event-v1", seq, event_index, phase, p
 
 狀態：current、trap_stack、pending_return、selected_task。trap_enter前保存current；cause=0x80000007→irq:7，cause=11→scheduler_transition，其餘fault/unknown。selected_task只記錄，不切換current。mret_pending在mret的I列after設pending；return_commit在下一條I前套用最外層task或outer trap；同boundary先return_commit再trap_enter，最後歸屬新的I/R/W。end若有open trap或pending則品質不完整；正式acceptance拒絕。
 
-- [ ] **先寫可手算fixture**，每筆I成本1；10列，以下interval期待由人手定義：
+- [x] **先寫可手算fixture**，每筆I成本1；10列，以下interval期待由人手定義：
 
 ```python
 def event(seq, index, kind, *, task=None, cause=None, phase="before", depth=0):
@@ -228,10 +228,10 @@ self.assertEqual([(r['start'], r['end'], r['context'])
 
 這個fixture只測state semantics；anchor另建raw I列與boundary config，測PC不符、R/W列冒充mret、missing opcode都拒絕。end的PC為capture_end marker，沒有raw第N列可讀；只能以config與final receipt核對，不能越界。
 
-- [ ] **補負向fixture**：序號重複、少begin/end、邊界倒退、未知task、沒有trap的mret、selected_task卻無return、after N，均ValueError或quality非exact且無法正式通過。immediate retrap在同boundary5提交return再enter IRQ，task2區間長度0、不重複計費。allow_nested=True的toy例子回outer IRQ；真實runner固定False，偵測nested拒絕。
-- [ ] **執行red**：`.venv/bin/python -m unittest tests.unit.test_execution_context -v`。
-- [ ] **實作並整合**：產生無重疊、完整覆蓋[0,N)的intervals；缺證據段以unknown補上但quality不exact。彙整時recorder在IRQ只進`irq:7 × recorder`一格；兩維總量都10指令／10cycles，不能算20。
-- [ ] **驗證green、Ruff、Commit**：`Define context boundary semantics and conservation`。
+- [x] **補負向fixture**：序號重複、少begin/end、邊界倒退、未知task、沒有trap的mret、selected_task卻無return、after N，均ValueError或quality非exact且無法正式通過。immediate retrap在同boundary5提交return再enter IRQ，task2區間長度0、不重複計費。allow_nested=True的toy例子回outer IRQ；真實runner固定False，偵測nested拒絕。
+- [x] **執行red**：`.venv/bin/python -m unittest tests.unit.test_execution_context -v`。
+- [x] **實作並整合**：產生無重疊、完整覆蓋[0,N)的intervals；缺證據段以unknown補上但quality不exact。彙整時recorder在IRQ只進`irq:7 × recorder`一格；兩維總量都10指令／10cycles，不能算20。
+- [x] **驗證green、Ruff、Commit**：`Define context boundary semantics and conservation`。
 
 ## Task 5：不改guest的host context observer
 
@@ -264,10 +264,10 @@ int context_finish(uint64_t raw_events);
 
 get_registers在vCPU init呼叫，按名稱建立register handle；僅context-enabled的boundary callback需要R_REGS。若不能可靠取得mcause／必要register，就輸出fault與capabilities，停止探索，不假設GDB CSR一定存在。pxCurrentTCB用read_memory_vaddr讀4bytes little-endian，檢查長度、RAM範圍，並與PSF object cross-check。同一execute callback明確執行pending return→new trap→charge；不得依賴兩個獨立callback的registration order。
 
-- [ ] **先寫red**：boundary test以兩個不同ELF的toy symbols/opcodes驗證地址獨立；改mret opcode、移除TCB、同名多入口、big-endian不符均拒絕。C test用stub QEMU API提供CSR/TCB，逐步呼叫before/after，對照Task4的手寫fixture；缺register、read回傳-1、memory read失敗產生fault且finish非0。
-- [ ] **實作config parser與C observer**，輸出Task4 JSONL。輸出開啟使用exclusive create；write/fclose失敗非0；fault不得寫成task0。限制sidecar最多100000筆，超限失敗並保留資料。
-- [ ] **執行green**：兩個unittest、C `-Wall -Wextra -Werror`、Python Ruff。legacy plugin仍以原編譯flags成功，不需要新檔案。
-- [ ] **Commit**：`Add opt-in host context observation without guest hooks`。是否實際可讀CSR留Task6探索判定，不能只以stub通過宣稱可用。
+- [x] **先寫red**：boundary test以兩個不同ELF的toy symbols/opcodes驗證地址獨立；改mret opcode、移除TCB、同名多入口、big-endian不符均拒絕。C test用stub QEMU API提供CSR/TCB，逐步呼叫before/after，對照Task4的手寫fixture；缺register、read回傳-1、memory read失敗產生fault且finish非0。
+- [x] **實作config parser與C observer**，輸出Task4 JSONL。輸出開啟使用exclusive create；write/fclose失敗非0；fault不得寫成task0。限制sidecar最多100000筆，超限失敗並保留資料。
+- [x] **執行green**：兩個unittest、C `-Wall -Wextra -Werror`、Python Ruff。legacy plugin仍以原編譯flags成功，不需要新檔案。
+- [x] **Commit**：`Add opt-in host context observation without guest hooks`。是否實際可讀CSR留Task6探索判定，不能只以stub通過宣稱可用。
 
 ## Task 6：同ELF runner、parity與8次能力探索
 
@@ -288,9 +288,9 @@ CLI定義：`--source-runset PATH --output PATH --repeats N --context {on,off}`�
 
 Runner使用已核對的A ELF，從舊runner沿用QEMU_FLAGS、timeout20秒與oracle，獨立輸出目錄。新manifest同時保存guest_source_commit、guest ELF hash、collector_source_commit、plugin/compiler/QEMU hashes、rules/boundary hashes與所有run files。若20秒不足，保留timeout證據並另列調整，不把timeout當成功。source與logs都必須ignored或放repo外，避免clean gate污染。
 
-- [ ] **先寫parity red測試**：以手造matching dict對照；依序變更raw size的CSV內容/hash、packet byte、PSF task ID、switch timestamp、phase marker、measurement after，各自passed=False且mismatches列出欄位。相同總cycles不能遮蔽差異。少hash key、source/output相同、output存在，直接ValueError。
-- [ ] **實作runner與parity**：解壓後raw records包含size及順序全部一致；PSF正規化objects為ID/name、switch為ID/timestamp_raw、markers為phase/request_id/timestamp_raw，以有序events比較；measurement比對spec列出的九項欄位。control對A enabled-0-1，injection對enabled-1-1，禁止跨candidate或mode。
-- [ ] **驗證green、Ruff，commit**，再跑四個候選，每次repeats=1，共8次：
+- [x] **先寫parity red測試**：以手造matching dict對照；依序變更raw size的CSV內容/hash、packet byte、PSF task ID、switch timestamp、phase marker、measurement after，各自passed=False且mismatches列出欄位。相同總cycles不能遮蔽差異。少hash key、source/output相同、output存在，直接ValueError。
+- [x] **實作runner與parity**：解壓後raw records包含size及順序全部一致；PSF正規化objects為ID/name、switch為ID/timestamp_raw、markers為phase/request_id/timestamp_raw，以有序events比較；measurement比對spec列出的九項欄位。control對A enabled-0-1，injection對enabled-1-1，禁止跨candidate或mode。
+- [x] **驗證green、Ruff，commit**，再跑四個候選，每次repeats=1，共8次：
 
 ```sh
 .venv/bin/python tools/tcp/run_context_capture.py \
@@ -301,8 +301,8 @@ Runner使用已核對的A ELF，從舊runner沿用QEMU_FLAGS、timeout20秒與or
 
 依序用A02-pbuf、A08-baseline、A08-pbuf各跑同一命令，修改source/output最後一段。不得覆蓋原probe目錄；失敗重跑用新suffix。
 
-- [ ] **Gate**：8次capability、oracle、原IRQ guard、parity與context品質皆exact才寫`probe-gate.json passed=true`；否則保留B1完成、B2 partial，停止Task7，報告具體缺少的證據。
-- [ ] **Commit probe證據**：raw、PSF、capabilities、boundary、sidecar、對照與失敗log全部保存；正式資料不能重用probe當repeat。
+- [x] **Gate**：8次capability、oracle、原IRQ guard、parity與context品質皆exact才寫`probe-gate.json passed=true`；否則保留B1完成、B2 partial，停止Task7，報告具體缺少的證據。
+- [x] **Commit probe證據**：raw、PSF、capabilities、boundary、sidecar、對照與失敗log全部保存；正式資料不能重用probe當repeat。
 
 ## Task 7：正式24次、host overhead6次與交叉報告
 
@@ -316,26 +316,26 @@ def validate_context_batch(records: list[dict]) -> None: ...
 # parity_passed, context_exact, run_manifest_sha256；不能由glob數量猜完整性。
 ```
 
-- [ ] **先寫red**：expected set為4 candidates × modes{0,1} × repeats{1,2,3}；缺一筆、duplicate、bool repeat、context off混入formal、parity false、nested真實capture皆拒絕。overhead set獨立，不能混成正式30筆。
-- [ ] **實作serial batch**：先讀並核對probe-gate hashes；逐候選呼叫run_context_case repeats3/context on，保存每次結果。任一正式失敗停止下一候選並保留已跑結果。source在整批期間不變。
-- [ ] **驗證green、Ruff、commit**，再執行：
+- [x] **先寫red**：expected set為4 candidates × modes{0,1} × repeats{1,2,3}；缺一筆、duplicate、bool repeat、context off混入formal、parity false、nested真實capture皆拒絕。overhead set獨立，不能混成正式30筆。
+- [x] **實作serial batch**：先讀並核對probe-gate hashes；逐候選呼叫run_context_case repeats3/context on，保存每次結果。任一正式失敗停止下一候選並保留已跑結果。source在整批期間不變。
+- [x] **驗證green、Ruff、commit**，再執行：
 
 ```sh
 .venv/bin/python tools/tcp/run_context_batch.py \
   --probe runs/tcp-context-v1/probe \
-  --output runs/tcp-context-v1/formal
+  --output runs/local/my-context-formal
 ```
 
-- [ ] **Overhead六次**：A02-baseline injection，context off/on交錯三對；用Task6 runner新增的`--timing-mode injection`，每次repeats1及新output。monotonic範圍是QEMU process launch→exit，不含build/analysis/compression。保存每次wall_seconds、raw_rows、events_per_second、raw/sidecar未壓縮與on-disk bytes；報median(on)、median(off)、每對及median相對增幅。每次仍做parity，不能只計host時間。
-- [ ] **Context交叉表**：對24次原始資料產生context×role與PSF identity收據。same-mode三次結果必須一致或明列差異；不取最佳值。Task3代表列仍為injection repeat1，所有repeats保留。
-- [ ] **Commit正式資料與報告**：B1其他12候選仍標context unknown；不得將4候選觀測結果套到其他workload。
+- [x] **Overhead六次**：A02-baseline injection，context off/on交錯三對；用Task6 runner新增的`--timing-mode injection`，每次repeats1及新output。monotonic範圍是QEMU process launch→exit，不含build/analysis/compression。保存每次wall_seconds、raw_rows、events_per_second、raw/sidecar未壓縮與on-disk bytes；報median(on)、median(off)、每對及median相對增幅。每次仍做parity，不能只計host時間。
+- [x] **Context交叉表**：對24次原始資料產生context×role與PSF identity收據。same-mode三次結果必須一致或明列差異；不取最佳值。Task3代表列仍為injection repeat1，所有repeats保留。
+- [x] **Commit正式資料與報告**：B1其他12候選仍標context unknown；不得將4候選觀測結果套到其他workload。
 
 ## Task 8：全回歸、文件、自我核對與發佈
 
 **Files:** 更新 `docs/cost-attribution.md`、`README.md`、`docs/plans/11-next-cache-research.md`；新增 `artifacts/verification/cost-attribution/completion.json`；root README與gitlink在POC完成後更新。
 
-- [ ] **先核對spec coverage**：Task1/2對應角色來源；Task3對應16份B1；Task4/5對應boundary；Task6/7對應8/24/6執行與parity。全部checkbox依證據勾選；B2 gate失敗則B整體partial。
-- [ ] **先commit全部程式與測試**，確認Git clean，再跑完整回歸。log放/tmp，不能因寫入repo而讓integration clean gate失敗。
+- [x] **先核對spec coverage**：Task1/2對應角色來源；Task3對應16份B1；Task4/5對應boundary；Task6/7對應8/24/6執行與parity。全部checkbox依證據勾選；B2 gate失敗則B整體partial。
+- [x] **先commit全部程式與測試**，確認Git clean，再跑完整回歸。log放/tmp，不能因寫入repo而讓integration clean gate失敗。
 
 ```sh
 .venv/bin/python -m unittest discover -s tests -v > /tmp/b-full-tests.log 2>&1
@@ -362,9 +362,9 @@ raise SystemExit(not result.wasSuccessful())
 ```
 
 B不產生新UI；截圖標明是A介面的回歸，不標成B功能。
-- [ ] **文件交付**：Markdown/Mermaid呈現分類流程、pending return邊界；列A02所有成本增減與未知原因、shared libc、recorder self-cost邊界、control/injection、host overhead、如何在內網還原。所有input/report/CSV/PSF/ELF/sidecar路徑和hash可追溯。
-- [ ] **獨立whole-change review**：依requesting-code-review skill，交付base SHA／final code SHA、spec／plan與Review Focus。處理Important後跑受影響測試；若改capture source或time semantics，重新capture新目錄而不是修改舊結果。
-- [ ] **Completion**：保存tested commit、clean gate、實際test counts/log hashes、B1=16、probe/formal/overhead實際成功與失敗數、parity、context coverage/unknown量、工具／來源hash、docs links驗證。沒有充分證據就passed=false，不能把blocked probe當完成。
+- [x] **文件交付**：Markdown/Mermaid呈現分類流程、pending return邊界；列A02所有成本增減與未知原因、shared libc、recorder self-cost邊界、control/injection、host overhead、如何在內網還原。所有input/report/CSV/PSF/ELF/sidecar路徑和hash可追溯。
+- [x] **獨立whole-change review**：依requesting-code-review skill，交付base SHA／final code SHA、spec／plan與Review Focus。處理Important後跑受影響測試；若改capture source或time semantics，重新capture新目錄而不是修改舊結果。
+- [x] **Completion**：保存tested commit、clean gate、實際test counts/log hashes、B1=16、probe/formal/overhead實際成功與失敗數、parity、context coverage/unknown量、工具／來源hash、docs links驗證。沒有充分證據就passed=false，不能把blocked probe當完成。
 - [ ] **Publish**：POC commit後push到poc-history，再更新root gitlink/README並push main。核對兩個remote SHA；transport stdout/stderr不原樣輸出，以免再次曝露token。
 
 ## 計畫自我審閱結果
@@ -374,4 +374,4 @@ B不產生新UI；截圖標明是A介面的回歸，不標成B功能。
 - Review Focus五項都有對應負向測試；真實nested與capability缺失有明確停止條件。
 - 已區分16份B1重播、8次探索、24次正式與6次overhead；不把舊A 96次當B的新結果。
 - 已把code/data layout因果實驗、完整SDK on/off overhead與C時間軸留在本輪邊界之外，沒有以self-cost取代。
-- 這份是實作計畫。所有Task checkbox仍未勾選；核准後由本session主代理依序實作並在最後獨立review。
+- 這份是實作計畫。Task 1–7 已依實測勾選；Task 8 以 completion 收據區分完成與受阻項目。

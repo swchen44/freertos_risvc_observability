@@ -2,17 +2,29 @@
 
 ## 現況入口 · 2026-10-08
 
-**B 設計已核准，實作計畫待審閱：**[八項實作工作與驗收步驟](docs/plans/12-cost-attribution.md)。[成本歸屬規格](docs/design/cost-attribution-b.md)。建議先做 code-role，再以同 ELF 的 host-side context 觀測核對 task／IRQ；尚未實作或重跑 B。A02 已找到指令減少但記憶體成本增加的證據，根因仍待驗證。
+**B 核心分析與擷取已完成，UI／發佈待驗收：**[成本歸屬研究報告](docs/cost-attribution.md)。16 份 B1 重播、8 次探索、24 次正式 context 擷取與 6 次 host overhead 均保留原始資料；task／IRQ／recorder 成本分開守恆。Python 292 tests、Node 10 tests、Ruff 通過。本回合 sandbox 禁止 server／browser socket，沒有新 E2E 截圖；[最新完成與待辦收據](artifacts/verification/cost-attribution/completion.json)。
 
 **A：八種 TCP workload 的 pbuf 最佳化驗證**已完成 96 次正式執行、原始資料分析與 Web／離線操作驗收。固定 **L1I 8 KiB + L1D 8 KiB + L2 32 KiB**，結果是相同模型下的軟體比較。
 
 - [完整 A 研究報告、數值與重跑命令](docs/tcp-workload-matrix.md)：7/8 組模型時間改善；A08 改善 8.339%，A02 反而慢 0.218%，反例保留，原因待 B 歸因。
-- [設計與 A → B → C 計畫](docs/plans/11-next-cache-research.md)：A 已實作；B 成本歸屬、C 熱點／逐事件時間軸仍未完成。
+- [設計與 A → B → C 計畫](docs/plans/11-next-cache-research.md)：A 已完成；B 核心完成但 UI／發佈待驗收；C 熱點／逐事件時間軸尚未開始。
 - [案例契約](cases/tcp/workload-matrix-v1.json)：63、64、65、256、1460 bytes，以及空節點／八節點 chain。
 - [正式 capture](runs/tcp-workload-matrix-v1/)：16 組、96 次，包含 PSF、raw trace、ELF、map、封包、generated header 與來源 hashes。
 - [探索與失敗紀錄](runs/tcp-workload-probe-v1/)；[分析／驗收收據](artifacts/verification/tcp-workload-matrix/)；[離線 HTML](artifacts/offline/tcp-workload-matrix.html)。
 - **驗收：**Python 251/251、Node 10/10、既有 UI 11/11、agent-browser Web／離線與 curl 均通過；[完成收據](artifacts/verification/tcp-workload-matrix/completion.json)。
 - **暫緩：**跨機驗證與內網安裝材料；產品 U01～U16 仍需內網原始碼或硬體。
+
+### B 的資料夾與重要檔案
+
+| 位置 | 內容 |
+|---|---|
+| [研究報告](docs/cost-attribution.md) | 原理、A02 反例、context 成本、量測限制與重跑命令 |
+| [B1 報告](artifacts/verification/cost-attribution/b1/) | 16 份 JSON／CSV、ELF/map 證據、完整 signed deltas |
+| [Context 報告](artifacts/verification/cost-attribution/context/) | 24 份 summary／交叉表／完整壓縮 JSON |
+| [擷取原始資料](runs/tcp-context-v1/) | probe 8、formal 24、overhead 6，含 PSF、raw CSV、ELF、sidecar、manifest |
+| [工具](tools/tcp/run_context_capture.py) | 同 ELF 擷取；`run_context_batch.py` 批次；`analyze_context_batch.py` 重建報告 |
+| [Sidecar 契約](cases/timing/context-sidecar-v1.md) | event index、mret／return 邊界與失敗條件 |
+| [驗收紀錄](artifacts/verification/cost-attribution/) | 測試、review、受阻項目與 completion 收據 |
 
 ### POC 怎麼使用
 
@@ -30,7 +42,7 @@ Web：選 workload 比較相同 request 的兩版；可切換 Cache 層級、看
 
 ![TCP workload 離線](artifacts/screenshots/tcp-workload-matrix/offline-03-filtered-evidence.png)
 
-以下為各階段當時紀錄。「尚未完成」僅表示當時狀態；最新結果以上述 A 報告與驗收收據為準。
+以下為各階段當時紀錄。「尚未完成」僅表示當時狀態；最新結果以上述 A／B 報告與各自驗收收據為準。
 
 ## 歷史階段紀錄
 

@@ -75,15 +75,15 @@
 
 ## B：成本歸屬，獨立里程碑
 
-2026-10-07：已完成來源盤點與 [B 設計規格](../design/cost-attribution-b.md)，2026-10-08已核准設計，[B詳細實作計畫](12-cost-attribution.md)待審閱；下方實作項目仍未完成。
+2026-10-07：已完成來源盤點與 [B 設計規格](../design/cost-attribution-b.md)，2026-10-08已核准設計，[B詳細實作計畫](12-cost-attribution.md)已執行，核心項目完成，UI／發佈待驗收；見 [B 報告](../cost-attribution.md)。
 
 **現有入口：** `src/psf_lab/tcp_hotspots.py` 已提供 PC self-cost；`src/psf_lab/live_cache_irq.py` 驗證 observer/task switch，但沒有逐 access 執行上下文。
 
-- [ ] B1 新增 `src/psf_lab/cost_attribution.py` 與 unit tests，從固定 ELF/source ranges 建立 code-role mapping，重疊/未解析/邊界 PC 必須測試。
-- [ ] 各函式 self-cost 合計等於全域 instructions/memory cycles；未解析留獨立分類，不能丟棄。
-- [ ] B2 先盤點 `tools/tcp/live_cache.c` 與 FreeRTOS port 的可觀察 IRQ/task 邊界，產出上下文對齊設計；需要新增 hook 或 trace schema 時先更新規格。
-- [ ] 用可手算的 task→IRQ→nested call→return fixture 驗證上下文狀態機；缺邊界、巢狀不匹配必須拒絕或標 unknown。
-- [ ] 分別列 context/code-role 的交叉表，任一維度均守恆；確認後才使用 task-exclusive 標示。
+- [x] B1 新增 `src/psf_lab/cost_attribution.py` 與 unit tests，從固定 ELF/source ranges 建立 code-role mapping，重疊/未解析/邊界 PC 必須測試。
+- [x] 各函式 self-cost 合計等於全域 instructions/memory cycles；未解析留獨立分類，不能丟棄。
+- [x] B2 先盤點 `tools/tcp/live_cache.c` 與 FreeRTOS port 的可觀察 IRQ/task 邊界，產出上下文對齊設計；需要新增 hook 或 trace schema 時先更新規格。
+- [x] 用可手算的 task→IRQ→nested call→return fixture 驗證上下文狀態機；缺邊界、巢狀不匹配必須拒絕或標 unknown。
+- [x] 分別列 context/code-role 的交叉表，任一維度均守恆；確認後才使用 task-exclusive 標示。
 
 ## C：定位視圖，拆成 C1/C2
 

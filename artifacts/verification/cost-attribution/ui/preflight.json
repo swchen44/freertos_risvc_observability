@@ -1,0 +1,41 @@
+[
+  {
+    "command": [
+      "curl",
+      "--fail",
+      "--silent",
+      "--show-error",
+      "--max-time",
+      "3",
+      "http://127.0.0.1:8016/api/timing"
+    ],
+    "exit": 7,
+    "stdout": "",
+    "stderr": "curl: (7) Failed to connect to 127.0.0.1 port 8016 after 0 ms: Couldn't connect to server\n"
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-regression-offline",
+      "open",
+      "about:blank"
+    ],
+    "exit": 1,
+    "stdout": "",
+    "stderr": "\u2717 Socket directory '/Users/swchen.tw/.agent-browser' is not writable: Operation not permitted (os error 1)\n"
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-regression-offline",
+      "open",
+      "about:blank"
+    ],
+    "socket_dir": "/tmp/b-agent-browser-sockets",
+    "exit": 1,
+    "stdout": "",
+    "stderr": "\u2717 Daemon process exited during startup with no error output. Re-run with --debug for more details.\n"
+  }
+]

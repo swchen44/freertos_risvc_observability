@@ -1,0 +1,91 @@
+{
+  "schema": "cost-attribution-completion-v1",
+  "passed": false,
+  "status": "core_complete_ui_publish_pending",
+  "tested_commit": "562cb738d55642bb76de6fe79e5922b3cb1ade1d",
+  "tested_worktree_clean": true,
+  "core_analysis_passed": true,
+  "counts": {
+    "b1_reports": 16,
+    "probe_accepted": 8,
+    "formal_accepted": 24,
+    "overhead_accepted": 6,
+    "formal_context_reports": 24,
+    "exact_candidates": 4,
+    "other_candidates_context_unknown": 12,
+    "anchor_revalidated": 32
+  },
+  "tests": {
+    "python": {
+      "passed": 292,
+      "failed": 0
+    },
+    "node": {
+      "passed": 10,
+      "failed": 0
+    },
+    "ruff": "passed",
+    "format_files": 19
+  },
+  "review": {
+    "important_findings_resolved": true,
+    "record": "review-final.md"
+  },
+  "ui": {
+    "status": "blocked",
+    "reason": "Sandbox denies loopback bind and agent-browser Unix/stream socket bind (EPERM).",
+    "curl_exit": 7,
+    "agent_browser_exit": 1,
+    "legacy_playwright": "webServer startup failed before tests",
+    "new_screenshots": 0,
+    "historical_ui_artifacts_restored": true
+  },
+  "publication": {
+    "status": "pending"
+  },
+  "remaining": [
+    "UI regression and new screenshots",
+    "GitHub publication verification",
+    "C hotspot and timeline dashboard",
+    "Deferred loader mutation fixtures and standalone CSV metadata",
+    "Layout causal experiments"
+  ],
+  "evidence_sha256": {
+    "artifacts/verification/cost-attribution/b1/completion.json": "33b1c19795750a1719750e742633ce539107e9a076ab2edf4cf15528dbc85655",
+    "artifacts/verification/cost-attribution/context/completion.json": "af3b91bb07a31fc4580549cb0fe63b07a1057f2059ee4e915e195723c947da26",
+    "artifacts/verification/cost-attribution/anchor-revalidation.json": "a09f536d1a179e4d2aba2d72d40416de2762472ba5278a94465f350fe8e7e32b",
+    "runs/tcp-context-v1/probe/probe-gate.json": "fba97f623bdd8dfde14803e301d7c39752817f77f68857a1f574175e4d02f388",
+    "runs/tcp-context-v1/formal/completion.json": "cbc8f3748b0b73c9a38c375f60dfd3f44ce5a48bed61e73639ae1b83fdcf8792",
+    "runs/tcp-context-v1/overhead/completion.json": "2b8eb62478ffb5ed60fa0214eb3cfae992e64bf15d8f2b84b6aee18898e84537",
+    "artifacts/verification/cost-attribution/logs/b-agent-browser-debug.log": "69bb61f842e7472d7024b8be8772be9194e5dbda43b148e2e72cf4f8d50c089c",
+    "artifacts/verification/cost-attribution/logs/b-b1-replay-reviewed.log": "9dece93826747092d714d635891eaced521ab6f0cc7c85e10381cdd66c680c9c",
+    "artifacts/verification/cost-attribution/logs/b-b1-unit.log": "0c36199831c484e08fb5db1344d82cb690769df4f24ff3087cc9aaa353a62ed1",
+    "artifacts/verification/cost-attribution/logs/b-delta-green.log": "6c838da12bcabe9ed83e7037aaaefec0b4736b64d1ca0186188c60c1dcae09e0",
+    "artifacts/verification/cost-attribution/logs/b-delta-red.log": "25d19c99036f8f9ba2eb081133dbd73f2a877b0c41e5fe22ebb5d3776d03c126",
+    "artifacts/verification/cost-attribution/logs/b-format.log": "a0a0f191878d553ae2b88299d5ead34d7a6367937ff1bd9e304fb73059c83f8a",
+    "artifacts/verification/cost-attribution/logs/b-full-tests-final.log": "07228cf54f7eaa43559c7482907eb6c5d1b844017e3751693f452ec2e59eabb9",
+    "artifacts/verification/cost-attribution/logs/b-full-tests.log": "1d084da2ab5e873ddb375c235f455d9211f1345db119297532d29b668b4aa952",
+    "artifacts/verification/cost-attribution/logs/b-legacy-e2e.log": "bc0fa49c30a5111c3771535dae0ebe8a02ce56f32aa3da82d9c13536ec8ba112",
+    "artifacts/verification/cost-attribution/logs/b-node.log": "8d540715957d113274637ac1931eecc71b14db7972c8a1566b058e109be31b23",
+    "artifacts/verification/cost-attribution/logs/b-observer-wrapper-red.log": "22f241413f46e778f4a95aeadb154bee781a170201a1030015c1e442163f1902",
+    "artifacts/verification/cost-attribution/logs/b-ruff-final.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "artifacts/verification/cost-attribution/logs/b-server-launch.log": "e4607412ae1a672f70838de013d265b809059bdd520e81c99adca36db8ad7470",
+    "artifacts/verification/cost-attribution/logs/b-t1-green.log": "7a54912562cbcdabc303dd5326e74dee2aa00ea453dd894c48b2719dd34a53be",
+    "artifacts/verification/cost-attribution/logs/b-t1-red.log": "f9ee2b87ba4b1ec44c31e4e29ba37b70da3a538bd57a485e43c1e5e1e6da7c81",
+    "artifacts/verification/cost-attribution/logs/b-t2-all.log": "f7449229a3499ce468f64a3d217f8e8c5a71689414daf52624050397d88c7a5e",
+    "artifacts/verification/cost-attribution/logs/b-t2-hardening-green.log": "0e279a48dd8a4222e54084277070e7dd86bac107b0eebc8373636d8c87f307dd",
+    "artifacts/verification/cost-attribution/logs/b-t2-hardening-red.log": "288a8862d0391c879079aae6f6512230cd23dc1387c2f80b8a62c64b42c56487",
+    "artifacts/verification/cost-attribution/logs/b-t2-red.log": "9adcbe6ae890df12b1d2b78e26ef96e9604787901c399a5caa815dcff8fb84e4",
+    "artifacts/verification/cost-attribution/ui/agent-browser-daemon.log": "30a92d835c754ecc380228765d224a6eab1cc479e3a1a9fa700a09cd291a7c57",
+    "artifacts/verification/cost-attribution/ui/legacy-results.json": "1a76087d3b8cde5f7d2c1b7461458dfb92e4319fddd82fe7758759c5b5030574",
+    "artifacts/verification/cost-attribution/ui/preflight.json": "ff14cdd6b313ff501dee3b3c65574e364a6b9d5734cd21eab1860af4f0461d18",
+    "artifacts/verification/cost-attribution/docs-check.json": "8cbae51cd83e30dee5bd689f6eb7315852447f8eac63271feefb1614154edd76"
+  },
+  "docs": {
+    "ok": true,
+    "documents": 81,
+    "links_checked": 642,
+    "broken_links": [],
+    "baseline_files": 422
+  }
+}

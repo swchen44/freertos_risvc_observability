@@ -1,0 +1,3 @@
+[daemon] Debug logging started for session: b-regression-offline
+Stream server failed to start: Failed to bind stream server: Operation not permitted (os error 1)
+Daemon error: Failed to bind socket: Operation not permitted (os error 1)
