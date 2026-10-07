@@ -101,3 +101,103 @@ def classify_owner(owner: dict, rules: dict) -> dict:
         reason=None if len(roles) == 1 else "rule_conflict",
         rule_ids=sorted(r["id"] for r in selected),
     )
+
+
+COST_KEYS = ("l1i", "l1d", "l2", "ram_read", "ram_write")
+METRICS = ("instructions", "memory_cycles", "model_service_ns", "accounted_model_ns")
+
+
+def _number(value):
+    if isinstance(value, str) and re.fullmatch("[0-9]+", value):
+        value = int(value)
+    return _integer(value)
+
+
+def _empty():
+    return dict.fromkeys(METRICS, 0) | {"cost_cycles": dict.fromkeys(COST_KEYS, 0)}
+
+
+def _add(target, delta):
+    for key in METRICS:
+        target[key] += delta[key]
+    for key in COST_KEYS:
+        target["cost_cycles"][key] += delta["cost_cycles"][key]
+
+
+def aggregate_costs(
+    rows, ranges: list[dict], *, mode: int, contexts: list[dict] | None = None
+) -> dict:
+    """Attribute each raw row once in each dimension, keeping global denominators."""
+    if type(mode) is not int or mode not in (0, 1):
+        raise ValueError("Invalid timing mode")
+    if contexts is not None:
+        raise ValueError("Context attribution requires validated intervals (not yet supported)")
+    totals = _empty()
+    groups = {name: {} for name in ("by_role", "by_function", "by_pc", "by_context", "matrix")}
+    unresolved, cache, events = {}, {}, 0
+    for row in rows:
+        pc = _number(row["pc"])
+        if row["operation"] not in ("I", "R", "W"):
+            raise ValueError("Invalid operation")
+        costs = {k: _number(row[k]) for k in COST_KEYS}
+        cycles = sum(costs.values())
+        instructions = int(row["operation"] == "I")
+        delta = dict(
+            instructions=instructions,
+            cost_cycles=costs,
+            memory_cycles=cycles,
+            model_service_ns=2 * cycles,
+            accounted_model_ns=2 * cycles + instructions,
+        )
+        if pc not in cache:
+            cache[pc] = resolve_pc(ranges, pc)
+        owner = cache[pc]
+        role = owner["role"]
+        function = f"{owner['object']}:{owner['start']}:{owner['end']}:{owner['function']}"
+        if owner["start"] is None:
+            function += f":pc={pc}"
+        keys = dict(
+            by_role=role,
+            by_function=function,
+            by_pc=pc,
+            by_context="unknown",
+            matrix="unknown|" + role,
+        )
+        _add(totals, delta)
+        for dimension, key in keys.items():
+            group = groups[dimension].setdefault(key, _empty())
+            _add(group, delta)
+            if dimension in ("by_function", "by_pc"):
+                group["owner"] = owner
+            if dimension == "by_pc":
+                group["pc"] = pc
+        if role == "unresolved":
+            _add(unresolved.setdefault(owner["reason"] or "unresolved", _empty()), delta)
+        events += 1
+    for groupset in groups.values():
+        for metric in METRICS:
+            if sum(r[metric] for r in groupset.values()) != totals[metric]:
+                raise ValueError("Attribution conservation failure")
+        for key in COST_KEYS:
+            if sum(r["cost_cycles"][key] for r in groupset.values()) != totals["cost_cycles"][key]:
+                raise ValueError("Cost component conservation failure")
+    for record in [totals, *[r for g in groups.values() for r in g.values()], *unresolved.values()]:
+        record["shares"] = {
+            metric: dict(
+                numerator=record[metric],
+                denominator=totals[metric],
+                percent=100 * record[metric] / totals[metric] if totals[metric] else None,
+            )
+            for metric in METRICS
+        }
+    return dict(
+        schema="cost-attribution-v1",
+        mode=mode,
+        events=events,
+        totals=totals,
+        **groups,
+        unresolved=unresolved,
+        evidence={},
+        context_quality="not_observed_in_A_trace",
+        cost_semantics="injected_model" if mode else "shadow_model",
+    )
