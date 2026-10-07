@@ -54,3 +54,23 @@ class AttributionReportTests(unittest.TestCase):
     def test_decimal_csv_values(self):
         rows = [{k: str(v) if isinstance(v, int) else v for k, v in r.items()} for r in self.rows]
         self.assertEqual(self.aggregate(rows, self.ranges, mode=1)["totals"]["memory_cycles"], 48)
+
+    def test_context_role_matrix_counts_once(self):
+        ranges = cost_attribution.normalize_ranges([owner(100, 110, role="recorder")])
+        rows = [dict(self.rows[0], pc=100, l1i=1, l2=0, ram_read=0) for _ in range(10)]
+        contexts = [
+            dict(start=0, end=2, context="task:1"),
+            dict(start=2, end=8, context="irq:7"),
+            dict(start=8, end=10, context="task:2"),
+        ]
+        result = self.aggregate(rows, ranges, mode=1, contexts=contexts)
+        self.assertEqual(result["by_role"]["recorder"]["instructions"], 10)
+        self.assertEqual(result["matrix"]["irq:7|recorder"]["instructions"], 6)
+        self.assertEqual(result["totals"]["memory_cycles"], 10)
+        for bad in (
+            [dict(start=1, end=10, context="task:1")],
+            [dict(start=0, end=11, context="task:1")],
+            [dict(start=0, end=1, context="task:1")],
+        ):
+            with self.assertRaises(ValueError):
+                self.aggregate(rows, ranges, mode=1, contexts=bad)

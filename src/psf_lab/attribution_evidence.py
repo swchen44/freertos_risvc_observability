@@ -110,6 +110,10 @@ def build_role_ranges(evidence: dict, rules: dict) -> list[dict]:
                     evidence=[record["evidence"], f"symbol:{symbol['function']}"],
                     reason=None,
                 )
+                debug = evidence.get("debug", {}).get(symbol["start"])
+                if isinstance(debug, dict) and debug.get("function") == symbol["function"]:
+                    row["definition_source"] = debug["definition_source"]
+                    row["evidence"].append("dwarf:" + debug["definition_source"])
                 classification = classify_owner(row, rules)
                 row.update(role=classification["role"], reason=classification["reason"])
                 row["evidence"].extend("rule:" + r for r in classification["rule_ids"])
@@ -268,6 +272,23 @@ def load_capture_evidence(root: Path, runset: Path, mode: int, repeat: int = 1) 
             [str(addr), "--version"], text=True, capture_output=True, check=True
         ).stdout.splitlines()[0],
     )
+    debug = {}
+    pc = None
+    debug_lines = outputs["addr2line"].splitlines()
+    index = 0
+    while index < len(debug_lines):
+        line = debug_lines[index]
+        if re.fullmatch(r"0x[0-9a-fA-F]+", line):
+            pc = int(line, 16)
+            index += 1
+            continue
+        if pc is not None and index + 1 < len(debug_lines):
+            location = debug_lines[index + 1].rsplit(":", 1)[0]
+            # With -i, final frame is the physical containing function.
+            debug[pc] = dict(function=line, definition_source=source_label(location))
+            index += 2
+        else:
+            index += 1
     object_sources = {}
     for line in (runset / "build.log").read_text().splitlines():
         if " -c " not in line or "riscv-none-elf-gcc" not in line:
@@ -298,7 +319,7 @@ def load_capture_evidence(root: Path, runset: Path, mode: int, repeat: int = 1) 
         symbols=symbols,
         map_records=parse_link_map(map_path.read_text()),
         object_sources=object_sources,
-        debug={},
+        debug=debug,
         tool_hashes=tools,
         tool_outputs=outputs,
         map_sha256=digest(map_path),

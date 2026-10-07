@@ -81,7 +81,7 @@ def classify_owner(owner: dict, rules: dict) -> dict:
         if kind in ("source", "object", "function"):
             matched = owner.get(kind) == value
             if kind == "function":
-                matched = matched and source == rule.get("source")
+                matched = matched and owner.get("definition_source", source) == rule.get("source")
         elif kind == "source-root":
             matched = source.startswith(value.rstrip("/") + "/")
         elif kind == "archive":
@@ -131,7 +131,16 @@ def aggregate_costs(
     if type(mode) is not int or mode not in (0, 1):
         raise ValueError("Invalid timing mode")
     if contexts is not None:
-        raise ValueError("Context attribution requires validated intervals (not yet supported)")
+        expected_start = 0
+        for interval in contexts:
+            if (
+                _integer(interval["start"]) != expected_start
+                or _integer(interval["end"]) <= interval["start"]
+                or not isinstance(interval["context"], str)
+            ):
+                raise ValueError("Invalid context coverage")
+            expected_start = interval["end"]
+    interval_index = 0
     totals = _empty()
     groups = {name: {} for name in ("by_role", "by_function", "by_pc", "by_context", "matrix")}
     unresolved, cache, events = {}, {}, 0
@@ -156,12 +165,19 @@ def aggregate_costs(
         function = f"{owner['object']}:{owner['start']}:{owner['end']}:{owner['function']}"
         if owner["start"] is None:
             function += f":pc={pc}"
+        context = "unknown"
+        if contexts is not None:
+            while interval_index < len(contexts) and events >= contexts[interval_index]["end"]:
+                interval_index += 1
+            if interval_index == len(contexts):
+                raise ValueError("Context coverage ends before raw stream")
+            context = contexts[interval_index]["context"]
         keys = dict(
             by_role=role,
             by_function=function,
             by_pc=pc,
-            by_context="unknown",
-            matrix="unknown|" + role,
+            by_context=context,
+            matrix=context + "|" + role,
         )
         _add(totals, delta)
         for dimension, key in keys.items():
@@ -174,6 +190,8 @@ def aggregate_costs(
         if role == "unresolved":
             _add(unresolved.setdefault(owner["reason"] or "unresolved", _empty()), delta)
         events += 1
+    if contexts is not None and (contexts[-1]["end"] if contexts else 0) != events:
+        raise ValueError("Context coverage exceeds raw stream")
     for groupset in groups.values():
         for metric in METRICS:
             if sum(r[metric] for r in groupset.values()) != totals[metric]:
@@ -198,6 +216,6 @@ def aggregate_costs(
         **groups,
         unresolved=unresolved,
         evidence={},
-        context_quality="not_observed_in_A_trace",
+        context_quality="not_observed_in_A_trace" if contexts is None else "supplied_intervals",
         cost_semantics="injected_model" if mode else "shadow_model",
     )

@@ -124,6 +124,7 @@ Linker script and memory map
 
     def test_git_pin_detects_map_replacement(self):
         import subprocess
+
         from psf_lab import attribution_evidence
 
         self.assertTrue(hasattr(attribution_evidence, "verify_git_files"))
@@ -154,3 +155,16 @@ Linker script and memory map
             (root / "firmware.map").write_text("replacement map")
             with self.assertRaises(ValueError):
                 attribution_evidence.verify_git_files(root, sha, ["firmware.map"])
+
+    def test_observer_definition_in_included_source(self):
+        evidence = self.fixture()
+        evidence["symbols"] = [dict(start=100, size=20, function="timing_observer")]
+        evidence["object_sources"]["port.o"] = "firmware/app/cases/tcp_request_response_irq.c"
+        evidence["debug"] = {
+            100: dict(
+                definition_source="firmware/app/cases/tcp_request_response.c",
+                function="timing_observer",
+            )
+        }
+        rows = self.build(evidence, self.rules)
+        self.assertEqual(rows[0]["role"], "observer_entry")
