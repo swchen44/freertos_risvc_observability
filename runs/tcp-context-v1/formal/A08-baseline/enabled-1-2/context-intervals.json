@@ -1,0 +1,60 @@
+{
+  "intervals": [
+    {
+      "start": 0,
+      "end": 165899,
+      "context": "task:2148022416",
+      "reason": null
+    },
+    {
+      "start": 165899,
+      "end": 166365,
+      "context": "irq:7",
+      "reason": null
+    },
+    {
+      "start": 166365,
+      "end": 329509,
+      "context": "task:2148022416",
+      "reason": null
+    },
+    {
+      "start": 329509,
+      "end": 330596,
+      "context": "irq:7",
+      "reason": null
+    },
+    {
+      "start": 330596,
+      "end": 334831,
+      "context": "task:2148014096",
+      "reason": null
+    },
+    {
+      "start": 334831,
+      "end": 335327,
+      "context": "scheduler_transition",
+      "reason": null
+    },
+    {
+      "start": 335327,
+      "end": 512144,
+      "context": "task:2148022416",
+      "reason": null
+    },
+    {
+      "start": 512144,
+      "end": 512610,
+      "context": "irq:7",
+      "reason": null
+    },
+    {
+      "start": 512610,
+      "end": 610577,
+      "context": "task:2148022416",
+      "reason": null
+    }
+  ],
+  "quality": "exact",
+  "transitions": 16
+}

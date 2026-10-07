@@ -1,0 +1,32 @@
+[
+  {
+    "object_id": "0x80081810:0",
+    "address": "0x80081810",
+    "epoch": 0,
+    "kind": "task",
+    "name": "tcp_observer",
+    "created_offset": 224,
+    "deleted_offset": null,
+    "first_seen_offset": 196
+  },
+  {
+    "object_id": "0x80083890:0",
+    "address": "0x80083890",
+    "epoch": 0,
+    "kind": "task",
+    "name": "tcp_session",
+    "created_offset": 276,
+    "deleted_offset": null,
+    "first_seen_offset": 252
+  },
+  {
+    "object_id": "0x80083d10:0",
+    "address": "0x80083d10",
+    "epoch": 0,
+    "kind": "task",
+    "name": "IDLE",
+    "created_offset": 324,
+    "deleted_offset": null,
+    "first_seen_offset": 304
+  }
+]

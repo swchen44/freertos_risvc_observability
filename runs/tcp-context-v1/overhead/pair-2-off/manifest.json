@@ -1,0 +1,77 @@
+{
+  "schema": "context-runset-v1",
+  "candidate": "A02-baseline",
+  "guest_source_commit": "6a0ef47110664d43d3e6d13096c54e8b1e2e9430",
+  "collector_source_commit": "4696c1ed21e1b079008f69ac30d1ec1d38fdc96b",
+  "source_runset": "runs/tcp-workload-matrix-v1/A02-baseline",
+  "guest_elf_sha256": "47a1ea2c0bc555d0e6d8db9c605272c9963c8868161302435fd76e460b82d830",
+  "qemu_sha256": "69969c3ec8cce8f9340215fc340c5c01f81c3ef978252d3766937d2d176816db",
+  "plugin_sha256": "6b8b4bae334f9667757bbb525404d5b03c9b083e82d23318806288fab72f58cd",
+  "compiler_sha256": "7f30f076d0e9c38f772a76449fca9da8cf97f6a3d43b94c90a00e4f9ce7ad39e",
+  "collector_sources": {
+    "tools/tcp/live_cache.c": "2e362e0cee66e850d15ba5db5d2b12b02883a143f3017211c3626af6ad2ae921",
+    "tools/tcp/live_context.c": "958b3d24ec9d591484ea8170a3814443e9147e04c5819bb23b42f628ee433bf4",
+    "tools/tcp/live_context.h": "fb80cef7bde0a6810075d6510cb6ee5c331f6a7d5280000e5f62bf95f2eb26d8",
+    "tools/qemu/live_timing.c": "4cf7bde85f54d097327ddf6fdfb879b433f7dfeea77c2439813cecdeb5fa8e09",
+    "tools/qemu/live_timing.h": "a238f0953c465513e423a9e8ba01d70a1aa073c729bb1f0de8d865658686e1b0",
+    "src/psf_lab/context_capture.py": "3d9915a3d909f296527aeb437c41cc097b89f17f7294b6b4daae085ff0d366df",
+    "src/psf_lab/context_boundaries.py": "ab02debb89cf2ce012c0134999d659da370b2a936771882fa0b98f782bc399ba",
+    "src/psf_lab/execution_context.py": "7cc16924e9c93486458a871c007e7a0f98d6ae49868f287a6d4b5e9c226b2b6c",
+    "cases/timing/attribution-rules-v1.json": "869bc15d3352e7432d802e5d60abe29967d64423c758a30d75957d6367b37b8b"
+  },
+  "rules_sha256": "869bc15d3352e7432d802e5d60abe29967d64423c758a30d75957d6367b37b8b",
+  "boundary_sha256": "396faecb95f531eaef3c52cb15618c66f81a8b00811e6c868d0d3bb8637b4a0a",
+  "boundary_config_sha256": "db18458e2498b068b6bf788d57be3a981ad47be046b230ee9bb191c286428e74",
+  "pair_checks": [],
+  "runs": [
+    {
+      "candidate": "A02-baseline",
+      "mode": 1,
+      "repeat": 1,
+      "context_enabled": false,
+      "parity_passed": true,
+      "context_exact": false,
+      "accepted": true,
+      "exit_code": 0,
+      "host_wall_seconds": 0.8034725829493254,
+      "audit": {
+        "events": 430324,
+        "operations": {
+          "I": 346485,
+          "R": 50733,
+          "W": 33106
+        },
+        "cycles": 1088094,
+        "ns": 2176188,
+        "costs": {
+          "l1i": 347365,
+          "l1d": 83839,
+          "l2": 278864,
+          "ram_read": 13860,
+          "ram_write": 364166
+        },
+        "stream_sha256": "894fddae016a7317a2b9a14c536be732756d4dbdd19f616d4474f6536c628136"
+      },
+      "measurement": {
+        "case": "tcp_request_response",
+        "before": 3016,
+        "after": 28245,
+        "before_tick": 0,
+        "ticks": 2,
+        "work": 11680,
+        "woke": 1,
+        "observer_tick": 2,
+        "observer_mtime": 23075
+      },
+      "context_quality": "not_collected",
+      "raw_rows": 430324,
+      "events_per_second": 535580.1916978918,
+      "raw_bytes": 15525597,
+      "raw_disk_bytes": 595623,
+      "sidecar_bytes": 0,
+      "sidecar_disk_bytes": 0,
+      "run_manifest_sha256": "8c053995f1c0fe7038a030700629a52ab0c032aad5e4aa86c05e04584e9cec8f"
+    }
+  ],
+  "passed": true
+}

@@ -1,0 +1,16 @@
+{"schema":"context-event-v1","seq":0,"event_index":0,"phase":"before","pc":2147496106,"kind":"begin","task_id":2148022416,"cause":null,"depth":0,"evidence":"elf-boundary-v1"}
+{"schema":"context-event-v1","seq":1,"event_index":153048,"phase":"before","pc":2147519232,"kind":"trap_enter","task_id":null,"cause":2147483655,"depth":1,"evidence":"elf-boundary-v1"}
+{"schema":"context-event-v1","seq":2,"event_index":153513,"phase":"after","pc":2147519530,"kind":"mret_pending","task_id":2148022416,"cause":null,"depth":1,"evidence":"elf-boundary-v1"}
+{"schema":"context-event-v1","seq":3,"event_index":153514,"phase":"before","pc":2147520118,"kind":"return_commit","task_id":2148022416,"cause":null,"depth":0,"evidence":"elf-boundary-v1"}
+{"schema":"context-event-v1","seq":4,"event_index":317118,"phase":"before","pc":2147519232,"kind":"trap_enter","task_id":null,"cause":2147483655,"depth":1,"evidence":"elf-boundary-v1"}
+{"schema":"context-event-v1","seq":5,"event_index":317879,"phase":"before","pc":2147493112,"kind":"selected_task","task_id":2148014096,"cause":null,"depth":1,"evidence":"elf-boundary-v1"}
+{"schema":"context-event-v1","seq":6,"event_index":318204,"phase":"after","pc":2147519530,"kind":"mret_pending","task_id":2148014096,"cause":null,"depth":1,"evidence":"elf-boundary-v1"}
+{"schema":"context-event-v1","seq":7,"event_index":318205,"phase":"before","pc":2147485864,"kind":"return_commit","task_id":2148014096,"cause":null,"depth":0,"evidence":"elf-boundary-v1"}
+{"schema":"context-event-v1","seq":8,"event_index":322440,"phase":"before","pc":2147519232,"kind":"trap_enter","task_id":null,"cause":11,"depth":1,"evidence":"elf-boundary-v1"}
+{"schema":"context-event-v1","seq":9,"event_index":322610,"phase":"before","pc":2147493112,"kind":"selected_task","task_id":2148022416,"cause":null,"depth":1,"evidence":"elf-boundary-v1"}
+{"schema":"context-event-v1","seq":10,"event_index":322935,"phase":"after","pc":2147519530,"kind":"mret_pending","task_id":2148022416,"cause":null,"depth":1,"evidence":"elf-boundary-v1"}
+{"schema":"context-event-v1","seq":11,"event_index":322936,"phase":"before","pc":2147507312,"kind":"return_commit","task_id":2148022416,"cause":null,"depth":0,"evidence":"elf-boundary-v1"}
+{"schema":"context-event-v1","seq":12,"event_index":493775,"phase":"before","pc":2147519232,"kind":"trap_enter","task_id":null,"cause":2147483655,"depth":1,"evidence":"elf-boundary-v1"}
+{"schema":"context-event-v1","seq":13,"event_index":494240,"phase":"after","pc":2147519530,"kind":"mret_pending","task_id":2148022416,"cause":null,"depth":1,"evidence":"elf-boundary-v1"}
+{"schema":"context-event-v1","seq":14,"event_index":494241,"phase":"before","pc":2147498500,"kind":"return_commit","task_id":2148022416,"cause":null,"depth":0,"evidence":"elf-boundary-v1"}
+{"schema":"context-event-v1","seq":15,"event_index":540539,"phase":"before","pc":2147496110,"kind":"end","task_id":null,"cause":null,"depth":0,"evidence":"elf-boundary-v1"}

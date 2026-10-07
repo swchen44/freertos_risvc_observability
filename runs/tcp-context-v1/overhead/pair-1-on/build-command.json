@@ -1,0 +1,23 @@
+[
+  "cc",
+  "-dynamiclib",
+  "-undefined",
+  "dynamic_lookup",
+  "-O2",
+  "-Wall",
+  "-Wextra",
+  "-Werror",
+  "-I/Users/swchen.tw/git/percepio/poc/references/qemu-time-control/include/qemu",
+  "-I/opt/homebrew/Cellar/glib/2.90.0/include/glib-2.0",
+  "-I/opt/homebrew/Cellar/glib/2.90.0/lib/glib-2.0/include",
+  "-I/opt/homebrew/opt/gettext/include",
+  "-I/opt/homebrew/Cellar/pcre2/10.49/include",
+  "-DPOC_SMALL_CACHE",
+  "-DPOC_LIVE_IRQ",
+  "-DPOC_CONTEXT",
+  "/Users/swchen.tw/git/percepio/poc/tools/tcp/live_cache.c",
+  "/Users/swchen.tw/git/percepio/poc/tools/tcp/live_context.c",
+  "/Users/swchen.tw/git/percepio/poc/tools/qemu/live_timing.c",
+  "-o",
+  "/Users/swchen.tw/git/percepio/poc/runs/local/tcp-context-overhead/pair-1-on/live_context.dylib"
+]

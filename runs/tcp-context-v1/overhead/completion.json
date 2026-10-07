@@ -1,0 +1,309 @@
+{
+  "passed": true,
+  "runs": [
+    {
+      "pair": 1,
+      "candidate": "A02-baseline",
+      "mode": 1,
+      "repeat": 1,
+      "context_enabled": false,
+      "parity_passed": true,
+      "context_exact": false,
+      "accepted": true,
+      "exit_code": 0,
+      "host_wall_seconds": 0.8110380000434816,
+      "audit": {
+        "events": 430324,
+        "operations": {
+          "I": 346485,
+          "R": 50733,
+          "W": 33106
+        },
+        "cycles": 1088094,
+        "ns": 2176188,
+        "costs": {
+          "l1i": 347365,
+          "l1d": 83839,
+          "l2": 278864,
+          "ram_read": 13860,
+          "ram_write": 364166
+        },
+        "stream_sha256": "894fddae016a7317a2b9a14c536be732756d4dbdd19f616d4474f6536c628136"
+      },
+      "measurement": {
+        "case": "tcp_request_response",
+        "before": 3016,
+        "after": 28245,
+        "before_tick": 0,
+        "ticks": 2,
+        "work": 11680,
+        "woke": 1,
+        "observer_tick": 2,
+        "observer_mtime": 23075
+      },
+      "context_quality": "not_collected",
+      "raw_rows": 430324,
+      "events_per_second": 530584.2635942204,
+      "raw_bytes": 15525597,
+      "raw_disk_bytes": 595623,
+      "sidecar_bytes": 0,
+      "sidecar_disk_bytes": 0,
+      "run_manifest_sha256": "1869f6bdc8c5630b8686d68784765f7c7472d32f69ca8c3296c4be43edfff8ba"
+    },
+    {
+      "pair": 1,
+      "candidate": "A02-baseline",
+      "mode": 1,
+      "repeat": 1,
+      "context_enabled": true,
+      "parity_passed": true,
+      "context_exact": true,
+      "accepted": true,
+      "exit_code": 0,
+      "host_wall_seconds": 0.7745014170068316,
+      "audit": {
+        "events": 430324,
+        "operations": {
+          "I": 346485,
+          "R": 50733,
+          "W": 33106
+        },
+        "cycles": 1088094,
+        "ns": 2176188,
+        "costs": {
+          "l1i": 347365,
+          "l1d": 83839,
+          "l2": 278864,
+          "ram_read": 13860,
+          "ram_write": 364166
+        },
+        "stream_sha256": "894fddae016a7317a2b9a14c536be732756d4dbdd19f616d4474f6536c628136"
+      },
+      "measurement": {
+        "case": "tcp_request_response",
+        "before": 3016,
+        "after": 28245,
+        "before_tick": 0,
+        "ticks": 2,
+        "work": 11680,
+        "woke": 1,
+        "observer_tick": 2,
+        "observer_mtime": 23075
+      },
+      "context_quality": "exact",
+      "raw_rows": 430324,
+      "events_per_second": 555614.219097296,
+      "raw_bytes": 15525597,
+      "raw_disk_bytes": 595623,
+      "sidecar_bytes": 2395,
+      "sidecar_disk_bytes": 2395,
+      "run_manifest_sha256": "1d1103285d46ac42ee3c7a5105e7d2105777ab89c3607f3e108013a89ea5c26d"
+    },
+    {
+      "pair": 2,
+      "candidate": "A02-baseline",
+      "mode": 1,
+      "repeat": 1,
+      "context_enabled": false,
+      "parity_passed": true,
+      "context_exact": false,
+      "accepted": true,
+      "exit_code": 0,
+      "host_wall_seconds": 0.8034725829493254,
+      "audit": {
+        "events": 430324,
+        "operations": {
+          "I": 346485,
+          "R": 50733,
+          "W": 33106
+        },
+        "cycles": 1088094,
+        "ns": 2176188,
+        "costs": {
+          "l1i": 347365,
+          "l1d": 83839,
+          "l2": 278864,
+          "ram_read": 13860,
+          "ram_write": 364166
+        },
+        "stream_sha256": "894fddae016a7317a2b9a14c536be732756d4dbdd19f616d4474f6536c628136"
+      },
+      "measurement": {
+        "case": "tcp_request_response",
+        "before": 3016,
+        "after": 28245,
+        "before_tick": 0,
+        "ticks": 2,
+        "work": 11680,
+        "woke": 1,
+        "observer_tick": 2,
+        "observer_mtime": 23075
+      },
+      "context_quality": "not_collected",
+      "raw_rows": 430324,
+      "events_per_second": 535580.1916978918,
+      "raw_bytes": 15525597,
+      "raw_disk_bytes": 595623,
+      "sidecar_bytes": 0,
+      "sidecar_disk_bytes": 0,
+      "run_manifest_sha256": "8c053995f1c0fe7038a030700629a52ab0c032aad5e4aa86c05e04584e9cec8f"
+    },
+    {
+      "pair": 2,
+      "candidate": "A02-baseline",
+      "mode": 1,
+      "repeat": 1,
+      "context_enabled": true,
+      "parity_passed": true,
+      "context_exact": true,
+      "accepted": true,
+      "exit_code": 0,
+      "host_wall_seconds": 0.7797145420336165,
+      "audit": {
+        "events": 430324,
+        "operations": {
+          "I": 346485,
+          "R": 50733,
+          "W": 33106
+        },
+        "cycles": 1088094,
+        "ns": 2176188,
+        "costs": {
+          "l1i": 347365,
+          "l1d": 83839,
+          "l2": 278864,
+          "ram_read": 13860,
+          "ram_write": 364166
+        },
+        "stream_sha256": "894fddae016a7317a2b9a14c536be732756d4dbdd19f616d4474f6536c628136"
+      },
+      "measurement": {
+        "case": "tcp_request_response",
+        "before": 3016,
+        "after": 28245,
+        "before_tick": 0,
+        "ticks": 2,
+        "work": 11680,
+        "woke": 1,
+        "observer_tick": 2,
+        "observer_mtime": 23075
+      },
+      "context_quality": "exact",
+      "raw_rows": 430324,
+      "events_per_second": 551899.415493327,
+      "raw_bytes": 15525597,
+      "raw_disk_bytes": 595623,
+      "sidecar_bytes": 2395,
+      "sidecar_disk_bytes": 2395,
+      "run_manifest_sha256": "27c03ec75f11d1d0b426db6d33cfaf89efde6e346e44b02e643516a4874f7317"
+    },
+    {
+      "pair": 3,
+      "candidate": "A02-baseline",
+      "mode": 1,
+      "repeat": 1,
+      "context_enabled": false,
+      "parity_passed": true,
+      "context_exact": false,
+      "accepted": true,
+      "exit_code": 0,
+      "host_wall_seconds": 0.7648888329858892,
+      "audit": {
+        "events": 430324,
+        "operations": {
+          "I": 346485,
+          "R": 50733,
+          "W": 33106
+        },
+        "cycles": 1088094,
+        "ns": 2176188,
+        "costs": {
+          "l1i": 347365,
+          "l1d": 83839,
+          "l2": 278864,
+          "ram_read": 13860,
+          "ram_write": 364166
+        },
+        "stream_sha256": "894fddae016a7317a2b9a14c536be732756d4dbdd19f616d4474f6536c628136"
+      },
+      "measurement": {
+        "case": "tcp_request_response",
+        "before": 3016,
+        "after": 28245,
+        "before_tick": 0,
+        "ticks": 2,
+        "work": 11680,
+        "woke": 1,
+        "observer_tick": 2,
+        "observer_mtime": 23075
+      },
+      "context_quality": "not_collected",
+      "raw_rows": 430324,
+      "events_per_second": 562596.7871960535,
+      "raw_bytes": 15525597,
+      "raw_disk_bytes": 595623,
+      "sidecar_bytes": 0,
+      "sidecar_disk_bytes": 0,
+      "run_manifest_sha256": "aea5431551087e443071826f9e47116e6e29c3f9d539bac7b6157d00978f6708"
+    },
+    {
+      "pair": 3,
+      "candidate": "A02-baseline",
+      "mode": 1,
+      "repeat": 1,
+      "context_enabled": true,
+      "parity_passed": true,
+      "context_exact": true,
+      "accepted": true,
+      "exit_code": 0,
+      "host_wall_seconds": 0.7573765409761108,
+      "audit": {
+        "events": 430324,
+        "operations": {
+          "I": 346485,
+          "R": 50733,
+          "W": 33106
+        },
+        "cycles": 1088094,
+        "ns": 2176188,
+        "costs": {
+          "l1i": 347365,
+          "l1d": 83839,
+          "l2": 278864,
+          "ram_read": 13860,
+          "ram_write": 364166
+        },
+        "stream_sha256": "894fddae016a7317a2b9a14c536be732756d4dbdd19f616d4474f6536c628136"
+      },
+      "measurement": {
+        "case": "tcp_request_response",
+        "before": 3016,
+        "after": 28245,
+        "before_tick": 0,
+        "ticks": 2,
+        "work": 11680,
+        "woke": 1,
+        "observer_tick": 2,
+        "observer_mtime": 23075
+      },
+      "context_quality": "exact",
+      "raw_rows": 430324,
+      "events_per_second": 568177.0912067017,
+      "raw_bytes": 15525597,
+      "raw_disk_bytes": 595623,
+      "sidecar_bytes": 2395,
+      "sidecar_disk_bytes": 2395,
+      "run_manifest_sha256": "b0b6eceb44591ea2361385ae6511dfe53819938ef7de4b4a267fb71a44df2ec7"
+    }
+  ],
+  "median_off_seconds": 0.8034725829493254,
+  "median_on_seconds": 0.7745014170068316,
+  "median_relative_increase_pct": -3.6057441855885974,
+  "paired_increase_pct": [
+    -4.504916296732232,
+    -2.956919927310998,
+    -0.9821416767783966
+  ],
+  "median_paired_increase_pct": -2.956919927310998,
+  "scope": "QEMU launch-to-exit host wall time; not guest CPU loading"
+}

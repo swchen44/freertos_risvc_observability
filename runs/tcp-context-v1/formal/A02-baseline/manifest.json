@@ -1,0 +1,348 @@
+{
+  "schema": "context-runset-v1",
+  "candidate": "A02-baseline",
+  "guest_source_commit": "6a0ef47110664d43d3e6d13096c54e8b1e2e9430",
+  "collector_source_commit": "ace57018d4c00812a758d061f11341b1202233a1",
+  "source_runset": "runs/tcp-workload-matrix-v1/A02-baseline",
+  "guest_elf_sha256": "47a1ea2c0bc555d0e6d8db9c605272c9963c8868161302435fd76e460b82d830",
+  "qemu_sha256": "69969c3ec8cce8f9340215fc340c5c01f81c3ef978252d3766937d2d176816db",
+  "plugin_sha256": "f17bd3a51a175a812cfb5810072dd157b55e34cee03d44bc7a1daacd15fa3299",
+  "compiler_sha256": "7f30f076d0e9c38f772a76449fca9da8cf97f6a3d43b94c90a00e4f9ce7ad39e",
+  "collector_sources": {
+    "tools/tcp/live_cache.c": "2e362e0cee66e850d15ba5db5d2b12b02883a143f3017211c3626af6ad2ae921",
+    "tools/tcp/live_context.c": "958b3d24ec9d591484ea8170a3814443e9147e04c5819bb23b42f628ee433bf4",
+    "tools/tcp/live_context.h": "fb80cef7bde0a6810075d6510cb6ee5c331f6a7d5280000e5f62bf95f2eb26d8",
+    "tools/qemu/live_timing.c": "4cf7bde85f54d097327ddf6fdfb879b433f7dfeea77c2439813cecdeb5fa8e09",
+    "tools/qemu/live_timing.h": "a238f0953c465513e423a9e8ba01d70a1aa073c729bb1f0de8d865658686e1b0",
+    "src/psf_lab/context_capture.py": "3d9915a3d909f296527aeb437c41cc097b89f17f7294b6b4daae085ff0d366df",
+    "src/psf_lab/context_boundaries.py": "ab02debb89cf2ce012c0134999d659da370b2a936771882fa0b98f782bc399ba",
+    "src/psf_lab/execution_context.py": "a851c18c76ac28fcbdcb7f1e041a484869437a99674c37d7b7bbcf469168f7b3",
+    "cases/timing/attribution-rules-v1.json": "869bc15d3352e7432d802e5d60abe29967d64423c758a30d75957d6367b37b8b"
+  },
+  "rules_sha256": "869bc15d3352e7432d802e5d60abe29967d64423c758a30d75957d6367b37b8b",
+  "boundary_sha256": "396faecb95f531eaef3c52cb15618c66f81a8b00811e6c868d0d3bb8637b4a0a",
+  "boundary_config_sha256": "db18458e2498b068b6bf788d57be3a981ad47be046b230ee9bb191c286428e74",
+  "pair_checks": [
+    {
+      "extra_guest_ns": 2180700,
+      "injected_service_ns": 2176188,
+      "extra_instruction_ns": 4551,
+      "expected_extra_ns": 2180739,
+      "error_ns": -39,
+      "tolerance_ns": 200,
+      "active_ticks": 2,
+      "observer_tick": 2
+    },
+    {
+      "extra_guest_ns": 2180700,
+      "injected_service_ns": 2176188,
+      "extra_instruction_ns": 4551,
+      "expected_extra_ns": 2180739,
+      "error_ns": -39,
+      "tolerance_ns": 200,
+      "active_ticks": 2,
+      "observer_tick": 2
+    },
+    {
+      "extra_guest_ns": 2180700,
+      "injected_service_ns": 2176188,
+      "extra_instruction_ns": 4551,
+      "expected_extra_ns": 2180739,
+      "error_ns": -39,
+      "tolerance_ns": 200,
+      "active_ticks": 2,
+      "observer_tick": 2
+    }
+  ],
+  "runs": [
+    {
+      "candidate": "A02-baseline",
+      "mode": 0,
+      "repeat": 1,
+      "context_enabled": true,
+      "parity_passed": true,
+      "context_exact": true,
+      "accepted": true,
+      "exit_code": 0,
+      "host_wall_seconds": 0.6037515840143897,
+      "audit": {
+        "events": 424040,
+        "operations": {
+          "I": 341934,
+          "R": 49718,
+          "W": 32388
+        },
+        "cycles": 1062940,
+        "ns": 2125880,
+        "costs": {
+          "l1i": 342796,
+          "l1d": 82106,
+          "l2": 271384,
+          "ram_read": 10386,
+          "ram_write": 356268
+        },
+        "stream_sha256": "9d79da591a65f480c4d8423d604b806ba95df92f13e1932d7895071c1da0d9f9"
+      },
+      "measurement": {
+        "case": "tcp_request_response",
+        "before": 3016,
+        "after": 6438,
+        "before_tick": 0,
+        "ticks": 0,
+        "work": 11680,
+        "woke": 0,
+        "observer_tick": 0,
+        "observer_mtime": 0
+      },
+      "context_quality": "exact",
+      "raw_rows": 424040,
+      "events_per_second": 702341.8426176644,
+      "raw_bytes": 15298461,
+      "raw_disk_bytes": 574074,
+      "sidecar_bytes": 347,
+      "sidecar_disk_bytes": 347,
+      "run_manifest_sha256": "bc9033ff72d34f0405039b254e26bf19627d44bf87277baadeeb60533f3ca421"
+    },
+    {
+      "candidate": "A02-baseline",
+      "mode": 0,
+      "repeat": 2,
+      "context_enabled": true,
+      "parity_passed": true,
+      "context_exact": true,
+      "accepted": true,
+      "exit_code": 0,
+      "host_wall_seconds": 0.23693024995736778,
+      "audit": {
+        "events": 424040,
+        "operations": {
+          "I": 341934,
+          "R": 49718,
+          "W": 32388
+        },
+        "cycles": 1062940,
+        "ns": 2125880,
+        "costs": {
+          "l1i": 342796,
+          "l1d": 82106,
+          "l2": 271384,
+          "ram_read": 10386,
+          "ram_write": 356268
+        },
+        "stream_sha256": "9d79da591a65f480c4d8423d604b806ba95df92f13e1932d7895071c1da0d9f9"
+      },
+      "measurement": {
+        "case": "tcp_request_response",
+        "before": 3016,
+        "after": 6438,
+        "before_tick": 0,
+        "ticks": 0,
+        "work": 11680,
+        "woke": 0,
+        "observer_tick": 0,
+        "observer_mtime": 0
+      },
+      "context_quality": "exact",
+      "raw_rows": 424040,
+      "events_per_second": 1789725.0354325797,
+      "raw_bytes": 15298461,
+      "raw_disk_bytes": 574074,
+      "sidecar_bytes": 347,
+      "sidecar_disk_bytes": 347,
+      "run_manifest_sha256": "aac86f923f142de61341ebd1483f7ec72de89a0d92117524020b934642ad9903"
+    },
+    {
+      "candidate": "A02-baseline",
+      "mode": 0,
+      "repeat": 3,
+      "context_enabled": true,
+      "parity_passed": true,
+      "context_exact": true,
+      "accepted": true,
+      "exit_code": 0,
+      "host_wall_seconds": 0.22808550001354888,
+      "audit": {
+        "events": 424040,
+        "operations": {
+          "I": 341934,
+          "R": 49718,
+          "W": 32388
+        },
+        "cycles": 1062940,
+        "ns": 2125880,
+        "costs": {
+          "l1i": 342796,
+          "l1d": 82106,
+          "l2": 271384,
+          "ram_read": 10386,
+          "ram_write": 356268
+        },
+        "stream_sha256": "9d79da591a65f480c4d8423d604b806ba95df92f13e1932d7895071c1da0d9f9"
+      },
+      "measurement": {
+        "case": "tcp_request_response",
+        "before": 3016,
+        "after": 6438,
+        "before_tick": 0,
+        "ticks": 0,
+        "work": 11680,
+        "woke": 0,
+        "observer_tick": 0,
+        "observer_mtime": 0
+      },
+      "context_quality": "exact",
+      "raw_rows": 424040,
+      "events_per_second": 1859127.3885223344,
+      "raw_bytes": 15298461,
+      "raw_disk_bytes": 574074,
+      "sidecar_bytes": 347,
+      "sidecar_disk_bytes": 347,
+      "run_manifest_sha256": "a9ed3c9dd47c7a52b62179f5e834b32d168772f2d70227b6e90c441a7555feb6"
+    },
+    {
+      "candidate": "A02-baseline",
+      "mode": 1,
+      "repeat": 1,
+      "context_enabled": true,
+      "parity_passed": true,
+      "context_exact": true,
+      "accepted": true,
+      "exit_code": 0,
+      "host_wall_seconds": 0.5961228749947622,
+      "audit": {
+        "events": 430324,
+        "operations": {
+          "I": 346485,
+          "R": 50733,
+          "W": 33106
+        },
+        "cycles": 1088094,
+        "ns": 2176188,
+        "costs": {
+          "l1i": 347365,
+          "l1d": 83839,
+          "l2": 278864,
+          "ram_read": 13860,
+          "ram_write": 364166
+        },
+        "stream_sha256": "894fddae016a7317a2b9a14c536be732756d4dbdd19f616d4474f6536c628136"
+      },
+      "measurement": {
+        "case": "tcp_request_response",
+        "before": 3016,
+        "after": 28245,
+        "before_tick": 0,
+        "ticks": 2,
+        "work": 11680,
+        "woke": 1,
+        "observer_tick": 2,
+        "observer_mtime": 23075
+      },
+      "context_quality": "exact",
+      "raw_rows": 430324,
+      "events_per_second": 721871.3088367578,
+      "raw_bytes": 15525597,
+      "raw_disk_bytes": 595623,
+      "sidecar_bytes": 2395,
+      "sidecar_disk_bytes": 2395,
+      "run_manifest_sha256": "b6212da1a2882b348ad5c349c625afe17de4e3a1454c176c8f61b5d54f668344"
+    },
+    {
+      "candidate": "A02-baseline",
+      "mode": 1,
+      "repeat": 2,
+      "context_enabled": true,
+      "parity_passed": true,
+      "context_exact": true,
+      "accepted": true,
+      "exit_code": 0,
+      "host_wall_seconds": 0.5084935419727117,
+      "audit": {
+        "events": 430324,
+        "operations": {
+          "I": 346485,
+          "R": 50733,
+          "W": 33106
+        },
+        "cycles": 1088094,
+        "ns": 2176188,
+        "costs": {
+          "l1i": 347365,
+          "l1d": 83839,
+          "l2": 278864,
+          "ram_read": 13860,
+          "ram_write": 364166
+        },
+        "stream_sha256": "894fddae016a7317a2b9a14c536be732756d4dbdd19f616d4474f6536c628136"
+      },
+      "measurement": {
+        "case": "tcp_request_response",
+        "before": 3016,
+        "after": 28245,
+        "before_tick": 0,
+        "ticks": 2,
+        "work": 11680,
+        "woke": 1,
+        "observer_tick": 2,
+        "observer_mtime": 23075
+      },
+      "context_quality": "exact",
+      "raw_rows": 430324,
+      "events_per_second": 846272.301375842,
+      "raw_bytes": 15525597,
+      "raw_disk_bytes": 595623,
+      "sidecar_bytes": 2395,
+      "sidecar_disk_bytes": 2395,
+      "run_manifest_sha256": "978f483458b78ebe7088332a6ddff2308a36df97d7268dc829679d3fc3e92d5e"
+    },
+    {
+      "candidate": "A02-baseline",
+      "mode": 1,
+      "repeat": 3,
+      "context_enabled": true,
+      "parity_passed": true,
+      "context_exact": true,
+      "accepted": true,
+      "exit_code": 0,
+      "host_wall_seconds": 0.5031074160360731,
+      "audit": {
+        "events": 430324,
+        "operations": {
+          "I": 346485,
+          "R": 50733,
+          "W": 33106
+        },
+        "cycles": 1088094,
+        "ns": 2176188,
+        "costs": {
+          "l1i": 347365,
+          "l1d": 83839,
+          "l2": 278864,
+          "ram_read": 13860,
+          "ram_write": 364166
+        },
+        "stream_sha256": "894fddae016a7317a2b9a14c536be732756d4dbdd19f616d4474f6536c628136"
+      },
+      "measurement": {
+        "case": "tcp_request_response",
+        "before": 3016,
+        "after": 28245,
+        "before_tick": 0,
+        "ticks": 2,
+        "work": 11680,
+        "woke": 1,
+        "observer_tick": 2,
+        "observer_mtime": 23075
+      },
+      "context_quality": "exact",
+      "raw_rows": 430324,
+      "events_per_second": 855332.2536775039,
+      "raw_bytes": 15525597,
+      "raw_disk_bytes": 595623,
+      "sidecar_bytes": 2395,
+      "sidecar_disk_bytes": 2395,
+      "run_manifest_sha256": "f0adb56f037d09c469645e687bb42856799763f34ab24294c8921dd74a96248e"
+    }
+  ],
+  "passed": true
+}

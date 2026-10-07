@@ -1,0 +1,2 @@
+{"schema":"context-event-v1","seq":0,"event_index":0,"phase":"before","pc":2147496070,"kind":"begin","task_id":2148022416,"cause":null,"depth":0,"evidence":"elf-boundary-v1"}
+{"schema":"context-event-v1","seq":1,"event_index":424040,"phase":"before","pc":2147496074,"kind":"end","task_id":null,"cause":null,"depth":0,"evidence":"elf-boundary-v1"}

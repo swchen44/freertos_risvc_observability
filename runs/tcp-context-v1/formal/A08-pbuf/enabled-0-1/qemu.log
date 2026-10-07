@@ -1,0 +1,3 @@
+context_capabilities registers=259 mcause_matches=1
+live_cache_complete events=533789 cycles=1388423 api_calls=0
+live_cache_mmio_count=0

@@ -1,0 +1,348 @@
+{
+  "schema": "context-runset-v1",
+  "candidate": "A08-baseline",
+  "guest_source_commit": "6a0ef47110664d43d3e6d13096c54e8b1e2e9430",
+  "collector_source_commit": "ace57018d4c00812a758d061f11341b1202233a1",
+  "source_runset": "runs/tcp-workload-matrix-v1/A08-baseline",
+  "guest_elf_sha256": "b9870dfa0c528bf2eaf11bf03a0a215b0eadbae8403867e7cc9aec0f4335d4a4",
+  "qemu_sha256": "69969c3ec8cce8f9340215fc340c5c01f81c3ef978252d3766937d2d176816db",
+  "plugin_sha256": "e358dace2a4bf115331c691737adab6f1a8eb05150b295b766acd7dcbbd56ffb",
+  "compiler_sha256": "7f30f076d0e9c38f772a76449fca9da8cf97f6a3d43b94c90a00e4f9ce7ad39e",
+  "collector_sources": {
+    "tools/tcp/live_cache.c": "2e362e0cee66e850d15ba5db5d2b12b02883a143f3017211c3626af6ad2ae921",
+    "tools/tcp/live_context.c": "958b3d24ec9d591484ea8170a3814443e9147e04c5819bb23b42f628ee433bf4",
+    "tools/tcp/live_context.h": "fb80cef7bde0a6810075d6510cb6ee5c331f6a7d5280000e5f62bf95f2eb26d8",
+    "tools/qemu/live_timing.c": "4cf7bde85f54d097327ddf6fdfb879b433f7dfeea77c2439813cecdeb5fa8e09",
+    "tools/qemu/live_timing.h": "a238f0953c465513e423a9e8ba01d70a1aa073c729bb1f0de8d865658686e1b0",
+    "src/psf_lab/context_capture.py": "3d9915a3d909f296527aeb437c41cc097b89f17f7294b6b4daae085ff0d366df",
+    "src/psf_lab/context_boundaries.py": "ab02debb89cf2ce012c0134999d659da370b2a936771882fa0b98f782bc399ba",
+    "src/psf_lab/execution_context.py": "a851c18c76ac28fcbdcb7f1e041a484869437a99674c37d7b7bbcf469168f7b3",
+    "cases/timing/attribution-rules-v1.json": "869bc15d3352e7432d802e5d60abe29967d64423c758a30d75957d6367b37b8b"
+  },
+  "rules_sha256": "869bc15d3352e7432d802e5d60abe29967d64423c758a30d75957d6367b37b8b",
+  "boundary_sha256": "f32d67b46481a155b0912e66f48c7e8cbde9fa70509f716753d839f5c9623924",
+  "boundary_config_sha256": "aa37d401062a2e20b0c1ee34f713f63ad058dda1121849effc057c1046f457ea",
+  "pair_checks": [
+    {
+      "extra_guest_ns": 3079900,
+      "injected_service_ns": 3075088,
+      "extra_instruction_ns": 4851,
+      "expected_extra_ns": 3079939,
+      "error_ns": -39,
+      "tolerance_ns": 200,
+      "active_ticks": 3,
+      "observer_tick": 2
+    },
+    {
+      "extra_guest_ns": 3079900,
+      "injected_service_ns": 3075088,
+      "extra_instruction_ns": 4851,
+      "expected_extra_ns": 3079939,
+      "error_ns": -39,
+      "tolerance_ns": 200,
+      "active_ticks": 3,
+      "observer_tick": 2
+    },
+    {
+      "extra_guest_ns": 3079900,
+      "injected_service_ns": 3075088,
+      "extra_instruction_ns": 4851,
+      "expected_extra_ns": 3079939,
+      "error_ns": -39,
+      "tolerance_ns": 200,
+      "active_ticks": 3,
+      "observer_tick": 2
+    }
+  ],
+  "runs": [
+    {
+      "candidate": "A08-baseline",
+      "mode": 0,
+      "repeat": 1,
+      "context_enabled": true,
+      "parity_passed": true,
+      "context_exact": true,
+      "accepted": true,
+      "exit_code": 0,
+      "host_wall_seconds": 0.5525287079508416,
+      "audit": {
+        "events": 603827,
+        "operations": {
+          "I": 487397,
+          "R": 70119,
+          "W": 46311
+        },
+        "cycles": 1509519,
+        "ns": 3019038,
+        "costs": {
+          "l1i": 487920,
+          "l1d": 116430,
+          "l2": 383400,
+          "ram_read": 12348,
+          "ram_write": 509421
+        },
+        "stream_sha256": "9f185162d2dccf5824cf91467c67b9a4911bb61e6d62b49946ff7e93a26f6e2c"
+      },
+      "measurement": {
+        "case": "tcp_request_response",
+        "before": 3026,
+        "after": 7903,
+        "before_tick": 0,
+        "ticks": 0,
+        "work": 11680,
+        "woke": 0,
+        "observer_tick": 0,
+        "observer_mtime": 0
+      },
+      "context_quality": "exact",
+      "raw_rows": 603827,
+      "events_per_second": 1092842.7633007665,
+      "raw_bytes": 21784825,
+      "raw_disk_bytes": 675864,
+      "sidecar_bytes": 347,
+      "sidecar_disk_bytes": 347,
+      "run_manifest_sha256": "186b82ed82e6b189ed509cee4eef5d63a021e0fedfc1a6a264b3e183d559019a"
+    },
+    {
+      "candidate": "A08-baseline",
+      "mode": 0,
+      "repeat": 2,
+      "context_enabled": true,
+      "parity_passed": true,
+      "context_exact": true,
+      "accepted": true,
+      "exit_code": 0,
+      "host_wall_seconds": 0.2875595830264501,
+      "audit": {
+        "events": 603827,
+        "operations": {
+          "I": 487397,
+          "R": 70119,
+          "W": 46311
+        },
+        "cycles": 1509519,
+        "ns": 3019038,
+        "costs": {
+          "l1i": 487920,
+          "l1d": 116430,
+          "l2": 383400,
+          "ram_read": 12348,
+          "ram_write": 509421
+        },
+        "stream_sha256": "9f185162d2dccf5824cf91467c67b9a4911bb61e6d62b49946ff7e93a26f6e2c"
+      },
+      "measurement": {
+        "case": "tcp_request_response",
+        "before": 3026,
+        "after": 7903,
+        "before_tick": 0,
+        "ticks": 0,
+        "work": 11680,
+        "woke": 0,
+        "observer_tick": 0,
+        "observer_mtime": 0
+      },
+      "context_quality": "exact",
+      "raw_rows": 603827,
+      "events_per_second": 2099832.645620644,
+      "raw_bytes": 21784825,
+      "raw_disk_bytes": 675864,
+      "sidecar_bytes": 347,
+      "sidecar_disk_bytes": 347,
+      "run_manifest_sha256": "1ff875ced1f4c1e639f7d02e9796d2f9ffb1d2297b6d1881c7d371982771ac00"
+    },
+    {
+      "candidate": "A08-baseline",
+      "mode": 0,
+      "repeat": 3,
+      "context_enabled": true,
+      "parity_passed": true,
+      "context_exact": true,
+      "accepted": true,
+      "exit_code": 0,
+      "host_wall_seconds": 0.5404495000257157,
+      "audit": {
+        "events": 603827,
+        "operations": {
+          "I": 487397,
+          "R": 70119,
+          "W": 46311
+        },
+        "cycles": 1509519,
+        "ns": 3019038,
+        "costs": {
+          "l1i": 487920,
+          "l1d": 116430,
+          "l2": 383400,
+          "ram_read": 12348,
+          "ram_write": 509421
+        },
+        "stream_sha256": "9f185162d2dccf5824cf91467c67b9a4911bb61e6d62b49946ff7e93a26f6e2c"
+      },
+      "measurement": {
+        "case": "tcp_request_response",
+        "before": 3026,
+        "after": 7903,
+        "before_tick": 0,
+        "ticks": 0,
+        "work": 11680,
+        "woke": 0,
+        "observer_tick": 0,
+        "observer_mtime": 0
+      },
+      "context_quality": "exact",
+      "raw_rows": 603827,
+      "events_per_second": 1117268.1258309402,
+      "raw_bytes": 21784825,
+      "raw_disk_bytes": 675864,
+      "sidecar_bytes": 347,
+      "sidecar_disk_bytes": 347,
+      "run_manifest_sha256": "a36b8156e6aff230948a997dbcb8cd317c23e778aab3f6f30bbbe30dbcfb3f4f"
+    },
+    {
+      "candidate": "A08-baseline",
+      "mode": 1,
+      "repeat": 1,
+      "context_enabled": true,
+      "parity_passed": true,
+      "context_exact": true,
+      "accepted": true,
+      "exit_code": 0,
+      "host_wall_seconds": 0.7708058750140481,
+      "audit": {
+        "events": 610577,
+        "operations": {
+          "I": 492248,
+          "R": 71227,
+          "W": 47102
+        },
+        "cycles": 1537544,
+        "ns": 3075088,
+        "costs": {
+          "l1i": 492791,
+          "l1d": 118329,
+          "l2": 391760,
+          "ram_read": 16542,
+          "ram_write": 518122
+        },
+        "stream_sha256": "3647d1798a2c9d6cfbfe8e0e786401b22b1c15187da6879e604f55c0766635c1"
+      },
+      "measurement": {
+        "case": "tcp_request_response",
+        "before": 3026,
+        "after": 38702,
+        "before_tick": 0,
+        "ticks": 3,
+        "work": 11680,
+        "woke": 1,
+        "observer_tick": 2,
+        "observer_mtime": 23087
+      },
+      "context_quality": "exact",
+      "raw_rows": 610577,
+      "events_per_second": 792128.108765222,
+      "raw_bytes": 22028850,
+      "raw_disk_bytes": 701861,
+      "sidecar_bytes": 2957,
+      "sidecar_disk_bytes": 2957,
+      "run_manifest_sha256": "100c482922808becb093a44c728f740fd4fc18be9bae766d3245bb220f13f295"
+    },
+    {
+      "candidate": "A08-baseline",
+      "mode": 1,
+      "repeat": 2,
+      "context_enabled": true,
+      "parity_passed": true,
+      "context_exact": true,
+      "accepted": true,
+      "exit_code": 0,
+      "host_wall_seconds": 0.7182372910319827,
+      "audit": {
+        "events": 610577,
+        "operations": {
+          "I": 492248,
+          "R": 71227,
+          "W": 47102
+        },
+        "cycles": 1537544,
+        "ns": 3075088,
+        "costs": {
+          "l1i": 492791,
+          "l1d": 118329,
+          "l2": 391760,
+          "ram_read": 16542,
+          "ram_write": 518122
+        },
+        "stream_sha256": "3647d1798a2c9d6cfbfe8e0e786401b22b1c15187da6879e604f55c0766635c1"
+      },
+      "measurement": {
+        "case": "tcp_request_response",
+        "before": 3026,
+        "after": 38702,
+        "before_tick": 0,
+        "ticks": 3,
+        "work": 11680,
+        "woke": 1,
+        "observer_tick": 2,
+        "observer_mtime": 23087
+      },
+      "context_quality": "exact",
+      "raw_rows": 610577,
+      "events_per_second": 850104.8436550912,
+      "raw_bytes": 22028850,
+      "raw_disk_bytes": 701861,
+      "sidecar_bytes": 2957,
+      "sidecar_disk_bytes": 2957,
+      "run_manifest_sha256": "c139d54757defaaf5ea89033bad076c213e374b6f5fefb6efcd4cd239a1eef14"
+    },
+    {
+      "candidate": "A08-baseline",
+      "mode": 1,
+      "repeat": 3,
+      "context_enabled": true,
+      "parity_passed": true,
+      "context_exact": true,
+      "accepted": true,
+      "exit_code": 0,
+      "host_wall_seconds": 0.7683785000117496,
+      "audit": {
+        "events": 610577,
+        "operations": {
+          "I": 492248,
+          "R": 71227,
+          "W": 47102
+        },
+        "cycles": 1537544,
+        "ns": 3075088,
+        "costs": {
+          "l1i": 492791,
+          "l1d": 118329,
+          "l2": 391760,
+          "ram_read": 16542,
+          "ram_write": 518122
+        },
+        "stream_sha256": "3647d1798a2c9d6cfbfe8e0e786401b22b1c15187da6879e604f55c0766635c1"
+      },
+      "measurement": {
+        "case": "tcp_request_response",
+        "before": 3026,
+        "after": 38702,
+        "before_tick": 0,
+        "ticks": 3,
+        "work": 11680,
+        "woke": 1,
+        "observer_tick": 2,
+        "observer_mtime": 23087
+      },
+      "context_quality": "exact",
+      "raw_rows": 610577,
+      "events_per_second": 794630.5108623725,
+      "raw_bytes": 22028850,
+      "raw_disk_bytes": 701861,
+      "sidecar_bytes": 2957,
+      "sidecar_disk_bytes": 2957,
+      "run_manifest_sha256": "da61b68c054ba4fa71740571510498641d5c575b7700420774e235a9745d204a"
+    }
+  ],
+  "passed": true
+}

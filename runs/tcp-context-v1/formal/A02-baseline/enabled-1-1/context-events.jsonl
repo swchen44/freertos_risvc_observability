@@ -1,0 +1,13 @@
+{"schema":"context-event-v1","seq":0,"event_index":0,"phase":"before","pc":2147496070,"kind":"begin","task_id":2148022416,"cause":null,"depth":0,"evidence":"elf-boundary-v1"}
+{"schema":"context-event-v1","seq":1,"event_index":168124,"phase":"before","pc":2147519488,"kind":"trap_enter","task_id":null,"cause":2147483655,"depth":1,"evidence":"elf-boundary-v1"}
+{"schema":"context-event-v1","seq":2,"event_index":168589,"phase":"after","pc":2147519786,"kind":"mret_pending","task_id":2148022416,"cause":null,"depth":1,"evidence":"elf-boundary-v1"}
+{"schema":"context-event-v1","seq":3,"event_index":168590,"phase":"before","pc":2147498700,"kind":"return_commit","task_id":2148022416,"cause":null,"depth":0,"evidence":"elf-boundary-v1"}
+{"schema":"context-event-v1","seq":4,"event_index":340474,"phase":"before","pc":2147519488,"kind":"trap_enter","task_id":null,"cause":2147483655,"depth":1,"evidence":"elf-boundary-v1"}
+{"schema":"context-event-v1","seq":5,"event_index":341235,"phase":"before","pc":2147493112,"kind":"selected_task","task_id":2148014096,"cause":null,"depth":1,"evidence":"elf-boundary-v1"}
+{"schema":"context-event-v1","seq":6,"event_index":341560,"phase":"after","pc":2147519786,"kind":"mret_pending","task_id":2148014096,"cause":null,"depth":1,"evidence":"elf-boundary-v1"}
+{"schema":"context-event-v1","seq":7,"event_index":341561,"phase":"before","pc":2147485864,"kind":"return_commit","task_id":2148014096,"cause":null,"depth":0,"evidence":"elf-boundary-v1"}
+{"schema":"context-event-v1","seq":8,"event_index":345796,"phase":"before","pc":2147519488,"kind":"trap_enter","task_id":null,"cause":11,"depth":1,"evidence":"elf-boundary-v1"}
+{"schema":"context-event-v1","seq":9,"event_index":345966,"phase":"before","pc":2147493112,"kind":"selected_task","task_id":2148022416,"cause":null,"depth":1,"evidence":"elf-boundary-v1"}
+{"schema":"context-event-v1","seq":10,"event_index":346291,"phase":"after","pc":2147519786,"kind":"mret_pending","task_id":2148022416,"cause":null,"depth":1,"evidence":"elf-boundary-v1"}
+{"schema":"context-event-v1","seq":11,"event_index":346292,"phase":"before","pc":2147520374,"kind":"return_commit","task_id":2148022416,"cause":null,"depth":0,"evidence":"elf-boundary-v1"}
+{"schema":"context-event-v1","seq":12,"event_index":430324,"phase":"before","pc":2147496074,"kind":"end","task_id":null,"cause":null,"depth":0,"evidence":"elf-boundary-v1"}

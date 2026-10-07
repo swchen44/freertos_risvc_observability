@@ -1,0 +1,48 @@
+{
+  "intervals": [
+    {
+      "start": 0,
+      "end": 165545,
+      "context": "task:2148022416",
+      "reason": null
+    },
+    {
+      "start": 165545,
+      "end": 166011,
+      "context": "irq:7",
+      "reason": null
+    },
+    {
+      "start": 166011,
+      "end": 335101,
+      "context": "task:2148022416",
+      "reason": null
+    },
+    {
+      "start": 335101,
+      "end": 336188,
+      "context": "irq:7",
+      "reason": null
+    },
+    {
+      "start": 336188,
+      "end": 340423,
+      "context": "task:2148014096",
+      "reason": null
+    },
+    {
+      "start": 340423,
+      "end": 340919,
+      "context": "scheduler_transition",
+      "reason": null
+    },
+    {
+      "start": 340919,
+      "end": 425306,
+      "context": "task:2148022416",
+      "reason": null
+    }
+  ],
+  "quality": "exact",
+  "transitions": 13
+}
