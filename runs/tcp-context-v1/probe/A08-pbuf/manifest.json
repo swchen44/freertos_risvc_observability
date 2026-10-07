@@ -1,0 +1,136 @@
+{
+  "schema": "context-runset-v1",
+  "candidate": "A08-pbuf",
+  "guest_source_commit": "6a0ef47110664d43d3e6d13096c54e8b1e2e9430",
+  "collector_source_commit": "bb946a609e755366c184fd87ea64e6b2147fbd48",
+  "source_runset": "runs/tcp-workload-matrix-v1/A08-pbuf",
+  "guest_elf_sha256": "406655b02b0bbdb06c5a2efea4df968555960ba40234b60313de21efadce2813",
+  "qemu_sha256": "69969c3ec8cce8f9340215fc340c5c01f81c3ef978252d3766937d2d176816db",
+  "plugin_sha256": "5a0594e6ccb3416f04789b788e024060d5ee2de52d054c2c3cc0bb7e72303bd8",
+  "compiler_sha256": "7f30f076d0e9c38f772a76449fca9da8cf97f6a3d43b94c90a00e4f9ce7ad39e",
+  "collector_sources": {
+    "tools/tcp/live_cache.c": "2e362e0cee66e850d15ba5db5d2b12b02883a143f3017211c3626af6ad2ae921",
+    "tools/tcp/live_context.c": "958b3d24ec9d591484ea8170a3814443e9147e04c5819bb23b42f628ee433bf4",
+    "tools/tcp/live_context.h": "fb80cef7bde0a6810075d6510cb6ee5c331f6a7d5280000e5f62bf95f2eb26d8",
+    "tools/qemu/live_timing.c": "4cf7bde85f54d097327ddf6fdfb879b433f7dfeea77c2439813cecdeb5fa8e09",
+    "tools/qemu/live_timing.h": "a238f0953c465513e423a9e8ba01d70a1aa073c729bb1f0de8d865658686e1b0",
+    "src/psf_lab/context_capture.py": "3d9915a3d909f296527aeb437c41cc097b89f17f7294b6b4daae085ff0d366df",
+    "src/psf_lab/context_boundaries.py": "ab02debb89cf2ce012c0134999d659da370b2a936771882fa0b98f782bc399ba",
+    "src/psf_lab/execution_context.py": "a851c18c76ac28fcbdcb7f1e041a484869437a99674c37d7b7bbcf469168f7b3",
+    "cases/timing/attribution-rules-v1.json": "869bc15d3352e7432d802e5d60abe29967d64423c758a30d75957d6367b37b8b"
+  },
+  "rules_sha256": "869bc15d3352e7432d802e5d60abe29967d64423c758a30d75957d6367b37b8b",
+  "boundary_sha256": "37416008f81fd8dbf1bb81d5f445d7e0ced37704ba8e41873a4c9d129faf660f",
+  "boundary_config_sha256": "b3364200c8ad6917a6247d5194fadaf7bc3091e3992d94b514bd61a086ff3e31",
+  "pair_checks": [
+    {
+      "extra_guest_ns": 2837900,
+      "injected_service_ns": 2833036,
+      "extra_instruction_ns": 4851,
+      "expected_extra_ns": 2837887,
+      "error_ns": 13,
+      "tolerance_ns": 200,
+      "active_ticks": 3,
+      "observer_tick": 2
+    }
+  ],
+  "runs": [
+    {
+      "candidate": "A08-pbuf",
+      "mode": 0,
+      "repeat": 1,
+      "context_enabled": true,
+      "parity_passed": true,
+      "context_exact": true,
+      "accepted": true,
+      "exit_code": 0,
+      "host_wall_seconds": 0.5026210420182906,
+      "audit": {
+        "events": 533789,
+        "operations": {
+          "I": 431949,
+          "R": 58449,
+          "W": 43391
+        },
+        "cycles": 1388423,
+        "ns": 2776846,
+        "costs": {
+          "l1i": 437738,
+          "l1d": 101840,
+          "l2": 359088,
+          "ram_read": 12456,
+          "ram_write": 477301
+        },
+        "stream_sha256": "5698a2b9d9215505bafd8dfaac8cf2334c49e87debf0e11ffb738ec3bfc97bd5"
+      },
+      "measurement": {
+        "case": "tcp_request_response",
+        "before": 3026,
+        "after": 7348,
+        "before_tick": 0,
+        "ticks": 0,
+        "work": 11680,
+        "woke": 0,
+        "observer_tick": 0,
+        "observer_mtime": 0
+      },
+      "context_quality": "exact",
+      "raw_rows": 533789,
+      "events_per_second": 1062010.8498771829,
+      "raw_bytes": 19260545,
+      "raw_disk_bytes": 658758,
+      "sidecar_bytes": 347,
+      "sidecar_disk_bytes": 347,
+      "run_manifest_sha256": "8a158cfa2fa7fa916af1b0d8ab62631f317f80ddf1028760bf9395f478290416"
+    },
+    {
+      "candidate": "A08-pbuf",
+      "mode": 1,
+      "repeat": 1,
+      "context_enabled": true,
+      "parity_passed": true,
+      "context_exact": true,
+      "accepted": true,
+      "exit_code": 0,
+      "host_wall_seconds": 0.608513250015676,
+      "audit": {
+        "events": 540539,
+        "operations": {
+          "I": 436800,
+          "R": 59557,
+          "W": 44182
+        },
+        "cycles": 1416518,
+        "ns": 2833036,
+        "costs": {
+          "l1i": 442609,
+          "l1d": 103739,
+          "l2": 367392,
+          "ram_read": 16776,
+          "ram_write": 486002
+        },
+        "stream_sha256": "4fe21ca728926f26262a693ed38f40d44b403efbc5813a6bffc6d76ea7988e58"
+      },
+      "measurement": {
+        "case": "tcp_request_response",
+        "before": 3026,
+        "after": 35727,
+        "before_tick": 0,
+        "ticks": 3,
+        "work": 11680,
+        "woke": 1,
+        "observer_tick": 2,
+        "observer_mtime": 23086
+      },
+      "context_quality": "exact",
+      "raw_rows": 540539,
+      "events_per_second": 888294.5440975608,
+      "raw_bytes": 19504578,
+      "raw_disk_bytes": 681520,
+      "sidecar_bytes": 2957,
+      "sidecar_disk_bytes": 2957,
+      "run_manifest_sha256": "79451f19e539f2f64968d591c2a2802772d444ff9923c21981a7f5fa75aaa211"
+    }
+  ],
+  "passed": true
+}

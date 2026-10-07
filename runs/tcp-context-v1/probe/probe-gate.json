@@ -1,0 +1,23 @@
+{
+  "schema": "context-probe-gate-v1",
+  "passed": true,
+  "runs": 8,
+  "candidates": [
+    {
+      "candidate": "A02-baseline",
+      "manifest_sha256": "fa1174cd6ea62d41b0254a140252ff8abdc5d359a5d38ab1e6e08b8114b05ed7"
+    },
+    {
+      "candidate": "A02-pbuf",
+      "manifest_sha256": "0000ae917600540620c135e52abda14778a4badedc2f613094e2843db71452ae"
+    },
+    {
+      "candidate": "A08-baseline",
+      "manifest_sha256": "74c8c388bad1e9ec5804949288af9588a334126ef452199b62870b1329fe4851"
+    },
+    {
+      "candidate": "A08-pbuf",
+      "manifest_sha256": "3b9fa2a7488b395674f60cacd4d6960d005a545ccb836c3d1537e43412728d55"
+    }
+  ]
+}

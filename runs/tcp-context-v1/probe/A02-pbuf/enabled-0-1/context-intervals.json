@@ -1,0 +1,12 @@
+{
+  "intervals": [
+    {
+      "start": 0,
+      "end": 419022,
+      "context": "task:2148022416",
+      "reason": null
+    }
+  ],
+  "quality": "exact",
+  "transitions": 2
+}

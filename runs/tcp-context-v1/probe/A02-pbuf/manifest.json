@@ -1,0 +1,136 @@
+{
+  "schema": "context-runset-v1",
+  "candidate": "A02-pbuf",
+  "guest_source_commit": "6a0ef47110664d43d3e6d13096c54e8b1e2e9430",
+  "collector_source_commit": "bb946a609e755366c184fd87ea64e6b2147fbd48",
+  "source_runset": "runs/tcp-workload-matrix-v1/A02-pbuf",
+  "guest_elf_sha256": "a549e6d500b5996a2fe944e544c8086b1000fabfd3aa32fdd8b6d35fd191b2bd",
+  "qemu_sha256": "69969c3ec8cce8f9340215fc340c5c01f81c3ef978252d3766937d2d176816db",
+  "plugin_sha256": "435bf2bca470b2db1a786c546f3f073a19740c459a7554aafd60eddf15708b0d",
+  "compiler_sha256": "7f30f076d0e9c38f772a76449fca9da8cf97f6a3d43b94c90a00e4f9ce7ad39e",
+  "collector_sources": {
+    "tools/tcp/live_cache.c": "2e362e0cee66e850d15ba5db5d2b12b02883a143f3017211c3626af6ad2ae921",
+    "tools/tcp/live_context.c": "958b3d24ec9d591484ea8170a3814443e9147e04c5819bb23b42f628ee433bf4",
+    "tools/tcp/live_context.h": "fb80cef7bde0a6810075d6510cb6ee5c331f6a7d5280000e5f62bf95f2eb26d8",
+    "tools/qemu/live_timing.c": "4cf7bde85f54d097327ddf6fdfb879b433f7dfeea77c2439813cecdeb5fa8e09",
+    "tools/qemu/live_timing.h": "a238f0953c465513e423a9e8ba01d70a1aa073c729bb1f0de8d865658686e1b0",
+    "src/psf_lab/context_capture.py": "3d9915a3d909f296527aeb437c41cc097b89f17f7294b6b4daae085ff0d366df",
+    "src/psf_lab/context_boundaries.py": "ab02debb89cf2ce012c0134999d659da370b2a936771882fa0b98f782bc399ba",
+    "src/psf_lab/execution_context.py": "a851c18c76ac28fcbdcb7f1e041a484869437a99674c37d7b7bbcf469168f7b3",
+    "cases/timing/attribution-rules-v1.json": "869bc15d3352e7432d802e5d60abe29967d64423c758a30d75957d6367b37b8b"
+  },
+  "rules_sha256": "869bc15d3352e7432d802e5d60abe29967d64423c758a30d75957d6367b37b8b",
+  "boundary_sha256": "33b49a9d32a1cfa704506c4adc7eee8dada5961ce221f76cbdde9fe50e6b5746",
+  "boundary_config_sha256": "909be82012524e654ceba27cab902e60d0def545ac7eb868e9ad647a56540c46",
+  "pair_checks": [
+    {
+      "extra_guest_ns": 2190200,
+      "injected_service_ns": 2185650,
+      "extra_instruction_ns": 4551,
+      "expected_extra_ns": 2190201,
+      "error_ns": -1,
+      "tolerance_ns": 200,
+      "active_ticks": 2,
+      "observer_tick": 2
+    }
+  ],
+  "runs": [
+    {
+      "candidate": "A02-pbuf",
+      "mode": 0,
+      "repeat": 1,
+      "context_enabled": true,
+      "parity_passed": true,
+      "context_exact": true,
+      "accepted": true,
+      "exit_code": 0,
+      "host_wall_seconds": 0.5053691249922849,
+      "audit": {
+        "events": 419022,
+        "operations": {
+          "I": 337942,
+          "R": 48820,
+          "W": 32260
+        },
+        "cycles": 1067585,
+        "ns": 2135170,
+        "costs": {
+          "l1i": 350543,
+          "l1d": 81080,
+          "l2": 270752,
+          "ram_read": 10350,
+          "ram_write": 354860
+        },
+        "stream_sha256": "2b79ccbb476910d76e89bcad751ab8af622835b7c501d7ef056dd12ded775a06"
+      },
+      "measurement": {
+        "case": "tcp_request_response",
+        "before": 3016,
+        "after": 6398,
+        "before_tick": 0,
+        "ticks": 0,
+        "work": 11680,
+        "woke": 0,
+        "observer_tick": 0,
+        "observer_mtime": 0
+      },
+      "context_quality": "exact",
+      "raw_rows": 419022,
+      "events_per_second": 829140.4822294929,
+      "raw_bytes": 15117683,
+      "raw_disk_bytes": 571390,
+      "sidecar_bytes": 347,
+      "sidecar_disk_bytes": 347,
+      "run_manifest_sha256": "63b092ecf61cb426e6121992b52f15194464687dc5902c2c48d89437096255ab"
+    },
+    {
+      "candidate": "A02-pbuf",
+      "mode": 1,
+      "repeat": 1,
+      "context_enabled": true,
+      "parity_passed": true,
+      "context_exact": true,
+      "accepted": true,
+      "exit_code": 0,
+      "host_wall_seconds": 0.4986771249677986,
+      "audit": {
+        "events": 425306,
+        "operations": {
+          "I": 342493,
+          "R": 49835,
+          "W": 32978
+        },
+        "cycles": 1092825,
+        "ns": 2185650,
+        "costs": {
+          "l1i": 355112,
+          "l1d": 82813,
+          "l2": 278192,
+          "ram_read": 13950,
+          "ram_write": 362758
+        },
+        "stream_sha256": "b3f1ccfead2cf148298084326bf13d116e48a1de82dc0a51adcf7406ea5fdb82"
+      },
+      "measurement": {
+        "case": "tcp_request_response",
+        "before": 3016,
+        "after": 28300,
+        "before_tick": 0,
+        "ticks": 2,
+        "work": 11680,
+        "woke": 1,
+        "observer_tick": 2,
+        "observer_mtime": 23075
+      },
+      "context_quality": "exact",
+      "raw_rows": 425306,
+      "events_per_second": 852868.4768274935,
+      "raw_bytes": 15344825,
+      "raw_disk_bytes": 593498,
+      "sidecar_bytes": 2395,
+      "sidecar_disk_bytes": 2395,
+      "run_manifest_sha256": "2432ff8a02acf4f2ff9b3377b748db27f10a899ef0fcc8aa6be7416705c583d6"
+    }
+  ],
+  "passed": true
+}
