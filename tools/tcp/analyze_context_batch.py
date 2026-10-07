@@ -6,7 +6,13 @@ import gzip
 import json
 from pathlib import Path
 
-from psf_lab.attribution_evidence import verify_file_hashes
+from run_context_batch import validate_context_batch
+
+from psf_lab.attribution_evidence import (
+    build_role_ranges,
+    load_capture_evidence,
+    verify_file_hashes,
+)
 from psf_lab.cost_attribution import COST_KEYS, METRICS, aggregate_costs
 from psf_lab.execution_context import context_intervals, validate_context_anchors
 from psf_lab.runner import digest, write_json
@@ -18,6 +24,7 @@ def analyze_context_reports(root: Path, formal: Path, output: Path) -> dict:
     receipt = json.loads((formal / "completion.json").read_text())
     if receipt.get("passed") is not True or len(receipt["runs"]) != 24:
         raise ValueError("Expected accepted formal batch")
+    validate_context_batch(receipt["runs"])
     output.mkdir(parents=True)
     reports = []
     identities = {}
@@ -29,6 +36,20 @@ def analyze_context_reports(root: Path, formal: Path, output: Path) -> dict:
         run = folder / f"enabled-{mode}-{repeat}"
         verify_file_hashes(run, {"manifest.json": record["run_manifest_sha256"]}, {"manifest.json"})
         manifest = json.loads((run / "manifest.json").read_text())
+        if manifest["result"] != {k: v for k, v in record.items() if k != "run_manifest_sha256"}:
+            raise ValueError("Formal run identity mismatch")
+        runset = json.loads((folder / "manifest.json").read_text())
+        verify_file_hashes(
+            folder,
+            {
+                "boundaries.json": runset["boundary_sha256"],
+                "boundaries.conf": runset["boundary_config_sha256"],
+            },
+            {"boundaries.json", "boundaries.conf"},
+        )
+        boundaries = json.loads((folder / "boundaries.json").read_text())
+        if boundaries["elf_sha256"] != manifest["files"]["firmware.elf"]:
+            raise ValueError("Boundary/ELF binding mismatch")
         verify_file_hashes(
             run,
             manifest["files"],
@@ -53,11 +74,18 @@ def analyze_context_reports(root: Path, formal: Path, output: Path) -> dict:
             validate_context_anchors(
                 events, csv.DictReader(stream), json.loads((folder / "boundaries.json").read_text())
             )
-        ranges = json.loads(
-            (
-                root / "artifacts/verification/cost-attribution/b1" / candidate / "ranges.json"
-            ).read_text()
+        if intervals["quality"] != "exact":
+            raise ValueError("Non-exact formal context")
+        b1 = root / "artifacts/verification/cost-attribution/b1" / candidate
+        ranges = json.loads((b1 / "ranges.json").read_text())
+        capture = load_capture_evidence(
+            root, root / "runs/tcp-workload-matrix-v1" / candidate, mode
         )
+        rules_path = root / "cases/timing/attribution-rules-v1.json"
+        if ranges != build_role_ranges(capture, json.loads(rules_path.read_text())):
+            raise ValueError("B1 ranges differ from pinned ELF ownership")
+        if capture["files_sha256"]["firmware.elf"] != manifest["files"]["firmware.elf"]:
+            raise ValueError("Formal/B1 ELF mismatch")
         with gzip.open(run / "accesses.csv.gz", "rt", newline="") as stream:
             result = aggregate_costs(
                 csv.DictReader(stream), ranges, mode=mode, contexts=intervals["intervals"]
@@ -69,6 +97,9 @@ def analyze_context_reports(root: Path, formal: Path, output: Path) -> dict:
             run_manifest_sha256=record["run_manifest_sha256"],
             raw_stream_sha256=record["audit"]["stream_sha256"],
             task_objects=task_objects,
+            boundary_sha256=digest(folder / "boundaries.json"),
+            ranges_sha256=digest(b1 / "ranges.json"),
+            rules_sha256=digest(rules_path),
         )
         destination = output / candidate / f"enabled-{mode}-{repeat}"
         destination.mkdir(parents=True)
