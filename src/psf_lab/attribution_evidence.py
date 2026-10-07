@@ -101,8 +101,8 @@ def build_role_ranges(evidence: dict, rules: dict) -> list[dict]:
                 owners = [dict(start=left, size=right - left, function=None)]
             for symbol in owners:
                 row = dict(
-                    start=left,
-                    end=right,
+                    start=symbol["start"],
+                    end=symbol["start"] + symbol["size"],
                     object=obj,
                     source=source,
                     function=symbol["function"],
@@ -115,6 +115,26 @@ def build_role_ranges(evidence: dict, rules: dict) -> list[dict]:
                 row["evidence"].extend("rule:" + r for r in classification["rule_ids"])
                 rows.append(row)
     return normalize_ranges(rows)
+
+
+A_ACCEPTED_COMMIT = "88723c35868504010a7cb6a9b3c32d96bcf62ee6"
+
+
+def verify_git_files(root: Path, commit: str, names: list[str]) -> dict:
+    """Pin auxiliary evidence not hashed by the original capture manifest."""
+    if not re.fullmatch("[0-9a-f]{40}", commit):
+        raise ValueError("Invalid accepted commit")
+    hashes = {}
+    for name in names:
+        path = contained(root, name)
+        saved = subprocess.run(
+            ["git", "show", f"{commit}:{name}"], cwd=root, capture_output=True, check=True
+        ).stdout
+        sha = hashlib.sha256(saved).hexdigest()
+        if digest(path) != sha:
+            raise ValueError("Accepted evidence changed: " + name)
+        hashes[name] = sha
+    return hashes
 
 
 def source_label(value):
@@ -133,6 +153,15 @@ def load_capture_evidence(root: Path, runset: Path, mode: int, repeat: int = 1) 
     ):
         raise ValueError("Invalid mode/repeat")
     comparison = root / "artifacts/verification/tcp-workload-matrix/results/comparison.json"
+    accepted_hashes = verify_git_files(
+        root,
+        A_ACCEPTED_COMMIT,
+        [
+            str(comparison.relative_to(root)),
+            str((runset / "build/firmware.map").relative_to(root)),
+            str((runset / "build.log").relative_to(root)),
+        ],
+    )
     pins = json.loads(comparison.read_text())["sources"]
     manifest_name = str((runset / "manifest.json").relative_to(root))
     verify_file_hashes(root, {manifest_name: pins[manifest_name]}, {manifest_name})
@@ -276,4 +305,6 @@ def load_capture_evidence(root: Path, runset: Path, mode: int, repeat: int = 1) 
         build_log_sha256=digest(runset / "build.log"),
         manifest_sha256=digest(runset / "manifest.json"),
         comparison_sha256=digest(comparison),
+        accepted_evidence_commit=A_ACCEPTED_COMMIT,
+        accepted_evidence_hashes=accepted_hashes,
     )

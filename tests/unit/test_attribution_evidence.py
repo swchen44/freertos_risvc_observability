@@ -109,3 +109,48 @@ Linker script and memory map
         evidence["symbols"][1]["size"] = 30
         with self.assertRaises(ValueError):
             self.build(evidence, self.rules)
+
+    def test_partial_symbols_do_not_become_aliases(self):
+        from psf_lab.cost_attribution import resolve_pc
+
+        evidence = self.fixture()
+        evidence["symbols"] = [
+            dict(start=100, size=15, function="f"),
+            dict(start=110, size=10, function="g"),
+        ]
+        rows = self.build(evidence, self.rules)
+        self.assertEqual(resolve_pc(rows, 112)["role"], "unresolved")
+        self.assertEqual(resolve_pc(rows, 112)["reason"], "overlap_conflict")
+
+    def test_git_pin_detects_map_replacement(self):
+        import subprocess
+        from psf_lab import attribution_evidence
+
+        self.assertTrue(hasattr(attribution_evidence, "verify_git_files"))
+        with TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            subprocess.run(["git", "init", "-q", str(root)], check=True)
+            (root / "firmware.map").write_text("original map")
+            subprocess.run(["git", "-C", str(root), "add", "firmware.map"], check=True)
+            subprocess.run(
+                [
+                    "git",
+                    "-C",
+                    str(root),
+                    "-c",
+                    "user.name=Fixture",
+                    "-c",
+                    "user.email=fixture@example.invalid",
+                    "commit",
+                    "-qm",
+                    "fixture",
+                ],
+                check=True,
+            )
+            sha = subprocess.check_output(
+                ["git", "-C", str(root), "rev-parse", "HEAD"], text=True
+            ).strip()
+            attribution_evidence.verify_git_files(root, sha, ["firmware.map"])
+            (root / "firmware.map").write_text("replacement map")
+            with self.assertRaises(ValueError):
+                attribution_evidence.verify_git_files(root, sha, ["firmware.map"])
