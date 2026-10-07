@@ -1,0 +1,4979 @@
+[
+  {
+    "start": 2147483648,
+    "end": 2147483766,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/start.o",
+    "source": "third_party/FreeRTOS/FreeRTOS/Demo/RISC-V_RV32_QEMU_VIRT_GCC/build/gcc/start.S",
+    "function": "unresolved@/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/start.o:2147483648",
+    "aliases": [],
+    "evidence": [
+      "map:9286",
+      "rule:kernel",
+      "symbol:None"
+    ],
+    "reason": null,
+    "role": "kernel_port"
+  },
+  {
+    "start": 2147483904,
+    "end": 2147483982,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/main.o",
+    "source": "firmware/app/main.c",
+    "function": "main",
+    "aliases": [
+      "main"
+    ],
+    "evidence": [
+      "dwarf:firmware/app/main.c",
+      "map:9293",
+      "rule:harness",
+      "symbol:main"
+    ],
+    "reason": null,
+    "definition_source": "firmware/app/main.c",
+    "role": "application_harness"
+  },
+  {
+    "start": 2147483982,
+    "end": 2147484174,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tasks.o",
+    "source": "third_party/FreeRTOS/FreeRTOS/Source/tasks.c",
+    "function": "prvAddCurrentTaskToDelayedList",
+    "aliases": [
+      "prvAddCurrentTaskToDelayedList"
+    ],
+    "evidence": [
+      "dwarf:third_party/FreeRTOS/FreeRTOS/Source/tasks.c",
+      "map:9297",
+      "rule:kernel",
+      "symbol:prvAddCurrentTaskToDelayedList"
+    ],
+    "reason": null,
+    "definition_source": "third_party/FreeRTOS/FreeRTOS/Source/tasks.c",
+    "role": "kernel_port"
+  },
+  {
+    "start": 2147484174,
+    "end": 2147484200,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tasks.o",
+    "source": "third_party/FreeRTOS/FreeRTOS/Source/tasks.c",
+    "function": "prvResetNextTaskUnblockTime",
+    "aliases": [
+      "prvResetNextTaskUnblockTime"
+    ],
+    "evidence": [
+      "dwarf:third_party/FreeRTOS/FreeRTOS/Source/tasks.c",
+      "map:9299",
+      "rule:kernel",
+      "symbol:prvResetNextTaskUnblockTime"
+    ],
+    "reason": null,
+    "definition_source": "third_party/FreeRTOS/FreeRTOS/Source/tasks.c",
+    "role": "kernel_port"
+  },
+  {
+    "start": 2147484200,
+    "end": 2147484320,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tasks.o",
+    "source": "third_party/FreeRTOS/FreeRTOS/Source/tasks.c",
+    "function": "prvCheckTasksWaitingTermination",
+    "aliases": [
+      "prvCheckTasksWaitingTermination"
+    ],
+    "evidence": [
+      "dwarf:third_party/FreeRTOS/FreeRTOS/Source/tasks.c",
+      "map:9301",
+      "rule:kernel",
+      "symbol:prvCheckTasksWaitingTermination"
+    ],
+    "reason": null,
+    "definition_source": "third_party/FreeRTOS/FreeRTOS/Source/tasks.c",
+    "role": "kernel_port"
+  },
+  {
+    "start": 2147484320,
+    "end": 2147484328,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tasks.o",
+    "source": "third_party/FreeRTOS/FreeRTOS/Source/tasks.c",
+    "function": "prvIdleTask",
+    "aliases": [
+      "prvIdleTask"
+    ],
+    "evidence": [
+      "dwarf:third_party/FreeRTOS/FreeRTOS/Source/tasks.c",
+      "map:9303",
+      "rule:kernel",
+      "symbol:prvIdleTask"
+    ],
+    "reason": null,
+    "definition_source": "third_party/FreeRTOS/FreeRTOS/Source/tasks.c",
+    "role": "kernel_port"
+  },
+  {
+    "start": 2147484328,
+    "end": 2147484864,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tasks.o",
+    "source": "third_party/FreeRTOS/FreeRTOS/Source/tasks.c",
+    "function": "xTaskCreate",
+    "aliases": [
+      "xTaskCreate"
+    ],
+    "evidence": [
+      "dwarf:third_party/FreeRTOS/FreeRTOS/Source/tasks.c",
+      "map:9305",
+      "rule:kernel",
+      "symbol:xTaskCreate"
+    ],
+    "reason": null,
+    "definition_source": "third_party/FreeRTOS/FreeRTOS/Source/tasks.c",
+    "role": "kernel_port"
+  },
+  {
+    "start": 2147484864,
+    "end": 2147484986,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tasks.o",
+    "source": "third_party/FreeRTOS/FreeRTOS/Source/tasks.c",
+    "function": "vTaskStartScheduler",
+    "aliases": [
+      "vTaskStartScheduler"
+    ],
+    "evidence": [
+      "dwarf:third_party/FreeRTOS/FreeRTOS/Source/tasks.c",
+      "map:9308",
+      "rule:kernel",
+      "symbol:vTaskStartScheduler"
+    ],
+    "reason": null,
+    "definition_source": "third_party/FreeRTOS/FreeRTOS/Source/tasks.c",
+    "role": "kernel_port"
+  },
+  {
+    "start": 2147484986,
+    "end": 2147484998,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tasks.o",
+    "source": "third_party/FreeRTOS/FreeRTOS/Source/tasks.c",
+    "function": "vTaskSuspendAll",
+    "aliases": [
+      "vTaskSuspendAll"
+    ],
+    "evidence": [
+      "dwarf:third_party/FreeRTOS/FreeRTOS/Source/tasks.c",
+      "map:9311",
+      "rule:kernel",
+      "symbol:vTaskSuspendAll"
+    ],
+    "reason": null,
+    "definition_source": "third_party/FreeRTOS/FreeRTOS/Source/tasks.c",
+    "role": "kernel_port"
+  },
+  {
+    "start": 2147484998,
+    "end": 2147485004,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tasks.o",
+    "source": "third_party/FreeRTOS/FreeRTOS/Source/tasks.c",
+    "function": "xTaskGetTickCount",
+    "aliases": [
+      "xTaskGetTickCount"
+    ],
+    "evidence": [
+      "dwarf:third_party/FreeRTOS/FreeRTOS/Source/tasks.c",
+      "map:9314",
+      "rule:kernel",
+      "symbol:xTaskGetTickCount"
+    ],
+    "reason": null,
+    "definition_source": "third_party/FreeRTOS/FreeRTOS/Source/tasks.c",
+    "role": "kernel_port"
+  },
+  {
+    "start": 2147485004,
+    "end": 2147485444,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tasks.o",
+    "source": "third_party/FreeRTOS/FreeRTOS/Source/tasks.c",
+    "function": "xTaskIncrementTick",
+    "aliases": [
+      "xTaskIncrementTick"
+    ],
+    "evidence": [
+      "dwarf:third_party/FreeRTOS/FreeRTOS/Source/tasks.c",
+      "map:9317",
+      "rule:kernel",
+      "symbol:xTaskIncrementTick"
+    ],
+    "reason": null,
+    "definition_source": "third_party/FreeRTOS/FreeRTOS/Source/tasks.c",
+    "role": "kernel_port"
+  },
+  {
+    "start": 2147485444,
+    "end": 2147485792,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tasks.o",
+    "source": "third_party/FreeRTOS/FreeRTOS/Source/tasks.c",
+    "function": "xTaskResumeAll",
+    "aliases": [
+      "xTaskResumeAll"
+    ],
+    "evidence": [
+      "dwarf:third_party/FreeRTOS/FreeRTOS/Source/tasks.c",
+      "map:9320",
+      "rule:kernel",
+      "symbol:xTaskResumeAll"
+    ],
+    "reason": null,
+    "definition_source": "third_party/FreeRTOS/FreeRTOS/Source/tasks.c",
+    "role": "kernel_port"
+  },
+  {
+    "start": 2147485792,
+    "end": 2147485872,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tasks.o",
+    "source": "third_party/FreeRTOS/FreeRTOS/Source/tasks.c",
+    "function": "vTaskDelay",
+    "aliases": [
+      "vTaskDelay"
+    ],
+    "evidence": [
+      "dwarf:third_party/FreeRTOS/FreeRTOS/Source/tasks.c",
+      "map:9323",
+      "rule:kernel",
+      "symbol:vTaskDelay"
+    ],
+    "reason": null,
+    "definition_source": "third_party/FreeRTOS/FreeRTOS/Source/tasks.c",
+    "role": "kernel_port"
+  },
+  {
+    "start": 2147485872,
+    "end": 2147486056,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tasks.o",
+    "source": "third_party/FreeRTOS/FreeRTOS/Source/tasks.c",
+    "function": "vTaskSwitchContext",
+    "aliases": [
+      "vTaskSwitchContext"
+    ],
+    "evidence": [
+      "dwarf:third_party/FreeRTOS/FreeRTOS/Source/tasks.c",
+      "map:9326",
+      "rule:kernel",
+      "symbol:vTaskSwitchContext"
+    ],
+    "reason": null,
+    "definition_source": "third_party/FreeRTOS/FreeRTOS/Source/tasks.c",
+    "role": "kernel_port"
+  },
+  {
+    "start": 2147486056,
+    "end": 2147486324,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tasks.o",
+    "source": "third_party/FreeRTOS/FreeRTOS/Source/tasks.c",
+    "function": "vTaskSuspend",
+    "aliases": [
+      "vTaskSuspend"
+    ],
+    "evidence": [
+      "dwarf:third_party/FreeRTOS/FreeRTOS/Source/tasks.c",
+      "map:9329",
+      "rule:kernel",
+      "symbol:vTaskSuspend"
+    ],
+    "reason": null,
+    "definition_source": "third_party/FreeRTOS/FreeRTOS/Source/tasks.c",
+    "role": "kernel_port"
+  },
+  {
+    "start": 2147486324,
+    "end": 2147486344,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/list.o",
+    "source": "third_party/FreeRTOS/FreeRTOS/Source/list.c",
+    "function": "vListInitialise",
+    "aliases": [
+      "vListInitialise"
+    ],
+    "evidence": [
+      "dwarf:third_party/FreeRTOS/FreeRTOS/Source/list.c",
+      "map:9332",
+      "rule:kernel",
+      "symbol:vListInitialise"
+    ],
+    "reason": null,
+    "definition_source": "third_party/FreeRTOS/FreeRTOS/Source/list.c",
+    "role": "kernel_port"
+  },
+  {
+    "start": 2147486344,
+    "end": 2147486350,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/list.o",
+    "source": "third_party/FreeRTOS/FreeRTOS/Source/list.c",
+    "function": "vListInitialiseItem",
+    "aliases": [
+      "vListInitialiseItem"
+    ],
+    "evidence": [
+      "dwarf:third_party/FreeRTOS/FreeRTOS/Source/list.c",
+      "map:9335",
+      "rule:kernel",
+      "symbol:vListInitialiseItem"
+    ],
+    "reason": null,
+    "definition_source": "third_party/FreeRTOS/FreeRTOS/Source/list.c",
+    "role": "kernel_port"
+  },
+  {
+    "start": 2147486350,
+    "end": 2147486372,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/list.o",
+    "source": "third_party/FreeRTOS/FreeRTOS/Source/list.c",
+    "function": "vListInsertEnd",
+    "aliases": [
+      "vListInsertEnd"
+    ],
+    "evidence": [
+      "dwarf:third_party/FreeRTOS/FreeRTOS/Source/list.c",
+      "map:9338",
+      "rule:kernel",
+      "symbol:vListInsertEnd"
+    ],
+    "reason": null,
+    "definition_source": "third_party/FreeRTOS/FreeRTOS/Source/list.c",
+    "role": "kernel_port"
+  },
+  {
+    "start": 2147486372,
+    "end": 2147486418,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/list.o",
+    "source": "third_party/FreeRTOS/FreeRTOS/Source/list.c",
+    "function": "vListInsert",
+    "aliases": [
+      "vListInsert"
+    ],
+    "evidence": [
+      "dwarf:third_party/FreeRTOS/FreeRTOS/Source/list.c",
+      "map:9341",
+      "rule:kernel",
+      "symbol:vListInsert"
+    ],
+    "reason": null,
+    "definition_source": "third_party/FreeRTOS/FreeRTOS/Source/list.c",
+    "role": "kernel_port"
+  },
+  {
+    "start": 2147486418,
+    "end": 2147486452,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/list.o",
+    "source": "third_party/FreeRTOS/FreeRTOS/Source/list.c",
+    "function": "uxListRemove",
+    "aliases": [
+      "uxListRemove"
+    ],
+    "evidence": [
+      "dwarf:third_party/FreeRTOS/FreeRTOS/Source/list.c",
+      "map:9344",
+      "rule:kernel",
+      "symbol:uxListRemove"
+    ],
+    "reason": null,
+    "definition_source": "third_party/FreeRTOS/FreeRTOS/Source/list.c",
+    "role": "kernel_port"
+  },
+  {
+    "start": 2147486452,
+    "end": 2147486966,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/heap_4.o",
+    "source": "third_party/FreeRTOS/FreeRTOS/Source/portable/MemMang/heap_4.c",
+    "function": "pvPortMalloc",
+    "aliases": [
+      "pvPortMalloc"
+    ],
+    "evidence": [
+      "dwarf:third_party/FreeRTOS/FreeRTOS/Source/portable/MemMang/heap_4.c",
+      "map:9347",
+      "rule:kernel",
+      "symbol:pvPortMalloc"
+    ],
+    "reason": null,
+    "definition_source": "third_party/FreeRTOS/FreeRTOS/Source/portable/MemMang/heap_4.c",
+    "role": "kernel_port"
+  },
+  {
+    "start": 2147486966,
+    "end": 2147487266,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/heap_4.o",
+    "source": "third_party/FreeRTOS/FreeRTOS/Source/portable/MemMang/heap_4.c",
+    "function": "vPortFree",
+    "aliases": [
+      "vPortFree"
+    ],
+    "evidence": [
+      "dwarf:third_party/FreeRTOS/FreeRTOS/Source/portable/MemMang/heap_4.c",
+      "map:9350",
+      "rule:kernel",
+      "symbol:vPortFree"
+    ],
+    "reason": null,
+    "definition_source": "third_party/FreeRTOS/FreeRTOS/Source/portable/MemMang/heap_4.c",
+    "role": "kernel_port"
+  },
+  {
+    "start": 2147487266,
+    "end": 2147487366,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/port.o",
+    "source": "third_party/FreeRTOS/FreeRTOS/Source/portable/GCC/RISC-V/port.c",
+    "function": "unresolved@/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/port.o:2147487266",
+    "aliases": [],
+    "evidence": [
+      "map:9353",
+      "rule:kernel",
+      "symbol:None"
+    ],
+    "reason": null,
+    "role": "kernel_port"
+  },
+  {
+    "start": 2147487366,
+    "end": 2147487416,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/port.o",
+    "source": "third_party/FreeRTOS/FreeRTOS/Source/portable/GCC/RISC-V/port.c",
+    "function": "xPortStartScheduler",
+    "aliases": [
+      "xPortStartScheduler"
+    ],
+    "evidence": [
+      "dwarf:third_party/FreeRTOS/FreeRTOS/Source/portable/GCC/RISC-V/port.c",
+      "map:9356",
+      "rule:kernel",
+      "symbol:xPortStartScheduler"
+    ],
+    "reason": null,
+    "definition_source": "third_party/FreeRTOS/FreeRTOS/Source/portable/GCC/RISC-V/port.c",
+    "role": "kernel_port"
+  },
+  {
+    "start": 2147487416,
+    "end": 2147487442,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcCounter.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcCounter.c",
+    "function": "xTraceCounterInitialize",
+    "aliases": [
+      "xTraceCounterInitialize"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcCounter.c",
+      "map:9359",
+      "rule:recorder",
+      "symbol:xTraceCounterInitialize"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcCounter.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147487442,
+    "end": 2147487482,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcDiagnostics.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcDiagnostics.c",
+    "function": "xTraceDiagnosticsInitialize",
+    "aliases": [
+      "xTraceDiagnosticsInitialize"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcDiagnostics.c",
+      "map:9362",
+      "rule:recorder",
+      "symbol:xTraceDiagnosticsInitialize"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcDiagnostics.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147487482,
+    "end": 2147487500,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcDiagnostics.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcDiagnostics.c",
+    "function": "xTraceDiagnosticsAdd",
+    "aliases": [
+      "xTraceDiagnosticsAdd"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcDiagnostics.c",
+      "map:9365",
+      "rule:recorder",
+      "symbol:xTraceDiagnosticsAdd"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcDiagnostics.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147487500,
+    "end": 2147487504,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcDiagnostics.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcDiagnostics.c",
+    "function": "xTraceDiagnosticsIncrease",
+    "aliases": [
+      "xTraceDiagnosticsIncrease"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcDiagnostics.c",
+      "map:9368",
+      "rule:recorder",
+      "symbol:xTraceDiagnosticsIncrease"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcDiagnostics.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147487504,
+    "end": 2147487524,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcDiagnostics.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcDiagnostics.c",
+    "function": "xTraceDiagnosticsSetIfHigher",
+    "aliases": [
+      "xTraceDiagnosticsSetIfHigher"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcDiagnostics.c",
+      "map:9371",
+      "rule:recorder",
+      "symbol:xTraceDiagnosticsSetIfHigher"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcDiagnostics.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147487524,
+    "end": 2147487626,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcDiagnostics.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcDiagnostics.c",
+    "function": "xTraceDiagnosticsCheckStatus",
+    "aliases": [
+      "xTraceDiagnosticsCheckStatus"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcDiagnostics.c",
+      "map:9374",
+      "rule:recorder",
+      "symbol:xTraceDiagnosticsCheckStatus"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcDiagnostics.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147487626,
+    "end": 2147487642,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcEntryTable.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcEntryTable.c",
+    "function": "poc_irq_restore",
+    "aliases": [
+      "poc_irq_restore"
+    ],
+    "evidence": [
+      "dwarf:firmware/port/recorder_port.h",
+      "map:9377",
+      "rule:recorder",
+      "symbol:poc_irq_restore"
+    ],
+    "reason": null,
+    "definition_source": "firmware/port/recorder_port.h",
+    "role": "recorder"
+  },
+  {
+    "start": 2147487642,
+    "end": 2147487672,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcEntryTable.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcEntryTable.c",
+    "function": "xTraceEntryIndexTableInitialize",
+    "aliases": [
+      "xTraceEntryIndexTableInitialize"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcEntryTable.c",
+      "map:9379",
+      "rule:recorder",
+      "symbol:xTraceEntryIndexTableInitialize"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcEntryTable.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147487672,
+    "end": 2147487746,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcEntryTable.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcEntryTable.c",
+    "function": "xTraceEntryTableInitialize",
+    "aliases": [
+      "xTraceEntryTableInitialize"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcEntryTable.c",
+      "map:9382",
+      "rule:recorder",
+      "symbol:xTraceEntryTableInitialize"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcEntryTable.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147487746,
+    "end": 2147487872,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcEntryTable.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcEntryTable.c",
+    "function": "xTraceEntryCreate",
+    "aliases": [
+      "xTraceEntryCreate"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcEntryTable.c",
+      "map:9385",
+      "rule:recorder",
+      "symbol:xTraceEntryCreate"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcEntryTable.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147487872,
+    "end": 2147487940,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcEntryTable.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcEntryTable.c",
+    "function": "xTraceEntrySetSymbol",
+    "aliases": [
+      "xTraceEntrySetSymbol"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcEntryTable.c",
+      "map:9388",
+      "rule:recorder",
+      "symbol:xTraceEntrySetSymbol"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcEntryTable.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147487940,
+    "end": 2147487958,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcEntryTable.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcEntryTable.c",
+    "function": "xTraceEntryGetCount",
+    "aliases": [
+      "xTraceEntryGetCount"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcEntryTable.c",
+      "map:9391",
+      "rule:recorder",
+      "symbol:xTraceEntryGetCount"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcEntryTable.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147487958,
+    "end": 2147487980,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcEntryTable.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcEntryTable.c",
+    "function": "xTraceEntryGetAtIndex",
+    "aliases": [
+      "xTraceEntryGetAtIndex"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcEntryTable.c",
+      "map:9394",
+      "rule:recorder",
+      "symbol:xTraceEntryGetAtIndex"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcEntryTable.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147487980,
+    "end": 2147488152,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcError.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcError.c",
+    "function": "prvTraceErrorGetDescription",
+    "aliases": [
+      "prvTraceErrorGetDescription"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcError.c",
+      "map:9397",
+      "rule:recorder",
+      "symbol:prvTraceErrorGetDescription"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcError.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147488152,
+    "end": 2147488262,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcError.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcError.c",
+    "function": "prvTraceErrorPrint",
+    "aliases": [
+      "prvTraceErrorPrint"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcError.c",
+      "map:9399",
+      "rule:recorder",
+      "symbol:prvTraceErrorPrint"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcError.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147488262,
+    "end": 2147488294,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcError.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcError.c",
+    "function": "xTraceErrorInitialize",
+    "aliases": [
+      "xTraceErrorInitialize"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcError.c",
+      "map:9401",
+      "rule:recorder",
+      "symbol:xTraceErrorInitialize"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcError.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147488294,
+    "end": 2147488354,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcError.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcError.c",
+    "function": "xTraceWarning",
+    "aliases": [
+      "xTraceWarning"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcError.c",
+      "map:9404",
+      "rule:recorder",
+      "symbol:xTraceWarning"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcError.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147488354,
+    "end": 2147488452,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcError.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcError.c",
+    "function": "xTraceError",
+    "aliases": [
+      "xTraceError"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcError.c",
+      "map:9407",
+      "rule:recorder",
+      "symbol:xTraceError"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcError.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147488452,
+    "end": 2147488468,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcEvent.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcEvent.c",
+    "function": "poc_irq_restore",
+    "aliases": [
+      "poc_irq_restore"
+    ],
+    "evidence": [
+      "dwarf:firmware/port/recorder_port.h",
+      "map:9410",
+      "rule:recorder",
+      "symbol:poc_irq_restore"
+    ],
+    "reason": null,
+    "definition_source": "firmware/port/recorder_port.h",
+    "role": "recorder"
+  },
+  {
+    "start": 2147488468,
+    "end": 2147488492,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcEvent.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcEvent.c",
+    "function": "xTraceEventInitialize",
+    "aliases": [
+      "xTraceEventInitialize"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcEvent.c",
+      "map:9412",
+      "rule:recorder",
+      "symbol:xTraceEventInitialize"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcEvent.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147488492,
+    "end": 2147488636,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcEvent.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcEvent.c",
+    "function": "xTraceEventCreate1",
+    "aliases": [
+      "xTraceEventCreate1"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcEvent.c",
+      "map:9415",
+      "rule:recorder",
+      "symbol:xTraceEventCreate1"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcEvent.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147488636,
+    "end": 2147488790,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcEvent.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcEvent.c",
+    "function": "xTraceEventCreate2",
+    "aliases": [
+      "xTraceEventCreate2"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcEvent.c",
+      "map:9418",
+      "rule:recorder",
+      "symbol:xTraceEventCreate2"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcEvent.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147488790,
+    "end": 2147488954,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcEvent.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcEvent.c",
+    "function": "xTraceEventCreate3",
+    "aliases": [
+      "xTraceEventCreate3"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcEvent.c",
+      "map:9421",
+      "rule:recorder",
+      "symbol:xTraceEventCreate3"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcEvent.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147488954,
+    "end": 2147489132,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcEvent.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcEvent.c",
+    "function": "xTraceEventCreate4",
+    "aliases": [
+      "xTraceEventCreate4"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcEvent.c",
+      "map:9424",
+      "rule:recorder",
+      "symbol:xTraceEventCreate4"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcEvent.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147489132,
+    "end": 2147489236,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcEvent.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcEvent.c",
+    "function": "xTraceEventCreateRawBlocking",
+    "aliases": [
+      "xTraceEventCreateRawBlocking"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcEvent.c",
+      "map:9427",
+      "rule:recorder",
+      "symbol:xTraceEventCreateRawBlocking"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcEvent.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147489236,
+    "end": 2147489400,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcEvent.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcEvent.c",
+    "function": "xTraceEventCreateDataOffline0",
+    "aliases": [
+      "xTraceEventCreateDataOffline0"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcEvent.c",
+      "map:9430",
+      "rule:recorder",
+      "symbol:xTraceEventCreateDataOffline0"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcEvent.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147489400,
+    "end": 2147489598,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcEvent.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcEvent.c",
+    "function": "xTraceEventCreateData1",
+    "aliases": [
+      "xTraceEventCreateData1"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcEvent.c",
+      "map:9433",
+      "rule:recorder",
+      "symbol:xTraceEventCreateData1"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcEvent.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147489598,
+    "end": 2147489806,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcEvent.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcEvent.c",
+    "function": "xTraceEventCreateData2",
+    "aliases": [
+      "xTraceEventCreateData2"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcEvent.c",
+      "map:9436",
+      "rule:recorder",
+      "symbol:xTraceEventCreateData2"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcEvent.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147489806,
+    "end": 2147490028,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcEvent.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcEvent.c",
+    "function": "xTraceEventCreateData3",
+    "aliases": [
+      "xTraceEventCreateData3"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcEvent.c",
+      "map:9439",
+      "rule:recorder",
+      "symbol:xTraceEventCreateData3"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcEvent.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147490028,
+    "end": 2147490276,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcEvent.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcEvent.c",
+    "function": "xTraceEventCreateData4",
+    "aliases": [
+      "xTraceEventCreateData4"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcEvent.c",
+      "map:9442",
+      "rule:recorder",
+      "symbol:xTraceEventCreateData4"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcEvent.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147490276,
+    "end": 2147490534,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcEvent.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcEvent.c",
+    "function": "xTraceEventCreateData5",
+    "aliases": [
+      "xTraceEventCreateData5"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcEvent.c",
+      "map:9445",
+      "rule:recorder",
+      "symbol:xTraceEventCreateData5"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcEvent.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147490534,
+    "end": 2147490802,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcEvent.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcEvent.c",
+    "function": "xTraceEventCreateData6",
+    "aliases": [
+      "xTraceEventCreateData6"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcEvent.c",
+      "map:9448",
+      "rule:recorder",
+      "symbol:xTraceEventCreateData6"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcEvent.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147490802,
+    "end": 2147490828,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcExtension.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcExtension.c",
+    "function": "xTraceExtensionInitialize",
+    "aliases": [
+      "xTraceExtensionInitialize"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcExtension.c",
+      "map:9451",
+      "rule:recorder",
+      "symbol:xTraceExtensionInitialize"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcExtension.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147490828,
+    "end": 2147490864,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcHeap.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcHeap.c",
+    "function": "xTraceHeapCreate",
+    "aliases": [
+      "xTraceHeapCreate"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcHeap.c",
+      "map:9454",
+      "rule:recorder",
+      "symbol:xTraceHeapCreate"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcHeap.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147490864,
+    "end": 2147490910,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcISR.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcISR.c",
+    "function": "xTraceISRInitialize",
+    "aliases": [
+      "xTraceISRInitialize"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcISR.c",
+      "map:9457",
+      "rule:recorder",
+      "symbol:xTraceISRInitialize"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcISR.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147490910,
+    "end": 2147490926,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcObject.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcObject.c",
+    "function": "poc_irq_restore",
+    "aliases": [
+      "poc_irq_restore"
+    ],
+    "evidence": [
+      "dwarf:firmware/port/recorder_port.h",
+      "map:9460",
+      "rule:recorder",
+      "symbol:poc_irq_restore"
+    ],
+    "reason": null,
+    "definition_source": "firmware/port/recorder_port.h",
+    "role": "recorder"
+  },
+  {
+    "start": 2147490926,
+    "end": 2147491010,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcObject.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcObject.c",
+    "function": "xTraceObjectSetName",
+    "aliases": [
+      "xTraceObjectSetName"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcObject.c",
+      "map:9462",
+      "rule:recorder",
+      "symbol:xTraceObjectSetName"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcObject.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147491010,
+    "end": 2147491242,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcObject.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcObject.c",
+    "function": "xTraceObjectRegisterInternal",
+    "aliases": [
+      "xTraceObjectRegisterInternal"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcObject.c",
+      "map:9465",
+      "rule:recorder",
+      "symbol:xTraceObjectRegisterInternal"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcObject.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147491242,
+    "end": 2147491266,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcObject.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcObject.c",
+    "function": "xTraceObjectRegisterWithoutHandle",
+    "aliases": [
+      "xTraceObjectRegisterWithoutHandle"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcObject.c",
+      "map:9468",
+      "rule:recorder",
+      "symbol:xTraceObjectRegisterWithoutHandle"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcObject.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147491266,
+    "end": 2147491630,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcPrint.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcPrint.c",
+    "function": "prvTraceVPrintF",
+    "aliases": [
+      "prvTraceVPrintF"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcPrint.c",
+      "map:9471",
+      "rule:recorder",
+      "symbol:prvTraceVPrintF"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcPrint.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147491630,
+    "end": 2147491658,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcPrint.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcPrint.c",
+    "function": "xTracePrintInitialize",
+    "aliases": [
+      "xTracePrintInitialize"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcPrint.c",
+      "map:9473",
+      "rule:recorder",
+      "symbol:xTracePrintInitialize"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcPrint.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147491658,
+    "end": 2147491720,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcPrint.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcPrint.c",
+    "function": "xTracePrint",
+    "aliases": [
+      "xTracePrint"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcPrint.c",
+      "map:9476",
+      "rule:recorder",
+      "symbol:xTracePrint"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcPrint.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147491720,
+    "end": 2147491812,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcPrint.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcPrint.c",
+    "function": "xTraceVPrintF",
+    "aliases": [
+      "xTraceVPrintF"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcPrint.c",
+      "map:9479",
+      "rule:recorder",
+      "symbol:xTraceVPrintF"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcPrint.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147491812,
+    "end": 2147491858,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcPrint.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcPrint.c",
+    "function": "xTracePrintF",
+    "aliases": [
+      "xTracePrintF"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcPrint.c",
+      "map:9482",
+      "rule:recorder",
+      "symbol:xTracePrintF"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcPrint.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147491858,
+    "end": 2147491880,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcStaticBuffer.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcStaticBuffer.c",
+    "function": "xTraceStaticBufferInitialize",
+    "aliases": [
+      "xTraceStaticBufferInitialize"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcStaticBuffer.c",
+      "map:9485",
+      "rule:recorder",
+      "symbol:xTraceStaticBufferInitialize"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcStaticBuffer.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147491880,
+    "end": 2147492084,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcStreamingRecorder.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcStreamingRecorder.c",
+    "function": "prvSetRecorderEnabled",
+    "aliases": [
+      "prvSetRecorderEnabled"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcStreamingRecorder.c",
+      "map:9488",
+      "rule:recorder",
+      "symbol:prvSetRecorderEnabled"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcStreamingRecorder.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147492084,
+    "end": 2147492138,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcStreamingRecorder.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcStreamingRecorder.c",
+    "function": "prvSetRecorderDisabled",
+    "aliases": [
+      "prvSetRecorderDisabled"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcStreamingRecorder.c",
+      "map:9490",
+      "rule:recorder",
+      "symbol:prvSetRecorderDisabled"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcStreamingRecorder.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147492138,
+    "end": 2147492226,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcStreamingRecorder.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcStreamingRecorder.c",
+    "function": "xTraceHeaderInitialize",
+    "aliases": [
+      "xTraceHeaderInitialize"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcStreamingRecorder.c",
+      "map:9492",
+      "rule:recorder",
+      "symbol:xTraceHeaderInitialize"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcStreamingRecorder.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147492226,
+    "end": 2147492574,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcStreamingRecorder.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcStreamingRecorder.c",
+    "function": "xTraceInitialize",
+    "aliases": [
+      "xTraceInitialize"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcStreamingRecorder.c",
+      "map:9495",
+      "rule:recorder",
+      "symbol:xTraceInitialize"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcStreamingRecorder.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147492574,
+    "end": 2147492800,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcStreamingRecorder.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcStreamingRecorder.c",
+    "function": "xTraceEnable",
+    "aliases": [
+      "xTraceEnable"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcStreamingRecorder.c",
+      "map:9498",
+      "rule:recorder",
+      "symbol:xTraceEnable"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcStreamingRecorder.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147492800,
+    "end": 2147492816,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcStreamingRecorder.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcStreamingRecorder.c",
+    "function": "xTraceDisable",
+    "aliases": [
+      "xTraceDisable"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcStreamingRecorder.c",
+      "map:9501",
+      "rule:recorder",
+      "symbol:xTraceDisable"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcStreamingRecorder.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147492816,
+    "end": 2147493002,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcStreamingRecorder.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcStreamingRecorder.c",
+    "function": "xTraceTzCtrl",
+    "aliases": [
+      "xTraceTzCtrl"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcStreamingRecorder.c",
+      "map:9504",
+      "rule:recorder",
+      "symbol:xTraceTzCtrl"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcStreamingRecorder.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147493002,
+    "end": 2147493086,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcString.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcString.c",
+    "function": "xTraceStringRegister",
+    "aliases": [
+      "xTraceStringRegister"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcString.c",
+      "map:9507",
+      "rule:recorder",
+      "symbol:xTraceStringRegister"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcString.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147493086,
+    "end": 2147493112,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcTask.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcTask.c",
+    "function": "xTraceTaskInitialize",
+    "aliases": [
+      "xTraceTaskInitialize"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcTask.c",
+      "map:9510",
+      "rule:recorder",
+      "symbol:xTraceTaskInitialize"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcTask.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147493112,
+    "end": 2147493208,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcTask.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcTask.c",
+    "function": "xTraceTaskSwitch",
+    "aliases": [
+      "xTraceTaskSwitch"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcTask.c",
+      "map:9513",
+      "rule:recorder",
+      "symbol:xTraceTaskSwitch"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcTask.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147493208,
+    "end": 2147493264,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcTimestamp.o",
+    "source": "references/baseline/percepio/TraceRecorder/trcTimestamp.c",
+    "function": "xTraceTimestampInitialize",
+    "aliases": [
+      "xTraceTimestampInitialize"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/trcTimestamp.c",
+      "map:9516",
+      "rule:recorder",
+      "symbol:xTraceTimestampInitialize"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/trcTimestamp.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147493264,
+    "end": 2147493280,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcKernelPort.o",
+    "source": "references/baseline/percepio/TraceRecorder/kernelports/FreeRTOS/trcKernelPort.c",
+    "function": "TzCtrl",
+    "aliases": [
+      "TzCtrl"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/kernelports/FreeRTOS/trcKernelPort.c",
+      "map:9518",
+      "rule:recorder",
+      "symbol:TzCtrl"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/kernelports/FreeRTOS/trcKernelPort.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147493280,
+    "end": 2147493302,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcKernelPort.o",
+    "source": "references/baseline/percepio/TraceRecorder/kernelports/FreeRTOS/trcKernelPort.c",
+    "function": "xTraceKernelPortInitialize",
+    "aliases": [
+      "xTraceKernelPortInitialize"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/kernelports/FreeRTOS/trcKernelPort.c",
+      "map:9520",
+      "rule:recorder",
+      "symbol:xTraceKernelPortInitialize"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/kernelports/FreeRTOS/trcKernelPort.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147493302,
+    "end": 2147493400,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcKernelPort.o",
+    "source": "references/baseline/percepio/TraceRecorder/kernelports/FreeRTOS/trcKernelPort.c",
+    "function": "xTraceKernelPortEnable",
+    "aliases": [
+      "xTraceKernelPortEnable"
+    ],
+    "evidence": [
+      "dwarf:references/baseline/percepio/TraceRecorder/kernelports/FreeRTOS/trcKernelPort.c",
+      "map:9523",
+      "rule:recorder",
+      "symbol:xTraceKernelPortEnable"
+    ],
+    "reason": null,
+    "definition_source": "references/baseline/percepio/TraceRecorder/kernelports/FreeRTOS/trcKernelPort.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147493400,
+    "end": 2147493424,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/clock.o",
+    "source": "firmware/port/clock.c",
+    "function": "poc_mtime",
+    "aliases": [
+      "poc_mtime"
+    ],
+    "evidence": [
+      "dwarf:firmware/port/clock.c",
+      "map:9526",
+      "rule:harness",
+      "symbol:poc_mtime"
+    ],
+    "reason": null,
+    "definition_source": "firmware/port/clock.c",
+    "role": "application_harness"
+  },
+  {
+    "start": 2147493424,
+    "end": 2147493458,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/finish.o",
+    "source": "firmware/port/finish.c",
+    "function": "poc_console",
+    "aliases": [
+      "poc_console"
+    ],
+    "evidence": [
+      "dwarf:firmware/port/finish.c",
+      "map:9529",
+      "rule:harness",
+      "symbol:poc_console"
+    ],
+    "reason": null,
+    "definition_source": "firmware/port/finish.c",
+    "role": "application_harness"
+  },
+  {
+    "start": 2147493458,
+    "end": 2147493488,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/finish.o",
+    "source": "firmware/port/finish.c",
+    "function": "poc_finish",
+    "aliases": [
+      "poc_finish"
+    ],
+    "evidence": [
+      "dwarf:firmware/port/finish.c",
+      "map:9532",
+      "rule:harness",
+      "symbol:poc_finish"
+    ],
+    "reason": null,
+    "definition_source": "firmware/port/finish.c",
+    "role": "application_harness"
+  },
+  {
+    "start": 2147493488,
+    "end": 2147493502,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/semihost.o",
+    "source": "firmware/port/semihost.c",
+    "function": "call",
+    "aliases": [
+      "call"
+    ],
+    "evidence": [
+      "dwarf:firmware/port/semihost.c",
+      "map:9534",
+      "rule:harness",
+      "symbol:call"
+    ],
+    "reason": null,
+    "definition_source": "firmware/port/semihost.c",
+    "role": "application_harness"
+  },
+  {
+    "start": 2147493502,
+    "end": 2147493532,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/semihost.o",
+    "source": "firmware/port/semihost.c",
+    "function": "poc_sh_open",
+    "aliases": [
+      "poc_sh_open"
+    ],
+    "evidence": [
+      "dwarf:firmware/port/semihost.c",
+      "map:9536",
+      "rule:harness",
+      "symbol:poc_sh_open"
+    ],
+    "reason": null,
+    "definition_source": "firmware/port/semihost.c",
+    "role": "application_harness"
+  },
+  {
+    "start": 2147493532,
+    "end": 2147493552,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/semihost.o",
+    "source": "firmware/port/semihost.c",
+    "function": "poc_sh_close",
+    "aliases": [
+      "poc_sh_close"
+    ],
+    "evidence": [
+      "dwarf:firmware/port/semihost.c",
+      "map:9539",
+      "rule:harness",
+      "symbol:poc_sh_close"
+    ],
+    "reason": null,
+    "definition_source": "firmware/port/semihost.c",
+    "role": "application_harness"
+  },
+  {
+    "start": 2147493552,
+    "end": 2147493576,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/semihost.o",
+    "source": "firmware/port/semihost.c",
+    "function": "poc_sh_write",
+    "aliases": [
+      "poc_sh_write"
+    ],
+    "evidence": [
+      "dwarf:firmware/port/semihost.c",
+      "map:9542",
+      "rule:harness",
+      "symbol:poc_sh_write"
+    ],
+    "reason": null,
+    "definition_source": "firmware/port/semihost.c",
+    "role": "application_harness"
+  },
+  {
+    "start": 2147493576,
+    "end": 2147493642,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/stream_io.o",
+    "source": "firmware/port/stream_io.c",
+    "function": "poc_write_all",
+    "aliases": [
+      "poc_write_all"
+    ],
+    "evidence": [
+      "dwarf:firmware/port/stream_io.c",
+      "map:9545",
+      "rule:harness",
+      "symbol:poc_write_all"
+    ],
+    "reason": null,
+    "definition_source": "firmware/port/stream_io.c",
+    "role": "application_harness"
+  },
+  {
+    "start": 2147493642,
+    "end": 2147493700,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/syscalls.o",
+    "source": "firmware/port/syscalls.c",
+    "function": "_sbrk",
+    "aliases": [
+      "_sbrk"
+    ],
+    "evidence": [
+      "dwarf:firmware/port/syscalls.c",
+      "map:9547",
+      "rule:harness",
+      "symbol:_sbrk"
+    ],
+    "reason": null,
+    "definition_source": "firmware/port/syscalls.c",
+    "role": "application_harness"
+  },
+  {
+    "start": 2147493700,
+    "end": 2147493726,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcStreamPort.o",
+    "source": "firmware/port/trcStreamPort.c",
+    "function": "failed",
+    "aliases": [
+      "failed"
+    ],
+    "evidence": [
+      "dwarf:firmware/port/trcStreamPort.c",
+      "map:9549",
+      "rule:adapter",
+      "symbol:failed"
+    ],
+    "reason": null,
+    "definition_source": "firmware/port/trcStreamPort.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147493726,
+    "end": 2147493734,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcStreamPort.o",
+    "source": "firmware/port/trcStreamPort.c",
+    "function": "xTraceStreamPortInitialize",
+    "aliases": [
+      "xTraceStreamPortInitialize"
+    ],
+    "evidence": [
+      "dwarf:firmware/port/trcStreamPort.c",
+      "map:9551",
+      "rule:adapter",
+      "symbol:xTraceStreamPortInitialize"
+    ],
+    "reason": null,
+    "definition_source": "firmware/port/trcStreamPort.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147493734,
+    "end": 2147493770,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcStreamPort.o",
+    "source": "firmware/port/trcStreamPort.c",
+    "function": "xTraceStreamPortOnTraceBegin",
+    "aliases": [
+      "xTraceStreamPortOnTraceBegin"
+    ],
+    "evidence": [
+      "dwarf:firmware/port/trcStreamPort.c",
+      "map:9554",
+      "rule:adapter",
+      "symbol:xTraceStreamPortOnTraceBegin"
+    ],
+    "reason": null,
+    "definition_source": "firmware/port/trcStreamPort.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147493770,
+    "end": 2147493810,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcStreamPort.o",
+    "source": "firmware/port/trcStreamPort.c",
+    "function": "xTraceStreamPortOnTraceEnd",
+    "aliases": [
+      "xTraceStreamPortOnTraceEnd"
+    ],
+    "evidence": [
+      "dwarf:firmware/port/trcStreamPort.c",
+      "map:9557",
+      "rule:adapter",
+      "symbol:xTraceStreamPortOnTraceEnd"
+    ],
+    "reason": null,
+    "definition_source": "firmware/port/trcStreamPort.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147493810,
+    "end": 2147493862,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcStreamPort.o",
+    "source": "firmware/port/trcStreamPort.c",
+    "function": "xTraceStreamPortWriteData",
+    "aliases": [
+      "xTraceStreamPortWriteData"
+    ],
+    "evidence": [
+      "dwarf:firmware/port/trcStreamPort.c",
+      "map:9560",
+      "rule:adapter",
+      "symbol:xTraceStreamPortWriteData"
+    ],
+    "reason": null,
+    "definition_source": "firmware/port/trcStreamPort.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147493862,
+    "end": 2147493870,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/trcStreamPort.o",
+    "source": "firmware/port/trcStreamPort.c",
+    "function": "xTraceStreamPortReadData",
+    "aliases": [
+      "xTraceStreamPortReadData"
+    ],
+    "evidence": [
+      "dwarf:firmware/port/trcStreamPort.c",
+      "map:9563",
+      "rule:adapter",
+      "symbol:xTraceStreamPortReadData"
+    ],
+    "reason": null,
+    "definition_source": "firmware/port/trcStreamPort.c",
+    "role": "recorder"
+  },
+  {
+    "start": 2147493870,
+    "end": 2147493908,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/main.o",
+    "source": "firmware/app/main.c",
+    "function": "vAssertCalled",
+    "aliases": [
+      "vAssertCalled"
+    ],
+    "evidence": [
+      "dwarf:firmware/app/main.c",
+      "map:9566",
+      "rule:harness",
+      "symbol:vAssertCalled"
+    ],
+    "reason": null,
+    "definition_source": "firmware/app/main.c",
+    "role": "application_harness"
+  },
+  {
+    "start": 2147493908,
+    "end": 2147493984,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/main.o",
+    "source": "firmware/app/main.c",
+    "function": "poc_mark",
+    "aliases": [
+      "poc_mark"
+    ],
+    "evidence": [
+      "dwarf:firmware/app/main.c",
+      "map:9569",
+      "rule:harness",
+      "symbol:poc_mark"
+    ],
+    "reason": null,
+    "definition_source": "firmware/app/main.c",
+    "role": "application_harness"
+  },
+  {
+    "start": 2147493984,
+    "end": 2147494006,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/main.o",
+    "source": "firmware/app/main.c",
+    "function": "vApplicationMallocFailedHook",
+    "aliases": [
+      "vApplicationMallocFailedHook"
+    ],
+    "evidence": [
+      "dwarf:firmware/app/main.c",
+      "map:9572",
+      "rule:harness",
+      "symbol:vApplicationMallocFailedHook"
+    ],
+    "reason": null,
+    "definition_source": "firmware/app/main.c",
+    "role": "application_harness"
+  },
+  {
+    "start": 2147494006,
+    "end": 2147494034,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/main.o",
+    "source": "firmware/app/main.c",
+    "function": "vApplicationStackOverflowHook",
+    "aliases": [
+      "vApplicationStackOverflowHook"
+    ],
+    "evidence": [
+      "dwarf:firmware/app/main.c",
+      "map:9575",
+      "rule:harness",
+      "symbol:vApplicationStackOverflowHook"
+    ],
+    "reason": null,
+    "definition_source": "firmware/app/main.c",
+    "role": "application_harness"
+  },
+  {
+    "start": 2147494034,
+    "end": 2147494130,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/oracle.o",
+    "source": "firmware/app/oracle.c",
+    "function": "poc_oracle_record",
+    "aliases": [
+      "poc_oracle_record"
+    ],
+    "evidence": [
+      "dwarf:firmware/app/oracle.c",
+      "map:9578",
+      "rule:harness",
+      "symbol:poc_oracle_record"
+    ],
+    "reason": null,
+    "definition_source": "firmware/app/oracle.c",
+    "role": "application_harness"
+  },
+  {
+    "start": 2147494130,
+    "end": 2147494810,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/oracle.o",
+    "source": "firmware/app/oracle.c",
+    "function": "poc_oracle_finish",
+    "aliases": [
+      "poc_oracle_finish"
+    ],
+    "evidence": [
+      "dwarf:firmware/app/oracle.c",
+      "map:9581",
+      "rule:harness",
+      "symbol:poc_oracle_finish"
+    ],
+    "reason": null,
+    "definition_source": "firmware/app/oracle.c",
+    "role": "application_harness"
+  },
+  {
+    "start": 2147494810,
+    "end": 2147494842,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_request_response_irq.o",
+    "source": "firmware/app/cases/tcp_request_response_irq.c",
+    "function": "setup",
+    "aliases": [
+      "setup"
+    ],
+    "evidence": [
+      "dwarf:firmware/app/cases/tcp_request_response.c",
+      "map:9583",
+      "rule:harness",
+      "symbol:setup"
+    ],
+    "reason": null,
+    "definition_source": "firmware/app/cases/tcp_request_response.c",
+    "role": "application_harness"
+  },
+  {
+    "start": 2147494842,
+    "end": 2147494898,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_request_response_irq.o",
+    "source": "firmware/app/cases/tcp_request_response_irq.c",
+    "function": "resources",
+    "aliases": [
+      "resources"
+    ],
+    "evidence": [
+      "dwarf:firmware/app/cases/tcp_request_response.c",
+      "map:9585",
+      "rule:harness",
+      "symbol:resources"
+    ],
+    "reason": null,
+    "definition_source": "firmware/app/cases/tcp_request_response.c",
+    "role": "application_harness"
+  },
+  {
+    "start": 2147494898,
+    "end": 2147494960,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_request_response_irq.o",
+    "source": "firmware/app/cases/tcp_request_response_irq.c",
+    "function": "on_sent",
+    "aliases": [
+      "on_sent"
+    ],
+    "evidence": [
+      "dwarf:firmware/app/cases/tcp_request_response.c",
+      "map:9586",
+      "rule:harness",
+      "symbol:on_sent"
+    ],
+    "reason": null,
+    "definition_source": "firmware/app/cases/tcp_request_response.c",
+    "role": "application_harness"
+  },
+  {
+    "start": 2147494960,
+    "end": 2147495040,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_request_response_irq.o",
+    "source": "firmware/app/cases/tcp_request_response_irq.c",
+    "function": "on_accept",
+    "aliases": [
+      "on_accept"
+    ],
+    "evidence": [
+      "dwarf:firmware/app/cases/tcp_request_response.c",
+      "map:9588",
+      "rule:harness",
+      "symbol:on_accept"
+    ],
+    "reason": null,
+    "definition_source": "firmware/app/cases/tcp_request_response.c",
+    "role": "application_harness"
+  },
+  {
+    "start": 2147495040,
+    "end": 2147495374,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_request_response_irq.o",
+    "source": "firmware/app/cases/tcp_request_response_irq.c",
+    "function": "on_recv",
+    "aliases": [
+      "on_recv"
+    ],
+    "evidence": [
+      "dwarf:firmware/app/cases/tcp_request_response.c",
+      "map:9589",
+      "rule:harness",
+      "symbol:on_recv"
+    ],
+    "reason": null,
+    "definition_source": "firmware/app/cases/tcp_request_response.c",
+    "role": "application_harness"
+  },
+  {
+    "start": 2147495374,
+    "end": 2147495428,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_request_response_irq.o",
+    "source": "firmware/app/cases/tcp_request_response_irq.c",
+    "function": "output_packet",
+    "aliases": [
+      "output_packet"
+    ],
+    "evidence": [
+      "dwarf:firmware/app/cases/tcp_request_response.c",
+      "map:9591",
+      "rule:harness",
+      "symbol:output_packet"
+    ],
+    "reason": null,
+    "definition_source": "firmware/app/cases/tcp_request_response.c",
+    "role": "application_harness"
+  },
+  {
+    "start": 2147495428,
+    "end": 2147495586,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_request_response_irq.o",
+    "source": "firmware/app/cases/tcp_request_response_irq.c",
+    "function": "snapshot",
+    "aliases": [
+      "snapshot"
+    ],
+    "evidence": [
+      "dwarf:firmware/app/cases/tcp_request_response.c",
+      "map:9593",
+      "rule:harness",
+      "symbol:snapshot"
+    ],
+    "reason": null,
+    "definition_source": "firmware/app/cases/tcp_request_response.c",
+    "role": "application_harness"
+  },
+  {
+    "start": 2147495586,
+    "end": 2147495900,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_request_response_irq.o",
+    "source": "firmware/app/cases/tcp_request_response_irq.c",
+    "function": "consume",
+    "aliases": [
+      "consume"
+    ],
+    "evidence": [
+      "dwarf:firmware/app/cases/tcp_request_response.c",
+      "map:9594",
+      "rule:harness",
+      "symbol:consume"
+    ],
+    "reason": null,
+    "definition_source": "firmware/app/cases/tcp_request_response.c",
+    "role": "application_harness"
+  },
+  {
+    "start": 2147495900,
+    "end": 2147496012,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_request_response_irq.o",
+    "source": "firmware/app/cases/tcp_request_response_irq.c",
+    "function": "save_format",
+    "aliases": [
+      "save_format"
+    ],
+    "evidence": [
+      "dwarf:firmware/app/cases/tcp_request_response.c",
+      "map:9596",
+      "rule:harness",
+      "symbol:save_format"
+    ],
+    "reason": null,
+    "definition_source": "firmware/app/cases/tcp_request_response.c",
+    "role": "application_harness"
+  },
+  {
+    "start": 2147496012,
+    "end": 2147496070,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_request_response_irq.o",
+    "source": "firmware/app/cases/tcp_request_response_irq.c",
+    "function": "timing_observer",
+    "aliases": [
+      "timing_observer"
+    ],
+    "evidence": [
+      "dwarf:firmware/app/cases/tcp_request_response.c",
+      "map:9598",
+      "rule:observer",
+      "symbol:timing_observer"
+    ],
+    "reason": null,
+    "definition_source": "firmware/app/cases/tcp_request_response.c",
+    "role": "observer_entry"
+  },
+  {
+    "start": 2147496070,
+    "end": 2147496074,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_request_response_irq.o",
+    "source": "firmware/app/cases/tcp_request_response_irq.c",
+    "function": "tcp_capture_begin",
+    "aliases": [
+      "tcp_capture_begin"
+    ],
+    "evidence": [
+      "dwarf:firmware/app/cases/tcp_request_response.c",
+      "map:9600",
+      "rule:harness",
+      "symbol:tcp_capture_begin"
+    ],
+    "reason": null,
+    "definition_source": "firmware/app/cases/tcp_request_response.c",
+    "role": "application_harness"
+  },
+  {
+    "start": 2147496074,
+    "end": 2147496078,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_request_response_irq.o",
+    "source": "firmware/app/cases/tcp_request_response_irq.c",
+    "function": "tcp_capture_end",
+    "aliases": [
+      "tcp_capture_end"
+    ],
+    "evidence": [
+      "dwarf:firmware/app/cases/tcp_request_response.c",
+      "map:9603",
+      "rule:harness",
+      "symbol:tcp_capture_end"
+    ],
+    "reason": null,
+    "definition_source": "firmware/app/cases/tcp_request_response.c",
+    "role": "application_harness"
+  },
+  {
+    "start": 2147496078,
+    "end": 2147496082,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_request_response_irq.o",
+    "source": "firmware/app/cases/tcp_request_response_irq.c",
+    "function": "z0_stack_begin",
+    "aliases": [
+      "z0_stack_begin"
+    ],
+    "evidence": [
+      "dwarf:firmware/app/cases/tcp_request_response.c",
+      "map:9606",
+      "rule:harness",
+      "symbol:z0_stack_begin"
+    ],
+    "reason": null,
+    "definition_source": "firmware/app/cases/tcp_request_response.c",
+    "role": "application_harness"
+  },
+  {
+    "start": 2147496082,
+    "end": 2147496086,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_request_response_irq.o",
+    "source": "firmware/app/cases/tcp_request_response_irq.c",
+    "function": "z0_stack_end",
+    "aliases": [
+      "z0_stack_end"
+    ],
+    "evidence": [
+      "dwarf:firmware/app/cases/tcp_request_response.c",
+      "map:9609",
+      "rule:harness",
+      "symbol:z0_stack_end"
+    ],
+    "reason": null,
+    "definition_source": "firmware/app/cases/tcp_request_response.c",
+    "role": "application_harness"
+  },
+  {
+    "start": 2147496086,
+    "end": 2147496186,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_request_response_irq.o",
+    "source": "firmware/app/cases/tcp_request_response_irq.c",
+    "function": "phase",
+    "aliases": [
+      "phase"
+    ],
+    "evidence": [
+      "dwarf:firmware/app/cases/tcp_request_response.c",
+      "map:9611",
+      "rule:harness",
+      "symbol:phase"
+    ],
+    "reason": null,
+    "definition_source": "firmware/app/cases/tcp_request_response.c",
+    "role": "application_harness"
+  },
+  {
+    "start": 2147496186,
+    "end": 2147497038,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_request_response_irq.o",
+    "source": "firmware/app/cases/tcp_request_response_irq.c",
+    "function": "inject",
+    "aliases": [
+      "inject"
+    ],
+    "evidence": [
+      "dwarf:firmware/app/cases/tcp_request_response.c",
+      "map:9612",
+      "rule:harness",
+      "symbol:inject"
+    ],
+    "reason": null,
+    "definition_source": "firmware/app/cases/tcp_request_response.c",
+    "role": "application_harness"
+  },
+  {
+    "start": 2147497038,
+    "end": 2147499484,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_request_response_irq.o",
+    "source": "firmware/app/cases/tcp_request_response_irq.c",
+    "function": "session_task",
+    "aliases": [
+      "session_task"
+    ],
+    "evidence": [
+      "dwarf:firmware/app/cases/tcp_request_response.c",
+      "map:9614",
+      "rule:harness",
+      "symbol:session_task"
+    ],
+    "reason": null,
+    "definition_source": "firmware/app/cases/tcp_request_response.c",
+    "role": "application_harness"
+  },
+  {
+    "start": 2147499484,
+    "end": 2147499604,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_request_response_irq.o",
+    "source": "firmware/app/cases/tcp_request_response_irq.c",
+    "function": "poc_case_run",
+    "aliases": [
+      "poc_case_run"
+    ],
+    "evidence": [
+      "dwarf:firmware/app/cases/tcp_request_response.c",
+      "map:9616",
+      "rule:harness",
+      "symbol:poc_case_run"
+    ],
+    "reason": null,
+    "definition_source": "firmware/app/cases/tcp_request_response.c",
+    "role": "application_harness"
+  },
+  {
+    "start": 2147499604,
+    "end": 2147499618,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/def.o",
+    "source": "references/tcp/lwip/src/core/def.c",
+    "function": "lwip_htons",
+    "aliases": [
+      "lwip_htons"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/def.c",
+      "map:9619",
+      "rule:lwip",
+      "symbol:lwip_htons"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/def.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147499618,
+    "end": 2147499654,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/def.o",
+    "source": "references/tcp/lwip/src/core/def.c",
+    "function": "lwip_htonl",
+    "aliases": [
+      "lwip_htonl"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/def.c",
+      "map:9622",
+      "rule:lwip",
+      "symbol:lwip_htonl"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/def.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147499654,
+    "end": 2147499818,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/inet_chksum.o",
+    "source": "references/tcp/lwip/src/core/inet_chksum.c",
+    "function": "lwip_standard_chksum",
+    "aliases": [
+      "lwip_standard_chksum"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/inet_chksum.c",
+      "map:9625",
+      "rule:lwip",
+      "symbol:lwip_standard_chksum"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/inet_chksum.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147499818,
+    "end": 2147500020,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/inet_chksum.o",
+    "source": "references/tcp/lwip/src/core/inet_chksum.c",
+    "function": "inet_chksum_pseudo",
+    "aliases": [
+      "inet_chksum_pseudo"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/inet_chksum.c",
+      "map:9628",
+      "rule:lwip",
+      "symbol:inet_chksum_pseudo"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/inet_chksum.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147500020,
+    "end": 2147500024,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/inet_chksum.o",
+    "source": "references/tcp/lwip/src/core/inet_chksum.c",
+    "function": "ip_chksum_pseudo",
+    "aliases": [
+      "ip_chksum_pseudo"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/inet_chksum.c",
+      "map:9631",
+      "rule:lwip",
+      "symbol:ip_chksum_pseudo"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/inet_chksum.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147500024,
+    "end": 2147500046,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/inet_chksum.o",
+    "source": "references/tcp/lwip/src/core/inet_chksum.c",
+    "function": "inet_chksum",
+    "aliases": [
+      "inet_chksum"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/inet_chksum.c",
+      "map:9634",
+      "rule:lwip",
+      "symbol:inet_chksum"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/inet_chksum.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147500046,
+    "end": 2147500154,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/inet_chksum.o",
+    "source": "references/tcp/lwip/src/core/inet_chksum.c",
+    "function": "inet_chksum_pbuf",
+    "aliases": [
+      "inet_chksum_pbuf"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/inet_chksum.c",
+      "map:9637",
+      "rule:lwip",
+      "symbol:inet_chksum_pbuf"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/inet_chksum.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147500154,
+    "end": 2147500176,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/init.o",
+    "source": "references/tcp/lwip/src/core/init.c",
+    "function": "lwip_init",
+    "aliases": [
+      "lwip_init"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/init.c",
+      "map:9640",
+      "rule:lwip",
+      "symbol:lwip_init"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/init.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147500176,
+    "end": 2147500236,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/mem.o",
+    "source": "references/tcp/lwip/src/core/mem.c",
+    "function": "mem_init",
+    "aliases": [
+      "mem_init"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/mem.c",
+      "map:9643",
+      "rule:lwip",
+      "symbol:mem_init"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/mem.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147500236,
+    "end": 2147500492,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/mem.o",
+    "source": "references/tcp/lwip/src/core/mem.c",
+    "function": "mem_free",
+    "aliases": [
+      "mem_free"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/mem.c",
+      "map:9646",
+      "rule:lwip",
+      "symbol:mem_free"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/mem.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147500492,
+    "end": 2147500782,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/mem.o",
+    "source": "references/tcp/lwip/src/core/mem.c",
+    "function": "mem_trim",
+    "aliases": [
+      "mem_trim"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/mem.c",
+      "map:9649",
+      "rule:lwip",
+      "symbol:mem_trim"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/mem.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147500782,
+    "end": 2147501082,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/mem.o",
+    "source": "references/tcp/lwip/src/core/mem.c",
+    "function": "mem_malloc",
+    "aliases": [
+      "mem_malloc"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/mem.c",
+      "map:9652",
+      "rule:lwip",
+      "symbol:mem_malloc"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/mem.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147501082,
+    "end": 2147501140,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/memp.o",
+    "source": "references/tcp/lwip/src/core/memp.c",
+    "function": "do_memp_malloc_pool",
+    "aliases": [
+      "do_memp_malloc_pool"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/memp.c",
+      "map:9655",
+      "rule:lwip",
+      "symbol:do_memp_malloc_pool"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/memp.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147501140,
+    "end": 2147501186,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/memp.o",
+    "source": "references/tcp/lwip/src/core/memp.c",
+    "function": "memp_init_pool",
+    "aliases": [
+      "memp_init_pool"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/memp.c",
+      "map:9657",
+      "rule:lwip",
+      "symbol:memp_init_pool"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/memp.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147501186,
+    "end": 2147501258,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/memp.o",
+    "source": "references/tcp/lwip/src/core/memp.c",
+    "function": "memp_init",
+    "aliases": [
+      "memp_init"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/memp.c",
+      "map:9660",
+      "rule:lwip",
+      "symbol:memp_init"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/memp.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147501258,
+    "end": 2147501286,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/memp.o",
+    "source": "references/tcp/lwip/src/core/memp.c",
+    "function": "memp_malloc",
+    "aliases": [
+      "memp_malloc"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/memp.c",
+      "map:9663",
+      "rule:lwip",
+      "symbol:memp_malloc"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/memp.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147501286,
+    "end": 2147501332,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/memp.o",
+    "source": "references/tcp/lwip/src/core/memp.c",
+    "function": "memp_free",
+    "aliases": [
+      "memp_free"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/memp.c",
+      "map:9666",
+      "rule:lwip",
+      "symbol:memp_free"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/memp.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147501332,
+    "end": 2147501336,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/netif.o",
+    "source": "references/tcp/lwip/src/core/netif.c",
+    "function": "netif_null_output_ip4",
+    "aliases": [
+      "netif_null_output_ip4"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/netif.c",
+      "map:9669",
+      "rule:lwip",
+      "symbol:netif_null_output_ip4"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/netif.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147501336,
+    "end": 2147501338,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/netif.o",
+    "source": "references/tcp/lwip/src/core/netif.c",
+    "function": "netif_init",
+    "aliases": [
+      "netif_init"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/netif.c",
+      "map:9671",
+      "rule:lwip",
+      "symbol:netif_init"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/netif.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147501338,
+    "end": 2147501460,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/netif.o",
+    "source": "references/tcp/lwip/src/core/netif.c",
+    "function": "netif_set_addr",
+    "aliases": [
+      "netif_set_addr"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/netif.c",
+      "map:9674",
+      "rule:lwip",
+      "symbol:netif_set_addr"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/netif.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147501460,
+    "end": 2147501632,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/netif.o",
+    "source": "references/tcp/lwip/src/core/netif.c",
+    "function": "netif_add",
+    "aliases": [
+      "netif_add"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/netif.c",
+      "map:9677",
+      "rule:lwip",
+      "symbol:netif_add"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/netif.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147501632,
+    "end": 2147501638,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/netif.o",
+    "source": "references/tcp/lwip/src/core/netif.c",
+    "function": "netif_set_default",
+    "aliases": [
+      "netif_set_default"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/netif.c",
+      "map:9680",
+      "rule:lwip",
+      "symbol:netif_set_default"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/netif.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147501638,
+    "end": 2147501660,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/netif.o",
+    "source": "references/tcp/lwip/src/core/netif.c",
+    "function": "netif_set_up",
+    "aliases": [
+      "netif_set_up"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/netif.c",
+      "map:9683",
+      "rule:lwip",
+      "symbol:netif_set_up"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/netif.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147501660,
+    "end": 2147501682,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/netif.o",
+    "source": "references/tcp/lwip/src/core/netif.c",
+    "function": "netif_set_link_up",
+    "aliases": [
+      "netif_set_link_up"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/netif.c",
+      "map:9686",
+      "rule:lwip",
+      "symbol:netif_set_link_up"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/netif.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147501682,
+    "end": 2147501714,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/netif.o",
+    "source": "references/tcp/lwip/src/core/netif.c",
+    "function": "netif_get_by_index",
+    "aliases": [
+      "netif_get_by_index"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/netif.c",
+      "map:9689",
+      "rule:lwip",
+      "symbol:netif_get_by_index"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/netif.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147501714,
+    "end": 2147501808,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/pbuf.o",
+    "source": "references/tcp/lwip/src/core/pbuf.c",
+    "function": "pbuf_add_header_impl",
+    "aliases": [
+      "pbuf_add_header_impl"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/pbuf.c",
+      "map:9692",
+      "rule:lwip",
+      "symbol:pbuf_add_header_impl"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/pbuf.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147501808,
+    "end": 2147501868,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/pbuf.o",
+    "source": "references/tcp/lwip/src/core/pbuf.c",
+    "function": "pbuf_alloc_reference",
+    "aliases": [
+      "pbuf_alloc_reference"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/pbuf.c",
+      "map:9694",
+      "rule:lwip",
+      "symbol:pbuf_alloc_reference"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/pbuf.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147501868,
+    "end": 2147501874,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/pbuf.o",
+    "source": "references/tcp/lwip/src/core/pbuf.c",
+    "function": "pbuf_add_header",
+    "aliases": [
+      "pbuf_add_header"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/pbuf.c",
+      "map:9697",
+      "rule:lwip",
+      "symbol:pbuf_add_header"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/pbuf.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147501874,
+    "end": 2147501932,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/pbuf.o",
+    "source": "references/tcp/lwip/src/core/pbuf.c",
+    "function": "pbuf_remove_header",
+    "aliases": [
+      "pbuf_remove_header"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/pbuf.c",
+      "map:9700",
+      "rule:lwip",
+      "symbol:pbuf_remove_header"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/pbuf.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147501932,
+    "end": 2147501950,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/pbuf.o",
+    "source": "references/tcp/lwip/src/core/pbuf.c",
+    "function": "pbuf_header_force",
+    "aliases": [
+      "pbuf_header_force"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/pbuf.c",
+      "map:9703",
+      "rule:lwip",
+      "symbol:pbuf_header_force"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/pbuf.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147501950,
+    "end": 2147502052,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/pbuf.o",
+    "source": "references/tcp/lwip/src/core/pbuf.c",
+    "function": "pbuf_free",
+    "aliases": [
+      "pbuf_free"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/pbuf.c",
+      "map:9706",
+      "rule:lwip",
+      "symbol:pbuf_free"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/pbuf.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147502052,
+    "end": 2147502328,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/pbuf.o",
+    "source": "references/tcp/lwip/src/core/pbuf.c",
+    "function": "pbuf_alloc",
+    "aliases": [
+      "pbuf_alloc"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/pbuf.c",
+      "map:9709",
+      "rule:lwip",
+      "symbol:pbuf_alloc"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/pbuf.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147502328,
+    "end": 2147502440,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/pbuf.o",
+    "source": "references/tcp/lwip/src/core/pbuf.c",
+    "function": "pbuf_realloc",
+    "aliases": [
+      "pbuf_realloc"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/pbuf.c",
+      "map:9712",
+      "rule:lwip",
+      "symbol:pbuf_realloc"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/pbuf.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147502440,
+    "end": 2147502462,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/pbuf.o",
+    "source": "references/tcp/lwip/src/core/pbuf.c",
+    "function": "pbuf_clen",
+    "aliases": [
+      "pbuf_clen"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/pbuf.c",
+      "map:9715",
+      "rule:lwip",
+      "symbol:pbuf_clen"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/pbuf.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147502462,
+    "end": 2147502476,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/pbuf.o",
+    "source": "references/tcp/lwip/src/core/pbuf.c",
+    "function": "pbuf_ref",
+    "aliases": [
+      "pbuf_ref"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/pbuf.c",
+      "map:9718",
+      "rule:lwip",
+      "symbol:pbuf_ref"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/pbuf.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147502476,
+    "end": 2147502506,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/pbuf.o",
+    "source": "references/tcp/lwip/src/core/pbuf.c",
+    "function": "pbuf_cat",
+    "aliases": [
+      "pbuf_cat"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/pbuf.c",
+      "map:9721",
+      "rule:lwip",
+      "symbol:pbuf_cat"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/pbuf.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147502506,
+    "end": 2147502722,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/pbuf.o",
+    "source": "references/tcp/lwip/src/core/pbuf.c",
+    "function": "pbuf_copy_partial_pbuf",
+    "aliases": [
+      "pbuf_copy_partial_pbuf"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/pbuf.c",
+      "map:9724",
+      "rule:lwip",
+      "symbol:pbuf_copy_partial_pbuf"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/pbuf.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147502722,
+    "end": 2147502738,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/pbuf.o",
+    "source": "references/tcp/lwip/src/core/pbuf.c",
+    "function": "pbuf_copy",
+    "aliases": [
+      "pbuf_copy"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/pbuf.c",
+      "map:9727",
+      "rule:lwip",
+      "symbol:pbuf_copy"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/pbuf.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147502738,
+    "end": 2147502858,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/pbuf.o",
+    "source": "references/tcp/lwip/src/core/pbuf.c",
+    "function": "pbuf_copy_partial",
+    "aliases": [
+      "pbuf_copy_partial"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/pbuf.c",
+      "map:9730",
+      "rule:lwip",
+      "symbol:pbuf_copy_partial"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/pbuf.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147502858,
+    "end": 2147502892,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/pbuf.o",
+    "source": "references/tcp/lwip/src/core/pbuf.c",
+    "function": "pbuf_try_get_at",
+    "aliases": [
+      "pbuf_try_get_at"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/pbuf.c",
+      "map:9733",
+      "rule:lwip",
+      "symbol:pbuf_try_get_at"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/pbuf.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147502892,
+    "end": 2147502918,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/pbuf.o",
+    "source": "references/tcp/lwip/src/core/pbuf.c",
+    "function": "pbuf_get_at",
+    "aliases": [
+      "pbuf_get_at"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/pbuf.c",
+      "map:9736",
+      "rule:lwip",
+      "symbol:pbuf_get_at"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/pbuf.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147502918,
+    "end": 2147502920,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/stats.o",
+    "source": "references/tcp/lwip/src/core/stats.c",
+    "function": "stats_init",
+    "aliases": [
+      "stats_init"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/stats.c",
+      "map:9739",
+      "rule:lwip",
+      "symbol:stats_init"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/stats.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147502920,
+    "end": 2147503000,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp.o",
+    "source": "references/tcp/lwip/src/core/tcp.c",
+    "function": "tcp_new_port",
+    "aliases": [
+      "tcp_new_port"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp.c",
+      "map:9742",
+      "rule:lwip",
+      "symbol:tcp_new_port"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147503000,
+    "end": 2147503082,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp.o",
+    "source": "references/tcp/lwip/src/core/tcp.c",
+    "function": "tcp_close_shutdown_fin",
+    "aliases": [
+      "tcp_close_shutdown_fin"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp.c",
+      "map:9744",
+      "rule:lwip",
+      "symbol:tcp_close_shutdown_fin"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147503082,
+    "end": 2147503084,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp.o",
+    "source": "references/tcp/lwip/src/core/tcp.c",
+    "function": "tcp_init",
+    "aliases": [
+      "tcp_init"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp.c",
+      "map:9746",
+      "rule:lwip",
+      "symbol:tcp_init"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147503084,
+    "end": 2147503092,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp.o",
+    "source": "references/tcp/lwip/src/core/tcp.c",
+    "function": "tcp_free",
+    "aliases": [
+      "tcp_free"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp.c",
+      "map:9749",
+      "rule:lwip",
+      "symbol:tcp_free"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147503092,
+    "end": 2147503224,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp.o",
+    "source": "references/tcp/lwip/src/core/tcp.c",
+    "function": "tcp_bind",
+    "aliases": [
+      "tcp_bind"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp.c",
+      "map:9752",
+      "rule:lwip",
+      "symbol:tcp_bind"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147503224,
+    "end": 2147503422,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp.o",
+    "source": "references/tcp/lwip/src/core/tcp.c",
+    "function": "tcp_listen_with_backlog_and_err",
+    "aliases": [
+      "tcp_listen_with_backlog_and_err"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp.c",
+      "map:9755",
+      "rule:lwip",
+      "symbol:tcp_listen_with_backlog_and_err"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147503422,
+    "end": 2147503428,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp.o",
+    "source": "references/tcp/lwip/src/core/tcp.c",
+    "function": "tcp_listen_with_backlog",
+    "aliases": [
+      "tcp_listen_with_backlog"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp.c",
+      "map:9758",
+      "rule:lwip",
+      "symbol:tcp_listen_with_backlog"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147503428,
+    "end": 2147503496,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp.o",
+    "source": "references/tcp/lwip/src/core/tcp.c",
+    "function": "tcp_update_rcv_ann_wnd",
+    "aliases": [
+      "tcp_update_rcv_ann_wnd"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp.c",
+      "map:9761",
+      "rule:lwip",
+      "symbol:tcp_update_rcv_ann_wnd"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147503496,
+    "end": 2147503586,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp.o",
+    "source": "references/tcp/lwip/src/core/tcp.c",
+    "function": "tcp_recved",
+    "aliases": [
+      "tcp_recved"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp.c",
+      "map:9764",
+      "rule:lwip",
+      "symbol:tcp_recved"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147503586,
+    "end": 2147503622,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp.o",
+    "source": "references/tcp/lwip/src/core/tcp.c",
+    "function": "tcp_seg_free",
+    "aliases": [
+      "tcp_seg_free"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp.c",
+      "map:9767",
+      "rule:lwip",
+      "symbol:tcp_seg_free"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147503622,
+    "end": 2147503650,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp.o",
+    "source": "references/tcp/lwip/src/core/tcp.c",
+    "function": "tcp_segs_free",
+    "aliases": [
+      "tcp_segs_free"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp.c",
+      "map:9770",
+      "rule:lwip",
+      "symbol:tcp_segs_free"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147503650,
+    "end": 2147503692,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp.o",
+    "source": "references/tcp/lwip/src/core/tcp.c",
+    "function": "tcp_seg_copy",
+    "aliases": [
+      "tcp_seg_copy"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp.c",
+      "map:9773",
+      "rule:lwip",
+      "symbol:tcp_seg_copy"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147503692,
+    "end": 2147503700,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp.o",
+    "source": "references/tcp/lwip/src/core/tcp.c",
+    "function": "tcp_recv",
+    "aliases": [
+      "tcp_recv"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp.c",
+      "map:9776",
+      "rule:lwip",
+      "symbol:tcp_recv"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147503700,
+    "end": 2147503708,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp.o",
+    "source": "references/tcp/lwip/src/core/tcp.c",
+    "function": "tcp_sent",
+    "aliases": [
+      "tcp_sent"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp.c",
+      "map:9779",
+      "rule:lwip",
+      "symbol:tcp_sent"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147503708,
+    "end": 2147503722,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp.o",
+    "source": "references/tcp/lwip/src/core/tcp.c",
+    "function": "tcp_accept",
+    "aliases": [
+      "tcp_accept"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp.c",
+      "map:9782",
+      "rule:lwip",
+      "symbol:tcp_accept"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147503722,
+    "end": 2147503738,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp.o",
+    "source": "references/tcp/lwip/src/core/tcp.c",
+    "function": "tcp_next_iss",
+    "aliases": [
+      "tcp_next_iss"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp.c",
+      "map:9785",
+      "rule:lwip",
+      "symbol:tcp_next_iss"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147503738,
+    "end": 2147503778,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp.o",
+    "source": "references/tcp/lwip/src/core/tcp.c",
+    "function": "tcp_eff_send_mss_netif",
+    "aliases": [
+      "tcp_eff_send_mss_netif"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp.c",
+      "map:9788",
+      "rule:lwip",
+      "symbol:tcp_eff_send_mss_netif"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147503778,
+    "end": 2147503810,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp.o",
+    "source": "references/tcp/lwip/src/core/tcp.c",
+    "function": "tcp_free_ooseq",
+    "aliases": [
+      "tcp_free_ooseq"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp.c",
+      "map:9791",
+      "rule:lwip",
+      "symbol:tcp_free_ooseq"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147503810,
+    "end": 2147503892,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp.o",
+    "source": "references/tcp/lwip/src/core/tcp.c",
+    "function": "tcp_pcb_purge",
+    "aliases": [
+      "tcp_pcb_purge"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp.c",
+      "map:9794",
+      "rule:lwip",
+      "symbol:tcp_pcb_purge"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147503892,
+    "end": 2147503988,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp.o",
+    "source": "references/tcp/lwip/src/core/tcp.c",
+    "function": "tcp_pcb_remove",
+    "aliases": [
+      "tcp_pcb_remove"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp.c",
+      "map:9797",
+      "rule:lwip",
+      "symbol:tcp_pcb_remove"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147503988,
+    "end": 2147504246,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp.o",
+    "source": "references/tcp/lwip/src/core/tcp.c",
+    "function": "tcp_abandon",
+    "aliases": [
+      "tcp_abandon"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp.c",
+      "map:9800",
+      "rule:lwip",
+      "symbol:tcp_abandon"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147504246,
+    "end": 2147504252,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp.o",
+    "source": "references/tcp/lwip/src/core/tcp.c",
+    "function": "tcp_abort",
+    "aliases": [
+      "tcp_abort"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp.c",
+      "map:9803",
+      "rule:lwip",
+      "symbol:tcp_abort"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147504252,
+    "end": 2147504270,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp.o",
+    "source": "references/tcp/lwip/src/core/tcp.c",
+    "function": "tcp_accept_null",
+    "aliases": [
+      "tcp_accept_null"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp.c",
+      "map:9806",
+      "rule:lwip",
+      "symbol:tcp_accept_null"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147504270,
+    "end": 2147504312,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp.o",
+    "source": "references/tcp/lwip/src/core/tcp.c",
+    "function": "tcp_netif_ip_addr_changed_pcblist",
+    "aliases": [
+      "tcp_netif_ip_addr_changed_pcblist"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp.c",
+      "map:9808",
+      "rule:lwip",
+      "symbol:tcp_netif_ip_addr_changed_pcblist"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147504312,
+    "end": 2147504388,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp.o",
+    "source": "references/tcp/lwip/src/core/tcp.c",
+    "function": "tcp_netif_ip_addr_changed",
+    "aliases": [
+      "tcp_netif_ip_addr_changed"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp.c",
+      "map:9810",
+      "rule:lwip",
+      "symbol:tcp_netif_ip_addr_changed"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147504388,
+    "end": 2147504438,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp.o",
+    "source": "references/tcp/lwip/src/core/tcp.c",
+    "function": "tcp_kill_state",
+    "aliases": [
+      "tcp_kill_state"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp.c",
+      "map:9813",
+      "rule:lwip",
+      "symbol:tcp_kill_state"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147504438,
+    "end": 2147504874,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp.o",
+    "source": "references/tcp/lwip/src/core/tcp.c",
+    "function": "tcp_alloc",
+    "aliases": [
+      "tcp_alloc"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp.c",
+      "map:9815",
+      "rule:lwip",
+      "symbol:tcp_alloc"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147504874,
+    "end": 2147504882,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp.o",
+    "source": "references/tcp/lwip/src/core/tcp.c",
+    "function": "tcp_new",
+    "aliases": [
+      "tcp_new"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp.c",
+      "map:9817",
+      "rule:lwip",
+      "symbol:tcp_new"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147504882,
+    "end": 2147505176,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp.o",
+    "source": "references/tcp/lwip/src/core/tcp.c",
+    "function": "tcp_close_shutdown",
+    "aliases": [
+      "tcp_close_shutdown"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp.c",
+      "map:9820",
+      "rule:lwip",
+      "symbol:tcp_close_shutdown"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147505176,
+    "end": 2147505208,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp.o",
+    "source": "references/tcp/lwip/src/core/tcp.c",
+    "function": "tcp_close",
+    "aliases": [
+      "tcp_close"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp.c",
+      "map:9822",
+      "rule:lwip",
+      "symbol:tcp_close"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147505208,
+    "end": 2147505260,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp.o",
+    "source": "references/tcp/lwip/src/core/tcp.c",
+    "function": "tcp_recv_null",
+    "aliases": [
+      "tcp_recv_null"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp.c",
+      "map:9825",
+      "rule:lwip",
+      "symbol:tcp_recv_null"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147505260,
+    "end": 2147505394,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp.o",
+    "source": "references/tcp/lwip/src/core/tcp.c",
+    "function": "tcp_process_refused_data",
+    "aliases": [
+      "tcp_process_refused_data"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp.c",
+      "map:9828",
+      "rule:lwip",
+      "symbol:tcp_process_refused_data"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147505394,
+    "end": 2147505538,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp.o",
+    "source": "references/tcp/lwip/src/core/tcp.c",
+    "function": "tcp_fasttmr",
+    "aliases": [
+      "tcp_fasttmr"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp.c",
+      "map:9831",
+      "rule:lwip",
+      "symbol:tcp_fasttmr"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147505538,
+    "end": 2147506460,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp.o",
+    "source": "references/tcp/lwip/src/core/tcp.c",
+    "function": "tcp_slowtmr",
+    "aliases": [
+      "tcp_slowtmr"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp.c",
+      "map:9834",
+      "rule:lwip",
+      "symbol:tcp_slowtmr"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147506460,
+    "end": 2147506512,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_in.o",
+    "source": "references/tcp/lwip/src/core/tcp_in.c",
+    "function": "tcp_get_next_optbyte",
+    "aliases": [
+      "tcp_get_next_optbyte"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp_in.c",
+      "map:9837",
+      "rule:lwip",
+      "symbol:tcp_get_next_optbyte"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp_in.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147506512,
+    "end": 2147506732,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_in.o",
+    "source": "references/tcp/lwip/src/core/tcp_in.c",
+    "function": "tcp_oos_insert_segment",
+    "aliases": [
+      "tcp_oos_insert_segment"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp_in.c",
+      "map:9839",
+      "rule:lwip",
+      "symbol:tcp_oos_insert_segment"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp_in.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147506732,
+    "end": 2147506876,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_in.o",
+    "source": "references/tcp/lwip/src/core/tcp_in.c",
+    "function": "tcp_parseopt.part.0",
+    "aliases": [
+      "tcp_parseopt.part.0"
+    ],
+    "evidence": [
+      "map:9841",
+      "rule:lwip",
+      "symbol:tcp_parseopt.part.0"
+    ],
+    "reason": null,
+    "role": "lwip"
+  },
+  {
+    "start": 2147506876,
+    "end": 2147506942,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_in.o",
+    "source": "references/tcp/lwip/src/core/tcp_in.c",
+    "function": "tcp_input_delayed_close",
+    "aliases": [
+      "tcp_input_delayed_close"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp_in.c",
+      "map:9843",
+      "rule:lwip",
+      "symbol:tcp_input_delayed_close"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp_in.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147506942,
+    "end": 2147507108,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_in.o",
+    "source": "references/tcp/lwip/src/core/tcp_in.c",
+    "function": "tcp_free_acked_segments.isra.0",
+    "aliases": [
+      "tcp_free_acked_segments.isra.0"
+    ],
+    "evidence": [
+      "map:9845",
+      "rule:lwip",
+      "symbol:tcp_free_acked_segments.isra.0"
+    ],
+    "reason": null,
+    "role": "lwip"
+  },
+  {
+    "start": 2147507108,
+    "end": 2147509522,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_in.o",
+    "source": "references/tcp/lwip/src/core/tcp_in.c",
+    "function": "tcp_receive",
+    "aliases": [
+      "tcp_receive"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp_in.c",
+      "map:9847",
+      "rule:lwip",
+      "symbol:tcp_receive"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp_in.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147509522,
+    "end": 2147512574,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_in.o",
+    "source": "references/tcp/lwip/src/core/tcp_in.c",
+    "function": "tcp_input",
+    "aliases": [
+      "tcp_input"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp_in.c",
+      "map:9849",
+      "rule:lwip",
+      "symbol:tcp_input"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp_in.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147512574,
+    "end": 2147512588,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_in.o",
+    "source": "references/tcp/lwip/src/core/tcp_in.c",
+    "function": "tcp_trigger_input_pcb_close",
+    "aliases": [
+      "tcp_trigger_input_pcb_close"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp_in.c",
+      "map:9852",
+      "rule:lwip",
+      "symbol:tcp_trigger_input_pcb_close"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp_in.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147512588,
+    "end": 2147512848,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_out.o",
+    "source": "references/tcp/lwip/src/core/tcp_out.c",
+    "function": "tcp_create_segment",
+    "aliases": [
+      "tcp_create_segment"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp_out.c",
+      "map:9855",
+      "rule:lwip",
+      "symbol:tcp_create_segment"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp_out.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147512848,
+    "end": 2147512978,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_out.o",
+    "source": "references/tcp/lwip/src/core/tcp_out.c",
+    "function": "tcp_output_control_segment_netif",
+    "aliases": [
+      "tcp_output_control_segment_netif"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp_out.c",
+      "map:9857",
+      "rule:lwip",
+      "symbol:tcp_output_control_segment_netif"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp_out.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147512978,
+    "end": 2147513196,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_out.o",
+    "source": "references/tcp/lwip/src/core/tcp_out.c",
+    "function": "tcp_output_alloc_header_common.constprop.0",
+    "aliases": [
+      "tcp_output_alloc_header_common.constprop.0"
+    ],
+    "evidence": [
+      "map:9859",
+      "rule:lwip",
+      "symbol:tcp_output_alloc_header_common.constprop.0"
+    ],
+    "reason": null,
+    "role": "lwip"
+  },
+  {
+    "start": 2147513196,
+    "end": 2147513244,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_out.o",
+    "source": "references/tcp/lwip/src/core/tcp_out.c",
+    "function": "tcp_output_alloc_header.constprop.0",
+    "aliases": [
+      "tcp_output_alloc_header.constprop.0"
+    ],
+    "evidence": [
+      "map:9861",
+      "rule:lwip",
+      "symbol:tcp_output_alloc_header.constprop.0"
+    ],
+    "reason": null,
+    "role": "lwip"
+  },
+  {
+    "start": 2147513244,
+    "end": 2147513330,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_out.o",
+    "source": "references/tcp/lwip/src/core/tcp_out.c",
+    "function": "tcp_output_control_segment",
+    "aliases": [
+      "tcp_output_control_segment"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp_out.c",
+      "map:9863",
+      "rule:lwip",
+      "symbol:tcp_output_control_segment"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp_out.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147513330,
+    "end": 2147514138,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_out.o",
+    "source": "references/tcp/lwip/src/core/tcp_out.c",
+    "function": "tcp_write",
+    "aliases": [
+      "tcp_write"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp_out.c",
+      "map:9865",
+      "rule:lwip",
+      "symbol:tcp_write"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp_out.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147514138,
+    "end": 2147514554,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_out.o",
+    "source": "references/tcp/lwip/src/core/tcp_out.c",
+    "function": "tcp_split_unsent_seg",
+    "aliases": [
+      "tcp_split_unsent_seg"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp_out.c",
+      "map:9868",
+      "rule:lwip",
+      "symbol:tcp_split_unsent_seg"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp_out.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147514554,
+    "end": 2147514714,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_out.o",
+    "source": "references/tcp/lwip/src/core/tcp_out.c",
+    "function": "tcp_enqueue_flags",
+    "aliases": [
+      "tcp_enqueue_flags"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp_out.c",
+      "map:9871",
+      "rule:lwip",
+      "symbol:tcp_enqueue_flags"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp_out.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147514714,
+    "end": 2147514844,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_out.o",
+    "source": "references/tcp/lwip/src/core/tcp_out.c",
+    "function": "tcp_send_fin",
+    "aliases": [
+      "tcp_send_fin"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp_out.c",
+      "map:9874",
+      "rule:lwip",
+      "symbol:tcp_send_fin"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp_out.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147514844,
+    "end": 2147515018,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_out.o",
+    "source": "references/tcp/lwip/src/core/tcp_out.c",
+    "function": "tcp_rexmit_rto_prepare",
+    "aliases": [
+      "tcp_rexmit_rto_prepare"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp_out.c",
+      "map:9877",
+      "rule:lwip",
+      "symbol:tcp_rexmit_rto_prepare"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp_out.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147515018,
+    "end": 2147515208,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_out.o",
+    "source": "references/tcp/lwip/src/core/tcp_out.c",
+    "function": "tcp_rexmit",
+    "aliases": [
+      "tcp_rexmit"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp_out.c",
+      "map:9880",
+      "rule:lwip",
+      "symbol:tcp_rexmit"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp_out.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147515208,
+    "end": 2147515318,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_out.o",
+    "source": "references/tcp/lwip/src/core/tcp_out.c",
+    "function": "tcp_rexmit_fast",
+    "aliases": [
+      "tcp_rexmit_fast"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp_out.c",
+      "map:9883",
+      "rule:lwip",
+      "symbol:tcp_rexmit_fast"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp_out.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147515318,
+    "end": 2147515408,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_out.o",
+    "source": "references/tcp/lwip/src/core/tcp_out.c",
+    "function": "tcp_rst",
+    "aliases": [
+      "tcp_rst"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp_out.c",
+      "map:9885",
+      "rule:lwip",
+      "symbol:tcp_rst"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp_out.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147515408,
+    "end": 2147515516,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_out.o",
+    "source": "references/tcp/lwip/src/core/tcp_out.c",
+    "function": "tcp_rst_netif",
+    "aliases": [
+      "tcp_rst_netif"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp_out.c",
+      "map:9888",
+      "rule:lwip",
+      "symbol:tcp_rst_netif"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp_out.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147515516,
+    "end": 2147515594,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_out.o",
+    "source": "references/tcp/lwip/src/core/tcp_out.c",
+    "function": "tcp_send_empty_ack",
+    "aliases": [
+      "tcp_send_empty_ack"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp_out.c",
+      "map:9891",
+      "rule:lwip",
+      "symbol:tcp_send_empty_ack"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp_out.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147515594,
+    "end": 2147516712,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_out.o",
+    "source": "references/tcp/lwip/src/core/tcp_out.c",
+    "function": "tcp_output",
+    "aliases": [
+      "tcp_output"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp_out.c",
+      "map:9894",
+      "rule:lwip",
+      "symbol:tcp_output"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp_out.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147516712,
+    "end": 2147516734,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_out.o",
+    "source": "references/tcp/lwip/src/core/tcp_out.c",
+    "function": "tcp_rexmit_rto_commit",
+    "aliases": [
+      "tcp_rexmit_rto_commit"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp_out.c",
+      "map:9897",
+      "rule:lwip",
+      "symbol:tcp_rexmit_rto_commit"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp_out.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147516734,
+    "end": 2147516768,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_out.o",
+    "source": "references/tcp/lwip/src/core/tcp_out.c",
+    "function": "tcp_rexmit_rto",
+    "aliases": [
+      "tcp_rexmit_rto"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp_out.c",
+      "map:9900",
+      "rule:lwip",
+      "symbol:tcp_rexmit_rto"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp_out.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147516768,
+    "end": 2147516826,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_out.o",
+    "source": "references/tcp/lwip/src/core/tcp_out.c",
+    "function": "tcp_keepalive",
+    "aliases": [
+      "tcp_keepalive"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp_out.c",
+      "map:9903",
+      "rule:lwip",
+      "symbol:tcp_keepalive"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp_out.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147516826,
+    "end": 2147517112,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/tcp_out.o",
+    "source": "references/tcp/lwip/src/core/tcp_out.c",
+    "function": "tcp_zero_window_probe",
+    "aliases": [
+      "tcp_zero_window_probe"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/tcp_out.c",
+      "map:9906",
+      "rule:lwip",
+      "symbol:tcp_zero_window_probe"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/tcp_out.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147517112,
+    "end": 2147517114,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/timeouts.o",
+    "source": "references/tcp/lwip/src/core/timeouts.c",
+    "function": "tcp_timer_needed",
+    "aliases": [
+      "tcp_timer_needed"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/timeouts.c",
+      "map:9909",
+      "rule:lwip",
+      "symbol:tcp_timer_needed"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/timeouts.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147517114,
+    "end": 2147517712,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/icmp.o",
+    "source": "references/tcp/lwip/src/core/ipv4/icmp.c",
+    "function": "icmp_input",
+    "aliases": [
+      "icmp_input"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/ipv4/icmp.c",
+      "map:9912",
+      "rule:lwip",
+      "symbol:icmp_input"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/ipv4/icmp.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147517712,
+    "end": 2147517944,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/icmp.o",
+    "source": "references/tcp/lwip/src/core/ipv4/icmp.c",
+    "function": "icmp_dest_unreach",
+    "aliases": [
+      "icmp_dest_unreach"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/ipv4/icmp.c",
+      "map:9915",
+      "rule:lwip",
+      "symbol:icmp_dest_unreach"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/ipv4/icmp.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147517944,
+    "end": 2147517996,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/ip4.o",
+    "source": "references/tcp/lwip/src/core/ipv4/ip4.c",
+    "function": "ip4_input_accept",
+    "aliases": [
+      "ip4_input_accept"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/ipv4/ip4.c",
+      "map:9918",
+      "rule:lwip",
+      "symbol:ip4_input_accept"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/ipv4/ip4.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147517996,
+    "end": 2147518108,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/ip4.o",
+    "source": "references/tcp/lwip/src/core/ipv4/ip4.c",
+    "function": "ip4_route",
+    "aliases": [
+      "ip4_route"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/ipv4/ip4.c",
+      "map:9920",
+      "rule:lwip",
+      "symbol:ip4_route"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/ipv4/ip4.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147518108,
+    "end": 2147518808,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/ip4.o",
+    "source": "references/tcp/lwip/src/core/ipv4/ip4.c",
+    "function": "ip4_input",
+    "aliases": [
+      "ip4_input"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/ipv4/ip4.c",
+      "map:9923",
+      "rule:lwip",
+      "symbol:ip4_input"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/ipv4/ip4.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147518808,
+    "end": 2147519192,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/ip4.o",
+    "source": "references/tcp/lwip/src/core/ipv4/ip4.c",
+    "function": "ip4_output_if_src",
+    "aliases": [
+      "ip4_output_if_src"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/ipv4/ip4.c",
+      "map:9926",
+      "rule:lwip",
+      "symbol:ip4_output_if_src"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/ipv4/ip4.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147519192,
+    "end": 2147519212,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/ip4.o",
+    "source": "references/tcp/lwip/src/core/ipv4/ip4.c",
+    "function": "ip4_output_if",
+    "aliases": [
+      "ip4_output_if"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/ipv4/ip4.c",
+      "map:9929",
+      "rule:lwip",
+      "symbol:ip4_output_if"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/ipv4/ip4.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147519212,
+    "end": 2147519266,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/ip4_addr.o",
+    "source": "references/tcp/lwip/src/core/ipv4/ip4_addr.c",
+    "function": "ip4_addr_isbroadcast_u32",
+    "aliases": [
+      "ip4_addr_isbroadcast_u32"
+    ],
+    "evidence": [
+      "dwarf:references/tcp/lwip/src/core/ipv4/ip4_addr.c",
+      "map:9932",
+      "rule:lwip",
+      "symbol:ip4_addr_isbroadcast_u32"
+    ],
+    "reason": null,
+    "definition_source": "references/tcp/lwip/src/core/ipv4/ip4_addr.c",
+    "role": "lwip"
+  },
+  {
+    "start": 2147519266,
+    "end": 2147519452,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/portASM.o",
+    "source": "third_party/FreeRTOS/FreeRTOS/Source/portable/GCC/RISC-V/portASM.S",
+    "function": "unresolved@/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/portASM.o:2147519266",
+    "aliases": [],
+    "evidence": [
+      "map:9934",
+      "rule:kernel",
+      "symbol:None"
+    ],
+    "reason": null,
+    "role": "kernel_port"
+  },
+  {
+    "start": 2147519488,
+    "end": 2147519954,
+    "object": "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/portASM.o",
+    "source": "third_party/FreeRTOS/FreeRTOS/Source/portable/GCC/RISC-V/portASM.S",
+    "function": "unresolved@/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A06-baseline/build/portASM.o:2147519488",
+    "aliases": [],
+    "evidence": [
+      "map:9941",
+      "rule:kernel",
+      "symbol:None"
+    ],
+    "reason": null,
+    "role": "kernel_port"
+  },
+  {
+    "start": 2147519954,
+    "end": 2147520064,
+    "object": "/Users/swchen.tw/git/percepio/poc/.tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/libgcc.a(_clzsi2.o)",
+    "source": null,
+    "function": "__clzsi2",
+    "aliases": [
+      "__clzsi2"
+    ],
+    "evidence": [
+      "dwarf:??",
+      "map:9944",
+      "rule:libgcc.a",
+      "symbol:__clzsi2"
+    ],
+    "reason": null,
+    "definition_source": "??",
+    "role": "runtime_library"
+  },
+  {
+    "start": 2147520064,
+    "end": 2147520168,
+    "object": "/Users/swchen.tw/git/percepio/poc/.tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/../../../../riscv-none-elf/lib/libg_nano.a(libc_a-snprintf.o)",
+    "source": null,
+    "function": "sniprintf",
+    "aliases": [
+      "sniprintf",
+      "snprintf"
+    ],
+    "evidence": [
+      "dwarf:??",
+      "map:9947",
+      "rule:libg_nano.a",
+      "symbol:sniprintf",
+      "symbol:snprintf"
+    ],
+    "reason": null,
+    "role": "runtime_library"
+  },
+  {
+    "start": 2147520168,
+    "end": 2147520256,
+    "object": "/Users/swchen.tw/git/percepio/poc/.tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/../../../../riscv-none-elf/lib/libg_nano.a(libc_a-vsnprintf.o)",
+    "source": null,
+    "function": "_vsniprintf_r",
+    "aliases": [
+      "_vsniprintf_r",
+      "_vsnprintf_r"
+    ],
+    "evidence": [
+      "dwarf:??",
+      "map:9951",
+      "rule:libg_nano.a",
+      "symbol:_vsniprintf_r",
+      "symbol:_vsnprintf_r"
+    ],
+    "reason": null,
+    "role": "runtime_library"
+  },
+  {
+    "start": 2147520256,
+    "end": 2147520272,
+    "object": "/Users/swchen.tw/git/percepio/poc/.tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/../../../../riscv-none-elf/lib/libg_nano.a(libc_a-vsnprintf.o)",
+    "source": null,
+    "function": "vsniprintf",
+    "aliases": [
+      "vsniprintf",
+      "vsnprintf"
+    ],
+    "evidence": [
+      "dwarf:??",
+      "map:9955",
+      "rule:libg_nano.a",
+      "symbol:vsniprintf",
+      "symbol:vsnprintf"
+    ],
+    "reason": null,
+    "role": "runtime_library"
+  },
+  {
+    "start": 2147520272,
+    "end": 2147520310,
+    "object": "/Users/swchen.tw/git/percepio/poc/.tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/../../../../riscv-none-elf/lib/libg_nano.a(libc_a-memcmp.o)",
+    "source": null,
+    "function": "memcmp",
+    "aliases": [
+      "memcmp"
+    ],
+    "evidence": [
+      "dwarf:??",
+      "map:9958",
+      "rule:libg_nano.a",
+      "symbol:memcmp"
+    ],
+    "reason": null,
+    "definition_source": "??",
+    "role": "runtime_library"
+  },
+  {
+    "start": 2147520310,
+    "end": 2147520316,
+    "object": "/Users/swchen.tw/git/percepio/poc/.tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/../../../../riscv-none-elf/lib/libg_nano.a(libc_a-errno.o)",
+    "source": null,
+    "function": "__errno",
+    "aliases": [
+      "__errno"
+    ],
+    "evidence": [
+      "dwarf:??",
+      "map:9960",
+      "rule:libg_nano.a",
+      "symbol:__errno"
+    ],
+    "reason": null,
+    "definition_source": "??",
+    "role": "runtime_library"
+  },
+  {
+    "start": 2147520316,
+    "end": 2147520354,
+    "object": "/Users/swchen.tw/git/percepio/poc/.tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/../../../../riscv-none-elf/lib/libg_nano.a(libc_a-memmove.o)",
+    "source": null,
+    "function": "memmove",
+    "aliases": [
+      "memmove"
+    ],
+    "evidence": [
+      "dwarf:??",
+      "map:9962",
+      "rule:libg_nano.a",
+      "symbol:memmove"
+    ],
+    "reason": null,
+    "definition_source": "??",
+    "role": "runtime_library"
+  },
+  {
+    "start": 2147520354,
+    "end": 2147520370,
+    "object": "/Users/swchen.tw/git/percepio/poc/.tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/../../../../riscv-none-elf/lib/libg_nano.a(libc_a-memset.o)",
+    "source": null,
+    "function": "memset",
+    "aliases": [
+      "memset"
+    ],
+    "evidence": [
+      "dwarf:??",
+      "map:9964",
+      "rule:libg_nano.a",
+      "symbol:memset"
+    ],
+    "reason": null,
+    "definition_source": "??",
+    "role": "runtime_library"
+  },
+  {
+    "start": 2147520370,
+    "end": 2147520392,
+    "object": "/Users/swchen.tw/git/percepio/poc/.tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/../../../../riscv-none-elf/lib/libg_nano.a(libc_a-memcpy-asm.o)",
+    "source": null,
+    "function": "memcpy",
+    "aliases": [
+      "memcpy"
+    ],
+    "evidence": [
+      "dwarf:??",
+      "map:9966",
+      "rule:libg_nano.a",
+      "symbol:memcpy"
+    ],
+    "reason": null,
+    "definition_source": "??",
+    "role": "runtime_library"
+  },
+  {
+    "start": 2147520392,
+    "end": 2147520410,
+    "object": "/Users/swchen.tw/git/percepio/poc/.tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/../../../../riscv-none-elf/lib/libg_nano.a(libc_a-strlen.o)",
+    "source": null,
+    "function": "strlen",
+    "aliases": [
+      "strlen"
+    ],
+    "evidence": [
+      "dwarf:??",
+      "map:9968",
+      "rule:libg_nano.a",
+      "symbol:strlen"
+    ],
+    "reason": null,
+    "definition_source": "??",
+    "role": "runtime_library"
+  },
+  {
+    "start": 2147520410,
+    "end": 2147520434,
+    "object": "/Users/swchen.tw/git/percepio/poc/.tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/../../../../riscv-none-elf/lib/libg_nano.a(libc_a-strcmp.o)",
+    "source": null,
+    "function": "strcmp",
+    "aliases": [
+      "strcmp"
+    ],
+    "evidence": [
+      "dwarf:??",
+      "map:9970",
+      "rule:libg_nano.a",
+      "symbol:strcmp"
+    ],
+    "reason": null,
+    "definition_source": "??",
+    "role": "runtime_library"
+  },
+  {
+    "start": 2147520434,
+    "end": 2147520674,
+    "object": "/Users/swchen.tw/git/percepio/poc/.tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/../../../../riscv-none-elf/lib/libg_nano.a(libc_a-nano-svfprintf.o)",
+    "source": null,
+    "function": "__ssputs_r",
+    "aliases": [
+      "__ssputs_r"
+    ],
+    "evidence": [
+      "dwarf:??",
+      "map:9973",
+      "rule:libg_nano.a",
+      "symbol:__ssputs_r"
+    ],
+    "reason": null,
+    "definition_source": "??",
+    "role": "runtime_library"
+  },
+  {
+    "start": 2147520674,
+    "end": 2147521294,
+    "object": "/Users/swchen.tw/git/percepio/poc/.tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/../../../../riscv-none-elf/lib/libg_nano.a(libc_a-nano-svfprintf.o)",
+    "source": null,
+    "function": "_svfiprintf_r",
+    "aliases": [
+      "_svfiprintf_r",
+      "_svfprintf_r"
+    ],
+    "evidence": [
+      "dwarf:??",
+      "map:9976",
+      "rule:libg_nano.a",
+      "symbol:_svfiprintf_r",
+      "symbol:_svfprintf_r"
+    ],
+    "reason": null,
+    "role": "runtime_library"
+  },
+  {
+    "start": 2147521294,
+    "end": 2147521374,
+    "object": "/Users/swchen.tw/git/percepio/poc/.tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/../../../../riscv-none-elf/lib/libg_nano.a(libc_a-mallocr.o)",
+    "source": null,
+    "function": "sbrk_aligned",
+    "aliases": [
+      "sbrk_aligned"
+    ],
+    "evidence": [
+      "dwarf:libc_a-mallocr.o",
+      "map:9980",
+      "rule:libg_nano.a",
+      "symbol:sbrk_aligned"
+    ],
+    "reason": null,
+    "definition_source": "libc_a-mallocr.o",
+    "role": "runtime_library"
+  },
+  {
+    "start": 2147521374,
+    "end": 2147521656,
+    "object": "/Users/swchen.tw/git/percepio/poc/.tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/../../../../riscv-none-elf/lib/libg_nano.a(libc_a-mallocr.o)",
+    "source": null,
+    "function": "_malloc_r",
+    "aliases": [
+      "_malloc_r"
+    ],
+    "evidence": [
+      "dwarf:??",
+      "map:9982",
+      "rule:libg_nano.a",
+      "symbol:_malloc_r"
+    ],
+    "reason": null,
+    "definition_source": "??",
+    "role": "runtime_library"
+  },
+  {
+    "start": 2147521656,
+    "end": 2147521930,
+    "object": "/Users/swchen.tw/git/percepio/poc/.tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/../../../../riscv-none-elf/lib/libg_nano.a(libc_a-nano-vfprintf_i.o)",
+    "source": null,
+    "function": "_printf_common",
+    "aliases": [
+      "_printf_common"
+    ],
+    "evidence": [
+      "dwarf:??",
+      "map:9985",
+      "rule:libg_nano.a",
+      "symbol:_printf_common"
+    ],
+    "reason": null,
+    "definition_source": "??",
+    "role": "runtime_library"
+  },
+  {
+    "start": 2147521930,
+    "end": 2147522546,
+    "object": "/Users/swchen.tw/git/percepio/poc/.tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/../../../../riscv-none-elf/lib/libg_nano.a(libc_a-nano-vfprintf_i.o)",
+    "source": null,
+    "function": "_printf_i",
+    "aliases": [
+      "_printf_i"
+    ],
+    "evidence": [
+      "dwarf:??",
+      "map:9988",
+      "rule:libg_nano.a",
+      "symbol:_printf_i"
+    ],
+    "reason": null,
+    "definition_source": "??",
+    "role": "runtime_library"
+  },
+  {
+    "start": 2147522546,
+    "end": 2147522552,
+    "object": "/Users/swchen.tw/git/percepio/poc/.tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/../../../../riscv-none-elf/lib/libg_nano.a(libc_a-mlock.o)",
+    "source": null,
+    "function": "__malloc_lock",
+    "aliases": [
+      "__malloc_lock"
+    ],
+    "evidence": [
+      "dwarf:??",
+      "map:9991",
+      "rule:libg_nano.a",
+      "symbol:__malloc_lock"
+    ],
+    "reason": null,
+    "definition_source": "??",
+    "role": "runtime_library"
+  },
+  {
+    "start": 2147522552,
+    "end": 2147522558,
+    "object": "/Users/swchen.tw/git/percepio/poc/.tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/../../../../riscv-none-elf/lib/libg_nano.a(libc_a-mlock.o)",
+    "source": null,
+    "function": "__malloc_unlock",
+    "aliases": [
+      "__malloc_unlock"
+    ],
+    "evidence": [
+      "dwarf:??",
+      "map:9994",
+      "rule:libg_nano.a",
+      "symbol:__malloc_unlock"
+    ],
+    "reason": null,
+    "definition_source": "??",
+    "role": "runtime_library"
+  },
+  {
+    "start": 2147522558,
+    "end": 2147522666,
+    "object": "/Users/swchen.tw/git/percepio/poc/.tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/../../../../riscv-none-elf/lib/libg_nano.a(libc_a-reallocr.o)",
+    "source": null,
+    "function": "_realloc_r",
+    "aliases": [
+      "_realloc_r"
+    ],
+    "evidence": [
+      "dwarf:??",
+      "map:9997",
+      "rule:libg_nano.a",
+      "symbol:_realloc_r"
+    ],
+    "reason": null,
+    "definition_source": "??",
+    "role": "runtime_library"
+  },
+  {
+    "start": 2147522666,
+    "end": 2147522692,
+    "object": "/Users/swchen.tw/git/percepio/poc/.tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/../../../../riscv-none-elf/lib/libg_nano.a(libc_a-memchr.o)",
+    "source": null,
+    "function": "memchr",
+    "aliases": [
+      "memchr"
+    ],
+    "evidence": [
+      "dwarf:??",
+      "map:9999",
+      "rule:libg_nano.a",
+      "symbol:memchr"
+    ],
+    "reason": null,
+    "definition_source": "??",
+    "role": "runtime_library"
+  },
+  {
+    "start": 2147522692,
+    "end": 2147522732,
+    "object": "/Users/swchen.tw/git/percepio/poc/.tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/../../../../riscv-none-elf/lib/libg_nano.a(libc_a-sbrkr.o)",
+    "source": null,
+    "function": "_sbrk_r",
+    "aliases": [
+      "_sbrk_r"
+    ],
+    "evidence": [
+      "dwarf:??",
+      "map:10001",
+      "rule:libg_nano.a",
+      "symbol:_sbrk_r"
+    ],
+    "reason": null,
+    "definition_source": "??",
+    "role": "runtime_library"
+  },
+  {
+    "start": 2147522732,
+    "end": 2147522734,
+    "object": "/Users/swchen.tw/git/percepio/poc/.tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/../../../../riscv-none-elf/lib/libg_nano.a(libc_a-lock.o)",
+    "source": null,
+    "function": "__retarget_lock_acquire_recursive",
+    "aliases": [
+      "__retarget_lock_acquire_recursive"
+    ],
+    "evidence": [
+      "dwarf:??",
+      "map:10004",
+      "rule:libg_nano.a",
+      "symbol:__retarget_lock_acquire_recursive"
+    ],
+    "reason": null,
+    "definition_source": "??",
+    "role": "runtime_library"
+  },
+  {
+    "start": 2147522734,
+    "end": 2147522736,
+    "object": "/Users/swchen.tw/git/percepio/poc/.tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/../../../../riscv-none-elf/lib/libg_nano.a(libc_a-lock.o)",
+    "source": null,
+    "function": "__retarget_lock_release_recursive",
+    "aliases": [
+      "__retarget_lock_release_recursive"
+    ],
+    "evidence": [
+      "dwarf:??",
+      "map:10007",
+      "rule:libg_nano.a",
+      "symbol:__retarget_lock_release_recursive"
+    ],
+    "reason": null,
+    "definition_source": "??",
+    "role": "runtime_library"
+  },
+  {
+    "start": 2147522736,
+    "end": 2147522898,
+    "object": "/Users/swchen.tw/git/percepio/poc/.tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/../../../../riscv-none-elf/lib/libg_nano.a(libc_a-freer.o)",
+    "source": null,
+    "function": "_free_r",
+    "aliases": [
+      "_free_r"
+    ],
+    "evidence": [
+      "dwarf:??",
+      "map:10009",
+      "rule:libg_nano.a",
+      "symbol:_free_r"
+    ],
+    "reason": null,
+    "definition_source": "??",
+    "role": "runtime_library"
+  },
+  {
+    "start": 2147522898,
+    "end": 2147522918,
+    "object": "/Users/swchen.tw/git/percepio/poc/.tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/../../../../riscv-none-elf/lib/libg_nano.a(libc_a-msizer.o)",
+    "source": null,
+    "function": "_malloc_usable_size_r",
+    "aliases": [
+      "_malloc_usable_size_r"
+    ],
+    "evidence": [
+      "dwarf:??",
+      "map:10012",
+      "rule:libg_nano.a",
+      "symbol:_malloc_usable_size_r"
+    ],
+    "reason": null,
+    "definition_source": "??",
+    "role": "runtime_library"
+  }
+]

@@ -1,0 +1,75 @@
+test_aliases_merge_once (tests.unit.test_cost_attribution.CostAttributionTests.test_aliases_merge_once) ... FAIL
+test_conflicting_exact_rules_are_unresolved (tests.unit.test_cost_attribution.CostAttributionTests.test_conflicting_exact_rules_are_unresolved) ... FAIL
+test_half_open_and_gap (tests.unit.test_cost_attribution.CostAttributionTests.test_half_open_and_gap) ... FAIL
+test_invalid_addresses (tests.unit.test_cost_attribution.CostAttributionTests.test_invalid_addresses) ... FAIL
+test_overlap_conflict_not_order_dependent (tests.unit.test_cost_attribution.CostAttributionTests.test_overlap_conflict_not_order_dependent) ... FAIL
+test_provenance_rules_not_name_guess (tests.unit.test_cost_attribution.CostAttributionTests.test_provenance_rules_not_name_guess) ... FAIL
+test_unknown_function_retains_object_identity (tests.unit.test_cost_attribution.CostAttributionTests.test_unknown_function_retains_object_identity) ... FAIL
+
+======================================================================
+FAIL: test_aliases_merge_once (tests.unit.test_cost_attribution.CostAttributionTests.test_aliases_merge_once)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_cost_attribution.py", line 16, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.cost_attribution'))
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None
+
+======================================================================
+FAIL: test_conflicting_exact_rules_are_unresolved (tests.unit.test_cost_attribution.CostAttributionTests.test_conflicting_exact_rules_are_unresolved)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_cost_attribution.py", line 16, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.cost_attribution'))
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None
+
+======================================================================
+FAIL: test_half_open_and_gap (tests.unit.test_cost_attribution.CostAttributionTests.test_half_open_and_gap)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_cost_attribution.py", line 16, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.cost_attribution'))
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None
+
+======================================================================
+FAIL: test_invalid_addresses (tests.unit.test_cost_attribution.CostAttributionTests.test_invalid_addresses)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_cost_attribution.py", line 16, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.cost_attribution'))
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None
+
+======================================================================
+FAIL: test_overlap_conflict_not_order_dependent (tests.unit.test_cost_attribution.CostAttributionTests.test_overlap_conflict_not_order_dependent)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_cost_attribution.py", line 16, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.cost_attribution'))
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None
+
+======================================================================
+FAIL: test_provenance_rules_not_name_guess (tests.unit.test_cost_attribution.CostAttributionTests.test_provenance_rules_not_name_guess)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_cost_attribution.py", line 16, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.cost_attribution'))
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None
+
+======================================================================
+FAIL: test_unknown_function_retains_object_identity (tests.unit.test_cost_attribution.CostAttributionTests.test_unknown_function_retains_object_identity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_cost_attribution.py", line 16, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.cost_attribution'))
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.002s
+
+FAILED (failures=7)

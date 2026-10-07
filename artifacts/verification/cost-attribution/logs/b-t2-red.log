@@ -1,0 +1,75 @@
+test_external_symlink_rejected (tests.unit.test_attribution_evidence.EvidenceTests.test_external_symlink_rejected) ... FAIL
+test_hash_required_keys_mutation_and_traversal (tests.unit.test_attribution_evidence.EvidenceTests.test_hash_required_keys_mutation_and_traversal) ... FAIL
+test_inline_origin_does_not_override_object (tests.unit.test_attribution_evidence.EvidenceTests.test_inline_origin_does_not_override_object) ... FAIL
+test_map_outside_executable_rejected (tests.unit.test_attribution_evidence.EvidenceTests.test_map_outside_executable_rejected) ... FAIL
+test_map_skips_discarded_and_supports_wrapped_input (tests.unit.test_attribution_evidence.EvidenceTests.test_map_skips_discarded_and_supports_wrapped_input) ... FAIL
+test_no_size_assembly_and_runtime_provenance (tests.unit.test_attribution_evidence.EvidenceTests.test_no_size_assembly_and_runtime_provenance) ... FAIL
+test_symbol_overrun_rejected (tests.unit.test_attribution_evidence.EvidenceTests.test_symbol_overrun_rejected) ... FAIL
+
+======================================================================
+FAIL: test_external_symlink_rejected (tests.unit.test_attribution_evidence.EvidenceTests.test_external_symlink_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_attribution_evidence.py", line 11, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.attribution_evidence'))
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None
+
+======================================================================
+FAIL: test_hash_required_keys_mutation_and_traversal (tests.unit.test_attribution_evidence.EvidenceTests.test_hash_required_keys_mutation_and_traversal)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_attribution_evidence.py", line 11, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.attribution_evidence'))
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None
+
+======================================================================
+FAIL: test_inline_origin_does_not_override_object (tests.unit.test_attribution_evidence.EvidenceTests.test_inline_origin_does_not_override_object)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_attribution_evidence.py", line 11, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.attribution_evidence'))
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None
+
+======================================================================
+FAIL: test_map_outside_executable_rejected (tests.unit.test_attribution_evidence.EvidenceTests.test_map_outside_executable_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_attribution_evidence.py", line 11, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.attribution_evidence'))
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None
+
+======================================================================
+FAIL: test_map_skips_discarded_and_supports_wrapped_input (tests.unit.test_attribution_evidence.EvidenceTests.test_map_skips_discarded_and_supports_wrapped_input)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_attribution_evidence.py", line 11, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.attribution_evidence'))
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None
+
+======================================================================
+FAIL: test_no_size_assembly_and_runtime_provenance (tests.unit.test_attribution_evidence.EvidenceTests.test_no_size_assembly_and_runtime_provenance)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_attribution_evidence.py", line 11, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.attribution_evidence'))
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None
+
+======================================================================
+FAIL: test_symbol_overrun_rejected (tests.unit.test_attribution_evidence.EvidenceTests.test_symbol_overrun_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_attribution_evidence.py", line 11, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.attribution_evidence'))
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.003s
+
+FAILED (failures=7)

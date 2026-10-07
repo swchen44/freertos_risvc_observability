@@ -1,0 +1,14 @@
+F
+======================================================================
+FAIL: test_offsetting_components_remain_visible (tests.unit.test_attribution_delta.DeltaTests.test_offsetting_components_remain_visible)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_attribution_delta.py", line 10, in test_offsetting_components_remain_visible
+    self.assertTrue(hasattr(module,'compare_cost_reports'))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 1 test in 3.761s
+
+FAILED (failures=1)

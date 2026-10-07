@@ -1,0 +1,30 @@
+{
+  "schema": "cost-attribution-b1-v1",
+  "passed": true,
+  "captures": 16,
+  "context_quality": "not_observed_in_A_trace",
+  "B_status": "partial",
+  "reports": {
+    "A01-baseline": "199ff2346bae90e84f4556315149a2114b11d2ddd803eab888ea87a3aeef6380",
+    "A01-pbuf": "1188e70c126be7d92a8f41e806d4ef043d3cc491bc15916c37ed164f39c66f6d",
+    "A02-baseline": "b84336588d596803c702b5f1c6d882b1ee5c088f9dc9c1db44c45929a97143a4",
+    "A02-pbuf": "f989f94636b9433c912671dbcaadef86b9e65001e800ddbb4c86ff4d09ec1e6f",
+    "A03-baseline": "4df3963f1fe4dd0b9f4208e36e76bd86591463d3f232e6c05cc27b78bdb37964",
+    "A03-pbuf": "189eb867b435d75c0a77748e9cb583c3ea0f1d42ae42caa132594f4283584a4e",
+    "A04-baseline": "56d9f6180b9944d4869c464f6025792663a7f951afda6526a8d131b370ed35f4",
+    "A04-pbuf": "8a84bc52d5b25b860016335f43acb661601d8847730730da6a54557d08d7845c",
+    "A05-baseline": "238218a3c9b09ef36519b24750e413a8099b624d8eef943e391902080e749106",
+    "A05-pbuf": "f481ebdacc91b34a244c3b2843167d98c1976fd7f34ed370fd08cc04217dc5e2",
+    "A06-baseline": "87839296d05717120ddfcaa358d6c29af3e0866d6d647d515916c0e6ef80b9c8",
+    "A06-pbuf": "67c7020255d0cecc90691d930fd5ea91eb7e80baf80b4c1b1a2f9a1ddd46d24f",
+    "A07-baseline": "4e48e144287eeab8c981db4a4526c7cc1a6891da89d5ff1452906d7a94786c01",
+    "A07-pbuf": "e2a5b7006033868997df91769e0510f1959b308bd5954e5d218a3cd288f3f5c7",
+    "A08-baseline": "fb974b38cfcdf655d013640dcc112b7865c830e6a08b9e13c5869c1378e8fcb7",
+    "A08-pbuf": "999dfda518987b1ac02845947edb3ff3be1fec5c1ac58f8615b7f08846a8c26a"
+  },
+  "a02": {
+    "accounted_model_ns": 5470,
+    "mtime_elapsed_ns": 5500,
+    "boundary_difference_ns": 30
+  }
+}

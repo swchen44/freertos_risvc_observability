@@ -1,0 +1,14 @@
+test_external_symlink_rejected (tests.unit.test_attribution_evidence.EvidenceTests.test_external_symlink_rejected) ... ok
+test_git_pin_detects_map_replacement (tests.unit.test_attribution_evidence.EvidenceTests.test_git_pin_detects_map_replacement) ... ok
+test_hash_required_keys_mutation_and_traversal (tests.unit.test_attribution_evidence.EvidenceTests.test_hash_required_keys_mutation_and_traversal) ... ok
+test_inline_origin_does_not_override_object (tests.unit.test_attribution_evidence.EvidenceTests.test_inline_origin_does_not_override_object) ... ok
+test_map_outside_executable_rejected (tests.unit.test_attribution_evidence.EvidenceTests.test_map_outside_executable_rejected) ... ok
+test_map_skips_discarded_and_supports_wrapped_input (tests.unit.test_attribution_evidence.EvidenceTests.test_map_skips_discarded_and_supports_wrapped_input) ... ok
+test_no_size_assembly_and_runtime_provenance (tests.unit.test_attribution_evidence.EvidenceTests.test_no_size_assembly_and_runtime_provenance) ... ok
+test_partial_symbols_do_not_become_aliases (tests.unit.test_attribution_evidence.EvidenceTests.test_partial_symbols_do_not_become_aliases) ... ok
+test_symbol_overrun_rejected (tests.unit.test_attribution_evidence.EvidenceTests.test_symbol_overrun_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.144s
+
+OK

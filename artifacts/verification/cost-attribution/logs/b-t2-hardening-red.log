@@ -1,0 +1,35 @@
+test_external_symlink_rejected (tests.unit.test_attribution_evidence.EvidenceTests.test_external_symlink_rejected) ... ok
+test_git_pin_detects_map_replacement (tests.unit.test_attribution_evidence.EvidenceTests.test_git_pin_detects_map_replacement) ... FAIL
+test_hash_required_keys_mutation_and_traversal (tests.unit.test_attribution_evidence.EvidenceTests.test_hash_required_keys_mutation_and_traversal) ... ok
+test_inline_origin_does_not_override_object (tests.unit.test_attribution_evidence.EvidenceTests.test_inline_origin_does_not_override_object) ... ok
+test_map_outside_executable_rejected (tests.unit.test_attribution_evidence.EvidenceTests.test_map_outside_executable_rejected) ... ok
+test_map_skips_discarded_and_supports_wrapped_input (tests.unit.test_attribution_evidence.EvidenceTests.test_map_skips_discarded_and_supports_wrapped_input) ... ok
+test_no_size_assembly_and_runtime_provenance (tests.unit.test_attribution_evidence.EvidenceTests.test_no_size_assembly_and_runtime_provenance) ... ok
+test_partial_symbols_do_not_become_aliases (tests.unit.test_attribution_evidence.EvidenceTests.test_partial_symbols_do_not_become_aliases) ... FAIL
+test_symbol_overrun_rejected (tests.unit.test_attribution_evidence.EvidenceTests.test_symbol_overrun_rejected) ... ok
+
+======================================================================
+FAIL: test_git_pin_detects_map_replacement (tests.unit.test_attribution_evidence.EvidenceTests.test_git_pin_detects_map_replacement)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_attribution_evidence.py", line 125, in test_git_pin_detects_map_replacement
+    self.assertTrue(hasattr(attribution_evidence, 'verify_git_files'))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_partial_symbols_do_not_become_aliases (tests.unit.test_attribution_evidence.EvidenceTests.test_partial_symbols_do_not_become_aliases)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_attribution_evidence.py", line 119, in test_partial_symbols_do_not_become_aliases
+    self.assertEqual(resolve_pc(rows,112)['role'],'unresolved')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'kernel_port' != 'unresolved'
+- kernel_port
++ unresolved
+
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.021s
+
+FAILED (failures=2)

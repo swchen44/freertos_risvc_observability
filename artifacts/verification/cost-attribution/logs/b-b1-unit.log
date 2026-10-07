@@ -1,0 +1,27 @@
+test_aliases_merge_once (tests.unit.test_cost_attribution.CostAttributionTests.test_aliases_merge_once) ... ok
+test_conflicting_exact_rules_are_unresolved (tests.unit.test_cost_attribution.CostAttributionTests.test_conflicting_exact_rules_are_unresolved) ... ok
+test_half_open_and_gap (tests.unit.test_cost_attribution.CostAttributionTests.test_half_open_and_gap) ... ok
+test_invalid_addresses (tests.unit.test_cost_attribution.CostAttributionTests.test_invalid_addresses) ... ok
+test_overlap_conflict_not_order_dependent (tests.unit.test_cost_attribution.CostAttributionTests.test_overlap_conflict_not_order_dependent) ... ok
+test_provenance_rules_not_name_guess (tests.unit.test_cost_attribution.CostAttributionTests.test_provenance_rules_not_name_guess) ... ok
+test_unknown_function_retains_object_identity (tests.unit.test_cost_attribution.CostAttributionTests.test_unknown_function_retains_object_identity) ... ok
+test_external_symlink_rejected (tests.unit.test_attribution_evidence.EvidenceTests.test_external_symlink_rejected) ... ok
+test_git_pin_detects_map_replacement (tests.unit.test_attribution_evidence.EvidenceTests.test_git_pin_detects_map_replacement) ... ok
+test_hash_required_keys_mutation_and_traversal (tests.unit.test_attribution_evidence.EvidenceTests.test_hash_required_keys_mutation_and_traversal) ... ok
+test_inline_origin_does_not_override_object (tests.unit.test_attribution_evidence.EvidenceTests.test_inline_origin_does_not_override_object) ... ok
+test_map_outside_executable_rejected (tests.unit.test_attribution_evidence.EvidenceTests.test_map_outside_executable_rejected) ... ok
+test_map_skips_discarded_and_supports_wrapped_input (tests.unit.test_attribution_evidence.EvidenceTests.test_map_skips_discarded_and_supports_wrapped_input) ... ok
+test_no_size_assembly_and_runtime_provenance (tests.unit.test_attribution_evidence.EvidenceTests.test_no_size_assembly_and_runtime_provenance) ... ok
+test_observer_definition_in_included_source (tests.unit.test_attribution_evidence.EvidenceTests.test_observer_definition_in_included_source) ... ok
+test_partial_symbols_do_not_become_aliases (tests.unit.test_attribution_evidence.EvidenceTests.test_partial_symbols_do_not_become_aliases) ... ok
+test_symbol_overrun_rejected (tests.unit.test_attribution_evidence.EvidenceTests.test_symbol_overrun_rejected) ... ok
+test_control_shadow_and_zero_denominator (tests.unit.test_attribution_report.AttributionReportTests.test_control_shadow_and_zero_denominator) ... ok
+test_decimal_csv_values (tests.unit.test_attribution_report.AttributionReportTests.test_decimal_csv_values) ... ok
+test_hand_computed_conservation (tests.unit.test_attribution_report.AttributionReportTests.test_hand_computed_conservation) ... ok
+test_invalid_cost_or_operation_rejected (tests.unit.test_attribution_report.AttributionReportTests.test_invalid_cost_or_operation_rejected) ... ok
+test_unknown_cost_remains_in_denominator (tests.unit.test_attribution_report.AttributionReportTests.test_unknown_cost_remains_in_denominator) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 0.172s
+
+OK

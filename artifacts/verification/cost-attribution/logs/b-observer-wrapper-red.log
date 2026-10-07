@@ -1,0 +1,17 @@
+.......F..
+======================================================================
+FAIL: test_observer_definition_in_included_source (tests.unit.test_attribution_evidence.EvidenceTests.test_observer_definition_in_included_source)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_attribution_evidence.py", line 166, in test_observer_definition_in_included_source
+    self.assertEqual(rows[0]['role'],'observer_entry')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'application_harness' != 'observer_entry'
+- application_harness
++ observer_entry
+
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.137s
+
+FAILED (failures=1)
