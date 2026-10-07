@@ -7,6 +7,7 @@ import json
 import subprocess
 from pathlib import Path
 
+from psf_lab.attribution_evidence import verify_source_hashes
 from psf_lab.live_cache_irq import compare_irq, validate_irq_trace
 from psf_lab.parser.semantic import parse_trace
 from psf_lab.runner import digest, write_json
@@ -106,10 +107,7 @@ def analyze_matrix(root, directory, output):
         if environment is not None and environment != env:
             raise ValueError("Mixed tool environments")
         environment = env
-        for path, sha in manifest["sources"].items():
-            if Path(path).is_absolute() or ".." in Path(path).parts:
-                raise ValueError("Invalid source path")
-            checked(root / path, sha)
+        verify_source_hashes(root, manifest["sources"], manifest["source_commit"])
         sources[str((runset / "manifest.json").relative_to(root))] = digest(
             runset / "manifest.json"
         )

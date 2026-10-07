@@ -141,6 +141,21 @@ def verify_git_files(root: Path, commit: str, names: list[str]) -> dict:
     return hashes
 
 
+def verify_source_hashes(root: Path, sources: dict, commit: str) -> None:
+    """Verify capture source bytes, permitting a newer checked-out implementation."""
+    if not re.fullmatch("[0-9a-f]{40}", commit):
+        raise ValueError("Invalid source commit")
+    for name, sha in sources.items():
+        path = contained(root, name)
+        if path.is_file() and digest(path) == sha:
+            continue
+        old = subprocess.run(
+            ["git", "show", f"{commit}:{name}"], cwd=root, capture_output=True, check=False
+        )
+        if old.returncode or hashlib.sha256(old.stdout).hexdigest() != sha:
+            raise ValueError("Historical source hash mismatch: " + name)
+
+
 def source_label(value):
     if "/poc/" in value:
         return value.split("/poc/", 1)[1]
@@ -190,15 +205,7 @@ def load_capture_evidence(root: Path, runset: Path, mode: int, repeat: int = 1) 
     commit = manifest["source_commit"]
     if not re.fullmatch("[0-9a-f]{40}", commit):
         raise ValueError("Invalid source commit")
-    for name, sha in manifest["sources"].items():
-        path = contained(root, name)
-        if path.is_file() and digest(path) == sha:
-            continue
-        old = subprocess.run(
-            ["git", "show", f"{commit}:{name}"], cwd=root, capture_output=True, check=True
-        )
-        if hashlib.sha256(old.stdout).hexdigest() != sha:
-            raise ValueError("Historical source hash mismatch: " + name)
+    verify_source_hashes(root, manifest["sources"], commit)
     run_name = f"enabled-{mode}-{repeat}"
     matching = [r for r in manifest["runs"] if r["name"] == run_name]
     if len(matching) != 1:

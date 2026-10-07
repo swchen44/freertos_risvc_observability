@@ -1,0 +1,17 @@
+candidate,mode,repeat,context,role,instructions,memory_cycles,model_service_ns,accounted_model_ns,l1i,l1d,l2,ram_read,ram_write
+A02-baseline,1,3,task:2148022416,application_harness,114246,382629,765258,879504,114526,14515,107288,1980,144320
+A02-baseline,1,3,task:2148022416,lwip,62759,192806,385612,448371,63341,16915,51096,5310,56144
+A02-baseline,1,3,task:2148022416,runtime_library,164929,489285,978570,1143499,164929,50676,113664,4212,155804
+A02-baseline,1,3,irq:7,kernel_port,454,3931,7862,8316,457,294,1256,648,1276
+A02-baseline,1,3,irq:7,recorder,353,2326,4652,5005,353,165,728,288,792
+A02-baseline,1,3,irq:7,application_harness,212,1238,2476,2688,216,60,368,198,396
+A02-baseline,1,3,irq:7,runtime_library,14,67,134,148,14,1,16,36,0
+A02-baseline,1,3,task:2148014096,kernel_port,109,786,1572,1681,109,51,240,144,242
+A02-baseline,1,3,task:2148014096,observer_entry,14,110,220,234,14,5,40,18,33
+A02-baseline,1,3,task:2148014096,application_harness,178,925,1850,2028,180,53,272,90,330
+A02-baseline,1,3,task:2148014096,runtime_library,2258,10038,20076,22334,2265,785,2792,720,3476
+A02-baseline,1,3,task:2148014096,recorder,633,2016,4032,4665,634,149,496,198,539
+A02-baseline,1,3,scheduler_transition,kernel_port,143,1056,2112,2255,143,100,344,18,451
+A02-baseline,1,3,scheduler_transition,runtime_library,14,15,30,44,14,1,0,0,0
+A02-baseline,1,3,scheduler_transition,recorder,116,626,1252,1368,116,54,192,0,264
+A02-baseline,1,3,scheduler_transition,application_harness,53,240,480,533,54,15,72,0,99

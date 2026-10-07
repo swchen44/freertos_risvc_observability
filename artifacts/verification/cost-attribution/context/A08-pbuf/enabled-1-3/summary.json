@@ -1,0 +1,998 @@
+{
+  "schema": "cost-attribution-v1",
+  "mode": 1,
+  "events": 540539,
+  "totals": {
+    "instructions": 436800,
+    "memory_cycles": 1416518,
+    "model_service_ns": 2833036,
+    "accounted_model_ns": 3269836,
+    "cost_cycles": {
+      "l1i": 442609,
+      "l1d": 103739,
+      "l2": 367392,
+      "ram_read": 16776,
+      "ram_write": 486002
+    },
+    "shares": {
+      "instructions": {
+        "numerator": 436800,
+        "denominator": 436800,
+        "percent": 100.0
+      },
+      "memory_cycles": {
+        "numerator": 1416518,
+        "denominator": 1416518,
+        "percent": 100.0
+      },
+      "model_service_ns": {
+        "numerator": 2833036,
+        "denominator": 2833036,
+        "percent": 100.0
+      },
+      "accounted_model_ns": {
+        "numerator": 3269836,
+        "denominator": 3269836,
+        "percent": 100.0
+      }
+    }
+  },
+  "by_role": {
+    "application_harness": {
+      "instructions": 156251,
+      "memory_cycles": 489223,
+      "model_service_ns": 978446,
+      "accounted_model_ns": 1134697,
+      "cost_cycles": {
+        "l1i": 159242,
+        "l1d": 20302,
+        "l2": 130504,
+        "ram_read": 2988,
+        "ram_write": 176187
+      },
+      "shares": {
+        "instructions": {
+          "numerator": 156251,
+          "denominator": 436800,
+          "percent": 35.77174908424909
+        },
+        "memory_cycles": {
+          "numerator": 489223,
+          "denominator": 1416518,
+          "percent": 34.537012590027096
+        },
+        "model_service_ns": {
+          "numerator": 978446,
+          "denominator": 2833036,
+          "percent": 34.537012590027096
+        },
+        "accounted_model_ns": {
+          "numerator": 1134697,
+          "denominator": 3269836,
+          "percent": 34.70195447111109
+        }
+      }
+    },
+    "lwip": {
+      "instructions": 67379,
+      "memory_cycles": 199594,
+      "model_service_ns": 399188,
+      "accounted_model_ns": 466567,
+      "cost_cycles": {
+        "l1i": 70185,
+        "l1d": 17301,
+        "l2": 50464,
+        "ram_read": 6138,
+        "ram_write": 55506
+      },
+      "shares": {
+        "instructions": {
+          "numerator": 67379,
+          "denominator": 436800,
+          "percent": 15.425595238095237
+        },
+        "memory_cycles": {
+          "numerator": 199594,
+          "denominator": 1416518,
+          "percent": 14.090466905468197
+        },
+        "model_service_ns": {
+          "numerator": 399188,
+          "denominator": 2833036,
+          "percent": 14.090466905468197
+        },
+        "accounted_model_ns": {
+          "numerator": 466567,
+          "denominator": 3269836,
+          "percent": 14.26881959829178
+        }
+      }
+    },
+    "runtime_library": {
+      "instructions": 211101,
+      "memory_cycles": 714917,
+      "model_service_ns": 1429834,
+      "accounted_model_ns": 1640935,
+      "cost_cycles": {
+        "l1i": 211108,
+        "l1d": 65167,
+        "l2": 182424,
+        "ram_read": 6210,
+        "ram_write": 250008
+      },
+      "shares": {
+        "instructions": {
+          "numerator": 211101,
+          "denominator": 436800,
+          "percent": 48.32898351648352
+        },
+        "memory_cycles": {
+          "numerator": 714917,
+          "denominator": 1416518,
+          "percent": 50.470025795648205
+        },
+        "model_service_ns": {
+          "numerator": 1429834,
+          "denominator": 2833036,
+          "percent": 50.470025795648205
+        },
+        "accounted_model_ns": {
+          "numerator": 1640935,
+          "denominator": 3269836,
+          "percent": 50.18401534511211
+        }
+      }
+    },
+    "kernel_port": {
+      "instructions": 874,
+      "memory_cycles": 7176,
+      "model_service_ns": 14352,
+      "accounted_model_ns": 15226,
+      "cost_cycles": {
+        "l1i": 878,
+        "l1d": 559,
+        "l2": 2360,
+        "ram_read": 882,
+        "ram_write": 2497
+      },
+      "shares": {
+        "instructions": {
+          "numerator": 874,
+          "denominator": 436800,
+          "percent": 0.2000915750915751
+        },
+        "memory_cycles": {
+          "numerator": 7176,
+          "denominator": 1416518,
+          "percent": 0.5065943390765243
+        },
+        "model_service_ns": {
+          "numerator": 14352,
+          "denominator": 2833036,
+          "percent": 0.5065943390765243
+        },
+        "accounted_model_ns": {
+          "numerator": 15226,
+          "denominator": 3269836,
+          "percent": 0.4656502650285825
+        }
+      }
+    },
+    "recorder": {
+      "instructions": 1181,
+      "memory_cycles": 5524,
+      "model_service_ns": 11048,
+      "accounted_model_ns": 12229,
+      "cost_cycles": {
+        "l1i": 1182,
+        "l1d": 405,
+        "l2": 1608,
+        "ram_read": 558,
+        "ram_write": 1771
+      },
+      "shares": {
+        "instructions": {
+          "numerator": 1181,
+          "denominator": 436800,
+          "percent": 0.27037545787545786
+        },
+        "memory_cycles": {
+          "numerator": 5524,
+          "denominator": 1416518,
+          "percent": 0.389970335710524
+        },
+        "model_service_ns": {
+          "numerator": 11048,
+          "denominator": 2833036,
+          "percent": 0.389970335710524
+        },
+        "accounted_model_ns": {
+          "numerator": 12229,
+          "denominator": 3269836,
+          "percent": 0.37399429206847074
+        }
+      }
+    },
+    "observer_entry": {
+      "instructions": 14,
+      "memory_cycles": 84,
+      "model_service_ns": 168,
+      "accounted_model_ns": 182,
+      "cost_cycles": {
+        "l1i": 14,
+        "l1d": 5,
+        "l2": 32,
+        "ram_read": 0,
+        "ram_write": 33
+      },
+      "shares": {
+        "instructions": {
+          "numerator": 14,
+          "denominator": 436800,
+          "percent": 0.003205128205128205
+        },
+        "memory_cycles": {
+          "numerator": 84,
+          "denominator": 1416518,
+          "percent": 0.005930034069457642
+        },
+        "model_service_ns": {
+          "numerator": 168,
+          "denominator": 2833036,
+          "percent": 0.005930034069457642
+        },
+        "accounted_model_ns": {
+          "numerator": 182,
+          "denominator": 3269836,
+          "percent": 0.005566028387968082
+        }
+      }
+    }
+  },
+  "by_context": {
+    "task:2148022416": {
+      "instructions": 431949,
+      "memory_cycles": 1390879,
+      "model_service_ns": 2781758,
+      "accounted_model_ns": 3213707,
+      "cost_cycles": {
+        "l1i": 437738,
+        "l1d": 101840,
+        "l2": 359744,
+        "ram_read": 14256,
+        "ram_write": 477301
+      },
+      "shares": {
+        "instructions": {
+          "numerator": 431949,
+          "denominator": 436800,
+          "percent": 98.88942307692308
+        },
+        "memory_cycles": {
+          "numerator": 1390879,
+          "denominator": 1416518,
+          "percent": 98.18999829158543
+        },
+        "model_service_ns": {
+          "numerator": 2781758,
+          "denominator": 2833036,
+          "percent": 98.18999829158543
+        },
+        "accounted_model_ns": {
+          "numerator": 3213707,
+          "denominator": 3269836,
+          "percent": 98.28343072863593
+        }
+      }
+    },
+    "irq:7": {
+      "instructions": 1333,
+      "memory_cycles": 9827,
+      "model_service_ns": 19654,
+      "accounted_model_ns": 20987,
+      "cost_cycles": {
+        "l1i": 1342,
+        "l1d": 686,
+        "l2": 3200,
+        "ram_read": 1332,
+        "ram_write": 3267
+      },
+      "shares": {
+        "instructions": {
+          "numerator": 1333,
+          "denominator": 436800,
+          "percent": 0.3051739926739927
+        },
+        "memory_cycles": {
+          "numerator": 9827,
+          "denominator": 1416518,
+          "percent": 0.69374339048286
+        },
+        "model_service_ns": {
+          "numerator": 19654,
+          "denominator": 2833036,
+          "percent": 0.69374339048286
+        },
+        "accounted_model_ns": {
+          "numerator": 20987,
+          "denominator": 3269836,
+          "percent": 0.6418364713092645
+        }
+      }
+    },
+    "task:2148014096": {
+      "instructions": 3192,
+      "memory_cycles": 13883,
+      "model_service_ns": 27766,
+      "accounted_model_ns": 30958,
+      "cost_cycles": {
+        "l1i": 3202,
+        "l1d": 1043,
+        "l2": 3848,
+        "ram_read": 1170,
+        "ram_write": 4620
+      },
+      "shares": {
+        "instructions": {
+          "numerator": 3192,
+          "denominator": 436800,
+          "percent": 0.7307692307692307
+        },
+        "memory_cycles": {
+          "numerator": 13883,
+          "denominator": 1416518,
+          "percent": 0.9800793212652433
+        },
+        "model_service_ns": {
+          "numerator": 27766,
+          "denominator": 2833036,
+          "percent": 0.9800793212652433
+        },
+        "accounted_model_ns": {
+          "numerator": 30958,
+          "denominator": 3269836,
+          "percent": 0.9467753122786586
+        }
+      }
+    },
+    "scheduler_transition": {
+      "instructions": 326,
+      "memory_cycles": 1929,
+      "model_service_ns": 3858,
+      "accounted_model_ns": 4184,
+      "cost_cycles": {
+        "l1i": 327,
+        "l1d": 170,
+        "l2": 600,
+        "ram_read": 18,
+        "ram_write": 814
+      },
+      "shares": {
+        "instructions": {
+          "numerator": 326,
+          "denominator": 436800,
+          "percent": 0.07463369963369963
+        },
+        "memory_cycles": {
+          "numerator": 1929,
+          "denominator": 1416518,
+          "percent": 0.1361789966664737
+        },
+        "model_service_ns": {
+          "numerator": 3858,
+          "denominator": 2833036,
+          "percent": 0.1361789966664737
+        },
+        "accounted_model_ns": {
+          "numerator": 4184,
+          "denominator": 3269836,
+          "percent": 0.12795748777614535
+        }
+      }
+    }
+  },
+  "matrix": {
+    "task:2148022416|application_harness": {
+      "instructions": 155755,
+      "memory_cycles": 486504,
+      "model_service_ns": 973008,
+      "accounted_model_ns": 1128763,
+      "cost_cycles": {
+        "l1i": 158738,
+        "l1d": 20159,
+        "l2": 129680,
+        "ram_read": 2664,
+        "ram_write": 175263
+      },
+      "shares": {
+        "instructions": {
+          "numerator": 155755,
+          "denominator": 436800,
+          "percent": 35.65819597069597
+        },
+        "memory_cycles": {
+          "numerator": 486504,
+          "denominator": 1416518,
+          "percent": 34.34506303485025
+        },
+        "model_service_ns": {
+          "numerator": 973008,
+          "denominator": 2833036,
+          "percent": 34.34506303485025
+        },
+        "accounted_model_ns": {
+          "numerator": 1128763,
+          "denominator": 3269836,
+          "percent": 34.52047747960448
+        }
+      }
+    },
+    "task:2148022416|lwip": {
+      "instructions": 67379,
+      "memory_cycles": 199594,
+      "model_service_ns": 399188,
+      "accounted_model_ns": 466567,
+      "cost_cycles": {
+        "l1i": 70185,
+        "l1d": 17301,
+        "l2": 50464,
+        "ram_read": 6138,
+        "ram_write": 55506
+      },
+      "shares": {
+        "instructions": {
+          "numerator": 67379,
+          "denominator": 436800,
+          "percent": 15.425595238095237
+        },
+        "memory_cycles": {
+          "numerator": 199594,
+          "denominator": 1416518,
+          "percent": 14.090466905468197
+        },
+        "model_service_ns": {
+          "numerator": 399188,
+          "denominator": 2833036,
+          "percent": 14.090466905468197
+        },
+        "accounted_model_ns": {
+          "numerator": 466567,
+          "denominator": 3269836,
+          "percent": 14.26881959829178
+        }
+      }
+    },
+    "task:2148022416|runtime_library": {
+      "instructions": 208815,
+      "memory_cycles": 704781,
+      "model_service_ns": 1409562,
+      "accounted_model_ns": 1618377,
+      "cost_cycles": {
+        "l1i": 208815,
+        "l1d": 64380,
+        "l2": 179600,
+        "ram_read": 5454,
+        "ram_write": 246532
+      },
+      "shares": {
+        "instructions": {
+          "numerator": 208815,
+          "denominator": 436800,
+          "percent": 47.80563186813187
+        },
+        "memory_cycles": {
+          "numerator": 704781,
+          "denominator": 1416518,
+          "percent": 49.75446835126698
+        },
+        "model_service_ns": {
+          "numerator": 1409562,
+          "denominator": 2833036,
+          "percent": 49.75446835126698
+        },
+        "accounted_model_ns": {
+          "numerator": 1618377,
+          "denominator": 3269836,
+          "percent": 49.49413365073967
+        }
+      }
+    },
+    "irq:7|kernel_port": {
+      "instructions": 622,
+      "memory_cycles": 5342,
+      "model_service_ns": 10684,
+      "accounted_model_ns": 11306,
+      "cost_cycles": {
+        "l1i": 626,
+        "l1d": 408,
+        "l2": 1784,
+        "ram_read": 720,
+        "ram_write": 1804
+      },
+      "shares": {
+        "instructions": {
+          "numerator": 622,
+          "denominator": 436800,
+          "percent": 0.1423992673992674
+        },
+        "memory_cycles": {
+          "numerator": 5342,
+          "denominator": 1416518,
+          "percent": 0.3771219285600324
+        },
+        "model_service_ns": {
+          "numerator": 10684,
+          "denominator": 2833036,
+          "percent": 0.3771219285600324
+        },
+        "accounted_model_ns": {
+          "numerator": 11306,
+          "denominator": 3269836,
+          "percent": 0.3457665766723469
+        }
+      }
+    },
+    "irq:7|recorder": {
+      "instructions": 432,
+      "memory_cycles": 2864,
+      "model_service_ns": 5728,
+      "accounted_model_ns": 6160,
+      "cost_cycles": {
+        "l1i": 432,
+        "l1d": 202,
+        "l2": 920,
+        "ram_read": 342,
+        "ram_write": 968
+      },
+      "shares": {
+        "instructions": {
+          "numerator": 432,
+          "denominator": 436800,
+          "percent": 0.0989010989010989
+        },
+        "memory_cycles": {
+          "numerator": 2864,
+          "denominator": 1416518,
+          "percent": 0.20218592351103198
+        },
+        "model_service_ns": {
+          "numerator": 5728,
+          "denominator": 2833036,
+          "percent": 0.20218592351103198
+        },
+        "accounted_model_ns": {
+          "numerator": 6160,
+          "denominator": 3269836,
+          "percent": 0.18838865313122738
+        }
+      }
+    },
+    "irq:7|application_harness": {
+      "instructions": 265,
+      "memory_cycles": 1554,
+      "model_service_ns": 3108,
+      "accounted_model_ns": 3373,
+      "cost_cycles": {
+        "l1i": 270,
+        "l1d": 75,
+        "l2": 480,
+        "ram_read": 234,
+        "ram_write": 495
+      },
+      "shares": {
+        "instructions": {
+          "numerator": 265,
+          "denominator": 436800,
+          "percent": 0.06066849816849817
+        },
+        "memory_cycles": {
+          "numerator": 1554,
+          "denominator": 1416518,
+          "percent": 0.10970563028496637
+        },
+        "model_service_ns": {
+          "numerator": 3108,
+          "denominator": 2833036,
+          "percent": 0.10970563028496637
+        },
+        "accounted_model_ns": {
+          "numerator": 3373,
+          "denominator": 3269836,
+          "percent": 0.10315502061877109
+        }
+      }
+    },
+    "irq:7|runtime_library": {
+      "instructions": 14,
+      "memory_cycles": 67,
+      "model_service_ns": 134,
+      "accounted_model_ns": 148,
+      "cost_cycles": {
+        "l1i": 14,
+        "l1d": 1,
+        "l2": 16,
+        "ram_read": 36,
+        "ram_write": 0
+      },
+      "shares": {
+        "instructions": {
+          "numerator": 14,
+          "denominator": 436800,
+          "percent": 0.003205128205128205
+        },
+        "memory_cycles": {
+          "numerator": 67,
+          "denominator": 1416518,
+          "percent": 0.00472990812682931
+        },
+        "model_service_ns": {
+          "numerator": 134,
+          "denominator": 2833036,
+          "percent": 0.00472990812682931
+        },
+        "accounted_model_ns": {
+          "numerator": 148,
+          "denominator": 3269836,
+          "percent": 0.004526220886919099
+        }
+      }
+    },
+    "task:2148014096|kernel_port": {
+      "instructions": 109,
+      "memory_cycles": 786,
+      "model_service_ns": 1572,
+      "accounted_model_ns": 1681,
+      "cost_cycles": {
+        "l1i": 109,
+        "l1d": 51,
+        "l2": 240,
+        "ram_read": 144,
+        "ram_write": 242
+      },
+      "shares": {
+        "instructions": {
+          "numerator": 109,
+          "denominator": 436800,
+          "percent": 0.024954212454212456
+        },
+        "memory_cycles": {
+          "numerator": 786,
+          "denominator": 1416518,
+          "percent": 0.055488175935639365
+        },
+        "model_service_ns": {
+          "numerator": 1572,
+          "denominator": 2833036,
+          "percent": 0.055488175935639365
+        },
+        "accounted_model_ns": {
+          "numerator": 1681,
+          "denominator": 3269836,
+          "percent": 0.051409306154804095
+        }
+      }
+    },
+    "task:2148014096|observer_entry": {
+      "instructions": 14,
+      "memory_cycles": 84,
+      "model_service_ns": 168,
+      "accounted_model_ns": 182,
+      "cost_cycles": {
+        "l1i": 14,
+        "l1d": 5,
+        "l2": 32,
+        "ram_read": 0,
+        "ram_write": 33
+      },
+      "shares": {
+        "instructions": {
+          "numerator": 14,
+          "denominator": 436800,
+          "percent": 0.003205128205128205
+        },
+        "memory_cycles": {
+          "numerator": 84,
+          "denominator": 1416518,
+          "percent": 0.005930034069457642
+        },
+        "model_service_ns": {
+          "numerator": 168,
+          "denominator": 2833036,
+          "percent": 0.005930034069457642
+        },
+        "accounted_model_ns": {
+          "numerator": 182,
+          "denominator": 3269836,
+          "percent": 0.005566028387968082
+        }
+      }
+    },
+    "task:2148014096|application_harness": {
+      "instructions": 178,
+      "memory_cycles": 925,
+      "model_service_ns": 1850,
+      "accounted_model_ns": 2028,
+      "cost_cycles": {
+        "l1i": 180,
+        "l1d": 53,
+        "l2": 272,
+        "ram_read": 90,
+        "ram_write": 330
+      },
+      "shares": {
+        "instructions": {
+          "numerator": 178,
+          "denominator": 436800,
+          "percent": 0.04075091575091575
+        },
+        "memory_cycles": {
+          "numerator": 925,
+          "denominator": 1416518,
+          "percent": 0.06530097040771808
+        },
+        "model_service_ns": {
+          "numerator": 1850,
+          "denominator": 2833036,
+          "percent": 0.06530097040771808
+        },
+        "accounted_model_ns": {
+          "numerator": 2028,
+          "denominator": 3269836,
+          "percent": 0.06202145918021577
+        }
+      }
+    },
+    "task:2148014096|runtime_library": {
+      "instructions": 2258,
+      "memory_cycles": 10054,
+      "model_service_ns": 20108,
+      "accounted_model_ns": 22366,
+      "cost_cycles": {
+        "l1i": 2265,
+        "l1d": 785,
+        "l2": 2808,
+        "ram_read": 720,
+        "ram_write": 3476
+      },
+      "shares": {
+        "instructions": {
+          "numerator": 2258,
+          "denominator": 436800,
+          "percent": 0.516941391941392
+        },
+        "memory_cycles": {
+          "numerator": 10054,
+          "denominator": 1416518,
+          "percent": 0.7097686015991326
+        },
+        "model_service_ns": {
+          "numerator": 20108,
+          "denominator": 2833036,
+          "percent": 0.7097686015991326
+        },
+        "accounted_model_ns": {
+          "numerator": 22366,
+          "denominator": 3269836,
+          "percent": 0.6840098402488688
+        }
+      }
+    },
+    "task:2148014096|recorder": {
+      "instructions": 633,
+      "memory_cycles": 2034,
+      "model_service_ns": 4068,
+      "accounted_model_ns": 4701,
+      "cost_cycles": {
+        "l1i": 634,
+        "l1d": 149,
+        "l2": 496,
+        "ram_read": 216,
+        "ram_write": 539
+      },
+      "shares": {
+        "instructions": {
+          "numerator": 633,
+          "denominator": 436800,
+          "percent": 0.14491758241758243
+        },
+        "memory_cycles": {
+          "numerator": 2034,
+          "denominator": 1416518,
+          "percent": 0.14359153925329576
+        },
+        "model_service_ns": {
+          "numerator": 4068,
+          "denominator": 2833036,
+          "percent": 0.14359153925329576
+        },
+        "accounted_model_ns": {
+          "numerator": 4701,
+          "denominator": 3269836,
+          "percent": 0.14376867830680193
+        }
+      }
+    },
+    "scheduler_transition|kernel_port": {
+      "instructions": 143,
+      "memory_cycles": 1048,
+      "model_service_ns": 2096,
+      "accounted_model_ns": 2239,
+      "cost_cycles": {
+        "l1i": 143,
+        "l1d": 100,
+        "l2": 336,
+        "ram_read": 18,
+        "ram_write": 451
+      },
+      "shares": {
+        "instructions": {
+          "numerator": 143,
+          "denominator": 436800,
+          "percent": 0.03273809523809524
+        },
+        "memory_cycles": {
+          "numerator": 1048,
+          "denominator": 1416518,
+          "percent": 0.07398423458085249
+        },
+        "model_service_ns": {
+          "numerator": 2096,
+          "denominator": 2833036,
+          "percent": 0.07398423458085249
+        },
+        "accounted_model_ns": {
+          "numerator": 2239,
+          "denominator": 3269836,
+          "percent": 0.06847438220143151
+        }
+      }
+    },
+    "scheduler_transition|runtime_library": {
+      "instructions": 14,
+      "memory_cycles": 15,
+      "model_service_ns": 30,
+      "accounted_model_ns": 44,
+      "cost_cycles": {
+        "l1i": 14,
+        "l1d": 1,
+        "l2": 0,
+        "ram_read": 0,
+        "ram_write": 0
+      },
+      "shares": {
+        "instructions": {
+          "numerator": 14,
+          "denominator": 436800,
+          "percent": 0.003205128205128205
+        },
+        "memory_cycles": {
+          "numerator": 15,
+          "denominator": 1416518,
+          "percent": 0.0010589346552602932
+        },
+        "model_service_ns": {
+          "numerator": 30,
+          "denominator": 2833036,
+          "percent": 0.0010589346552602932
+        },
+        "accounted_model_ns": {
+          "numerator": 44,
+          "denominator": 3269836,
+          "percent": 0.001345633236651624
+        }
+      }
+    },
+    "scheduler_transition|recorder": {
+      "instructions": 116,
+      "memory_cycles": 626,
+      "model_service_ns": 1252,
+      "accounted_model_ns": 1368,
+      "cost_cycles": {
+        "l1i": 116,
+        "l1d": 54,
+        "l2": 192,
+        "ram_read": 0,
+        "ram_write": 264
+      },
+      "shares": {
+        "instructions": {
+          "numerator": 116,
+          "denominator": 436800,
+          "percent": 0.026556776556776556
+        },
+        "memory_cycles": {
+          "numerator": 626,
+          "denominator": 1416518,
+          "percent": 0.044192872946196234
+        },
+        "model_service_ns": {
+          "numerator": 1252,
+          "denominator": 2833036,
+          "percent": 0.044192872946196234
+        },
+        "accounted_model_ns": {
+          "numerator": 1368,
+          "denominator": 3269836,
+          "percent": 0.04183696063044141
+        }
+      }
+    },
+    "scheduler_transition|application_harness": {
+      "instructions": 53,
+      "memory_cycles": 240,
+      "model_service_ns": 480,
+      "accounted_model_ns": 533,
+      "cost_cycles": {
+        "l1i": 54,
+        "l1d": 15,
+        "l2": 72,
+        "ram_read": 0,
+        "ram_write": 99
+      },
+      "shares": {
+        "instructions": {
+          "numerator": 53,
+          "denominator": 436800,
+          "percent": 0.012133699633699634
+        },
+        "memory_cycles": {
+          "numerator": 240,
+          "denominator": 1416518,
+          "percent": 0.01694295448416469
+        },
+        "model_service_ns": {
+          "numerator": 480,
+          "denominator": 2833036,
+          "percent": 0.01694295448416469
+        },
+        "accounted_model_ns": {
+          "numerator": 533,
+          "denominator": 3269836,
+          "percent": 0.01630051170762081
+        }
+      }
+    }
+  },
+  "unresolved": {},
+  "evidence": {
+    "run_manifest_sha256": "343988cea746d70502a6f2da0aac096c06c1ff2c9805a24bd689fd98abb7de24",
+    "raw_stream_sha256": "4fe21ca728926f26262a693ed38f40d44b403efbc5813a6bffc6d76ea7988e58",
+    "task_objects": [
+      {
+        "object_id": "0x80081810:0",
+        "address": "0x80081810",
+        "epoch": 0,
+        "kind": "task",
+        "name": "tcp_observer",
+        "created_offset": 224,
+        "deleted_offset": null,
+        "first_seen_offset": 196
+      },
+      {
+        "object_id": "0x80083890:0",
+        "address": "0x80083890",
+        "epoch": 0,
+        "kind": "task",
+        "name": "tcp_session",
+        "created_offset": 276,
+        "deleted_offset": null,
+        "first_seen_offset": 252
+      },
+      {
+        "object_id": "0x80083d10:0",
+        "address": "0x80083d10",
+        "epoch": 0,
+        "kind": "task",
+        "name": "IDLE",
+        "created_offset": 324,
+        "deleted_offset": null,
+        "first_seen_offset": 304
+      }
+    ],
+    "boundary_sha256": "37416008f81fd8dbf1bb81d5f445d7e0ced37704ba8e41873a4c9d129faf660f",
+    "ranges_sha256": "8190238180f13a6c27c317b18b212798d94e0136d67673b4c8632d7c04849ccf",
+    "rules_sha256": "869bc15d3352e7432d802e5d60abe29967d64423c758a30d75957d6367b37b8b"
+  },
+  "context_quality": "exact",
+  "cost_semantics": "injected_model"
+}

@@ -1,0 +1,4 @@
+candidate,mode,repeat,context,role,instructions,memory_cycles,model_service_ns,accounted_model_ns,l1i,l1d,l2,ram_read,ram_write
+A02-baseline,0,3,task:2148022416,application_harness,114246,382315,764630,878876,114526,14515,107208,1746,144320
+A02-baseline,0,3,task:2148022416,lwip,62759,191396,382792,445551,63341,16915,50568,4428,56144
+A02-baseline,0,3,task:2148022416,runtime_library,164929,489229,978458,1143387,164929,50676,113608,4212,155804

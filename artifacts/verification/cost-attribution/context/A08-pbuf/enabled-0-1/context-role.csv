@@ -1,0 +1,4 @@
+candidate,mode,repeat,context,role,instructions,memory_cycles,model_service_ns,accounted_model_ns,l1i,l1d,l2,ram_read,ram_write
+A08-pbuf,0,1,task:2148022416,application_harness,155755,485920,971840,1127595,158738,20159,129600,2160,175263
+A08-pbuf,0,1,task:2148022416,lwip,67379,197732,395464,462843,70185,17301,49880,4860,55506
+A08-pbuf,0,1,task:2148022416,runtime_library,208815,704771,1409542,1618357,208815,64380,179608,5436,246532

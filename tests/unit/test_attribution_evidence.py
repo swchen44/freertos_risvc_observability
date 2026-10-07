@@ -168,3 +168,40 @@ Linker script and memory map
         }
         rows = self.build(evidence, self.rules)
         self.assertEqual(rows[0]["role"], "observer_entry")
+
+    def test_historical_source_is_verified_instead_of_current_revision(self):
+        import subprocess
+
+        from psf_lab import attribution_evidence
+
+        self.assertTrue(hasattr(attribution_evidence, "verify_source_hashes"))
+        with TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            path = root / "collector.c"
+            path.write_bytes(b"original")
+            subprocess.run(["git", "init", "-q", str(root)], check=True)
+            subprocess.run(["git", "-C", str(root), "add", "collector.c"], check=True)
+            subprocess.run(
+                [
+                    "git",
+                    "-C",
+                    str(root),
+                    "-c",
+                    "user.name=Fixture",
+                    "-c",
+                    "user.email=fixture@example.invalid",
+                    "commit",
+                    "-qm",
+                    "fixture",
+                ],
+                check=True,
+            )
+            sha = subprocess.check_output(
+                ["git", "-C", str(root), "rev-parse", "HEAD"], text=True
+            ).strip()
+            path.write_bytes(b"new opt-in collector")
+            attribution_evidence.verify_source_hashes(
+                root, {"collector.c": hashlib.sha256(b"original").hexdigest()}, sha
+            )
+            with self.assertRaises(ValueError):
+                attribution_evidence.verify_source_hashes(root, {"collector.c": "0" * 64}, sha)

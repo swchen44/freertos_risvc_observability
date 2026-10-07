@@ -1,0 +1,333 @@
+{
+  "schema": "cost-attribution-v1",
+  "mode": 0,
+  "events": 419022,
+  "totals": {
+    "instructions": 337942,
+    "memory_cycles": 1067585,
+    "model_service_ns": 2135170,
+    "accounted_model_ns": 2473112,
+    "cost_cycles": {
+      "l1i": 350543,
+      "l1d": 81080,
+      "l2": 270752,
+      "ram_read": 10350,
+      "ram_write": 354860
+    },
+    "shares": {
+      "instructions": {
+        "numerator": 337942,
+        "denominator": 337942,
+        "percent": 100.0
+      },
+      "memory_cycles": {
+        "numerator": 1067585,
+        "denominator": 1067585,
+        "percent": 100.0
+      },
+      "model_service_ns": {
+        "numerator": 2135170,
+        "denominator": 2135170,
+        "percent": 100.0
+      },
+      "accounted_model_ns": {
+        "numerator": 2473112,
+        "denominator": 2473112,
+        "percent": 100.0
+      }
+    }
+  },
+  "by_role": {
+    "application_harness": {
+      "instructions": 114062,
+      "memory_cycles": 393632,
+      "model_service_ns": 787264,
+      "accounted_model_ns": 901326,
+      "cost_cycles": {
+        "l1i": 125841,
+        "l1d": 14537,
+        "l2": 107152,
+        "ram_read": 1782,
+        "ram_write": 144320
+      },
+      "shares": {
+        "instructions": {
+          "numerator": 114062,
+          "denominator": 337942,
+          "percent": 33.751945600132565
+        },
+        "memory_cycles": {
+          "numerator": 393632,
+          "denominator": 1067585,
+          "percent": 36.87125615290586
+        },
+        "model_service_ns": {
+          "numerator": 787264,
+          "denominator": 2135170,
+          "percent": 36.87125615290586
+        },
+        "accounted_model_ns": {
+          "numerator": 901326,
+          "denominator": 2473112,
+          "percent": 36.445013408207956
+        }
+      }
+    },
+    "lwip": {
+      "instructions": 58951,
+      "memory_cycles": 184732,
+      "model_service_ns": 369464,
+      "accounted_model_ns": 428415,
+      "cost_cycles": {
+        "l1i": 59773,
+        "l1d": 15867,
+        "l2": 50000,
+        "ram_read": 4356,
+        "ram_write": 54736
+      },
+      "shares": {
+        "instructions": {
+          "numerator": 58951,
+          "denominator": 337942,
+          "percent": 17.444117629652425
+        },
+        "memory_cycles": {
+          "numerator": 184732,
+          "denominator": 1067585,
+          "percent": 17.303727572043442
+        },
+        "model_service_ns": {
+          "numerator": 369464,
+          "denominator": 2135170,
+          "percent": 17.303727572043442
+        },
+        "accounted_model_ns": {
+          "numerator": 428415,
+          "denominator": 2473112,
+          "percent": 17.322911376435844
+        }
+      }
+    },
+    "runtime_library": {
+      "instructions": 164929,
+      "memory_cycles": 489221,
+      "model_service_ns": 978442,
+      "accounted_model_ns": 1143371,
+      "cost_cycles": {
+        "l1i": 164929,
+        "l1d": 50676,
+        "l2": 113600,
+        "ram_read": 4212,
+        "ram_write": 155804
+      },
+      "shares": {
+        "instructions": {
+          "numerator": 164929,
+          "denominator": 337942,
+          "percent": 48.80393677021501
+        },
+        "memory_cycles": {
+          "numerator": 489221,
+          "denominator": 1067585,
+          "percent": 45.8250162750507
+        },
+        "model_service_ns": {
+          "numerator": 978442,
+          "denominator": 2135170,
+          "percent": 45.8250162750507
+        },
+        "accounted_model_ns": {
+          "numerator": 1143371,
+          "denominator": 2473112,
+          "percent": 46.2320752153562
+        }
+      }
+    }
+  },
+  "by_context": {
+    "task:2148022416": {
+      "instructions": 337942,
+      "memory_cycles": 1067585,
+      "model_service_ns": 2135170,
+      "accounted_model_ns": 2473112,
+      "cost_cycles": {
+        "l1i": 350543,
+        "l1d": 81080,
+        "l2": 270752,
+        "ram_read": 10350,
+        "ram_write": 354860
+      },
+      "shares": {
+        "instructions": {
+          "numerator": 337942,
+          "denominator": 337942,
+          "percent": 100.0
+        },
+        "memory_cycles": {
+          "numerator": 1067585,
+          "denominator": 1067585,
+          "percent": 100.0
+        },
+        "model_service_ns": {
+          "numerator": 2135170,
+          "denominator": 2135170,
+          "percent": 100.0
+        },
+        "accounted_model_ns": {
+          "numerator": 2473112,
+          "denominator": 2473112,
+          "percent": 100.0
+        }
+      }
+    }
+  },
+  "matrix": {
+    "task:2148022416|application_harness": {
+      "instructions": 114062,
+      "memory_cycles": 393632,
+      "model_service_ns": 787264,
+      "accounted_model_ns": 901326,
+      "cost_cycles": {
+        "l1i": 125841,
+        "l1d": 14537,
+        "l2": 107152,
+        "ram_read": 1782,
+        "ram_write": 144320
+      },
+      "shares": {
+        "instructions": {
+          "numerator": 114062,
+          "denominator": 337942,
+          "percent": 33.751945600132565
+        },
+        "memory_cycles": {
+          "numerator": 393632,
+          "denominator": 1067585,
+          "percent": 36.87125615290586
+        },
+        "model_service_ns": {
+          "numerator": 787264,
+          "denominator": 2135170,
+          "percent": 36.87125615290586
+        },
+        "accounted_model_ns": {
+          "numerator": 901326,
+          "denominator": 2473112,
+          "percent": 36.445013408207956
+        }
+      }
+    },
+    "task:2148022416|lwip": {
+      "instructions": 58951,
+      "memory_cycles": 184732,
+      "model_service_ns": 369464,
+      "accounted_model_ns": 428415,
+      "cost_cycles": {
+        "l1i": 59773,
+        "l1d": 15867,
+        "l2": 50000,
+        "ram_read": 4356,
+        "ram_write": 54736
+      },
+      "shares": {
+        "instructions": {
+          "numerator": 58951,
+          "denominator": 337942,
+          "percent": 17.444117629652425
+        },
+        "memory_cycles": {
+          "numerator": 184732,
+          "denominator": 1067585,
+          "percent": 17.303727572043442
+        },
+        "model_service_ns": {
+          "numerator": 369464,
+          "denominator": 2135170,
+          "percent": 17.303727572043442
+        },
+        "accounted_model_ns": {
+          "numerator": 428415,
+          "denominator": 2473112,
+          "percent": 17.322911376435844
+        }
+      }
+    },
+    "task:2148022416|runtime_library": {
+      "instructions": 164929,
+      "memory_cycles": 489221,
+      "model_service_ns": 978442,
+      "accounted_model_ns": 1143371,
+      "cost_cycles": {
+        "l1i": 164929,
+        "l1d": 50676,
+        "l2": 113600,
+        "ram_read": 4212,
+        "ram_write": 155804
+      },
+      "shares": {
+        "instructions": {
+          "numerator": 164929,
+          "denominator": 337942,
+          "percent": 48.80393677021501
+        },
+        "memory_cycles": {
+          "numerator": 489221,
+          "denominator": 1067585,
+          "percent": 45.8250162750507
+        },
+        "model_service_ns": {
+          "numerator": 978442,
+          "denominator": 2135170,
+          "percent": 45.8250162750507
+        },
+        "accounted_model_ns": {
+          "numerator": 1143371,
+          "denominator": 2473112,
+          "percent": 46.2320752153562
+        }
+      }
+    }
+  },
+  "unresolved": {},
+  "evidence": {
+    "run_manifest_sha256": "66b180e8c67f571faecd1ed70b1814a089a7ac25da6b21eac0230da058ea122c",
+    "raw_stream_sha256": "2b79ccbb476910d76e89bcad751ab8af622835b7c501d7ef056dd12ded775a06",
+    "task_objects": [
+      {
+        "object_id": "0x80081810:0",
+        "address": "0x80081810",
+        "epoch": 0,
+        "kind": "task",
+        "name": "tcp_observer",
+        "created_offset": 224,
+        "deleted_offset": null,
+        "first_seen_offset": 196
+      },
+      {
+        "object_id": "0x80083890:0",
+        "address": "0x80083890",
+        "epoch": 0,
+        "kind": "task",
+        "name": "tcp_session",
+        "created_offset": 276,
+        "deleted_offset": null,
+        "first_seen_offset": 252
+      },
+      {
+        "object_id": "0x80083d10:0",
+        "address": "0x80083d10",
+        "epoch": 0,
+        "kind": "task",
+        "name": "IDLE",
+        "created_offset": 324,
+        "deleted_offset": null,
+        "first_seen_offset": 304
+      }
+    ],
+    "boundary_sha256": "33b49a9d32a1cfa704506c4adc7eee8dada5961ce221f76cbdde9fe50e6b5746",
+    "ranges_sha256": "6f5ed6841d2171e9c0b3661a8cf7ccc49c0d116d055fe99e39e2079221784e3f",
+    "rules_sha256": "869bc15d3352e7432d802e5d60abe29967d64423c758a30d75957d6367b37b8b"
+  },
+  "context_quality": "exact",
+  "cost_semantics": "shadow_model"
+}

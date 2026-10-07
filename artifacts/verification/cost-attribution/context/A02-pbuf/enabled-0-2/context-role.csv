@@ -1,0 +1,4 @@
+candidate,mode,repeat,context,role,instructions,memory_cycles,model_service_ns,accounted_model_ns,l1i,l1d,l2,ram_read,ram_write
+A02-pbuf,0,2,task:2148022416,application_harness,114062,393632,787264,901326,125841,14537,107152,1782,144320
+A02-pbuf,0,2,task:2148022416,lwip,58951,184732,369464,428415,59773,15867,50000,4356,54736
+A02-pbuf,0,2,task:2148022416,runtime_library,164929,489221,978442,1143371,164929,50676,113600,4212,155804
