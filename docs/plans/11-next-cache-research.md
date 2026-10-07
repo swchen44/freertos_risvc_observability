@@ -75,6 +75,8 @@
 
 ## B：成本歸屬，獨立里程碑
 
+2026-10-07：已完成來源盤點與 [B 設計規格](../design/cost-attribution-b.md)，待審閱；下方實作項目仍未完成。
+
 **現有入口：** `src/psf_lab/tcp_hotspots.py` 已提供 PC self-cost；`src/psf_lab/live_cache_irq.py` 驗證 observer/task switch，但沒有逐 access 執行上下文。
 
 - [ ] B1 新增 `src/psf_lab/cost_attribution.py` 與 unit tests，從固定 ELF/source ranges 建立 code-role mapping，重疊/未解析/邊界 PC 必須測試。

@@ -1,0 +1,1021 @@
+{
+  "schema": "cost-attribution-design-inspection-v1",
+  "scope": "Read-only inspection of saved A reports and ELF; no new QEMU run or B implementation",
+  "poc_commit": "88723c35868504010a7cb6a9b3c32d96bcf62ee6",
+  "raw_columns": [
+    "pc",
+    "address",
+    "size",
+    "operation",
+    "l1i",
+    "l1d",
+    "l2",
+    "ram_read",
+    "ram_write"
+  ],
+  "samples": [
+    {
+      "label": "A02-baseline",
+      "totals": {
+        "l1i_accesses": 347365,
+        "l1i_misses": 1687,
+        "l1i_compulsory": 348,
+        "l2_accesses": 34858,
+        "l2_misses": 770,
+        "l2_compulsory": 685,
+        "cycles": 1088094,
+        "instructions": 346485,
+        "l1d_accesses": 83839,
+        "l1d_misses": 383,
+        "l1d_compulsory": 337,
+        "l1i_conflict": 293,
+        "l1i_capacity": 1046,
+        "l2_conflict": 69,
+        "l1d_capacity": 23,
+        "l1d_conflict": 23,
+        "l2_capacity": 16
+      },
+      "functions": {
+        "memcpy": {
+          "instructions": 79332,
+          "cycles": 360928
+        },
+        "session_task": {
+          "instructions": 106830,
+          "cycles": 345288
+        },
+        "memcmp": {
+          "instructions": 81792,
+          "cycles": 105226
+        },
+        "lwip_standard_chksum": {
+          "instructions": 22622,
+          "cycles": 26423
+        },
+        "memset": {
+          "instructions": 4096,
+          "cycles": 24448
+        },
+        "tcp_input": {
+          "instructions": 3817,
+          "cycles": 21439
+        },
+        "inject": {
+          "instructions": 2684,
+          "cycles": 17438
+        },
+        "tcp_output": {
+          "instructions": 3005,
+          "cycles": 16863
+        },
+        "pbuf_alloc": {
+          "instructions": 1766,
+          "cycles": 11007
+        },
+        "inet_chksum_pseudo": {
+          "instructions": 3051,
+          "cycles": 9547
+        },
+        "ip4_input": {
+          "instructions": 1806,
+          "cycles": 9300
+        },
+        "tcp_receive": {
+          "instructions": 1641,
+          "cycles": 9035
+        },
+        "ip4_output_if_src": {
+          "instructions": 1177,
+          "cycles": 8621
+        },
+        "mem_malloc": {
+          "instructions": 1926,
+          "cycles": 7304
+        },
+        "pbuf_free": {
+          "instructions": 1525,
+          "cycles": 6831
+        },
+        "tcp_write": {
+          "instructions": 1232,
+          "cycles": 6508
+        },
+        "tcp_create_segment": {
+          "instructions": 780,
+          "cycles": 6378
+        },
+        "pbuf_copy_partial": {
+          "instructions": 1720,
+          "cycles": 6101
+        },
+        "phase": {
+          "instructions": 837,
+          "cycles": 5642
+        },
+        "snapshot": {
+          "instructions": 1100,
+          "cycles": 5186
+        },
+        "mem_free": {
+          "instructions": 1652,
+          "cycles": 4789
+        },
+        "tcp_free_acked_segments.isra.0": {
+          "instructions": 840,
+          "cycles": 4588
+        },
+        "pbuf_get_at": {
+          "instructions": 1280,
+          "cycles": 4002
+        },
+        "pbuf_remove_header": {
+          "instructions": 840,
+          "cycles": 3630
+        },
+        "pbuf_add_header_impl": {
+          "instructions": 945,
+          "cycles": 3397
+        },
+        "pbuf_try_get_at": {
+          "instructions": 2528,
+          "cycles": 3320
+        },
+        "on_recv": {
+          "instructions": 1526,
+          "cycles": 3170
+        },
+        "consume": {
+          "instructions": 786,
+          "cycles": 3143
+        },
+        "assembly/unresolved": {
+          "instructions": 293,
+          "cycles": 2820
+        },
+        "__ssputs_r": {
+          "instructions": 370,
+          "cycles": 2542
+        },
+        "lwip_htons": {
+          "instructions": 2460,
+          "cycles": 2512
+        },
+        "lwip_htonl": {
+          "instructions": 2093,
+          "cycles": 2101
+        },
+        "pbuf_alloc_reference": {
+          "instructions": 184,
+          "cycles": 2048
+        },
+        "memp_free": {
+          "instructions": 378,
+          "cycles": 1890
+        },
+        "do_memp_malloc_pool": {
+          "instructions": 319,
+          "cycles": 1843
+        },
+        "_svfprintf_r": {
+          "instructions": 360,
+          "cycles": 1715
+        },
+        "xTaskIncrementTick": {
+          "instructions": 194,
+          "cycles": 1524
+        },
+        "tcp_slowtmr": {
+          "instructions": 204,
+          "cycles": 1478
+        },
+        "xTraceEventCreate1": {
+          "instructions": 220,
+          "cycles": 1348
+        },
+        "memmove": {
+          "instructions": 333,
+          "cycles": 1265
+        },
+        "output_packet": {
+          "instructions": 187,
+          "cycles": 1235
+        },
+        "_printf_i": {
+          "instructions": 212,
+          "cycles": 1081
+        },
+        "inet_chksum": {
+          "instructions": 252,
+          "cycles": 1042
+        },
+        "poc_write_all": {
+          "instructions": 203,
+          "cycles": 1042
+        },
+        "_printf_common": {
+          "instructions": 207,
+          "cycles": 1036
+        },
+        "xTraceStreamPortWriteData": {
+          "instructions": 140,
+          "cycles": 988
+        },
+        "on_sent": {
+          "instructions": 144,
+          "cycles": 978
+        },
+        "tcp_alloc": {
+          "instructions": 100,
+          "cycles": 904
+        },
+        "xTraceEventCreate2": {
+          "instructions": 118,
+          "cycles": 752
+        },
+        "tcp_output_alloc_header_common.constprop.0": {
+          "instructions": 76,
+          "cycles": 745
+        },
+        "poc_sh_write": {
+          "instructions": 77,
+          "cycles": 721
+        },
+        "pbuf_cat": {
+          "instructions": 134,
+          "cycles": 704
+        },
+        "tcp_seg_free": {
+          "instructions": 130,
+          "cycles": 694
+        },
+        "vTaskSwitchContext": {
+          "instructions": 110,
+          "cycles": 643
+        },
+        "memchr": {
+          "instructions": 447,
+          "cycles": 631
+        },
+        "tcp_enqueue_flags": {
+          "instructions": 89,
+          "cycles": 574
+        },
+        "xTraceEventCreateData2": {
+          "instructions": 74,
+          "cycles": 525
+        },
+        "tcp_listen_with_backlog_and_err": {
+          "instructions": 60,
+          "cycles": 489
+        },
+        "xTraceVPrintF": {
+          "instructions": 406,
+          "cycles": 478
+        },
+        "snprintf": {
+          "instructions": 38,
+          "cycles": 451
+        },
+        "ip4_route": {
+          "instructions": 204,
+          "cycles": 442
+        },
+        "ip4_addr_isbroadcast_u32": {
+          "instructions": 224,
+          "cycles": 440
+        },
+        "ip4_input_accept": {
+          "instructions": 182,
+          "cycles": 432
+        },
+        "tcp_fasttmr": {
+          "instructions": 64,
+          "cycles": 430
+        },
+        "vTaskSuspend": {
+          "instructions": 70,
+          "cycles": 414
+        },
+        "xTraceTaskSwitch": {
+          "instructions": 66,
+          "cycles": 400
+        },
+        "pbuf_clen": {
+          "instructions": 296,
+          "cycles": 392
+        },
+        "tcp_close_shutdown": {
+          "instructions": 68,
+          "cycles": 351
+        },
+        "tcp_pcb_remove": {
+          "instructions": 45,
+          "cycles": 348
+        },
+        "pbuf_ref": {
+          "instructions": 55,
+          "cycles": 328
+        },
+        "tcp_input_delayed_close": {
+          "instructions": 140,
+          "cycles": 312
+        },
+        "poc_oracle_record": {
+          "instructions": 31,
+          "cycles": 288
+        },
+        "tcp_output_control_segment_netif": {
+          "instructions": 48,
+          "cycles": 287
+        },
+        "memp_malloc": {
+          "instructions": 168,
+          "cycles": 273
+        },
+        "tcp_parseopt.part.0": {
+          "instructions": 43,
+          "cycles": 273
+        },
+        "tcp_bind": {
+          "instructions": 49,
+          "cycles": 266
+        },
+        "tcp_update_rcv_ann_wnd": {
+          "instructions": 100,
+          "cycles": 262
+        },
+        "resources": {
+          "instructions": 20,
+          "cycles": 256
+        },
+        "xTracePrintF": {
+          "instructions": 18,
+          "cycles": 232
+        },
+        "tcp_recved": {
+          "instructions": 42,
+          "cycles": 218
+        },
+        "prvTraceVPrintF": {
+          "instructions": 32,
+          "cycles": 217
+        },
+        "tcp_pcb_purge": {
+          "instructions": 33,
+          "cycles": 194
+        },
+        "vListInsertEnd": {
+          "instructions": 11,
+          "cycles": 160
+        },
+        "tcp_get_next_optbyte": {
+          "instructions": 36,
+          "cycles": 158
+        },
+        "on_accept": {
+          "instructions": 22,
+          "cycles": 157
+        },
+        "uxListRemove": {
+          "instructions": 15,
+          "cycles": 148
+        },
+        "tcp_send_empty_ack": {
+          "instructions": 24,
+          "cycles": 140
+        },
+        "poc_mark": {
+          "instructions": 23,
+          "cycles": 139
+        },
+        "tcp_output_alloc_header.constprop.0": {
+          "instructions": 19,
+          "cycles": 139
+        },
+        "tcp_output_control_segment": {
+          "instructions": 23,
+          "cycles": 137
+        },
+        "tcp_close_shutdown_fin": {
+          "instructions": 20,
+          "cycles": 135
+        },
+        "tcp_send_fin": {
+          "instructions": 16,
+          "cycles": 135
+        },
+        "poc_mtime": {
+          "instructions": 81,
+          "cycles": 133
+        },
+        "timing_observer": {
+          "instructions": 14,
+          "cycles": 110
+        },
+        "__clzsi2": {
+          "instructions": 28,
+          "cycles": 82
+        },
+        "call": {
+          "instructions": 28,
+          "cycles": 80
+        },
+        "ip4_output_if": {
+          "instructions": 55,
+          "cycles": 74
+        },
+        "tcp_close": {
+          "instructions": 15,
+          "cycles": 72
+        },
+        "pbuf_add_header": {
+          "instructions": 70,
+          "cycles": 70
+        },
+        "tcp_eff_send_mss_netif": {
+          "instructions": 28,
+          "cycles": 58
+        },
+        "prvResetNextTaskUnblockTime": {
+          "instructions": 7,
+          "cycles": 55
+        },
+        "z0_stack_begin": {
+          "instructions": 54,
+          "cycles": 54
+        },
+        "z0_stack_end": {
+          "instructions": 54,
+          "cycles": 54
+        },
+        "tcp_next_iss": {
+          "instructions": 6,
+          "cycles": 54
+        },
+        "tcp_accept": {
+          "instructions": 6,
+          "cycles": 53
+        },
+        "ip_chksum_pseudo": {
+          "instructions": 25,
+          "cycles": 51
+        },
+        "tcp_sent": {
+          "instructions": 3,
+          "cycles": 31
+        },
+        "tcp_segs_free": {
+          "instructions": 4,
+          "cycles": 30
+        },
+        "tcp_timer_needed": {
+          "instructions": 3,
+          "cycles": 29
+        },
+        "tcp_capture_begin": {
+          "instructions": 2,
+          "cycles": 28
+        },
+        "tcp_new": {
+          "instructions": 2,
+          "cycles": 28
+        },
+        "tcp_listen_with_backlog": {
+          "instructions": 2,
+          "cycles": 28
+        },
+        "poc_irq_restore": {
+          "instructions": 28,
+          "cycles": 28
+        },
+        "tcp_recv": {
+          "instructions": 3,
+          "cycles": 23
+        },
+        "tcp_free": {
+          "instructions": 6,
+          "cycles": 6
+        },
+        "vTaskDelay": {
+          "instructions": 4,
+          "cycles": 6
+        },
+        "xTaskGetTickCount": {
+          "instructions": 2,
+          "cycles": 3
+        }
+      },
+      "session_task": {
+        "address": "8000344c",
+        "size_hex": "0000098c",
+        "line_offset": 12
+      },
+      "runtime_self_cycles": 490602
+    },
+    {
+      "label": "A02-pbuf",
+      "totals": {
+        "l1i_accesses": 355112,
+        "l1i_misses": 1731,
+        "l1i_compulsory": 345,
+        "l2_accesses": 34774,
+        "l2_misses": 775,
+        "l2_compulsory": 682,
+        "cycles": 1092825,
+        "instructions": 342493,
+        "l1d_accesses": 82813,
+        "l1d_misses": 383,
+        "l1d_compulsory": 337,
+        "l1i_conflict": 180,
+        "l1i_capacity": 1206,
+        "l2_conflict": 80,
+        "l1d_capacity": 23,
+        "l1d_conflict": 23,
+        "l2_capacity": 13
+      },
+      "functions": {
+        "memcpy": {
+          "instructions": 79332,
+          "cycles": 360920
+        },
+        "session_task": {
+          "instructions": 106830,
+          "cycles": 357012
+        },
+        "memcmp": {
+          "instructions": 81792,
+          "cycles": 105226
+        },
+        "lwip_standard_chksum": {
+          "instructions": 22622,
+          "cycles": 26286
+        },
+        "memset": {
+          "instructions": 4096,
+          "cycles": 24448
+        },
+        "tcp_input": {
+          "instructions": 3817,
+          "cycles": 21922
+        },
+        "inject": {
+          "instructions": 2684,
+          "cycles": 17380
+        },
+        "tcp_output": {
+          "instructions": 3005,
+          "cycles": 16919
+        },
+        "pbuf_alloc": {
+          "instructions": 1766,
+          "cycles": 10952
+        },
+        "inet_chksum_pseudo": {
+          "instructions": 3051,
+          "cycles": 9534
+        },
+        "ip4_input": {
+          "instructions": 1806,
+          "cycles": 9398
+        },
+        "tcp_receive": {
+          "instructions": 1641,
+          "cycles": 9008
+        },
+        "ip4_output_if_src": {
+          "instructions": 1177,
+          "cycles": 8669
+        },
+        "mem_malloc": {
+          "instructions": 1926,
+          "cycles": 7264
+        },
+        "pbuf_free": {
+          "instructions": 1525,
+          "cycles": 6759
+        },
+        "tcp_write": {
+          "instructions": 1232,
+          "cycles": 6546
+        },
+        "tcp_create_segment": {
+          "instructions": 780,
+          "cycles": 6506
+        },
+        "pbuf_copy_partial": {
+          "instructions": 1720,
+          "cycles": 5999
+        },
+        "phase": {
+          "instructions": 837,
+          "cycles": 5729
+        },
+        "snapshot": {
+          "instructions": 1100,
+          "cycles": 5188
+        },
+        "mem_free": {
+          "instructions": 1652,
+          "cycles": 4875
+        },
+        "tcp_free_acked_segments.isra.0": {
+          "instructions": 840,
+          "cycles": 4578
+        },
+        "pbuf_remove_header": {
+          "instructions": 840,
+          "cycles": 3562
+        },
+        "pbuf_add_header_impl": {
+          "instructions": 945,
+          "cycles": 3511
+        },
+        "consume": {
+          "instructions": 786,
+          "cycles": 3051
+        },
+        "lwip_htons": {
+          "instructions": 2460,
+          "cycles": 2956
+        },
+        "on_recv": {
+          "instructions": 1342,
+          "cycles": 2904
+        },
+        "assembly/unresolved": {
+          "instructions": 293,
+          "cycles": 2828
+        },
+        "__ssputs_r": {
+          "instructions": 370,
+          "cycles": 2542
+        },
+        "lwip_htonl": {
+          "instructions": 2093,
+          "cycles": 2093
+        },
+        "pbuf_alloc_reference": {
+          "instructions": 184,
+          "cycles": 2048
+        },
+        "memp_free": {
+          "instructions": 378,
+          "cycles": 1824
+        },
+        "do_memp_malloc_pool": {
+          "instructions": 319,
+          "cycles": 1777
+        },
+        "_svfprintf_r": {
+          "instructions": 360,
+          "cycles": 1715
+        },
+        "xTaskIncrementTick": {
+          "instructions": 194,
+          "cycles": 1506
+        },
+        "tcp_slowtmr": {
+          "instructions": 204,
+          "cycles": 1500
+        },
+        "xTraceEventCreate1": {
+          "instructions": 220,
+          "cycles": 1348
+        },
+        "memmove": {
+          "instructions": 333,
+          "cycles": 1265
+        },
+        "output_packet": {
+          "instructions": 187,
+          "cycles": 1175
+        },
+        "_printf_i": {
+          "instructions": 212,
+          "cycles": 1081
+        },
+        "poc_write_all": {
+          "instructions": 203,
+          "cycles": 1042
+        },
+        "_printf_common": {
+          "instructions": 207,
+          "cycles": 1036
+        },
+        "xTraceStreamPortWriteData": {
+          "instructions": 140,
+          "cycles": 988
+        },
+        "on_sent": {
+          "instructions": 144,
+          "cycles": 978
+        },
+        "inet_chksum": {
+          "instructions": 252,
+          "cycles": 898
+        },
+        "tcp_alloc": {
+          "instructions": 100,
+          "cycles": 876
+        },
+        "pbuf_cat": {
+          "instructions": 134,
+          "cycles": 792
+        },
+        "xTraceEventCreate2": {
+          "instructions": 118,
+          "cycles": 752
+        },
+        "tcp_output_alloc_header_common.constprop.0": {
+          "instructions": 76,
+          "cycles": 745
+        },
+        "poc_sh_write": {
+          "instructions": 77,
+          "cycles": 721
+        },
+        "tcp_seg_free": {
+          "instructions": 130,
+          "cycles": 694
+        },
+        "vTaskSwitchContext": {
+          "instructions": 110,
+          "cycles": 635
+        },
+        "memchr": {
+          "instructions": 447,
+          "cycles": 631
+        },
+        "tcp_enqueue_flags": {
+          "instructions": 89,
+          "cycles": 546
+        },
+        "xTraceEventCreateData2": {
+          "instructions": 74,
+          "cycles": 525
+        },
+        "tcp_listen_with_backlog_and_err": {
+          "instructions": 60,
+          "cycles": 489
+        },
+        "xTraceVPrintF": {
+          "instructions": 406,
+          "cycles": 478
+        },
+        "snprintf": {
+          "instructions": 38,
+          "cycles": 451
+        },
+        "ip4_addr_isbroadcast_u32": {
+          "instructions": 224,
+          "cycles": 434
+        },
+        "tcp_fasttmr": {
+          "instructions": 64,
+          "cycles": 430
+        },
+        "vTaskSuspend": {
+          "instructions": 70,
+          "cycles": 414
+        },
+        "ip4_input_accept": {
+          "instructions": 182,
+          "cycles": 408
+        },
+        "xTraceTaskSwitch": {
+          "instructions": 66,
+          "cycles": 400
+        },
+        "pbuf_clen": {
+          "instructions": 296,
+          "cycles": 374
+        },
+        "ip4_route": {
+          "instructions": 204,
+          "cycles": 370
+        },
+        "memp_malloc": {
+          "instructions": 168,
+          "cycles": 363
+        },
+        "tcp_close_shutdown": {
+          "instructions": 68,
+          "cycles": 351
+        },
+        "tcp_pcb_remove": {
+          "instructions": 45,
+          "cycles": 348
+        },
+        "tcp_output_control_segment_netif": {
+          "instructions": 48,
+          "cycles": 312
+        },
+        "tcp_input_delayed_close": {
+          "instructions": 140,
+          "cycles": 304
+        },
+        "tcp_update_rcv_ann_wnd": {
+          "instructions": 100,
+          "cycles": 304
+        },
+        "poc_oracle_record": {
+          "instructions": 31,
+          "cycles": 288
+        },
+        "pbuf_ref": {
+          "instructions": 55,
+          "cycles": 286
+        },
+        "tcp_parseopt.part.0": {
+          "instructions": 43,
+          "cycles": 272
+        },
+        "tcp_bind": {
+          "instructions": 49,
+          "cycles": 266
+        },
+        "resources": {
+          "instructions": 20,
+          "cycles": 256
+        },
+        "xTracePrintF": {
+          "instructions": 18,
+          "cycles": 232
+        },
+        "prvTraceVPrintF": {
+          "instructions": 32,
+          "cycles": 217
+        },
+        "tcp_recved": {
+          "instructions": 42,
+          "cycles": 204
+        },
+        "tcp_pcb_purge": {
+          "instructions": 33,
+          "cycles": 193
+        },
+        "vListInsertEnd": {
+          "instructions": 11,
+          "cycles": 160
+        },
+        "tcp_get_next_optbyte": {
+          "instructions": 36,
+          "cycles": 158
+        },
+        "on_accept": {
+          "instructions": 22,
+          "cycles": 157
+        },
+        "tcp_send_fin": {
+          "instructions": 16,
+          "cycles": 153
+        },
+        "uxListRemove": {
+          "instructions": 15,
+          "cycles": 148
+        },
+        "poc_mark": {
+          "instructions": 23,
+          "cycles": 139
+        },
+        "tcp_output_alloc_header.constprop.0": {
+          "instructions": 19,
+          "cycles": 139
+        },
+        "tcp_output_control_segment": {
+          "instructions": 23,
+          "cycles": 137
+        },
+        "tcp_close_shutdown_fin": {
+          "instructions": 20,
+          "cycles": 136
+        },
+        "poc_mtime": {
+          "instructions": 81,
+          "cycles": 133
+        },
+        "tcp_send_empty_ack": {
+          "instructions": 24,
+          "cycles": 115
+        },
+        "ip_chksum_pseudo": {
+          "instructions": 25,
+          "cycles": 89
+        },
+        "z0_stack_begin": {
+          "instructions": 54,
+          "cycles": 88
+        },
+        "timing_observer": {
+          "instructions": 14,
+          "cycles": 84
+        },
+        "__clzsi2": {
+          "instructions": 28,
+          "cycles": 82
+        },
+        "call": {
+          "instructions": 28,
+          "cycles": 80
+        },
+        "tcp_close": {
+          "instructions": 15,
+          "cycles": 72
+        },
+        "pbuf_add_header": {
+          "instructions": 70,
+          "cycles": 70
+        },
+        "ip4_output_if": {
+          "instructions": 55,
+          "cycles": 66
+        },
+        "tcp_eff_send_mss_netif": {
+          "instructions": 28,
+          "cycles": 56
+        },
+        "prvResetNextTaskUnblockTime": {
+          "instructions": 7,
+          "cycles": 55
+        },
+        "z0_stack_end": {
+          "instructions": 54,
+          "cycles": 54
+        },
+        "tcp_next_iss": {
+          "instructions": 6,
+          "cycles": 54
+        },
+        "tcp_accept": {
+          "instructions": 6,
+          "cycles": 53
+        },
+        "tcp_recv": {
+          "instructions": 3,
+          "cycles": 49
+        },
+        "tcp_sent": {
+          "instructions": 3,
+          "cycles": 31
+        },
+        "tcp_timer_needed": {
+          "instructions": 3,
+          "cycles": 29
+        },
+        "tcp_capture_begin": {
+          "instructions": 2,
+          "cycles": 28
+        },
+        "tcp_new": {
+          "instructions": 2,
+          "cycles": 28
+        },
+        "tcp_listen_with_backlog": {
+          "instructions": 2,
+          "cycles": 28
+        },
+        "poc_irq_restore": {
+          "instructions": 28,
+          "cycles": 28
+        },
+        "tcp_free": {
+          "instructions": 6,
+          "cycles": 6
+        },
+        "vTaskDelay": {
+          "instructions": 4,
+          "cycles": 6
+        },
+        "tcp_segs_free": {
+          "instructions": 4,
+          "cycles": 4
+        },
+        "xTaskGetTickCount": {
+          "instructions": 2,
+          "cycles": 3
+        }
+      },
+      "session_task": {
+        "address": "8000347a",
+        "size_hex": "0000098c",
+        "line_offset": 58
+      },
+      "runtime_self_cycles": 490594
+    }
+  ],
+  "delta": {
+    "instructions": -3992,
+    "memory_cycles": 4731,
+    "service_plus_instruction_ns": 5470,
+    "guest_ns": 5500
+  },
+  "sources": {
+    "artifacts/verification/tcp-workload-matrix/results/A02-baseline-profile.json": "b923975df2deb70f860b3ab46116fc9947307d569d5750d6a5f2ee72c9d83086",
+    "runs/tcp-workload-matrix-v1/A02-baseline/enabled-1-1/symbols.txt": "fe3699900402cb96974fe18eda09b4b9b477205b3c44da75a55d8bc0cd3b2696",
+    "runs/tcp-workload-matrix-v1/A02-baseline/enabled-1-1/firmware.elf": "47a1ea2c0bc555d0e6d8db9c605272c9963c8868161302435fd76e460b82d830",
+    "artifacts/verification/tcp-workload-matrix/results/A02-pbuf-profile.json": "8fc21fd45ab1a32c17cb0982f8c9860f2e4633c1fb298aeb5e3914930794272a",
+    "runs/tcp-workload-matrix-v1/A02-pbuf/enabled-1-1/symbols.txt": "590b2dbb30b73f368300e2d7ae03f02f0bdfed296b2ffc36b5fd5fce36ec62ae",
+    "runs/tcp-workload-matrix-v1/A02-pbuf/enabled-1-1/firmware.elf": "a549e6d500b5996a2fe944e544c8086b1000fabfd3aa32fdd8b6d35fd191b2bd",
+    "artifacts/verification/tcp-workload-matrix/results/comparison.json": "f451b7d663480f21b64d3f761727c4143a2a99908cbf4e8ed36d10bfc3fb3a51"
+  }
+}

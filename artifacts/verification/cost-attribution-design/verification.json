@@ -1,0 +1,23 @@
+{
+  "ok": true,
+  "documents": 79,
+  "links_checked": 622,
+  "broken_links": [],
+  "baseline_files": 422,
+  "baseline": {
+    "ok": true,
+    "issues": []
+  },
+  "inspection_sha256": "26f1f14fbc5b9d50fc7facd42bbbbd2e3beecaf2d9d53cc60cc049785cb83e53",
+  "design_sha256": "2850cccae1a8e1a5e97663a8070fff99fc2cb34d497671bcaf3676f779fec170",
+  "inspection_conservation_passed": true,
+  "new_simulations": 0,
+  "new_implementation": false,
+  "review": {
+    "critical": 0,
+    "important_fixed": 1,
+    "minor_fixed": 3,
+    "scope": "read-only design and saved evidence review"
+  },
+  "status": "design_ready_for_user_review"
+}

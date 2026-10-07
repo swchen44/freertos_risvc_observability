@@ -38,7 +38,7 @@ flowchart TD
   C2 --> E[完整定位視圖與驗收證據]
 ```
 
-## A 的候選矩陣，尚未定案
+## A 的已核准矩陣，執行結果另見 A 報告
 
 固定兩個 request、每回合四個 1460-byte response；只改 request 大小與記憶體 chain。Baseline/pbuf 各用相同輸入、seed、連線流程及 compiler flags；不疊加 checksum/layout 最佳化。
 
@@ -58,6 +58,8 @@ flowchart TD
 協定 headers 留在首段；這輪不測 IP fragmentation、TCP segmentation/out-of-order、跨 pbuf headers、多連線或 NIC/DMA。不同 request 長度不可要求 wire hashes 全相同；只在同一 workload 的 baseline/pbuf、重跑間要求一致。
 
 ## B 的分類設計
+
+2026-10-07 詳細盤點：[B 成本歸屬設計規格](cost-attribution-b.md)，目前待審閱，尚未實作。
 
 分類採兩個獨立維度，避免重複相加：
 
