@@ -1,0 +1,7 @@
+{
+  "operation": "git push origin HEAD:poc-history",
+  "local_commit": "3fcea41f126bb3ac932f8656b91a4613b16cda8e",
+  "exit": 128,
+  "status": "dns_resolution_failed",
+  "remote_sha_verified": false
+}

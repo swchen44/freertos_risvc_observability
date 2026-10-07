@@ -1,0 +1,7 @@
+{
+  "operation": "root git add README.md poc",
+  "exit": 128,
+  "status": "git_metadata_permission_denied",
+  "root_commit_created": false,
+  "root_push_attempted": false
+}

@@ -1,7 +1,7 @@
 {
   "schema": "cost-attribution-completion-v1",
   "passed": false,
-  "status": "core_complete_ui_publish_pending",
+  "status": "core_complete_ui_publish_blocked",
   "tested_commit": "562cb738d55642bb76de6fe79e5922b3cb1ade1d",
   "tested_worktree_clean": true,
   "core_analysis_passed": true,
@@ -41,7 +41,21 @@
     "historical_ui_artifacts_restored": true
   },
   "publication": {
-    "status": "pending"
+    "status": "blocked",
+    "poc": {
+      "operation": "git push origin HEAD:poc-history",
+      "local_commit": "3fcea41f126bb3ac932f8656b91a4613b16cda8e",
+      "exit": 128,
+      "status": "dns_resolution_failed",
+      "remote_sha_verified": false
+    },
+    "root": {
+      "operation": "root git add README.md poc",
+      "exit": 128,
+      "status": "git_metadata_permission_denied",
+      "root_commit_created": false,
+      "root_push_attempted": false
+    }
   },
   "remaining": [
     "UI regression and new screenshots",
@@ -79,7 +93,9 @@
     "artifacts/verification/cost-attribution/ui/agent-browser-daemon.log": "30a92d835c754ecc380228765d224a6eab1cc479e3a1a9fa700a09cd291a7c57",
     "artifacts/verification/cost-attribution/ui/legacy-results.json": "1a76087d3b8cde5f7d2c1b7461458dfb92e4319fddd82fe7758759c5b5030574",
     "artifacts/verification/cost-attribution/ui/preflight.json": "ff14cdd6b313ff501dee3b3c65574e364a6b9d5734cd21eab1860af4f0461d18",
-    "artifacts/verification/cost-attribution/docs-check.json": "8cbae51cd83e30dee5bd689f6eb7315852447f8eac63271feefb1614154edd76"
+    "artifacts/verification/cost-attribution/docs-check.json": "8cbae51cd83e30dee5bd689f6eb7315852447f8eac63271feefb1614154edd76",
+    "artifacts/verification/cost-attribution/publication.json": "758cd85ae8dabc0c99281dcf30556b77a2fc0fcbf22c91058c6c90b0941da1fc",
+    "artifacts/verification/cost-attribution/root-publication.json": "19531110a9093b40ebcdd1fea0fb0dd4be3550be4b6e645c331c37df52902a75"
   },
   "docs": {
     "ok": true,

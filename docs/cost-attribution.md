@@ -158,3 +158,5 @@ flowchart TD
 - **發佈狀態以 [completion 收據](../artifacts/verification/cost-attribution/completion.json) 為準。**核心程式與資料完成，不把受阻的 UI／發佈項目標成完成。
 - B 不新增 Dashboard 頁面；C1 的兩種 Dashboard 熱點／filter／CSV、C2 時間軸尚未實作。event index 尚未轉成精確 ns timeline。
 - B1 loader 的更多 mutation fixture、獨立 B1 CSV 的 metadata，以及 A02 固定 layout 因果實驗仍為研究／測試補強項目。
+
+目前發佈受阻：POC push 因 DNS 無法解析失敗；root `.git` 禁止寫入，尚未更新遠端 main 的 README／gitlink。完整結果保留在 `artifacts/verification/cost-attribution/publication.json` 與 `root-publication.json`。UI 仍待可建立 socket 的環境重跑；C 熱點／時間軸尚未開始。
