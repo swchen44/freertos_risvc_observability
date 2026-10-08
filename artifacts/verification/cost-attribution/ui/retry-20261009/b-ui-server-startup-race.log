@@ -1,0 +1,15 @@
+test_workflow (acceptance.TimingAcceptance.test_workflow) ... FAIL
+
+======================================================================
+FAIL: test_workflow (acceptance.TimingAcceptance.test_workflow)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tools/tcp/verify_workload_dashboard.py", line 63, in test_workflow
+    self.assertEqual(response.returncode, 0, response.stderr)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 7 != 0 : b"curl: (7) Failed to connect to 127.0.0.1 port 8016 after 0 ms: Couldn't connect to server\n"
+
+----------------------------------------------------------------------
+Ran 1 test in 0.020s
+
+FAILED (failures=1)

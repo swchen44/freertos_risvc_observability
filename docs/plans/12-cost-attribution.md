@@ -8,7 +8,7 @@
 
 **Tech Stack:** 既有 Python 3.13、unittest、Ruff、GCC/binutils、RV32 patched QEMU、C/GLib plugin；不新增 Python／Node dependency。
 
-**Spec:** [已核准 B 設計](../design/cost-attribution-b.md)。使用者於2026-10-08回覆 OK 核准設計；使用者隨後以 go 核准執行。Task 1–7 已完成；Task 8 的 UI 回歸與發佈受環境限制，詳見 ../../artifacts/verification/cost-attribution/completion.json。
+**Spec:** [已核准 B 設計](../design/cost-attribution-b.md)。使用者於2026-10-08回覆 OK 核准設計；使用者隨後以 go 核准執行。Task 1–7 已完成；Task 8 的 UI 回歸已通過，發佈狀態見收據，詳見 ../../artifacts/verification/cost-attribution/completion.json。
 
 ## Global Constraints
 
@@ -345,7 +345,7 @@ npm --prefix web run test:unit > /tmp/b-node.log 2>&1
 
 format check只涵蓋本輪Python檔案；既有格式差異與被pin的source保持原樣。數量讀取最終Ran/OK，不預填251或其他數字。
 
-- [ ] **依序做Web回歸**：先完成Python，再跑既有Playwright E2E；其tracked artifacts另存B目錄並恢復歷史版本。新版A頁重用 `tools/tcp/verify_workload_dashboard.py`，先server mode，再停止Python server跑TIMING_MODE=offline；curl涵蓋API與assets。必須先覆寫測試module的OUT/SHOTS/SESSION到B目錄，不能直接呼叫原腳本覆蓋A收據。可在repo外建立下列wrapper，兩個mode各跑一次：
+- [x] **依序做Web回歸**：先完成Python，再跑既有Playwright E2E；其tracked artifacts另存B目錄並恢復歷史版本。新版A頁重用 `tools/tcp/verify_workload_dashboard.py`，先server mode，再停止Python server跑TIMING_MODE=offline；curl涵蓋API與assets。必須先覆寫測試module的OUT/SHOTS/SESSION到B目錄，不能直接呼叫原腳本覆蓋A收據。可在repo外建立下列wrapper，兩個mode各跑一次：
 
 ```python
 import importlib.util

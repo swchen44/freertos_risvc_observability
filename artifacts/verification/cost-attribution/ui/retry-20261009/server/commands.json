@@ -1,0 +1,636 @@
+[
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "open",
+      "about:blank"
+    ],
+    "exit": 0,
+    "stdout": "✓ \n  about:blank\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "set",
+      "viewport",
+      "1600",
+      "1050"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "open",
+      "http://127.0.0.1:8016/timing.html"
+    ],
+    "exit": 0,
+    "stdout": "✓ PSF Lab · 小 Cache 最佳化\n  http://127.0.0.1:8016/timing.html\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "wait",
+      "--fn",
+      "window.timingReady === true"
+    ],
+    "exit": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "snapshot",
+      "-i"
+    ],
+    "exit": 0,
+    "stdout": "- heading \"小 Cache 下，哪些修改有效？\" [level=1, ref=e1]\n- region \"比較篩選\" [ref=e2]\n  - combobox \"比較組\" [expanded=false, ref=e5]: A01 · 64 B · 64\n    - option \"T3b · 單段 request / 四種實作\" [ref=e16]\n    - option \"T3c · 13 + 0 + 51 pbuf chain\" [ref=e17]\n    - option \"T3c · 單段回歸\" [ref=e18]\n    - option \"A01 · 64 B · 64\" [selected, ref=e19]\n    - option \"A02 · 64 B · 13+0+51\" [ref=e20]\n    - option \"A03 · 63 B · 63\" [ref=e21]\n    - option \"A04 · 65 B · 65\" [ref=e22]\n    - option \"A05 · 256 B · 256\" [ref=e23]\n    - option \"A06 · 256 B · 63+0+64+129\" [ref=e24]\n    - option \"A07 · 64 B · 1+1+1+1+1+1+1+57\" [ref=e25]\n    - option \"A08 · 1460 B · 1460\" [ref=e26]\n  - combobox \"候選\" [expanded=false, ref=e6]: 全部候選\n    - option \"全部候選\" [selected, ref=e27]\n    - option \"A01-baseline\" [ref=e28]\n    - option \"A01-pbuf\" [ref=e29]\n  - combobox \"Cache 層級\" [expanded=false, ref=e7]: L1I\n    - option \"L1I\" [selected, ref=e30]\n    - option \"L1D\" [ref=e31]\n    - option \"L2\" [ref=e32]\n  - button \"匯出目前表格 CSV\" [ref=e3]\n- heading \"完整流程模型時間\" [level=2, ref=e8]\n- heading \"工作量與成本\" [level=2, ref=e9]\n- heading \"L1I miss 歸因\" [level=2, ref=e10]\n- heading \"記憶體服務成本分布\" [level=2, ref=e11]\n- heading \"可複查比較表\" [level=2, ref=e4]\n- columnheader \"比較組\" [ref=e97]\n- columnheader \"候選\" [ref=e98]\n- columnheader \"同組基準\" [ref=e99]\n- columnheader \"Request bytes\" [ref=e100]\n- columnheader \"Pbuf shape\" [ref=e101]\n- columnheader \"Wire packets\" [ref=e102]\n- columnheader \"重跑次數\" [ref=e103]\n- columnheader \"模型時間 ns\" [ref=e104]\n- columnheader \"時間改善 %\" [ref=e105]\n- columnheader \"Guest 指令\" [ref=e106]\n- columnheader \"記憶體 cycles\" [ref=e107]\n- columnheader \"Stack 區間 cycles\" [ref=e108]\n- columnheader \"其他區間 cycles\" [ref=e109]\n- columnheader \"ELF text bytes\" [ref=e110]\n- columnheader \"L1I 查詢\" [ref=e111]\n- columnheader \"L1I miss\" [ref=e112]\n- columnheader \"L1I miss %\" [ref=e113]\n- columnheader \"L1I 首次\" [ref=e114]\n- columnheader \"L1I 衝突\" [ref=e115]\n- columnheader \"L1I 容量\" [ref=e116]\n- columnheader \"L1D 查詢\" [ref=e117]\n- columnheader \"L1D miss\" [ref=e118]\n- columnheader \"L1D miss %\" [ref=e119]\n- columnheader \"L1D 首次\" [ref=e120]\n- columnheader \"L1D 衝突\" [ref=e121]\n- columnheader \"L1D 容量\" [ref=e122]\n- columnheader \"L2 查詢\" [ref=e123]\n- columnheader \"L2 miss\" [ref=e124]\n- columnheader \"L2 miss %\" [ref=e125]\n- columnheader \"L2 首次\" [ref=e126]\n- columnheader \"L2 衝突\" [ref=e127]\n- columnheader \"L2 容量\" [ref=e128]\n- generic \"A01A01-baselineA01-baseline646425324921000.00034155510751471778368973114155634392117000.494342271108\" [ref=e12] focusable [tabindex]\n- gridcell \"A01\" [ref=e33]\n- gridcell \"A01-baseline\" [ref=e34]\n- gridcell \"A01-baseline\" [ref=e35]\n- gridcell \"64\" [ref=e36]\n- gridcell \"64\" [ref=e37]\n- gridcell \"25\" [ref=e38]\n- gridcell \"3\" [ref=e39]\n- gridcell \"2492100\" [ref=e40]\n- gridcell \"0.000\" [ref=e41]\n- gridcell \"341555\" [ref=e42]\n- gridcell \"1075147\" [ref=e43]\n- gridcell \"177836\" [ref=e44]\n- gridcell \"897311\" [ref=e45]\n- gridcell \"41556\" [ref=e46]\n- gridcell \"343921\" [ref=e47]\n- gridcell \"1700\" [ref=e48]\n- gridcell \"0.494\" [ref=e49]\n- gridcell \"342\" [ref=e50]\n- gridcell \"271\" [ref=e51]\n- gridcell \"1087\" [ref=e52]\n- gridcell \"82448\" [ref=e53]\n- gridcell \"394\" [ref=e54]\n- gridcell \"0.478\" [ref=e55]\n- gridcell \"335\" [ref=e56]\n- gridcell \"36\" [ref=e57]\n- gridcell \"23\" [ref=e58]\n- gridcell \"34462\" [ref=e59]\n- gridcell \"752\" [ref=e60]\n- gridcell \"2.182\" [ref=e61]\n- gridcell \"677\" [ref=e62]\n- gridcell \"55\" [ref=e63]\n- gridcell \"20\" [ref=e64]\n- gridcell \"A01\" [ref=e65]\n- gridcell \"A01-pbuf\" [ref=e66]\n- gridcell \"A01-baseline\" [ref=e67]\n- gridcell \"64\" [ref=e68]\n- gridcell \"64\" [ref=e69]\n- gridcell \"25\" [ref=e70]\n- gridcell \"3\" [ref=e71]\n- gridcell \"2473100\" [ref=e72]\n- gridcell \"0.762\" [ref=e73]\n- gridcell \"339155\" [ref=e74]\n- gridcell \"1066845\" [ref=e75]\n- gridcell \"170172\" [ref=e76]\n- gridcell \"896673\" [ref=e77]\n- gridcell \"41556\" [ref=e78]\n- gridcell \"339703\" [ref=e79]\n- gridcell \"1574\" [ref=e80]\n- gridcell \"0.463\" [ref=e81]\n- gridcell \"345\" [ref=e82]\n- gridcell \"197\" [ref=e83]\n- gridcell \"1032\" [ref=e84]\n- gridcell \"81818\" [ref=e85]\n- gridcell \"390\" [ref=e86]\n- gridcell \"0.477\" [ref=e87]\n- gridcell \"335\" [ref=e88]\n- gridcell \"32\" [ref=e89]\n- gridcell \"23\" [ref=e90]\n- gridcell \"34204\" [ref=e91]\n- gridcell \"753\" [ref=e92]\n- gridcell \"2.201\" [ref=e93]\n- gridcell \"680\" [ref=e94]\n- gridcell \"53\" [ref=e95]\n- gridcell \"20\" [ref=e96]\n- heading \"候選細節 · A01-baseline\" [level=2, ref=e13]\n- heading \"函式大小 · bytes\" [level=3, ref=e14]\n- columnheader \"函式\" [ref=e139]\n- columnheader \"大小\" [ref=e140]\n- cell \"lwip_standard_chksum\" [ref=e129]\n- cell \"164\" [ref=e130]\n- cell \"on_recv\" [ref=e131]\n- cell \"324\" [ref=e132]\n- cell \"tcp_input\" [ref=e133]\n- cell \"3052\" [ref=e134]\n- cell \"tcp_output\" [ref=e135]\n- cell \"1118\" [ref=e136]\n- cell \"tcp_receive\" [ref=e137]\n- cell \"2414\" [ref=e138]\n- heading \"判讀邊界與來源\" [level=2, ref=e15]\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "eval",
+      "--json",
+      "document.querySelectorAll(\".chart svg\").length"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/timing.html\",\"result\":4},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "eval",
+      "--json",
+      "document.querySelector(\"#status\").textContent"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/timing.html\",\"result\":\"A01 · 2 筆候選 · 來源 SHA-256 已核對 · baseline 不受候選篩選影響\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "eval",
+      "--json",
+      "document.querySelector(\"#status\").textContent"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/timing.html\",\"result\":\"A01 · 2 筆候選 · 來源 SHA-256 已核對 · baseline 不受候選篩選影響\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "screenshot",
+      "--full",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/screenshots/cost-attribution-regression/server-01-overview.png"
+    ],
+    "exit": 0,
+    "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/screenshots/cost-attribution-regression/server-01-overview.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "eval",
+      "document.querySelector(\"#group\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "select",
+      "#group",
+      "A08"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "wait",
+      "--text",
+      "A08 · 2 筆"
+    ],
+    "exit": 0,
+    "stdout": "A08 · 2 筆\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "eval",
+      "--json",
+      "document.querySelector(\"#workload-scope\").textContent"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/timing.html\",\"result\":\"每次 session：27 個 wire packets、兩個 1460-byte request、11,680-byte response。Chain 是記憶體分段，沒有 NIC/DMA 或 IP fragmentation。\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "eval",
+      "--json",
+      "document.querySelector(\"#workload-scope\").textContent"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/timing.html\",\"result\":\"每次 session：27 個 wire packets、兩個 1460-byte request、11,680-byte response。Chain 是記憶體分段，沒有 NIC/DMA 或 IP fragmentation。\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "eval",
+      "document.querySelector(\"#level\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "select",
+      "#level",
+      "l2"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "wait",
+      "--text",
+      "L2 miss 歸因"
+    ],
+    "exit": 0,
+    "stdout": "L2 miss 歸因\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "eval",
+      "document.querySelector(\"#miss\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "find",
+      "first",
+      "#miss svg path[fill=\"#326c89\"]",
+      "hover"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "wait",
+      "--text",
+      "919 / 48970"
+    ],
+    "exit": 0,
+    "stdout": "919 / 48970\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "screenshot",
+      "--full",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/screenshots/cost-attribution-regression/server-02-hover.png"
+    ],
+    "exit": 0,
+    "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/screenshots/cost-attribution-regression/server-02-hover.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "eval",
+      "document.querySelector(\".tabulator-col[tabulator-field=\\\"guest_ns\\\"]\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "click",
+      ".tabulator-col[tabulator-field=\"guest_ns\"]"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "eval",
+      "document.querySelector(\"#csv\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "download",
+      "#csv",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/verification/cost-attribution/ui/retry-20261009/server/sorted.csv"
+    ],
+    "exit": 0,
+    "stdout": "✓ Download saved to /Users/swchen.tw/git/percepio/poc/artifacts/verification/cost-attribution/ui/retry-20261009/server/sorted.csv\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "eval",
+      "--json",
+      "Array.from(document.querySelectorAll(\".tabulator-row .tabulator-cell[tabulator-field=guest_ns]\")).map(e=>Number(e.textContent))"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/timing.html\",\"result\":[3270100,3567600]},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "screenshot",
+      "--full",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/screenshots/cost-attribution-regression/server-02-chain-sorted.png"
+    ],
+    "exit": 0,
+    "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/screenshots/cost-attribution-regression/server-02-chain-sorted.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "eval",
+      "document.querySelector(\"#candidate\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "select",
+      "#candidate",
+      "A08-pbuf"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "wait",
+      "--text",
+      "A08 · 1 筆"
+    ],
+    "exit": 0,
+    "stdout": "A08 · 1 筆\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "eval",
+      "document.querySelector(\".tabulator-row .tabulator-cell[tabulator-field=\\\"label\\\"]\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "click",
+      ".tabulator-row .tabulator-cell[tabulator-field=\"label\"]"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "eval",
+      "document.querySelector(\"summary\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "click",
+      "summary"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "eval",
+      "--json",
+      "document.querySelector(\"#detail-summary\").textContent"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/timing.html\",\"result\":\"同組基準：A08-baseline\\n完整模型時間：3.2701 ms；改善 8.339%\\n重跑 3 次；3 ticks；ELF text 41,556 bytes\\n兩次 request_rx 指令：15803 / 20054\\npbuf chain：1460 bytes\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "eval",
+      "document.querySelector(\"#csv\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "download",
+      "#csv",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/verification/cost-attribution/ui/retry-20261009/server/filtered.csv"
+    ],
+    "exit": 0,
+    "stdout": "✓ Download saved to /Users/swchen.tw/git/percepio/poc/artifacts/verification/cost-attribution/ui/retry-20261009/server/filtered.csv\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "screenshot",
+      "--full",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/screenshots/cost-attribution-regression/server-03-filtered-evidence.png"
+    ],
+    "exit": 0,
+    "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/screenshots/cost-attribution-regression/server-03-filtered-evidence.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "eval",
+      "document.querySelector(\"#group\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"interrupted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "select",
+      "#group",
+      "A07"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "wait",
+      "--text",
+      "A07 · 2 筆"
+    ],
+    "exit": 0,
+    "stdout": "A07 · 2 筆\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "eval",
+      "--json",
+      "document.querySelector(\"#candidate\").value"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/timing.html\",\"result\":\"all\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "eval",
+      "--json",
+      "document.querySelector(\"#detail-summary\").textContent"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/timing.html\",\"result\":\"同組基準：A07-baseline\\n完整模型時間：2.5726 ms；改善 0.000%\\n重跑 3 次；2 ticks；ELF text 41,844 bytes\\n兩次 request_rx 指令：7460 / 7460\\npbuf chain：1 + 1 + 1 + 1 + 1 + 1 + 1 + 57 bytes\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "screenshot",
+      "--full",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/screenshots/cost-attribution-regression/server-04-eight-node.png"
+    ],
+    "exit": 0,
+    "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/screenshots/cost-attribution-regression/server-04-eight-node.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "set",
+      "viewport",
+      "390",
+      "844"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "eval",
+      "--json",
+      "document.documentElement.scrollWidth <= window.innerWidth"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/timing.html\",\"result\":true},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "screenshot",
+      "--full",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/screenshots/cost-attribution-regression/server-04-mobile.png"
+    ],
+    "exit": 0,
+    "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/screenshots/cost-attribution-regression/server-04-mobile.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "errors",
+      "--json"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"errors\":[]},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "eval",
+      "--json",
+      "performance.getEntriesByType(\"resource\").map(e=>e.name)"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/timing.html\",\"result\":[\"http://127.0.0.1:8016/assets/timing.css\",\"http://127.0.0.1:8016/assets/timing.js\",\"http://127.0.0.1:8016/api/timing\",\"http://127.0.0.1:8016/favicon.ico\"]},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "agent-browser",
+      "--session",
+      "b-retry-server",
+      "close"
+    ],
+    "exit": 0,
+    "stdout": "✓ Browser closed\n",
+    "stderr": ""
+  }
+]

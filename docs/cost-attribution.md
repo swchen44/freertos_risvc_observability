@@ -1,6 +1,6 @@
 # B：程式碼與執行上下文的成本歸屬
 
-狀態：B1 已完成 16 份重播與成本守恆核對；B2 已完成 8 次探索、24 次正式與 6 次 host overhead；UI 回歸／發佈仍待完成，B 整體標 partial。
+狀態：B1 已完成 16 份重播與成本守恆核對；B2 已完成 8 次探索、24 次正式與 6 次 host overhead；UI 回歸已於 2026-10-09 通過；發佈狀態見 completion 收據。
 
 ## 如何使用 B1
 
@@ -154,9 +154,9 @@ flowchart TD
 
 - Python：292 tests 通過；Node：10 tests 通過；Ruff 與 19 個本輪 Python 檔案格式檢查通過。
 - B1／B2 獨立 review 的 Important 問題已修正，包括 partial overlap、完整成本分量、漏失／延後 anchors、空 probe gate、report 的 exact／provenance 檢查。
-- **Web／離線 E2E 未完成：**本回合 sandbox 拒絕 localhost port 與 agent-browser Unix/stream socket 綁定，均回報 `Operation not permitted`。curl exit 7；agent-browser exit 1。因此沒有新的 UI 截圖，README 的 A 圖片仍是先前驗收紀錄。
+- **歷史失敗紀錄，已於 2026-10-09 重驗通過：**前回合 sandbox 拒絕 localhost port 與 agent-browser Unix/stream socket 綁定，均回報 `Operation not permitted`。curl exit 7；agent-browser exit 1。因此沒有新的 UI 截圖，README 的 A 圖片仍是先前驗收紀錄。
 - **發佈狀態以 [completion 收據](../artifacts/verification/cost-attribution/completion.json) 為準。**核心程式與資料完成，不把受阻的 UI／發佈項目標成完成。
 - B 不新增 Dashboard 頁面；C1 的兩種 Dashboard 熱點／filter／CSV、C2 時間軸尚未實作。event index 尚未轉成精確 ns timeline。
 - B1 loader 的更多 mutation fixture、獨立 B1 CSV 的 metadata，以及 A02 固定 layout 因果實驗仍為研究／測試補強項目。
 
-目前發佈受阻：POC push 因 DNS 無法解析失敗；root `.git` 禁止寫入，尚未更新遠端 main 的 README／gitlink。完整結果保留在 `artifacts/verification/cost-attribution/publication.json` 與 `root-publication.json`。UI 仍待可建立 socket 的環境重跑；C 熱點／時間軸尚未開始。
+歷史阻礙（2026-10-08，2026-10-09 已解除並完成 UI 重驗）：目前發佈受阻：POC push 因 DNS 無法解析失敗；root `.git` 禁止寫入，尚未更新遠端 main 的 README／gitlink。完整結果保留在 `artifacts/verification/cost-attribution/publication.json` 與 `root-publication.json`。UI 仍待可建立 socket 的環境重跑；C 熱點／時間軸尚未開始。

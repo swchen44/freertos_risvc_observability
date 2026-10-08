@@ -1,7 +1,7 @@
 {
   "schema": "cost-attribution-completion-v1",
   "passed": false,
-  "status": "core_complete_ui_publish_blocked",
+  "status": "validation_complete_publish_pending",
   "tested_commit": "562cb738d55642bb76de6fe79e5922b3cb1ade1d",
   "tested_worktree_clean": true,
   "core_analysis_passed": true,
@@ -32,13 +32,16 @@
     "record": "review-final.md"
   },
   "ui": {
-    "status": "blocked",
-    "reason": "Sandbox denies loopback bind and agent-browser Unix/stream socket bind (EPERM).",
-    "curl_exit": 7,
-    "agent_browser_exit": 1,
-    "legacy_playwright": "webServer startup failed before tests",
-    "new_screenshots": 0,
-    "historical_ui_artifacts_restored": true
+    "status": "passed",
+    "verified_on": "2026-10-09",
+    "tested_commit": "794717cd126e6c4244595cf4f7a1929e9b6f3656",
+    "curl_routes_passed": 4,
+    "agent_browser_server": "passed",
+    "agent_browser_offline": "passed",
+    "legacy_playwright_passed": 11,
+    "new_screenshots": 10,
+    "historical_ui_artifacts_restored": true,
+    "initial_retry": "Server startup race: curl exit7; rerun after HTTP readiness passed."
   },
   "publication": {
     "status": "blocked",
@@ -58,7 +61,6 @@
     }
   },
   "remaining": [
-    "UI regression and new screenshots",
     "GitHub publication verification",
     "C hotspot and timeline dashboard",
     "Deferred loader mutation fixtures and standalone CSV metadata",
@@ -93,15 +95,52 @@
     "artifacts/verification/cost-attribution/ui/agent-browser-daemon.log": "30a92d835c754ecc380228765d224a6eab1cc479e3a1a9fa700a09cd291a7c57",
     "artifacts/verification/cost-attribution/ui/legacy-results.json": "1a76087d3b8cde5f7d2c1b7461458dfb92e4319fddd82fe7758759c5b5030574",
     "artifacts/verification/cost-attribution/ui/preflight.json": "ff14cdd6b313ff501dee3b3c65574e364a6b9d5734cd21eab1860af4f0461d18",
-    "artifacts/verification/cost-attribution/docs-check.json": "8cbae51cd83e30dee5bd689f6eb7315852447f8eac63271feefb1614154edd76",
+    "artifacts/verification/cost-attribution/docs-check.json": "9fb30d6ff9051685659621545c13f1a536f2a1b9c3347984d0db1e3aee7a8cfa",
     "artifacts/verification/cost-attribution/publication.json": "758cd85ae8dabc0c99281dcf30556b77a2fc0fcbf22c91058c6c90b0941da1fc",
-    "artifacts/verification/cost-attribution/root-publication.json": "19531110a9093b40ebcdd1fea0fb0dd4be3550be4b6e645c331c37df52902a75"
+    "artifacts/verification/cost-attribution/root-publication.json": "19531110a9093b40ebcdd1fea0fb0dd4be3550be4b6e645c331c37df52902a75",
+    "artifacts/verification/cost-attribution/ui/retry-20261009/legacy-results.json": "c09cdfc67d3b3b2504124565da5f89bf9d3a467dc5c0dd5b7266d593b0d5db64",
+    "artifacts/verification/cost-attribution/ui/retry-20261009/run-acceptance.py": "7b0546f777ac896384f8992cf108da71db9e3b1b6a873bb543502e552674f3eb",
+    "artifacts/verification/cost-attribution/ui/retry-20261009/b-ui-offline-retry.log": "ee9b2125bcb12a05716aac59ae9950d8185db7289685ce9e5672f6617afd9eb2",
+    "artifacts/verification/cost-attribution/ui/retry-20261009/b-ui-server-retry.log": "698b0d032e8fba70f1567c469fe46a8887cda6b596f73558aec9870a26829dc6",
+    "artifacts/verification/cost-attribution/ui/retry-20261009/b-ui-server-startup-race.log": "97bb7890cfc06880d52e46ec27f3031d956097c9ee898f39264b16f295957614",
+    "artifacts/verification/cost-attribution/ui/retry-20261009/legacy-capacity.json": "a28d0340ec052663b4b157d5b7f0f898539e16d98904049d3d3c8a0e4fbf89b0",
+    "artifacts/verification/cost-attribution/ui/retry-20261009/b-legacy-retry.log": "8f9cbedb2cea8267204602ee90d08f77629a26054f9c4ba85c0b2fc10aeba42c",
+    "artifacts/verification/cost-attribution/ui/retry-20261009/server/curl.json": "cecce80aff25cbc54975dafc638e682c9783ccfd4f7e0514d33d94ba6c991de0",
+    "artifacts/verification/cost-attribution/ui/retry-20261009/server/commands.json": "386ba52c4ce815f5c2f5f8338418696bfb8b1801e8e2c0d443e4fbf4c2d9de70",
+    "artifacts/verification/cost-attribution/ui/retry-20261009/server/filtered.csv": "d723bde98ca4a4fe3b3050b90304cce51ffbc6a1fdcf34e155479d6e7df15fc0",
+    "artifacts/verification/cost-attribution/ui/retry-20261009/server/sorted.csv": "d3e78ec7632c916fe973ee4351a011ae0816dbd7762f09b6728c2e75851f57d5",
+    "artifacts/verification/cost-attribution/ui/retry-20261009/server/assertions.json": "771fecf25db776015d860498a3950f1bd934ff7659837dce02dc3690d3cf249a",
+    "artifacts/verification/cost-attribution/ui/retry-20261009/offline/commands.json": "2bd1690d4f9b854302de9635b1b6244a8eb862534d70d44ad384b01203178606",
+    "artifacts/verification/cost-attribution/ui/retry-20261009/offline/filtered.csv": "d723bde98ca4a4fe3b3050b90304cce51ffbc6a1fdcf34e155479d6e7df15fc0",
+    "artifacts/verification/cost-attribution/ui/retry-20261009/offline/sorted.csv": "d3e78ec7632c916fe973ee4351a011ae0816dbd7762f09b6728c2e75851f57d5",
+    "artifacts/verification/cost-attribution/ui/retry-20261009/offline/assertions.json": "0c337e4dd278803b8c6f6c21049bc08edcfe385b6f117cf16a16293c89d6d802",
+    "artifacts/screenshots/cost-attribution-regression/offline-02-hover.png": "5d945f8866a889391746771d3d4584b8796ad7ceddb14adef1fbb61d617a7648",
+    "artifacts/screenshots/cost-attribution-regression/server-02-hover.png": "69ec9cf421cb0408505e1b71c164e347c4b04167f755442239d59ac149b7f319",
+    "artifacts/screenshots/cost-attribution-regression/offline-03-filtered-evidence.png": "9a2b0cbcbdfdde79f9bd3aca472337d40b284d5d89bd9504fd212eb0afd9ed2c",
+    "artifacts/screenshots/cost-attribution-regression/server-01-overview.png": "ff852b1a3c30eb36bb2c59dcf797a01c2de060edee6c566e110a7593404d07b8",
+    "artifacts/screenshots/cost-attribution-regression/offline-02-chain-sorted.png": "98ceccbf573838210078e013b3e34bf6d63b7177552713729fb12ad22ac596f5",
+    "artifacts/screenshots/cost-attribution-regression/server-04-eight-node.png": "0e5eb0227b058c755ed08e0686015a2f6711ac3ebd009ef219d8c9854b32225b",
+    "artifacts/screenshots/cost-attribution-regression/server-03-filtered-evidence.png": "86774c85506441c683ac0d68cf83b1350185bb52a368d506df3e57cf6deae669",
+    "artifacts/screenshots/cost-attribution-regression/server-02-chain-sorted.png": "51b2fe92d12d4f2f4982bb4047a761211897486803de61e29ae8cb13af63c8c5",
+    "artifacts/screenshots/cost-attribution-regression/server-04-mobile.png": "c8a5ecb604166c66a847ec1c298404a68508af977bb8a60a6f2cd45797563c99",
+    "artifacts/screenshots/cost-attribution-regression/offline-01-overview.png": "6a95c9bea43e2efa0633e128092669673d4585ab14a57a686cfdd80a6fd3ecf7",
+    "artifacts/screenshots/cost-attribution-regression/offline-04-eight-node.png": "d8b12e7774030d1821fe3843918aeb24fffe9e862ed066a97bb1eec140bd43b2",
+    "artifacts/screenshots/cost-attribution-regression/offline-04-mobile.png": "8cc464b9a30e74121bb278414712d83fd8f49b998a92c6a6edcaaf247fabca24"
   },
   "docs": {
     "ok": true,
     "documents": 81,
-    "links_checked": 642,
+    "links_checked": 645,
     "broken_links": [],
     "baseline_files": 422
+  },
+  "ui_previous_attempt": {
+    "status": "blocked",
+    "reason": "Sandbox denies loopback bind and agent-browser Unix/stream socket bind (EPERM).",
+    "curl_exit": 7,
+    "agent_browser_exit": 1,
+    "legacy_playwright": "webServer startup failed before tests",
+    "new_screenshots": 0,
+    "historical_ui_artifacts_restored": true
   }
 }

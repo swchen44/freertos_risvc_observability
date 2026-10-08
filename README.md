@@ -1,13 +1,25 @@
 # FreeRTOS／RISC-V PSF POC
 
-## 現況入口 · 2026-10-08
+## 現況入口 · 2026-10-09
 
-**B 核心分析與擷取已完成，UI／發佈待驗收：**[成本歸屬研究報告](docs/cost-attribution.md)。16 份 B1 重播、8 次探索、24 次正式 context 擷取與 6 次 host overhead 均保留原始資料；task／IRQ／recorder 成本分開守恆。Python 292 tests、Node 10 tests、Ruff 通過。本回合 sandbox 禁止 server／browser socket，沒有新 E2E 截圖；[最新完成與待辦收據](artifacts/verification/cost-attribution/completion.json)。
+**B 核心分析與擷取已完成，UI 已驗收，發佈狀態見收據：**[成本歸屬研究報告](docs/cost-attribution.md)。16 份 B1 重播、8 次探索、24 次正式 context 擷取與 6 次 host overhead 均保留原始資料；task／IRQ／recorder 成本分開守恆。Python 292 tests、Node 10 tests、Ruff 通過。2026-10-09 socket、curl、agent-browser Web／離線與 11 項 Playwright 回歸通過，新增 10 張截圖；[最新完成與待辦收據](artifacts/verification/cost-attribution/completion.json)。
+
+### 2026-10-09 UI 重驗截圖
+
+以下為既有 A Dashboard 的 B 回歸驗證；B 成本歸屬尚未新增 UI，C 才接入。
+
+![Web 版總覽](artifacts/screenshots/cost-attribution-regression/server-01-overview.png)
+
+Web 版：curl 驗 API 與 assets；agent-browser 驗四張 SVG 圖、篩選、排序及 CSV。
+
+![離線版篩選與證據](artifacts/screenshots/cost-attribution-regression/offline-03-filtered-evidence.png)
+
+離線版：停止 Python Server 並封鎖 HTTP／HTTPS 後，完成相同流程，沒有外部網路資源或瀏覽器錯誤。[操作收據](artifacts/verification/cost-attribution/ui/retry-20261009/)。
 
 **A：八種 TCP workload 的 pbuf 最佳化驗證**已完成 96 次正式執行、原始資料分析與 Web／離線操作驗收。固定 **L1I 8 KiB + L1D 8 KiB + L2 32 KiB**，結果是相同模型下的軟體比較。
 
 - [完整 A 研究報告、數值與重跑命令](docs/tcp-workload-matrix.md)：7/8 組模型時間改善；A08 改善 8.339%，A02 反而慢 0.218%，反例保留，原因待 B 歸因。
-- [設計與 A → B → C 計畫](docs/plans/11-next-cache-research.md)：A 已完成；B 核心完成但 UI／發佈待驗收；C 熱點／逐事件時間軸尚未開始。
+- [設計與 A → B → C 計畫](docs/plans/11-next-cache-research.md)：A 已完成；B 核心完成但 UI 已驗收，發佈狀態見收據；C 熱點／逐事件時間軸尚未開始。
 - [案例契約](cases/tcp/workload-matrix-v1.json)：63、64、65、256、1460 bytes，以及空節點／八節點 chain。
 - [正式 capture](runs/tcp-workload-matrix-v1/)：16 組、96 次，包含 PSF、raw trace、ELF、map、封包、generated header 與來源 hashes。
 - [探索與失敗紀錄](runs/tcp-workload-probe-v1/)；[分析／驗收收據](artifacts/verification/tcp-workload-matrix/)；[離線 HTML](artifacts/offline/tcp-workload-matrix.html)。
@@ -302,4 +314,4 @@ Dashboard 可先使用既有 PSF，不需要 FreeRTOS toolchain。重新模擬�
 
 T2a 本輪回歸：158 Python tests 通過，Ruff lint 與新增 Python 檔案格式檢查通過。[驗證紀錄](artifacts/verification/time-control/completion.json) 保存被測 commit；[完整 log](artifacts/verification/time-control/full-tests.log)。這項回歸通過不代表時間注入驗收通過。
 
-目前發佈受阻：POC push 因 DNS 無法解析失敗；root `.git` 禁止寫入，尚未更新遠端 main 的 README／gitlink。完整結果保留在 `artifacts/verification/cost-attribution/publication.json` 與 `root-publication.json`。UI 仍待可建立 socket 的環境重跑；C 熱點／時間軸尚未開始。
+歷史阻礙（2026-10-08，2026-10-09 已解除並完成 UI 重驗）：目前發佈受阻：POC push 因 DNS 無法解析失敗；root `.git` 禁止寫入，尚未更新遠端 main 的 README／gitlink。完整結果保留在 `artifacts/verification/cost-attribution/publication.json` 與 `root-publication.json`。UI 仍待可建立 socket 的環境重跑；C 熱點／時間軸尚未開始。
