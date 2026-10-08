@@ -8,7 +8,7 @@
 
 **Tech Stack:** 既有 Python 3.13、unittest、Ruff、GCC/binutils、RV32 patched QEMU、C/GLib plugin；不新增 Python／Node dependency。
 
-**Spec:** [已核准 B 設計](../design/cost-attribution-b.md)。使用者於2026-10-08回覆 OK 核准設計；使用者隨後以 go 核准執行。Task 1–7 已完成；Task 8 的 UI 回歸已通過，發佈狀態見收據，詳見 ../../artifacts/verification/cost-attribution/completion.json。
+**Spec:** [已核准 B 設計](../design/cost-attribution-b.md)。使用者於2026-10-08回覆 OK 核准設計；使用者隨後以 go 核准執行。Task 1–7 已完成；Task 8 的 UI 回歸與 GitHub 發佈已驗收，詳見 ../../artifacts/verification/cost-attribution/completion.json。
 
 ## Global Constraints
 
@@ -365,7 +365,7 @@ B不產生新UI；截圖標明是A介面的回歸，不標成B功能。
 - [x] **文件交付**：Markdown/Mermaid呈現分類流程、pending return邊界；列A02所有成本增減與未知原因、shared libc、recorder self-cost邊界、control/injection、host overhead、如何在內網還原。所有input/report/CSV/PSF/ELF/sidecar路徑和hash可追溯。
 - [x] **獨立whole-change review**：依requesting-code-review skill，交付base SHA／final code SHA、spec／plan與Review Focus。處理Important後跑受影響測試；若改capture source或time semantics，重新capture新目錄而不是修改舊結果。
 - [x] **Completion**：保存tested commit、clean gate、實際test counts/log hashes、B1=16、probe/formal/overhead實際成功與失敗數、parity、context coverage/unknown量、工具／來源hash、docs links驗證。沒有充分證據就passed=false，不能把blocked probe當完成。
-- [ ] **Publish**：POC commit後push到poc-history，再更新root gitlink/README並push main。核對兩個remote SHA；transport stdout/stderr不原樣輸出，以免再次曝露token。
+- [x] **Publish**：POC commit後push到poc-history，再更新root gitlink/README並push main。核對兩個remote SHA；transport stdout/stderr不原樣輸出，以免再次曝露token。
 
 ## 計畫自我審閱結果
 
@@ -374,4 +374,4 @@ B不產生新UI；截圖標明是A介面的回歸，不標成B功能。
 - Review Focus五項都有對應負向測試；真實nested與capability缺失有明確停止條件。
 - 已區分16份B1重播、8次探索、24次正式與6次overhead；不把舊A 96次當B的新結果。
 - 已把code/data layout因果實驗、完整SDK on/off overhead與C時間軸留在本輪邊界之外，沒有以self-cost取代。
-- 這份是實作計畫。Task 1–7 已依實測勾選；Task 8 以 completion 收據區分完成與受阻項目。
+- 這份是實作計畫。Task 1–7 已依實測勾選；Task 8 已完成，完整證據見 completion 收據。

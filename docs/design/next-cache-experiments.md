@@ -59,7 +59,7 @@ flowchart TD
 
 ## B 的分類設計
 
-2026-10-07 詳細盤點：[B 成本歸屬設計規格](cost-attribution-b.md)，2026-10-08已核准並完成 B 核心實作與 8/24/6 擷取；UI 已驗收，發佈狀態見收據，見 [B 報告](../cost-attribution.md)。
+2026-10-07 詳細盤點：[B 成本歸屬設計規格](cost-attribution-b.md)，2026-10-08已核准並完成 B 核心實作與 8/24/6 擷取；UI／GitHub 發佈已驗收，見 [B 報告](../cost-attribution.md)。
 
 分類採兩個獨立維度，避免重複相加：
 

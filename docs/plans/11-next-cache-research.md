@@ -75,7 +75,7 @@
 
 ## B：成本歸屬，獨立里程碑
 
-2026-10-07：已完成來源盤點與 [B 設計規格](../design/cost-attribution-b.md)，2026-10-08已核准設計，[B詳細實作計畫](12-cost-attribution.md)已執行，核心項目完成，UI 已驗收，發佈狀態見收據；見 [B 報告](../cost-attribution.md)。
+2026-10-07：已完成來源盤點與 [B 設計規格](../design/cost-attribution-b.md)，2026-10-08已核准設計，[B詳細實作計畫](12-cost-attribution.md)已執行，核心項目完成，UI／GitHub 發佈已驗收；見 [B 報告](../cost-attribution.md)。
 
 **現有入口：** `src/psf_lab/tcp_hotspots.py` 已提供 PC self-cost；`src/psf_lab/live_cache_irq.py` 驗證 observer/task switch，但沒有逐 access 執行上下文。
 

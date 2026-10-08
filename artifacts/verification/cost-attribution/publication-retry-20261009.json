@@ -1,0 +1,16 @@
+{
+  "poc": {
+    "branch": "poc-history",
+    "local_commit": "ca6f19eaf695d94fce99c0db2da0ebb6ef6612ee",
+    "push_exit": 0,
+    "verified": true,
+    "remote_commit": "ca6f19eaf695d94fce99c0db2da0ebb6ef6612ee"
+  },
+  "root": {
+    "branch": "main",
+    "local_commit": "33711b60dda3ba9f27ce026687be5e93d5dabf6e",
+    "push_exit": 0,
+    "verified": true,
+    "remote_commit": "33711b60dda3ba9f27ce026687be5e93d5dabf6e"
+  }
+}

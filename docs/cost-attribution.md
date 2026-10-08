@@ -1,6 +1,6 @@
 # B：程式碼與執行上下文的成本歸屬
 
-狀態：B1 已完成 16 份重播與成本守恆核對；B2 已完成 8 次探索、24 次正式與 6 次 host overhead；UI 回歸已於 2026-10-09 通過；發佈狀態見 completion 收據。
+狀態：B1 已完成 16 份重播與成本守恆核對；B2 已完成 8 次探索、24 次正式與 6 次 host overhead；UI 回歸與 GitHub 發佈已於 2026-10-09 通過，B 計畫已完成。
 
 ## 如何使用 B1
 
@@ -160,3 +160,5 @@ flowchart TD
 - B1 loader 的更多 mutation fixture、獨立 B1 CSV 的 metadata，以及 A02 固定 layout 因果實驗仍為研究／測試補強項目。
 
 歷史阻礙（2026-10-08，2026-10-09 已解除並完成 UI 重驗）：目前發佈受阻：POC push 因 DNS 無法解析失敗；root `.git` 禁止寫入，尚未更新遠端 main 的 README／gitlink。完整結果保留在 `artifacts/verification/cost-attribution/publication.json` 與 `root-publication.json`。UI 仍待可建立 socket 的環境重跑；C 熱點／時間軸尚未開始。
+
+2026-10-09：Web／離線 agent-browser、curl 4 routes、Playwright 11/11 通過，新增 12 張回歸截圖；POC 與 main 均成功推送並以 ls-remote 核對。上面的 sandbox／DNS 失敗段落保留為歷史過程。

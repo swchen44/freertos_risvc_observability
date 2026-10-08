@@ -1,7 +1,7 @@
 {
   "schema": "cost-attribution-completion-v1",
-  "passed": false,
-  "status": "validation_complete_publish_pending",
+  "passed": true,
+  "status": "complete",
   "tested_commit": "562cb738d55642bb76de6fe79e5922b3cb1ade1d",
   "tested_worktree_clean": true,
   "core_analysis_passed": true,
@@ -39,29 +39,32 @@
     "agent_browser_server": "passed",
     "agent_browser_offline": "passed",
     "legacy_playwright_passed": 11,
-    "new_screenshots": 10,
+    "new_screenshots": 12,
     "historical_ui_artifacts_restored": true,
     "initial_retry": "Server startup race: curl exit7; rerun after HTTP readiness passed."
   },
   "publication": {
-    "status": "blocked",
-    "poc": {
-      "operation": "git push origin HEAD:poc-history",
-      "local_commit": "3fcea41f126bb3ac932f8656b91a4613b16cda8e",
-      "exit": 128,
-      "status": "dns_resolution_failed",
-      "remote_sha_verified": false
+    "status": "verified",
+    "receipt": "publication-retry-20261009.json",
+    "verified_snapshots": {
+      "poc": {
+        "branch": "poc-history",
+        "local_commit": "ca6f19eaf695d94fce99c0db2da0ebb6ef6612ee",
+        "push_exit": 0,
+        "verified": true,
+        "remote_commit": "ca6f19eaf695d94fce99c0db2da0ebb6ef6612ee"
+      },
+      "root": {
+        "branch": "main",
+        "local_commit": "33711b60dda3ba9f27ce026687be5e93d5dabf6e",
+        "push_exit": 0,
+        "verified": true,
+        "remote_commit": "33711b60dda3ba9f27ce026687be5e93d5dabf6e"
+      }
     },
-    "root": {
-      "operation": "root git add README.md poc",
-      "exit": 128,
-      "status": "git_metadata_permission_denied",
-      "root_commit_created": false,
-      "root_push_attempted": false
-    }
+    "note": "Recorded verified publication snapshots; later receipt-only commits may advance branch tips."
   },
   "remaining": [
-    "GitHub publication verification",
     "C hotspot and timeline dashboard",
     "Deferred loader mutation fixtures and standalone CSV metadata",
     "Layout causal experiments"
@@ -125,7 +128,8 @@
     "artifacts/screenshots/cost-attribution-regression/server-04-mobile.png": "c8a5ecb604166c66a847ec1c298404a68508af977bb8a60a6f2cd45797563c99",
     "artifacts/screenshots/cost-attribution-regression/offline-01-overview.png": "6a95c9bea43e2efa0633e128092669673d4585ab14a57a686cfdd80a6fd3ecf7",
     "artifacts/screenshots/cost-attribution-regression/offline-04-eight-node.png": "d8b12e7774030d1821fe3843918aeb24fffe9e862ed066a97bb1eec140bd43b2",
-    "artifacts/screenshots/cost-attribution-regression/offline-04-mobile.png": "8cc464b9a30e74121bb278414712d83fd8f49b998a92c6a6edcaaf247fabca24"
+    "artifacts/screenshots/cost-attribution-regression/offline-04-mobile.png": "8cc464b9a30e74121bb278414712d83fd8f49b998a92c6a6edcaaf247fabca24",
+    "artifacts/verification/cost-attribution/publication-retry-20261009.json": "2a1aed2a66bd02fd827d7229e7c0646932a72f4578ad053324168c92ba6ebba7"
   },
   "docs": {
     "ok": true,
@@ -142,5 +146,22 @@
     "legacy_playwright": "webServer startup failed before tests",
     "new_screenshots": 0,
     "historical_ui_artifacts_restored": true
+  },
+  "publication_previous_attempt": {
+    "status": "blocked",
+    "poc": {
+      "operation": "git push origin HEAD:poc-history",
+      "local_commit": "3fcea41f126bb3ac932f8656b91a4613b16cda8e",
+      "exit": 128,
+      "status": "dns_resolution_failed",
+      "remote_sha_verified": false
+    },
+    "root": {
+      "operation": "root git add README.md poc",
+      "exit": 128,
+      "status": "git_metadata_permission_denied",
+      "root_commit_created": false,
+      "root_push_attempted": false
+    }
   }
 }
