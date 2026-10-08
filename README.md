@@ -4,6 +4,8 @@
 
 **B 核心分析與擷取已完成，UI／GitHub 發佈已驗收：**[成本歸屬研究報告](docs/cost-attribution.md)。16 份 B1 重播、8 次探索、24 次正式 context 擷取與 6 次 host overhead 均保留原始資料；task／IRQ／recorder 成本分開守恆。Python 292 tests、Node 10 tests、Ruff 通過。2026-10-09 socket、curl、agent-browser Web／離線與 11 項 Playwright 回歸通過，新增 12 張截圖；[最新完成與待辦收據](artifacts/verification/cost-attribution/completion.json)。
 
+C1 下一階段：[成本與熱點設計提案](docs/design/c1-hotspot-dashboard.md)，目前待審閱，尚未實作。
+
 ### 2026-10-09 UI 重驗截圖
 
 以下為既有 A Dashboard 的 B 回歸驗證；B 成本歸屬尚未新增 UI，C 才接入。
