@@ -183,6 +183,35 @@ def verify(mode, output, html=None):
         )
         assert width > rect["width"] + 10, (width, rect)
         receipt["column_resize"] = {"before": rect["width"], "after": width}
+        before_order = ev(
+            "Array.from(document.querySelectorAll("
+            '"#functions-table .tabulator-col[tabulator-field]"))'
+            '.map(e=>e.getAttribute("tabulator-field"))'
+        )
+        source = ev(
+            "(()=>{const r=document.querySelector("
+            '"#functions-table .tabulator-col[tabulator-field=name]").getBoundingClientRect();'
+            "return {x:r.left+40,y:r.top+r.height/2}})()"
+        )
+        ab("mouse", "move", str(int(source["x"])), str(int(source["y"])))
+        ab("mouse", "down", "left")
+        # Tabulator starts column movement only after its hold timer fires.
+        ab("wait", "--fn", 'Boolean(document.querySelector(".tabulator-moving"))')
+        target = ev(
+            "(()=>{const r=document.querySelector("
+            '"#functions-table .tabulator-col[tabulator-field=value]").getBoundingClientRect();'
+            "return {x:r.right-15,y:r.top+r.height/2}})()"
+        )
+        ab("mouse", "move", str(int(target["x"])), str(int(target["y"])))
+        ab("mouse", "up", "left")
+        after_order = ev(
+            "Array.from(document.querySelectorAll("
+            '"#functions-table .tabulator-col[tabulator-field]"))'
+            '.map(e=>e.getAttribute("tabulator-field"))'
+        )
+        assert before_order != after_order, "Column reorder did not change DOM order"
+        receipt["column_order"] = {"before": before_order, "after": after_order}
+
         choose("#metric", "misses")
         choose("#cache-level", "l2")
         shot("05-misses")
