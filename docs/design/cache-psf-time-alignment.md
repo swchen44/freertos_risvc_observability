@@ -1,6 +1,6 @@
 # C2：Cache 與 PSF 時間對齊研究草案
 
-日期：2026-10-13。狀態：**已盤點現有程式碼；方案待審閱，尚未實作或新增 capture。**
+日期：2026-10-13。狀態：**已盤點現有程式碼；使用者已選 A 分階段；C2a 計畫待審閱，尚未實作或新增 capture。**
 
 ## 目的與承接範圍
 
@@ -75,4 +75,10 @@ flowchart TD
 
 完成：來源盤點、clock／event-index 語意區分、三方案比較、低記憶體瀏覽器驗收要求。
 
-待決定：採用 A 分階段推進，或 B 先做 clock-anchor 擷取。選定後再完成 schema、資料容量和驗收門檻的書面設計與實作計畫。本草案不代表允許使用推測 timestamp，也不代表 C2 已實作。
+已決定：採用 A，C2a 事件序號區間先做，C2b clock-anchor pilot 接續。詳細 schema、分塊策略與容量 gate 見 [C2a 實作計畫](../plans/14-event-window-dashboard.md)。本草案不代表允許使用推測 timestamp，也不代表 C2 已實作。
+
+## A 的資料盤點與分塊設計
+
+40 份保存報告合計 19,177,626 筆事件，單份 419,022–610,577 筆；A02 raw CSV 單份 15,117,683–15,525,597 bytes。這是輸入盤點，尚未量測新增欄位後的 HTML 或 browser memory；[原始盤點收據](../../artifacts/verification/event-window/planning/input-inventory.json)。
+
+C2a 每1024列 gzip JSON 分塊，所有塊完整放入每 workload 的單檔HTML；Worker 逐塊驗證和加總，最多同時保留兩個解碼塊，主執行緒只持有圖表桶與函式摘要。整數以字串傳輸、BigInt計算。保留精確區間輸入和完整CSV，圖表分桶不改原始數值。容量 gate 或 browser 支援不符就停止擴大正式資料，保存量測後修訂設計。

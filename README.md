@@ -9,7 +9,7 @@ C1 已建立 Task／IRQ × role × function × PC 聯合統計、函式差異與
 - [正式報告與來源](artifacts/verification/hotspot/formal/)；[8 組離線 HTML](artifacts/offline/hotspot/)。
 - Web：在 POC 執行 `.venv/bin/python -m psf_lab serve --port 8016`，開啟 `http://127.0.0.1:8016/hotspot.html`。
 - C2 時間軸尚未開始；這些是模型相對成本，不是產品 CPU 使用率。
-- [C2 時間對齊研究草案](docs/design/cache-psf-time-alignment.md)：已盤點來源；方案待審閱。Chrome 測試固定逐一執行，用完 close。
+- [C2 時間對齊研究草案](docs/design/cache-psf-time-alignment.md)：已選 A 分階段；[C2a 計畫](docs/plans/14-event-window-dashboard.md)待審閱。Chrome 測試固定逐一執行，用完 close。
 
 ![C1 Web 畫面](artifacts/verification/hotspot/ui/server/screenshots/01-overview.png)
 
