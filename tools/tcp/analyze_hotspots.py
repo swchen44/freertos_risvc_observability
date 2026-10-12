@@ -2,6 +2,7 @@
 
 import argparse
 from pathlib import Path
+
 from psf_lab.hotspot_evidence import analyze_hotspots
 
 if __name__ == "__main__":

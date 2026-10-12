@@ -172,11 +172,12 @@ def load_hotspot_input(root: Path, entry: dict) -> dict:
 
 
 def analyze_hotspots(root: Path, output: Path, *, workload: str | None = None) -> dict:
+    import subprocess
+    import time
+
     from psf_lab.cost_attribution import METRICS, aggregate_costs
     from psf_lab.hotspot_report import build_hotspot_report
     from psf_lab.tcp_hotspots import profile_misses
-    import subprocess
-    import time
 
     if output.exists():
         raise ValueError("Report output must be new")
@@ -288,7 +289,7 @@ def analyze_hotspots(root: Path, output: Path, *, workload: str | None = None) -
                     "pc",
                     *METRICS,
                     *report["totals"]["cost_cycles"],
-                    *[f"{l}_{k}" for l, v in report["totals"]["cache"].items() for k in v],
+                    *[f"{level}_{k}" for level, v in report["totals"]["cache"].items() for k in v],
                 ]
                 writer = csv.DictWriter(stream, fieldnames=fields)
                 writer.writeheader()
@@ -299,7 +300,9 @@ def analyze_hotspots(root: Path, output: Path, *, workload: str | None = None) -
                             **{k: f[k] for k in fields[1:9]},
                             **f["cost_cycles"],
                             **{
-                                f"{l}_{k}": v for l, cs in f["cache"].items() for k, v in cs.items()
+                                f"{level}_{k}": v
+                                for level, cs in f["cache"].items()
+                                for k, v in cs.items()
                             },
                         )
                     )
