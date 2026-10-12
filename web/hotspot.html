@@ -1,16 +1,115 @@
-<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>成本與熱點 · FreeRTOS Lab</title><link rel="stylesheet" href="/assets/hotspot.css"></head><body>
-<header><div><small>FREERTOS / RV32 / LWIP · C1</small><h1>成本花在哪裡？</h1><p>從工作負載，找到函式與指令的 Cache 熱點。</p></div><span id="deployment">本機 Web</span></header>
-<main><section class="controls" aria-label="資料選擇">
-<label>Workload<select id="workload"></select></label><label>候選<select id="variant"><option value="pbuf">pbuf</option><option value="baseline">baseline</option></select></label>
-<label>Capture<select id="family"></select></label><label>模型模式<select id="mode"></select></label><label>Repeat<select id="repeat"></select></label>
-<label>Context<select id="context"></select></label><label>程式角色<select id="role"></select></label><label>函式搜尋<input id="function-query" placeholder="例如 tcp_input"></label>
-<label>指標<select id="metric"><option value="memory_cycles">Memory cycles</option><option value="instructions">Self instructions</option><option value="accounted_model_ns">Accounted model ns</option><option value="misses">Cache misses</option></select></label>
-<label>Cache 層<select id="cache-level"><option value="l1i">L1I</option><option value="l1d">L1D</option><option value="l2">L2</option></select></label><label>圖表筆數<select id="top-n"><option>10</option><option>20</option><option>50</option></select></label><button id="csv" disabled>匯出完整篩選 CSV</button></section>
-<p id="hotspot-status" role="status">載入來源資料…</p><section class="boundary"><strong>L1I 8 KiB / L1D 8 KiB / L2 32 KiB</strong><p>64-byte line · 4-way · LRU · write-through / write-allocate。1 ns/instruction + 2 ns/memory cycle；用於相同模型比較，非產品 CPU 使用率。</p></section>
-<section class="stats"><div><small>完整 RUN</small><b id="run-cost">—</b></div><div><small>篩選成本</small><b id="filtered-cost">—</b></div><div><small>未解析 MEMORY COST</small><b id="unresolved">—</b></div><div><small>CONTEXT 證據</small><b id="quality">—</b></div></section>
-<section class="charts"><article><h2>函式成本排名</h2><p id="rank-note"></p><div class="hotspot-chart" id="rank-chart"></div></article><article><h2>相對 baseline 的差異</h2><p id="delta-note">candidate − baseline；正值代表成本增加。</p><div class="hotspot-chart" id="delta-chart"></div></article><article><h2>記憶體服務成本</h2><p>篩選後五個成本分量，單位 cycles。</p><div class="hotspot-chart" id="cost-chart"></div></article><article><h2>3C misses</h2><p>同容量 fully-associative LRU shadow 分類，非硬體量測。</p><div class="hotspot-chart" id="miss-chart"></div></article></section>
-<article><h2>完整篩選表格</h2><p>點欄名排序、拖曳欄寬與欄位順序。圖表 Top-N 不限制此表或 CSV。</p><div id="functions-table"></div></article>
-<article><h2 id="pc-heading">點選函式，查看 PC 與來源</h2><div id="pc-table"></div><pre id="source-evidence">來源證據尚未選取。</pre></article>
-<details><summary>Run identity 與 SHA-256</summary><pre id="manifest"></pre></details>
-<footer>Self cost 不含 callee；unknown 與 unresolved 保留。C2 時間軸尚未加入。</footer></main>
-<script id="hotspot-data"></script><script src="/assets/hotspot.js"></script></body></html>
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>成本與熱點 · FreeRTOS Lab</title>
+    <link rel="stylesheet" href="/assets/hotspot.css" />
+  </head>
+  <body>
+    <header>
+      <div>
+        <small>FREERTOS / RV32 / LWIP · C1</small>
+        <h1>成本花在哪裡？</h1>
+        <p>從工作負載，找到函式與指令的 Cache 熱點。</p>
+      </div>
+      <span id="deployment">本機 Web</span>
+    </header>
+    <main>
+      <section class="controls" aria-label="資料選擇">
+        <label>Workload<select id="workload"></select></label
+        ><label
+          >候選<select id="variant">
+            <option value="pbuf">pbuf</option>
+            <option value="baseline">baseline</option>
+          </select></label
+        >
+        <label>Capture<select id="family"></select></label
+        ><label>模型模式<select id="mode"></select></label
+        ><label>Repeat<select id="repeat"></select></label>
+        <label>Context<select id="context"></select></label
+        ><label>程式角色<select id="role"></select></label
+        ><label
+          >函式搜尋<input id="function-query" placeholder="例如 tcp_input"
+        /></label>
+        <label
+          >指標<select id="metric">
+            <option value="memory_cycles">Memory cycles</option>
+            <option value="instructions">Self instructions</option>
+            <option value="accounted_model_ns">Accounted model ns</option>
+            <option value="misses">Cache misses</option>
+          </select></label
+        >
+        <label
+          >Cache 層<select id="cache-level">
+            <option value="l1i">L1I</option>
+            <option value="l1d">L1D</option>
+            <option value="l2">L2</option>
+          </select></label
+        ><label
+          >圖表筆數<select id="top-n">
+            <option>10</option>
+            <option>20</option>
+            <option>50</option>
+          </select></label
+        ><button id="csv" disabled>匯出完整篩選 CSV</button>
+      </section>
+      <p id="hotspot-status" role="status">載入來源資料…</p>
+      <section class="boundary">
+        <strong>L1I 8 KiB / L1D 8 KiB / L2 32 KiB</strong>
+        <p>
+          64-byte line · 4-way · LRU · write-through / write-allocate。1
+          ns/instruction + 2 ns/memory cycle；用於相同模型比較，非產品 CPU
+          使用率。
+        </p>
+      </section>
+      <section class="stats">
+        <div><small>完整 RUN</small><b id="run-cost">—</b></div>
+        <div><small>篩選成本</small><b id="filtered-cost">—</b></div>
+        <div><small>未解析 MEMORY COST</small><b id="unresolved">—</b></div>
+        <div><small>CONTEXT 證據</small><b id="quality">—</b></div>
+      </section>
+      <section class="charts">
+        <article>
+          <h2>函式成本排名</h2>
+          <p id="rank-note"></p>
+          <div class="hotspot-chart" id="rank-chart"></div>
+        </article>
+        <article>
+          <h2>相對 baseline 的差異</h2>
+          <p id="delta-note">candidate − baseline；正值代表成本增加。</p>
+          <div class="hotspot-chart" id="delta-chart"></div>
+        </article>
+        <article>
+          <h2>記憶體服務成本</h2>
+          <p>篩選後五個成本分量，單位 cycles。</p>
+          <div class="hotspot-chart" id="cost-chart"></div>
+        </article>
+        <article>
+          <h2>3C misses</h2>
+          <p>同容量 fully-associative LRU shadow 分類，非硬體量測。</p>
+          <div class="hotspot-chart" id="miss-chart"></div>
+        </article>
+      </section>
+      <article>
+        <h2>完整篩選表格</h2>
+        <p>點欄名排序、拖曳欄寬與欄位順序。圖表 Top-N 不限制此表或 CSV。</p>
+        <div id="functions-table"></div>
+      </article>
+      <article>
+        <h2 id="pc-heading">點選函式，查看 PC 與來源</h2>
+        <div id="pc-table"></div>
+        <pre id="source-evidence">來源證據尚未選取。</pre>
+      </article>
+      <details>
+        <summary>Run identity 與 SHA-256</summary>
+        <pre id="manifest"></pre>
+      </details>
+      <footer>
+        Self cost 不含 callee；unknown 與 unresolved 保留。C2 時間軸尚未加入。
+      </footer>
+    </main>
+    <script id="hotspot-data"></script>
+    <script src="/assets/hotspot.js"></script>
+  </body>
+</html>

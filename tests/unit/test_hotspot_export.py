@@ -4,7 +4,9 @@ import tempfile
 import unittest
 from pathlib import Path
 
+from psf_lab.hotspot_dashboard import build_workload_bundle
 from psf_lab.runner import digest
+from tests.unit.test_hotspot_dashboard import report
 
 
 class HotspotExportTests(unittest.TestCase):
@@ -17,11 +19,12 @@ class HotspotExportTests(unittest.TestCase):
             root = Path(tmp)
             d = root / "artifacts/verification/hotspot"
             d.mkdir(parents=True)
-            data = {
-                "schema": "hotspot-workload-v1",
-                "workload": "A02",
-                "evil": "</script><script>alert(1)</script>\u2028",
-            }
+            data = build_workload_bundle([report(), report("pbuf")])
+            # Untrusted source names remain text in a valid report.
+            for r in data["reports"]:
+                for owner in r["owners"].values():
+                    owner["function"] = "</script><script>alert(1)</script>"
+            data = build_workload_bundle(data["reports"])
             (d / "A02.json").write_text(json.dumps(data))
             (d / "catalog.json").write_text(
                 json.dumps(

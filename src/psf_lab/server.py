@@ -160,11 +160,11 @@ def create_app(
 
     @app.get("/api/hotspots/{workload}")
     def hotspot_workload(workload: str):
-        from psf_lab.hotspot_dashboard import load_hotspot_workload
+        from psf_lab.hotspot_dashboard import UnknownWorkload, load_hotspot_workload
 
         try:
             return load_hotspot_workload(ROOT, workload)
-        except KeyError:
+        except UnknownWorkload:
             return error_response("not_found", "Unknown workload", 404)
         except (ValueError, OSError):
             return error_response("invalid_evidence", "Hotspot evidence unavailable", 503)

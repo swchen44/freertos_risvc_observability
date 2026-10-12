@@ -175,27 +175,68 @@ def publish_bundles(formal: Path, destination: Path) -> dict:
     return catalog
 
 
+class UnknownWorkload(KeyError):
+    """The requested identifier is absent from an otherwise valid catalog."""
+
+
 def load_hotspot_catalog(root: Path = ROOT) -> dict:
-    catalog = json.loads((root / CATALOG).read_text())
-    ids = [r["id"] for r in catalog["workloads"]]
-    if (
-        catalog.get("schema") != "hotspot-catalog-v1"
-        or len(set(ids)) != len(ids)
-        or any(not re.fullmatch(r"A0[1-8]", i) for i in ids)
-    ):
-        raise ValueError("Invalid hotspot catalog")
-    return catalog
+    try:
+        catalog = json.loads((root / CATALOG).read_text())
+        entries = catalog["workloads"]
+        ids = [r["id"] for r in entries]
+        if (
+            catalog.get("schema") != "hotspot-catalog-v1"
+            or not entries
+            or len(set(ids)) != len(ids)
+            or any(not re.fullmatch(r"A0[1-8]", i) for i in ids)
+        ):
+            raise ValueError("Invalid hotspot catalog")
+        for entry in entries:
+            contained(root / CATALOG.parent, entry["path"])
+            if not re.fullmatch(r"[0-9a-f]{64}", entry["sha256"]):
+                raise ValueError("Invalid bundle digest")
+        return catalog
+    except (KeyError, TypeError, AttributeError) as exc:
+        raise ValueError("Malformed hotspot catalog") from exc
+
+
+def validate_workload_bundle(data: dict) -> None:
+    import copy
+
+    try:
+        if data.get("schema") != "hotspot-workload-v1":
+            raise ValueError("Invalid workload schema")
+        if not re.fullmatch(r"A0[1-8]", data["workload"]):
+            raise ValueError("Invalid workload identity")
+        for report in data["reports"]:
+            identity = report["identity"]
+            if (
+                type(identity["mode"]) is not int
+                or identity["mode"] not in (0, 1)
+                or type(identity["repeat"]) is not int
+                or identity["repeat"] not in (1, 2, 3)
+                or identity["family"] not in ("b1", "b2")
+                or identity["variant"] not in ("baseline", "pbuf")
+                or not isinstance(identity["run_id"], str)
+            ):
+                raise ValueError("Invalid run identity")
+        expected = build_workload_bundle(copy.deepcopy(data["reports"]))
+        if data != expected:
+            raise ValueError("Bundle manifest or derived data mismatch")
+    except (KeyError, TypeError, AttributeError, IndexError) as exc:
+        raise ValueError("Malformed hotspot bundle") from exc
 
 
 def load_hotspot_workload(root: Path, workload: str) -> dict:
     entries = [e for e in load_hotspot_catalog(root)["workloads"] if e["id"] == workload]
     if len(entries) != 1:
-        raise KeyError("Unknown workload")
+        raise UnknownWorkload("Unknown workload")
     entry = entries[0]
     path = contained(root / CATALOG.parent, entry["path"])
     if digest(path) != entry["sha256"]:
         raise ValueError("Hotspot bundle hash mismatch")
     data = json.loads(path.read_text())
-    if data.get("schema") != "hotspot-workload-v1" or data["workload"] != workload:
+    validate_workload_bundle(data)
+    if data["workload"] != workload:
         raise ValueError("Hotspot identity mismatch")
     return data
