@@ -29,3 +29,6 @@ await copyFile(path.join(root,'tcp.html'),path.join(root,'dist/tcp.html'));
 await build({entryPoints:[path.join(root,'src/timing.js')],bundle:true,format:'iife',minify:true,
  outfile:path.join(root,'dist/assets/timing.js'),target:'es2022',legalComments:'eof'});
 await copyFile(path.join(root,'timing.html'),path.join(root,'dist/timing.html'));
+await build({entryPoints:[path.join(root,'src/hotspot.js')],bundle:true,format:'iife',minify:true,
+ outfile:path.join(root,'dist/assets/hotspot.js'),target:'es2022',legalComments:'eof'});
+await copyFile(path.join(root,'hotspot.html'),path.join(root,'dist/hotspot.html'));

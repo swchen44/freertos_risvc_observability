@@ -149,6 +149,26 @@ def create_app(
     def timing_comparison():
         return load_dashboard(ROOT)
 
+    @app.get("/api/hotspots")
+    def hotspot_catalog():
+        from psf_lab.hotspot_dashboard import load_hotspot_catalog
+
+        try:
+            return load_hotspot_catalog(ROOT)
+        except (ValueError, OSError, KeyError):
+            return error_response("invalid_evidence", "Hotspot catalog unavailable", 503)
+
+    @app.get("/api/hotspots/{workload}")
+    def hotspot_workload(workload: str):
+        from psf_lab.hotspot_dashboard import load_hotspot_workload
+
+        try:
+            return load_hotspot_workload(ROOT, workload)
+        except KeyError:
+            return error_response("not_found", "Unknown workload", 404)
+        except (ValueError, OSError):
+            return error_response("invalid_evidence", "Hotspot evidence unavailable", 503)
+
     @app.get("/api/traces")
     def traces():
         return list_traces(store)
