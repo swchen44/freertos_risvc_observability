@@ -1,0 +1,25 @@
+
+> test:unit
+> node --test tests/*.test.mjs
+
+✔ comparison uses each request origin, preserves unknown duration (1.8565ms)
+✔ late requests cannot replace newer workspace (1.932291ms)
+✔ query contract and error handling (1.369791ms)
+✔ joint filter and top N preserve both denominators and full CSV (2.916625ms)
+✔ empty filter and CSV injection preserve negative numeric deltas (2.619ms)
+✔ per-row pairing exposes missing and ambiguous costs instead of zero deltas (0.809708ms)
+✔ subtract before Number conversion (1.377542ms)
+✔ isolated state, patch and reset (4.120833ms)
+✔ TCP filters intersect without changing source data (1.357833ms)
+✔ CSV uses supplied sorted subset and escaped cells (0.209916ms)
+✔ groups stay separate, candidate filter supports an empty result (3.358458ms)
+✔ CSV preserves displayed order and the measured denominator (0.487792ms)
+✔ workload filter preserves paired baseline and CSV request shape (0.139291ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 592.207666

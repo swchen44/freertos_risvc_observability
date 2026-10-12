@@ -1,0 +1,48 @@
+{
+  "passed": true,
+  "mode": "server",
+  "load_wall_seconds": 6.4691352089976135,
+  "column_resize": {
+    "before": 278,
+    "after": 323
+  },
+  "column_order": {
+    "before": [
+      "name",
+      "role",
+      "value",
+      "run_percent",
+      "filtered_percent",
+      "instructions",
+      "memory_cycles",
+      "pair_status",
+      "pair_reason",
+      "delta",
+      "delta_percent"
+    ],
+    "after": [
+      "role",
+      "value",
+      "name",
+      "run_percent",
+      "filtered_percent",
+      "instructions",
+      "memory_cycles",
+      "pair_status",
+      "pair_reason",
+      "delta",
+      "delta_percent"
+    ]
+  },
+  "filtered_csv_rows": 40,
+  "resources": [
+    "http://127.0.0.1:8016/assets/hotspot.css",
+    "http://127.0.0.1:8016/assets/hotspot.js",
+    "http://127.0.0.1:8016/api/hotspots",
+    "http://127.0.0.1:8016/api/hotspots/A02",
+    "http://127.0.0.1:8016/favicon.ico",
+    "http://127.0.0.1:8016/api/hotspots/A08"
+  ],
+  "errors": [],
+  "svg": 4
+}

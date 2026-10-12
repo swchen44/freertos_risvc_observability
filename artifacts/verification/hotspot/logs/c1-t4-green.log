@@ -1,0 +1,10 @@
+✔ joint filter and top N preserve both denominators and full CSV (1.479041ms)
+✔ empty filter and CSV injection preserve negative numeric deltas (0.784792ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 101.902875

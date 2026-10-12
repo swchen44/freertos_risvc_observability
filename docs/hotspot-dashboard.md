@@ -1,6 +1,6 @@
 # C1：成本與 Cache 熱點
 
-狀態：實作與驗收進行中；正式完成狀態以 completion 收據為準。
+狀態：C1 實作與 Web／離線驗收完成；GitHub 發佈狀態與 SHA 見 [完成收據](../artifacts/verification/hotspot/completion.json)。
 
 這個頁面用來回答「哪個函式／PC 花最多模型成本？選定 Task／IRQ 後是否相同？pbuf 最佳化把成本移到哪裡？」。沿用 L1I 8 KiB、L1D 8 KiB、L2 32 KiB；用同條件的 baseline／candidate 比較。
 
@@ -99,3 +99,40 @@ B2 sidecar 由 host 觀測，沒有改 guest／FreeRTOS 或 PSF。Task pointer �
 - 前端測試涵蓋分母不變、空篩選、完整 CSV 與 formula injection；Web/offline 以真實 browser 操作再驗。
 - pilot 實測頁面載入與重繪是本機結果，不是跨機效能承諾。
 - 還沒有時間軸、PSF/cache timestamp 對齊、PMU、SDK on/off CPU overhead 或 layout 因果驗證；這些工作仍保留在 C2／後續研究。
+
+## A02 的定位線索
+
+B1 injection repeat1 的同源函式配對顯示：`session_task` 指令數沒有改變，但 pbuf 相對 baseline 的 memory cycles 增加 11,724，accounted model ns 增加 23,448。`tcp_input` 增加 483 cycles；`on_recv` 減少 184 instructions 與 266 memory cycles。這些是保存 trace 的重播結果，仍須固定 layout 等因果實驗才知道為何改變。
+
+部分函式只在單側出現或來源有歧義，差異維持 null，不替它們補零。因此「已配對函式 delta 的合計」不一定等於 workload 的完整差異；整體成本仍由完整 facts 守恆。
+
+## 本輪驗收結果
+
+40 份重播報告、8 組 workload、8 份離線 HTML 完成。Python 310／310、Node 13／13、既有 Playwright 11／11、Ruff 通過；curl 六個 routes 與 agent-browser Web／離線互動通過。兩種模式各 6 張截圖，CSV 的 40 列篩選結果另以 Python facts 加總核對。
+
+本機 A02 最終 ready 時間：Web 6.469 秒、離線 0.993 秒；這是各一次驗收值，包含啟動流程，不能當作產品或跨機效能保證。離線 resource list 與 console errors 都為空。PC 明細只保留同一 ELF 的三個欄位，沒有跨 binary 的 PC 差異。
+
+修正前 HTML、失敗瀏覽器紀錄、pilot、產生器原始碼與測試 log 都保存在 `artifacts/verification/hotspot/`，正式 UI 證據位於 `ui/server/` 與 `ui/offline/`；`pilot/` 與 `ui/pre-pc-fix-*` 屬歷史證據。
+
+## 已知小限制
+
+- B2 evidence 的 `raw_stream_sha256` 欄位引用 pinned A stream；formal loader 另外核對實際 formal digest。目前對照相同；兩個來源欄位保留，後續可精簡。
+- 快速切換 workload 時，舊請求若延遲失敗，可能清除較新畫面並顯示錯誤。重新選擇 workload 可恢復；成功請求已有 generation guard。這項列為後續 UI 修整，沒有把錯誤畫面當成成功驗收。
+
+## 驗收畫面
+
+### Web：完整 run 與函式排名
+
+![C1 Web 總覽](../artifacts/verification/hotspot/ui/server/screenshots/01-overview.png)
+
+### 選定 Task 與函式後的成本
+
+![C1 Context 篩選](../artifacts/verification/hotspot/ui/server/screenshots/03-context-filter.png)
+
+### 離線 HTML：PC 與來源證據
+
+![C1 離線 PC 定位](../artifacts/verification/hotspot/ui/offline/screenshots/04-pc-source.png)
+
+### 手機版面
+
+![C1 手機版](../artifacts/verification/hotspot/ui/offline/screenshots/06-mobile.png)

@@ -1,0 +1,125 @@
+{
+  "schema": "hotspot-completion-v1",
+  "passed": false,
+  "status": "validated_publication_pending",
+  "formal_reports": 40,
+  "b1_reports": 16,
+  "b2_reports": 24,
+  "workloads": 8,
+  "offline_html": 8,
+  "tests": {
+    "python": 310,
+    "node": 13,
+    "legacy_playwright": 11,
+    "ruff": "passed",
+    "format_files": 13
+  },
+  "tested_python_commit": "cbe77f0f918eab8437863954af9dec58c4c1297f",
+  "tested_python_worktree_clean": true,
+  "ui_code_commit": "2b95831790cd1c3d6558eda71564b827ef5e28c2",
+  "review": "review.md",
+  "deferred_minors": [
+    "B2 evidence raw_stream_sha256 uses pinned A digest; all24 actual formal digests verified equal",
+    "Delayed stale fetch failure can clear newer UI; selecting workload again recovers"
+  ],
+  "publication": {
+    "status": "pending"
+  },
+  "ui": {
+    "server": {
+      "passed": true,
+      "mode": "server",
+      "load_wall_seconds": 6.4691352089976135,
+      "column_resize": {
+        "before": 278,
+        "after": 323
+      },
+      "column_order": {
+        "before": [
+          "name",
+          "role",
+          "value",
+          "run_percent",
+          "filtered_percent",
+          "instructions",
+          "memory_cycles",
+          "pair_status",
+          "pair_reason",
+          "delta",
+          "delta_percent"
+        ],
+        "after": [
+          "role",
+          "value",
+          "name",
+          "run_percent",
+          "filtered_percent",
+          "instructions",
+          "memory_cycles",
+          "pair_status",
+          "pair_reason",
+          "delta",
+          "delta_percent"
+        ]
+      },
+      "filtered_csv_rows": 40,
+      "resources": [
+        "http://127.0.0.1:8016/assets/hotspot.css",
+        "http://127.0.0.1:8016/assets/hotspot.js",
+        "http://127.0.0.1:8016/api/hotspots",
+        "http://127.0.0.1:8016/api/hotspots/A02",
+        "http://127.0.0.1:8016/favicon.ico",
+        "http://127.0.0.1:8016/api/hotspots/A08"
+      ],
+      "errors": [],
+      "svg": 4
+    },
+    "offline": {
+      "passed": true,
+      "mode": "offline",
+      "load_wall_seconds": 0.9928925829990476,
+      "column_resize": {
+        "before": 278,
+        "after": 323
+      },
+      "column_order": {
+        "before": [
+          "name",
+          "role",
+          "value",
+          "run_percent",
+          "filtered_percent",
+          "instructions",
+          "memory_cycles",
+          "pair_status",
+          "pair_reason",
+          "delta",
+          "delta_percent"
+        ],
+        "after": [
+          "role",
+          "value",
+          "name",
+          "run_percent",
+          "filtered_percent",
+          "instructions",
+          "memory_cycles",
+          "pair_status",
+          "pair_reason",
+          "delta",
+          "delta_percent"
+        ]
+      },
+      "filtered_csv_rows": 40,
+      "resources": [],
+      "errors": [],
+      "svg": 4
+    }
+  },
+  "screenshots": 12,
+  "formal_receipt": "formal/completion.json",
+  "offline_exports": "offline-exports.json",
+  "immutable_check": "immutable-check.json",
+  "hash_manifest": "files-sha256.json",
+  "validation_passed": true
+}

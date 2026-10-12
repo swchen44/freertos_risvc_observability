@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "platform": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+  "runs": [
+    {
+      "iteration": 1,
+      "load_wall_seconds": 1.0020538329990814,
+      "renderMs": 73.5,
+      "resources": [],
+      "svg": 4
+    },
+    {
+      "iteration": 2,
+      "load_wall_seconds": 0.948282665998704,
+      "renderMs": 78.30000000074506,
+      "resources": [],
+      "svg": 4
+    },
+    {
+      "iteration": 3,
+      "load_wall_seconds": 0.939604416002112,
+      "renderMs": 74,
+      "resources": [],
+      "svg": 4
+    }
+  ]
+}

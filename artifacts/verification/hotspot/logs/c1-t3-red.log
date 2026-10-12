@@ -1,0 +1,45 @@
+test_ambiguous_owner_not_merged (tests.unit.test_hotspot_dashboard.HotspotDashboardTests.test_ambiguous_owner_not_merged) ... FAIL
+test_bundle_rejects_mixed_workload_or_duplicate_run (tests.unit.test_hotspot_dashboard.HotspotDashboardTests.test_bundle_rejects_mixed_workload_or_duplicate_run) ... FAIL
+test_unique_function_pair_and_unmatched (tests.unit.test_hotspot_dashboard.HotspotDashboardTests.test_unique_function_pair_and_unmatched) ... FAIL
+test_zero_baseline_and_mode_rejected (tests.unit.test_hotspot_dashboard.HotspotDashboardTests.test_zero_baseline_and_mode_rejected) ... FAIL
+
+======================================================================
+FAIL: test_ambiguous_owner_not_merged (tests.unit.test_hotspot_dashboard.HotspotDashboardTests.test_ambiguous_owner_not_merged)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_hotspot_dashboard.py", line 16, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.hotspot_dashboard'))
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None
+
+======================================================================
+FAIL: test_bundle_rejects_mixed_workload_or_duplicate_run (tests.unit.test_hotspot_dashboard.HotspotDashboardTests.test_bundle_rejects_mixed_workload_or_duplicate_run)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_hotspot_dashboard.py", line 16, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.hotspot_dashboard'))
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None
+
+======================================================================
+FAIL: test_unique_function_pair_and_unmatched (tests.unit.test_hotspot_dashboard.HotspotDashboardTests.test_unique_function_pair_and_unmatched)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_hotspot_dashboard.py", line 16, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.hotspot_dashboard'))
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None
+
+======================================================================
+FAIL: test_zero_baseline_and_mode_rejected (tests.unit.test_hotspot_dashboard.HotspotDashboardTests.test_zero_baseline_and_mode_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_hotspot_dashboard.py", line 16, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.hotspot_dashboard'))
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+FAILED (failures=4)

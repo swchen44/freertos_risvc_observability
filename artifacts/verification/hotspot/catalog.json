@@ -1,0 +1,61 @@
+{
+  "schema": "hotspot-catalog-v1",
+  "workloads": [
+    {
+      "id": "A01",
+      "path": "A01.json",
+      "sha256": "31b6f88fa89054915c10eaa5b3811742d58948e3ef31851e0ed4c8541d56e2a7",
+      "bytes": 6510058,
+      "runs": 2
+    },
+    {
+      "id": "A02",
+      "path": "A02.json",
+      "sha256": "1c187074cb84b4082178705a169349784d03e11bf17495bfa3f33e4c0d3d6e1c",
+      "bytes": 43399719,
+      "runs": 14
+    },
+    {
+      "id": "A03",
+      "path": "A03.json",
+      "sha256": "a4e0cb5133279ef0041fc846fd8fa102b3ba06fde1d9e9395cdbe3565753231c",
+      "bytes": 6529670,
+      "runs": 2
+    },
+    {
+      "id": "A04",
+      "path": "A04.json",
+      "sha256": "af8f4d50742fe5e6e9075c28b254468d9769196052558d646d9213bd56cec6af",
+      "bytes": 6529673,
+      "runs": 2
+    },
+    {
+      "id": "A05",
+      "path": "A05.json",
+      "sha256": "71ecbdf65cae4360c6cf6a1c39f304bfbaa6e7f1fb9f64c42e1e6bcb481dd58b",
+      "bytes": 6510271,
+      "runs": 2
+    },
+    {
+      "id": "A06",
+      "path": "A06.json",
+      "sha256": "56efd6166fb628935e0faac67e8037e466e0cd2bd5ccb6ec677746c32556af3e",
+      "bytes": 6616286,
+      "runs": 2
+    },
+    {
+      "id": "A07",
+      "path": "A07.json",
+      "sha256": "11dbe24b5c31d38cdabca86e11cbe49d3b94f2792684d78bda78c2c6171f2316",
+      "bytes": 6615584,
+      "runs": 2
+    },
+    {
+      "id": "A08",
+      "path": "A08.json",
+      "sha256": "e62546b87c87048b607c7a577571a47ad170687641a81a7f8a048f591acb69b5",
+      "bytes": 42739530,
+      "runs": 14
+    }
+  ]
+}

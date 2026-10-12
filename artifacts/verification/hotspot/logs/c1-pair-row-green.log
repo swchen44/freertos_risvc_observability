@@ -1,0 +1,11 @@
+✔ joint filter and top N preserve both denominators and full CSV (1.638541ms)
+✔ empty filter and CSV injection preserve negative numeric deltas (0.893833ms)
+✔ per-row pairing exposes missing and ambiguous costs instead of zero deltas (0.306875ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 108.219375

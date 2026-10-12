@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "baseline": "ea3efd9",
+  "changed_paths": [],
+  "generator_sources_verified": {
+    "commit": "1baf3c2d1330889a3e128ac19633a42ab7a37bf0",
+    "source_sha256": {
+      "src/psf_lab/hotspot_report.py": "4734c4dc7427613e62fd1f05de97f86a403f920add7277b9c0965c1ddc2a41a6",
+      "src/psf_lab/hotspot_evidence.py": "233c6868ff44f1ffce3e97660c5650c6f73070d74f3cec329bcb0810dc1cebac",
+      "src/psf_lab/memory_timing.py": "85e96666fb8d5f2e86f47326d307a85d73048aab43db16a08ef7f8752630d7e9",
+      "src/psf_lab/tcp_hotspots.py": "cef8b9e1275e14b25f478ec7b7b661b14d6a64784b7c56662a097d2096cc6d54"
+    }
+  }
+}

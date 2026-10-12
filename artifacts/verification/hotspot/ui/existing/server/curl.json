@@ -1,0 +1,22 @@
+[
+  {
+    "route": "api/timing",
+    "exit": 0,
+    "bytes": 37999
+  },
+  {
+    "route": "timing.html",
+    "exit": 0,
+    "bytes": 3415
+  },
+  {
+    "route": "assets/timing.js",
+    "exit": 0,
+    "bytes": 1597777
+  },
+  {
+    "route": "assets/timing.css",
+    "exit": 0,
+    "bytes": 30956
+  }
+]

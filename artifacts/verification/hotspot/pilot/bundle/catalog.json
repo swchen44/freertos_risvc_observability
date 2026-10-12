@@ -1,0 +1,12 @@
+{
+  "schema": "hotspot-catalog-v1",
+  "workloads": [
+    {
+      "id": "A02",
+      "path": "A02.json",
+      "sha256": "1c187074cb84b4082178705a169349784d03e11bf17495bfa3f33e4c0d3d6e1c",
+      "bytes": 43399719,
+      "runs": 14
+    }
+  ]
+}

@@ -1,0 +1,688 @@
+[
+  {
+    "args": [
+      "open",
+      "about:blank"
+    ],
+    "exit": 0,
+    "stdout": "✓ \n  about:blank\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "set",
+      "viewport",
+      "1600",
+      "1050"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "set",
+      "offline",
+      "on"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "network",
+      "route",
+      "http://*",
+      "--abort"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "network",
+      "route",
+      "https://*",
+      "--abort"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "open",
+      "file:///Users/swchen.tw/git/percepio/poc/artifacts/local/c1-pilot-A02.html"
+    ],
+    "exit": 0,
+    "stdout": "✓ 成本與熱點 · FreeRTOS Lab\n  file:///Users/swchen.tw/git/percepio/poc/artifacts/local/c1-pilot-A02.html\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "wait",
+      "--fn",
+      "window.hotspotReady === true"
+    ],
+    "exit": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelectorAll(\".hotspot-chart svg\").length"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/c1-pilot-A02.html\",\"result\":4},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#quality\").textContent"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/c1-pilot-A02.html\",\"result\":\"unknown\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "snapshot",
+      "-i"
+    ],
+    "exit": 0,
+    "stdout": "- heading \"成本花在哪裡？\" [level=1, ref=e1]\n- region \"資料選擇\" [ref=e2]\n  - combobox \"Workload\" [expanded=false, ref=e6]: A02\n    - option \"A02\" [selected, ref=e23]\n  - combobox \"候選\" [expanded=false, ref=e7]: pbuf\n    - option \"pbuf\" [selected, ref=e24]\n    - option \"baseline\" [ref=e25]\n  - combobox \"Capture\" [expanded=false, ref=e8]: B1 · unknown context\n    - option \"B1 · unknown context\" [selected, ref=e26]\n    - option \"B2 · exact context\" [ref=e27]\n  - combobox \"模型模式\" [expanded=false, ref=e9]: injection model\n    - option \"injection model\" [selected, ref=e28]\n  - combobox \"Repeat\" [expanded=false, ref=e10]: 1\n    - option \"1\" [selected, ref=e29]\n  - combobox \"Context\" [expanded=false, ref=e11]: 全部 Context\n    - option \"全部 Context\" [selected, ref=e30]\n    - option \"unknown\" [ref=e31]\n  - combobox \"程式角色\" [expanded=false, ref=e12]: 全部角色\n    - option \"全部角色\" [selected, ref=e32]\n    - option \"application_harness\" [ref=e33]\n    - option \"kernel_port\" [ref=e34]\n    - option \"lwip\" [ref=e35]\n    - option \"observer_entry\" [ref=e36]\n    - option \"recorder\" [ref=e37]\n    - option \"runtime_library\" [ref=e38]\n  - textbox \"函式搜尋\" [ref=e13]\n  - combobox \"指標\" [expanded=false, ref=e14]: Memory cycles\n    - option \"Memory cycles\" [selected, ref=e39]\n    - option \"Self instructions\" [ref=e40]\n    - option \"Accounted model ns\" [ref=e41]\n    - option \"Cache misses\" [ref=e42]\n  - combobox \"Cache 層\" [expanded=false, ref=e15]: L1I\n    - option \"L1I\" [selected, ref=e43]\n    - option \"L1D\" [ref=e44]\n    - option \"L2\" [ref=e45]\n  - combobox \"圖表筆數\" [expanded=false, ref=e16]: 10\n    - option \"10\" [selected, ref=e46]\n    - option \"20\" [ref=e47]\n    - option \"50\" [ref=e48]\n  - button \"匯出完整篩選 CSV\" [ref=e3]\n- heading \"函式成本排名\" [level=2, ref=e17]\n- heading \"相對 baseline 的差異\" [level=2, ref=e18]\n- heading \"記憶體服務成本\" [level=2, ref=e19]\n- heading \"3C misses\" [level=2, ref=e20]\n- heading \"完整篩選表格\" [level=2, ref=e4]\n- columnheader \"函式\" [ref=e329]\n- columnheader \"角色\" [ref=e330]\n- columnheader \"選定指標\" [ref=e331]\n- columnheader \"占 run %\" [ref=e332]\n- columnheader \"占篩選 %\" [ref=e333]\n- columnheader \"指令\" [ref=e334]\n- columnheader \"Memory cycles\" [ref=e335]\n- generic \"memcpyruntime_library36092033.0263308397959433.0263308397959479332360920session_taskapplication_harn\" [ref=e21] focusable [tabindex]\n- gridcell \"memcpy\" [ref=e49] clickable [cursor:pointer]\n- gridcell \"runtime_library\" [ref=e50] clickable [cursor:pointer]\n- gridcell \"360920\" [ref=e51] clickable [cursor:pointer]\n- gridcell \"33.02633083979594\" [ref=e52] clickable [cursor:pointer]\n- gridcell \"33.02633083979594\" [ref=e53] clickable [cursor:pointer]\n- gridcell \"79332\" [ref=e54] clickable [cursor:pointer]\n- gridcell \"360920\" [ref=e55] clickable [cursor:pointer]\n- gridcell \"session_task\" [ref=e56] clickable [cursor:pointer]\n- gridcell \"application_harness\" [ref=e57] clickable [cursor:pointer]\n- gridcell \"357012\" [ref=e58] clickable [cursor:pointer]\n- gridcell \"32.668725550751496\" [ref=e59] clickable [cursor:pointer]\n- gridcell \"32.668725550751496\" [ref=e60] clickable [cursor:pointer]\n- gridcell \"106830\" [ref=e61] clickable [cursor:pointer]\n- gridcell \"357012\" [ref=e62] clickable [cursor:pointer]\n- gridcell \"memcmp\" [ref=e63] clickable [cursor:pointer]\n- gridcell \"runtime_library\" [ref=e64] clickable [cursor:pointer]\n- gridcell \"105226\" [ref=e65] clickable [cursor:pointer]\n- gridcell \"9.6288060759957\" [ref=e66] clickable [cursor:pointer]\n- gridcell \"9.6288060759957\" [ref=e67] clickable [cursor:pointer]\n- gridcell \"81792\" [ref=e68] clickable [cursor:pointer]\n- gridcell \"105226\" [ref=e69] clickable [cursor:pointer]\n- gridcell \"lwip_standard_chksum\" [ref=e70] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e71] clickable [cursor:pointer]\n- gridcell \"26286\" [ref=e72] clickable [cursor:pointer]\n- gridcell \"2.40532564683275\" [ref=e73] clickable [cursor:pointer]\n- gridcell \"2.40532564683275\" [ref=e74] clickable [cursor:pointer]\n- gridcell \"22622\" [ref=e75] clickable [cursor:pointer]\n- gridcell \"26286\" [ref=e76] clickable [cursor:pointer]\n- gridcell \"memset\" [ref=e77] clickable [cursor:pointer]\n- gridcell \"runtime_library\" [ref=e78] clickable [cursor:pointer]\n- gridcell \"24448\" [ref=e79] clickable [cursor:pointer]\n- gridcell \"2.2371376935922953\" [ref=e80] clickable [cursor:pointer]\n- gridcell \"2.2371376935922953\" [ref=e81] clickable [cursor:pointer]\n- gridcell \"4096\" [ref=e82] clickable [cursor:pointer]\n- gridcell \"24448\" [ref=e83] clickable [cursor:pointer]\n- gridcell \"tcp_input\" [ref=e84] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e85] clickable [cursor:pointer]\n- gridcell \"21922\" [ref=e86] clickable [cursor:pointer]\n- gridcell \"2.0059936403358267\" [ref=e87] clickable [cursor:pointer]\n- gridcell \"2.0059936403358267\" [ref=e88] clickable [cursor:pointer]\n- gridcell \"3817\" [ref=e89] clickable [cursor:pointer]\n- gridcell \"21922\" [ref=e90] clickable [cursor:pointer]\n- gridcell \"inject\" [ref=e91] clickable [cursor:pointer]\n- gridcell \"application_harness\" [ref=e92] clickable [cursor:pointer]\n- gridcell \"17380\" [ref=e93] clickable [cursor:pointer]\n- gridcell \"1.5903735730789468\" [ref=e94] clickable [cursor:pointer]\n- gridcell \"1.5903735730789468\" [ref=e95] clickable [cursor:pointer]\n- gridcell \"2684\" [ref=e96] clickable [cursor:pointer]\n- gridcell \"17380\" [ref=e97] clickable [cursor:pointer]\n- gridcell \"tcp_output\" [ref=e98] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e99] clickable [cursor:pointer]\n- gridcell \"16919\" [ref=e100] clickable [cursor:pointer]\n- gridcell \"1.5481893258298447\" [ref=e101] clickable [cursor:pointer]\n- gridcell \"1.5481893258298447\" [ref=e102] clickable [cursor:pointer]\n- gridcell \"3005\" [ref=e103] clickable [cursor:pointer]\n- gridcell \"16919\" [ref=e104] clickable [cursor:pointer]\n- gridcell \"pbuf_alloc\" [ref=e105] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e106] clickable [cursor:pointer]\n- gridcell \"10952\" [ref=e107] clickable [cursor:pointer]\n- gridcell \"1.002173266533983\" [ref=e108] clickable [cursor:pointer]\n- gridcell \"1.002173266533983\" [ref=e109] clickable [cursor:pointer]\n- gridcell \"1766\" [ref=e110] clickable [cursor:pointer]\n- gridcell \"10952\" [ref=e111] clickable [cursor:pointer]\n- gridcell \"inet_chksum_pseudo\" [ref=e112] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e113] clickable [cursor:pointer]\n- gridcell \"9534\" [ref=e114] clickable [cursor:pointer]\n- gridcell \"0.8724178162102807\" [ref=e115] clickable [cursor:pointer]\n- gridcell \"0.8724178162102807\" [ref=e116] clickable [cursor:pointer]\n- gridcell \"3051\" [ref=e117] clickable [cursor:pointer]\n- gridcell \"9534\" [ref=e118] clickable [cursor:pointer]\n- gridcell \"ip4_input\" [ref=e119] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e120] clickable [cursor:pointer]\n- gridcell \"9398\" [ref=e121] clickable [cursor:pointer]\n- gridcell \"0.859973005741999\" [ref=e122] clickable [cursor:pointer]\n- gridcell \"0.859973005741999\" [ref=e123] clickable [cursor:pointer]\n- gridcell \"1806\" [ref=e124] clickable [cursor:pointer]\n- gridcell \"9398\" [ref=e125] clickable [cursor:pointer]\n- gridcell \"tcp_receive\" [ref=e126] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e127] clickable [cursor:pointer]\n- gridcell \"9008\" [ref=e128] clickable [cursor:pointer]\n- gridcell \"0.8242856816050145\" [ref=e129] clickable [cursor:pointer]\n- gridcell \"0.8242856816050145\" [ref=e130] clickable [cursor:pointer]\n- gridcell \"1641\" [ref=e131] clickable [cursor:pointer]\n- gridcell \"9008\" [ref=e132] clickable [cursor:pointer]\n- gridcell \"ip4_output_if_src\" [ref=e133] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e134] clickable [cursor:pointer]\n- gridcell \"8669\" [ref=e135] clickable [cursor:pointer]\n- gridcell \"0.7932651613936358\" [ref=e136] clickable [cursor:pointer]\n- gridcell \"0.7932651613936358\" [ref=e137] clickable [cursor:pointer]\n- gridcell \"1177\" [ref=e138] clickable [cursor:pointer]\n- gridcell \"8669\" [ref=e139] clickable [cursor:pointer]\n- gridcell \"mem_malloc\" [ref=e140] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e141] clickable [cursor:pointer]\n- gridcell \"7264\" [ref=e142] clickable [cursor:pointer]\n- gridcell \"0.6646992885411662\" [ref=e143] clickable [cursor:pointer]\n- gridcell \"0.6646992885411662\" [ref=e144] clickable [cursor:pointer]\n- gridcell \"1926\" [ref=e145] clickable [cursor:pointer]\n- gridcell \"7264\" [ref=e146] clickable [cursor:pointer]\n- gridcell \"pbuf_free\" [ref=e147] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e148] clickable [cursor:pointer]\n- gridcell \"6759\" [ref=e149] clickable [cursor:pointer]\n- gridcell \"0.6184887790817377\" [ref=e150] clickable [cursor:pointer]\n- gridcell \"0.6184887790817377\" [ref=e151] clickable [cursor:pointer]\n- gridcell \"1525\" [ref=e152] clickable [cursor:pointer]\n- gridcell \"6759\" [ref=e153] clickable [cursor:pointer]\n- gridcell \"tcp_write\" [ref=e154] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e155] clickable [cursor:pointer]\n- gridcell \"6546\" [ref=e156] clickable [cursor:pointer]\n- gridcell \"0.5989980097453846\" [ref=e157] clickable [cursor:pointer]\n- gridcell \"0.5989980097453846\" [ref=e158] clickable [cursor:pointer]\n- gridcell \"1232\" [ref=e159] clickable [cursor:pointer]\n- gridcell \"6546\" [ref=e160] clickable [cursor:pointer]\n- gridcell \"tcp_create_segment\" [ref=e161] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e162] clickable [cursor:pointer]\n- gridcell \"6506\" [ref=e163] clickable [cursor:pointer]\n- gridcell \"0.5953377713723607\" [ref=e164] clickable [cursor:pointer]\n- gridcell \"0.5953377713723607\" [ref=e165] clickable [cursor:pointer]\n- gridcell \"780\" [ref=e166] clickable [cursor:pointer]\n- gridcell \"6506\" [ref=e167] clickable [cursor:pointer]\n- gridcell \"pbuf_copy_partial\" [ref=e168] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e169] clickable [cursor:pointer]\n- gridcell \"5999\" [ref=e170] clickable [cursor:pointer]\n- gridcell \"0.5489442499942809\" [ref=e171] clickable [cursor:pointer]\n- gridcell \"0.5489442499942809\" [ref=e172] clickable [cursor:pointer]\n- gridcell \"1720\" [ref=e173] clickable [cursor:pointer]\n- gridcell \"5999\" [ref=e174] clickable [cursor:pointer]\n- gridcell \"phase\" [ref=e175] clickable [cursor:pointer]\n- gridcell \"application_harness\" [ref=e176] clickable [cursor:pointer]\n- gridcell \"5729\" [ref=e177] clickable [cursor:pointer]\n- gridcell \"0.5242376409763686\" [ref=e178] clickable [cursor:pointer]\n- gridcell \"0.5242376409763686\" [ref=e179] clickable [cursor:pointer]\n- gridcell \"837\" [ref=e180] clickable [cursor:pointer]\n- gridcell \"5729\" [ref=e181] clickable [cursor:pointer]\n- gridcell \"snapshot\" [ref=e182] clickable [cursor:pointer]\n- gridcell \"application_harness\" [ref=e183] clickable [cursor:pointer]\n- gridcell \"5188\" [ref=e184] clickable [cursor:pointer]\n- gridcell \"0.4747329169812184\" [ref=e185] clickable [cursor:pointer]\n- gridcell \"0.4747329169812184\" [ref=e186] clickable [cursor:pointer]\n- gridcell \"1100\" [ref=e187] clickable [cursor:pointer]\n- gridcell \"5188\" [ref=e188] clickable [cursor:pointer]\n- gridcell \"mem_free\" [ref=e189] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e190] clickable [cursor:pointer]\n- gridcell \"4875\" [ref=e191] clickable [cursor:pointer]\n- gridcell \"0.44609155171230525\" [ref=e192] clickable [cursor:pointer]\n- gridcell \"0.44609155171230525\" [ref=e193] clickable [cursor:pointer]\n- gridcell \"1652\" [ref=e194] clickable [cursor:pointer]\n- gridcell \"4875\" [ref=e195] clickable [cursor:pointer]\n- gridcell \"tcp_free_acked_segments.isra.0\" [ref=e196] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e197] clickable [cursor:pointer]\n- gridcell \"4578\" [ref=e198] clickable [cursor:pointer]\n- gridcell \"0.41891428179260176\" [ref=e199] clickable [cursor:pointer]\n- gridcell \"0.41891428179260176\" [ref=e200] clickable [cursor:pointer]\n- gridcell \"840\" [ref=e201] clickable [cursor:pointer]\n- gridcell \"4578\" [ref=e202] clickable [cursor:pointer]\n- gridcell \"pbuf_remove_header\" [ref=e203] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e204] clickable [cursor:pointer]\n- gridcell \"3562\" [ref=e205] clickable [cursor:pointer]\n- gridcell \"0.32594422711779103\" [ref=e206] clickable [cursor:pointer]\n- gridcell \"0.32594422711779103\" [ref=e207] clickable [cursor:pointer]\n- gridcell \"840\" [ref=e208] clickable [cursor:pointer]\n- gridcell \"3562\" [ref=e209] clickable [cursor:pointer]\n- gridcell \"pbuf_add_header_impl\" [ref=e210] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e211] clickable [cursor:pointer]\n- gridcell \"3511\" [ref=e212] clickable [cursor:pointer]\n- gridcell \"0.3212774231921854\" [ref=e213] clickable [cursor:pointer]\n- gridcell \"0.3212774231921854\" [ref=e214] clickable [cursor:pointer]\n- gridcell \"945\" [ref=e215] clickable [cursor:pointer]\n- gridcell \"3511\" [ref=e216] clickable [cursor:pointer]\n- gridcell \"consume\" [ref=e217] clickable [cursor:pointer]\n- gridcell \"application_harness\" [ref=e218] clickable [cursor:pointer]\n- gridcell \"3051\" [ref=e219] clickable [cursor:pointer]\n- gridcell \"0.2791846819024089\" [ref=e220] clickable [cursor:pointer]\n- gridcell \"0.2791846819024089\" [ref=e221] clickable [cursor:pointer]\n- gridcell \"786\" [ref=e222] clickable [cursor:pointer]\n- gridcell \"3051\" [ref=e223] clickable [cursor:pointer]\n- gridcell \"lwip_htons\" [ref=e224] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e225] clickable [cursor:pointer]\n- gridcell \"2956\" [ref=e226] clickable [cursor:pointer]\n- gridcell \"0.2704916157664768\" [ref=e227] clickable [cursor:pointer]\n- gridcell \"0.2704916157664768\" [ref=e228] clickable [cursor:pointer]\n- gridcell \"2460\" [ref=e229] clickable [cursor:pointer]\n- gridcell \"2956\" [ref=e230] clickable [cursor:pointer]\n- gridcell \"on_recv\" [ref=e231] clickable [cursor:pointer]\n- gridcell \"application_harness\" [ref=e232] clickable [cursor:pointer]\n- gridcell \"2904\" [ref=e233] clickable [cursor:pointer]\n- gridcell \"0.26573330588154553\" [ref=e234] clickable [cursor:pointer]\n- gridcell \"0.26573330588154553\" [ref=e235] clickable [cursor:pointer]\n- gridcell \"1342\" [ref=e236] clickable [cursor:pointer]\n- gridcell \"2904\" [ref=e237] clickable [cursor:pointer]\n- gridcell \"unresolved@/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A02-pbuf/build/portASM.o:2147519488\" [ref=e238] clickable [cursor:pointer]\n- gridcell \"kernel_port\" [ref=e239] clickable [cursor:pointer]\n- gridcell \"2828\" [ref=e240] clickable [cursor:pointer]\n- gridcell \"0.25877885297279984\" [ref=e241] clickable [cursor:pointer]\n- gridcell \"0.25877885297279984\" [ref=e242] clickable [cursor:pointer]\n- gridcell \"293\" [ref=e243] clickable [cursor:pointer]\n- gridcell \"2828\" [ref=e244] clickable [cursor:pointer]\n- gridcell \"__ssputs_r\" [ref=e245] clickable [cursor:pointer]\n- gridcell \"runtime_library\" [ref=e246] clickable [cursor:pointer]\n- gridcell \"2542\" [ref=e247] clickable [cursor:pointer]\n- gridcell \"0.23260814860567794\" [ref=e248] clickable [cursor:pointer]\n- gridcell \"0.23260814860567794\" [ref=e249] clickable [cursor:pointer]\n- gridcell \"370\" [ref=e250] clickable [cursor:pointer]\n- gridcell \"2542\" [ref=e251] clickable [cursor:pointer]\n- gridcell \"lwip_htonl\" [ref=e252] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e253] clickable [cursor:pointer]\n- gridcell \"2093\" [ref=e254] clickable [cursor:pointer]\n- gridcell \"0.19152197286848305\" [ref=e255] clickable [cursor:pointer]\n- gridcell \"0.19152197286848305\" [ref=e256] clickable [cursor:pointer]\n- gridcell \"2093\" [ref=e257] clickable [cursor:pointer]\n- gridcell \"2093\" [ref=e258] clickable [cursor:pointer]\n- gridcell \"pbuf_alloc_reference\" [ref=e259] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e260] clickable [cursor:pointer]\n- gridcell \"2048\" [ref=e261] clickable [cursor:pointer]\n- gridcell \"0.187404204698831\" [ref=e262] clickable [cursor:pointer]\n- gridcell \"0.187404204698831\" [ref=e263] clickable [cursor:pointer]\n- gridcell \"184\" [ref=e264] clickable [cursor:pointer]\n- gridcell \"2048\" [ref=e265] clickable [cursor:pointer]\n- gridcell \"memp_free\" [ref=e266] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e267] clickable [cursor:pointer]\n- gridcell \"1824\" [ref=e268] clickable [cursor:pointer]\n- gridcell \"0.16690686980989636\" [ref=e269] clickable [cursor:pointer]\n- gridcell \"0.16690686980989636\" [ref=e270] clickable [cursor:pointer]\n- gridcell \"378\" [ref=e271] clickable [cursor:pointer]\n- gridcell \"1824\" [ref=e272] clickable [cursor:pointer]\n- gridcell \"do_memp_malloc_pool\" [ref=e273] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e274] clickable [cursor:pointer]\n- gridcell \"1777\" [ref=e275] clickable [cursor:pointer]\n- gridcell \"0.16260608972159313\" [ref=e276] clickable [cursor:pointer]\n- gridcell \"0.16260608972159313\" [ref=e277] clickable [cursor:pointer]\n- gridcell \"319\" [ref=e278] clickable [cursor:pointer]\n- gridcell \"1777\" [ref=e279] clickable [cursor:pointer]\n- gridcell \"_svfiprintf_r\" [ref=e280] clickable [cursor:pointer]\n- gridcell \"runtime_library\" [ref=e281] clickable [cursor:pointer]\n- gridcell \"1715\" [ref=e282] clickable [cursor:pointer]\n- gridcell \"0.15693272024340585\" [ref=e283] clickable [cursor:pointer]\n- gridcell \"0.15693272024340585\" [ref=e284] clickable [cursor:pointer]\n- gridcell \"360\" [ref=e285] clickable [cursor:pointer]\n- gridcell \"1715\" [ref=e286] clickable [cursor:pointer]\n- gridcell \"xTaskIncrementTick\" [ref=e287] clickable [cursor:pointer]\n- gridcell \"kernel_port\" [ref=e288] clickable [cursor:pointer]\n- gridcell \"1506\" [ref=e289] clickable [cursor:pointer]\n- gridcell \"0.13780797474435522\" [ref=e290] clickable [cursor:pointer]\n- gridcell \"0.13780797474435522\" [ref=e291] clickable [cursor:pointer]\n- gridcell \"194\" [ref=e292] clickable [cursor:pointer]\n- gridcell \"1506\" [ref=e293] clickable [cursor:pointer]\n- gridcell \"tcp_slowtmr\" [ref=e294] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e295] clickable [cursor:pointer]\n- gridcell \"1500\" [ref=e296] clickable [cursor:pointer]\n- gridcell \"0.1372589389884016\" [ref=e297] clickable [cursor:pointer]\n- gridcell \"0.1372589389884016\" [ref=e298] clickable [cursor:pointer]\n- gridcell \"204\" [ref=e299] clickable [cursor:pointer]\n- gridcell \"1500\" [ref=e300] clickable [cursor:pointer]\n- gridcell \"xTraceEventCreate1\" [ref=e301] clickable [cursor:pointer]\n- gridcell \"recorder\" [ref=e302] clickable [cursor:pointer]\n- gridcell \"1348\" [ref=e303] clickable [cursor:pointer]\n- gridcell \"0.12335003317091026\" [ref=e304] clickable [cursor:pointer]\n- gridcell \"0.12335003317091026\" [ref=e305] clickable [cursor:pointer]\n- gridcell \"220\" [ref=e306] clickable [cursor:pointer]\n- gridcell \"1348\" [ref=e307] clickable [cursor:pointer]\n- gridcell \"memmove\" [ref=e308] clickable [cursor:pointer]\n- gridcell \"runtime_library\" [ref=e309] clickable [cursor:pointer]\n- gridcell \"1265\" [ref=e310] clickable [cursor:pointer]\n- gridcell \"0.11575503854688536\" [ref=e311] clickable [cursor:pointer]\n- gridcell \"0.11575503854688536\" [ref=e312] clickable [cursor:pointer]\n- gridcell \"333\" [ref=e313] clickable [cursor:pointer]\n- gridcell \"1265\" [ref=e314] clickable [cursor:pointer]\n- gridcell \"output_packet\" [ref=e315] clickable [cursor:pointer]\n- gridcell \"application_harness\" [ref=e316] clickable [cursor:pointer]\n- gridcell \"1175\" [ref=e317] clickable [cursor:pointer]\n- gridcell \"0.10751950220758127\" [ref=e318] clickable [cursor:pointer]\n- gridcell \"0.10751950220758127\" [ref=e319] clickable [cursor:pointer]\n- gridcell \"187\" [ref=e320] clickable [cursor:pointer]\n- gridcell \"1175\" [ref=e321] clickable [cursor:pointer]\n- gridcell \"_printf_i\" [ref=e322] clickable [cursor:pointer]\n- gridcell \"runtime_library\" [ref=e323] clickable [cursor:pointer]\n- gridcell \"1081\" [ref=e324] clickable [cursor:pointer]\n- gridcell \"0.09891794203097477\" [ref=e325] clickable [cursor:pointer]\n- gridcell \"0.09891794203097477\" [ref=e326] clickable [cursor:pointer]\n- gridcell \"212\" [ref=e327] clickable [cursor:pointer]\n- gridcell \"1081\" [ref=e328] clickable [cursor:pointer]\n- heading \"點選函式，查看 PC 與來源\" [level=2, ref=e5]\n- columnheader \"PC\" [ref=e336]\n- columnheader \"Self instructions\" [ref=e337]\n- columnheader \"Memory cycles\" [ref=e338]\n- generic [ref=e22] focusable [tabindex]\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "screenshot",
+      "--full",
+      "artifacts/local/c1-ui-pilot-offline/screenshots/01-overview.png"
+    ],
+    "exit": 0,
+    "stdout": "✓ Screenshot saved to artifacts/local/c1-ui-pilot-offline/screenshots/01-overview.png\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#rank-chart\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/c1-pilot-A02.html\",\"result\":{\"interrupted\":false}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "hover",
+      "#rank-chart svg path[fill=\"#326c89\"]"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "screenshot",
+      "--full",
+      "artifacts/local/c1-ui-pilot-offline/screenshots/02-hover.png"
+    ],
+    "exit": 0,
+    "stdout": "✓ Screenshot saved to artifacts/local/c1-ui-pilot-offline/screenshots/02-hover.png\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#family\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/c1-pilot-A02.html\",\"result\":{\"interrupted\":false}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "select",
+      "#family",
+      "b2"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "wait",
+      "--fn",
+      "window.hotspotReady === true"
+    ],
+    "exit": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#quality\").textContent"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/c1-pilot-A02.html\",\"result\":\"exact\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#context\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/c1-pilot-A02.html\",\"result\":{\"interrupted\":false}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "select",
+      "#context",
+      "task:2148022416"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "wait",
+      "--fn",
+      "window.hotspotReady === true"
+    ],
+    "exit": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#function-query\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/c1-pilot-A02.html\",\"result\":{\"interrupted\":false}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "fill",
+      "#function-query",
+      "tcp_"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "wait",
+      "--fn",
+      "window.hotspotReady === true"
+    ],
+    "exit": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\".tabulator-col[tabulator-field=\\\"value\\\"]\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/c1-pilot-A02.html\",\"result\":{\"interrupted\":false}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "click",
+      ".tabulator-col[tabulator-field=\"value\"]"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "screenshot",
+      "--full",
+      "artifacts/local/c1-ui-pilot-offline/screenshots/03-context-filter.png"
+    ],
+    "exit": 0,
+    "stdout": "✓ Screenshot saved to artifacts/local/c1-ui-pilot-offline/screenshots/03-context-filter.png\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#csv\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/c1-pilot-A02.html\",\"result\":{\"interrupted\":false}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "download",
+      "#csv",
+      "artifacts/local/c1-ui-pilot-offline/filtered.csv"
+    ],
+    "exit": 0,
+    "stdout": "✓ Download saved to /Users/swchen.tw/git/percepio/poc/artifacts/local/c1-ui-pilot-offline/filtered.csv\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#top-n\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/c1-pilot-A02.html\",\"result\":{\"interrupted\":false}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "select",
+      "#top-n",
+      "20"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "wait",
+      "--fn",
+      "window.hotspotReady === true"
+    ],
+    "exit": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#csv\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/c1-pilot-A02.html\",\"result\":{\"interrupted\":false}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "download",
+      "#csv",
+      "artifacts/local/c1-ui-pilot-offline/top20.csv"
+    ],
+    "exit": 0,
+    "stdout": "✓ Download saved to /Users/swchen.tw/git/percepio/poc/artifacts/local/c1-ui-pilot-offline/top20.csv\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#functions-table .tabulator-row .tabulator-cell[tabulator-field=\\\"name\\\"]\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/c1-pilot-A02.html\",\"result\":{\"interrupted\":false}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "click",
+      "#functions-table .tabulator-row .tabulator-cell[tabulator-field=\"name\"]"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelectorAll(\"#pc-table .tabulator-row\").length"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/c1-pilot-A02.html\",\"result\":20},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#pc-table .tabulator-row .tabulator-cell[tabulator-field=\\\"pc_hex\\\"]\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/c1-pilot-A02.html\",\"result\":{\"interrupted\":false}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "click",
+      "#pc-table .tabulator-row .tabulator-cell[tabulator-field=\"pc_hex\"]"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#source-evidence\").textContent"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/c1-pilot-A02.html\",\"result\":\"{\\n  \\\"pc\\\": \\\"0x80006500\\\",\\n  \\\"frames\\\": [\\n    {\\n      \\\"function\\\": \\\"tcp_input\\\",\\n      \\\"location\\\": \\\"/poc/references/tcp/lwip/src/core/tcp_in.c:135\\\"\\n    }\\n  ],\\n  \\\"elf_sha256\\\": \\\"a549e6d500b5996a2fe944e544c8086b1000fabfd3aa32fdd8b6d35fd191b2bd\\\"\\n}\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "screenshot",
+      "--full",
+      "artifacts/local/c1-ui-pilot-offline/screenshots/04-pc-source.png"
+    ],
+    "exit": 0,
+    "stdout": "✓ Screenshot saved to artifacts/local/c1-ui-pilot-offline/screenshots/04-pc-source.png\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#functions-table .tabulator-col[tabulator-field=\\\"name\\\"]\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/c1-pilot-A02.html\",\"result\":{\"interrupted\":false}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "(()=>{const e=document.querySelector(\"#functions-table .tabulator-col[tabulator-field=name]\"),r=e.getBoundingClientRect();return {x:r.right-2,y:r.top+r.height/2,width:r.width}})()"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/c1-pilot-A02.html\",\"result\":{\"width\":278,\"x\":362.390625,\"y\":525.453125}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "mouse",
+      "move",
+      "362",
+      "525"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "mouse",
+      "down",
+      "left"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "mouse",
+      "move",
+      "407",
+      "525"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "mouse",
+      "up",
+      "left"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#functions-table .tabulator-col[tabulator-field=name]\").getBoundingClientRect().width"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/c1-pilot-A02.html\",\"result\":323},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#metric\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/c1-pilot-A02.html\",\"result\":{\"interrupted\":false}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "select",
+      "#metric",
+      "misses"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "wait",
+      "--fn",
+      "window.hotspotReady === true"
+    ],
+    "exit": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#cache-level\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/c1-pilot-A02.html\",\"result\":{\"interrupted\":false}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "select",
+      "#cache-level",
+      "l2"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "wait",
+      "--fn",
+      "window.hotspotReady === true"
+    ],
+    "exit": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "screenshot",
+      "--full",
+      "artifacts/local/c1-ui-pilot-offline/screenshots/05-misses.png"
+    ],
+    "exit": 0,
+    "stdout": "✓ Screenshot saved to artifacts/local/c1-ui-pilot-offline/screenshots/05-misses.png\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#function-query\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/c1-pilot-A02.html\",\"result\":{\"interrupted\":false}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "fill",
+      "#function-query",
+      "no_such_function_0123"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "wait",
+      "--fn",
+      "window.hotspotReady === true"
+    ],
+    "exit": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#hotspot-status\").textContent"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/c1-pilot-A02.html\",\"result\":\"A02-pbuf-b2-1-1 · 0 個函式 · injected_model · l2.misses\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#family\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/c1-pilot-A02.html\",\"result\":{\"interrupted\":false}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "select",
+      "#family",
+      "b1"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "wait",
+      "--fn",
+      "window.hotspotReady === true"
+    ],
+    "exit": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#context\").value"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/c1-pilot-A02.html\",\"result\":\"all\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "set",
+      "viewport",
+      "390",
+      "844"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.documentElement.scrollWidth <= innerWidth"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/c1-pilot-A02.html\",\"result\":true},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "screenshot",
+      "--full",
+      "artifacts/local/c1-ui-pilot-offline/screenshots/06-mobile.png"
+    ],
+    "exit": 0,
+    "stdout": "✓ Screenshot saved to artifacts/local/c1-ui-pilot-offline/screenshots/06-mobile.png\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "performance.getEntriesByType(\"resource\").map(r=>r.name)"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/c1-pilot-A02.html\",\"result\":[]},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "errors",
+      "--json"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"errors\":[]},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "close"
+    ],
+    "exit": 0,
+    "stdout": "✓ Browser closed\n",
+    "stderr": ""
+  }
+]

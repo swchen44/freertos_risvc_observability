@@ -1,0 +1,55 @@
+test_decimal_rows_and_noncacheable (tests.unit.test_hotspot_report.HotspotReportTests.test_decimal_rows_and_noncacheable) ... FAIL
+test_reject_bad_costs_and_coverage (tests.unit.test_hotspot_report.HotspotReportTests.test_reject_bad_costs_and_coverage) ... FAIL
+test_same_function_context_is_joint_not_marginal (tests.unit.test_hotspot_report.HotspotReportTests.test_same_function_context_is_joint_not_marginal) ... FAIL
+test_three_c_and_unresolved (tests.unit.test_hotspot_report.HotspotReportTests.test_three_c_and_unresolved) ... FAIL
+test_write_hit_and_cross_line (tests.unit.test_hotspot_report.HotspotReportTests.test_write_hit_and_cross_line) ... FAIL
+
+======================================================================
+FAIL: test_decimal_rows_and_noncacheable (tests.unit.test_hotspot_report.HotspotReportTests.test_decimal_rows_and_noncacheable)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_hotspot_report.py", line 26, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.hotspot_report'), 'missing hotspot implementation')
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : missing hotspot implementation
+
+======================================================================
+FAIL: test_reject_bad_costs_and_coverage (tests.unit.test_hotspot_report.HotspotReportTests.test_reject_bad_costs_and_coverage)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_hotspot_report.py", line 26, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.hotspot_report'), 'missing hotspot implementation')
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : missing hotspot implementation
+
+======================================================================
+FAIL: test_same_function_context_is_joint_not_marginal (tests.unit.test_hotspot_report.HotspotReportTests.test_same_function_context_is_joint_not_marginal)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_hotspot_report.py", line 26, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.hotspot_report'), 'missing hotspot implementation')
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : missing hotspot implementation
+
+======================================================================
+FAIL: test_three_c_and_unresolved (tests.unit.test_hotspot_report.HotspotReportTests.test_three_c_and_unresolved)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_hotspot_report.py", line 26, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.hotspot_report'), 'missing hotspot implementation')
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : missing hotspot implementation
+
+======================================================================
+FAIL: test_write_hit_and_cross_line (tests.unit.test_hotspot_report.HotspotReportTests.test_write_hit_and_cross_line)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_hotspot_report.py", line 26, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.hotspot_report'), 'missing hotspot implementation')
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : missing hotspot implementation
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.001s
+
+FAILED (failures=5)

@@ -1,0 +1,10 @@
+test_batch_and_boundary_reject_mutation (tests.unit.test_hotspot_evidence.HotspotEvidenceTests.test_batch_and_boundary_reject_mutation) ... ok
+test_exact_catalog_and_unknown_workload (tests.unit.test_hotspot_evidence.HotspotEvidenceTests.test_exact_catalog_and_unknown_workload) ... ok
+test_existing_output_rejected_before_replay (tests.unit.test_hotspot_evidence.HotspotEvidenceTests.test_existing_output_rejected_before_replay) ... ok
+test_formal_missing_required_hash (tests.unit.test_hotspot_evidence.HotspotEvidenceTests.test_formal_missing_required_hash) ... ok
+test_real_b1_loader_and_mutated_profile (tests.unit.test_hotspot_evidence.HotspotEvidenceTests.test_real_b1_loader_and_mutated_profile) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.420s
+
+OK

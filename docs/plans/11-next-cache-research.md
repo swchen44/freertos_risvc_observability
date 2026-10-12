@@ -87,8 +87,8 @@
 
 ## C：定位視圖，拆成 C1/C2
 
-- [ ] C1 重播既有 raw trace，輸出 function/PC self instructions、memory cycles、3C misses，使用該 run 的 ELF；新 `tests/unit/test_hotspot_report.py` 檢查總和、unresolved、截斷不可改分母。
-- [ ] C1 在 Web/離線呈現 metric 排序、function filter、source line 僅在 addr2line 有證據時顯示；CSV 匯出完整篩選資料，圖表 top-N 需標記總數。
+- [x] C1 重播既有 raw trace，輸出 function/PC self instructions、memory cycles、3C misses，使用該 run 的 ELF；新 `tests/unit/test_hotspot_report.py` 檢查總和、unresolved、截斷不可改分母。
+- [x] C1 在 Web/離線呈現 metric 排序、function filter、source line 僅在 addr2line 有證據時顯示；CSV 匯出完整篩選資料，圖表 top-N 需標記總數。
 - [ ] C2 先建立 `docs/design/cache-psf-time-alignment.md`，盤點原始 access schema、事件順序、模型注入位置、mtime 粒度及 MMIO bypass；沒有足夠時間證據就保留 event index。
 - [ ] 對齊測試至少涵蓋 IRQ 搶占、同 timestamp 多事件、缺失邊界、非零 capture 起點；保存對齊誤差及拒絕條件。
 - [ ] 時間語意驗證後，再做區間拖拉/zoom、context filter、hover、CSV 和 Web/離線一致性。

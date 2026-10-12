@@ -1,0 +1,45 @@
+test_batch_and_boundary_reject_mutation (tests.unit.test_hotspot_evidence.HotspotEvidenceTests.test_batch_and_boundary_reject_mutation) ... FAIL
+test_exact_catalog_and_unknown_workload (tests.unit.test_hotspot_evidence.HotspotEvidenceTests.test_exact_catalog_and_unknown_workload) ... FAIL
+test_formal_missing_required_hash (tests.unit.test_hotspot_evidence.HotspotEvidenceTests.test_formal_missing_required_hash) ... FAIL
+test_real_b1_loader_and_mutated_profile (tests.unit.test_hotspot_evidence.HotspotEvidenceTests.test_real_b1_loader_and_mutated_profile) ... FAIL
+
+======================================================================
+FAIL: test_batch_and_boundary_reject_mutation (tests.unit.test_hotspot_evidence.HotspotEvidenceTests.test_batch_and_boundary_reject_mutation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_hotspot_evidence.py", line 13, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.hotspot_evidence'))
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None
+
+======================================================================
+FAIL: test_exact_catalog_and_unknown_workload (tests.unit.test_hotspot_evidence.HotspotEvidenceTests.test_exact_catalog_and_unknown_workload)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_hotspot_evidence.py", line 13, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.hotspot_evidence'))
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None
+
+======================================================================
+FAIL: test_formal_missing_required_hash (tests.unit.test_hotspot_evidence.HotspotEvidenceTests.test_formal_missing_required_hash)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_hotspot_evidence.py", line 13, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.hotspot_evidence'))
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None
+
+======================================================================
+FAIL: test_real_b1_loader_and_mutated_profile (tests.unit.test_hotspot_evidence.HotspotEvidenceTests.test_real_b1_loader_and_mutated_profile)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_hotspot_evidence.py", line 13, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.hotspot_evidence'))
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+FAILED (failures=4)

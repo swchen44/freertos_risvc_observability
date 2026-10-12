@@ -1,0 +1,208 @@
+{
+  "schema": "hotspot-report-v1",
+  "identity": {
+    "workload": "A02",
+    "variant": "pbuf",
+    "family": "b2",
+    "mode": 0,
+    "repeat": 1,
+    "run_id": "A02-pbuf-b2-0-1"
+  },
+  "profile": {
+    "schema": "memory-timing-profile-v1",
+    "name": "sysram-10-small",
+    "assumptions": "User-requested sysram latency scenario; read/write startup cycles exclude data beats. Not hardware calibration. Serial write-through/write-allocate; no overlap, DMA, coherence, store buffer or dirty writeback.",
+    "write_policy": "write-through-write-allocate",
+    "caches": {
+      "l1i": {
+        "size": 8192,
+        "line": 64,
+        "ways": 4,
+        "lookup_cycles": 1
+      },
+      "l1d": {
+        "size": 8192,
+        "line": 64,
+        "ways": 4,
+        "lookup_cycles": 1
+      },
+      "l2": {
+        "size": 32768,
+        "line": 64,
+        "ways": 4,
+        "lookup_cycles": 8
+      }
+    },
+    "regions": [
+      {
+        "name": "system_ram",
+        "start": 2147483648,
+        "end": 2281701376,
+        "cacheable": true,
+        "read_latency_cycles": 10,
+        "write_latency_cycles": 10,
+        "bus_bytes_per_cycle": 8
+      }
+    ]
+  },
+  "events": 419022,
+  "totals": {
+    "instructions": 337942,
+    "memory_cycles": 1067585,
+    "model_service_ns": 2135170,
+    "accounted_model_ns": 2473112,
+    "cost_cycles": {
+      "l1i": 350543,
+      "l1d": 81080,
+      "l2": 270752,
+      "ram_read": 10350,
+      "ram_write": 354860
+    },
+    "cache": {
+      "l1i": {
+        "accesses": 350543,
+        "misses": 1560,
+        "compulsory": 262,
+        "conflict": 185,
+        "capacity": 1113
+      },
+      "l1d": {
+        "accesses": 81080,
+        "misses": 316,
+        "compulsory": 302,
+        "conflict": 3,
+        "capacity": 11
+      },
+      "l2": {
+        "accesses": 33844,
+        "misses": 575,
+        "compulsory": 564,
+        "conflict": 8,
+        "capacity": 3
+      }
+    }
+  },
+  "evidence": {
+    "elf_sha256": "a549e6d500b5996a2fe944e544c8086b1000fabfd3aa32fdd8b6d35fd191b2bd",
+    "raw_file_sha256": "e749289bfe2f53085d172ce88b0cbbddd7dcd0c49c4fa2124960f07448f47e6a",
+    "raw_stream_sha256": "2b79ccbb476910d76e89bcad751ab8af622835b7c501d7ef056dd12ded775a06",
+    "profile_sha256": "861d5b40c399a78512f71f6fab35ed163eecc0825482a8e096aa53252b8510f7",
+    "pins": {
+      "cases/timing/sysram-10-small.json": "861d5b40c399a78512f71f6fab35ed163eecc0825482a8e096aa53252b8510f7",
+      "cases/timing/attribution-rules-v1.json": "869bc15d3352e7432d802e5d60abe29967d64423c758a30d75957d6367b37b8b",
+      "artifacts/verification/cost-attribution/b1/A02-pbuf/ranges.json": "6f5ed6841d2171e9c0b3661a8cf7ccc49c0d116d055fe99e39e2079221784e3f",
+      "runs/tcp-context-v1/formal/completion.json": "cbc8f3748b0b73c9a38c375f60dfd3f44ce5a48bed61e73639ae1b83fdcf8792",
+      "runs/tcp-context-v1/formal/A02-pbuf/manifest.json": "794ba1ebadc1fe29dbdff0bf133dbbcd490ec25ac67b7d26ddc732db3c0a7bfb"
+    },
+    "task_objects": [
+      {
+        "object_id": "0x80081810:0",
+        "address": "0x80081810",
+        "epoch": 0,
+        "kind": "task",
+        "name": "tcp_observer",
+        "created_offset": 224,
+        "deleted_offset": null,
+        "first_seen_offset": 196
+      },
+      {
+        "object_id": "0x80083890:0",
+        "address": "0x80083890",
+        "epoch": 0,
+        "kind": "task",
+        "name": "tcp_session",
+        "created_offset": 276,
+        "deleted_offset": null,
+        "first_seen_offset": 252
+      },
+      {
+        "object_id": "0x80083d10:0",
+        "address": "0x80083d10",
+        "epoch": 0,
+        "kind": "task",
+        "name": "IDLE",
+        "created_offset": 324,
+        "deleted_offset": null,
+        "first_seen_offset": 304
+      }
+    ],
+    "tool_hashes": {
+      "readelf": {
+        "sha256": "f615c1e04b536e5e73a96125e4730835c899ec305ba93a465d3e0c12326c6475",
+        "version": "GNU readelf (xPack GNU RISC-V Embedded GCC arm64) 2.45"
+      },
+      "nm": {
+        "sha256": "45c2086551a3decd7e4fd24a4d25a9710bc7bc665a4ca4dc7e669e5d70b8309f",
+        "version": "GNU nm (xPack GNU RISC-V Embedded GCC arm64) 2.45"
+      },
+      "addr2line": {
+        "sha256": "0cb3d1160aeb5477939dbb96efcb6f2c5c2394541ad818b9b255ca4680690415",
+        "version": "GNU addr2line (xPack GNU RISC-V Embedded GCC arm64) 2.45"
+      }
+    },
+    "formal_record": {
+      "candidate": "A02-pbuf",
+      "mode": 0,
+      "repeat": 1,
+      "context_enabled": true,
+      "parity_passed": true,
+      "context_exact": true,
+      "accepted": true,
+      "exit_code": 0,
+      "host_wall_seconds": 0.49835187499411404,
+      "audit": {
+        "events": 419022,
+        "operations": {
+          "I": 337942,
+          "R": 48820,
+          "W": 32260
+        },
+        "cycles": 1067585,
+        "ns": 2135170,
+        "costs": {
+          "l1i": 350543,
+          "l1d": 81080,
+          "l2": 270752,
+          "ram_read": 10350,
+          "ram_write": 354860
+        },
+        "stream_sha256": "2b79ccbb476910d76e89bcad751ab8af622835b7c501d7ef056dd12ded775a06"
+      },
+      "measurement": {
+        "case": "tcp_request_response",
+        "before": 3016,
+        "after": 6398,
+        "before_tick": 0,
+        "ticks": 0,
+        "work": 11680,
+        "woke": 0,
+        "observer_tick": 0,
+        "observer_mtime": 0
+      },
+      "context_quality": "exact",
+      "raw_rows": 419022,
+      "events_per_second": 840815.5382277813,
+      "raw_bytes": 15117683,
+      "raw_disk_bytes": 571390,
+      "sidecar_bytes": 347,
+      "sidecar_disk_bytes": 347,
+      "run_manifest_sha256": "5a5c3708789a61f0e217ab5ad97f45240ff4a841fa3bde61c8b781457745602e"
+    },
+    "formal_manifest_sha256": "5a5c3708789a61f0e217ab5ad97f45240ff4a841fa3bde61c8b781457745602e",
+    "addr2line": {
+      "command": [
+        "/Users/swchen.tw/git/percepio/poc/.tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin/riscv-none-elf-addr2line",
+        "-a",
+        "-f",
+        "-i",
+        "-e",
+        "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A02-pbuf/enabled-0-1/firmware.elf"
+      ],
+      "stdin_sha256": "7079515a9e7a8255fc03e7ec8f14b5dc78eeb3f8cf2fc924cab30b8e056aaa95",
+      "stdout_sha256": "2b395da09fd86dd3968948d21be652c1c1b6aa83da45bfec6487511ea5e2ed0e",
+      "tool_sha256": "0cb3d1160aeb5477939dbb96efcb6f2c5c2394541ad818b9b255ca4680690415"
+    }
+  },
+  "context_quality": "exact",
+  "cost_semantics": "shadow_model"
+}

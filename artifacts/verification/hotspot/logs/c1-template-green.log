@@ -1,0 +1,6 @@
+test_inline_escape_and_existing_output (tests.unit.test_hotspot_export.HotspotExportTests.test_inline_escape_and_existing_output) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.007s
+
+OK

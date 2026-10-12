@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tools/tcp/verify_hotspot_dashboard.py", line 254, in <module>
+    print(json.dumps(verify(args.mode, args.output, args.html)))
+                     ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/swchen.tw/git/percepio/poc/tools/tcp/verify_hotspot_dashboard.py", line 166, in verify
+    assert ev('document.querySelectorAll("#pc-table .tabulator-col[tabulator-field]").length') == 3, "PC table must not imply cross-binary pairing"
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: PC table must not imply cross-binary pairing

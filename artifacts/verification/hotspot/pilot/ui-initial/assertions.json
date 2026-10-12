@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "mode": "offline",
+  "load_wall_seconds": 1.3719329580017074,
+  "column_resize": {
+    "before": 278,
+    "after": 323
+  },
+  "filtered_csv_rows": 40,
+  "resources": [],
+  "errors": [],
+  "svg": 4
+}

@@ -1,0 +1,17 @@
+test_inline_escape_and_existing_output (tests.unit.test_hotspot_export.HotspotExportTests.test_inline_escape_and_existing_output) ... ERROR
+
+======================================================================
+ERROR: test_inline_escape_and_existing_output (tests.unit.test_hotspot_export.HotspotExportTests.test_inline_escape_and_existing_output)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_hotspot_export.py", line 48, in test_inline_escape_and_existing_output
+    self.m.export_hotspot_html(root, "A02", output)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/swchen.tw/git/percepio/poc/src/psf_lab/hotspot_export.py", line 31, in export_hotspot_html
+    raise ValueError("Missing or duplicate template anchor")
+ValueError: Missing or duplicate template anchor
+
+----------------------------------------------------------------------
+Ran 1 test in 0.007s
+
+FAILED (errors=1)

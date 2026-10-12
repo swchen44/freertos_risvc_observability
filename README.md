@@ -1,10 +1,24 @@
 # FreeRTOS／RISC-V PSF POC
 
+## C1：成本與熱點 Dashboard · 2026-10-13
+
+C1 已建立 Task／IRQ × role × function × PC 聯合統計、函式差異與 3C misses。正式 40 份報告完成守恆核對，Web／離線各 6 張截圖、curl 與 agent-browser 驗收通過。發佈狀態見 [completion](artifacts/verification/hotspot/completion.json)。
+
+- [操作與研究報告](docs/hotspot-dashboard.md)：指標、原理、重現命令、限制與截圖。
+- [實作計畫與 checklist](docs/plans/13-hotspot-dashboard.md)。
+- [正式報告與來源](artifacts/verification/hotspot/formal/)；[8 組離線 HTML](artifacts/offline/hotspot/)。
+- Web：在 POC 執行 `.venv/bin/python -m psf_lab serve --port 8016`，開啟 `http://127.0.0.1:8016/hotspot.html`。
+- C2 時間軸尚未開始；這些是模型相對成本，不是產品 CPU 使用率。
+
+![C1 Web 畫面](artifacts/verification/hotspot/ui/server/screenshots/01-overview.png)
+
+![C1 離線 PC 與來源](artifacts/verification/hotspot/ui/offline/screenshots/04-pc-source.png)
+
 ## 現況入口 · 2026-10-09
 
 **B 核心分析與擷取已完成，UI／GitHub 發佈已驗收：**[成本歸屬研究報告](docs/cost-attribution.md)。16 份 B1 重播、8 次探索、24 次正式 context 擷取與 6 次 host overhead 均保留原始資料；task／IRQ／recorder 成本分開守恆。Python 292 tests、Node 10 tests、Ruff 通過。2026-10-09 socket、curl、agent-browser Web／離線與 11 項 Playwright 回歸通過，新增 12 張截圖；[最新完成與待辦收據](artifacts/verification/cost-attribution/completion.json)。
 
-C1 下一階段：[成本與熱點設計提案](docs/design/c1-hotspot-dashboard.md)，[逐步實作計畫](docs/plans/13-hotspot-dashboard.md)已完成，待審閱，尚未實作。
+C1 已完成：[成本與熱點設計提案](docs/design/c1-hotspot-dashboard.md)，[逐步實作計畫](docs/plans/13-hotspot-dashboard.md)已核准並執行；結果見上方 C1 入口。
 
 ### 2026-10-09 UI 重驗截圖
 
@@ -21,7 +35,7 @@ Web 版：curl 驗 API 與 assets；agent-browser 驗四張 SVG 圖、篩選、�
 **A：八種 TCP workload 的 pbuf 最佳化驗證**已完成 96 次正式執行、原始資料分析與 Web／離線操作驗收。固定 **L1I 8 KiB + L1D 8 KiB + L2 32 KiB**，結果是相同模型下的軟體比較。
 
 - [完整 A 研究報告、數值與重跑命令](docs/tcp-workload-matrix.md)：7/8 組模型時間改善；A08 改善 8.339%，A02 反而慢 0.218%，反例保留，原因待 B 歸因。
-- [設計與 A → B → C 計畫](docs/plans/11-next-cache-research.md)：A 已完成；B 核心完成但 UI／GitHub 發佈已驗收；C 熱點／逐事件時間軸尚未開始。
+- [設計與 A → B → C 計畫](docs/plans/11-next-cache-research.md)：A 已完成；B 已驗收；C1 熱點已實作，C2 逐事件時間軸尚未開始。
 - [案例契約](cases/tcp/workload-matrix-v1.json)：63、64、65、256、1460 bytes，以及空節點／八節點 chain。
 - [正式 capture](runs/tcp-workload-matrix-v1/)：16 組、96 次，包含 PSF、raw trace、ELF、map、封包、generated header 與來源 hashes。
 - [探索與失敗紀錄](runs/tcp-workload-probe-v1/)；[分析／驗收收據](artifacts/verification/tcp-workload-matrix/)；[離線 HTML](artifacts/offline/tcp-workload-matrix.html)。
@@ -56,7 +70,7 @@ Web：選 workload 比較相同 request 的兩版；可切換 Cache 層級、看
 
 ![TCP workload 離線](artifacts/screenshots/tcp-workload-matrix/offline-03-filtered-evidence.png)
 
-以下為各階段當時紀錄。「尚未完成」僅表示當時狀態；最新結果以上述 A／B 報告與各自驗收收據為準。
+以下為各階段當時紀錄。「尚未完成」僅表示當時狀態；最新結果以上述 A／B／C1 報告與各自驗收收據為準。
 
 ## 歷史階段紀錄
 

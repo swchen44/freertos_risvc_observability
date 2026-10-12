@@ -1,0 +1,9 @@
+test_ambiguous_owner_not_merged (tests.unit.test_hotspot_dashboard.HotspotDashboardTests.test_ambiguous_owner_not_merged) ... ok
+test_bundle_rejects_mixed_workload_or_duplicate_run (tests.unit.test_hotspot_dashboard.HotspotDashboardTests.test_bundle_rejects_mixed_workload_or_duplicate_run) ... ok
+test_unique_function_pair_and_unmatched (tests.unit.test_hotspot_dashboard.HotspotDashboardTests.test_unique_function_pair_and_unmatched) ... ok
+test_zero_baseline_and_mode_rejected (tests.unit.test_hotspot_dashboard.HotspotDashboardTests.test_zero_baseline_and_mode_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.019s
+
+OK

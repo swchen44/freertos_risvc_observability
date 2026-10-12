@@ -1,0 +1,126 @@
+{
+  "schema": "hotspot-report-v1",
+  "identity": {
+    "workload": "A04",
+    "variant": "baseline",
+    "family": "b1",
+    "mode": 1,
+    "repeat": 1,
+    "run_id": "A04-baseline-b1-1-1"
+  },
+  "profile": {
+    "schema": "memory-timing-profile-v1",
+    "name": "sysram-10-small",
+    "assumptions": "User-requested sysram latency scenario; read/write startup cycles exclude data beats. Not hardware calibration. Serial write-through/write-allocate; no overlap, DMA, coherence, store buffer or dirty writeback.",
+    "write_policy": "write-through-write-allocate",
+    "caches": {
+      "l1i": {
+        "size": 8192,
+        "line": 64,
+        "ways": 4,
+        "lookup_cycles": 1
+      },
+      "l1d": {
+        "size": 8192,
+        "line": 64,
+        "ways": 4,
+        "lookup_cycles": 1
+      },
+      "l2": {
+        "size": 32768,
+        "line": 64,
+        "ways": 4,
+        "lookup_cycles": 8
+      }
+    },
+    "regions": [
+      {
+        "name": "system_ram",
+        "start": 2147483648,
+        "end": 2281701376,
+        "cacheable": true,
+        "read_latency_cycles": 10,
+        "write_latency_cycles": 10,
+        "bus_bytes_per_cycle": 8
+      }
+    ]
+  },
+  "events": 424060,
+  "totals": {
+    "instructions": 341584,
+    "memory_cycles": 1073722,
+    "model_service_ns": 2147444,
+    "accounted_model_ns": 2489028,
+    "cost_cycles": {
+      "l1i": 342424,
+      "l1d": 82476,
+      "l2": 275720,
+      "ram_read": 13446,
+      "ram_write": 359656
+    },
+    "cache": {
+      "l1i": {
+        "accesses": 342424,
+        "misses": 1693,
+        "compulsory": 342,
+        "conflict": 326,
+        "capacity": 1025
+      },
+      "l1d": {
+        "accesses": 82476,
+        "misses": 394,
+        "compulsory": 335,
+        "conflict": 36,
+        "capacity": 23
+      },
+      "l2": {
+        "accesses": 34465,
+        "misses": 747,
+        "compulsory": 677,
+        "conflict": 51,
+        "capacity": 19
+      }
+    }
+  },
+  "evidence": {
+    "elf_sha256": "346c12023432da6f37aa7d80c49a68924c9cade2b62dbf040517b4916afe599d",
+    "raw_file_sha256": "c2a7247314ed915200026d1c91cd08de7169573668ed68fa558681bed009def2",
+    "raw_stream_sha256": "1f288e9228b07da7f1a17e972e1e81f4fa58c2d1743cf063057ba24ee2ce8bf9",
+    "profile_sha256": "861d5b40c399a78512f71f6fab35ed163eecc0825482a8e096aa53252b8510f7",
+    "pins": {
+      "cases/timing/sysram-10-small.json": "861d5b40c399a78512f71f6fab35ed163eecc0825482a8e096aa53252b8510f7",
+      "cases/timing/attribution-rules-v1.json": "869bc15d3352e7432d802e5d60abe29967d64423c758a30d75957d6367b37b8b",
+      "artifacts/verification/cost-attribution/b1/A04-baseline/ranges.json": "1255f7043745041c6f2b574c55b1d20859a23a506c7e561ee7fc5ad4ff095230"
+    },
+    "task_objects": [],
+    "tool_hashes": {
+      "readelf": {
+        "sha256": "f615c1e04b536e5e73a96125e4730835c899ec305ba93a465d3e0c12326c6475",
+        "version": "GNU readelf (xPack GNU RISC-V Embedded GCC arm64) 2.45"
+      },
+      "nm": {
+        "sha256": "45c2086551a3decd7e4fd24a4d25a9710bc7bc665a4ca4dc7e669e5d70b8309f",
+        "version": "GNU nm (xPack GNU RISC-V Embedded GCC arm64) 2.45"
+      },
+      "addr2line": {
+        "sha256": "0cb3d1160aeb5477939dbb96efcb6f2c5c2394541ad818b9b255ca4680690415",
+        "version": "GNU addr2line (xPack GNU RISC-V Embedded GCC arm64) 2.45"
+      }
+    },
+    "addr2line": {
+      "command": [
+        "/Users/swchen.tw/git/percepio/poc/.tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin/riscv-none-elf-addr2line",
+        "-a",
+        "-f",
+        "-i",
+        "-e",
+        "/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A04-baseline/enabled-1-1/firmware.elf"
+      ],
+      "stdin_sha256": "e6036bb2957264af315bf276904d7455a231743c5f2a75fe8d4e6a74f5215724",
+      "stdout_sha256": "db3d93652e0486d357f44608a8a83ae0d3e70dd92732f178089e5a8c9229aca8",
+      "tool_sha256": "0cb3d1160aeb5477939dbb96efcb6f2c5c2394541ad818b9b255ca4680690415"
+    }
+  },
+  "context_quality": "unknown",
+  "cost_semantics": "injected_model"
+}

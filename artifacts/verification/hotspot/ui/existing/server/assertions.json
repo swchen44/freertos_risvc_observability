@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "mode": "server",
+  "svg_charts": 4,
+  "filtered_csv_rows": 1,
+  "sorted_values": [
+    3270100,
+    3567600
+  ],
+  "offline_network_blocked": false,
+  "resources": [
+    "http://127.0.0.1:8016/assets/timing.css",
+    "http://127.0.0.1:8016/assets/timing.js",
+    "http://127.0.0.1:8016/api/timing",
+    "http://127.0.0.1:8016/favicon.ico"
+  ],
+  "errors": []
+}

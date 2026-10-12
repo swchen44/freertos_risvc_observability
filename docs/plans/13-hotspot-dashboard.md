@@ -1,6 +1,6 @@
 # C1 Hotspot Dashboard Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking. 沿用本 session 逐項實作與最後獨立 review 的方式。
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking. 沿用本 session 逐項實作與最後獨立 review 的方式。
 
 **Goal:** 用來源可驗證的 Task／IRQ × role × function × PC 統計，在 Web／離線 SVG Dashboard 定位成本與 Cache miss 熱點。
 
@@ -8,7 +8,7 @@
 
 **Tech Stack:** 現有 Python、unittest、Ruff、FastAPI、ECharts 6.1.0、Tabulator 6.6.1、esbuild、Node test runner、curl、agent-browser；不新增依賴。
 
-**Spec:** [C1 設計規格](../design/c1-hotspot-dashboard.md)。2026-10-13 使用者以 continue 接續設計審閱，進入實作計畫；本計畫尚待審閱，產品程式尚未變更。
+**Spec:** [C1 設計規格](../design/c1-hotspot-dashboard.md)。2026-10-13 使用者以 continue 接續設計審閱，進入實作計畫；使用者隨後以 go 核准實作；目前依驗證證據更新狀態。
 
 ## Global Constraints
 
@@ -70,7 +70,7 @@ identity 必備 `run_id, workload, variant, family, mode, repeat`；family 為 b
 
 每份 report schema=`hotspot-report-v1`，含 identity、profile、totals、facts、owners、evidence、context_quality。facts 每列為 `context, role, function_id, pc, instructions, memory_cycles, model_service_ns, accounted_model_ns, cost_cycles, cache`；cache 為每層 `accesses, misses, compulsory, conflict, capacity` 整數。PC 與 owner 透過 lookup 正規化，不複製大型證據到每列。
 
-- [ ] RED：建立 unittest 手算 `_Cache`/MemoryTiming lookup 順序。用 128-byte、64-byte line、direct-mapped toy L1 與同容量 fully-associative shadow；區塊序列 0,2,0 應得到 compulsory,compulsory,conflict；0,1,2,0 的末項應為 capacity。toy 僅測演算法，正式 profile 仍 8/8/32 KiB。
+- [x] RED：建立 unittest 手算 `_Cache`/MemoryTiming lookup 順序。用 128-byte、64-byte line、direct-mapped toy L1 與同容量 fully-associative shadow；區塊序列 0,2,0 應得到 compulsory,compulsory,conflict；0,1,2,0 的末項應為 capacity。toy 僅測演算法，正式 profile 仍 8/8/32 KiB。
 
 ```python
 from psf_lab.tcp_hotspots import MissClassifier
@@ -83,8 +83,8 @@ self.assertEqual([c.observe(b, False) for b in (0, 1, 2, 0)][-1], 'capacity')
 
 再建立兩筆 I、同 PC 的 fixture；用 MemoryTiming 各產一次有效 raw cost，context 分別 task:A 與 irq:7。斷言兩列 instructions 各1，而非兩列都2；contexts=None 則只有 unknown。另測跨 line R、L1 hit W 仍查 L2、非cacheable region 零 cache lookup、成本欄被改1、空 stream、bool/負數、context 缺口/超長拒絕。
 
-- [ ] 執行 `.venv/bin/python -m unittest tests.unit.test_hotspot_report -v`，保存缺少新介面的 RED。
-- [ ] 實作：重用 `from_profile` 與 `MissClassifier`；以 `tcp_hotspots.profile_misses` 的 ObservedCache 模式攔截**實際** cache.access，current fact 在 model.access 前固定；一次 event 跨多 line 不增加 instructions。不可用 `replay_split` 代替 MemoryTiming，兩者 store policy 不同。
+- [x] 執行 `.venv/bin/python -m unittest tests.unit.test_hotspot_report -v`，保存缺少新介面的 RED。
+- [x] 實作：重用 `from_profile` 與 `MissClassifier`；以 `tcp_hotspots.profile_misses` 的 ObservedCache 模式攔截**實際** cache.access，current fact 在 model.access 前固定；一次 event 跨多 line 不增加 instructions。不可用 `replay_split` 代替 MemoryTiming，兩者 store policy 不同。
 
 ```python
 hit = super().access(address, operation, byte_count)
@@ -94,7 +94,7 @@ return hit
 ```
 
 每筆 raw 的五個 cost component 與 model.access 回傳逐欄一致才累加；I 每筆+1。依現有 `resolve_pc` 保留 overlap／missing owner。輸出 deterministic sort；驗證各維度及 3C 守恆。
-- [ ] GREEN 同一 unittest，Ruff check/format 新檔；commit `Add joint context and PC hotspot replay`。
+- [x] GREEN 同一 unittest，Ruff check/format 新檔；commit `Add joint context and PC hotspot replay`。
 
 ## Task 2：證據載入、正式集合與 pilot
 
@@ -108,7 +108,7 @@ def analyze_hotspots(root: Path, output: Path, *, workload: str | None = None) -
 
 load 回傳 `raw_path, ranges, profile, identity, contexts, evidence`。B1 使用 `load_capture_evidence(root, runset, 1, 1)`；B2 完整沿用 `analyze_context_batch.py` 的 batch 集合、run-manifest、boundary ELF、必要 files、task identities、context_intervals 與 validate_context_anchors 鏈，不能只讀已存在的 intervals 檔案。
 
-- [ ] RED：tmpdir 建 required file manifest，修改1 byte必須 ValueError；移除 required key、`../`、absolute path、boundary ELF 錯配、sidecar 缺 anchor、formal 23/25 筆都拒絕。直接測 loader，不能只測底層 hash helper。
+- [x] RED：tmpdir 建 required file manifest，修改1 byte必須 ValueError；移除 required key、`../`、absolute path、boundary ELF 錯配、sidecar 缺 anchor、formal 23/25 筆都拒絕。直接測 loader，不能只測底層 hash helper。
 
 ```python
 entries = catalog_inputs(root)
@@ -119,11 +119,11 @@ with self.assertRaises(ValueError):
     analyze_hotspots(root, already_existing_output)
 ```
 
-- [ ] 執行新 tests 確認 RED；實作固定集合、profile hash、小 cache geometry、原始 stream SHA256／compressed file hash 分開記錄。必要資料不全時不 fallback unknown 冒充 exact；B1 原本無 context 才合法 unknown。
-- [ ] 用該 ELF 跑 `addr2line -a -f -i`，記工具 hash／version、arguments 與完整 stdout。來源為 `??` 時 null；inline frames 可保留 evidence，owner 仍用 B 的實體包含範圍。source display 僅檔案／行號，不自動讀目前 source 內容。
-- [ ] CLI：`PYTHONPATH=src .venv/bin/python tools/tcp/analyze_hotspots.py --workload A02 --output artifacts/local/c1-pilot-data`；新目錄 exclusive create。逐 run 保存 report.json.gz、summary.json、完整 facts.csv、source-lines.json、evidence.json；completion 含精確集合、檔案 hashes、工具／來源與成功／失敗。
-- [ ] 每份 totals/role/function/PC 對照原 B 統計；3C 全域對照 `profile_misses` 相同 stream/profile；context角色對照 B2。原始來源不變，新的 ownership 存 run-specific evidence。
-- [ ] GREEN loader tests／Ruff；pilot 完整與手算通過後 commit；pilot 不能當正式40份驗收。
+- [x] 執行新 tests 確認 RED；實作固定集合、profile hash、小 cache geometry、原始 stream SHA256／compressed file hash 分開記錄。必要資料不全時不 fallback unknown 冒充 exact；B1 原本無 context 才合法 unknown。
+- [x] 用該 ELF 跑 `addr2line -a -f -i`，記工具 hash／version、arguments 與完整 stdout。來源為 `??` 時 null；inline frames 可保留 evidence，owner 仍用 B 的實體包含範圍。source display 僅檔案／行號，不自動讀目前 source 內容。
+- [x] CLI：`PYTHONPATH=src .venv/bin/python tools/tcp/analyze_hotspots.py --workload A02 --output artifacts/local/c1-pilot-data`；新目錄 exclusive create。逐 run 保存 report.json.gz、summary.json、完整 facts.csv、source-lines.json、evidence.json；completion 含精確集合、檔案 hashes、工具／來源與成功／失敗。
+- [x] 每份 totals/role/function/PC 對照原 B 統計；3C 全域對照 `profile_misses` 相同 stream/profile；context角色對照 B2。原始來源不變，新的 ownership 存 run-specific evidence。
+- [x] GREEN loader tests／Ruff；pilot 完整與手算通過後 commit；pilot 不能當正式40份驗收。
 
 ## Task 3：配對與 Dashboard catalog
 
@@ -138,7 +138,7 @@ def load_hotspot_workload(root: Path, workload: str) -> dict: ...
 
 bundle schema=`hotspot-workload-v1`，含 workload、reports、pairs、manifest_sha256。catalog schema=`hotspot-catalog-v1`，固定 A01..A08 的 workload bundle path/hash；只接受此 ID，不能直接接受 path。每份 facts 保留自身 run_id；選 baseline/candidate 時找同 family/mode/repeat/profile。
 
-- [ ] RED 配對：地址平移但 repo-relative source／symbol唯一時 matched；相同函式名不同 object 不合併；重名有歧義時 ambiguous；單側 absent 為 unmatched。
+- [x] RED 配對：地址平移但 repo-relative source／symbol唯一時 matched；相同函式名不同 object 不合併；重名有歧義時 ambiguous；單側 absent 為 unmatched。
 
 ```python
 # fixture 的 source/symbol 相同，地址不同；變體多一份相同 source/symbol 即歧義。
@@ -147,9 +147,9 @@ self.assertEqual(pairs[0]['status'], 'matched')
 self.assertIsNone(pair_functions(baseline_fixture, empty_fixture)[0]['delta'])
 ```
 
-- [ ] 實作 normalize source/object prefix：只移除驗證 manifest 指定的 checkout/build root，保留 archive/member；不可只取 basename。保存 pairing key 與理由，delta = candidate−baseline，zero baseline percent=null。
-- [ ] context UI：run內按原始 context ID 篩選；跨 run task 配對只接受驗證 task-identities 中唯一 task name/role，pointer不能直接配對。相同 IRQ cause／scheduler可配對。名稱重複／task缺失顯示 unavailable，保留 all-context 比較。不把 unknown 與 exact 配對。
-- [ ] GREEN 需涵蓋不同 workload/mode/family/profile/repeat拒絕、missing hash、CSV輸出metadata來源存在；commit。
+- [x] 實作 normalize source/object prefix：只移除驗證 manifest 指定的 checkout/build root，保留 archive/member；不可只取 basename。保存 pairing key 與理由，delta = candidate−baseline，zero baseline percent=null。
+- [x] context UI：run內按原始 context ID 篩選；跨 run task 配對只接受驗證 task-identities 中唯一 task name/role，pointer不能直接配對。相同 IRQ cause／scheduler可配對。名稱重複／task缺失顯示 unavailable，保留 all-context 比較。不把 unknown 與 exact 配對。
+- [x] GREEN 需涵蓋不同 workload/mode/family/profile/repeat拒絕、missing hash、CSV輸出metadata來源存在；commit。
 
 ## Task 4：共用篩選、聚合、排序、CSV
 
@@ -164,7 +164,7 @@ pcRows(report, facts, functionId);                // 所選函式完整 PCs
 hotspotCsv(rows, metadata);                       // UTF-8 CSV 字串，非 Top-N
 ```
 
-- [ ] RED Node fixtures：完整成本100、符合filter40，top1成本30，需 run share30%、filtered share75%、Other10；CSV含全部2列而非1列。空filter回[]、分母0回null；輸入不可被 sort mutate。
+- [x] RED Node fixtures：完整成本100、符合filter40，top1成本30，需 run share30%、filtered share75%、Other10；CSV含全部2列而非1列。空filter回[]、分母0回null；輸入不可被 sort mutate。
 
 ```javascript
 assert.equal(view.visible[0].run_percent, 30);
@@ -173,14 +173,14 @@ assert.equal(view.other.memory_cycles, 10);
 assert.equal(view.allSorted.length, 2);
 ```
 
-- [ ] `node --test web/tests/hotspot-view.test.mjs` RED；實作上述純函式，metric whitelist，穩定 tie-break by function_id/PC。比例排序用 numeric/null-last，不比較格式化字串。Cache rate 的 Other 由總misses/總accesses重算，不平均百分比；rate 圖無可相加的 Other 百分比。
-- [ ] CSV使用完整排序資料，欄位包括 run_id/mode/family/repeat/profile hash/metric units、function/context、所有整數成本、run/filtered denominator。文字以 `= + - @` 或控制字元開頭時加安全引號前綴；數值負 delta 保留數值，不轉成字串注入處理。
-- [ ] GREEN Node與既有單元測試；commit。Python不再另寫 filter 排名版本，API/offline共用這個 JS。
+- [x] `node --test web/tests/hotspot-view.test.mjs` RED；實作上述純函式，metric whitelist，穩定 tie-break by function_id/PC。比例排序用 numeric/null-last，不比較格式化字串。Cache rate 的 Other 由總misses/總accesses重算，不平均百分比；rate 圖無可相加的 Other 百分比。
+- [x] CSV使用完整排序資料，欄位包括 run_id/mode/family/repeat/profile hash/metric units、function/context、所有整數成本、run/filtered denominator。文字以 `= + - @` 或控制字元開頭時加安全引號前綴；數值負 delta 保留數值，不轉成字串注入處理。
+- [x] GREEN Node與既有單元測試；commit。Python不再另寫 filter 排名版本，API/offline共用這個 JS。
 
 ## Task 5：互動頁面與 pilot 畫面
 
-- [ ] 先依 spec ASCII 做頁面 DOM fixture；必備 `#workload, #family, #mode, #repeat, #context, #role, #function-query, #metric, #cache-level, #top-n, #csv, #hotspot-status`，四張 `.hotspot-chart` 與 `#functions-table, #pc-table, #source-evidence`。寫 Node view fixture 驗四圖資料總和／負 delta 保留。
-- [ ] 實作新頁、CSS、entry；build.mjs 新增 entry/output但不修改 A templates。ECharts `renderer:'svg'`，Tabulator排序/欄寬/欄位移動；source strings用 textContent或安全formatter，不直接 innerHTML。
+- [x] 先依 spec ASCII 做頁面 DOM fixture；必備 `#workload, #family, #mode, #repeat, #context, #role, #function-query, #metric, #cache-level, #top-n, #csv, #hotspot-status`，四張 `.hotspot-chart` 與 `#functions-table, #pc-table, #source-evidence`。寫 Node view fixture 驗四圖資料總和／負 delta 保留。
+- [x] 實作新頁、CSS、entry；build.mjs 新增 entry/output但不修改 A templates。ECharts `renderer:'svg'`，Tabulator排序/欄寬/欄位移動；source strings用 textContent或安全formatter，不直接 innerHTML。
 
 ```javascript
 const chart = echarts.init(element, null, {renderer: 'svg'});
@@ -188,10 +188,10 @@ status.textContent = `${run.identity.run_id} · ${run.context_quality}`;
 window.hotspotReady = true; // 僅在資料核對、圖表與表格初次render完成後
 ```
 
-- [ ] workload/family/mode/repeat 改變時重置不相容 context／function selection，顯示重置結果；資料載入錯誤時清除舊資料並呈現錯誤，不保留舊圖假裝新run。
-- [ ] tooltip 顯示整數值、units、來源run、分母、model boundary。miss metric/level選擇相依；function click顯示自身PC表，切run後不可保留舊PC。
-- [ ] pilot提供排名、delta、cost breakdown、3C四圖，桌面1600×1050與手機390×844無整頁水平溢出；表格可局部水平捲動。
-- [ ] `npm --prefix web run build` 與 Node tests通過後 commit；實際互動 gate 在 Task7，不以 DOM fixture 取代 browser。
+- [x] workload/family/mode/repeat 改變時重置不相容 context／function selection，顯示重置結果；資料載入錯誤時清除舊資料並呈現錯誤，不保留舊圖假裝新run。
+- [x] tooltip 顯示整數值、units、來源run、分母、model boundary。miss metric/level選擇相依；function click顯示自身PC表，切run後不可保留舊PC。
+- [x] pilot提供排名、delta、cost breakdown、3C四圖，桌面1600×1050與手機390×844無整頁水平溢出；表格可局部水平捲動。
+- [x] `npm --prefix web run build` 與 Node tests通過後 commit；實際互動 gate 在 Task7，不以 DOM fixture 取代 browser。
 
 ## Task 6：本機 API 與單檔匯出
 
@@ -203,7 +203,7 @@ def export_hotspot_html(root: Path, workload: str, output: Path) -> dict: ...
 
 API `GET /api/hotspots` 返回 catalog、`GET /api/hotspots/{workload}` 返回 hash驗證後bundle；未知ID404，hash不符/無效資料503，對外錯誤不洩露絕對檔案內容。static頁 `/hotspot.html`。
 
-- [ ] RED integration 使用 FastAPI TestClient + tmp fixture catalog，測正常、unknown、URL encoded path traversal、bundle hash mismatch；例：
+- [x] RED integration 使用 FastAPI TestClient + tmp fixture catalog，測正常、unknown、URL encoded path traversal、bundle hash mismatch；例：
 
 ```python
 self.assertEqual(client.get('/api/hotspots/unknown').status_code, 404)
@@ -212,25 +212,25 @@ self.assertEqual(client.get('/api/hotspots/A02').status_code, 200)
 self.assertEqual(client.get('/api/hotspots/A02').status_code, 503)
 ```
 
-- [ ] 匯出 RED：資料含 `</script><script>alert(1)</script>`、U+2028、`</style>`；JSON可還原但不形成新script元素。assets缺少、output已存在、report hash不符必須拒絕。
-- [ ] 實作重用 `offline.embed_json` 與 cache_report 的escape/CSP規則，使用hotspot明確template anchors，不用全域任意字串取代；若anchor missing/duplicate拒絕。`connect-src 'none'`；startup先讀inline JSON，無inline才走固定API。
-- [ ] CLI `PYTHONPATH=src .venv/bin/python tools/tcp/export_hotspot_html.py --workload A02 --output artifacts/local/c1-pilot-A02.html`；receipt保存bundle/JS/CSS/template/output hashes與byte count。
-- [ ] unittest／Ruff／Node tests通過；commit。
+- [x] 匯出 RED：資料含 `</script><script>alert(1)</script>`、U+2028、`</style>`；JSON可還原但不形成新script元素。assets缺少、output已存在、report hash不符必須拒絕。
+- [x] 實作重用 `offline.embed_json` 與 cache_report 的escape/CSP規則，使用hotspot明確template anchors，不用全域任意字串取代；若anchor missing/duplicate拒絕。`connect-src 'none'`；startup先讀inline JSON，無inline才走固定API。
+- [x] CLI `PYTHONPATH=src .venv/bin/python tools/tcp/export_hotspot_html.py --workload A02 --output artifacts/local/c1-pilot-A02.html`；receipt保存bundle/JS/CSS/template/output hashes與byte count。
+- [x] unittest／Ruff／Node tests通過；commit。
 
 ## Task 7：容量、正式重播與兩種 UI 驗收
 
-- [ ] 先以 A02 pilot 測 JSON/gzip/HTML bytes、facts列數、頁面ready時間、首次filter時間。browser版本、OS、commit、量測方法與3次原始值保留，不預填結果或通用效能承諾。ready超過既有25s browser wait則pilot fail，不截斷資料；需調整設計再驗。
-- [ ] pilot通過後新目錄 `artifacts/verification/hotspot/formal` 產生40份完整報告；產生8個workload bundles與8個offline HTML到 `artifacts/offline/hotspot/`。保存catalog、hash manifest、所有中間檔與完成收據。每份守恆及來源檢查都通過才可登錄。
-- [ ] 新 `tools/tcp/verify_hotspot_dashboard.py` 使用現有 verify_workload_dashboard.py 的curl／agent-browser模式，SESSION/OUT/SHOTS獨立；不得覆寫A/B證據。API正常/unknown與JS/CSS/HTML routes以curl保存status/bytes/hash。
-- [ ] agent-browser server流程：A02 baseline/pbuf → B2 injection repeat1 → task filter → function搜尋 → metric排序 → topN切換 → hover →欄寬與欄序變更 →完整CSV比對 → function/PC/source證據 →A08 →B1 unknown →空結果 →手機。排序/CSV以同一資料fixture的預期值比對，不能只看檔案存在。
-- [ ] 關閉Python Server，curl確認無連線；agent-browser離線模式與HTTP/HTTPS abort routes打開file:// HTML，重跑相同操作。assert resource list無http(s)、console errors為空。每mode至少保存總覽、delta、hover、context篩選、PC來源、手機6張。
-- [ ] 既有Playwright regression與A agent-browser回歸依序跑，歷史tracked產物先備份，C1保存新結果後復原；全部code先commit，再執行完整Python suite、Ruff、Node。保存成功／失敗log與實際測試數。
+- [x] 先以 A02 pilot 測 JSON/gzip/HTML bytes、facts列數、頁面ready時間、首次filter時間。browser版本、OS、commit、量測方法與3次原始值保留，不預填結果或通用效能承諾。ready超過既有25s browser wait則pilot fail，不截斷資料；需調整設計再驗。
+- [x] pilot通過後新目錄 `artifacts/verification/hotspot/formal` 產生40份完整報告；產生8個workload bundles與8個offline HTML到 `artifacts/offline/hotspot/`。保存catalog、hash manifest、所有中間檔與完成收據。每份守恆及來源檢查都通過才可登錄。
+- [x] 新 `tools/tcp/verify_hotspot_dashboard.py` 使用現有 verify_workload_dashboard.py 的curl／agent-browser模式，SESSION/OUT/SHOTS獨立；不得覆寫A/B證據。API正常/unknown與JS/CSS/HTML routes以curl保存status/bytes/hash。
+- [x] agent-browser server流程：A02 baseline/pbuf → B2 injection repeat1 → task filter → function搜尋 → metric排序 → topN切換 → hover →欄寬與欄序變更 →完整CSV比對 → function/PC/source證據 →A08 →B1 unknown →空結果 →手機。排序/CSV以同一資料fixture的預期值比對，不能只看檔案存在。
+- [x] 關閉Python Server，curl確認無連線；agent-browser離線模式與HTTP/HTTPS abort routes打開file:// HTML，重跑相同操作。assert resource list無http(s)、console errors為空。每mode至少保存總覽、delta、hover、context篩選、PC來源、手機6張。
+- [x] 既有Playwright regression與A agent-browser回歸依序跑，歷史tracked產物先備份，C1保存新結果後復原；全部code先commit，再執行完整Python suite、Ruff、Node。保存成功／失敗log與實際測試數。
 
 ## Task 8：審查、文件、publish
 
-- [ ] 依 requesting-code-review skill 提供 spec、plan、base與final code SHA，獨立whole-change review聚焦聯合統計、3C、配對、資料完整性及offline；Important問題先修正並重跑受影響驗證。
-- [ ] `docs/hotspot-dashboard.md` 說明如何重建40份、8份HTML、Web啟動、圖表解讀、A02/A08實際結果、unknown與未驗證因果。README放資料夾表、重要檔案、截圖、重現入口；C1勾選，C2保持未完成。
-- [ ] completion.json包含tested commit、clean gate、40份精確集合、來源與工具hash、實際測試結果、Web/offline收據、容量數字、review狀態。任何必需gate未通過則passed=false，不能用其他測試替代。
+- [x] 依 requesting-code-review skill 提供 spec、plan、base與final code SHA，獨立whole-change review聚焦聯合統計、3C、配對、資料完整性及offline；Important問題先修正並重跑受影響驗證。
+- [x] `docs/hotspot-dashboard.md` 說明如何重建40份、8份HTML、Web啟動、圖表解讀、A02/A08實際結果、unknown與未驗證因果。README放資料夾表、重要檔案、截圖、重現入口；C1勾選，C2保持未完成。
+- [x] completion.json包含tested commit、clean gate、40份精確集合、來源與工具hash、實際測試結果、Web/offline收據、容量數字、review狀態。任何必需gate未通過則passed=false，不能用其他測試替代。
 
 ```python
 from pathlib import Path
@@ -253,4 +253,4 @@ assert result['ok'], result['broken_links']
 | 容量與不截斷／復原證據 | 2、7、8 |
 | unittest／Ruff／curl／browser／截圖／review | 各工作、7、8 |
 
-這份計畫不新增時間軸、硬體量測或SDK CPU loading結論。新的API與欄位在本文件定義；正式資料集合固定40份，不把舊測試數當作未來完成數。使用者審閱計畫後，才開始 Task1。
+這份計畫不新增時間軸、硬體量測或SDK CPU loading結論。新的API與欄位在本文件定義；正式資料集合固定40份，不把舊測試數當作未來完成數。使用者已核准並執行 Task1–8；驗收證據見 artifacts/verification/hotspot/completion.json，發佈勾選以 remote SHA 核對為準。

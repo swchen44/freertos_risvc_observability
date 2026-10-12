@@ -4,3 +4,7 @@ references/baseline/** -whitespace
 *.pdf binary
 *.png binary
 *.zip binary
+
+# C1 generated evidence preserves CSV CRLF and bundled upstream assets byte-for-byte.
+artifacts/verification/hotspot/** -whitespace
+artifacts/offline/hotspot/** -whitespace

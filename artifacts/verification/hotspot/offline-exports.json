@@ -1,0 +1,90 @@
+[
+  {
+    "workload": "A01",
+    "output_sha256": "c00f400f9998cba77f31df9c2928c5011be757a0bac84a3d02a736b4b70c51a6",
+    "bytes": 8148765,
+    "manifest_sha256": "6e4bc6b3276afb47331009563da74f61c1f1301387af0fd93a1ae6098d985713",
+    "assets": {
+      "web/hotspot.html": "d850c234e91e70c0bc9e6b2659aa248f617a56b7ad6a88cf31507cc0d1f46be0",
+      "web/dist/assets/hotspot.js": "8e26801b176a5f3a1fa52b76cf7af55337f1052f958d3fd74eb9f03a53525032",
+      "web/dist/assets/hotspot.css": "c20d3562a7589700495c00dff74057aa12cfd2061c435e626111c0561847ce35"
+    }
+  },
+  {
+    "workload": "A02",
+    "output_sha256": "4b2212229a3b2e4e03ac6fd8c32a298f6eb043dc3152904a91ecf0b54ba1397c",
+    "bytes": 45038426,
+    "manifest_sha256": "0829b620f334d5013ef6bac512ce1663de737701a1b5cf9567b52b737416b61c",
+    "assets": {
+      "web/hotspot.html": "d850c234e91e70c0bc9e6b2659aa248f617a56b7ad6a88cf31507cc0d1f46be0",
+      "web/dist/assets/hotspot.js": "8e26801b176a5f3a1fa52b76cf7af55337f1052f958d3fd74eb9f03a53525032",
+      "web/dist/assets/hotspot.css": "c20d3562a7589700495c00dff74057aa12cfd2061c435e626111c0561847ce35"
+    }
+  },
+  {
+    "workload": "A03",
+    "output_sha256": "74ff90f5dc142d7889a649f4bb4e9f0bd6544ccba3738da939bedd9708905f7c",
+    "bytes": 8168377,
+    "manifest_sha256": "ef2ad3fff33821506307a1b26638c70348ed0b47f61b6b1aa881d31149a7dd1c",
+    "assets": {
+      "web/hotspot.html": "d850c234e91e70c0bc9e6b2659aa248f617a56b7ad6a88cf31507cc0d1f46be0",
+      "web/dist/assets/hotspot.js": "8e26801b176a5f3a1fa52b76cf7af55337f1052f958d3fd74eb9f03a53525032",
+      "web/dist/assets/hotspot.css": "c20d3562a7589700495c00dff74057aa12cfd2061c435e626111c0561847ce35"
+    }
+  },
+  {
+    "workload": "A04",
+    "output_sha256": "386942bbbd5c3394e939072a4b024201f1672ca16b23af0ea01a631c91fd48b3",
+    "bytes": 8168380,
+    "manifest_sha256": "55cdda6d7a9b924c41f6a69ae9fe3fa1d18917599941f5a09ae4b105d6609c9a",
+    "assets": {
+      "web/hotspot.html": "d850c234e91e70c0bc9e6b2659aa248f617a56b7ad6a88cf31507cc0d1f46be0",
+      "web/dist/assets/hotspot.js": "8e26801b176a5f3a1fa52b76cf7af55337f1052f958d3fd74eb9f03a53525032",
+      "web/dist/assets/hotspot.css": "c20d3562a7589700495c00dff74057aa12cfd2061c435e626111c0561847ce35"
+    }
+  },
+  {
+    "workload": "A05",
+    "output_sha256": "2fb80f59259471c410d599a27f391e1c163cce05a1f578e2c19ec0432b4e71f1",
+    "bytes": 8148978,
+    "manifest_sha256": "6e07d4050e49ee26ae5699304b4b920fa95689ee1bbd21336f7a4cb48cbfccc8",
+    "assets": {
+      "web/hotspot.html": "d850c234e91e70c0bc9e6b2659aa248f617a56b7ad6a88cf31507cc0d1f46be0",
+      "web/dist/assets/hotspot.js": "8e26801b176a5f3a1fa52b76cf7af55337f1052f958d3fd74eb9f03a53525032",
+      "web/dist/assets/hotspot.css": "c20d3562a7589700495c00dff74057aa12cfd2061c435e626111c0561847ce35"
+    }
+  },
+  {
+    "workload": "A06",
+    "output_sha256": "5f16f9e74c991d304abf5a2d9decec1071b9455453de959730649adc3e652e21",
+    "bytes": 8254993,
+    "manifest_sha256": "5c2ee1d68d2679bd6214d11fdd10286a53d96ec733a7654609d3fa8a55d1c83d",
+    "assets": {
+      "web/hotspot.html": "d850c234e91e70c0bc9e6b2659aa248f617a56b7ad6a88cf31507cc0d1f46be0",
+      "web/dist/assets/hotspot.js": "8e26801b176a5f3a1fa52b76cf7af55337f1052f958d3fd74eb9f03a53525032",
+      "web/dist/assets/hotspot.css": "c20d3562a7589700495c00dff74057aa12cfd2061c435e626111c0561847ce35"
+    }
+  },
+  {
+    "workload": "A07",
+    "output_sha256": "f3306ee2f75b74838e159a7dc8787bf3f4c52e4fa4dc966462d6b86576d473a0",
+    "bytes": 8254291,
+    "manifest_sha256": "acd5af67860765d1e6c6e4753de1f89e5c7a7ac5f49c4c92a5c84d7d5ca4b1ee",
+    "assets": {
+      "web/hotspot.html": "d850c234e91e70c0bc9e6b2659aa248f617a56b7ad6a88cf31507cc0d1f46be0",
+      "web/dist/assets/hotspot.js": "8e26801b176a5f3a1fa52b76cf7af55337f1052f958d3fd74eb9f03a53525032",
+      "web/dist/assets/hotspot.css": "c20d3562a7589700495c00dff74057aa12cfd2061c435e626111c0561847ce35"
+    }
+  },
+  {
+    "workload": "A08",
+    "output_sha256": "6afdd87b0e2527e94147168b7897a77eff4f4a18ec827c292096c4b894b7c34b",
+    "bytes": 44378237,
+    "manifest_sha256": "2d9a00962b6db76fec3881fe8a402dc65dae0e91ab8277db56d7c647c1ba9b36",
+    "assets": {
+      "web/hotspot.html": "d850c234e91e70c0bc9e6b2659aa248f617a56b7ad6a88cf31507cc0d1f46be0",
+      "web/dist/assets/hotspot.js": "8e26801b176a5f3a1fa52b76cf7af55337f1052f958d3fd74eb9f03a53525032",
+      "web/dist/assets/hotspot.css": "c20d3562a7589700495c00dff74057aa12cfd2061c435e626111c0561847ce35"
+    }
+  }
+]
