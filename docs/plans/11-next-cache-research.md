@@ -105,7 +105,7 @@
 
 ## 本次規劃產物與狀態
 
-A 實作、96 次正式 capture、16 份詳細 replay、Web/離線驗收已完成；結果與反例見 [A 報告](../tcp-workload-matrix.md)。251 tests 與最終驗收通過；Git 發佈見 root HEAD 與遠端 ref。B/C 尚未實作。
+A 實作、96 次正式 capture、16 份詳細 replay、Web/離線驗收已完成；結果與反例見 [A 報告](../tcp-workload-matrix.md)。251 tests 與最終驗收通過；Git 發佈見 root HEAD 與遠端 ref。B 與 C1 已完成並發佈；C2 尚未實作，來源盤點見 [時間對齊草案](../design/cache-psf-time-alignment.md)。
 
 ## A 實作時的測試契約範例
 
