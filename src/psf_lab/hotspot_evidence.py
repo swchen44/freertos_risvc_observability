@@ -184,7 +184,25 @@ def analyze_hotspots(root: Path, output: Path, *, workload: str | None = None) -
     entries = catalog_inputs(root, workload=workload)
     output.mkdir(parents=True)
     records = []
-    completion = dict(schema="hotspot-analysis-v1", passed=False, reports=records)
+    completion = dict(
+        schema="hotspot-analysis-v1",
+        passed=False,
+        reports=records,
+        generator=dict(
+            commit=subprocess.check_output(
+                ["git", "rev-parse", "HEAD"], cwd=root, text=True
+            ).strip(),
+            source_sha256={
+                str(p.relative_to(root)): digest(p)
+                for p in [
+                    root / "src/psf_lab/hotspot_report.py",
+                    root / "src/psf_lab/hotspot_evidence.py",
+                    root / "src/psf_lab/memory_timing.py",
+                    root / "src/psf_lab/tcp_hotspots.py",
+                ]
+            },
+        ),
+    )
 
     def save(path, data):
         path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n")

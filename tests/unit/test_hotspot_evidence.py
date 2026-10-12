@@ -61,3 +61,42 @@ class HotspotEvidenceTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             with self.assertRaises(ValueError):
                 self.m.analyze_hotspots(ROOT, Path(tmp), workload="A02")
+
+    def test_boundary_and_missing_key_reject_with_valid_outer_digest(self):
+        from psf_lab.runner import digest
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            source = ROOT / "runs/tcp-context-v1/formal"
+            dest = root / "runs/tcp-context-v1/formal"
+            shutil.copytree(source / "A02-baseline", dest / "A02-baseline")
+            shutil.copy2(source / "completion.json", dest / "completion.json")
+            run = dest / "A02-baseline/enabled-1-1"
+            path = run / "manifest.json"
+            original = path.read_text()
+            receipt = json.loads((dest / "completion.json").read_text())
+            record = next(
+                r
+                for r in receipt["runs"]
+                if r["candidate"] == "A02-baseline" and r["mode"] == 1 and r["repeat"] == 1
+            )
+            data = json.loads(original)
+            del data["files"]["context-events.jsonl"]
+            path.write_text(json.dumps(data))
+            record["run_manifest_sha256"] = digest(path)
+            (dest / "completion.json").write_text(json.dumps(receipt))
+            with self.assertRaisesRegex(ValueError, "Missing"):
+                self.m.load_formal_context(root, "A02-baseline", 1, 1)
+            path.write_text(original)
+            record["run_manifest_sha256"] = digest(path)
+            (dest / "completion.json").write_text(json.dumps(receipt))
+            bp = dest / "A02-baseline/boundaries.json"
+            bd = json.loads(bp.read_text())
+            bd["elf_sha256"] = "0" * 64
+            bp.write_text(json.dumps(bd))
+            mp = dest / "A02-baseline/manifest.json"
+            md = json.loads(mp.read_text())
+            md["boundary_sha256"] = digest(bp)
+            mp.write_text(json.dumps(md))
+            with self.assertRaisesRegex(ValueError, "ELF mismatch"):
+                self.m.load_formal_context(root, "A02-baseline", 1, 1)
