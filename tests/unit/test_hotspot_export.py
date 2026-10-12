@@ -38,7 +38,7 @@ class HotspotExportTests(unittest.TestCase):
             )
             (root / "web/dist/assets").mkdir(parents=True)
             (root / "web/hotspot.html").write_text(
-                '<title>x</title><link rel="stylesheet" href="/assets/hotspot.css">'
+                '<title>x</title><link rel="stylesheet" href="/assets/hotspot.css" />'
                 '<script id="hotspot-data"></script>'
                 '<script src="/assets/hotspot.js"></script>'
             )

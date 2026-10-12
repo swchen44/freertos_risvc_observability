@@ -14,7 +14,10 @@ def export_hotspot_html(root: Path, workload: str, output: Path) -> dict:
     template = root / "web/hotspot.html"
     js = root / "web/dist/assets/hotspot.js"
     css = root / "web/dist/assets/hotspot.css"
-    html = template.read_text()
+    html = template.read_text().replace(
+        '<link rel="stylesheet" href="/assets/hotspot.css" />',
+        '<link rel="stylesheet" href="/assets/hotspot.css">',
+    )
     replacements = {
         '<script id="hotspot-data"></script>': '<script id="hotspot-data" type="application/json">'
         + embed_json(data)
