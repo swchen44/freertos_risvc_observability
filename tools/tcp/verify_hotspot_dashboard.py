@@ -163,6 +163,9 @@ def verify(mode, output, html=None):
         assert {r["id"]: r["value"] for r in rows} == {r["id"]: r["value"] for r in top}
         click('#functions-table .tabulator-row .tabulator-cell[tabulator-field="name"]')
         assert ev('document.querySelectorAll("#pc-table .tabulator-row").length') > 0
+        assert (
+            ev('document.querySelectorAll("#pc-table .tabulator-col[tabulator-field]").length') == 3
+        ), "PC table must not imply cross-binary pairing"
         click('#pc-table .tabulator-row .tabulator-cell[tabulator-field="pc_hex"]')
         assert "elf_sha256" in ev('document.querySelector("#source-evidence").textContent')
         shot("04-pc-source")
