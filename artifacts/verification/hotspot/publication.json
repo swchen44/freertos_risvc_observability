@@ -1,0 +1,20 @@
+{
+  "status": "verified_payload_snapshot",
+  "receipts": {
+    "poc": {
+      "branch": "poc-history",
+      "local_commit": "178597a539c40e2a27209a846a4ffd3579748ff3",
+      "push_exit": 0,
+      "verified": true,
+      "remote_commit": "178597a539c40e2a27209a846a4ffd3579748ff3"
+    },
+    "root": {
+      "branch": "main",
+      "local_commit": "2aaf19cd1589970c90f71ee426ba30cf80c5fbce",
+      "push_exit": 0,
+      "verified": true,
+      "remote_commit": "2aaf19cd1589970c90f71ee426ba30cf80c5fbce"
+    }
+  },
+  "note": "This receipt records verified payload commits; subsequent receipt-only commits are verified in the final delivery message."
+}

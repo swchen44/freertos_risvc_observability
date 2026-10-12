@@ -14,3 +14,7 @@ Reviewer: c1_whole_review。範圍：ff0f953 至 1baf3c2 的核心程式、後�
 - 過期 fetch 的成功有 generation guard，失敗未設相同 guard；快速切 workload 若舊請求延遲失敗，可清除新頁面並顯示載入錯誤。重新選 workload 可恢復；未發現把不同 run 數值合併的情況。
 
 UI / 全回歸 / 正式報告數量以 completion.json 為準，審查不代替測試。
+
+## 最終畫面檢查補修
+
+PC 表誤帶函式配對欄位，已用 agent-browser 新增三欄斷言先重現 RED，再移除不適用欄位。重新建置全部 8 份 HTML，Web／offline 重新通過；失敗保存 pilot/pc-columns-red，最終證據為 ui/server 與 ui/offline。

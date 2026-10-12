@@ -221,7 +221,7 @@ self.assertEqual(client.get('/api/hotspots/A02').status_code, 503)
 
 - [x] 先以 A02 pilot 測 JSON/gzip/HTML bytes、facts列數、頁面ready時間、首次filter時間。browser版本、OS、commit、量測方法與3次原始值保留，不預填結果或通用效能承諾。ready超過既有25s browser wait則pilot fail，不截斷資料；需調整設計再驗。
 - [x] pilot通過後新目錄 `artifacts/verification/hotspot/formal` 產生40份完整報告；產生8個workload bundles與8個offline HTML到 `artifacts/offline/hotspot/`。保存catalog、hash manifest、所有中間檔與完成收據。每份守恆及來源檢查都通過才可登錄。
-- [x] 新 `tools/tcp/verify_hotspot_dashboard.py` 使用現有 verify_workload_dashboard.py 的curl／agent-browser模式，SESSION/OUT/SHOTS獨立；不得覆寫A/B證據。API正常/unknown與JS/CSS/HTML routes以curl保存status/bytes/hash。
+- [x] 新 `tools/tcp/verify_hotspot_dashboard.py` 使用現有 verify_workload_dashboard.py 的curl／agent-browser模式，SESSION/OUT/SHOTS獨立；不得覆寫A/B證據。API正常/unknown與JS/CSS/HTML routes以curl保存status/bytes；asset 與 bundle hashes 另存匯出／manifest 收據。
 - [x] agent-browser server流程：A02 baseline/pbuf → B2 injection repeat1 → task filter → function搜尋 → metric排序 → topN切換 → hover →欄寬與欄序變更 →完整CSV比對 → function/PC/source證據 →A08 →B1 unknown →空結果 →手機。排序/CSV以同一資料fixture的預期值比對，不能只看檔案存在。
 - [x] 關閉Python Server，curl確認無連線；agent-browser離線模式與HTTP/HTTPS abort routes打開file:// HTML，重跑相同操作。assert resource list無http(s)、console errors為空。每mode至少保存總覽、delta、hover、context篩選、PC來源、手機6張。
 - [x] 既有Playwright regression與A agent-browser回歸依序跑，歷史tracked產物先備份，C1保存新結果後復原；全部code先commit，再執行完整Python suite、Ruff、Node。保存成功／失敗log與實際測試數。
@@ -239,7 +239,7 @@ result = verify_docs(Path.cwd())
 assert result['ok'], result['broken_links']
 ```
 
-- [ ] `git diff --check`；核對A/B immutable hashes與source pin未變。POC commit/push `HEAD:poc-history`、root README/gitlink commit/push `main`；capture transport輸出，僅回報分類與SHA，不輸出token。用ls-remote核對，兩個working tree clean。
+- [x] `git diff --check`；核對A/B immutable hashes與source pin未變。POC commit/push `HEAD:poc-history`、root README/gitlink commit/push `main`；capture transport輸出，僅回報分類與SHA，不輸出token。用ls-remote核對，兩個working tree clean。
 
 ## 計畫自我審閱
 

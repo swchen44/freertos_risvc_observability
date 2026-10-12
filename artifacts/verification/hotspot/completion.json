@@ -1,7 +1,7 @@
 {
   "schema": "hotspot-completion-v1",
-  "passed": false,
-  "status": "validated_publication_pending",
+  "passed": true,
+  "status": "complete",
   "formal_reports": 40,
   "b1_reports": 16,
   "b2_reports": 24,
@@ -23,7 +23,10 @@
     "Delayed stale fetch failure can clear newer UI; selecting workload again recovers"
   ],
   "publication": {
-    "status": "pending"
+    "status": "verified",
+    "receipt": "publication.json",
+    "poc_payload_commit": "178597a539c40e2a27209a846a4ffd3579748ff3",
+    "root_payload_commit": "2aaf19cd1589970c90f71ee426ba30cf80c5fbce"
   },
   "ui": {
     "server": {
