@@ -1,4 +1,8 @@
 {
+  "checkpoint.json": {
+    "bytes": 7183,
+    "sha256": "ab5e04efa492ef6673858231c3a78583d6950f59e585af1b0a5e8017e92cf2b9"
+  },
   "history/c2a-capacity-bounded.py": {
     "bytes": 3194,
     "sha256": "2b3445c44ca77e3cf3a257016deb3b1f8019e2051a565f18bcf257eb1c29aa56"
@@ -54,6 +58,10 @@
   "restore-check.json": {
     "bytes": 153,
     "sha256": "7b93648d4eec9987235747adec98e886c69f81226232be12af1f653347a36823"
+  },
+  "review.md": {
+    "bytes": 1628,
+    "sha256": "092bb175249a38f1a8eedc748939e7cd95c5183d9a944267b603864f99514002"
   },
   "tests/c2a-api-green.log": {
     "bytes": 516,
@@ -114,6 +122,10 @@
   "tests/c2a-capacity-viewport-server-3.log": {
     "bytes": 19796,
     "sha256": "e237e876eb859d49110cb41bd744bda6d60738cc93a1337db62a4357d67adc9c"
+  },
+  "tests/c2a-checkpoint-final-python.log": {
+    "bytes": 807,
+    "sha256": "e630e533506703b28f31dc905b97c6af128bc04796c566485f63d88daa0938bd"
   },
   "tests/c2a-checkpoint-node.log": {
     "bytes": 1709,
