@@ -149,6 +149,39 @@ def create_app(
     def timing_comparison():
         return load_dashboard(ROOT)
 
+    @app.get("/api/event-windows")
+    def event_catalog():
+        from psf_lab.event_window import load_event_catalog
+
+        try:
+            return load_event_catalog(ROOT)
+        except (ValueError, OSError):
+            return JSONResponse({"error": "Invalid event evidence"}, status_code=503)
+
+    @app.get("/api/event-windows/{run_id}")
+    def event_manifest(run_id: str):
+        from psf_lab.event_window import UnknownEventRun, load_event_manifest
+
+        try:
+            return load_event_manifest(ROOT, run_id)
+        except UnknownEventRun:
+            return JSONResponse({"error": "Unknown run"}, status_code=404)
+        except (ValueError, OSError):
+            return JSONResponse({"error": "Invalid event evidence"}, status_code=503)
+
+    @app.get("/api/event-windows/{run_id}/chunks/{chunk_id}")
+    def event_chunk(run_id: str, chunk_id: str):
+        from psf_lab.event_window import UnknownEventRun, load_event_chunk
+
+        try:
+            return Response(
+                load_event_chunk(ROOT, run_id, chunk_id), media_type="application/octet-stream"
+            )
+        except UnknownEventRun:
+            return JSONResponse({"error": "Unknown chunk"}, status_code=404)
+        except (ValueError, OSError):
+            return JSONResponse({"error": "Invalid event evidence"}, status_code=503)
+
     @app.get("/api/hotspots")
     def hotspot_catalog():
         from psf_lab.hotspot_dashboard import load_hotspot_catalog

@@ -274,15 +274,19 @@ def build_event_run(root: Path, entry: dict, output: Path):
     return manifest
 
 
+class UnknownEventRun(LookupError):
+    """Requested identifier is absent from a structurally valid catalog."""
+
+
 BASE = Path("artifacts/verification/event-window/formal")
 
 
 def load_event_manifest(root: Path, run_id: str):
     try:
-        catalog = json.loads((root / BASE / "catalog.json").read_bytes())
+        catalog = load_event_catalog(root)
         matches = [r for r in catalog["runs"] if r["run_id"] == run_id]
         if not matches:
-            raise KeyError(run_id)
+            raise UnknownEventRun(run_id)
         if (
             not re.fullmatch(r"A0[1-8]-(baseline|pbuf)-b[12]-[01]-[1-3]", run_id)
             or len(matches) != 1
@@ -296,7 +300,7 @@ def load_event_manifest(root: Path, run_id: str):
         if manifest["identity"]["run_id"] != run_id:
             raise ValueError("Identity mismatch")
         return manifest
-    except (OSError, TypeError, json.JSONDecodeError) as exc:
+    except (KeyError, OSError, TypeError, json.JSONDecodeError) as exc:
         raise ValueError("Invalid event catalog") from exc
 
 
@@ -304,7 +308,30 @@ def load_event_chunk(root: Path, run_id: str, chunk_id: str):
     manifest = load_event_manifest(root, run_id)
     matches = [c for c in manifest["chunks"] if c["id"] == chunk_id]
     if not matches:
-        raise KeyError(chunk_id)
+        raise UnknownEventRun(chunk_id)
     payload = (root / BASE / run_id / (chunk_id + ".json.gz")).read_bytes()
     decode_event_chunk(payload, matches[0], manifest)
     return payload
+
+
+def load_event_catalog(root: Path):
+    try:
+        catalog = json.loads((root / BASE / "catalog.json").read_bytes())
+        if catalog["schema"] != "event-window-catalog-v1" or not catalog["runs"]:
+            raise ValueError("Invalid catalog")
+        seen = set()
+        for record in catalog["runs"]:
+            run_id = record["run_id"]
+            if (
+                not re.fullmatch(r"A0[1-8]-(baseline|pbuf)-b[12]-[01]-[1-3]", run_id)
+                or run_id in seen
+            ):
+                raise ValueError("Invalid or duplicate run identity")
+            if record["workload"] != run_id[:3] or not re.fullmatch(
+                r"[a-f0-9]{64}", record["sha256"]
+            ):
+                raise ValueError("Invalid run digest")
+            seen.add(run_id)
+        return catalog
+    except (KeyError, TypeError, OSError, json.JSONDecodeError) as exc:
+        raise ValueError("Malformed catalog") from exc

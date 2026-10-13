@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>C2a · 事件區間分析</title>
+    <link rel="stylesheet" href="/assets/event-window.css" />
+  </head>
+  <body>
+    <header>
+      <div class="eyebrow">FREERTOS / RV32 / LWIP · C2a</div>
+      <h1>成本在哪一段發生？</h1>
+      <p>選取事件區間，追蹤 Task、函式與 Cache 成本。</p>
+      <span id="mode" class="badge">本機 Web</span>
+    </header>
+    <main>
+      <section class="controls" aria-label="篩選條件">
+        <label>Workload<select id="workload"></select></label
+        ><label class="wide">Run<select id="run"></select></label
+        ><label>Context<select id="context"></select></label
+        ><label
+          >函式搜尋<input id="function" placeholder="例如 tcp_input"
+        /></label>
+        <label
+          >起點（含）<input id="start" inputmode="numeric" value="0" /></label
+        ><label>終點（不含）<input id="end" inputmode="numeric" /></label
+        ><label
+          >指標<select id="metric">
+            <option value="memory_cycles">Memory cycles</option>
+            <option value="instructions">Self instructions</option>
+            <option value="accounted_model_ns">Accounted model ns</option>
+            <option value="l1i.misses">L1I misses</option>
+            <option value="l1d.misses">L1D misses</option>
+            <option value="l2.misses">L2 misses</option>
+          </select></label
+        >
+        <div class="actions">
+          <button id="apply">分析區間</button
+          ><button id="reset" class="secondary">完整範圍</button
+          ><button id="cancel" class="secondary">取消</button>
+        </div>
+      </section>
+      <p id="status" role="status">準備資料…</p>
+      <progress id="progress" max="1" value="0"></progress>
+      <aside>
+        L1I 8 KiB / L1D 8 KiB / L2 32 KiB · 模型相對成本<br /><strong
+          >Event index 是存取順序；與下方 PSF 時間軸尚未對齊。</strong
+        >
+        Cache 狀態沿完整 capture 持續。
+      </aside>
+      <div class="stats">
+        <article>
+          <small>完整 RUN 成本</small><strong id="run-cost">—</strong>
+        </article>
+        <article>
+          <small>區間篩選成本</small><strong id="selected-cost">—</strong>
+        </article>
+        <article>
+          <small>篩選事件數</small><strong id="event-count">—</strong>
+        </article>
+        <article><small>橫軸語意</small><strong>event index</strong></article>
+      </div>
+      <section class="panel">
+        <h2>事件區間成本</h2>
+        <p>
+          拖曳下方滑桿或在圖內縮放；精確起訖值同步顯示。最多 512 桶，CSV
+          保留完整事件。
+        </p>
+        <div id="event-chart" class="chart"></div>
+      </section>
+      <div class="grid">
+        <section class="panel">
+          <h2>區間函式排名</h2>
+          <p>圖表前 20 名；Other 保留其餘成本。</p>
+          <div id="rank-chart" class="chart"></div>
+        </section>
+        <section class="panel">
+          <h2>記憶體服務成本</h2>
+          <p>五個成本分量，單位 cycles。</p>
+          <div id="cost-chart" class="chart"></div>
+        </section>
+      </div>
+      <section class="panel">
+        <div class="section-head">
+          <h2>完整篩選函式表</h2>
+          <button id="functions-csv">匯出函式 CSV</button>
+        </div>
+        <p>可排序、拖曳欄寬與欄序；分母採完整 run 與完整篩選結果。</p>
+        <div id="function-table"></div>
+      </section>
+      <section class="panel">
+        <div class="section-head">
+          <h2>逐事件明細</h2>
+          <button id="events-csv">匯出完整事件 CSV</button>
+        </div>
+        <p>
+          每頁最多 200 列。點選事件查看該 ELF 的 PC／來源；不同 binary
+          不直接相減。
+        </p>
+        <div id="event-table"></div>
+        <button id="next-page" class="secondary">下一頁</button>
+        <pre id="source">點選事件，查看 PC 來源。</pre>
+      </section>
+      <section class="panel">
+        <h2>PSF：獨立時鐘視圖</h2>
+        <p id="psf-quality"></p>
+        <div id="psf-chart" class="chart small"></div>
+        <div id="psf-table"></div>
+      </section>
+      <details>
+        <summary>Run identity、來源與 SHA-256</summary>
+        <pre id="evidence"></pre>
+      </details>
+      <footer>
+        <a href="hotspot.html">回到 C1 函式比較（本機 Web）</a> ·
+        離線使用者可另開 C1 HTML。時間映射留待 C2b 驗證。
+      </footer>
+    </main>
+    <script id="event-window-data"></script>
+    <script src="/assets/event-window.js"></script>
+  </body>
+</html>

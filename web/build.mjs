@@ -1,5 +1,5 @@
 import { build } from "esbuild";
-import { mkdir, copyFile } from "node:fs/promises";
+import { mkdir, copyFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 const root = path.dirname(fileURLToPath(import.meta.url));
@@ -32,3 +32,8 @@ await copyFile(path.join(root,'timing.html'),path.join(root,'dist/timing.html'))
 await build({entryPoints:[path.join(root,'src/hotspot.js')],bundle:true,format:'iife',minify:true,
  outfile:path.join(root,'dist/assets/hotspot.js'),target:'es2022',legalComments:'eof'});
 await copyFile(path.join(root,'hotspot.html'),path.join(root,'dist/hotspot.html'));
+
+const worker = await build({entryPoints:[path.join(root,'src/event-window-worker.js')],bundle:true,format:'iife',minify:true,write:false,target:'es2022'});
+await writeFile(path.join(root,'dist/assets/event-window-worker.txt'),worker.outputFiles[0].contents);
+await build({entryPoints:[path.join(root,'src/event-window.js')],bundle:true,format:'iife',minify:true,outfile:path.join(root,'dist/assets/event-window.js'),loader:{'.txt':'text'},target:'es2022',legalComments:'eof'});
+await copyFile(path.join(root,'event-window.html'),path.join(root,'dist/event-window.html'));
