@@ -157,3 +157,27 @@ test("CSV covers every selected row, independent of event pagination", async () 
   assert.equal(r.next_event_offset, "2");
   assert.equal(pieces.join("").trim().split("\n").length, 4);
 });
+test("manifest dictionaries reject wrong types and duplicate identities", async () => {
+  const { m, manifest } = await fixture();
+  for (const patch of [
+    { contexts: "unknown" },
+    { contexts: [null] },
+    { contexts: ["task:A", "task:A"] },
+    { owners: [null] },
+    { owners: [{}] },
+    { owners: [...manifest.owners, ...manifest.owners] },
+    { owners: [{ function_id: "f", role: 3 }] },
+    { chunks: {} },
+  ])
+    assert.throws(
+      () => m.validateManifest({ ...manifest, ...patch }),
+      /manifest|dictionary/i,
+    );
+});
+test("CSV guards spreadsheet control prefixes and preserves quotes", async () => {
+  const { m } = await fixture();
+  assert.equal(
+    m.csvLine(["\t=1+1", "\r=1+1", 'a"b']),
+    '"\'\t=1+1","\'\r=1+1","a""b"\r\n',
+  );
+});

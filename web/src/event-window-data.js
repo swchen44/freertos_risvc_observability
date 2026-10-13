@@ -91,10 +91,25 @@ export async function digest(data) {
 }
 export function validateManifest(m) {
   if (
+    !m ||
     m.schema !== "event-window-run-v1" ||
     !equal(m.columns, COLUMNS) ||
-    !m.contexts?.length ||
-    !m.owners?.length
+    !Array.isArray(m.contexts) ||
+    !m.contexts.length ||
+    m.contexts.some((c) => typeof c !== "string" || !c) ||
+    new Set(m.contexts).size !== m.contexts.length ||
+    !Array.isArray(m.owners) ||
+    !m.owners.length ||
+    m.owners.some(
+      (o) =>
+        !o ||
+        typeof o.function_id !== "string" ||
+        !o.function_id ||
+        typeof o.role !== "string" ||
+        (o.function != null && typeof o.function !== "string"),
+    ) ||
+    new Set(m.owners.map((o) => o.function_id)).size !== m.owners.length ||
+    !Array.isArray(m.chunks)
   )
     throw Error("Invalid manifest");
   let end = 0n;
@@ -191,7 +206,7 @@ export async function decodeChunk(bytes, c, m) {
 const cell = (v) =>
   '"' +
   String(v ?? "")
-    .replace(/^[=+@-]/, "'$&")
+    .replace(/^[=+@\-\t\r\n]/, "'$&")
     .replaceAll('"', '""') +
   '"';
 export const csvLine = (items) => items.map(cell).join(",") + "\r\n";

@@ -196,6 +196,7 @@ def analyze_hotspots(root: Path, output: Path, *, workload: str | None = None) -
                 str(p.relative_to(root)): digest(p)
                 for p in [
                     root / "src/psf_lab/hotspot_report.py",
+                    root / "src/psf_lab/hotspot_events.py",
                     root / "src/psf_lab/hotspot_evidence.py",
                     root / "src/psf_lab/memory_timing.py",
                     root / "src/psf_lab/tcp_hotspots.py",

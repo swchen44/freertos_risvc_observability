@@ -65,6 +65,7 @@ def verify(mode, output, html=None, executable=None, capacity_only=False, force_
     samples = []
     tracked = set()
     done = threading.Event()
+    stage = "launch"
     receipt = {
         "passed": False,
         "mode": mode,
@@ -112,7 +113,10 @@ def verify(mode, output, html=None, executable=None, capacity_only=False, force_
         wait()
 
     def shot(name):
-        ab("screenshot", "--full", str(shots / (name + ".png")))
+        nonlocal stage
+        stage = "screenshot:" + name
+        ab("screenshot", str(shots / (name + ".png")))
+        stage = "interaction"
 
     def monitor():
         while not done.is_set():
@@ -135,6 +139,7 @@ def verify(mode, output, html=None, executable=None, capacity_only=False, force_
             samples.append(
                 dict(
                     seconds=time.monotonic(),
+                    stage=stage,
                     rss_kib=sum(rows[p][1] for p in tracked if p in rows),
                     pids=sorted(p for p in tracked if p in rows),
                 )
@@ -210,6 +215,7 @@ def verify(mode, output, html=None, executable=None, capacity_only=False, force_
         assert r["totals"]["memory_cycles"] == "1088094"
         assert ev('document.querySelectorAll("svg").length') == 4
         shot("01-overview")
+        stage = "full-run-filter"
         start = time.monotonic()
         click("#apply")
         wait()

@@ -68,3 +68,21 @@ class EventWindowTests(unittest.TestCase):
             bad["chunks"] = chunks
             with self.assertRaises(ValueError):
                 self.m.validate_event_manifest(bad)
+
+    def test_malformed_dictionary_and_deflate_are_value_errors(self):
+        result = self.build()
+        for key, bad in [
+            ("contexts", "unknown"),
+            ("contexts", [None]),
+            ("owners", [None]),
+            ("owners", [{}]),
+        ]:
+            altered = dict(result, **{key: bad})
+            with self.subTest(key=key, bad=bad), self.assertRaises(ValueError):
+                self.m.validate_event_manifest(altered)
+        chunk = result["chunks"][0]
+        data = bytearray((self.output / (chunk["id"] + ".json.gz")).read_bytes())
+        data[10] = 0xFF
+        desc = dict(chunk, gzip_sha256=self.m.sha(data))
+        with self.assertRaises(ValueError):
+            self.m.decode_event_chunk(bytes(data), desc, result)

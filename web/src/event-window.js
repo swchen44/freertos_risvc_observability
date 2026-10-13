@@ -128,6 +128,7 @@ const json = async (path) => {
 };
 function stop() {
   request++;
+  selection++;
   if (worker) worker.terminate();
   worker = null;
   if (url) URL.revokeObjectURL(url);
@@ -147,11 +148,11 @@ async function clear() {
   result = null;
   window.eventWindowResult = null;
   nextOffset = null;
-  await table.clearData();
-  await events.clearData();
+  const clearing = Promise.all([table.clearData(), events.clearData()]);
   text("source", "篩選已變更，請重新選取事件。");
   for (const k of ["event", "rank", "cost"]) charts[k].clear();
   for (const id of ["run-cost", "selected-cost", "event-count"]) text(id, "—");
+  await clearing;
 }
 function plotPSF() {
   const p = manifest.psf;
@@ -197,8 +198,13 @@ function plotPSF() {
   );
 }
 async function loadRun() {
-  const token = ++selection;
   stop();
+  const token = selection;
+  manifest = null;
+  charts.psf.clear();
+  psfTable.clearData();
+  text("psf-quality", "正在載入 Run；尚無可用時間視圖。");
+  text("evidence", "");
   await clear();
   text("status", "驗證 manifest…");
   try {
@@ -234,10 +240,15 @@ function chooseWorkload() {
   );
   loadRun();
 }
-function query(offset = "0", exportEvents = false) {
+async function query(offset = "0", exportEvents = false) {
+  if (!manifest) {
+    text("status", "請先完成 Run 載入；按分析區間可重新載入。");
+    return;
+  }
   stop();
-  clear();
   const token = request;
+  await clear();
+  if (token !== request) return;
   currentQuery = {
     request_id: token,
     run_id: manifest.identity.run_id,
@@ -303,7 +314,8 @@ function query(offset = "0", exportEvents = false) {
       text("status", `驗證區塊 ${data.done} / ${data.total}`);
       $("progress").value = data.done / data.total;
     }
-    if (data.type === "csv") parts.push(data.text);
+    if (data.type === "csv")
+      parts.push(new Blob([data.text], { type: "text/csv;charset=utf-8" }));
     if (data.type === "error") {
       text("status", "分析失敗：" + data.error);
       active.terminate();
@@ -314,7 +326,7 @@ function query(offset = "0", exportEvents = false) {
     if (data.type === "result") {
       result = data.result;
       window.eventWindowResult = result;
-      await render();
+      await render(data.result, token);
       if (token !== request) return;
       if (exportEvents)
         download(
@@ -341,11 +353,13 @@ function query(offset = "0", exportEvents = false) {
   };
   active.postMessage({ type: "query", manifest, query: currentQuery });
 }
-async function render() {
-  const r = result;
+async function render(r, token) {
+  if (token !== request) return;
   nextOffset = r.next_event_offset;
   await table.replaceData(r.function_rows);
+  if (token !== request) return;
   await events.replaceData(r.event_page);
+  if (token !== request) return;
   text("run-cost", metricValue(r.run_totals, r.metric));
   text("selected-cost", metricValue(r.totals, r.metric));
   text("event-count", r.event_count);
@@ -483,13 +497,17 @@ events.on("rowClick", (_, row) => {
     ),
   );
 });
-$("apply").onclick = () => query();
+$("apply").onclick = () => (manifest ? query() : loadRun());
 $("cancel").onclick = () => {
   stop();
   clear();
   text("status", "已取消；可重新分析。");
 };
 $("reset").onclick = () => {
+  if (!manifest) {
+    loadRun();
+    return;
+  }
   $("start").value = "0";
   $("end").value = manifest.events;
   query();

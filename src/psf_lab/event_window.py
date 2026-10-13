@@ -6,6 +6,7 @@ import hashlib
 import io
 import json
 import re
+import zlib
 from pathlib import Path
 
 from psf_lab.cost_attribution import COST_KEYS
@@ -86,8 +87,33 @@ def validate_event_manifest(manifest):
             raise ValueError("Unsupported event schema")
         end = 0
         totals = empty_counts()
-        if not manifest["owners"] or not manifest["contexts"]:
-            raise ValueError("Missing dictionaries")
+        if not isinstance(manifest["owners"], list) or not manifest["owners"]:
+            raise ValueError("Missing owner dictionary")
+        contexts = manifest["contexts"]
+        if (
+            not isinstance(contexts, list)
+            or not contexts
+            or any(not isinstance(c, str) or not c for c in contexts)
+        ):
+            raise ValueError("Invalid contexts")
+        if len(set(contexts)) != len(contexts):
+            raise ValueError("Duplicate contexts")
+        ids = set()
+        for owner in manifest["owners"]:
+            if (
+                not isinstance(owner, dict)
+                or not isinstance(owner.get("function_id"), str)
+                or not owner["function_id"]
+                or not isinstance(owner.get("role"), str)
+            ):
+                raise ValueError("Invalid owner")
+            if owner["function_id"] in ids:
+                raise ValueError("Duplicate owner")
+            ids.add(owner["function_id"])
+            if owner.get("function") is not None and not isinstance(owner["function"], str):
+                raise ValueError("Invalid function label")
+        if not isinstance(manifest["chunks"], list):
+            raise ValueError("Invalid chunk directory")
         for index, chunk in enumerate(manifest["chunks"]):
             start, stop = uint(chunk["start"]), uint(chunk["end"])
             if chunk["id"] != f"{index:06d}" or start != end or not 0 < stop - start <= CHUNK_ROWS:
@@ -145,7 +171,7 @@ def decode_event_chunk(payload, descriptor, manifest):
         if wire(totals) != descriptor["totals"]:
             raise ValueError("Chunk totals disagree")
         return data
-    except (KeyError, TypeError, IndexError, OSError, EOFError) as exc:
+    except (KeyError, TypeError, IndexError, OSError, EOFError, zlib.error) as exc:
         raise ValueError("Malformed event chunk") from exc
 
 
@@ -261,7 +287,7 @@ def build_event_run(root: Path, entry: dict, output: Path):
         profile=source["profile"],
         evidence=source["evidence"],
         context_quality=saved["context_quality"],
-        source_lines=json.loads((old.parent / "source-lines.json").read_text()),
+        source_lines=saved["source_lines"],
         psf=dict(
             clock=trace["clock"],
             events=trace["events"],
