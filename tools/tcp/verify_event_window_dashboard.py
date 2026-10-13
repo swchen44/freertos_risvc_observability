@@ -77,7 +77,8 @@ def verify(mode, output, html=None, executable=None, capacity_only=False, force_
             "--executable-path",
             str(executable),
             "--args",
-            "--disable-gpu,--disable-software-rasterizer,--renderer-process-limit=1",
+            "--disable-gpu,--disable-software-rasterizer,--renderer-process-limit=1,"
+            "--js-flags=--max-old-space-size=64",
         ]
 
     def ab(*args):
