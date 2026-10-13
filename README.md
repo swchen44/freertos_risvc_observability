@@ -15,7 +15,7 @@ C1 已建立 Task／IRQ × role × function × PC 聯合統計、函式差異與
 
 ![C1 離線 PC 與來源](artifacts/verification/hotspot/ui/offline/screenshots/04-pc-source.png)
 
-> 2026-10-14：使用者已核准 C2a RSS 驗收上限改為 **640 MiB**。下方600／596 MiB與512 MiB失敗說明為歷史checkpoint；新門檻驗收另存紀錄。
+> 2026-10-14：使用者已核准 C2a RSS 驗收上限改為 **640 MiB**。下方600／596 MiB與512 MiB失敗說明為歷史checkpoint；新門檻RSS重驗均通過；Web時間條件仍有失敗，整體C2a尚未全部驗收。
 
 ## C2a 實作 checkpoint · 2026-10-13
 

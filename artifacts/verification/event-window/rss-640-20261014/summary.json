@@ -1,0 +1,46 @@
+{
+  "rss_limit_mib": 640,
+  "user_authorized": "2026-10-14",
+  "rss_gate_passed": true,
+  "all_acceptance_conditions_passed": false,
+  "original_512_receipts_unchanged": true,
+  "runs": [
+    {
+      "run": "server-full",
+      "rss_mib": 432.078125,
+      "ready_seconds": 25.825967124997987,
+      "filter_seconds": 4.744792375000543,
+      "rss_passed": true,
+      "passed": false,
+      "interactions_passed": true,
+      "scope": "full-interactions",
+      "close_exit": 0,
+      "remaining_browser_pids": []
+    },
+    {
+      "run": "server-recheck",
+      "rss_mib": 377.171875,
+      "ready_seconds": 22.87335512500431,
+      "filter_seconds": 5.930223458999535,
+      "rss_passed": true,
+      "passed": false,
+      "interactions_passed": true,
+      "scope": "capacity-only",
+      "close_exit": 0,
+      "remaining_browser_pids": []
+    },
+    {
+      "run": "offline-full",
+      "rss_mib": 545.046875,
+      "ready_seconds": 5.816952167006093,
+      "filter_seconds": 4.262871625003754,
+      "rss_passed": true,
+      "passed": true,
+      "interactions_passed": true,
+      "scope": "full-interactions",
+      "close_exit": 0,
+      "remaining_browser_pids": []
+    }
+  ],
+  "formal40_generated": false
+}

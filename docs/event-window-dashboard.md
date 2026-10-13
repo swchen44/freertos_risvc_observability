@@ -1,8 +1,14 @@
 # C2a：用事件區間找出 Cache 成本
 
-**目前狀態：實作與 A02 pilot 已存在，整體驗收未完成。2026-10-14 使用者已將 RSS 門檻調整為 640 MiB，新門檻驗收待重跑；尚未擴大正式 40 runs，也未產生正式 8 份 HTML。**
+**目前狀態：實作與 A02 pilot 已存在，整體驗收未完成。2026-10-14 使用者已將 RSS 門檻調整為 640 MiB，Web／offline RSS重驗均通過；Web時間條件仍有失敗紀錄；尚未擴大正式 40 runs，也未產生正式 8 份 HTML。**
 
 這份文件是進度與復原入口。已發布的 A、B、C1 成果保持原樣；C2b clock-anchor pilot 尚未開始。
+
+## 2026-10-14：RSS 上限改為640 MiB
+
+依使用者明確指示完成調整，[重驗收據與截圖](../artifacts/verification/event-window/rss-640-20261014/)另存。Web完整操作RSS432.08 MiB、離線545.05 MiB，皆符合新上限；兩模式功能通過，瀏覽器皆close且無殘留PID。
+
+離線整體驗收通過。Web首次載入25.83s超過25s；重測載入22.87s通過，但filter5.93s超過5s。因此RSS問題已解除，整體C2a仍未全部驗收。這次只改驗收條件，沒有修改Dashboard的記憶體實作；不把跨次RSS差異宣稱為最佳化成果。
 
 ## 可以怎麼用
 
@@ -34,7 +40,7 @@ flowchart LR
 - 測試用 Headless Chrome 153，V8 old-space 64 MiB，停用 GPU 與 software rasterizer。此設定不是一般使用者瀏覽器的保證。
 - RSS 是該 agent-browser session 的 Chrome 程序子樹加總，每 0.2 秒採樣，可能漏掉瞬間峰值；共享頁面可能在程序間重複計入。Page heap 是 Chrome 回報值，不等於整個瀏覽器用量。
 
-## 已取得的證據
+## 2026-10-13 checkpoint 證據（原512 MiB門檻）
 
 | 項目 | 實測／狀態 |
 |---|---|
@@ -93,7 +99,7 @@ PYTHONPATH=src .venv/bin/python tools/tcp/export_event_window_html.py \
 
 ## 尚待完成
 
-1. 已核准改為640 MiB；重跑新門檻驗收，舊512 MiB收據不追溯改寫。
+1. RSS已依640 MiB重驗通過；Web首次ready25.83s超25s、重測filter5.93s超5s。後續需處理時間波動，再完成整體容量驗收。
 2. Web／offline 完整操作與專項生命週期已驗證；容量通過後仍需重跑最終候選版本，不能把本 checkpoint 當正式 release。
 3. 補齊計畫未勾選的負向 fixtures，例如 bool／非 canonical wire 數字、空集合 CSV、缺少 asset／重複 template anchor；已完成的子項不代表整條複合 checklist 都完成。
 4. 容量與 pilot 全部通過後才生成正式 40 runs／8 HTML，並補 A08 最大 run 驗收。

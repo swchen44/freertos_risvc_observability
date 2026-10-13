@@ -16,7 +16,7 @@
 
 目前進度：Task1 完成；Tasks2–5 程式與 pilot 已實作，以下複合條件尚未全部勾選；Task6 完整資料／最終回歸／容量 pending。核准計畫的未勾選項不因單一 pilot 通過而自動完成。
 
-2026-10-14 使用者明確核准：RSS 上限由512改為 **640 MiB**。只調整此項，其他容量條件維持；舊512MiB失敗收據保持原樣，新測試明列 `rss_limit_mib: 640`。
+2026-10-14 使用者明確核准：RSS 上限由512改為 **640 MiB**。只調整此項，其他容量條件維持；舊512MiB失敗收據保持原樣，新測試明列 `rss_limit_mib: 640`。2026-10-14 Web／offline RSS均通過；Web時間條件仍有失敗。[重驗紀錄](../../artifacts/verification/event-window/rss-640-20261014/)，正式批次保持未擴大。
 
 ## Global Constraints
 
