@@ -1,5 +1,17 @@
 # FreeRTOS／RISC-V Observability：研究與可重跑 POC
 
+## C2a 實作 checkpoint · 2026-10-13
+
+事件區間 Dashboard 已實作，**容量驗收未通過**。Web／offline 的 hover、拖曳、篩選、表格及完整430,324列 CSV 均取得驗證；完整操作RSS約600／596MiB，超過原定512MiB。正式40份／8HTML未生成。
+
+- [操作、架構、TODO與還原說明](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/event-window-dashboard.md)
+- [全部中間檔與pilot還原包](https://github.com/swchen44/freertos_risvc_observability/tree/poc-history/artifacts/verification/event-window/checkpoint-20261013)
+- [POC資料夾與執行入口](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/README.md)
+
+![C2a離線hover](https://raw.githubusercontent.com/swchen44/freertos_risvc_observability/poc-history/artifacts/verification/event-window/checkpoint-20261013/ui/c2a-e2e-reviewed-offline-3/screenshots/07-hover.png)
+
+此checkpoint保留未完成狀態；下方C1的passed驗收不能套用到C2a。
+
 ## C1：成本與熱點 Dashboard · 2026-10-13
 
 C1 已建立 Task／IRQ × role × function × PC 聯合統計、函式差異與 3C misses。正式 40 份報告完成守恆核對，Web／離線各 6 張截圖、curl 與 agent-browser 驗收通過。發佈狀態見 [completion](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/artifacts/verification/hotspot/completion.json)。
@@ -8,7 +20,7 @@ C1 已建立 Task／IRQ × role × function × PC 聯合統計、函式差異與
 - [實作計畫與 checklist](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/plans/13-hotspot-dashboard.md)。
 - [正式報告與來源](https://github.com/swchen44/freertos_risvc_observability/tree/poc-history/artifacts/verification/hotspot/formal/)；[8 組離線 HTML](https://github.com/swchen44/freertos_risvc_observability/tree/poc-history/artifacts/offline/hotspot/)。
 - Web：在 POC 執行 `.venv/bin/python -m psf_lab serve --port 8016`，開啟 `http://127.0.0.1:8016/hotspot.html`。
-- C2 時間軸尚未開始；這些是模型相對成本，不是產品 CPU 使用率。
+- C2a 事件區間實作中，C2b 時間對齊尚未開始；這些是模型相對成本，不是產品 CPU 使用率。
 
 ![C1 Web 畫面](https://raw.githubusercontent.com/swchen44/freertos_risvc_observability/poc-history/artifacts/verification/hotspot/ui/server/screenshots/01-overview.png)
 
