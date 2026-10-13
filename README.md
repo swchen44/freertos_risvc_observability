@@ -1,5 +1,7 @@
 # FreeRTOS／RISC-V Observability：研究與可重跑 POC
 
+> 2026-10-14：使用者已核准 C2a RSS 驗收上限改為 **640 MiB**。下方600／596 MiB與512 MiB失敗說明為歷史checkpoint；新門檻RSS重驗均通過；Web時間條件仍有失敗，整體C2a尚未全部驗收。
+
 ## C2a 實作 checkpoint · 2026-10-13
 
 事件區間 Dashboard 已實作，**容量驗收未通過**。Web／offline 的 hover、拖曳、篩選、表格及完整430,324列 CSV 均取得驗證；完整操作RSS約600／596MiB，超過原定512MiB。正式40份／8HTML未生成。
