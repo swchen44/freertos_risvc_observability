@@ -14,6 +14,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 BASE = ROOT / "artifacts/verification/event-window/formal"
+RSS_LIMIT_MIB = 640  # User-approved revision, 2026-10-14.
 
 
 def process_table():
@@ -71,6 +72,7 @@ def verify(mode, output, html=None, executable=None, capacity_only=False, force_
     receipt = {
         "passed": False,
         "scope": "capacity-only" if capacity_only else "full-interactions",
+        "rss_limit_mib": RSS_LIMIT_MIB,
         "mode": mode,
         "sample_interval_seconds": 0.2,
         "harness_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
@@ -479,7 +481,7 @@ def verify(mode, output, html=None, executable=None, capacity_only=False, force_
             receipt.get("ready_seconds", 999) <= 25
             and receipt.get("filter_seconds", 999) <= 5
             and receipt["sampled_peak_rss_kib"] > 0
-            and receipt["sampled_peak_rss_kib"] <= 512 * 1024
+            and receipt["sampled_peak_rss_kib"] <= RSS_LIMIT_MIB * 1024
             and all(
                 receipt.get(k) is not None and receipt[k] <= 128 * 1024 * 1024
                 for k in ["heap_initial", "heap_after"]

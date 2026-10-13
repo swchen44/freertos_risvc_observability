@@ -15,6 +15,8 @@ C1 已建立 Task／IRQ × role × function × PC 聯合統計、函式差異與
 
 ![C1 離線 PC 與來源](artifacts/verification/hotspot/ui/offline/screenshots/04-pc-source.png)
 
+> 2026-10-14：使用者已核准 C2a RSS 驗收上限改為 **640 MiB**。下方600／596 MiB與512 MiB失敗說明為歷史checkpoint；新門檻驗收另存紀錄。
+
 ## C2a 實作 checkpoint · 2026-10-13
 
 **事件區間 Dashboard 已實作，容量驗收仍未通過。** Web／offline 的篩選、hover、拖曳、表格、完整 430,324 列 CSV 與專項取消／切 run 測試已取得證據；完整操作 RSS 約 600／596 MiB，超過原定 512 MiB。正式40份／8HTML尚未生成。

@@ -16,6 +16,8 @@
 
 目前進度：Task1 完成；Tasks2–5 程式與 pilot 已實作，以下複合條件尚未全部勾選；Task6 完整資料／最終回歸／容量 pending。核准計畫的未勾選項不因單一 pilot 通過而自動完成。
 
+2026-10-14 使用者明確核准：RSS 上限由512改為 **640 MiB**。只調整此項，其他容量條件維持；舊512MiB失敗收據保持原樣，新測試明列 `rss_limit_mib: 640`。
+
 ## Global Constraints
 
 - Cache 固定 L1I 8192、L1D 8192、L2 32768 bytes；64-byte line、4-way、LRU、write-through/write-allocate。1 ns/I event + 2 ns/memory cycle 是模型成本。
@@ -142,7 +144,7 @@ if (message.request_id !== currentRequestId) return;
 
 ## Task 6：容量 gate、正式證據與發布
 
-容量門檻是本計畫提出的本機驗收條件，不宣稱所有電腦可達：HTML 每 workload ≤95 MiB；初次 ready ≤25s；完整 run filter ≤5s；page JS heap ≤128 MiB（可量測時），測試 browser process tree 採樣峰值 RSS ≤512 MiB。browser RSS 只統計該測試 session 的 PID 子樹；無法可靠歸屬則記 unknown，不能寫 passed。超限保存失敗，不擴大正式批次；再根據量測修訂方案。
+容量門檻是本計畫提出的本機驗收條件，不宣稱所有電腦可達：HTML 每 workload ≤95 MiB；初次 ready ≤25s；完整 run filter ≤5s；page JS heap ≤128 MiB（可量測時），測試 browser process tree 採樣峰值 RSS ≤640 MiB。browser RSS 只統計該測試 session 的 PID 子樹；無法可靠歸屬則記 unknown，不能寫 passed。超限保存失敗，不擴大正式批次；再根據量測修訂方案。
 
 - [ ] A02 pilot14 runs，保存 bytes、chunk counts、hashes、3次 load/filter/RSS 原始值、browser/OS/toolchain/commit。記憶體監測為該 session 的低頻採樣，列出間隔與可能漏掉瞬間峰值的限制。
 - [ ] harness 先 curl API/catalog/chunk/unknown 與 static routes，保存 status/bytes/hash。獨立 Python oracle 讀逐列資料驗證選區 totals、3C、CSV、跨塊切點及空區間。

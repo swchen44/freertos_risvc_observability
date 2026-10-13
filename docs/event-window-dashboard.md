@@ -1,6 +1,6 @@
 # C2a：用事件區間找出 Cache 成本
 
-**目前狀態：實作與 A02 pilot 已存在，整體驗收未完成。容量門檻仍為 512 MiB；尚未擴大正式 40 runs，也未產生正式 8 份 HTML。**
+**目前狀態：實作與 A02 pilot 已存在，整體驗收未完成。2026-10-14 使用者已將 RSS 門檻調整為 640 MiB，新門檻驗收待重跑；尚未擴大正式 40 runs，也未產生正式 8 份 HTML。**
 
 這份文件是進度與復原入口。已發布的 A、B、C1 成果保持原樣；C2b clock-anchor pilot 尚未開始。
 
@@ -93,7 +93,7 @@ PYTHONPATH=src .venv/bin/python tools/tcp/export_event_window_html.py \
 
 ## 尚待完成
 
-1. 決定離線／完整操作 RSS 超過 512 MiB 的處理方式；原門檻維持有效，不能直接寫 passed。
+1. 已核准改為640 MiB；重跑新門檻驗收，舊512 MiB收據不追溯改寫。
 2. Web／offline 完整操作與專項生命週期已驗證；容量通過後仍需重跑最終候選版本，不能把本 checkpoint 當正式 release。
 3. 補齊計畫未勾選的負向 fixtures，例如 bool／非 canonical wire 數字、空集合 CSV、缺少 asset／重複 template anchor；已完成的子項不代表整條複合 checklist 都完成。
 4. 容量與 pilot 全部通過後才生成正式 40 runs／8 HTML，並補 A08 最大 run 驗收。
