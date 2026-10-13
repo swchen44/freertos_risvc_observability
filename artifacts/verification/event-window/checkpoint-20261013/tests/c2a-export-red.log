@@ -1,0 +1,15 @@
+test_inline_escape_hashes_and_existing_output (tests.unit.test_event_window_export.EventExportTests.test_inline_escape_hashes_and_existing_output) ... FAIL
+
+======================================================================
+FAIL: test_inline_escape_hashes_and_existing_output (tests.unit.test_event_window_export.EventExportTests.test_inline_escape_hashes_and_existing_output)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_event_window_export.py", line 13, in test_inline_escape_hashes_and_existing_output
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.event_window_export'))
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (failures=1)

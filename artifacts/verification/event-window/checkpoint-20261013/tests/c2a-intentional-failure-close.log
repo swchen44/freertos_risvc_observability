@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tools/tcp/verify_event_window_dashboard.py", line 499, in <module>
+    verify(a.mode, a.output, a.html, a.browser_executable, a.capacity_only, a.force_failure)
+    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/swchen.tw/git/percepio/poc/tools/tcp/verify_event_window_dashboard.py", line 239, in verify
+    raise AssertionError("Intentional failure verifies finally-close")
+AssertionError: Intentional failure verifies finally-close

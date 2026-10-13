@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "injected_fixture": true,
+  "cancel_progress": 0.028503562945368172,
+  "inflight_export_cancel_no_download": true,
+  "cancelled_manifest": true,
+  "stale_error_ignored": true,
+  "quick_run_switch": true,
+  "psf_original_order": [
+    "7",
+    "10",
+    "11",
+    "12"
+  ],
+  "psf_quality": "\u7368\u7acb PSF ticks \u00b7 origin 4294967290 \u00b7 {\"fixture\":true,\"sequence_gaps\":[{\"expected\":8,\"actual\":10}]} \u00b7 \u4e0d\u8207 event index \u9023\u52d5",
+  "interactions_passed": true,
+  "close_exit": 0,
+  "owned_browser_pids": [
+    79486,
+    79488,
+    79489,
+    79490
+  ],
+  "remaining_browser_pids": []
+}

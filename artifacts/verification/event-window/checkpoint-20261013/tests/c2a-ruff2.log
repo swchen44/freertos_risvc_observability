@@ -1,0 +1,34 @@
+E501 Line too long (109 > 100)
+  --> src/psf_lab/event_window_export.py:41:101
+   |
+39 |     )
+40 |     changes = {
+41 |         '<script id="event-window-data"></script>': '<script id="event-window-data" type="application/json">'
+   |                                                                                                     ^^^^^^^^^
+42 |         + embed_json(dict(catalog=dict(schema=catalog["schema"], runs=records), runs=runs))
+43 |         + "</script>",
+   |
+
+E501 Line too long (180 > 100)
+  --> src/psf_lab/event_window_export.py:55:101
+   |
+53 | …
+54 | …
+55 | …nsafe-inline'; worker-src blob:; img-src data: blob:; connect-src 'none'; font-src data:; base-uri 'none'"
+   |                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+56 | …
+57 | …+ policy + '"><title>', 1
+   |
+
+E501 Line too long (179 > 100)
+  --> tests/unit/test_event_window_export.py:36:101
+   |
+34 | …
+35 | …
+36 | …event-window.css"><script id="event-window-data"></script><script src="/assets/event-window.js"></script>'
+   |                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+37 | …
+38 | …ture */")
+   |
+
+Found 7 errors (4 fixed, 3 remaining).

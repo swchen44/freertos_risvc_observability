@@ -1,0 +1,13 @@
+test_cross_line_write_and_snapshot_independence (tests.unit.test_hotspot_events.HotspotEventsTests.test_cross_line_write_and_snapshot_independence) ... ok
+test_reject_missing_coverage_and_wrong_cost (tests.unit.test_hotspot_events.HotspotEventsTests.test_reject_missing_coverage_and_wrong_cost) ... ok
+test_warm_cache_survives_context_switch (tests.unit.test_hotspot_events.HotspotEventsTests.test_warm_cache_survives_context_switch) ... ok
+test_decimal_rows_and_noncacheable (tests.unit.test_hotspot_report.HotspotReportTests.test_decimal_rows_and_noncacheable) ... ok
+test_reject_bad_costs_and_coverage (tests.unit.test_hotspot_report.HotspotReportTests.test_reject_bad_costs_and_coverage) ... ok
+test_same_function_context_is_joint_not_marginal (tests.unit.test_hotspot_report.HotspotReportTests.test_same_function_context_is_joint_not_marginal) ... ok
+test_three_c_and_unresolved (tests.unit.test_hotspot_report.HotspotReportTests.test_three_c_and_unresolved) ... ok
+test_write_hit_and_cross_line (tests.unit.test_hotspot_report.HotspotReportTests.test_write_hit_and_cross_line) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.022s
+
+OK

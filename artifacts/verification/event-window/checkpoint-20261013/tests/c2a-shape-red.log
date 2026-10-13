@@ -1,0 +1,68 @@
+test_full_chunks_and_warm_boundary (tests.unit.test_event_window.EventWindowTests.test_full_chunks_and_warm_boundary) ... ok
+test_hash_valid_malformed_and_corruption_rejected (tests.unit.test_event_window.EventWindowTests.test_hash_valid_malformed_and_corruption_rejected) ... ok
+test_malformed_dictionary_and_deflate_are_value_errors (tests.unit.test_event_window.EventWindowTests.test_malformed_dictionary_and_deflate_are_value_errors) ... 
+  test_malformed_dictionary_and_deflate_are_value_errors (tests.unit.test_event_window.EventWindowTests.test_malformed_dictionary_and_deflate_are_value_errors) (key='contexts', bad='unknown') ... FAIL
+  test_malformed_dictionary_and_deflate_are_value_errors (tests.unit.test_event_window.EventWindowTests.test_malformed_dictionary_and_deflate_are_value_errors) (key='contexts', bad=[None]) ... FAIL
+  test_malformed_dictionary_and_deflate_are_value_errors (tests.unit.test_event_window.EventWindowTests.test_malformed_dictionary_and_deflate_are_value_errors) (key='owners', bad=[None]) ... FAIL
+  test_malformed_dictionary_and_deflate_are_value_errors (tests.unit.test_event_window.EventWindowTests.test_malformed_dictionary_and_deflate_are_value_errors) (key='owners', bad=[{}]) ... FAIL
+test_malformed_dictionary_and_deflate_are_value_errors (tests.unit.test_event_window.EventWindowTests.test_malformed_dictionary_and_deflate_are_value_errors) ... ERROR
+test_manifest_rejects_gaps_and_duplicates (tests.unit.test_event_window.EventWindowTests.test_manifest_rejects_gaps_and_duplicates) ... ok
+
+======================================================================
+ERROR: test_malformed_dictionary_and_deflate_are_value_errors (tests.unit.test_event_window.EventWindowTests.test_malformed_dictionary_and_deflate_are_value_errors)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_event_window.py", line 84, in test_malformed_dictionary_and_deflate_are_value_errors
+    self.m.decode_event_chunk(bytes(data), desc, result)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/swchen.tw/git/percepio/poc/src/psf_lab/event_window.py", line 124, in decode_event_chunk
+    raw = stream.read(MAX_JSON + 1)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/gzip.py", line 326, in read
+    return self._buffer.read(size)
+           ~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/_compression.py", line 68, in readinto
+    data = self.read(len(byte_view))
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/gzip.py", line 537, in read
+    uncompress = self._decompressor.decompress(buf, size)
+zlib.error: Error -3 while decompressing data: invalid block type
+
+======================================================================
+FAIL: test_malformed_dictionary_and_deflate_are_value_errors (tests.unit.test_event_window.EventWindowTests.test_malformed_dictionary_and_deflate_are_value_errors) (key='contexts', bad='unknown')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_event_window.py", line 77, in test_malformed_dictionary_and_deflate_are_value_errors
+    with self.subTest(key=key, bad=bad), self.assertRaises(ValueError):
+                                         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_malformed_dictionary_and_deflate_are_value_errors (tests.unit.test_event_window.EventWindowTests.test_malformed_dictionary_and_deflate_are_value_errors) (key='contexts', bad=[None])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_event_window.py", line 77, in test_malformed_dictionary_and_deflate_are_value_errors
+    with self.subTest(key=key, bad=bad), self.assertRaises(ValueError):
+                                         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_malformed_dictionary_and_deflate_are_value_errors (tests.unit.test_event_window.EventWindowTests.test_malformed_dictionary_and_deflate_are_value_errors) (key='owners', bad=[None])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_event_window.py", line 77, in test_malformed_dictionary_and_deflate_are_value_errors
+    with self.subTest(key=key, bad=bad), self.assertRaises(ValueError):
+                                         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_malformed_dictionary_and_deflate_are_value_errors (tests.unit.test_event_window.EventWindowTests.test_malformed_dictionary_and_deflate_are_value_errors) (key='owners', bad=[{}])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_event_window.py", line 77, in test_malformed_dictionary_and_deflate_are_value_errors
+    with self.subTest(key=key, bad=bad), self.assertRaises(ValueError):
+                                         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.113s
+
+FAILED (failures=4, errors=1)

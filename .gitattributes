@@ -8,3 +8,6 @@ references/baseline/** -whitespace
 # C1 generated evidence preserves CSV CRLF and bundled upstream assets byte-for-byte.
 artifacts/verification/hotspot/** -whitespace
 artifacts/offline/hotspot/** -whitespace
+
+# C2a checkpoint keeps generated CSV and embedded vendor assets byte-for-byte.
+artifacts/verification/event-window/checkpoint-20261013/** -whitespace

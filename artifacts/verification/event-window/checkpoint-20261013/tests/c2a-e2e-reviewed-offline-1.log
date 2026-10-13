@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tools/tcp/verify_event_window_dashboard.py", line 472, in <module>
+    verify(a.mode, a.output, a.html, a.browser_executable, a.capacity_only, a.force_failure)
+    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/swchen.tw/git/percepio/poc/tools/tcp/verify_event_window_dashboard.py", line 250, in verify
+    assert int(zoom["start"]) > 0, "Slider drag did not change interval"
+           ^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Slider drag did not change interval

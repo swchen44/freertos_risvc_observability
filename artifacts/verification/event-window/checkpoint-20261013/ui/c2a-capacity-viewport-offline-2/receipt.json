@@ -1,0 +1,18 @@
+{
+  "passed": false,
+  "mode": "offline",
+  "sample_interval_seconds": 0.2,
+  "browser_executable": "/Users/swchen.tw/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+  "ready_seconds": 4.687309708999237,
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36",
+  "heap_initial": 23100000,
+  "filter_seconds": 3.7334091249940684,
+  "heap_after": 23100000,
+  "interactions_passed": true,
+  "resources": [],
+  "errors": [],
+  "close_exit": 0,
+  "remaining_browser_pids": [],
+  "sampled_peak_rss_kib": 549952,
+  "capacity_passed": false
+}

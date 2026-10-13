@@ -1,0 +1,66 @@
+✖ cancel invalidates manifest loader and cannot start an old query (4.828167ms)
+✖ cancelled render cannot write counters or charts after table await (1.384416ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 0
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 92.469291
+
+✖ failing tests:
+
+test at web/tests/event-window-lifecycle.test.mjs:7:1
+✖ cancel invalidates manifest loader and cannot start an old query (4.828167ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   'B'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///Users/swchen.tw/git/percepio/poc/web/tests/event-window-lifecycle.test.mjs:12:9)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'B' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at web/tests/event-window-lifecycle.test.mjs:14:1
+✖ cancelled render cannot write counters or charts after table await (1.384416ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   [
+  +     'run-cost',
+  +     '1'
+  +   ],
+  +   [
+  +     'selected-cost',
+  +     '1'
+  +   ],
+  +   [
+  +     'event-count',
+  +     '1'
+  +   ],
+  +   'chart'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///Users/swchen.tw/git/percepio/poc/web/tests/event-window-lifecycle.test.mjs:19:9)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ [ 'run-cost', '1' ], [ 'selected-cost', '1' ], [ 'event-count', '1' ], 'chart' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

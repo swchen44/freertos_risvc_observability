@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "runs": 14,
+  "chunks": 5823,
+  "method": "tar extraction into a new temporary directory; all manifest and gzip SHA-256 checked"
+}

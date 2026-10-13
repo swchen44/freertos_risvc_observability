@@ -1,0 +1,21 @@
+{
+  "passed": false,
+  "mode": "server",
+  "sample_interval_seconds": 0.2,
+  "harness_sha256": "95eab05c17869a0e45a7ca5d93ccc1a0580d0ea9ff090efe2f67353bcdddd632",
+  "source_commit": "058422910a716ecc101af001768db6b41efa51df",
+  "offline_html_sha256": null,
+  "browser_executable": "/Users/swchen.tw/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+  "ready_seconds": 18.50430887499533,
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36",
+  "heap_initial": 19300000,
+  "filter_seconds": 3.7489470000000438,
+  "heap_after": 19300000,
+  "failure": "Intentional failure verifies finally-close",
+  "failure_status": "A02-baseline-b1-1-1 \u00b7 [0, 430324) \u00b7 430324 \u7b46\u4e8b\u4ef6",
+  "browser_started": true,
+  "close_exit": 0,
+  "remaining_browser_pids": [],
+  "sampled_peak_rss_kib": 504816,
+  "capacity_passed": true
+}

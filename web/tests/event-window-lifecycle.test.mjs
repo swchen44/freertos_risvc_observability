@@ -90,3 +90,38 @@ test("cancelled render cannot write counters or charts after table await", async
   await rendering;
   assert.deepEqual(writes, []);
 });
+test("PSF view preserves sequence, equal ticks, gaps and independent origin", () => {
+  const psf = {
+    clock: { origin_ticks: "4294967290" },
+    quality: { sequence_gaps: [{ expected: 8, actual: 10 }] },
+    events: [
+      { sequence: 7, ticks: "0", kind: "task", timestamp_raw: "4294967290" },
+      { sequence: 10, ticks: "0", kind: "irq", timestamp_raw: "4294967290" },
+      { sequence: 11, ticks: null, kind: "unknown", timestamp_raw: null },
+      { sequence: 12, ticks: "12", kind: "task", timestamp_raw: "6" },
+    ],
+  };
+  let chart, table;
+  const labels = {};
+  const c = vm.createContext({
+    manifest: {
+      psf,
+      identity: { run_id: "toy" },
+      profile: {},
+      evidence: {},
+      parity: {},
+    },
+    charts: { psf: { setOption: (x) => (chart = x) } },
+    psfTable: { replaceData: (x) => (table = x) },
+    text: (k, v) => (labels[k] = v),
+  });
+  vm.runInContext(extract("function plotPSF()", "async function loadRun()"), c);
+  c.plotPSF();
+  assert.equal(table, psf.events);
+  assert.deepEqual(
+    Array.from(chart.series[0].data, (x) => x.event.sequence),
+    [7, 10, 12],
+  );
+  assert.match(labels["psf-quality"], /4294967290.*sequence_gaps/);
+  assert.match(labels["psf-quality"], /不與 event index 連動/);
+});

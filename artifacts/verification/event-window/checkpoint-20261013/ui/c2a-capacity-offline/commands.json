@@ -1,0 +1,78 @@
+[
+  {
+    "args": [
+      "open",
+      "file:///Users/swchen.tw/git/percepio/poc/artifacts/local/c2a-pilot-A02.html"
+    ],
+    "exit": 0,
+    "stdout": "\u2713 C2a \u00b7 \u4e8b\u4ef6\u5340\u9593\u5206\u6790\n  file:///Users/swchen.tw/git/percepio/poc/artifacts/local/c2a-pilot-A02.html\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "wait",
+      "--fn",
+      "window.eventWindowReady === true"
+    ],
+    "exit": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "({status:document.querySelector(\"#status\").textContent,heap:performance.memory?.usedJSHeapSize,events:window.eventWindowResult?.event_count})"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/c2a-pilot-A02.html\",\"result\":{\"events\":\"430324\",\"heap\":148000000,\"status\":\"A02-baseline-b1-1-1 \u00b7 [0, 430324) \u00b7 430324 \u7b46\u4e8b\u4ef6\"}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "click",
+      "#apply"
+    ],
+    "exit": 0,
+    "stdout": "\u2713 Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "wait",
+      "--fn",
+      "window.eventWindowReady === true"
+    ],
+    "exit": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "({status:document.querySelector(\"#status\").textContent,heap:performance.memory?.usedJSHeapSize,events:window.eventWindowResult?.event_count})"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"file:///Users/swchen.tw/git/percepio/poc/artifacts/local/c2a-pilot-A02.html\",\"result\":{\"events\":\"430324\",\"heap\":148000000,\"status\":\"A02-baseline-b1-1-1 \u00b7 [0, 430324) \u00b7 430324 \u7b46\u4e8b\u4ef6\"}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "screenshot",
+      "--full",
+      "artifacts/local/c2a-capacity-offline/screen.png"
+    ],
+    "exit": 0,
+    "stdout": "\u2713 Screenshot saved to artifacts/local/c2a-capacity-offline/screen.png\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "close"
+    ],
+    "exit": 0,
+    "stdout": "\u2713 Browser closed\n",
+    "stderr": ""
+  }
+]

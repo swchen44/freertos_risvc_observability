@@ -6,6 +6,7 @@ import gzip
 import hashlib
 import io
 import json
+import shutil
 import subprocess
 import threading
 import time
@@ -58,6 +59,7 @@ def oracle(run_id, start, end, context="", search=""):
 
 def verify(mode, output, html=None, executable=None, capacity_only=False, force_failure=False):
     output.mkdir(parents=True, exist_ok=False)
+    shutil.copyfile(__file__, output / "harness.py")
     shots = output / "screenshots"
     shots.mkdir()
     session = "c2a-verify"
@@ -68,11 +70,17 @@ def verify(mode, output, html=None, executable=None, capacity_only=False, force_
     stage = "launch"
     receipt = {
         "passed": False,
+        "scope": "capacity-only" if capacity_only else "full-interactions",
         "mode": mode,
         "sample_interval_seconds": 0.2,
+        "harness_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+        "source_commit": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
+        "offline_html_sha256": hashlib.sha256(html.read_bytes()).hexdigest() if html else None,
         "browser_executable": str(executable) if executable else "agent-browser default",
     }
-    prefix = ["agent-browser", "--session", session]
+    downloads = output / "downloads"
+    downloads.mkdir()
+    prefix = ["agent-browser", "--session", session, "--download-path", str(downloads.resolve())]
     if executable:
         prefix += [
             "--executable-path",
@@ -82,8 +90,15 @@ def verify(mode, output, html=None, executable=None, capacity_only=False, force_
             "--js-flags=--max-old-space-size=64",
         ]
 
+    browser_started = False
+
     def ab(*args):
-        p = subprocess.run(prefix + list(args), capture_output=True, text=True, timeout=50)
+        nonlocal browser_started
+        command = ["agent-browser", "--session", session]
+        if not browser_started and args[0] == "open":
+            command = prefix
+            browser_started = True
+        p = subprocess.run(command + list(args), capture_output=True, text=True, timeout=50)
         commands.append(dict(args=args, exit=p.returncode, stdout=p.stdout, stderr=p.stderr))
         (output / "commands.json").write_text(json.dumps(commands, indent=2) + "\n")
         if p.returncode:
@@ -224,6 +239,93 @@ def verify(mode, output, html=None, executable=None, capacity_only=False, force_
         if force_failure:
             raise AssertionError("Intentional failure verifies finally-close")
         if not capacity_only:
+            stage = "hover-and-zoom"
+            scroll("#event-chart")
+            point = ev("""(()=>{const bars=[...document.querySelectorAll('#event-chart svg path')]
+                .filter(e=>e.getAttribute('fill')==='#336e86');
+                const r=bars[20].getBoundingClientRect();return {x:r.x+r.width/2,y:r.y+2}})()""")
+            ab("mouse", "move", str(int(point["x"])), str(int(point["y"])))
+            ab(
+                "wait",
+                "--fn",
+                "document.querySelector('#event-chart').textContent.includes('selected rows')",
+            )
+            shot("07-hover")
+            psf_before = ev("document.querySelector('#psf-table').textContent")
+            rect = ev("""(()=>{
+                const chart=document.querySelector('#event-chart').getBoundingClientRect();
+                const handles=[...document.querySelectorAll('#event-chart svg path')]
+                    .map(e=>e.getBoundingClientRect())
+                    .filter(r=>r.width>2&&r.width<20&&r.height>10&&r.y>chart.bottom-65)
+                    .sort((a,b)=>a.x-b.x);
+                if(!handles.length)throw Error('No slider handle');
+                const r=handles[0];return {x:r.x+r.width/2,y:r.y+r.height/2};})()""")
+            left, y = int(rect["x"]), int(rect["y"])
+            ab("mouse", "move", str(left), str(y))
+            ab("mouse", "down", "left")
+            ab("mouse", "move", str(left + 180), str(y))
+            ab("mouse", "up", "left")
+            wait()
+            zoom = ev("window.eventWindowResult")
+            assert int(zoom["start"]) > 0, "Slider drag did not change interval"
+            zoom_expected = oracle(zoom["run_id"], int(zoom["start"]), int(zoom["end"]))
+            assert int(zoom["totals"]["memory_cycles"]) == zoom_expected["memory_cycles"]
+            assert ev("document.querySelector('#psf-table').textContent") == psf_before
+            receipt["zoom"] = {"start": zoom["start"], "end": zoom["end"], "oracle": zoom_expected}
+            shot("08-zoom")
+            click("#reset")
+            wait()
+            stage = "full-csv-export"
+            scroll("#events-csv")
+            csv_path = output / "full-events.csv"
+            click("#events-csv")
+            wait()
+            downloaded = downloads / "A02-baseline-b1-1-1-events.csv"
+            deadline = time.monotonic() + 20
+            while not downloaded.exists() and time.monotonic() < deadline:
+                time.sleep(0.1)
+            assert downloaded.is_file(), "Full CSV download missing"
+            downloaded.rename(csv_path)
+            count, cycles = 0, 0
+            with csv_path.open(newline="") as stream:
+                for row in csv.DictReader(stream):
+                    assert int(row["index"]) == count
+                    count += 1
+                    cycles += sum(
+                        int(row[k]) for k in ["l1i", "l1d", "l2", "ram_read", "ram_write"]
+                    )
+            assert count == 430324 and cycles == 1088094
+            receipt["full_csv"] = {
+                "rows": count,
+                "memory_cycles": cycles,
+                "bytes": csv_path.stat().st_size,
+            }
+            with (
+                csv_path.open("rb") as source,
+                gzip.open(csv_path.with_suffix(".csv.gz"), "wb") as target,
+            ):
+                shutil.copyfileobj(source, target)
+            csv_path.unlink()
+            stage = "export-cancel"
+            download_names = sorted(p.name for p in downloads.iterdir())
+            click("#events-csv")
+            ab(
+                "wait",
+                "--fn",
+                """(()=>{
+                const p=document.querySelector('#progress').value;
+                if(p>0&&p<1&&!window.eventWindowReady){
+                    window.cancelProgress=p;document.querySelector('#cancel').click();return true;
+                }return false;
+            })()""",
+            )
+            assert not ev("window.eventWindowReady")
+            assert ev("window.eventWindowResult") is None
+            click("#apply")
+            wait()
+            assert sorted(p.name for p in downloads.iterdir()) == download_names
+            receipt["export_cancel_retry"] = True
+            receipt["cancel_progress"] = ev("window.cancelProgress")
             fill("#start", 1023)
             fill("#end", 2061)
             click("#apply")
@@ -361,7 +463,9 @@ def verify(mode, output, html=None, executable=None, capacity_only=False, force_
         raise
     finally:
         try:
-            ab("close")
+            if browser_started:
+                ab("close")
+            receipt["browser_started"] = browser_started
             receipt["close_exit"] = 0
         except Exception as error:
             receipt.update(close_exit=1, close_error=str(error))

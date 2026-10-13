@@ -1,0 +1,69 @@
+{
+  "passed": false,
+  "mode": "offline",
+  "sample_interval_seconds": 0.2,
+  "browser_executable": "/Users/swchen.tw/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+  "ready_seconds": 5.038757332993555,
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36",
+  "heap_initial": 23100000,
+  "filter_seconds": 3.77439704099379,
+  "heap_after": 23100000,
+  "zoom": {
+    "start": "61591",
+    "end": "430324",
+    "oracle": {
+      "events": 368733,
+      "instructions": 296991,
+      "memory_cycles": 916998,
+      "l1i.misses": 1333,
+      "l1d.misses": 285,
+      "l2.misses": 451
+    }
+  },
+  "full_csv": {
+    "rows": 430324,
+    "memory_cycles": 1088094,
+    "bytes": 74118680
+  },
+  "export_cancel_retry": true,
+  "column_resize": {
+    "before": 198,
+    "after": 243
+  },
+  "column_order": {
+    "before": [
+      "name",
+      "role",
+      "value",
+      "run_denominator",
+      "filtered_denominator",
+      "instructions",
+      "memory_cycles"
+    ],
+    "after": [
+      "role",
+      "value",
+      "name",
+      "run_denominator",
+      "filtered_denominator",
+      "instructions",
+      "memory_cycles"
+    ]
+  },
+  "interval_oracle": {
+    "events": 18992,
+    "instructions": 12824,
+    "memory_cycles": 74589,
+    "l1i.misses": 823,
+    "l1d.misses": 12,
+    "l2.misses": 199
+  },
+  "event_csv_rows": 1038,
+  "interactions_passed": true,
+  "resources": [],
+  "errors": [],
+  "close_exit": 0,
+  "remaining_browser_pids": [],
+  "sampled_peak_rss_kib": 610080,
+  "capacity_passed": false
+}

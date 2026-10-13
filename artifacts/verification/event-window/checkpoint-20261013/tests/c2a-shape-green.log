@@ -1,0 +1,9 @@
+test_full_chunks_and_warm_boundary (tests.unit.test_event_window.EventWindowTests.test_full_chunks_and_warm_boundary) ... ok
+test_hash_valid_malformed_and_corruption_rejected (tests.unit.test_event_window.EventWindowTests.test_hash_valid_malformed_and_corruption_rejected) ... ok
+test_malformed_dictionary_and_deflate_are_value_errors (tests.unit.test_event_window.EventWindowTests.test_malformed_dictionary_and_deflate_are_value_errors) ... ok
+test_manifest_rejects_gaps_and_duplicates (tests.unit.test_event_window.EventWindowTests.test_manifest_rejects_gaps_and_duplicates) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.112s
+
+OK

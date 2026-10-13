@@ -1,0 +1,48 @@
+✔ exact interval and integer beyond 2^53, empty selection (18.284375ms)
+✔ corruption, bad query and missing chunks rejected (1.661292ms)
+✔ CSV covers every selected row, independent of event pagination (1.168167ms)
+✖ manifest dictionaries reject wrong types and duplicate identities (0.783208ms)
+✖ CSV guards spreadsheet control prefixes and preserves quotes (0.797ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 3
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 121.240459
+
+✖ failing tests:
+
+test at web/tests/event-window.test.mjs:160:1
+✖ manifest dictionaries reject wrong types and duplicate identities (0.783208ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///Users/swchen.tw/git/percepio/poc/web/tests/event-window.test.mjs:166:13)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /manifest|dictionary/i,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at web/tests/event-window.test.mjs:168:1
+✖ CSV guards spreadsheet control prefixes and preserves quotes (0.797ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + '"\t=1+1","\r=1+1","a""b"\r\n'
+  - `"'\t=1+1","'\r=1+1","a""b"\r\n`
+  
+      at TestContext.<anonymous> (file:///Users/swchen.tw/git/percepio/poc/web/tests/event-window.test.mjs:170:10)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '"\t=1+1","\r=1+1","a""b"\r\n',
+    expected: `"'\t=1+1","'\r=1+1","a""b"\r\n`,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

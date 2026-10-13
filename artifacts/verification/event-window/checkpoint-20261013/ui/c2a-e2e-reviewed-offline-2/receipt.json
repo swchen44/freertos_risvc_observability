@@ -1,0 +1,29 @@
+{
+  "passed": false,
+  "mode": "offline",
+  "sample_interval_seconds": 0.2,
+  "browser_executable": "/Users/swchen.tw/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+  "ready_seconds": 4.873528875003103,
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36",
+  "heap_initial": 23100000,
+  "filter_seconds": 3.63203229100327,
+  "heap_after": 23100000,
+  "zoom": {
+    "start": "61591",
+    "end": "430324",
+    "oracle": {
+      "events": 368733,
+      "instructions": 296991,
+      "memory_cycles": 916998,
+      "l1i.misses": 1333,
+      "l1d.misses": 285,
+      "l2.misses": 451
+    }
+  },
+  "failure": "\u26a0 --executable-path, --args ignored: daemon already running. Use 'agent-browser close' first to restart with new options.\n\u2717 Element not found. Verify the selector is correct and the element exists in the DOM.\n",
+  "failure_status": null,
+  "close_exit": 0,
+  "remaining_browser_pids": [],
+  "sampled_peak_rss_kib": 612144,
+  "capacity_passed": false
+}

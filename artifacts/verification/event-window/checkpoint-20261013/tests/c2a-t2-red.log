@@ -1,0 +1,35 @@
+test_full_chunks_and_warm_boundary (tests.unit.test_event_window.EventWindowTests.test_full_chunks_and_warm_boundary) ... FAIL
+test_hash_valid_malformed_and_corruption_rejected (tests.unit.test_event_window.EventWindowTests.test_hash_valid_malformed_and_corruption_rejected) ... FAIL
+test_manifest_rejects_gaps_and_duplicates (tests.unit.test_event_window.EventWindowTests.test_manifest_rejects_gaps_and_duplicates) ... FAIL
+
+======================================================================
+FAIL: test_full_chunks_and_warm_boundary (tests.unit.test_event_window.EventWindowTests.test_full_chunks_and_warm_boundary)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_event_window.py", line 16, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.event_window'))
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None
+
+======================================================================
+FAIL: test_hash_valid_malformed_and_corruption_rejected (tests.unit.test_event_window.EventWindowTests.test_hash_valid_malformed_and_corruption_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_event_window.py", line 16, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.event_window'))
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None
+
+======================================================================
+FAIL: test_manifest_rejects_gaps_and_duplicates (tests.unit.test_event_window.EventWindowTests.test_manifest_rejects_gaps_and_duplicates)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_event_window.py", line 16, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.event_window'))
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+FAILED (failures=3)

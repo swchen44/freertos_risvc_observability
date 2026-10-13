@@ -1,0 +1,11 @@
+✔ cancel invalidates manifest loader and cannot start an old query (4.8685ms)
+✔ cancelled render cannot write counters or charts after table await (1.754041ms)
+✔ PSF view preserves sequence, equal ticks, gaps and independent origin (1.440834ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 110.575875

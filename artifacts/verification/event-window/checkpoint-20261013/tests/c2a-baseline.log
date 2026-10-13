@@ -1,0 +1,10 @@
+test_decimal_rows_and_noncacheable (tests.unit.test_hotspot_report.HotspotReportTests.test_decimal_rows_and_noncacheable) ... ok
+test_reject_bad_costs_and_coverage (tests.unit.test_hotspot_report.HotspotReportTests.test_reject_bad_costs_and_coverage) ... ok
+test_same_function_context_is_joint_not_marginal (tests.unit.test_hotspot_report.HotspotReportTests.test_same_function_context_is_joint_not_marginal) ... ok
+test_three_c_and_unresolved (tests.unit.test_hotspot_report.HotspotReportTests.test_three_c_and_unresolved) ... ok
+test_write_hit_and_cross_line (tests.unit.test_hotspot_report.HotspotReportTests.test_write_hit_and_cross_line) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 1.306s
+
+OK

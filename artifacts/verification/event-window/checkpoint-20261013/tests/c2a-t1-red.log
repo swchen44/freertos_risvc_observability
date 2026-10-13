@@ -1,0 +1,35 @@
+test_cross_line_write_and_snapshot_independence (tests.unit.test_hotspot_events.HotspotEventsTests.test_cross_line_write_and_snapshot_independence) ... FAIL
+test_reject_missing_coverage_and_wrong_cost (tests.unit.test_hotspot_events.HotspotEventsTests.test_reject_missing_coverage_and_wrong_cost) ... FAIL
+test_warm_cache_survives_context_switch (tests.unit.test_hotspot_events.HotspotEventsTests.test_warm_cache_survives_context_switch) ... FAIL
+
+======================================================================
+FAIL: test_cross_line_write_and_snapshot_independence (tests.unit.test_hotspot_events.HotspotEventsTests.test_cross_line_write_and_snapshot_independence)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_hotspot_events.py", line 10, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.hotspot_events'))
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None
+
+======================================================================
+FAIL: test_reject_missing_coverage_and_wrong_cost (tests.unit.test_hotspot_events.HotspotEventsTests.test_reject_missing_coverage_and_wrong_cost)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_hotspot_events.py", line 10, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.hotspot_events'))
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None
+
+======================================================================
+FAIL: test_warm_cache_survives_context_switch (tests.unit.test_hotspot_events.HotspotEventsTests.test_warm_cache_survives_context_switch)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_hotspot_events.py", line 10, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('psf_lab.hotspot_events'))
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+FAILED (failures=3)

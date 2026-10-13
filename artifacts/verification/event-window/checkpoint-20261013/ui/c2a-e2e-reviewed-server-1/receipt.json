@@ -1,0 +1,15 @@
+{
+  "passed": false,
+  "mode": "server",
+  "sample_interval_seconds": 0.2,
+  "harness_sha256": "d3ef89ff2a359deaf0a00feee154b45f64bf3dbd7c281cfbfe9e29397c2364c5",
+  "source_commit": "058422910a716ecc101af001768db6b41efa51df",
+  "offline_html_sha256": null,
+  "browser_executable": "/Users/swchen.tw/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+  "failure": "('api/event-windows', 7, '000')",
+  "failure_status": null,
+  "close_exit": 0,
+  "remaining_browser_pids": [],
+  "sampled_peak_rss_kib": 191888,
+  "capacity_passed": false
+}

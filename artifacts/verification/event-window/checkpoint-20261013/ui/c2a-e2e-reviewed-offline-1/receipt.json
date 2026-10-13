@@ -1,0 +1,17 @@
+{
+  "passed": false,
+  "mode": "offline",
+  "sample_interval_seconds": 0.2,
+  "browser_executable": "/Users/swchen.tw/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+  "ready_seconds": 5.24781654200342,
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36",
+  "heap_initial": 23100000,
+  "filter_seconds": 3.6533859170012875,
+  "heap_after": 23100000,
+  "failure": "Slider drag did not change interval",
+  "failure_status": "A02-baseline-b1-1-1 \u00b7 [0, 430324) \u00b7 430324 \u7b46\u4e8b\u4ef6",
+  "close_exit": 0,
+  "remaining_browser_pids": [],
+  "sampled_peak_rss_kib": 525136,
+  "capacity_passed": false
+}

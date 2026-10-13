@@ -1,0 +1,23 @@
+test_full_chunks_and_warm_boundary (tests.unit.test_event_window.EventWindowTests.test_full_chunks_and_warm_boundary) ... ERROR
+test_hash_valid_malformed_and_corruption_rejected (tests.unit.test_event_window.EventWindowTests.test_hash_valid_malformed_and_corruption_rejected) ... ok
+test_manifest_rejects_gaps_and_duplicates (tests.unit.test_event_window.EventWindowTests.test_manifest_rejects_gaps_and_duplicates) ... ok
+
+======================================================================
+ERROR: test_full_chunks_and_warm_boundary (tests.unit.test_event_window.EventWindowTests.test_full_chunks_and_warm_boundary)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_event_window.py", line 40, in test_full_chunks_and_warm_boundary
+    self.m.write_event_chunks([], self.output)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/swchen.tw/git/percepio/poc/src/psf_lab/event_window.py", line 151, in write_event_chunks
+    output.mkdir(parents=True, exist_ok=False)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/_local.py", line 722, in mkdir
+    os.mkdir(self, mode)
+    ~~~~~~~~^^^^^^^^^^^^
+FileExistsError: [Errno 17] File exists: '/var/folders/wj/3v8944vj0t714p6b5l9lmr_80000gq/T/tmpynmx4mh3/run'
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.089s
+
+FAILED (errors=1)

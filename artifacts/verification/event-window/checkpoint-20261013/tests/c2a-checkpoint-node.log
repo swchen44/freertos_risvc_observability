@@ -1,0 +1,33 @@
+
+> test:unit
+> node --test tests/*.test.mjs
+
+✔ comparison uses each request origin, preserves unknown duration (1.476667ms)
+✔ late requests cannot replace newer workspace (1.842958ms)
+✔ query contract and error handling (1.038458ms)
+✔ cancel invalidates manifest loader and cannot start an old query (7.199041ms)
+✔ cancelled render cannot write counters or charts after table await (2.012959ms)
+✔ PSF view preserves sequence, equal ticks, gaps and independent origin (0.855291ms)
+✔ exact interval and integer beyond 2^53, empty selection (29.153334ms)
+✔ corruption, bad query and missing chunks rejected (2.249917ms)
+✔ CSV covers every selected row, independent of event pagination (1.930958ms)
+✔ manifest dictionaries reject wrong types and duplicate identities (1.668ms)
+✔ CSV guards spreadsheet control prefixes and preserves quotes (0.340584ms)
+✔ joint filter and top N preserve both denominators and full CSV (2.035708ms)
+✔ empty filter and CSV injection preserve negative numeric deltas (0.916417ms)
+✔ per-row pairing exposes missing and ambiguous costs instead of zero deltas (0.303084ms)
+✔ subtract before Number conversion (0.895917ms)
+✔ isolated state, patch and reset (1.922583ms)
+✔ TCP filters intersect without changing source data (0.877ms)
+✔ CSV uses supplied sorted subset and escaped cells (0.12475ms)
+✔ groups stay separate, candidate filter supports an empty result (1.71925ms)
+✔ CSV preserves displayed order and the measured denominator (0.444584ms)
+✔ workload filter preserves paired baseline and CSV request shape (0.147916ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 504.678708

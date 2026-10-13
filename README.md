@@ -9,11 +9,26 @@ C1 已建立 Task／IRQ × role × function × PC 聯合統計、函式差異與
 - [正式報告與來源](artifacts/verification/hotspot/formal/)；[8 組離線 HTML](artifacts/offline/hotspot/)。
 - Web：在 POC 執行 `.venv/bin/python -m psf_lab serve --port 8016`，開啟 `http://127.0.0.1:8016/hotspot.html`。
 - C2 時間軸尚未開始；這些是模型相對成本，不是產品 CPU 使用率。
-- [C2 時間對齊研究草案](docs/design/cache-psf-time-alignment.md)：已選 A 分階段；[C2a 計畫](docs/plans/14-event-window-dashboard.md)待審閱。Chrome 測試固定逐一執行，用完 close。
+- [C2 時間對齊研究草案](docs/design/cache-psf-time-alignment.md)：已選 A 分階段；[C2a 計畫](docs/plans/14-event-window-dashboard.md)已核准、實作中，容量與 E2E 尚未驗收。Chrome 測試固定逐一執行，用完 close。
 
 ![C1 Web 畫面](artifacts/verification/hotspot/ui/server/screenshots/01-overview.png)
 
 ![C1 離線 PC 與來源](artifacts/verification/hotspot/ui/offline/screenshots/04-pc-source.png)
+
+## C2a 實作 checkpoint · 2026-10-13
+
+**事件區間 Dashboard 已實作，容量驗收仍未通過。** Web／offline 的篩選、hover、拖曳、表格、完整 430,324 列 CSV 與專項取消／切 run 測試已取得證據；完整操作 RSS 約 600／596 MiB，超過原定 512 MiB。正式40份／8HTML尚未生成。
+
+- [使用說明、架構、實測數字與待辦](docs/event-window-dashboard.md)
+- [離線 A02 pilot 預覽](artifacts/verification/event-window/checkpoint-20261013/preview/A02-pilot.html)
+- [全部中間檔、還原包與驗收紀錄](artifacts/verification/event-window/checkpoint-20261013/)
+- [核准計畫與 checklist](docs/plans/14-event-window-dashboard.md)
+
+![C2a Web 事件區間](artifacts/verification/event-window/checkpoint-20261013/ui/c2a-e2e-reviewed-server-2/screenshots/01-overview.png)
+
+![C2a 離線 hover 明細](artifacts/verification/event-window/checkpoint-20261013/ui/c2a-e2e-reviewed-offline-3/screenshots/07-hover.png)
+
+以下 C1／B／A 段落是各階段已發布成果；不能用那些 passed 收據取代 C2a 尚未通過的容量驗收。
 
 ## 現況入口 · 2026-10-09
 
@@ -36,7 +51,7 @@ Web 版：curl 驗 API 與 assets；agent-browser 驗四張 SVG 圖、篩選、�
 **A：八種 TCP workload 的 pbuf 最佳化驗證**已完成 96 次正式執行、原始資料分析與 Web／離線操作驗收。固定 **L1I 8 KiB + L1D 8 KiB + L2 32 KiB**，結果是相同模型下的軟體比較。
 
 - [完整 A 研究報告、數值與重跑命令](docs/tcp-workload-matrix.md)：7/8 組模型時間改善；A08 改善 8.339%，A02 反而慢 0.218%，反例保留，原因待 B 歸因。
-- [設計與 A → B → C 計畫](docs/plans/11-next-cache-research.md)：A 已完成；B 已驗收；C1 熱點已實作，C2 逐事件時間軸尚未開始。
+- [設計與 A → B → C 計畫](docs/plans/11-next-cache-research.md)：A 已完成；B 已驗收；C1 熱點已實作，C2a 事件區間視圖實作中，C2b 時間對齊尚未開始。
 - [案例契約](cases/tcp/workload-matrix-v1.json)：63、64、65、256、1460 bytes，以及空節點／八節點 chain。
 - [正式 capture](runs/tcp-workload-matrix-v1/)：16 組、96 次，包含 PSF、raw trace、ELF、map、封包、generated header 與來源 hashes。
 - [探索與失敗紀錄](runs/tcp-workload-probe-v1/)；[分析／驗收收據](artifacts/verification/tcp-workload-matrix/)；[離線 HTML](artifacts/offline/tcp-workload-matrix.html)。

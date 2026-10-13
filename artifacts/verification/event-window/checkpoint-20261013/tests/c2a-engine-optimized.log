@@ -1,0 +1,11 @@
+✔ exact interval and integer beyond 2^53, empty selection (16.726708ms)
+✔ corruption, bad query and missing chunks rejected (1.640792ms)
+✔ CSV covers every selected row, independent of event pagination (1.126ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 111.685083
