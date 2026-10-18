@@ -111,6 +111,7 @@ let catalog,
   nextOffset = null;
 window.eventWindowReady = false;
 window.eventWindowResult = null;
+window.eventWindowTiming = null;
 const options = (id, rows) => {
   $(id).replaceChildren(
     ...rows.map(([value, label]) => {
@@ -135,6 +136,7 @@ function stop() {
   url = null;
   parts = [];
   window.eventWindowReady = false;
+  window.eventWindowTiming = null;
 }
 function download(blob, name) {
   const u = URL.createObjectURL(blob),
@@ -241,6 +243,8 @@ function chooseWorkload() {
   loadRun();
 }
 async function query(offset = "0", exportEvents = false) {
+  const begun = performance.now();
+  let workerTiming;
   if (!manifest) {
     text("status", "請先完成 Run 載入；按分析區間可重新載入。");
     return;
@@ -260,6 +264,7 @@ async function query(offset = "0", exportEvents = false) {
     event_offset: offset,
     event_limit: 200,
     export_events: exportEvents,
+    profile: true,
   };
   text("status", "逐塊核對與加總…");
   $("progress").value = 0;
@@ -310,6 +315,7 @@ async function query(offset = "0", exportEvents = false) {
       }
       return;
     }
+    if (data.type === "profile") workerTiming = data;
     if (data.type === "progress") {
       text("status", `驗證區塊 ${data.done} / ${data.total}`);
       $("progress").value = data.done / data.total;
@@ -326,8 +332,16 @@ async function query(offset = "0", exportEvents = false) {
     if (data.type === "result") {
       result = data.result;
       window.eventWindowResult = result;
+      const renderStart = performance.now();
       await render(data.result, token);
       if (token !== request) return;
+      window.eventWindowTiming = {
+        request_id: token,
+        worker: workerTiming,
+        render_ms: performance.now() - renderStart,
+        query_ms: performance.now() - begun,
+        navigation_elapsed_ms: performance.now(),
+      };
       if (exportEvents)
         download(
           new Blob(parts, { type: "text/csv;charset=utf-8" }),

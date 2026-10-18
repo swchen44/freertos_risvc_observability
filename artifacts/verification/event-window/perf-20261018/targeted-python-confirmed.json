@@ -1,0 +1,13 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "-m",
+    "unittest",
+    "tests.unit.test_event_window",
+    "tests.unit.test_hotspot_events",
+    "tests.unit.test_event_window_export",
+    "tests.integration.test_event_window_api",
+    "-v"
+  ],
+  "exit_code": 0
+}

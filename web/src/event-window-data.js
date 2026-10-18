@@ -35,14 +35,39 @@ const empty = () => ({
   memory_cycles: 0n,
   model_service_ns: 0n,
   accounted_model_ns: 0n,
-  cost_cycles: Object.fromEntries(COSTS.map((k) => [k, 0n])),
-  cache: Object.fromEntries(
-    LEVELS.map((l) => [l, Object.fromEntries(COUNTERS.map((k) => [k, 0n]))]),
-  ),
+  cost_cycles: { l1i: 0n, l1d: 0n, l2: 0n, ram_read: 0n, ram_write: 0n },
+  cache: {
+    l1i: {
+      accesses: 0n,
+      misses: 0n,
+      compulsory: 0n,
+      conflict: 0n,
+      capacity: 0n,
+    },
+    l1d: {
+      accesses: 0n,
+      misses: 0n,
+      compulsory: 0n,
+      conflict: 0n,
+      capacity: 0n,
+    },
+    l2: {
+      accesses: 0n,
+      misses: 0n,
+      compulsory: 0n,
+      conflict: 0n,
+      capacity: 0n,
+    },
+  },
 });
 function add(a, b) {
-  for (const k of Object.keys(a))
-    typeof a[k] === "bigint" ? (a[k] += b[k]) : add(a[k], b[k]);
+  a.instructions += b.instructions;
+  a.memory_cycles += b.memory_cycles;
+  a.model_service_ns += b.model_service_ns;
+  a.accounted_model_ns += b.accounted_model_ns;
+  for (const k of COSTS) a.cost_cycles[k] += b.cost_cycles[k];
+  for (const l of LEVELS)
+    for (const k of COUNTERS) a.cache[l][k] += b.cache[l][k];
   return a;
 }
 function counts(r) {
@@ -225,6 +250,10 @@ export function functionsCsv(rows) {
   );
 }
 export async function queryEventWindow(m, loadChunk, q, emit = () => {}) {
+  const begun = performance.now();
+  let loadMs = 0,
+    decodeMs = 0,
+    aggregateMs = 0;
   validateManifest(m);
   const start = number(q.start),
     end = number(q.end),
@@ -255,7 +284,14 @@ export async function queryEventWindow(m, loadChunk, q, emit = () => {}) {
     bins = [],
     page = [];
   let count = 0n,
-    visited = 0;
+    visited = 0,
+    binIndex = 0;
+  const search = q.function_query?.toLowerCase();
+  const contextMatches = m.contexts.map((c) => !q.context || q.context === c);
+  const ownerMatches = m.owners.map(
+    (o) =>
+      !search || (o.function ?? "unresolved").toLowerCase().includes(search),
+  );
   const width = end - start,
     binCount = Number(width < 512n ? width : 512n);
   for (let i = 0; i < binCount; i++)
@@ -265,6 +301,7 @@ export async function queryEventWindow(m, loadChunk, q, emit = () => {}) {
       value: 0n,
       rows: 0n,
     });
+  const binEnds = bins.map((b) => number(b.end));
   if (q.export_events)
     emit({
       type: "csv",
@@ -274,7 +311,13 @@ export async function queryEventWindow(m, loadChunk, q, emit = () => {}) {
     (c) => number(c.end) > start && number(c.start) < end,
   );
   for (const c of relevant) {
-    const rows = await decodeChunk(await loadChunk(c), c, m);
+    let phase = performance.now();
+    const bytes = await loadChunk(c);
+    loadMs += performance.now() - phase;
+    phase = performance.now();
+    const rows = await decodeChunk(bytes, c, m);
+    decodeMs += performance.now() - phase;
+    phase = performance.now();
     let csv = "";
     for (const [rowIndex, r] of rows.entries()) {
       const index = number(r[0]);
@@ -282,11 +325,7 @@ export async function queryEventWindow(m, loadChunk, q, emit = () => {}) {
       const context = m.contexts[Number(r[5])],
         owner = m.owners[Number(r[6])],
         name = owner.function ?? "unresolved";
-      if (
-        (q.context && q.context !== context) ||
-        (q.function_query &&
-          !name.toLowerCase().includes(q.function_query.toLowerCase()))
-      )
+      if (!contextMatches[Number(r[5])] || !ownerMatches[Number(r[6])])
         continue;
       const values = rows.counts[rowIndex];
       add(total, values);
@@ -294,10 +333,10 @@ export async function queryEventWindow(m, loadChunk, q, emit = () => {}) {
       if (!groups.has(id))
         groups.set(id, { id, name, role: owner.role, counts: empty() });
       add(groups.get(id).counts, values);
-      // ceil-based inverse matches the floor-defined integer bin edges.
-      const bi = Number(((index - start + 1n) * BigInt(binCount) - 1n) / width);
-      bins[bi].value += metricValue(values, metric);
-      bins[bi].rows++;
+      // Verified rows are ordered; walk exact integer edges rather than divide per row.
+      while (index >= binEnds[binIndex]) binIndex++;
+      bins[binIndex].value += metricValue(values, metric);
+      bins[binIndex].rows++;
       if (count >= offset && page.length < limit)
         page.push({
           index: r[0],
@@ -313,6 +352,7 @@ export async function queryEventWindow(m, loadChunk, q, emit = () => {}) {
       if (q.export_events) csv += csvLine([...r, context, name, owner.role]);
       count++;
     }
+    aggregateMs += performance.now() - phase;
     if (csv) emit({ type: "csv", text: csv });
     emit({ type: "progress", done: ++visited, total: relevant.length });
   }
@@ -336,6 +376,15 @@ export async function queryEventWindow(m, loadChunk, q, emit = () => {}) {
           ? 1
           : a.name.localeCompare(b.name),
     );
+  if (q.profile)
+    emit({
+      type: "profile",
+      chunks: visited,
+      load_ms: loadMs,
+      decode_ms: decodeMs,
+      aggregate_ms: aggregateMs,
+      total_ms: performance.now() - begun,
+    });
   return {
     request_id: q.request_id,
     run_id: q.run_id,

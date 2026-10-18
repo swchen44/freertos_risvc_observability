@@ -1,0 +1,20 @@
+{
+  "scope": "Python backend, full chunk validation; not browser acceptance",
+  "python": "3.12.14",
+  "chunks": 421,
+  "engine_sha256": "87a525a18f67b147b119f67ecbecd9cc69340f4ca991ea666e119d51142e6f02",
+  "runs": [
+    {
+      "seconds": 20.834371672000998,
+      "payloads_sha256": "60c923ea85e90f959416aa1f2520926185ae00384514f518ea485d598f661d21"
+    },
+    {
+      "seconds": 20.5922807750012,
+      "payloads_sha256": "60c923ea85e90f959416aa1f2520926185ae00384514f518ea485d598f661d21"
+    },
+    {
+      "seconds": 27.208419958000377,
+      "payloads_sha256": "60c923ea85e90f959416aa1f2520926185ae00384514f518ea485d598f661d21"
+    }
+  ]
+}

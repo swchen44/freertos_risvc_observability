@@ -1,0 +1,353 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/scratch/c7b5256f711e/freertos_risvc_observability/web/node_modules/.bin/playwright",
+      "test",
+      "--config=artifacts/local/c2a-perf-20261018/playwright.config.mjs",
+      "--max-failures=1"
+    ],
+    "configFile": "/workspace/scratch/c7b5256f711e/freertos_risvc_observability/artifacts/local/c2a-perf-20261018/playwright.config.mjs",
+    "rootDir": "/workspace/scratch/c7b5256f711e/freertos_risvc_observability/web/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 1,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/scratch/c7b5256f711e/freertos_risvc_observability/artifacts/local/c2a-perf-20261018/playwright-output",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/scratch/c7b5256f711e/freertos_risvc_observability/web/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "/workspace/scratch/c7b5256f711e/freertos_risvc_observability/artifacts/verification/event-window/perf-20261018/playwright-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": {
+      "command": "PYTHONPATH=src .venv/bin/python tools/browser_server.py",
+      "cwd": "/workspace/scratch/c7b5256f711e/freertos_risvc_observability/",
+      "url": "http://127.0.0.1:8766/api/traces",
+      "reuseExistingServer": false,
+      "timeout": 30000
+    }
+  },
+  "suites": [
+    {
+      "title": "dashboard.spec.mjs",
+      "file": "dashboard.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "B01/02 real upload, SVG, keyboard filters and full sorted CSV",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 18,
+                  "error": {
+                    "message": "Error: browserType.launch: Executable doesn't exist at /root/.cache/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
+                    "stack": "Error: browserType.launch: Executable doesn't exist at /root/.cache/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
+                  },
+                  "errors": [
+                    {
+                      "message": "Error: browserType.launch: Executable doesn't exist at /root/.cache/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/scratch/c7b5256f711e/freertos_risvc_observability/web/tests/e2e/dashboard.spec.mjs",
+                        "column": 18,
+                        "line": 24
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\nExpected: \u001b[32m[]\u001b[39m\nReceived: \u001b[31mundefined\u001b[39m\n\n  22 | });\n  23 | test.afterEach(() => {\n> 24 |   expect(errors).toEqual([]);\n     |                  ^\n  25 |   expect(external).toEqual([]);\n  26 | });\n  27 | async function revision(page) {\n    at /workspace/scratch/c7b5256f711e/freertos_risvc_observability/web/tests/e2e/dashboard.spec.mjs:24:18"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T11:03:16.837Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/scratch/c7b5256f711e/freertos_risvc_observability/artifacts/local/c2a-perf-20261018/playwright-output/dashboard-B01-02-real-uplo-3b10d-filters-and-full-sorted-CSV/error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "cc3070f185481daa6f24-0fe09a7ebe665a06dacd",
+          "file": "dashboard.spec.mjs",
+          "line": 77,
+          "column": 1
+        },
+        {
+          "title": "B03 task/object/channel/type filters and CPU denominator/metric CSV",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "cc3070f185481daa6f24-1cc1a7fc56ed5e1c5dc1",
+          "file": "dashboard.spec.mjs",
+          "line": 112,
+          "column": 1
+        },
+        {
+          "title": "B04/05 brush, wheel zoom, drag pan and reset change query window",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "cc3070f185481daa6f24-6c95c6ee11a8d1e152ff",
+          "file": "dashboard.spec.mjs",
+          "line": 161,
+          "column": 1
+        },
+        {
+          "title": "B06/07 hover, pin, column resize and reorder use real DOM",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "cc3070f185481daa6f24-1b5c8474688538666ae7",
+          "file": "dashboard.spec.mjs",
+          "line": 190,
+          "column": 1
+        },
+        {
+          "title": "B08 three verified comparisons and request-relative chart",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "cc3070f185481daa6f24-4f3df0ed42af1e7397e3",
+          "file": "dashboard.spec.mjs",
+          "line": 231,
+          "column": 1
+        },
+        {
+          "title": "B09 unsupported, partial and empty trace show truthful quality",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "cc3070f185481daa6f24-4b968ff081e37173596d",
+          "file": "dashboard.spec.mjs",
+          "line": 248,
+          "column": 1
+        },
+        {
+          "title": "B10 raw HTML remains text, null timestamps and unknown frequency",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "cc3070f185481daa6f24-e21625403b9f2cd78596",
+          "file": "dashboard.spec.mjs",
+          "line": 274,
+          "column": 1
+        },
+        {
+          "title": "B11 delayed old filter response cannot overwrite newer selection",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "cc3070f185481daa6f24-986525891320c405194b",
+          "file": "dashboard.spec.mjs",
+          "line": 306,
+          "column": 1
+        },
+        {
+          "title": "B12/13/14 1k/10k/100k capacity, bounded SVG, measured render and filter",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "cc3070f185481daa6f24-c0ace4e1986cf0e09f68",
+          "file": "dashboard.spec.mjs",
+          "line": 337,
+          "column": 1
+        },
+        {
+          "title": "B11 source race: delayed run download cannot replace a newer upload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "cc3070f185481daa6f24-dcfc932621a57655929b",
+          "file": "dashboard.spec.mjs",
+          "line": 392,
+          "column": 1
+        },
+        {
+          "title": "review: signal plot explicitly marks 2000 of 2001 samples while CSV remains complete",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "cc3070f185481daa6f24-8d14424e60f95c3904b3",
+          "file": "dashboard.spec.mjs",
+          "line": 421,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "message": "\u001b[31mTesting stopped early after 1 maximum allowed failures.\u001b[39m"
+    }
+  ],
+  "stats": {
+    "startTime": "2026-10-18T11:03:13.306Z",
+    "duration": 3743.107,
+    "expected": 0,
+    "skipped": 10,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

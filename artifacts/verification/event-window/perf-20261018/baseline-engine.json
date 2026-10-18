@@ -1,0 +1,130 @@
+{
+  "scope": "Node engine; compressed input in memory; not browser acceptance",
+  "node": "v24.19.0",
+  "chunks": 421,
+  "runs": [
+    {
+      "seconds": 17.206952606999998,
+      "result_sha256": "2b16423c5555f70be38745dea03c3526e61e27c09169a7c8da41320ae4bb18be",
+      "events": "430324",
+      "totals": {
+        "instructions": "346485",
+        "memory_cycles": "1088094",
+        "model_service_ns": "2176188",
+        "accounted_model_ns": "2522673",
+        "cost_cycles": {
+          "l1i": "347365",
+          "l1d": "83839",
+          "l2": "278864",
+          "ram_read": "13860",
+          "ram_write": "364166"
+        },
+        "cache": {
+          "l1i": {
+            "accesses": "347365",
+            "misses": "1687",
+            "compulsory": "348",
+            "conflict": "293",
+            "capacity": "1046"
+          },
+          "l1d": {
+            "accesses": "83839",
+            "misses": "383",
+            "compulsory": "337",
+            "conflict": "23",
+            "capacity": "23"
+          },
+          "l2": {
+            "accesses": "34858",
+            "misses": "770",
+            "compulsory": "685",
+            "conflict": "69",
+            "capacity": "16"
+          }
+        }
+      }
+    },
+    {
+      "seconds": 12.105559084000001,
+      "result_sha256": "2b16423c5555f70be38745dea03c3526e61e27c09169a7c8da41320ae4bb18be",
+      "events": "430324",
+      "totals": {
+        "instructions": "346485",
+        "memory_cycles": "1088094",
+        "model_service_ns": "2176188",
+        "accounted_model_ns": "2522673",
+        "cost_cycles": {
+          "l1i": "347365",
+          "l1d": "83839",
+          "l2": "278864",
+          "ram_read": "13860",
+          "ram_write": "364166"
+        },
+        "cache": {
+          "l1i": {
+            "accesses": "347365",
+            "misses": "1687",
+            "compulsory": "348",
+            "conflict": "293",
+            "capacity": "1046"
+          },
+          "l1d": {
+            "accesses": "83839",
+            "misses": "383",
+            "compulsory": "337",
+            "conflict": "23",
+            "capacity": "23"
+          },
+          "l2": {
+            "accesses": "34858",
+            "misses": "770",
+            "compulsory": "685",
+            "conflict": "69",
+            "capacity": "16"
+          }
+        }
+      }
+    },
+    {
+      "seconds": 13.888316799999997,
+      "result_sha256": "2b16423c5555f70be38745dea03c3526e61e27c09169a7c8da41320ae4bb18be",
+      "events": "430324",
+      "totals": {
+        "instructions": "346485",
+        "memory_cycles": "1088094",
+        "model_service_ns": "2176188",
+        "accounted_model_ns": "2522673",
+        "cost_cycles": {
+          "l1i": "347365",
+          "l1d": "83839",
+          "l2": "278864",
+          "ram_read": "13860",
+          "ram_write": "364166"
+        },
+        "cache": {
+          "l1i": {
+            "accesses": "347365",
+            "misses": "1687",
+            "compulsory": "348",
+            "conflict": "293",
+            "capacity": "1046"
+          },
+          "l1d": {
+            "accesses": "83839",
+            "misses": "383",
+            "compulsory": "337",
+            "conflict": "23",
+            "capacity": "23"
+          },
+          "l2": {
+            "accesses": "34858",
+            "misses": "770",
+            "compulsory": "685",
+            "conflict": "69",
+            "capacity": "16"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "created_at": "2026-10-18T11:07:49.599988+00:00",
+  "base_commit": "dd8cbb4fdc75309d11629c740464c1e7557b3c7d",
+  "candidate_status": "patch; pilot acceptance incomplete",
+  "environment": {
+    "os": "Linux-6.18.55-x86_64-with-glibc2.39",
+    "python": "3.12.14",
+    "node": "v24.19.0",
+    "python_matches_project_requirement": false
+  },
+  "comparisons": {
+    "backend": {
+      "baseline_seconds": [
+        41.438245712000935,
+        44.35321872299937,
+        44.125853443998494
+      ],
+      "candidate_seconds": [
+        20.834371672000998,
+        20.5922807750012,
+        27.208419958000377
+      ],
+      "baseline_median": 44.125853443998494,
+      "candidate_median": 20.834371672000998,
+      "same_hash": true,
+      "sha256": "60c923ea85e90f959416aa1f2520926185ae00384514f518ea485d598f661d21",
+      "scope": "Python backend, full chunk validation; not browser acceptance"
+    },
+    "node_engine": {
+      "baseline_seconds": [
+        22.114820393,
+        14.624640668999996,
+        23.042654771000002
+      ],
+      "candidate_seconds": [
+        10.225881484000002,
+        8.440076877,
+        8.953350872
+      ],
+      "baseline_median": 22.114820393,
+      "candidate_median": 8.953350872,
+      "same_hash": true,
+      "sha256": "2b16423c5555f70be38745dea03c3526e61e27c09169a7c8da41320ae4bb18be",
+      "scope": "Node engine; compressed input in memory; not browser acceptance"
+    }
+  },
+  "source_sha256": {
+    "src/psf_lab/event_window.py": "87a525a18f67b147b119f67ecbecd9cc69340f4ca991ea666e119d51142e6f02",
+    "web/src/event-window-data.js": "9d54fb957f4c97168b12590c4e550275f51f27c2f11d0ee11902c03dcacc9747",
+    "web/src/event-window-worker.js": "8ec9e01dca858e65b521c923f32e074b57163ec19264273091143b49c3b86875",
+    "web/src/event-window.js": "4c4d9da23f4fe99ea37fc77207bc22ff3eaeac150e87b9eab4fc1a31b6453ce2",
+    "tools/tcp/verify_event_window_dashboard.py": "e47414ee012af88521716fc67bdbda38e28a699e482a845416dd8b889f143e0f",
+    "web/dist/assets/event-window.js": "db1ba1ae032a49d175314f44a0fe8f1eeae551e7dd828d540c3b78cbc6438d8a"
+  },
+  "pilot_archive_sha256": "b3d45d0b031507b187b70b971b180fad948d66c6160d763293e9487055041cf8",
+  "gates": {
+    "rss_limit_mib": 640,
+    "ready_limit_seconds": 25,
+    "filter_limit_seconds": 5,
+    "browser_ready_seconds": null,
+    "browser_filter_seconds": null,
+    "browser_rss_mib": null,
+    "all_pilot_conditions_passed": false
+  },
+  "checks": {
+    "node_passed": 23,
+    "targeted_python_passed": 10,
+    "build_passed": true,
+    "ruff_passed": true,
+    "python_full": {
+      "tests": 320,
+      "failures": 3,
+      "errors": 6,
+      "passed": false
+    },
+    "playwright": {
+      "passed": false,
+      "failed": 1,
+      "not_run": 10,
+      "blocker": "Chrome executable missing; download responses were not valid ZIP files"
+    },
+    "docs": {
+      "passed": false,
+      "baseline_hashes_passed": true,
+      "missing_submodule_links": 2
+    },
+    "targeted_python_receipt": "targeted-python-confirmed.json",
+    "incomplete_intermediate_log": "targeted-python-final.log.gz is incomplete; use targeted-python-confirmed.log.gz",
+    "raw_logs": "Lossless gzip archives; inventory records the uncompressed hashes."
+  },
+  "formal40_generated": false,
+  "formal8_html_generated": false,
+  "c2b_started": false,
+  "remote_recheck_sha": "dd8cbb4fdc75309d11629c740464c1e7557b3c7d"
+}

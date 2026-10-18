@@ -1,3 +1,4 @@
+import gzip
 import json
 import tempfile
 import unittest
@@ -6,7 +7,7 @@ from unittest.mock import patch
 
 from fastapi.testclient import TestClient
 
-from psf_lab.event_window import BASE, canonical, sha, write_event_chunks
+from psf_lab.event_window import BASE, canonical, encode_chunk, sha, write_event_chunks
 from psf_lab.hotspot_events import iter_hotspot_events
 from psf_lab.server import create_app
 from tests.unit.test_cost_attribution import owner
@@ -48,6 +49,25 @@ class EventApiTests(unittest.TestCase):
                 self.assertEqual(c.get("/api/event-windows/unknown").status_code, 404)
                 self.assertEqual(c.get("/api/event-windows/%2e%2e%2fsecret").status_code, 404)
                 (folder / "000000.json.gz").write_bytes(b"broken")
+                self.assertEqual(
+                    c.get("/api/event-windows/" + rid + "/chunks/000000").status_code, 503
+                )
+                # A warm manifest cache cannot bypass hash-valid malformed chunk validation.
+                data = json.loads(gzip.decompress(r.content))
+                data["rows"][0][4] = "X"
+                encoded = encode_chunk(data)
+                m["chunks"][0].update(encoded["metadata"])
+                (folder / "000000.json.gz").write_bytes(encoded["gzip"])
+                raw = canonical(m)
+                (folder / "manifest.json").write_bytes(raw)
+                (folder.parent / "catalog.json").write_bytes(
+                    canonical(
+                        {
+                            "schema": "event-window-catalog-v1",
+                            "runs": [{"run_id": rid, "workload": "A02", "sha256": sha(raw)}],
+                        }
+                    )
+                )
                 self.assertEqual(
                     c.get("/api/event-windows/" + rid + "/chunks/000000").status_code, 503
                 )

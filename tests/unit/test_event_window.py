@@ -5,6 +5,7 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 from psf_lab.hotspot_events import iter_hotspot_events
 from tests.unit.test_cost_attribution import owner
@@ -86,3 +87,71 @@ class EventWindowTests(unittest.TestCase):
         desc = dict(chunk, gzip_sha256=self.m.sha(data))
         with self.assertRaises(ValueError):
             self.m.decode_event_chunk(bytes(data), desc, result)
+
+
+class EventManifestCacheTests(unittest.TestCase):
+    def test_cache_keeps_validation_and_does_not_expose_mutable_state(self):
+        from psf_lab import event_window as m
+
+        rid = "A02-baseline-b1-1-1"
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            folder = root / m.BASE / rid
+            manifest = m.write_event_chunks(
+                iter_hotspot_events(
+                    rows_for([(100, 100, 4, "I")]), [owner(0, 512)], profile(), contexts=None
+                ),
+                folder,
+            )
+            manifest["identity"] = {"run_id": rid}
+
+            def publish(value):
+                raw = m.canonical(value)
+                (folder / "manifest.json").write_bytes(raw)
+                (folder.parent / "catalog.json").write_bytes(
+                    m.canonical(
+                        {
+                            "schema": "event-window-catalog-v1",
+                            "runs": [{"run_id": rid, "workload": "A02", "sha256": m.sha(raw)}],
+                        }
+                    )
+                )
+
+            publish(manifest)
+            m._parse_event_manifest.cache_clear()
+            self.addCleanup(m._parse_event_manifest.cache_clear)
+            with patch.object(m, "validate_event_manifest", wraps=m.validate_event_manifest) as v:
+                public = m.load_event_manifest(root, rid)
+                public["chunks"].clear()
+                public["contexts"][0] = "poison"
+                payload = m.load_event_chunk(root, rid, "000000")
+                self.assertEqual(v.call_count, 1)
+                self.assertEqual(m.load_event_manifest(root, rid), manifest)
+                # Same path, same length: content keys must still invalidate the cache.
+                changed = copy.deepcopy(manifest)
+                changed["contexts"][0] = "UNKNOWN"
+                self.assertEqual(len(m.canonical(changed)), len(m.canonical(manifest)))
+                publish(changed)
+                self.assertEqual(m.load_event_manifest(root, rid)["contexts"], ["UNKNOWN"])
+                self.assertEqual(v.call_count, 2)
+                # A catalog-hash-valid malformed manifest is never accepted on a warm cache.
+                changed["chunks"][0]["end"] = "2"
+                publish(changed)
+                with self.assertRaises(ValueError):
+                    m.load_event_chunk(root, rid, "000000")
+            publish(manifest)
+            # Neither chunk bytes nor the catalog digest are trusted after a cache hit.
+            (folder / "000000.json.gz").write_bytes(payload + b"x")
+            with self.assertRaises(ValueError):
+                m.load_event_chunk(root, rid, "000000")
+            (folder.parent / "catalog.json").write_bytes(
+                m.canonical(
+                    {
+                        "schema": "event-window-catalog-v1",
+                        "runs": [{"run_id": rid, "workload": "A02", "sha256": "0" * 64}],
+                    }
+                )
+            )
+            with self.assertRaisesRegex(ValueError, "Manifest hash"):
+                m.load_event_manifest(root, rid)
+            self.assertLessEqual(m._parse_event_manifest.cache_info().currsize, 2)

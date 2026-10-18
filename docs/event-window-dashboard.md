@@ -4,6 +4,10 @@
 
 這份文件是進度與復原入口。已發布的 A、B、C1 成果保持原樣；C2b clock-anchor pilot 尚未開始。
 
+## 2026-10-18：Web 效能候選修正，仍未通過整體驗收
+
+已定位重複 manifest 驗證與 Worker 配置／分桶成本，完成局部修正與精確性回歸。Node 全量查詢修改前後結果 hash 相同；資料路徑診斷有改善。此環境無法取得可用 Chrome，且缺少完整 SDK／Python 3.13，因此沒有新的瀏覽器時間／RSS 通過收據。25s／5s／640MiB 條件保持，正式40份／8HTML維持未擴大。見[本次分析、測試限制與重跑命令](c2a-performance-20261018.md)。
+
 ## 2026-10-14：RSS 上限改為640 MiB
 
 依使用者明確指示完成調整，[重驗收據與截圖](../artifacts/verification/event-window/rss-640-20261014/)另存。Web完整操作RSS432.08 MiB、離線545.05 MiB，皆符合新上限；兩模式功能通過，瀏覽器皆close且無殘留PID。

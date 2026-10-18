@@ -1,0 +1,155 @@
+{
+  "scope": "Node engine; compressed input in memory; not browser acceptance",
+  "node": "v24.19.0",
+  "engine_sha256": "9d54fb957f4c97168b12590c4e550275f51f27c2f11d0ee11902c03dcacc9747",
+  "chunks": 421,
+  "runs": [
+    {
+      "seconds": 10.225881484000002,
+      "result_sha256": "2b16423c5555f70be38745dea03c3526e61e27c09169a7c8da41320ae4bb18be",
+      "profile": {
+        "type": "profile",
+        "chunks": 421,
+        "load_ms": 6.18823900000541,
+        "decode_ms": 7292.675971000022,
+        "aggregate_ms": 2873.668914000009,
+        "total_ms": 10224.472739
+      },
+      "events": "430324",
+      "totals": {
+        "instructions": "346485",
+        "memory_cycles": "1088094",
+        "model_service_ns": "2176188",
+        "accounted_model_ns": "2522673",
+        "cost_cycles": {
+          "l1i": "347365",
+          "l1d": "83839",
+          "l2": "278864",
+          "ram_read": "13860",
+          "ram_write": "364166"
+        },
+        "cache": {
+          "l1i": {
+            "accesses": "347365",
+            "misses": "1687",
+            "compulsory": "348",
+            "conflict": "293",
+            "capacity": "1046"
+          },
+          "l1d": {
+            "accesses": "83839",
+            "misses": "383",
+            "compulsory": "337",
+            "conflict": "23",
+            "capacity": "23"
+          },
+          "l2": {
+            "accesses": "34858",
+            "misses": "770",
+            "compulsory": "685",
+            "conflict": "69",
+            "capacity": "16"
+          }
+        }
+      }
+    },
+    {
+      "seconds": 8.440076877,
+      "result_sha256": "2b16423c5555f70be38745dea03c3526e61e27c09169a7c8da41320ae4bb18be",
+      "profile": {
+        "type": "profile",
+        "chunks": 421,
+        "load_ms": 5.324450999953115,
+        "decode_ms": 5941.4965539999885,
+        "aggregate_ms": 2479.9052430000374,
+        "total_ms": 8439.933281
+      },
+      "events": "430324",
+      "totals": {
+        "instructions": "346485",
+        "memory_cycles": "1088094",
+        "model_service_ns": "2176188",
+        "accounted_model_ns": "2522673",
+        "cost_cycles": {
+          "l1i": "347365",
+          "l1d": "83839",
+          "l2": "278864",
+          "ram_read": "13860",
+          "ram_write": "364166"
+        },
+        "cache": {
+          "l1i": {
+            "accesses": "347365",
+            "misses": "1687",
+            "compulsory": "348",
+            "conflict": "293",
+            "capacity": "1046"
+          },
+          "l1d": {
+            "accesses": "83839",
+            "misses": "383",
+            "compulsory": "337",
+            "conflict": "23",
+            "capacity": "23"
+          },
+          "l2": {
+            "accesses": "34858",
+            "misses": "770",
+            "compulsory": "685",
+            "conflict": "69",
+            "capacity": "16"
+          }
+        }
+      }
+    },
+    {
+      "seconds": 8.953350872,
+      "result_sha256": "2b16423c5555f70be38745dea03c3526e61e27c09169a7c8da41320ae4bb18be",
+      "profile": {
+        "type": "profile",
+        "chunks": 421,
+        "load_ms": 4.985458000024664,
+        "decode_ms": 6356.553718000021,
+        "aggregate_ms": 2579.9284549999866,
+        "total_ms": 8953.078696999997
+      },
+      "events": "430324",
+      "totals": {
+        "instructions": "346485",
+        "memory_cycles": "1088094",
+        "model_service_ns": "2176188",
+        "accounted_model_ns": "2522673",
+        "cost_cycles": {
+          "l1i": "347365",
+          "l1d": "83839",
+          "l2": "278864",
+          "ram_read": "13860",
+          "ram_write": "364166"
+        },
+        "cache": {
+          "l1i": {
+            "accesses": "347365",
+            "misses": "1687",
+            "compulsory": "348",
+            "conflict": "293",
+            "capacity": "1046"
+          },
+          "l1d": {
+            "accesses": "83839",
+            "misses": "383",
+            "compulsory": "337",
+            "conflict": "23",
+            "capacity": "23"
+          },
+          "l2": {
+            "accesses": "34858",
+            "misses": "770",
+            "compulsory": "685",
+            "conflict": "69",
+            "capacity": "16"
+          }
+        }
+      }
+    }
+  ]
+}

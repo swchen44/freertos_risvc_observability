@@ -6,6 +6,7 @@ import gzip
 import hashlib
 import io
 import json
+import platform
 import shutil
 import subprocess
 import threading
@@ -77,6 +78,20 @@ def verify(mode, output, html=None, executable=None, capacity_only=False, force_
         "sample_interval_seconds": 0.2,
         "harness_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         "source_commit": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
+        "platform": platform.platform(),
+        "python": platform.python_version(),
+        "source_sha256": {
+            name: hashlib.sha256((ROOT / name).read_bytes()).hexdigest()
+            if (ROOT / name).is_file()
+            else None
+            for name in [
+                "src/psf_lab/event_window.py",
+                "web/src/event-window-data.js",
+                "web/src/event-window.js",
+                "web/src/event-window-worker.js",
+                "web/dist/assets/event-window.js",
+            ]
+        },
         "offline_html_sha256": hashlib.sha256(html.read_bytes()).hexdigest() if html else None,
         "browser_executable": str(executable) if executable else "agent-browser default",
     }
@@ -100,8 +115,17 @@ def verify(mode, output, html=None, executable=None, capacity_only=False, force_
         if not browser_started and args[0] == "open":
             command = prefix
             browser_started = True
+        begun = time.monotonic()
         p = subprocess.run(command + list(args), capture_output=True, text=True, timeout=50)
-        commands.append(dict(args=args, exit=p.returncode, stdout=p.stdout, stderr=p.stderr))
+        commands.append(
+            dict(
+                args=args,
+                exit=p.returncode,
+                stdout=p.stdout,
+                stderr=p.stderr,
+                seconds=time.monotonic() - begun,
+            )
+        )
         (output / "commands.json").write_text(json.dumps(commands, indent=2) + "\n")
         if p.returncode:
             raise RuntimeError(p.stderr or p.stdout)
@@ -225,6 +249,7 @@ def verify(mode, output, html=None, executable=None, capacity_only=False, force_
         ab("open", url)
         wait()
         receipt["ready_seconds"] = time.monotonic() - start
+        receipt["initial_page_timing"] = ev("window.eventWindowTiming ?? null")
         receipt["browser"] = ev("navigator.userAgent")
         receipt["heap_initial"] = ev("performance.memory?.usedJSHeapSize ?? null")
         r = ev("window.eventWindowResult")
@@ -237,6 +262,7 @@ def verify(mode, output, html=None, executable=None, capacity_only=False, force_
         click("#apply")
         wait()
         receipt["filter_seconds"] = time.monotonic() - start
+        receipt["filter_page_timing"] = ev("window.eventWindowTiming ?? null")
         receipt["heap_after"] = ev("performance.memory?.usedJSHeapSize ?? null")
         if force_failure:
             raise AssertionError("Intentional failure verifies finally-close")

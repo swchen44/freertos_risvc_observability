@@ -18,6 +18,8 @@
 
 2026-10-14 使用者明確核准：RSS 上限由512改為 **640 MiB**。只調整此項，其他容量條件維持；舊512MiB失敗收據保持原樣，新測試明列 `rss_limit_mib: 640`。2026-10-14 Web／offline RSS均通過；Web時間條件仍有失敗。[重驗紀錄](../../artifacts/verification/event-window/rss-640-20261014/)，正式批次保持未擴大。
 
+2026-10-18：新增 [Web 效能候選 patch 與診斷](../c2a-performance-20261018.md)。完整 query hash 等價、Node／targeted Python 回歸通過；Chrome／SDK 環境受阻，容量與完整 pilot 尚未重驗通過。下方 Task6 checklist 維持未完成，不擴大正式批次。
+
 ## Global Constraints
 
 - Cache 固定 L1I 8192、L1D 8192、L2 32768 bytes；64-byte line、4-way、LRU、write-through/write-allocate。1 ns/I event + 2 ns/memory cycle 是模型成本。
