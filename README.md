@@ -1,6 +1,29 @@
 # FreeRTOS／RISC-V Observability：研究與可重跑 POC
 
-> **2026-10-23 最新進度：** 時間最佳化、Python320／Node22／Ruff通過，離線完整驗收通過；Web完整CSV RSS650.36MiB仍超過640，整體partial。正式40／8HTML尚未生成。[最新報告、截圖與後續計畫](poc/docs/event-window-dashboard.md)。下方為歷史checkpoint。
+## C2a 最新成果 · 2026-10-23
+
+C2a本機驗收完成：**40 runs、19,177,626 events、18,753 gzip chunks、8份離線HTML**，完整facts/totals與C1相符。Python328、Node25、Playwright11、Ruff、curl與agent-browser證據已保存。發布完成與否另以release的publication.json和remote SHA為準。
+
+[最新研究／操作報告](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/event-window-dashboard.md)｜[完整驗收、失敗歷史與還原](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/artifacts/verification/event-window/release-20261023/README.md)｜[C2b接續提案](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/plans/19-c2b-clock-anchor-pilot.md)
+
+| POC中的位置 | 內容 |
+|---|---|
+| `docs/` | 研究／需求／設計／實作計畫／已完成與後續工作 |
+| `artifacts/verification/event-window/formal/` | 正式40-run完整chunks、manifest、來源與C1 parity收據 |
+| `artifacts/offline/event-window/` | A01～A08單檔HTML，直接開啟，不需要Python或網路 |
+| `artifacts/verification/event-window/release-20261023/` | screenshots、E2E／curl／CSV、故障與關閉證據、工具版本與發布核對 |
+| `src/psf_lab/`、`web/`、`tools/tcp/`、`tests/` | parser/API/分析器、SVG互動UI、生成／匯出／驗證、unittest與Ruff |
+
+POC是`poc/` submodule，對應本repo的`poc-history`分支；根目錄保存研究入口，實驗程式與文件都在POC。完成既有依賴安裝後，於POC執行`npm --prefix web run build`與`PYTHONPATH=src .venv/bin/python -m psf_lab serve --port 8017`，確認API回200再開`http://127.0.0.1:8017/event-window.html`。離線版直接開A01～A08 HTML。
+
+![最新版Web A08](https://raw.githubusercontent.com/swchen44/freertos_risvc_observability/poc-history/artifacts/verification/event-window/release-20261023/ui/fast-A08-server/screenshots/01-overview.png)
+
+![離線互動hover](https://raw.githubusercontent.com/swchen44/freertos_risvc_observability/poc-history/artifacts/verification/event-window/release-20261023/ui/fast-A08-offline/screenshots/07-hover.png)
+
+固定L1I8KiB／L1D8KiB／L232KiB，提供相對最佳化比較；Chrome RSS不是MCU RAM，也不是SDK CPU loading。C2b clock anchors、實機PMU／SDK overhead與本輪知識庫增補仍列後續。以下保留各階段歷史，不以舊checkpoint的pending描述判斷本輪狀態。
+
+
+> **歷史：2026-10-23早期checkpoint：** 時間最佳化、Python320／Node22／Ruff通過，離線完整驗收通過；Web完整CSV RSS650.36MiB仍超過640，整體partial。正式40／8HTML尚未生成。[最新報告、截圖與後續計畫](poc/docs/event-window-dashboard.md)。下方為歷史checkpoint。
 
 > 2026-10-14：使用者已核准 C2a RSS 驗收上限改為 **640 MiB**。下方600／596 MiB與512 MiB失敗說明為歷史checkpoint；新門檻RSS重驗均通過；Web時間條件仍有失敗，整體C2a尚未全部驗收。
 
