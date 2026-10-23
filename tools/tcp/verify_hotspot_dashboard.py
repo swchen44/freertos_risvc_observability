@@ -3,25 +3,48 @@
 import argparse
 import csv
 import json
+import shutil
 import subprocess
+import threading
 import time
 from pathlib import Path
+
+from verify_event_window_dashboard import process_table
 
 from psf_lab.hotspot_dashboard import load_hotspot_workload
 
 ROOT = Path(__file__).resolve().parents[2]
 
 
-def verify(mode, output, html=None):
+def verify(mode, output, html=None, executable=None):
     output.mkdir(parents=True, exist_ok=False)
+    shutil.copyfile(__file__, output / "harness.py")
+    downloads = output / "downloads"
+    downloads.mkdir()
+    started = False
+    owned = set()
+    done = threading.Event()
     shots = output / "screenshots"
     shots.mkdir()
     log = []
     session = "c1-accept-" + mode
 
     def ab(*args):
+        nonlocal started
+        prefix = ["agent-browser", "--session", session]
+        if not started and args[0] == "open":
+            prefix += ["--download-path", str(downloads.resolve())]
+            if executable:
+                prefix += [
+                    "--executable-path",
+                    str(executable),
+                    "--args",
+                    "--disable-gpu,--disable-software-rasterizer,--renderer-process-limit=1,"
+                    "--js-flags=--max-old-space-size=64",
+                ]
+            started = True
         p = subprocess.run(
-            ["agent-browser", "--session", session, *args],
+            [*prefix, *args],
             text=True,
             capture_output=True,
             timeout=60,
@@ -53,7 +76,33 @@ def verify(mode, output, html=None):
         scroll(selector)
         ab("click", selector)
 
+    def download_csv(name):
+        click("#csv")
+        path = downloads / "hotspots.csv"
+        deadline = time.monotonic() + 30
+        while not path.exists() and time.monotonic() < deadline:
+            time.sleep(0.1)
+        assert path.is_file(), "CSV download missing"
+        path.rename(output / name)
+
+    def monitor():
+        while not done.is_set():
+            rows = process_table()
+            try:
+                daemon = int((Path.home() / ".agent-browser" / f"{session}.pid").read_text())
+            except (OSError, ValueError):
+                daemon = -1
+            descendants = {daemon}
+            for _ in range(10):
+                descendants.update(pid for pid, row in rows.items() if row[0] in descendants)
+            owned.update(
+                pid for pid in descendants if pid in rows and "chrome" in rows[pid][2].lower()
+            )
+            done.wait(0.2)
+
     receipt = {"passed": False, "mode": mode}
+    monitor_thread = threading.Thread(target=monitor)
+    monitor_thread.start()
     try:
         if mode == "server":
             routes = [
@@ -104,8 +153,8 @@ def verify(mode, output, html=None):
         ab("set", "viewport", "1600", "1050")
         if mode == "offline":
             ab("set", "offline", "on")
-            ab("network", "route", "http://*", "--abort")
-            ab("network", "route", "https://*", "--abort")
+            ab("network", "route", "http://**", "--abort")
+            ab("network", "route", "https://**", "--abort")
         start = time.monotonic()
         ab(
             "open",
@@ -147,7 +196,7 @@ def verify(mode, output, html=None):
         click('.tabulator-col[tabulator-field="value"]')
         shot("03-context-filter")
         scroll("#csv")
-        ab("download", "#csv", str(output / "filtered.csv"))
+        download_csv("filtered.csv")
         with (output / "filtered.csv").open(encoding="utf-8-sig") as stream:
             rows = list(csv.DictReader(stream))
         assert len(rows) == len(expected), (len(rows), len(expected))
@@ -157,7 +206,7 @@ def verify(mode, output, html=None):
         assert all(int(r["run_denominator"]) == run["totals"]["memory_cycles"] for r in rows)
         choose("#top-n", "20")
         scroll("#csv")
-        ab("download", "#csv", str(output / "top20.csv"))
+        download_csv("top20.csv")
         with (output / "top20.csv").open(encoding="utf-8-sig") as stream:
             top = list(csv.DictReader(stream))
         assert {r["id"]: r["value"] for r in rows} == {r["id"]: r["value"] for r in top}
@@ -241,9 +290,30 @@ def verify(mode, output, html=None):
         receipt.update(
             passed=True, filtered_csv_rows=len(rows), resources=resources, errors=errors, svg=4
         )
+    except Exception as error:
+        receipt["failure"] = str(error)
+        raise
     finally:
-        ab("close")
+        try:
+            if started:
+                ab("close")
+            receipt["close_exit"] = 0
+        except Exception as error:
+            receipt.update(close_exit=1, close_error=str(error))
+        done.set()
+        monitor_thread.join()
+        time.sleep(0.5)
+        remaining = process_table()
+        receipt["owned_pids"] = sorted(owned)
+        receipt["remaining_browser_pids"] = sorted(pid for pid in owned if pid in remaining)
+        receipt["passed"] = bool(
+            receipt.get("passed")
+            and owned
+            and receipt.get("close_exit") == 0
+            and not receipt["remaining_browser_pids"]
+        )
         (output / "assertions.json").write_text(json.dumps(receipt, indent=2) + "\n")
+    assert receipt["passed"], receipt
     return receipt
 
 
@@ -252,5 +322,6 @@ if __name__ == "__main__":
     p.add_argument("--mode", choices=["server", "offline"], required=True)
     p.add_argument("--output", type=Path, required=True)
     p.add_argument("--html", type=Path)
+    p.add_argument("--browser-executable", type=Path)
     args = p.parse_args()
-    print(json.dumps(verify(args.mode, args.output, args.html)))
+    print(json.dumps(verify(args.mode, args.output, args.html, args.browser_executable)))
