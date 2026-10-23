@@ -1,0 +1,11 @@
+{
+  "branch": "poc-history",
+  "target_commit": "579ceafd8090b895ce3bb8de9e033d367995193c",
+  "verified": true,
+  "push_exit": 0,
+  "categories": [],
+  "http_statuses": [],
+  "curl_codes": [],
+  "duration_seconds": 118.46532862499589,
+  "remote_commit": "579ceafd8090b895ce3bb8de9e033d367995193c"
+}

@@ -1,6 +1,6 @@
 {
   "passed": true,
-  "scope": "C2a local acceptance; publication pending",
+  "scope": "C2a local acceptance and verified GitHub payload publication",
   "source_commit": "c423354fded7549573cb737e4a7e021d26efa577",
   "dataset": {
     "passed": true,
@@ -196,5 +196,6 @@
     "html_mib": 95,
     "bins": 512
   },
-  "c2b_started": false
+  "c2b_started": false,
+  "publication_receipt": "publication.json"
 }

@@ -37,8 +37,8 @@ C1 已建立 Task／IRQ × role × function × PC 聯合統計、函式差異與
 - [實作計畫與 checklist](docs/plans/13-hotspot-dashboard.md)。
 - [正式報告與來源](artifacts/verification/hotspot/formal/)；[8 組離線 HTML](artifacts/offline/hotspot/)。
 - Web：在 POC 執行 `.venv/bin/python -m psf_lab serve --port 8016`，開啟 `http://127.0.0.1:8016/hotspot.html`。
-- C2 時間軸尚未開始；這些是模型相對成本，不是產品 CPU 使用率。
-- [C2 時間對齊研究草案](docs/design/cache-psf-time-alignment.md)：已選 A 分階段；[C2a 計畫](docs/plans/14-event-window-dashboard.md)已核准、實作中，容量與 E2E 尚未驗收。Chrome 測試固定逐一執行，用完 close。
+- C1 發布當時，C2 時間軸尚未開始；目前 C2a 已完成，C2b 時間對齊仍未開始。這些是模型相對成本，不是產品 CPU 使用率。
+- [C2 時間對齊研究草案](docs/design/cache-psf-time-alignment.md)：已選 A 分階段；[C2a 計畫](docs/plans/14-event-window-dashboard.md)的最新驗收見本頁開頭。Chrome 測試固定逐一執行，用完 close。
 
 ![C1 Web 畫面](artifacts/verification/hotspot/ui/server/screenshots/01-overview.png)
 
@@ -59,7 +59,7 @@ C1 已建立 Task／IRQ × role × function × PC 聯合統計、函式差異與
 
 ![C2a 離線 hover 明細](artifacts/verification/event-window/checkpoint-20261013/ui/c2a-e2e-reviewed-offline-3/screenshots/07-hover.png)
 
-以下 C1／B／A 段落是各階段已發布成果；不能用那些 passed 收據取代 C2a 尚未通過的容量驗收。
+以下 C1／B／A 段落是各階段已發布成果；各階段的 passed 收據僅涵蓋各自範圍。C2a 容量驗收請看本頁開頭的最新 release。
 
 ## 現況入口 · 2026-10-09
 

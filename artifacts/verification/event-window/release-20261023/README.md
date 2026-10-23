@@ -1,6 +1,6 @@
 # C2a 正式本機驗收 · 2026-10-23
 
-**本機驗收通過；發布狀態見publication.json。** 固定L1I8KiB/L1D8KiB/L232KiB，64-byte line、4-way LRU、write-through/write-allocate。這些是相對模型；不是實機效能或MCU RAM測量。
+**本機驗收與兩repo的payload發布通過；SHA見publication.json。** 該收據固定payload commits，後續metadata commit不自我引用；目前HEAD另以ls-remote與clean status核對。固定L1I8KiB/L1D8KiB/L232KiB，64-byte line、4-way LRU、write-through/write-allocate。這些是相對模型；不是實機效能或MCU RAM測量。
 
 40 runs、19,177,626 events、18,753 gzip chunks已與保存C1完整facts/totals比較，來源/manifest/chunk hash皆通過。8份單檔HTML均小於95MiB，包含完整資料。API curl、agent-browser、真TCP faults及全部測試均有下方證據。C2b時間對齊尚未開始。
 
@@ -35,6 +35,7 @@
 - `history/`：先前RSS/時間/下載等待失敗，C1誤套heap限制、錯誤中介層與preflight意外啟動等，皆未改寫原收據。
 - `tests/`、`playwright/`、`driver/`：Python328/Node25/Ruff/Playwright11、RED/GREEN、實際命令/host aggregate load與序列driver。
 - `environment.json`、`review.md`、`inventory.json`：工具版本、獨立source review與每檔SHA/大小。
+- `publication.json`、`publication-attempts/`：兩repo的payload SHA核對、HTTP408失敗、分批與單次64MiB HTTP buffer成功紀錄；未改全域設定或Git歷史，未保存原始transport認證輸出。
 
 ## HTTP CSV與取消邊界
 

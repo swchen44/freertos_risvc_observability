@@ -1,0 +1,10 @@
+{
+  "scope": "offline pack generation only",
+  "from": "579ceafd8090b895ce3bb8de9e033d367995193c",
+  "to": "3a852284235b995431eea9232013a000615290df",
+  "exit": 0,
+  "first_bytes_seconds": 7.630883332982194,
+  "duration_seconds": 33.6535706249997,
+  "pack_bytes": 38468511,
+  "pack_sha256": "43b5600f0307633b57b83db1eefd93effd6fe471c65b6359ae9fe71116ac29cb"
+}

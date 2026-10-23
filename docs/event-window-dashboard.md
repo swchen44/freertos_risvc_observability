@@ -1,6 +1,6 @@
 # C2a：用事件區間找出 Cache 成本
 
-**目前狀態：C2a本機正式驗收通過。40 runs／8HTML已完成；Python328、Node25、Playwright11、Ruff與真TCP故障測試通過。發布核對另見release收據。C2b尚未開始。**
+**目前狀態：C2a本機正式驗收與兩repo的payload發布完成。40 runs／8HTML已完成；Python328、Node25、Playwright11、Ruff與真TCP故障測試通過。發布SHA另見release收據。C2b尚未開始。**
 
 這份文件是進度與復原入口。已發布的 A、B、C1 成果保持原樣；C2b clock-anchor pilot 尚未開始。
 
@@ -134,7 +134,7 @@ flowchart LR
 | `web/src/event-window.js` | SVG、表格、篩選與取消生命週期 |
 | `tools/tcp/build_event_windows.py` | 從保存 capture 建立新資料集 |
 | `tools/tcp/verify_event_window_dashboard.py` | curl／agent-browser、獨立 oracle、下載與 RSS 收據 |
-| `docs/plans/14-event-window-dashboard.md` | 原核准範圍、門檻與未完成 checklist |
+| `docs/plans/14-event-window-dashboard.md` | 原核准範圍、門檻與已核對的 C2a checklist |
 
 API：`GET /api/event-windows`、`GET /api/event-windows/{run_id}`、`GET /api/event-windows/{run_id}/chunks/{chunk_id}`。固定 catalog 內的 ID 才可讀取；不存在回 404，驗證失敗回 503。
 
@@ -161,13 +161,13 @@ PYTHONPATH=src .venv/bin/python tools/tcp/export_event_window_html.py \
 
 ## 尚待完成
 
-1. 發布：核對poc-history/main的payload與metadata commit，保留remote SHA及clean status。
-2. C2b另立clock-anchor pilot；cache event index不能推論PSF timestamp。
-3. 實機PMU／SDK overhead／UART吞吐與cache-model校準仍待公司平台；本機相對模型結果不能當產品效能數據。
+1. C2b已有clock-anchor pilot提案，尚未實作；cache event index不能推論PSF timestamp。
+2. 實機PMU／SDK overhead／UART吞吐與cache-model校準仍待公司平台；本機相對模型結果不能當產品效能數據。
+3. 本輪C2a知識庫增補尚未同步；先前知識庫push只涵蓋當時版本。
 4. 跨機目標平台依使用者決定暫緩；沒有把未執行項目勾成完成。
 
 
-## 這次新增的操作證據
+## 歷史 checkpoint 操作證據 · 2026-10-13
 
 [Checkpoint 收據與全部中間檔](../artifacts/verification/event-window/checkpoint-20261013/) 保存完整 logs、commands、RSS samples、screenshots，以及可還原的 pilot。
 
@@ -191,7 +191,7 @@ Web 總覽：完整 run 與篩選區間的分母分開顯示。
 
 故意失敗測試保留 `passed:false` 與 `Intentional failure verifies finally-close`，但 `close_exit=0`、剩餘 PID 為空，證明失敗路徑也會關閉專用瀏覽器。
 
-## 內網還原這個未完成的 checkpoint
+## 還原歷史 partial checkpoint · 2026-10-13
 
 `preview/A02-pilot.html` 可直接開啟，不需要 Python server。`pilot.tar.gz` 是 14-run 資料，不是正式40份。`history/*.html.gz` 保存前期 HTML，解壓後可用相鄰 export receipt 比對原 SHA-256。`inventory.json` 記錄各檔案大小與 hash；`restore-check.json` 是實際解壓到新暫存目錄，再核對全部 manifest／gzip chunks 的結果。
 

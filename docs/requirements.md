@@ -1,12 +1,24 @@
 # 需求、進度與未完成事項
 
-更新：2026-10-03。這是目前 POC 的狀態表，未執行事項不標成通過。
+更新：2026-10-23。未執行事項不標成通過；下方 2026-10-03 狀態表保留當時進度。
+
+## 最新狀態與接續邊界
+
+| 範圍 | 現況與證據 | 接續工作 |
+|---|---|---|
+| C2a 事件區間 Dashboard | 40 runs、19,177,626 events、8 份離線 HTML 已通過本機驗收；[報告](event-window-dashboard.md)、[正式收據](../artifacts/verification/event-window/release-20261023/README.md) | 發布以 release 的 publication.json 與遠端 SHA 核對為準 |
+| PSF 與 cache 時間對齊 | C2a 保持兩軸獨立；[C2b 提案](plans/19-c2b-clock-anchor-pilot.md)尚未實作 | 先盤點真實 clock／SDK API，再決定 pilot 與誤差預算 |
+| 產品平台量測 | 模型結果可供相對比較；L1I 8 KiB／L1D 8 KiB／L2 32 KiB | 實機 PMU、SDK on/off CPU／code size／IRQ、UART 吞吐與 cache model 校準仍待內網／硬體 |
+| 知識庫 | 原單篇同步已完成；下方 KB commits 是先前版本 | 本輪 C2a 增補尚未同步，不以舊同步收據宣稱最新內容已同步 |
+| 跨機驗證 | 依使用者決定暫緩 | 保留還原檔案；不新增目標平台驗收 |
+
+Chrome RSS 是 host 測試程序的採樣總和，不是 firmware RAM 或 SDK CPU loading；CPU/task 使用率須遵守 PSF clock、有效區間與缺資料的判定，不能以 cache 成本替代。
 
 ## 需求來源
 
 [原始 README](../references/baseline/README.md) 的 R01～R27、N01～N12 與 [內部 AI 任務](../references/baseline/research/內部AI-接續研究任務.md) U01～U16 全數保留在參考快照。原始八類 MECE 與交叉依賴仍有效；新增 POC 將資料產生、解碼、驗證與呈現分層。
 
-## 完成與待辦
+## 歷史狀態表 · 2026-10-03
 
 | 項目 | 狀態 | 下一個可驗收成果 |
 |---|---|---|

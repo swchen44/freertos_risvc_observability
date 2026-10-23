@@ -1,4 +1,28 @@
 {
-  "status": "pending",
-  "note": "Fill after payload commits are verified on both remotes"
+  "status": "verified",
+  "scope": "payload commits on poc-history and main",
+  "verified_at_utc": "2026-10-23T14:13:01.476154+00:00",
+  "poc": {
+    "branch": "poc-history",
+    "payload_commit": "f78cd70b264c48de21f37d9198c49fa8e272cf9c",
+    "remote_commit": "f78cd70b264c48de21f37d9198c49fa8e272cf9c",
+    "verified": true
+  },
+  "root": {
+    "branch": "main",
+    "payload_commit": "2f6c5cbf9142b1d16248b746bccd9f82f24b39bd",
+    "remote_commit": "2f6c5cbf9142b1d16248b746bccd9f82f24b39bd",
+    "poc_gitlink": "f78cd70b264c48de21f37d9198c49fa8e272cf9c",
+    "verified": true
+  },
+  "metadata_boundary": "This receipt pins verified payload commits. Later metadata commits contain this receipt and documentation corrections; final HEADs must be checked separately with ls-remote and clean status.",
+  "transport_evidence": "publication-attempts/",
+  "current_head_checks": [
+    "git rev-parse HEAD",
+    "git ls-remote origin refs/heads/main",
+    "git -C poc rev-parse HEAD",
+    "git -C poc ls-remote origin refs/heads/poc-history",
+    "git status --short",
+    "git -C poc status --short"
+  ]
 }

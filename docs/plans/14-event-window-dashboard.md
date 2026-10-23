@@ -10,7 +10,7 @@
 
 **Spec:** [C2 設計](../design/cache-psf-time-alignment.md)。使用者已選 A；本計畫只交付 C2a，C2b 必須在 C2a 完成後用另一份 clock-anchor pilot 計畫接續。
 
-狀態：**Tasks1–6本機驗收完成，40 runs／8HTML與最新release證據已保存；發布checkbox待remote核對。C2b尚未開始。**
+狀態：**Tasks1–6本機驗收與兩repo的payload發布完成，40 runs／8HTML與最新release證據已保存；remote SHA見publication.json。C2b尚未開始。**
 
 2026-10-13 review 修正 `0584229`：取消載入、CSV Blob parts、dictionary／gzip 拒絕、source mapping provenance。Python319、Node21、Ruff通過；獨立複查未發現未解的 Important。瀏覽器 RSS 超過512MiB，不能視為整體通過。[checkpoint 操作與還原報告](../event-window-dashboard.md)保存有效證據與已作廢的早期驗收。
 
@@ -155,7 +155,7 @@ if (message.request_id !== currentRequestId) return;
 - [x] pilot全部通過才生成完整40份與8HTML，新目錄保存來源、逐列 chunks、manifest、容量數字及全部失敗／中間檔。每份與保存 C1 totals/facts 完整一致；正式A08補做最大run操作驗收。
 - [x] code先commit；完整Python unittest、Ruff、Node、既有Playwright單worker與C1瀏覽器回歸依序執行。備份／復原歷史tracked測試產物，最終只保存新 evidence。
 - [x] 獨立whole-change review，Important先修並重跑受影響測試；記錄所有延期問題。README加入流程、截圖、檔案表、事件序號語意、離線使用與C2b待辦。
-- [ ] `verify_docs(Path.cwd())` 與 `git diff --check`；completion需列實測結果與source/tested commit。payload commit後正常push兩個repo，capture transport，核對remote SHA及clean status；不能把預期測試數寫成通過數。
+- [x] `verify_docs(Path.cwd())` 與 `git diff --check`；completion需列實測結果與source/tested commit。payload commit後正常push兩個repo，capture transport，核對remote SHA及clean status；不能把預期測試數寫成通過數。
 
 ## C2b 接續條件與計畫自我審閱
 
@@ -174,4 +174,4 @@ C2a 完成後另寫 C2b pilot 計畫：先查 QEMU callback 可取 clock 的位�
 
 ## 最終驗收補充
 
-最新release-20261023覆蓋全部負向fixture、40-run full parity、8HTML容量、A02/A08 Web/offline oracle、C1/lifecycle/capability與close；Python328/Node25/PW11/Ruff。Web CSV依plan17改HTTP串流，Offline仍Blob；plan18只重用已逐列驗證的整塊totals，未減少資料/驗證。歷史失敗不作廢成成功；preflight意外browser的RSS則明確不可採認。待下方發布條件實際核對後才完成最後checkbox。
+最新release-20261023覆蓋全部負向fixture、40-run full parity、8HTML容量、A02/A08 Web/offline oracle、C1/lifecycle/capability與close；Python328/Node25/PW11/Ruff。Web CSV依plan17改HTTP串流，Offline仍Blob；plan18只重用已逐列驗證的整塊totals，未減少資料/驗證。歷史失敗不作廢成成功；preflight意外browser的RSS則明確不可採認。兩repo的payload remote已核對，見release/publication.json；該收據固定payload版本，收據本身與文件修正隨metadata commit發布，最終HEAD另以ls-remote／clean status核對。

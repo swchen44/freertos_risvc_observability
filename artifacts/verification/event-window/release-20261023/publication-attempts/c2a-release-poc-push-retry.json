@@ -1,0 +1,17 @@
+{
+  "branch": "poc-history",
+  "local_commit": "f78cd70b264c48de21f37d9198c49fa8e272cf9c",
+  "verified": false,
+  "push_exit": 1,
+  "categories": [
+    "network",
+    "up_to_date"
+  ],
+  "http_statuses": [
+    "408"
+  ],
+  "curl_codes": [
+    "22"
+  ],
+  "remote_commit": "733278238a6c63cc7030c31c9d93010acf4794e0"
+}
