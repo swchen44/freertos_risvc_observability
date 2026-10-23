@@ -1,0 +1,25 @@
+{
+  "workload": "A05",
+  "runs": 2,
+  "bytes": 7800016,
+  "output_sha256": "0edfa4549395a001d84e0f21df91d21962b4c196f91d407a85eda998aa371043",
+  "assets": {
+    "web/event-window.html": "9493df3fbf41bf0322d92382c99680648082c20241cb601a7c50e6e4ea2ccce8",
+    "web/dist/assets/event-window.js": "665040187fdfbc500d9637c294e4235272b760efd899ea204bdbfffef06ca29d",
+    "web/dist/assets/event-window.css": "648a289250fb7af8620e48733bf89dfd36ad9acc8871e2435286c9d626b323d9"
+  },
+  "source_catalog": [
+    {
+      "events": "449542",
+      "run_id": "A05-baseline-b1-1-1",
+      "sha256": "5537c3ea6fca98b3c365afb549758c819b075626feb7c23f12e7d424a4905d6f",
+      "workload": "A05"
+    },
+    {
+      "events": "437296",
+      "run_id": "A05-pbuf-b1-1-1",
+      "sha256": "72aa0821cdf251e81f434debe329127158bcb7800b2341986732f1fa14e317d2",
+      "workload": "A05"
+    }
+  ]
+}

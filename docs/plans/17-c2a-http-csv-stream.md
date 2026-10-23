@@ -17,3 +17,9 @@
 3. 新Web A08 full對照，CSV hash對舊版與offline；不放寬gate。Offline A08的filter另保留profile/固定重測，未通過不宣告完成。
 4. 若收益成立，重產8HTML並保留上一候選；A02/A08 Web/offline、其他6HTML容量、C1 offline、capability回歸；每次僅一session且finally close。
 5. 更新plan14/README/evidence、push兩repo並核對SHA。任何失敗均保留，正式資料已生成不代表最終驗收。
+
+## 真實TCP發現的中介層問題
+
+TestClient／單元測試與source review不足以判斷網路EOF。實際socket首次測出late-corruption回200且curl exit0，只收到131486/139671 bytes。已保存失敗；安裝版Starlette BaseHTTPMiddleware會先結束body_stream再傳app_exc。原local_only裝飾器因此讓截短看似成功。改成相同loopback/origin規則的pure-ASGI LocalOnly，新增socket regression先RED後GREEN：正常200/exit0、late-corruption200/exit18、首塊503。server均確實停止，synthetic fixture與正式capture分開。
+
+8份新HTML已完成，A02/A08 Web/offline、其餘6HTML、lifecycle/capability/C1與Playwright已通過；pure-ASGI修正後再跑完整Python與受影響Web回歸。先前所有時間/RSS/下載等待失敗仍保留，不因新通過而改寫。原生CSV完成等待180s僅為檔案傳輸timeout；ready25s、filter5s、heap128MiB、RSS640MiB不變。

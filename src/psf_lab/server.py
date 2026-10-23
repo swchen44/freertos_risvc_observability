@@ -12,6 +12,7 @@ from fastapi.responses import FileResponse, JSONResponse, Response, StreamingRes
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, Field, StrictInt
 from starlette.concurrency import run_in_threadpool
+from starlette.datastructures import URL, Headers
 from starlette.exceptions import HTTPException
 
 from psf_lab.cache_report import load_comparison
@@ -90,6 +91,24 @@ class BodyLimit:
         await self.app(scope, bounded_receive, send)
 
 
+class LocalOnly:
+    """Apply the existing loopback policy without buffering a streaming response."""
+
+    def __init__(self, app):
+        self.app = app
+
+    async def __call__(self, scope, receive, send):
+        if scope["type"] == "http":
+            host = URL(scope=scope).hostname
+            origin = Headers(scope=scope).get("origin")
+            if host not in ("localhost", "127.0.0.1", "::1") or (
+                origin and urlsplit(origin).hostname not in ("localhost", "127.0.0.1", "::1")
+            ):
+                response = error_response("invalid_host", "Local requests only", 400)
+                return await response(scope, receive, send)
+        return await self.app(scope, receive, send)
+
+
 def create_app(
     store: Path, *, max_bytes=16 * 1024 * 1024, max_traces=20, run_root: Path | None = None
 ) -> FastAPI:
@@ -99,15 +118,7 @@ def create_app(
     store = store.resolve()
     runs = run_root or ROOT / "runs"
 
-    @app.middleware("http")
-    async def local_only(request, call_next):
-        host = request.url.hostname
-        origin = request.headers.get("origin")
-        if host not in ("localhost", "127.0.0.1", "::1") or (
-            origin and urlsplit(origin).hostname not in ("localhost", "127.0.0.1", "::1")
-        ):
-            return error_response("invalid_host", "Local requests only", 400)
-        return await call_next(request)
+    app.add_middleware(LocalOnly)
 
     @app.exception_handler(ParseError)
     async def parse_error(request, error):
