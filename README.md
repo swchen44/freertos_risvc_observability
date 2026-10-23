@@ -1,5 +1,7 @@
 # FreeRTOS／RISC-V Observability：研究與可重跑 POC
 
+**C2b 接續：來源能力盤點完成，實作與新capture尚未開始。** [QEMU clock能力表](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/research/c2b-qemu-clock-capabilities.md)、[SDK anchors／PSF與pilot邊界](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/research/c2b-sdk-anchor-capabilities.md)、[接續checklist](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/plans/19-c2b-clock-anchor-pilot.md)。目前等待選擇是否在POC app／port加入SDK markers；沒有修改FreeRTOS kernel、SDK或既有capture。
+
 ## C2a 最新成果 · 2026-10-23
 
 C2a本機驗收完成：**40 runs、19,177,626 events、18,753 gzip chunks、8份離線HTML**，完整facts/totals與C1相符。Python328、Node25、Playwright11、Ruff、curl與agent-browser證據已保存。發布完成與否另以release的publication.json和remote SHA為準。
