@@ -1,0 +1,16 @@
+{
+  "launch": 455840,
+  "screenshot:01-overview": 396672,
+  "full-run-filter": 474624,
+  "hover-and-zoom": 478128,
+  "screenshot:07-hover": 468704,
+  "interaction": 535296,
+  "screenshot:08-zoom": 527824,
+  "full-csv-export": 665968,
+  "export-cancel": 405888,
+  "screenshot:02-interval": 371616,
+  "screenshot:03-source": 423072,
+  "screenshot:04-context": 391312,
+  "screenshot:05-misses": 412336,
+  "screenshot:06-mobile": 424768
+}

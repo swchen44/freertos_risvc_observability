@@ -18,6 +18,8 @@
 
 2026-10-14 使用者明確核准：RSS 上限由512改為 **640 MiB**。只調整此項，其他容量條件維持；舊512MiB失敗收據保持原樣，新測試明列 `rss_limit_mib: 640`。2026-10-14 Web／offline RSS均通過；Web時間條件仍有失敗。[重驗紀錄](../../artifacts/verification/event-window/rss-640-20261014/)，正式批次保持未擴大。
 
+2026-10-23：[時間續作](15-c2a-timing-followup.md)與[最新報告](../event-window-dashboard.md)。時間門檻通過，Web CSV匯出RSS650.36MiB仍超限；離線完整操作通過。正式批次維持未擴大。負向fixture已補測，複合項目仍逐項核對。
+
 ## Global Constraints
 
 - Cache 固定 L1I 8192、L1D 8192、L2 32768 bytes；64-byte line、4-way、LRU、write-through/write-allocate。1 ns/I event + 2 ns/memory cycle 是模型成本。

@@ -1,8 +1,26 @@
 # C2a：用事件區間找出 Cache 成本
 
-**目前狀態：實作與 A02 pilot 已存在，整體驗收未完成。2026-10-14 使用者已將 RSS 門檻調整為 640 MiB，Web／offline RSS重驗均通過；Web時間條件仍有失敗紀錄；尚未擴大正式 40 runs，也未產生正式 8 份 HTML。**
+**目前狀態：2026-10-23 時間最佳化完成，最新 Web 三次時間門檻通過，離線完整操作及容量通過。Web 完整 CSV 匯出 RSS 650.36 MiB 超過640，因此整體仍未驗收；正式40 runs／8 HTML 尚未產生。**
 
 這份文件是進度與復原入口。已發布的 A、B、C1 成果保持原樣；C2b clock-anchor pilot 尚未開始。
+
+## 2026-10-23：時間修正與 CSV 記憶體阻塞
+
+[完整證據、逐次測量與還原入口](../artifacts/verification/event-window/timing-20261023/README.md)保存成功與失敗、profile、完整查詢結果、CSV、截圖及離線 HTML。[續作計畫](plans/15-c2a-timing-followup.md)記錄實驗與下一步。
+
+- API 每次仍重新讀檔核對 SHA，只快取一份已驗證 manifest 的解析結果；公開回傳 deepcopy。20次chunk profile由1.565s降至0.693s，這不是HTTP延遲量測。
+- JS固定欄位加總與 canonical `"0"`／`"1"` 解析快速路徑保留BigInt及全部驗證。完整A02 query輸出逐byte相同。最後三組配對Node查詢約2.90–2.95s降至2.36–2.39s。
+- 最終Web三次filter為3.71／3.14／2.92s；完整操作與430,324列CSV oracle通過，但匯出階段RSS650.36MiB，整體false。先前5.29s的失敗也保留。
+- 最終離線完整操作：ready4.52s、filter2.85s、RSS536.05MiB，passed；先停止server、阻擋HTTP/HTTPS再測。每個session都close且無殘留PID。
+- Python320、Node22、Ruff與build通過；新增bool／非canonical數字、空CSV、缺asset及重複template anchor等負向測試。獨立review未有未解Important。
+
+![最新Web總覽](../artifacts/verification/event-window/timing-20261023/server-number-full/screenshots/01-overview.png)
+
+完整capture為430,324筆；模型成本與事件序號語意直接顯示於畫面，仍保持L1I8／L1D8／L232KiB。
+
+![最新離線hover](../artifacts/verification/event-window/timing-20261023/offline-number-full/screenshots/07-hover.png)
+
+離線hover顯示半開區間、精確memory cycles及selected rows；與Web共用查詢引擎。
 
 ## 2026-10-14：RSS 上限改為640 MiB
 
@@ -99,9 +117,9 @@ PYTHONPATH=src .venv/bin/python tools/tcp/export_event_window_html.py \
 
 ## 尚待完成
 
-1. RSS已依640 MiB重驗通過；Web首次ready25.83s超25s、重測filter5.93s超5s。後續需處理時間波動，再完成整體容量驗收。
+1. 最新時間門檻已通過；Web完整CSV匯出RSS650.36MiB超過640。下一步分段量測worker／傳遞／Blob／下載，保留全部CSV及取消驗證。
 2. Web／offline 完整操作與專項生命週期已驗證；容量通過後仍需重跑最終候選版本，不能把本 checkpoint 當正式 release。
-3. 補齊計畫未勾選的負向 fixtures，例如 bool／非 canonical wire 數字、空集合 CSV、缺少 asset／重複 template anchor；已完成的子項不代表整條複合 checklist 都完成。
+3. 上述bool／非canonical wire數字、空CSV、缺asset／重複template anchor已補測通過；其餘複合checklist仍逐項核對，不能由單一子項推定全部完成。
 4. 容量與 pilot 全部通過後才生成正式 40 runs／8 HTML，並補 A08 最大 run 驗收。
 5. 完整 Python／Node／Ruff、既有 Playwright workers=1 與 C1 browser 回歸；保存 screenshot／hash／review／remote SHA。
 6. C2a 完成後另寫 C2b clock-anchor pilot 計畫，研究 cache event index 與 PSF clock 對齊，不能用猜測 timestamp。

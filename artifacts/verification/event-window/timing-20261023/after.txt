@@ -1,0 +1,26 @@
+         2165384 function calls (2164754 primitive calls) in 0.693 seconds
+
+   Ordered by: cumulative time
+   List reduced from 143 to 18 due to restriction <18>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+       20    0.003    0.000    0.692    0.035 /Users/swchen.tw/git/percepio/poc/src/psf_lab/event_window.py:347(load_event_chunk)
+       20    0.029    0.001    0.633    0.032 /Users/swchen.tw/git/percepio/poc/src/psf_lab/event_window.py:145(decode_event_chunk)
+    20480    0.148    0.000    0.501    0.000 /Users/swchen.tw/git/percepio/poc/src/psf_lab/event_window.py:67(row_counts)
+   606210    0.204    0.000    0.355    0.000 /Users/swchen.tw/git/percepio/poc/src/psf_lab/event_window.py:45(uint)
+   607632    0.115    0.000    0.115    0.000 {method 'fullmatch' of 're.Pattern' objects}
+       20    0.009    0.000    0.048    0.002 /Users/swchen.tw/git/percepio/poc/src/psf_lab/event_window.py:325(_load_verified_manifest)
+    20901    0.040    0.000    0.040    0.000 /Users/swchen.tw/git/percepio/poc/src/psf_lab/hotspot_events.py:23(add_counts)
+    20922    0.021    0.000    0.037    0.000 /Users/swchen.tw/git/percepio/poc/src/psf_lab/hotspot_events.py:15(empty_counts)
+   608980    0.036    0.000    0.036    0.000 {built-in method builtins.isinstance}
+        1    0.000    0.000    0.019    0.019 /Users/swchen.tw/git/percepio/poc/src/psf_lab/event_window.py:313(_parsed_manifest)
+       41    0.000    0.000    0.018    0.000 /Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/__init__.py:299(loads)
+       41    0.000    0.000    0.017    0.000 /Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/decoder.py:340(decode)
+       41    0.017    0.000    0.017    0.000 /Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/decoder.py:351(raw_decode)
+   104616    0.016    0.000    0.016    0.000 {built-in method fromkeys}
+       60    0.000    0.000    0.014    0.000 /Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/_abc.py:621(read_bytes)
+       80    0.011    0.000    0.013    0.000 {method 'read' of '_io.BufferedReader' objects}
+       60    0.000    0.000    0.013    0.000 /Users/swchen.tw/git/percepio/poc/src/psf_lab/event_window.py:31(sha)
+        1    0.003    0.003    0.013    0.013 /Users/swchen.tw/git/percepio/poc/src/psf_lab/event_window.py:87(validate_event_manifest)
+
+

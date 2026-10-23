@@ -1,0 +1,121 @@
+{
+  "passed": false,
+  "reason": "Web full CSV sampled RSS exceeds 640 MiB",
+  "tested_commit": "16e0cbc15f2c8504c5a0656d2f733572005884ad",
+  "platform": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+  "node": "v26.0.0",
+  "python": "Python 3.13.2",
+  "runs": [
+    {
+      "name": "offline-number-2",
+      "source_commit": "16e0cbc15f2c8504c5a0656d2f733572005884ad",
+      "scope": "capacity-only",
+      "passed": true,
+      "ready_seconds": 5.739656249992549,
+      "filter_seconds": 3.407242707995465,
+      "sampled_peak_rss_kib": 399552,
+      "close_exit": 0,
+      "remaining_browser_pids": []
+    },
+    {
+      "name": "offline-number-3",
+      "source_commit": "16e0cbc15f2c8504c5a0656d2f733572005884ad",
+      "scope": "capacity-only",
+      "passed": true,
+      "ready_seconds": 5.243517000009888,
+      "filter_seconds": 3.499826374987606,
+      "sampled_peak_rss_kib": 433920,
+      "close_exit": 0,
+      "remaining_browser_pids": []
+    },
+    {
+      "name": "offline-number-full",
+      "source_commit": "16e0cbc15f2c8504c5a0656d2f733572005884ad",
+      "scope": "full-interactions",
+      "passed": true,
+      "ready_seconds": 4.522476666999864,
+      "filter_seconds": 2.849120541999582,
+      "sampled_peak_rss_kib": 548912,
+      "close_exit": 0,
+      "remaining_browser_pids": []
+    },
+    {
+      "name": "server-1",
+      "source_commit": "2ceb3ececfe8daa39264cc4529dfdebea9a18cd2",
+      "scope": "capacity-only",
+      "passed": false,
+      "ready_seconds": 16.8337732499931,
+      "filter_seconds": 5.290900542007876,
+      "sampled_peak_rss_kib": 338640,
+      "close_exit": 0,
+      "remaining_browser_pids": []
+    },
+    {
+      "name": "server-2",
+      "source_commit": "2ceb3ececfe8daa39264cc4529dfdebea9a18cd2",
+      "scope": "capacity-only",
+      "passed": true,
+      "ready_seconds": 11.780267291993368,
+      "filter_seconds": 3.047684458011645,
+      "sampled_peak_rss_kib": 432400,
+      "close_exit": 0,
+      "remaining_browser_pids": []
+    },
+    {
+      "name": "server-3",
+      "source_commit": "2ceb3ececfe8daa39264cc4529dfdebea9a18cd2",
+      "scope": "capacity-only",
+      "passed": true,
+      "ready_seconds": 16.814179583991063,
+      "filter_seconds": 3.639590083999792,
+      "sampled_peak_rss_kib": 391552,
+      "close_exit": 0,
+      "remaining_browser_pids": []
+    },
+    {
+      "name": "server-api-fix",
+      "source_commit": "fafd0eb6b49d62047c7e4de5ff189bae86614084",
+      "scope": "capacity-only",
+      "passed": true,
+      "ready_seconds": 13.149713208011235,
+      "filter_seconds": 3.9594791660056217,
+      "sampled_peak_rss_kib": 447456,
+      "close_exit": 0,
+      "remaining_browser_pids": []
+    },
+    {
+      "name": "server-number-1",
+      "source_commit": "16e0cbc15f2c8504c5a0656d2f733572005884ad",
+      "scope": "capacity-only",
+      "passed": true,
+      "ready_seconds": 21.35679608299688,
+      "filter_seconds": 3.7100900410005124,
+      "sampled_peak_rss_kib": 387760,
+      "close_exit": 0,
+      "remaining_browser_pids": []
+    },
+    {
+      "name": "server-number-2",
+      "source_commit": "16e0cbc15f2c8504c5a0656d2f733572005884ad",
+      "scope": "capacity-only",
+      "passed": true,
+      "ready_seconds": 16.11221674999979,
+      "filter_seconds": 3.1434480420139153,
+      "sampled_peak_rss_kib": 483120,
+      "close_exit": 0,
+      "remaining_browser_pids": []
+    },
+    {
+      "name": "server-number-full",
+      "source_commit": "16e0cbc15f2c8504c5a0656d2f733572005884ad",
+      "scope": "full-interactions",
+      "passed": false,
+      "ready_seconds": 11.758642875007354,
+      "filter_seconds": 2.9163414999929955,
+      "sampled_peak_rss_kib": 665968,
+      "close_exit": 0,
+      "remaining_browser_pids": []
+    }
+  ],
+  "formal_runs_generated": false
+}

@@ -1,0 +1,15 @@
+test_content_cache_revalidates_and_cannot_be_poisoned (tests.unit.test_event_manifest_cache.ManifestCacheTests.test_content_cache_revalidates_and_cannot_be_poisoned) ... FAIL
+
+======================================================================
+FAIL: test_content_cache_revalidates_and_cannot_be_poisoned (tests.unit.test_event_manifest_cache.ManifestCacheTests.test_content_cache_revalidates_and_cannot_be_poisoned)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_event_manifest_cache.py", line 36, in test_content_cache_revalidates_and_cannot_be_poisoned
+    self.assertEqual(validate.call_count, 1)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 3 != 1
+
+----------------------------------------------------------------------
+Ran 1 test in 0.010s
+
+FAILED (failures=1)

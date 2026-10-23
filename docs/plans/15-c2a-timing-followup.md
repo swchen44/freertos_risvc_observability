@@ -13,3 +13,9 @@
 JS profile：A02完整430324列3.894s；add的多個遞迴frame合計為主要self-samples，empty另占156 samples。採固定schema迭代／literal初始化，減少每列Object.keys／fromEntries配置；保持BigInt與所有validator。以前後完整query結果hash、既有Node與新增負向fixtures核對。
 
 第二輪profile：固定schema後，number仍占370個samples，regex另66；三次Web重算5.29／3.05／3.64s，保留第一次失敗。只對已知canonical字串"0"與"1"直接回傳BigInt常數，其他值仍走原validator；用完整query byte equality與既有非法數字fixture驗證，再重跑容量。
+
+## 最新驗收邊界
+
+16e0cbc 的 Web 三次 ready/filter 均過時間門檻，完整操作也通過；完整 CSV 匯出階段 RSS 665968 KiB（650.36 MiB）超過640，故不生成正式40。此次功能結果不是整體驗收通過。
+
+下一個實驗先量測 CSV 各階段：worker 文字產生、postMessage 傳遞、主執行緒 Blob parts、最終下載；保留現行輸出逐 byte 基準及取消生命週期。若證據支持，才比較可轉移 UTF-8 buffer 或分段產生的記憶體成本。不能減少列數、降低欄位精度、放寬門檻或強制使用者手動 GC。先完成 Web／offline 最終候選的對照，再決定修正。

@@ -1,5 +1,7 @@
 # FreeRTOS／RISC-V PSF POC
 
+> **2026-10-23 最新進度：** 時間最佳化、Python320／Node22／Ruff通過，離線完整驗收通過；Web完整CSV RSS650.36MiB仍超過640，整體partial。正式40／8HTML尚未生成。[最新報告、截圖與後續計畫](docs/event-window-dashboard.md)。下方為歷史checkpoint。
+
 ## C1：成本與熱點 Dashboard · 2026-10-13
 
 C1 已建立 Task／IRQ × role × function × PC 聯合統計、函式差異與 3C misses。正式 40 份報告完成守恆核對，Web／離線各 6 張截圖、curl 與 agent-browser 驗收通過。發佈狀態見 [completion](artifacts/verification/hotspot/completion.json)。

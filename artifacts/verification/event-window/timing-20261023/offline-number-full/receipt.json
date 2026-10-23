@@ -1,0 +1,76 @@
+{
+  "passed": true,
+  "scope": "full-interactions",
+  "rss_limit_mib": 640,
+  "mode": "offline",
+  "sample_interval_seconds": 0.2,
+  "harness_sha256": "05a254db18e9918249793d1265c6886f444b9fd2adf1ca415bc345ec2539f8bc",
+  "source_commit": "16e0cbc15f2c8504c5a0656d2f733572005884ad",
+  "offline_html_sha256": "1926bcd7b2e56f3c930652fc3807a2eb5dcea3eda8382297a7574da78ce05eef",
+  "browser_executable": "/Users/swchen.tw/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+  "ready_seconds": 4.522476666999864,
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36",
+  "heap_initial": 23100000,
+  "filter_seconds": 2.849120541999582,
+  "heap_after": 23100000,
+  "zoom": {
+    "start": "61591",
+    "end": "430324",
+    "oracle": {
+      "events": 368733,
+      "instructions": 296991,
+      "memory_cycles": 916998,
+      "l1i.misses": 1333,
+      "l1d.misses": 285,
+      "l2.misses": 451
+    }
+  },
+  "full_csv": {
+    "rows": 430324,
+    "memory_cycles": 1088094,
+    "bytes": 74118680
+  },
+  "export_cancel_retry": true,
+  "cancel_progress": 0.009501187648456056,
+  "column_resize": {
+    "before": 198,
+    "after": 243
+  },
+  "column_order": {
+    "before": [
+      "name",
+      "role",
+      "value",
+      "run_denominator",
+      "filtered_denominator",
+      "instructions",
+      "memory_cycles"
+    ],
+    "after": [
+      "role",
+      "value",
+      "name",
+      "run_denominator",
+      "filtered_denominator",
+      "instructions",
+      "memory_cycles"
+    ]
+  },
+  "interval_oracle": {
+    "events": 18992,
+    "instructions": 12824,
+    "memory_cycles": 74589,
+    "l1i.misses": 823,
+    "l1d.misses": 12,
+    "l2.misses": 199
+  },
+  "event_csv_rows": 1038,
+  "interactions_passed": true,
+  "resources": [],
+  "errors": [],
+  "browser_started": true,
+  "close_exit": 0,
+  "remaining_browser_pids": [],
+  "sampled_peak_rss_kib": 548912,
+  "capacity_passed": true
+}
