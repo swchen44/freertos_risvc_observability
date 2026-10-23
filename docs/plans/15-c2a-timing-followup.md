@@ -11,3 +11,5 @@
 禁止用mtime判定資料可信、跳過hash/schema驗證、放寬時間門檻或改寫舊失敗收據。
 
 JS profile：A02完整430324列3.894s；add的多個遞迴frame合計為主要self-samples，empty另占156 samples。採固定schema迭代／literal初始化，減少每列Object.keys／fromEntries配置；保持BigInt與所有validator。以前後完整query結果hash、既有Node與新增負向fixtures核對。
+
+第二輪profile：固定schema後，number仍占370個samples，regex另66；三次Web重算5.29／3.05／3.64s，保留第一次失敗。只對已知canonical字串"0"與"1"直接回傳BigInt常數，其他值仍走原validator；用完整query byte equality與既有非法數字fixture驗證，再重跑容量。

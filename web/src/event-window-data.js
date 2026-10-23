@@ -19,6 +19,8 @@ export const COLUMNS = [
   ...LEVELS.flatMap((l) => COUNTERS.map((k) => `${l}.${k}`)),
 ];
 export function number(s) {
+  if (s === "0") return 0n;
+  if (s === "1") return 1n;
   if (typeof s !== "string" || !/^(0|[1-9][0-9]{0,39})$/.test(s))
     throw Error("Invalid unsigned integer");
   return BigInt(s);
