@@ -1,0 +1,50 @@
+{
+  "experiment_completed": true,
+  "transfer_retained": false,
+  "benefit_demonstrated": false,
+  "capacity_repeats_passed": true,
+  "runs": [
+    {
+      "passed": true,
+      "ready_seconds": 13.75442108399875,
+      "filter_seconds": 3.577797958001611,
+      "sampled_peak_rss_kib": 389600,
+      "close_exit": 0,
+      "remaining_browser_pids": []
+    },
+    {
+      "passed": true,
+      "ready_seconds": 13.559230584010947,
+      "filter_seconds": 3.322049207999953,
+      "sampled_peak_rss_kib": 447488,
+      "close_exit": 0,
+      "remaining_browser_pids": []
+    },
+    {
+      "passed": true,
+      "ready_seconds": 12.132233124997583,
+      "filter_seconds": 4.5436765830090735,
+      "sampled_peak_rss_kib": 429232,
+      "close_exit": 0,
+      "remaining_browser_pids": []
+    }
+  ],
+  "platform": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+  "formal_generation": {
+    "passed": true,
+    "runs": 40,
+    "chunks": 18753,
+    "events": 19177626,
+    "workloads": {
+      "A01": 2,
+      "A02": 14,
+      "A03": 2,
+      "A04": 2,
+      "A05": 2,
+      "A06": 2,
+      "A07": 2,
+      "A08": 14
+    }
+  },
+  "overall_c2a_complete": false
+}

@@ -1,0 +1,48 @@
+✖ CSV preserves UTF-8 bytes and transfers ownership with request identity (6.427709ms)
+✖ progress and empty CSV retain their protocol meaning (0.298625ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 0
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 357.707458
+
+✖ failing tests:
+
+test at web/tests/event-window-transport.test.mjs:13:1
+✖ CSV preserves UTF-8 bytes and transfers ownership with request identity (6.427709ms)
+  AssertionError [ERR_ASSERTION]: CSV transport must transfer encoded bytes
+      at transport (file:///Users/swchen.tw/git/percepio/poc/web/tests/event-window-transport.test.mjs:9:10)
+      at TestContext.<anonymous> (file:///Users/swchen.tw/git/percepio/poc/web/tests/event-window-transport.test.mjs:14:38)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.start (node:internal/test_runner/test:1096:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at web/tests/event-window-transport.test.mjs:36:1
+✖ progress and empty CSV retain their protocol meaning (0.298625ms)
+  AssertionError [ERR_ASSERTION]: CSV transport must transfer encoded bytes
+      at transport (file:///Users/swchen.tw/git/percepio/poc/web/tests/event-window-transport.test.mjs:9:10)
+      at TestContext.<anonymous> (file:///Users/swchen.tw/git/percepio/poc/web/tests/event-window-transport.test.mjs:37:38)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

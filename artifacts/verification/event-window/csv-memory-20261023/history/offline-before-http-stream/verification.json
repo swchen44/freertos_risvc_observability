@@ -1,0 +1,53 @@
+{
+  "passed": true,
+  "files": [
+    {
+      "workload": "A01",
+      "bytes": 7557548,
+      "runs": 2,
+      "sha256": "466bf5f243c458c73adaefabb006862bdf4c4dfab3a336230f84e7970a7cbfe2"
+    },
+    {
+      "workload": "A02",
+      "bytes": 13044276,
+      "runs": 14,
+      "sha256": "1926bcd7b2e56f3c930652fc3807a2eb5dcea3eda8382297a7574da78ce05eef"
+    },
+    {
+      "workload": "A03",
+      "bytes": 7555344,
+      "runs": 2,
+      "sha256": "9a0f328d79b3daa65d4ae12023cc661a25d60412043f0de7d37082eb901ecb6d"
+    },
+    {
+      "workload": "A04",
+      "bytes": 7560188,
+      "runs": 2,
+      "sha256": "8762b39dff8c7db371d7c14d68d56ec5a82c0fdfb6d59588a07577a502d03cf2"
+    },
+    {
+      "workload": "A05",
+      "bytes": 7799646,
+      "runs": 2,
+      "sha256": "31135376681ab2037f4ce710f5642cd751ed91146901b7ae7f6eb7f230b60a21"
+    },
+    {
+      "workload": "A06",
+      "bytes": 8007248,
+      "runs": 2,
+      "sha256": "159756dc3d021fd917c5429d5c47608b98c8efc5c5a1049175363cfb4882681e"
+    },
+    {
+      "workload": "A07",
+      "bytes": 7792424,
+      "runs": 2,
+      "sha256": "ceafeb6faeea2fb6ab0e331255b62ea20c62b36bc9d5d53d10ee6be244840333"
+    },
+    {
+      "workload": "A08",
+      "bytes": 16958108,
+      "runs": 14,
+      "sha256": "15196e3d5efac4d12627064cf7e9a3d1568047e87bbd51ce809f30b9d7a6981d"
+    }
+  ]
+}

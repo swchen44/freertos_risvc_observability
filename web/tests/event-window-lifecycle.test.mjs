@@ -125,3 +125,90 @@ test("PSF view preserves sequence, equal ticks, gaps and independent origin", ()
   assert.match(labels["psf-quality"], /4294967290.*sequence_gaps/);
   assert.match(labels["psf-quality"], /不與 event index 連動/);
 });
+
+test("Web CSV delegates verified query to HTTP while offline keeps Blob; stale results cannot download", async () => {
+  for (const offline of [null, {}]) {
+    for (const stale of [false, true]) {
+      let active;
+      const downloads = [];
+      const fields = Object.fromEntries(
+        ["start", "end", "context", "function", "metric", "progress"].map(
+          (k) => [k, { value: "" }],
+        ),
+      );
+      Object.assign(fields.start, { value: "0" });
+      Object.assign(fields.end, { value: "1" });
+      Object.assign(fields.metric, { value: "memory_cycles" });
+      const context = vm.createContext({
+        selection: 0,
+        request: 0,
+        parts: [],
+        worker: null,
+        url: null,
+        currentQuery: null,
+        result: null,
+        manifest: { identity: { run_id: "A02-baseline-b1-1-1" } },
+        offline,
+        window: {},
+        $: (k) => fields[k],
+        clear: async () => {},
+        text: () => {},
+        render: async () => {},
+        Blob,
+        URLSearchParams,
+        workerSource: "/* fixture */",
+        URL: {
+          createObjectURL: () => "blob:fixture",
+          revokeObjectURL: () => {},
+        },
+        Worker: class {
+          constructor() {
+            active = this;
+          }
+          postMessage(message) {
+            this.sent = message;
+          }
+          terminate() {}
+        },
+        download: (blob, name) =>
+          downloads.push({ kind: "blob", bytes: blob.size, name }),
+        downloadHref: (href, name) =>
+          downloads.push({ kind: "http", href, name }),
+      });
+      vm.runInContext(
+        extract("function stop()", "function download(") +
+          extract("async function query(", "async function render("),
+        context,
+      );
+      await context.query("0", true);
+      assert.equal(active.sent.query.export_events, Boolean(offline));
+      const token = context.request;
+      if (stale) context.request++;
+      if (offline)
+        await active.onmessage({
+          data: { request_id: token, type: "csv", text: "header\r\nrow\r\n" },
+        });
+      await active.onmessage({
+        data: {
+          request_id: token,
+          type: "result",
+          result: {
+            run_id: "A02-baseline-b1-1-1",
+            start: "0",
+            end: "1",
+            event_count: "1",
+          },
+        },
+      });
+      assert.equal(downloads.length, stale ? 0 : 1);
+      if (!stale) {
+        assert.equal(downloads[0].kind, offline ? "blob" : "http");
+        if (!offline)
+          assert.match(
+            downloads[0].href,
+            /\/events\.csv\?start=0&end=1&context=&function_query=/,
+          );
+      }
+    }
+  }
+});

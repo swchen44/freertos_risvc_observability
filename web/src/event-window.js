@@ -137,12 +137,15 @@ function stop() {
   window.eventWindowReady = false;
 }
 function download(blob, name) {
-  const u = URL.createObjectURL(blob),
-    a = document.createElement("a");
-  a.href = u;
+  const u = URL.createObjectURL(blob);
+  downloadHref(u, name);
+  setTimeout(() => URL.revokeObjectURL(u), 1000);
+}
+function downloadHref(href, name) {
+  const a = document.createElement("a");
+  a.href = href;
   a.download = name;
   a.click();
-  setTimeout(() => URL.revokeObjectURL(u), 1000);
 }
 async function clear() {
   result = null;
@@ -259,7 +262,7 @@ async function query(offset = "0", exportEvents = false) {
     metric: $("metric").value,
     event_offset: offset,
     event_limit: 200,
-    export_events: exportEvents,
+    export_events: exportEvents && Boolean(offline),
   };
   text("status", "逐塊核對與加總…");
   $("progress").value = 0;
@@ -328,15 +331,30 @@ async function query(offset = "0", exportEvents = false) {
       window.eventWindowResult = result;
       await render(data.result, token);
       if (token !== request) return;
-      if (exportEvents)
-        download(
-          new Blob(parts, { type: "text/csv;charset=utf-8" }),
-          `${currentQuery.run_id}-events.csv`,
-        );
+      if (exportEvents) {
+        const name = `${currentQuery.run_id}-events.csv`;
+        if (offline) {
+          download(new Blob(parts, { type: "text/csv;charset=utf-8" }), name);
+        } else {
+          const params = new URLSearchParams({
+            start: currentQuery.start,
+            end: currentQuery.end,
+            context: currentQuery.context,
+            function_query: currentQuery.function_query,
+          });
+          downloadHref(
+            `/api/event-windows/${encodeURIComponent(currentQuery.run_id)}/events.csv?${params}`,
+            name,
+          );
+        }
+      }
       parts = [];
       text(
         "status",
-        `${result.run_id} · [${result.start}, ${result.end}) · ${result.event_count} 筆事件`,
+        `${result.run_id} · [${result.start}, ${result.end}) · ${result.event_count} 筆事件` +
+          (exportEvents && !offline
+            ? " · CSV 已交由瀏覽器下載；可在下載列取消。"
+            : ""),
       );
       window.eventWindowReady = true;
       active.terminate();

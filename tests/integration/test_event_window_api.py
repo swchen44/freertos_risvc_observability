@@ -48,6 +48,17 @@ class EventApiTests(unittest.TestCase):
                 self.assertEqual(r.status_code, 200)
                 self.assertEqual(r.content, (folder / "000000.json.gz").read_bytes())
                 self.assertEqual(c.get("/api/event-windows/unknown").status_code, 404)
+                download = c.get(f"/api/event-windows/{rid}/events.csv?start=0&end=1")
+                self.assertEqual(download.status_code, 200)
+                self.assertEqual(
+                    download.headers["content-disposition"],
+                    f'attachment; filename="{rid}-events.csv"',
+                )
+                self.assertIn(b'"index","pc"', download.content)
+                self.assertEqual(
+                    c.get(f"/api/event-windows/{rid}/events.csv?start=-1").status_code, 400
+                )
+                self.assertEqual(c.get("/api/event-windows/unknown/events.csv").status_code, 404)
                 self.assertEqual(c.get("/api/event-windows/%2e%2e%2fsecret").status_code, 404)
                 original = r.content
                 malformed_chunk = json.loads(gzip.decompress(original))
@@ -65,6 +76,7 @@ class EventApiTests(unittest.TestCase):
                 self.assertEqual(
                     c.get("/api/event-windows/" + rid + "/chunks/000000").status_code, 503
                 )
+                self.assertEqual(c.get(f"/api/event-windows/{rid}/events.csv").status_code, 503)
                 (folder / "manifest.json").write_bytes(raw)
                 catalog["runs"][0]["sha256"] = sha(raw)
                 catalog_path.write_bytes(canonical(catalog))

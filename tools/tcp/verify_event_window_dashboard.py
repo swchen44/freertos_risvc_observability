@@ -248,6 +248,7 @@ def verify(
                 ("api/event-windows", 200),
                 (f"api/event-windows/{run_id}", 200),
                 (f"api/event-windows/{run_id}/chunks/000000", 200),
+                (f"api/event-windows/{run_id}/events.csv?start=0&end=2", 200),
                 ("api/event-windows/unknown", 404),
                 ("event-window.html", 200),
                 ("assets/event-window.js", 200),
@@ -383,7 +384,7 @@ def verify(
             click("#events-csv")
             wait()
             downloaded = downloads / f"{run_id}-events.csv"
-            deadline = time.monotonic() + 20
+            deadline = time.monotonic() + 60
             while not downloaded.exists() and time.monotonic() < deadline:
                 time.sleep(0.1)
             assert downloaded.is_file(), "Full CSV download missing"
@@ -444,16 +445,15 @@ def verify(
             assert int(r["totals"]["memory_cycles"]) == expected["memory_cycles"]
             assert int(r["totals"]["instructions"]) == expected["instructions"]
             shot("02-interval")
-            ev(
-                "window.savedCsv=[];window.originalObjectURL=URL.createObjectURL;"
-                'URL.createObjectURL=function(b){if(b.type.startsWith("text/csv"))'
-                "b.text().then(s=>window.savedCsv.push(s));return window.originalObjectURL(b)}"
-            )
             click("#events-csv")
             wait()
-            ab("wait", "--fn", "window.savedCsv.length===1")
-            csv_text = ev("window.savedCsv[0]")
-            (output / "events.csv").write_text(csv_text)
+            partial = downloads / f"{run_id}-events.csv"
+            deadline = time.monotonic() + 60
+            while not partial.exists() and time.monotonic() < deadline:
+                time.sleep(0.1)
+            assert partial.is_file(), "Interval CSV download missing"
+            partial.rename(output / "events.csv")
+            csv_text = (output / "events.csv").read_text()
             rows = list(csv.DictReader(io.StringIO(csv_text)))
             assert len(rows) == expected["events"]
             assert [int(row["index"]) for row in rows] == list(range(1023, 2061))
@@ -473,9 +473,13 @@ def verify(
             scroll("#function-table")
             click("#function-table .tabulator-col[tabulator-field=value]")
             click("#functions-csv")
-            ab("wait", "--fn", "window.savedCsv.length===2")
-            text = ev("window.savedCsv[1]")
-            (output / "functions.csv").write_text(text)
+            function_file = downloads / f"{run_id}-functions.csv"
+            deadline = time.monotonic() + 30
+            while not function_file.exists() and time.monotonic() < deadline:
+                time.sleep(0.1)
+            assert function_file.is_file(), "Function CSV download missing"
+            function_file.rename(output / "functions.csv")
+            text = (output / "functions.csv").read_text()
             function_rows = list(csv.DictReader(io.StringIO(text)))
             expected_functions = function_csv_oracle(r["run_id"], 1023, 2061)
 

@@ -1,0 +1,10 @@
+{
+  "base_commit": "7332782",
+  "working_tree_experiment": true,
+  "production_source_hashes": {
+    "web/src/event-window-worker.js": "66caf3ac47631d3a40b536243aef80c8f18c6234a0f7375d05f3d337b2f29928",
+    "web/src/event-window.js": "adbe092bfbe6b369485adb2e2569e638650c57a08e55ba1cce333574774306b1",
+    "web/src/event-window-transport.js": "3f89c119b4489bf1a31224c0993b8dfcf95a6d14293b922a41047b5b2456d917"
+  },
+  "diagnostic_note": "Original baseline used text length; transfer profiler also accepts byteLength. characters is ambiguous; do not compare as Unicode units."
+}

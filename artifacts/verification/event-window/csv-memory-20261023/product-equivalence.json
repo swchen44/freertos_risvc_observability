@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "js_bundle_sha256": "8539987834bf4d11ac46d67b45c399440efc53534396ab66e98d8141f7ac4643",
+  "matches_offline_receipt": "artifacts/verification/event-window/timing-20261023/A02-final.receipt.json",
+  "product_reference_commit": "7332782"
+}

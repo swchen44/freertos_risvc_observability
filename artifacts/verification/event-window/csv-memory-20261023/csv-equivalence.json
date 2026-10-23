@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "sha256": {
+    "baseline-profile": "e2205d3134a4d49dec151e8852e5440daa34eecdbc6b378ce5bff3ad63f10280",
+    "transfer-profile": "e2205d3134a4d49dec151e8852e5440daa34eecdbc6b378ce5bff3ad63f10280"
+  },
+  "bytes": 74118680
+}

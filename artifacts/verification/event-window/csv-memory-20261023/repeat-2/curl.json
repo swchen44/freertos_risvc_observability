@@ -1,0 +1,44 @@
+[
+  {
+    "route": "api/event-windows",
+    "status": 200,
+    "bytes": 2033,
+    "sha256": "d45b7cb1962b2cedb22f92744a51448ef50e411010e0feb25d4c116f2de0a705"
+  },
+  {
+    "route": "api/event-windows/A02-baseline-b1-1-1",
+    "status": 200,
+    "bytes": 1283132,
+    "sha256": "3ddb4131ce89657a55f66091a4eb21822c216992b1c9d7d76f8b24aa037e132d"
+  },
+  {
+    "route": "api/event-windows/A02-baseline-b1-1-1/chunks/000000",
+    "status": 200,
+    "bytes": 5312,
+    "sha256": "98c444390627a87f2356607c60739ba59c028bff79bbe9dc1372ba7d2c6f42bc"
+  },
+  {
+    "route": "api/event-windows/unknown",
+    "status": 404,
+    "bytes": 23,
+    "sha256": "5f8d7d025e5712cbfe4b1a522b3e2c9dfb61d05cb7b4114845b4e5372f29b5df"
+  },
+  {
+    "route": "event-window.html",
+    "status": 200,
+    "bytes": 4877,
+    "sha256": "9493df3fbf41bf0322d92382c99680648082c20241cb601a7c50e6e4ea2ccce8"
+  },
+  {
+    "route": "assets/event-window.js",
+    "status": 200,
+    "bytes": 1611520,
+    "sha256": "8539987834bf4d11ac46d67b45c399440efc53534396ab66e98d8141f7ac4643"
+  },
+  {
+    "route": "assets/event-window.css",
+    "status": 200,
+    "bytes": 32351,
+    "sha256": "648a289250fb7af8620e48733bf89dfd36ad9acc8871e2435286c9d626b323d9"
+  }
+]

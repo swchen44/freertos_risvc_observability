@@ -1,0 +1,46 @@
+{
+  "baseline-profile": {
+    "stage_peak_kib": {
+      "launch": 347920,
+      "screenshot:01-overview": 213568,
+      "full-run-filter": 351584,
+      "hover-and-zoom": 304464,
+      "screenshot:07-hover": 219120,
+      "interaction": 413408,
+      "screenshot:08-zoom": 348928,
+      "full-csv-export": 445248,
+      "full-csv-oracle": 443936,
+      "export-cancel": 423520,
+      "screenshot:02-interval": 406944,
+      "screenshot:03-source": 327424,
+      "screenshot:04-context": 352832,
+      "screenshot:05-misses": 302736,
+      "screenshot:06-mobile": 301232
+    },
+    "peak_stage": "full-csv-export",
+    "peak_ms_after_download_click": 353.146728515625,
+    "csv_bytes": 74118680
+  },
+  "transfer-profile": {
+    "stage_peak_kib": {
+      "launch": 374592,
+      "screenshot:01-overview": 285632,
+      "full-run-filter": 410416,
+      "hover-and-zoom": 399504,
+      "screenshot:07-hover": 383792,
+      "interaction": 444640,
+      "screenshot:08-zoom": 367040,
+      "full-csv-export": 452560,
+      "full-csv-oracle": 448208,
+      "export-cancel": 401536,
+      "screenshot:02-interval": 350752,
+      "screenshot:03-source": 285328,
+      "screenshot:04-context": 281584,
+      "screenshot:05-misses": 354384,
+      "screenshot:06-mobile": 341072
+    },
+    "peak_stage": "full-csv-export",
+    "peak_ms_after_download_click": 283.56396484375,
+    "csv_bytes": 74118680
+  }
+}

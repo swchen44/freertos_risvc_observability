@@ -1,0 +1,129 @@
+[
+  {
+    "characters": 0,
+    "chunks": 0,
+    "heap": 18200000,
+    "stage": "installed",
+    "wall_ms": 1792735828321
+  },
+  {
+    "characters": 355,
+    "chunks": 1,
+    "heap": 18200000,
+    "stage": "csv-received",
+    "wall_ms": 1792735828838
+  },
+  {
+    "characters": 5428370,
+    "chunks": 32,
+    "heap": 18200000,
+    "stage": "csv-received",
+    "wall_ms": 1792735829127
+  },
+  {
+    "characters": 11003065,
+    "chunks": 64,
+    "heap": 18200000,
+    "stage": "csv-received",
+    "wall_ms": 1792735829439
+  },
+  {
+    "characters": 16671215,
+    "chunks": 96,
+    "heap": 18200000,
+    "stage": "csv-received",
+    "wall_ms": 1792735829843
+  },
+  {
+    "characters": 22358978,
+    "chunks": 128,
+    "heap": 18200000,
+    "stage": "csv-received",
+    "wall_ms": 1792735830158
+  },
+  {
+    "characters": 27937692,
+    "chunks": 160,
+    "heap": 18200000,
+    "stage": "csv-received",
+    "wall_ms": 1792735830465
+  },
+  {
+    "characters": 33661934,
+    "chunks": 192,
+    "heap": 18200000,
+    "stage": "csv-received",
+    "wall_ms": 1792735831022
+  },
+  {
+    "characters": 39265277,
+    "chunks": 224,
+    "heap": 18200000,
+    "stage": "csv-received",
+    "wall_ms": 1792735831331
+  },
+  {
+    "characters": 44922856,
+    "chunks": 256,
+    "heap": 18200000,
+    "stage": "csv-received",
+    "wall_ms": 1792735831631
+  },
+  {
+    "characters": 50622874,
+    "chunks": 288,
+    "heap": 18200000,
+    "stage": "csv-received",
+    "wall_ms": 1792735831919
+  },
+  {
+    "characters": 56263143,
+    "chunks": 320,
+    "heap": 18200000,
+    "stage": "csv-received",
+    "wall_ms": 1792735832222
+  },
+  {
+    "characters": 61954249,
+    "chunks": 352,
+    "heap": 18200000,
+    "stage": "csv-received",
+    "wall_ms": 1792735832602
+  },
+  {
+    "characters": 67653976,
+    "chunks": 384,
+    "heap": 18200000,
+    "stage": "csv-received",
+    "wall_ms": 1792735832965
+  },
+  {
+    "characters": 73214188,
+    "chunks": 416,
+    "heap": 18200000,
+    "stage": "csv-received",
+    "wall_ms": 1792735833354
+  },
+  {
+    "characters": 74118680,
+    "chunks": 422,
+    "heap": 18200000,
+    "stage": "worker-result",
+    "wall_ms": 1792735833418
+  },
+  {
+    "bytes": 74118680,
+    "characters": 74118680,
+    "chunks": 422,
+    "heap": 18200000,
+    "stage": "csv-blob-url",
+    "wall_ms": 1792735833460
+  },
+  {
+    "characters": 74118680,
+    "chunks": 422,
+    "heap": 18200000,
+    "stage": "download-click",
+    "wall_ms": 1792735833464
+  }
+]

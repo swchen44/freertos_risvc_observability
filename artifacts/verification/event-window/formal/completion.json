@@ -1,0 +1,253 @@
+{
+  "passed": true,
+  "runs": [
+    {
+      "run_id": "A01-baseline-b1-1-1",
+      "workload": "A01",
+      "events": "424003",
+      "sha256": "1c86743dd9666bc7865179001291d51a17826c215e3cd5f35254a91511931d7b"
+    },
+    {
+      "run_id": "A01-pbuf-b1-1-1",
+      "workload": "A01",
+      "events": "420973",
+      "sha256": "6393b436dc069334faebd952168576d18efe53d6a1561483798602ab8b4658c2"
+    },
+    {
+      "run_id": "A02-baseline-b1-1-1",
+      "workload": "A02",
+      "events": "430324",
+      "sha256": "3ddb4131ce89657a55f66091a4eb21822c216992b1c9d7d76f8b24aa037e132d"
+    },
+    {
+      "run_id": "A02-pbuf-b1-1-1",
+      "workload": "A02",
+      "events": "425306",
+      "sha256": "e6d13d997361d52279795693909d8e5f67573f4e5f26b44215a0d492f4cb936a"
+    },
+    {
+      "run_id": "A03-baseline-b1-1-1",
+      "workload": "A03",
+      "events": "423784",
+      "sha256": "ff1fd31b200bc0bc614e7c19a63bcf9df2c699a69e8ac173c80e56fb2d5e1b45"
+    },
+    {
+      "run_id": "A03-pbuf-b1-1-1",
+      "workload": "A03",
+      "events": "420802",
+      "sha256": "d287e862ef9c105ac30f3500f422a6b3fb89fc0a81d81a8359deb08b88fa12e0"
+    },
+    {
+      "run_id": "A04-baseline-b1-1-1",
+      "workload": "A04",
+      "events": "424060",
+      "sha256": "0e6911b1c22aa04edce08f20f3cb795fcecd45b90d6b7640df4e22352dcbccd3"
+    },
+    {
+      "run_id": "A04-pbuf-b1-1-1",
+      "workload": "A04",
+      "events": "420982",
+      "sha256": "9137973733d576265f3a75dfbf42f8ba99d8ecb486ebb5ab1a4f69f2d9709b69"
+    },
+    {
+      "run_id": "A05-baseline-b1-1-1",
+      "workload": "A05",
+      "events": "449542",
+      "sha256": "5537c3ea6fca98b3c365afb549758c819b075626feb7c23f12e7d424a4905d6f"
+    },
+    {
+      "run_id": "A05-pbuf-b1-1-1",
+      "workload": "A05",
+      "events": "437296",
+      "sha256": "72aa0821cdf251e81f434debe329127158bcb7800b2341986732f1fa14e317d2"
+    },
+    {
+      "run_id": "A06-baseline-b1-1-1",
+      "workload": "A06",
+      "events": "468256",
+      "sha256": "7c86ad90ca459b49ea5db8a560d15982b59466cf0eb413eb0f694ba65e4e6136"
+    },
+    {
+      "run_id": "A06-pbuf-b1-1-1",
+      "workload": "A06",
+      "events": "445788",
+      "sha256": "c7272c7a493896bff28720c717d9e67eaa104476004d56569e680d193752fa46"
+    },
+    {
+      "run_id": "A07-baseline-b1-1-1",
+      "workload": "A07",
+      "events": "442185",
+      "sha256": "1c2130ff663dd83595cde747f290c626be520278cd944b08f0cf08dabd05a56f"
+    },
+    {
+      "run_id": "A07-pbuf-b1-1-1",
+      "workload": "A07",
+      "events": "430937",
+      "sha256": "c032cadc72677d3dc1471227e4c77da082b08bba85b4802d4a61ed880aec2de5"
+    },
+    {
+      "run_id": "A08-baseline-b1-1-1",
+      "workload": "A08",
+      "events": "610577",
+      "sha256": "8cfcc7dedd02daaa1e078f0793ed8d4d251d622972f39dd3d5a415355f5490e7"
+    },
+    {
+      "run_id": "A08-pbuf-b1-1-1",
+      "workload": "A08",
+      "events": "540539",
+      "sha256": "11979edca06c73d5f01a5b8bdf2189faad816bc8e13ba7786a4b70ca69982449"
+    },
+    {
+      "run_id": "A02-baseline-b2-0-1",
+      "workload": "A02",
+      "events": "424040",
+      "sha256": "1323492ef269449794fe825f2bd1d7de05e907559a90aee56821d54bde724a8b"
+    },
+    {
+      "run_id": "A02-baseline-b2-0-2",
+      "workload": "A02",
+      "events": "424040",
+      "sha256": "3c58742776452992f43a531aae9012408f081ca6b385f13eebc0a2ed36019eee"
+    },
+    {
+      "run_id": "A02-baseline-b2-0-3",
+      "workload": "A02",
+      "events": "424040",
+      "sha256": "621dd8abd607da5c9dd05a0fc181a7d7db3d815f24d011d948602f91d2a36b8e"
+    },
+    {
+      "run_id": "A02-baseline-b2-1-1",
+      "workload": "A02",
+      "events": "430324",
+      "sha256": "0a929ede18ff7502ae6290abef711a03024e7489bc79852e822aa6f6d22138ea"
+    },
+    {
+      "run_id": "A02-baseline-b2-1-2",
+      "workload": "A02",
+      "events": "430324",
+      "sha256": "dcf53a4c401cc0c63e4b32bfc81b172f79b67c5505b7b969d926d9d55993af00"
+    },
+    {
+      "run_id": "A02-baseline-b2-1-3",
+      "workload": "A02",
+      "events": "430324",
+      "sha256": "de68d6622f1a8cb818f122095d1ad457a46b3effb4b7f2a10065be6cd08f8343"
+    },
+    {
+      "run_id": "A02-pbuf-b2-0-1",
+      "workload": "A02",
+      "events": "419022",
+      "sha256": "4bc5d4fc47c2f23c7d0bf98e40e0ef3a6d09760059ac040a0537d8065ff44ae6"
+    },
+    {
+      "run_id": "A02-pbuf-b2-0-2",
+      "workload": "A02",
+      "events": "419022",
+      "sha256": "868fd98c405cbee3ec13fe93e805eb6dadaadbab64d570361add110470b038cc"
+    },
+    {
+      "run_id": "A02-pbuf-b2-0-3",
+      "workload": "A02",
+      "events": "419022",
+      "sha256": "8f026d9ea71072006e7500f9b19fbac6b2ad17b44215107beeda1aad82352099"
+    },
+    {
+      "run_id": "A02-pbuf-b2-1-1",
+      "workload": "A02",
+      "events": "425306",
+      "sha256": "1fe05e04719f1370e155ffca0e874914db2d06ed7962e678a2159151ddae55c9"
+    },
+    {
+      "run_id": "A02-pbuf-b2-1-2",
+      "workload": "A02",
+      "events": "425306",
+      "sha256": "5cd9da350884c16df8d249aa33949a10b1fbcab7f7e1b0ca1ada906573805197"
+    },
+    {
+      "run_id": "A02-pbuf-b2-1-3",
+      "workload": "A02",
+      "events": "425306",
+      "sha256": "d404b8bb2d0e7913e9fe76e31a7fa595a135b8e6ba68b8024d71083c1bc69114"
+    },
+    {
+      "run_id": "A08-baseline-b2-0-1",
+      "workload": "A08",
+      "events": "603827",
+      "sha256": "e0c2f2874e0a2fc96285d37166f0c3087ef61842707ed0f42837b4b62245fee7"
+    },
+    {
+      "run_id": "A08-baseline-b2-0-2",
+      "workload": "A08",
+      "events": "603827",
+      "sha256": "5f7878b894561581c968a6651cabc067bcaa20b75895da0a90e7131cb17e27a8"
+    },
+    {
+      "run_id": "A08-baseline-b2-0-3",
+      "workload": "A08",
+      "events": "603827",
+      "sha256": "f374cd00c79ec70e2b8a04203207bc27e202ab3a46bfbc627d5b7a432625850b"
+    },
+    {
+      "run_id": "A08-baseline-b2-1-1",
+      "workload": "A08",
+      "events": "610577",
+      "sha256": "e2aaeda8c3c7beb4b66ecc5408efab9299ead1694077535f31238cf805681439"
+    },
+    {
+      "run_id": "A08-baseline-b2-1-2",
+      "workload": "A08",
+      "events": "610577",
+      "sha256": "629c191f5ca44aff5cec0fc87acc68f153d123079e2d903db897df05770443e0"
+    },
+    {
+      "run_id": "A08-baseline-b2-1-3",
+      "workload": "A08",
+      "events": "610577",
+      "sha256": "22f7fc720cc355ee1aa2f2a3ca46348f73aa45ff5103762b05e423283547d692"
+    },
+    {
+      "run_id": "A08-pbuf-b2-0-1",
+      "workload": "A08",
+      "events": "533789",
+      "sha256": "07c042adba6370bcc224acfad965122413effd15a290ef2513c18af21d6be43d"
+    },
+    {
+      "run_id": "A08-pbuf-b2-0-2",
+      "workload": "A08",
+      "events": "533789",
+      "sha256": "e5164580e3ab478c3fadc0aa635072f3257db2ac64ca9a609474228fbb28cdaf"
+    },
+    {
+      "run_id": "A08-pbuf-b2-0-3",
+      "workload": "A08",
+      "events": "533789",
+      "sha256": "0e847319303644ee97e91ffe3e00c4e2a0fc775c3d8885d48be937fa8c80fe4a"
+    },
+    {
+      "run_id": "A08-pbuf-b2-1-1",
+      "workload": "A08",
+      "events": "540539",
+      "sha256": "57d8d6ff89c08f316fc10d9d356b7a2cf91717f3c7f5184532cc62ed3a197b74"
+    },
+    {
+      "run_id": "A08-pbuf-b2-1-2",
+      "workload": "A08",
+      "events": "540539",
+      "sha256": "e584174fa07b75eb8c28e081f7afe8ebcfc60f0bc8d6828ce8617b8646e379af"
+    },
+    {
+      "run_id": "A08-pbuf-b2-1-3",
+      "workload": "A08",
+      "events": "540539",
+      "sha256": "d36a854200592dd4e7b03bf829828cec79038b1d09738a47905412dad9b87385"
+    }
+  ],
+  "generator_commit": "cbdfc3dff0e1692775fd9fa31b86aea27abc6169",
+  "source_sha256": {
+    "src/psf_lab/hotspot_events.py": "a2f67b42060fb9b584b38171aedeb50df6dc5c67284cef439fe974fa4e8281f9",
+    "src/psf_lab/hotspot_evidence.py": "3dac83a22c7f461ca74a21c3c6b3d1228177e517328333dfd2a2205222099e87",
+    "src/psf_lab/event_window.py": "a580cfdcaf06ee44df73f69d44b456a3033ef16797a31a9dcf1f646cc2e7ae5d",
+    "src/psf_lab/memory_timing.py": "85e96666fb8d5f2e86f47326d307a85d73048aab43db16a08ef7f8752630d7e9",
+    "src/psf_lab/tcp_hotspots.py": "cef8b9e1275e14b25f478ec7b7b661b14d6a64784b7c56662a097d2096cc6d54"
+  }
+}

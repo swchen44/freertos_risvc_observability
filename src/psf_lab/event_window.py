@@ -375,3 +375,63 @@ def load_event_catalog(root: Path):
         return catalog
     except (KeyError, TypeError, OSError, json.JSONDecodeError) as exc:
         raise ValueError("Malformed catalog") from exc
+
+
+class InvalidEventQuery(ValueError):
+    """CSV request range is invalid; distinct from corrupted saved evidence."""
+
+
+def event_csv_stream(root, run_id, start="0", end=None, *, context="", function_query=""):
+    """Validate before opening a bounded CSV stream; late corruption aborts the download."""
+    manifest = _load_verified_manifest(root, run_id)
+    try:
+        low, high = uint(start), uint(end if end is not None else manifest["events"])
+    except ValueError as exc:
+        raise InvalidEventQuery("Invalid CSV range") from exc
+    if not 0 <= low <= high <= uint(manifest["events"]):
+        raise InvalidEventQuery("Invalid CSV range")
+    relevant = [c for c in manifest["chunks"] if uint(c["end"]) > low and uint(c["start"]) < high]
+    if low == high:
+        relevant = []
+
+    def load(descriptor):
+        payload = (root / BASE / run_id / (descriptor["id"] + ".json.gz")).read_bytes()
+        return decode_event_chunk(payload, descriptor, manifest)
+
+    first = load(relevant[0]) if relevant else None
+
+    def guard(value):
+        value = str(value)
+        return "'" + value if value and value[0] in "=+@-\t\r\n" else value
+
+    def generate():
+        nonlocal first
+        buffer = io.StringIO(newline="")
+        writer = csv.writer(buffer, quoting=csv.QUOTE_ALL, lineterminator="\r\n")
+        writer.writerow(COLUMNS + ["context", "function", "role"])
+        yield buffer.getvalue().encode()
+        buffer.seek(0)
+        buffer.truncate(0)
+        for index, descriptor in enumerate(relevant):
+            data = first if index == 0 else load(descriptor)
+            first = None
+            for row in data["rows"]:
+                if not low <= uint(row[0]) < high:
+                    continue
+                label = manifest["contexts"][uint(row[5])]
+                owner = manifest["owners"][uint(row[6])]
+                name = owner.get("function")
+                if name is None:
+                    name = "unresolved"
+                if context and context != label or function_query.lower() not in name.lower():
+                    continue
+                writer.writerow(guard(v) for v in [*row, label, name, owner["role"]])
+                if buffer.tell() >= 65536:
+                    yield buffer.getvalue().encode()
+                    buffer.seek(0)
+                    buffer.truncate(0)
+            del data
+        if buffer.tell():
+            yield buffer.getvalue().encode()
+
+    return generate()

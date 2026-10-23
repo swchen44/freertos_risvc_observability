@@ -8,7 +8,7 @@ from urllib.parse import urlsplit
 
 from fastapi import FastAPI, UploadFile
 from fastapi.exceptions import RequestValidationError
-from fastapi.responses import FileResponse, JSONResponse, Response
+from fastapi.responses import FileResponse, JSONResponse, Response, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, Field, StrictInt
 from starlette.concurrency import run_in_threadpool
@@ -179,6 +179,32 @@ def create_app(
             )
         except UnknownEventRun:
             return JSONResponse({"error": "Unknown chunk"}, status_code=404)
+        except (ValueError, OSError):
+            return JSONResponse({"error": "Invalid event evidence"}, status_code=503)
+
+    @app.get("/api/event-windows/{run_id}/events.csv")
+    def event_csv(
+        run_id: str,
+        start: str = "0",
+        end: str | None = None,
+        context: str = "",
+        function_query: str = "",
+    ):
+        from psf_lab.event_window import InvalidEventQuery, UnknownEventRun, event_csv_stream
+
+        try:
+            body = event_csv_stream(
+                ROOT, run_id, start, end, context=context, function_query=function_query
+            )
+            return StreamingResponse(
+                body,
+                media_type="text/csv; charset=utf-8",
+                headers={"Content-Disposition": f'attachment; filename="{run_id}-events.csv"'},
+            )
+        except UnknownEventRun:
+            return JSONResponse({"error": "Unknown run"}, status_code=404)
+        except InvalidEventQuery:
+            return JSONResponse({"error": "Invalid CSV range"}, status_code=400)
         except (ValueError, OSError):
             return JSONResponse({"error": "Invalid event evidence"}, status_code=503)
 
