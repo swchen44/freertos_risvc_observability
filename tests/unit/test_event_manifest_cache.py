@@ -11,6 +11,8 @@ from tests.unit.test_hotspot_report import profile, rows_for
 
 class ManifestCacheTests(unittest.TestCase):
     def test_content_cache_revalidates_and_cannot_be_poisoned(self):
+        m._parsed_manifest.cache_clear()
+        self.addCleanup(m._parsed_manifest.cache_clear)
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             rid = "A02-baseline-b1-1-1"

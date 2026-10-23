@@ -45,9 +45,13 @@ class EventWindowTests(unittest.TestCase):
         blob = (self.output / (c["id"] + ".json.gz")).read_bytes()
         with self.assertRaises(ValueError):
             self.m.decode_event_chunk(blob + b"x", c, r)
-        for change in ["op", "negative", "missing", "owner"]:
+        for change in ["op", "negative", "missing", "owner", "bool", "noncanonical"]:
             data = json.loads(gzip.decompress(blob))
             row = data["rows"][0]
+            if change == "bool":
+                row[7] = True
+            if change == "noncanonical":
+                row[7] = "01"
             if change == "op":
                 row[4] = "Q"
             if change == "negative":

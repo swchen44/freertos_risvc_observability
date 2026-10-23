@@ -181,3 +181,31 @@ test("CSV guards spreadsheet control prefixes and preserves quotes", async () =>
     '"\'\t=1+1","\'\r=1+1","a""b"\r\n',
   );
 });
+test("canonical numeric wire and header-only empty CSV", async () => {
+  const { m, manifest, gzip } = await fixture();
+  for (const value of [true, 1, "01", "-0", "1.0", "1e2", "", " 1", "١"])
+    assert.throws(() => m.number(value));
+  const pieces = [];
+  const r = await m.queryEventWindow(
+    manifest,
+    async () => gzip,
+    {
+      run_id: "toy",
+      start: "1",
+      end: "1",
+      metric: "memory_cycles",
+      event_offset: "0",
+      event_limit: 200,
+      export_events: true,
+    },
+    (x) => {
+      if (x.type === "csv") pieces.push(x.text);
+    },
+  );
+  assert.equal(r.event_count, "0");
+  assert.equal(pieces.length, 1);
+  assert.equal(
+    pieces[0],
+    m.csvLine([...m.COLUMNS, "context", "function", "role"]),
+  );
+});

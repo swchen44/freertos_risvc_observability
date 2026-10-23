@@ -50,6 +50,17 @@ class EventExportTests(unittest.TestCase):
             self.assertEqual(receipt["output_sha256"], sha(target.read_bytes()))
             with self.assertRaises(ValueError):
                 module.export_event_window_html(root, "A02", target)
+            original_chunk = (folder / "000000.json.gz").read_bytes()
             (folder / "000000.json.gz").write_bytes(b"broken")
             with self.assertRaises(ValueError):
                 module.export_event_window_html(root, "A02", root / "bad.html")
+            (folder / "000000.json.gz").write_bytes(original_chunk)
+            asset = root / "web/dist/assets/event-window.js"
+            asset.unlink()
+            with self.assertRaises(FileNotFoundError):
+                module.export_event_window_html(root, "A02", root / "missing.html")
+            asset.write_text("/* fixture */")
+            template = root / "web/event-window.html"
+            template.write_text(template.read_text() + '<script id="event-window-data"></script>')
+            with self.assertRaises(ValueError):
+                module.export_event_window_html(root, "A02", root / "duplicate.html")

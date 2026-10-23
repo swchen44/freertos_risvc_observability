@@ -9,3 +9,5 @@
 5. 先驗A02容量，未通過不擴大正式40。通過後續依plan14完成負向fixtures、正式40／8HTML、最大A08與回歸。C2b仍另立計畫。
 
 禁止用mtime判定資料可信、跳過hash/schema驗證、放寬時間門檻或改寫舊失敗收據。
+
+JS profile：A02完整430324列3.894s；add的多個遞迴frame合計為主要self-samples，empty另占156 samples。採固定schema迭代／literal初始化，減少每列Object.keys／fromEntries配置；保持BigInt與所有validator。以前後完整query結果hash、既有Node與新增負向fixtures核對。

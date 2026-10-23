@@ -30,19 +30,32 @@ const stringify = (o) =>
       typeof v === "bigint" ? v.toString() : stringify(v),
     ]),
   );
+const TOTALS = [
+  "instructions",
+  "memory_cycles",
+  "model_service_ns",
+  "accounted_model_ns",
+];
+const cacheCounts = () => ({
+  accesses: 0n,
+  misses: 0n,
+  compulsory: 0n,
+  conflict: 0n,
+  capacity: 0n,
+});
 const empty = () => ({
   instructions: 0n,
   memory_cycles: 0n,
   model_service_ns: 0n,
   accounted_model_ns: 0n,
-  cost_cycles: Object.fromEntries(COSTS.map((k) => [k, 0n])),
-  cache: Object.fromEntries(
-    LEVELS.map((l) => [l, Object.fromEntries(COUNTERS.map((k) => [k, 0n]))]),
-  ),
+  cost_cycles: { l1i: 0n, l1d: 0n, l2: 0n, ram_read: 0n, ram_write: 0n },
+  cache: { l1i: cacheCounts(), l1d: cacheCounts(), l2: cacheCounts() },
 });
 function add(a, b) {
-  for (const k of Object.keys(a))
-    typeof a[k] === "bigint" ? (a[k] += b[k]) : add(a[k], b[k]);
+  for (const k of TOTALS) a[k] += b[k];
+  for (const k of COSTS) a.cost_cycles[k] += b.cost_cycles[k];
+  for (const level of LEVELS)
+    for (const k of COUNTERS) a.cache[level][k] += b.cache[level][k];
   return a;
 }
 function counts(r) {
