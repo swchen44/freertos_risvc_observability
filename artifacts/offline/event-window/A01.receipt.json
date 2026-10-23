@@ -1,11 +1,11 @@
 {
   "workload": "A01",
   "runs": 2,
-  "bytes": 7557918,
-  "output_sha256": "e524fed06288f06b30f29b5c013bb42bec5d1ce117d60d4a17ac28f3fdfa4548",
+  "bytes": 7558076,
+  "output_sha256": "9f5e8b102f259e33497f4ec2013918ae90bb148cbe03c12274f08c0836412b75",
   "assets": {
     "web/event-window.html": "9493df3fbf41bf0322d92382c99680648082c20241cb601a7c50e6e4ea2ccce8",
-    "web/dist/assets/event-window.js": "665040187fdfbc500d9637c294e4235272b760efd899ea204bdbfffef06ca29d",
+    "web/dist/assets/event-window.js": "d788d70936bfd719c1d08d0d00b94f7b64045e09a3da4b8f1960ed44c2b09c40",
     "web/dist/assets/event-window.css": "648a289250fb7af8620e48733bf89dfd36ad9acc8871e2435286c9d626b323d9"
   },
   "source_catalog": [

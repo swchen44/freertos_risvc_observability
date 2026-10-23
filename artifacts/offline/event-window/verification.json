@@ -3,51 +3,51 @@
   "files": [
     {
       "workload": "A01",
-      "bytes": 7557918,
+      "bytes": 7558076,
       "runs": 2,
-      "sha256": "e524fed06288f06b30f29b5c013bb42bec5d1ce117d60d4a17ac28f3fdfa4548"
+      "sha256": "9f5e8b102f259e33497f4ec2013918ae90bb148cbe03c12274f08c0836412b75"
     },
     {
       "workload": "A02",
-      "bytes": 13044646,
+      "bytes": 13044804,
       "runs": 14,
-      "sha256": "ed0fa518d7259a3b39b49283ecf66655f293a5aed4dc9187cb1a2ed59b91e89a"
+      "sha256": "332a7feaf9a67976097f4c308b2c7c4217d5fe6d948381ca7a09db29ea309ced"
     },
     {
       "workload": "A03",
-      "bytes": 7555714,
+      "bytes": 7555872,
       "runs": 2,
-      "sha256": "ba440b1059013964aca0117b85d3a2561cfd398420569ab2f96cbdddb34888f9"
+      "sha256": "6d6755feddf738c43896dd7b01d478004debbb0256e3a6ec4f825d54a8b63df4"
     },
     {
       "workload": "A04",
-      "bytes": 7560558,
+      "bytes": 7560716,
       "runs": 2,
-      "sha256": "eac780bfd3f3e46bb2997c07020710de7d2c016350075fccab41d55861b2dc40"
+      "sha256": "688bc0c7c182a7e1bbf4dd452882de3a947af098a929571244fdcf7e7fc135a1"
     },
     {
       "workload": "A05",
-      "bytes": 7800016,
+      "bytes": 7800174,
       "runs": 2,
-      "sha256": "0edfa4549395a001d84e0f21df91d21962b4c196f91d407a85eda998aa371043"
+      "sha256": "2e2ffd81a09e54b619b7a089957e967f4035987b646bbe2c64d6bc343c64e164"
     },
     {
       "workload": "A06",
-      "bytes": 8007618,
+      "bytes": 8007776,
       "runs": 2,
-      "sha256": "3b8aff90bf5ab18e8d6e202a3b29e5fcc248500a04a13d3facff6c874fa359e7"
+      "sha256": "7cebdc019e0dc06b60709d029a7fe9a5e58b373b3ae249af4ff28537052c0e43"
     },
     {
       "workload": "A07",
-      "bytes": 7792794,
+      "bytes": 7792952,
       "runs": 2,
-      "sha256": "f6ab799339e649d032f54329798dcfb5fc81141c1a6603fb697e238c04b0a56d"
+      "sha256": "33a33f7b730c672c5798df8a596407a94139ffd6a9a093fbad2f1baedd63625f"
     },
     {
       "workload": "A08",
-      "bytes": 16958478,
+      "bytes": 16958636,
       "runs": 14,
-      "sha256": "405871b9c1ccdbd88d36115482a9e6aa36e6ae0cb5265d0573e66e7d998ab6a7"
+      "sha256": "729e5603177685e531de695c814d719eda3947d6117e98cf99d0d0294873b32d"
     }
   ]
 }
