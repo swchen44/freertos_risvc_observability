@@ -1,0 +1,1 @@
+Python urllib fixed-source fetch failed: SSL CERTIFICATE_VERIFY_FAILED, unable to get local issuer certificate. Repeated with system /usr/bin/curl using normal certificate verification; no trust-store changes or TLS bypass.

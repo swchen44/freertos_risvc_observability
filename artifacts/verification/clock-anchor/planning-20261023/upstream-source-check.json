@@ -1,0 +1,35 @@
+{
+  "scope": "fixed-revision upstream source comparison; no guest runtime",
+  "revision": "ae35f033b874c627d81d51070187fbf55f0bf1a7",
+  "observed_at_utc": "2026-10-23T14:38:40.682814+00:00",
+  "files": [
+    {
+      "path": "plugins/api.c",
+      "url": "https://raw.githubusercontent.com/qemu/qemu/ae35f033b874c627d81d51070187fbf55f0bf1a7/plugins/api.c",
+      "command": "/usr/bin/curl -fLsS --max-time 25",
+      "exit": 0,
+      "bytes": 18446,
+      "sha256": "f63fa30a077e47263e47c28bb609f843e8dd61420a7c31113d3cb3b58bd6a2da",
+      "matches_saved_source": true
+    },
+    {
+      "path": "include/qemu/qemu-plugin.h",
+      "url": "https://raw.githubusercontent.com/qemu/qemu/ae35f033b874c627d81d51070187fbf55f0bf1a7/include/qemu/qemu-plugin.h",
+      "command": "/usr/bin/curl -fLsS --max-time 25",
+      "exit": 0,
+      "bytes": 33251,
+      "sha256": "e4c5bf7e92075d7c1e6b1dcb6164bca6c549b2912a62b56ce1a777be4c7b8788",
+      "matches_saved_source": true
+    },
+    {
+      "path": "accel/tcg/icount-common.c",
+      "url": "https://raw.githubusercontent.com/qemu/qemu/ae35f033b874c627d81d51070187fbf55f0bf1a7/accel/tcg/icount-common.c",
+      "command": "/usr/bin/curl -fLsS --max-time 25",
+      "exit": 0,
+      "bytes": 16444,
+      "sha256": "d72c1515b7e098c2651caada5106d091b55ba8ee5ec4e23ae1f02167a2bcf2a5",
+      "matches_saved_source": true
+    }
+  ],
+  "passed": true
+}

@@ -1,0 +1,137 @@
+{
+  "scope": "read-only source and environment audit; not C2b runtime acceptance",
+  "observed_at_utc": "2026-10-23T14:30:00.458719+00:00",
+  "parent_commit": "b7f9d45f660acb983cb832899ef6575381a34f06",
+  "simulation_capture_performed": false,
+  "build_performed": false,
+  "browser_started": false,
+  "qemu_flags": [
+    "-machine",
+    "virt",
+    "-cpu",
+    "rv32",
+    "-smp",
+    "1",
+    "-m",
+    "128M",
+    "-bios",
+    "none",
+    "-display",
+    "none",
+    "-monitor",
+    "none",
+    "-serial",
+    "file:console.log",
+    "-accel",
+    "tcg,thread=single",
+    "-icount",
+    "shift=0,align=off,sleep=off",
+    "-semihosting-config",
+    "enable=on,target=native"
+  ],
+  "binaries": {
+    ".tools/qemu-time-control/qemu-system-riscv32-relative": {
+      "sha256": "69969c3ec8cce8f9340215fc340c5c01f81c3ef978252d3766937d2d176816db",
+      "exit": 0,
+      "version_first_line": "QEMU emulator version 9.2.0"
+    },
+    ".tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin/riscv-none-elf-gcc": {
+      "sha256": "d21f58713e7f2f9a9ef9de8762b2c2d1995cd4cdeda724d5fe4834f3af4737b2",
+      "exit": 0,
+      "version_first_line": "riscv-none-elf-gcc (xPack GNU RISC-V Embedded GCC arm64) 15.2.0"
+    }
+  },
+  "source_files": {
+    "firmware/port/recorder_port.h": {
+      "sha256": "9c5a85bae29d8576e581dfde9b9a7052fcb33e199377b581c30d76341bdfcb12",
+      "bytes": 799
+    },
+    "firmware/port/clock.c": {
+      "sha256": "e30f878d07222829aab2b3fd9bda411b8a459ef4efa7ee07a18eff234e874042",
+      "bytes": 205
+    },
+    "firmware/config/FreeRTOSConfig.h": {
+      "sha256": "9f50d532daf628c4d884299209f810f3224c5a2b7647872cb2f2a5e82c95311b",
+      "bytes": 1504
+    },
+    "firmware/config/trcConfig.h": {
+      "sha256": "c8ff3a8b4d8f88c75589dda532ba01deca8f39c2a5dbabc076c412c2832ea171",
+      "bytes": 14153
+    },
+    "firmware/app/main.c": {
+      "sha256": "bc70fc6ab47ad1d267e117aa52e416adb1ac31b68f3c50393c6e61e8efa5a132",
+      "bytes": 1067
+    },
+    "firmware/app/cases/tcp_request_response.c": {
+      "sha256": "62f28cec6bb2d28ce3f5ddbc4a4412a68c777d6a3532924fb19a5281bde024d0",
+      "bytes": 15635
+    },
+    "tools/tcp/live_cache.c": {
+      "sha256": "2e362e0cee66e850d15ba5db5d2b12b02883a143f3017211c3626af6ad2ae921",
+      "bytes": 5428
+    },
+    "tools/tcp/live_context.c": {
+      "sha256": "958b3d24ec9d591484ea8170a3814443e9147e04c5819bb23b42f628ee433bf4",
+      "bytes": 6073
+    },
+    "tools/qemu/0003-experimental-relative-clock-cost.patch": {
+      "sha256": "d77bf8974a950eb3aac7b6333b6fd6dfe30940af8704b953ae3832db4c6ab11f",
+      "bytes": 1679
+    },
+    "src/psf_lab/parser/semantic.py": {
+      "sha256": "d81734ac0a519415a599d65f09ed91ece350f4991aed6bcfef22a1207ff776b7",
+      "bytes": 9239
+    },
+    "references/baseline/percepio/TraceRecorder/include/trcPrint.h": {
+      "sha256": "4150c0c5cc00220b3f34b0a14d37f1ce78cf477022657dec989355eee1fe0ecd",
+      "bytes": 17046
+    },
+    "references/baseline/percepio/TraceRecorder/include/trcEvent.h": {
+      "sha256": "8af6a586c035fb3d0c12ddb8f3e3360ec8ace26974e921a8c1141fcc5cd8ae4e",
+      "bytes": 14655
+    },
+    "references/baseline/percepio/TraceRecorder/trcEvent.c": {
+      "sha256": "c3dc8ea5f235a7e0e24db47741d5e0e7776d2436e821e01da7d9f4f1fcadceae",
+      "bytes": 17069
+    },
+    "references/baseline/percepio/TraceRecorder/include/trcTimestamp.h": {
+      "sha256": "5217d437c676fbf6042022c024cc2f097375aa76733ff97aac3d87d127ecd031",
+      "bytes": 7638
+    }
+  },
+  "existing_capture_identity": {
+    "A02-baseline": {
+      "manifest_path": "runs/tcp-workload-matrix-v1/A02-baseline/manifest.json",
+      "manifest_sha256": "285212fb32b20704309cb0d48ba7b6c76296ad47a0ee0439cc8c4d3bc1cda37a",
+      "qemu_sha256": "69969c3ec8cce8f9340215fc340c5c01f81c3ef978252d3766937d2d176816db",
+      "source_commit": "6a0ef47110664d43d3e6d13096c54e8b1e2e9430",
+      "matches_existing_relative_binary": true
+    },
+    "A02-pbuf": {
+      "manifest_path": "runs/tcp-workload-matrix-v1/A02-pbuf/manifest.json",
+      "manifest_sha256": "127dbab36f3d1ccf66c1dead1129b1d27ed07a302ca5f6670eb58754c3c03173",
+      "qemu_sha256": "69969c3ec8cce8f9340215fc340c5c01f81c3ef978252d3766937d2d176816db",
+      "source_commit": "6a0ef47110664d43d3e6d13096c54e8b1e2e9430",
+      "matches_existing_relative_binary": true
+    }
+  },
+  "psf_clock_sample": {
+    "manifest_path": "artifacts/verification/event-window/formal/A02-baseline-b1-1-1/manifest.json",
+    "manifest_sha256": "3ddb4131ce89657a55f66091a4eb21822c216992b1c9d7d76f8b24aa037e132d",
+    "clock": {
+      "assumptions": [
+        "less_than_one_wrap_between_events"
+      ],
+      "frequency_hz": "10000000",
+      "origin_ticks": "2295",
+      "tick_hz": 1000,
+      "time_model": "unspecified",
+      "type": 1
+    }
+  },
+  "decisions": {
+    "guest_marker_scope": "awaiting user A/B answer",
+    "pilot_count": "not decided",
+    "error_budget": "not decided"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "scope": "background research agent source-consistency check; no runtime acceptance",
+  "blocking_fact_findings": 0,
+  "checks": [
+    "marker sample separate from SDK timestamp",
+    "completion boundary not asserted as retirement",
+    "32 bytes limited to current RV32 fixed user-event format",
+    "observer and marker perturbation remain unmeasured",
+    "A/B remains unselected"
+  ],
+  "documents_sha256": {
+    "docs/research/c2b-sdk-anchor-capabilities.md": "3b82ab2c6074f515ad32306af81fa78b41e91cda5b738100ed54b1b560355b59",
+    "docs/plans/19-c2b-clock-anchor-pilot.md": "e6c5ae69c7e96028560a5b21cf1710a4463616c852c1a587ea4ca4bacf75f5fe"
+  }
+}

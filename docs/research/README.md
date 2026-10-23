@@ -1,5 +1,7 @@
 # PSF、RISC-V 模擬與 Dashboard：下一階段研究
 
+**最新：2026-10-23 C2b 能力盤點完成，尚未實作。** [QEMU clock能力表](c2b-qemu-clock-capabilities.md)、[SDK anchors與pilot邊界](c2b-sdk-anchor-capabilities.md)、[接續計畫](../plans/19-c2b-clock-anchor-pilot.md)。本機研究binary與A02資料身分相符；任意callback讀virtual clock沒有安全保證，須分開request／applied／PSF sample。修改範圍A／B正在等使用者選擇。以下保留歷史研究階段；最新C2a成果見[正式報告](../event-window-dashboard.md)。
+
 **T1 已實作：**[L1／L2／RAM 成本模型、三組參數比較與重跑](../memory-timing-t1.md)。T2 guest time／IRQ 影響與新的 Dashboard 仍未完成。
 
 **Z0 新進度：**[固定 request／response 的 zero-copy 實測](../tcp-session-z0.md)，三次 QEMU、25 個雙向封包／次、RX／TX／ACK／FIN 與資源回收；新 UI 與 A/B 尚未實作。新增 [L1／L2／system RAM 延遲研究](QEMU分層記憶體延遲研究.md)，T1 成本估算已完成，T2 guest 時序模型仍待實作。

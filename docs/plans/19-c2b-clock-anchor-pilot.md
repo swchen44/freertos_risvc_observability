@@ -1,6 +1,15 @@
 # C2b clock-anchor pilot：接續提案
 
-狀態：**提案，尚未開始、沒有新增capture或修改guest。** C2a已完成40-run／8HTML與本機驗收；本計畫不把event index或累積model cost換成PSF timestamp。
+狀態：**能力盤點已完成；修改範圍 A／B 等使用者選擇，尚無新增capture或guest修改。** C2a已完成40-run／8HTML與本機驗收；本計畫不把event index或累積model cost換成PSF timestamp。
+
+## 2026-10-23 接續 checkpoint
+
+- [x] 固定研究 QEMU 9.2 binary 與 A02 baseline／pbuf manifest SHA 相符；只做version／hash讀取。
+- [x] QEMU API／callback／icount／applied安全前提來源盤點，見[能力表](../research/c2b-qemu-clock-capabilities.md)。任意instruction callback讀clock沒有安全保證；request clock須允許null。
+- [x] SDK user-event／application-defined mtime與保存PSF重解析，見[SDK與pilot邊界](../research/c2b-sdk-anchor-capabilities.md)；來源及讀檔證據在[planning資料夾](../../artifacts/verification/clock-anchor/planning-20261023/)。這些不等於新runtime驗收。
+- [ ] 使用者選 A：app／port加少量SDK markers、不改kernel／SDK；或 B：保持guest ELF不變，無法證明的PSF接合保留unknown。
+- [ ] 根據選擇完成並審閱具體anchor schema、最小pilot與錯誤／誤差判定，再寫實作計畫。
+- [ ] 新capture、observer對照、誤差量測、Web／offline視圖與E2E；不得用本輪source audit勾成已完成。
 
 ## 目的與順序
 

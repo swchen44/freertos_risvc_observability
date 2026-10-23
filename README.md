@@ -1,5 +1,7 @@
 # FreeRTOS／RISC-V PSF POC
 
+**C2b 接續：能力盤點完成，尚未實作。** [QEMU clock／callback能力表](docs/research/c2b-qemu-clock-capabilities.md)、[SDK anchors與PSF研究](docs/research/c2b-sdk-anchor-capabilities.md)、[目前checklist](docs/plans/19-c2b-clock-anchor-pilot.md)。本輪只核對來源／binary與重新解析保存PSF，尚無新capture；修改範圍A／B等待使用者選擇。
+
 ## C2a 正式本機驗收 · 2026-10-23
 
 40 runs／8份離線HTML已完成並通過本機驗收，資料與C1完整facts相符；Python328、Node25、Playwright11、Ruff、curl及agent-browser均有可複查證據。固定L1I8KiB／L1D8KiB／L232KiB。C2b時間對齊尚未開始。

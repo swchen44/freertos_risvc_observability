@@ -1,8 +1,8 @@
 # C2a：用事件區間找出 Cache 成本
 
-**目前狀態：C2a本機正式驗收與兩repo的payload發布完成。40 runs／8HTML已完成；Python328、Node25、Playwright11、Ruff與真TCP故障測試通過。發布SHA另見release收據。C2b尚未開始。**
+**目前狀態：C2a本機正式驗收與兩repo的payload發布完成。40 runs／8HTML已完成；Python328、Node25、Playwright11、Ruff與真TCP故障測試通過。發布SHA另見release收據。C2b已完成來源盤點，實作與新capture尚未開始。**
 
-這份文件是進度與復原入口。已發布的 A、B、C1 成果保持原樣；C2b clock-anchor pilot 尚未開始。
+這份文件是進度與復原入口。已發布的 A、B、C1 成果保持原樣；[C2b clock-anchor計畫](plans/19-c2b-clock-anchor-pilot.md)目前完成來源盤點，pilot尚未實作。
 
 ## 正式40-run／8HTML驗收
 

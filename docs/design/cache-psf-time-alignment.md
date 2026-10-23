@@ -1,6 +1,6 @@
 # C2：Cache 與 PSF 時間對齊研究草案
 
-日期：2026-10-13，更新2026-10-23。狀態：**C2a已完成本機驗收，固定C1的40份來源轉成完整chunks／8HTML；C2b clock-anchor尚未開始。**
+日期：2026-10-13，更新2026-10-23。狀態：**C2a已完成本機驗收，固定C1的40份來源轉成完整chunks／8HTML；C2b已完成來源能力盤點，實作與新capture尚未開始。** [C2b目前checklist](../plans/19-c2b-clock-anchor-pilot.md)；app／port markers或保持guest ELF的範圍等待使用者選擇。
 
 ## 目的與承接範圍
 

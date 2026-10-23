@@ -1,0 +1,29 @@
+{
+  "scope": "C2b source capability audit only",
+  "source_audit_complete": true,
+  "parent_commit": "b7f9d45f660acb983cb832899ef6575381a34f06",
+  "runtime_acceptance": "not-performed",
+  "new_guest_captures": 0,
+  "build_performed": false,
+  "browser_started": false,
+  "existing_qemu_matches_both_A02_sources": true,
+  "fixed_upstream_files_verified": 3,
+  "saved_psf_files_reparsed": 2,
+  "docs": {
+    "ok": true,
+    "documents": 94,
+    "links_checked": 771,
+    "broken_links": [],
+    "baseline_files": 422
+  },
+  "decision_snapshot": "A/B guest marker scope awaiting user answer at this checkpoint",
+  "remaining": [
+    "choose guest marker scope",
+    "review concrete anchor schema and pilot spec",
+    "write implementation plan",
+    "new patch and captures",
+    "observer parity and bounded-error evaluation",
+    "Web/offline integration and E2E"
+  ],
+  "source_consistency_review": "source-review.json"
+}

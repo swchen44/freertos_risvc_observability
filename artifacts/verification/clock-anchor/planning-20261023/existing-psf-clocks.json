@@ -1,0 +1,66 @@
+{
+  "scope": "re-parse saved traces; no C2b capture",
+  "command": "PYTHONPATH=src .venv/bin/python",
+  "results": [
+    {
+      "candidate": "A02-baseline",
+      "path": "runs/tcp-workload-matrix-v1/A02-baseline/enabled-1-1/trace.psf",
+      "sha256": "241f48e27c29a6f6be545f29183df9502b00312e59064d75553cf1f506f444ae",
+      "clock": {
+        "frequency_hz": "10000000",
+        "tick_hz": 1000,
+        "type": 1,
+        "origin_ticks": "2295",
+        "time_model": "unspecified",
+        "assumptions": [
+          "less_than_one_wrap_between_events"
+        ]
+      },
+      "event_count": 24,
+      "quality": {
+        "status": "valid",
+        "issues": [],
+        "capture_complete": null
+      },
+      "platform": {
+        "format_version": 14,
+        "platform_id": 6817,
+        "name": "FreeRTOS",
+        "schema": "1.2.0",
+        "word_bytes": 4,
+        "endianness": "little",
+        "core_count": 1
+      }
+    },
+    {
+      "candidate": "A02-pbuf",
+      "path": "runs/tcp-workload-matrix-v1/A02-pbuf/enabled-1-1/trace.psf",
+      "sha256": "d36c5b08b20b778d51515a719754c172b7c912f8a4f58e94d9b0098c2a641a42",
+      "clock": {
+        "frequency_hz": "10000000",
+        "tick_hz": 1000,
+        "type": 1,
+        "origin_ticks": "2295",
+        "time_model": "unspecified",
+        "assumptions": [
+          "less_than_one_wrap_between_events"
+        ]
+      },
+      "event_count": 24,
+      "quality": {
+        "status": "valid",
+        "issues": [],
+        "capture_complete": null
+      },
+      "platform": {
+        "format_version": 14,
+        "platform_id": 6817,
+        "name": "FreeRTOS",
+        "schema": "1.2.0",
+        "word_bytes": 4,
+        "endianness": "little",
+        "core_count": 1
+      }
+    }
+  ]
+}
