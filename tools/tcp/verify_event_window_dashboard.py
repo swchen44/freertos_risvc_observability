@@ -127,6 +127,8 @@ def verify(
     profile_csv=False,
     workload="A02",
 ):
+    if workload not in {"A02", "A08"} and not capacity_only:
+        raise ValueError("Other workloads support capacity-only acceptance")
     case = acceptance_case(workload)
     run_id = case["run_id"]
     output.mkdir(parents=True, exist_ok=False)
@@ -628,7 +630,7 @@ if __name__ == "__main__":
     p.add_argument("--capacity-only", action="store_true")
     p.add_argument("--force-failure", action="store_true")
     p.add_argument("--profile-csv", action="store_true")
-    p.add_argument("--workload", choices=["A02", "A08"], default="A02")
+    p.add_argument("--workload", choices=[f"A{i:02}" for i in range(1, 9)], default="A02")
     a = p.parse_args()
     print(
         json.dumps(
