@@ -1,5 +1,6 @@
 """Hash-verified event chunks; raw order and cache state are never reconstructed by UI."""
 
+import copy
 import csv
 import gzip
 import hashlib
@@ -7,6 +8,7 @@ import io
 import json
 import re
 import zlib
+from functools import lru_cache
 from pathlib import Path
 
 from psf_lab.cost_attribution import COST_KEYS
@@ -14,6 +16,7 @@ from psf_lab.hotspot_events import COUNTERS, LEVELS, add_counts, empty_counts, i
 
 CHUNK_ROWS = 1024
 MAX_JSON = 2 * 1024 * 1024
+_UINT_PATTERN = re.compile(r"0|[1-9][0-9]{0,39}")
 COLUMNS = (
     ["index", "pc", "address", "size", "operation", "context_id", "owner_id"]
     + list(COST_KEYS)
@@ -40,7 +43,7 @@ def wire(value):
 
 
 def uint(value):
-    if not isinstance(value, str) or not re.fullmatch(r"0|[1-9][0-9]{0,39}", value):
+    if not isinstance(value, str) or not _UINT_PATTERN.fullmatch(value):
         raise ValueError("Expected canonical unsigned decimal string")
     return int(value)
 
@@ -307,7 +310,19 @@ class UnknownEventRun(LookupError):
 BASE = Path("artifacts/verification/event-window/formal")
 
 
+@lru_cache(maxsize=1)
+def _parsed_manifest(raw: bytes):
+    # Only the last content-verified manifest is retained; callers cannot mutate it.
+    manifest = json.loads(raw)
+    validate_event_manifest(manifest)
+    return manifest
+
+
 def load_event_manifest(root: Path, run_id: str):
+    return copy.deepcopy(_load_verified_manifest(root, run_id))
+
+
+def _load_verified_manifest(root: Path, run_id: str):
     try:
         catalog = load_event_catalog(root)
         matches = [r for r in catalog["runs"] if r["run_id"] == run_id]
@@ -321,8 +336,7 @@ def load_event_manifest(root: Path, run_id: str):
         raw = (root / BASE / run_id / "manifest.json").read_bytes()
         if sha(raw) != matches[0]["sha256"]:
             raise ValueError("Manifest hash mismatch")
-        manifest = json.loads(raw)
-        validate_event_manifest(manifest)
+        manifest = _parsed_manifest(raw)
         if manifest["identity"]["run_id"] != run_id:
             raise ValueError("Identity mismatch")
         return manifest
@@ -331,7 +345,7 @@ def load_event_manifest(root: Path, run_id: str):
 
 
 def load_event_chunk(root: Path, run_id: str, chunk_id: str):
-    manifest = load_event_manifest(root, run_id)
+    manifest = _load_verified_manifest(root, run_id)
     matches = [c for c in manifest["chunks"] if c["id"] == chunk_id]
     if not matches:
         raise UnknownEventRun(chunk_id)
