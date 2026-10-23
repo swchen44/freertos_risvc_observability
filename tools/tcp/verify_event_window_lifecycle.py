@@ -72,6 +72,14 @@ def main():
         )
         ab("set", "viewport", "1600", "1050")
         ab("wait", "--fn", "window.eventWindowReady===true")
+        if ev("document.querySelector('#workload').value") != "A02":
+            ab("select", "#workload", "A02")
+            ab(
+                "wait",
+                "--fn",
+                "window.eventWindowReady===true && "
+                "window.eventWindowResult?.run_id==='A02-baseline-b1-1-1'",
+            )
         ev("""window.realFetch=fetch;window.delayOne=true;
             window.fetch=(url,...args)=>{
               if(window.delayOne && String(url).endsWith('/A02-pbuf-b2-1-1')){
