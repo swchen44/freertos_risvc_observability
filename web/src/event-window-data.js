@@ -60,10 +60,12 @@ function add(a, b) {
     for (const k of COUNTERS) a.cache[level][k] += b.cache[level][k];
   return a;
 }
-function counts(r) {
+function counts(r, index = null, contexts = 0n, owners = 0n) {
   if (!Array.isArray(r) || r.length !== 27 || !["I", "R", "W"].includes(r[4]))
     throw Error("Invalid event row");
   const n = r.map((x, i) => (i === 4 ? x : number(x)));
+  if (index !== null && (n[0] !== index || n[5] >= contexts || n[6] >= owners))
+    throw Error("Invalid event identity");
   if (
     n[3] === 0n ||
     (n[4] === "I" && (n[1] !== n[2] || ![2n, 4n].includes(n[3])))
@@ -204,18 +206,16 @@ export async function decodeChunk(bytes, c, m) {
     BigInt(data.rows.length) !== number(c.rows)
   )
     throw Error("Chunk schema mismatch");
-  data.rows.forEach((r, i) => {
-    if (
-      number(r[0]) !== number(c.start) + BigInt(i) ||
-      number(r[5]) >= BigInt(m.contexts.length) ||
-      number(r[6]) >= BigInt(m.owners.length)
-    )
-      throw Error("Invalid event identity");
-  });
-  const verified = data.rows.map(counts);
+  const start = number(c.start),
+    contexts = BigInt(m.contexts.length),
+    owners = BigInt(m.owners.length);
+  const verified = data.rows.map((r, i) =>
+    counts(r, start + BigInt(i), contexts, owners),
+  );
   const total = verified.reduce((a, item) => add(a, item), empty());
   if (!equal(stringify(total), c.totals)) throw Error("Chunk totals mismatch");
   Object.defineProperty(data.rows, "counts", { value: verified });
+  Object.defineProperty(data.rows, "totals", { value: total });
   return data.rows;
 }
 const cell = (v) =>
@@ -290,6 +290,12 @@ export async function queryEventWindow(m, loadChunk, q, emit = () => {}) {
   );
   for (const c of relevant) {
     const rows = await decodeChunk(await loadChunk(c), c, m);
+    const whole =
+      !q.context &&
+      !q.function_query &&
+      number(c.start) >= start &&
+      number(c.end) <= end;
+    if (whole) add(total, rows.totals);
     let csv = "";
     for (const [rowIndex, r] of rows.entries()) {
       const index = number(r[0]);
@@ -304,7 +310,7 @@ export async function queryEventWindow(m, loadChunk, q, emit = () => {}) {
       )
         continue;
       const values = rows.counts[rowIndex];
-      add(total, values);
+      if (!whole) add(total, values);
       const id = r[6];
       if (!groups.has(id))
         groups.set(id, { id, name, role: owner.role, counts: empty() });

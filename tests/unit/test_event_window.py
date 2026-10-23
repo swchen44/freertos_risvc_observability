@@ -90,3 +90,26 @@ class EventWindowTests(unittest.TestCase):
         desc = dict(chunk, gzip_sha256=self.m.sha(data))
         with self.assertRaises(ValueError):
             self.m.decode_event_chunk(bytes(data), desc, result)
+
+    def test_canonical_decimal_boundaries(self):
+        for value in ["0", "1", "9" * 40]:
+            self.assertEqual(self.m.uint(value), int(value))
+        for value in [
+            True,
+            False,
+            0,
+            1,
+            None,
+            1.0,
+            "",
+            "-1",
+            "+1",
+            "01",
+            "1e2",
+            "1\n",
+            "1\r",
+            "1\u2028",
+            "9" * 41,
+        ]:
+            with self.subTest(value=value), self.assertRaises(ValueError):
+                self.m.uint(value)

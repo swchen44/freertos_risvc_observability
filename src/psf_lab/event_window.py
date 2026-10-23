@@ -43,6 +43,11 @@ def wire(value):
 
 
 def uint(value):
+    if type(value) is str:
+        if value == "0":
+            return 0
+        if value == "1":
+            return 1
     if not isinstance(value, str) or not _UINT_PATTERN.fullmatch(value):
         raise ValueError("Expected canonical unsigned decimal string")
     return int(value)

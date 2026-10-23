@@ -183,7 +183,21 @@ test("CSV guards spreadsheet control prefixes and preserves quotes", async () =>
 });
 test("canonical numeric wire and header-only empty CSV", async () => {
   const { m, manifest, gzip } = await fixture();
-  for (const value of [true, 1, "01", "-0", "1.0", "1e2", "", " 1", "١"])
+  for (const value of [
+    true,
+    1,
+    "01",
+    "-0",
+    "1.0",
+    "1e2",
+    "",
+    " 1",
+    "١",
+    "1\n",
+    "1\r",
+    "1\u2028",
+    "0\n",
+  ])
     assert.throws(() => m.number(value));
   const pieces = [];
   const r = await m.queryEventWindow(
@@ -218,11 +232,46 @@ test("CSV round-trips multiline Unicode, empty function set, and exact event int
   assert.deepEqual(parse(m.functionsCsv([]), { columns: true }), []);
   assert.equal(parse(m.functionsCsv([])).length, 1);
   const pieces = [];
-  await m.queryEventWindow(manifest, async () => gzip, {
-    run_id: "toy", start: "0", end: "3", metric: "memory_cycles",
-    event_offset: "0", event_limit: 1, export_events: true
-  }, x => { if(x.type === "csv") pieces.push(x.text); });
+  await m.queryEventWindow(
+    manifest,
+    async () => gzip,
+    {
+      run_id: "toy",
+      start: "0",
+      end: "3",
+      metric: "memory_cycles",
+      event_offset: "0",
+      event_limit: 1,
+      export_events: true,
+    },
+    (x) => {
+      if (x.type === "csv") pieces.push(x.text);
+    },
+  );
   const rows = parse(pieces.join(""), { columns: true });
   assert.equal(rows.length, 3);
   assert.equal(rows[1].l1i, "9007199254740993");
+});
+
+test("full-chunk and selected-row aggregation agree for exact counters", async () => {
+  const { m, manifest, gzip } = await fixture();
+  for (const [start, end] of [
+    ["0", "3"],
+    ["1", "2"],
+  ]) {
+    const query = {
+      run_id: "toy",
+      start,
+      end,
+      metric: "memory_cycles",
+      event_offset: "0",
+      event_limit: 200,
+    };
+    const full = await m.queryEventWindow(manifest, async () => gzip, query);
+    const selected = await m.queryEventWindow(manifest, async () => gzip, {
+      ...query,
+      context: "task:A",
+    });
+    assert.deepEqual(full, selected);
+  }
 });

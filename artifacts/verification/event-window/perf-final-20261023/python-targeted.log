@@ -1,0 +1,13 @@
+test_canonical_decimal_boundaries (tests.unit.test_event_window.EventWindowTests.test_canonical_decimal_boundaries) ... ok
+test_full_chunks_and_warm_boundary (tests.unit.test_event_window.EventWindowTests.test_full_chunks_and_warm_boundary) ... ok
+test_hash_valid_malformed_and_corruption_rejected (tests.unit.test_event_window.EventWindowTests.test_hash_valid_malformed_and_corruption_rejected) ... ok
+test_malformed_dictionary_and_deflate_are_value_errors (tests.unit.test_event_window.EventWindowTests.test_malformed_dictionary_and_deflate_are_value_errors) ... ok
+test_manifest_rejects_gaps_and_duplicates (tests.unit.test_event_window.EventWindowTests.test_manifest_rejects_gaps_and_duplicates) ... ok
+test_content_cache_revalidates_and_cannot_be_poisoned (tests.unit.test_event_manifest_cache.ManifestCacheTests.test_content_cache_revalidates_and_cannot_be_poisoned) ... ok
+test_stream_preserves_big_integer_and_empty_function_label (tests.unit.test_event_csv_stream.EventCsvStreamTests.test_stream_preserves_big_integer_and_empty_function_label) ... ok
+test_verified_stream_filters_exact_rows_and_rejects_invalid_range (tests.unit.test_event_csv_stream.EventCsvStreamTests.test_verified_stream_filters_exact_rows_and_rejects_invalid_range) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.208s
+
+OK

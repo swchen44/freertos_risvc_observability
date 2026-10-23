@@ -1,0 +1,37 @@
+
+> test:unit
+> node --test tests/*.test.mjs
+
+✔ comparison uses each request origin, preserves unknown duration (1.59075ms)
+✔ late requests cannot replace newer workspace (0.926917ms)
+✔ query contract and error handling (0.904417ms)
+✔ cancel invalidates manifest loader and cannot start an old query (6.251375ms)
+✔ cancelled render cannot write counters or charts after table await (1.470125ms)
+✔ PSF view preserves sequence, equal ticks, gaps and independent origin (1.461ms)
+✔ Web CSV delegates verified query to HTTP while offline keeps Blob; stale results cannot download (3.689875ms)
+✔ exact interval and integer beyond 2^53, empty selection (24.751834ms)
+✔ corruption, bad query and missing chunks rejected (2.413833ms)
+✔ CSV covers every selected row, independent of event pagination (1.693708ms)
+✔ manifest dictionaries reject wrong types and duplicate identities (0.554375ms)
+✔ CSV guards spreadsheet control prefixes and preserves quotes (0.224417ms)
+✔ canonical numeric wire and header-only empty CSV (1.365917ms)
+✔ CSV round-trips multiline Unicode, empty function set, and exact event integers (10.408583ms)
+✔ full-chunk and selected-row aggregation agree for exact counters (5.592083ms)
+✔ joint filter and top N preserve both denominators and full CSV (3.103459ms)
+✔ empty filter and CSV injection preserve negative numeric deltas (0.905833ms)
+✔ per-row pairing exposes missing and ambiguous costs instead of zero deltas (0.515042ms)
+✔ subtract before Number conversion (1.02175ms)
+✔ isolated state, patch and reset (3.64875ms)
+✔ TCP filters intersect without changing source data (0.811791ms)
+✔ CSV uses supplied sorted subset and escaped cells (0.1165ms)
+✔ groups stay separate, candidate filter supports an empty result (1.687958ms)
+✔ CSV preserves displayed order and the measured denominator (0.875709ms)
+✔ workload filter preserves paired baseline and CSV request shape (0.155292ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 549.6845

@@ -1,0 +1,37 @@
+
+> test:unit
+> node --test tests/*.test.mjs
+
+✔ comparison uses each request origin, preserves unknown duration (3.065708ms)
+✔ late requests cannot replace newer workspace (3.045583ms)
+✔ query contract and error handling (0.561ms)
+✔ cancel invalidates manifest loader and cannot start an old query (5.954417ms)
+✔ cancelled render cannot write counters or charts after table await (1.756041ms)
+✔ PSF view preserves sequence, equal ticks, gaps and independent origin (2.723292ms)
+✔ Web CSV delegates verified query to HTTP while offline keeps Blob; stale results cannot download (4.077792ms)
+✔ exact interval and integer beyond 2^53, empty selection (34.167458ms)
+✔ corruption, bad query and missing chunks rejected (2.810375ms)
+✔ CSV covers every selected row, independent of event pagination (2.343375ms)
+✔ manifest dictionaries reject wrong types and duplicate identities (0.760125ms)
+✔ CSV guards spreadsheet control prefixes and preserves quotes (0.263459ms)
+✔ canonical numeric wire and header-only empty CSV (1.821083ms)
+✔ CSV round-trips multiline Unicode, empty function set, and exact event integers (16.282041ms)
+✔ full-chunk and selected-row aggregation agree for exact counters (10.182958ms)
+✔ joint filter and top N preserve both denominators and full CSV (11.097834ms)
+✔ empty filter and CSV injection preserve negative numeric deltas (4.094916ms)
+✔ per-row pairing exposes missing and ambiguous costs instead of zero deltas (1.457292ms)
+✔ subtract before Number conversion (1.252583ms)
+✔ isolated state, patch and reset (3.874ms)
+✔ TCP filters intersect without changing source data (0.892708ms)
+✔ CSV uses supplied sorted subset and escaped cells (0.117958ms)
+✔ groups stay separate, candidate filter supports an empty result (1.66325ms)
+✔ CSV preserves displayed order and the measured denominator (0.297292ms)
+✔ workload filter preserves paired baseline and CSV request shape (0.112958ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 715.206125

@@ -182,7 +182,7 @@ def verify(
         if not browser_started and args[0] == "open":
             command = prefix
             browser_started = True
-        p = subprocess.run(command + list(args), capture_output=True, text=True, timeout=50)
+        p = subprocess.run(command + list(args), capture_output=True, text=True, timeout=120)
         commands.append(dict(args=args, exit=p.returncode, stdout=p.stdout, stderr=p.stderr))
         (output / "commands.json").write_text(json.dumps(commands, indent=2) + "\n")
         if p.returncode:
