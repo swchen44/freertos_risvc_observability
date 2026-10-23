@@ -10,7 +10,7 @@ import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
-from verify_event_window_dashboard import ROOT, process_table
+from verify_event_window_dashboard import ROOT, process_table, session_name
 
 
 def main():
@@ -54,12 +54,13 @@ def main():
     server = ThreadingHTTPServer(("127.0.0.1", 0), Handler)
     thread = threading.Thread(target=server.serve_forever, daemon=True)
     thread.start()
-    session = "c2a-capabilities"
+    session = session_name("c2a-capabilities")
     commands, owned, cases = [], set(), []
     started = False
     done = threading.Event()
     receipt = dict(
         passed=False,
+        browser_session=session,
         injected_fixture=True,
         cases=cases,
         assets={k: hashlib.sha256(v).hexdigest() for k, v in resources.items()},

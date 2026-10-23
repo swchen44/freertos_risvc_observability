@@ -7,7 +7,7 @@ import threading
 import time
 from pathlib import Path
 
-from verify_event_window_dashboard import process_table
+from verify_event_window_dashboard import process_table, session_name
 
 
 def main():
@@ -18,9 +18,13 @@ def main():
     a.output.mkdir(parents=True, exist_ok=False)
     downloads = a.output / "downloads"
     downloads.mkdir()
-    session = "c2a-lifecycle"
+    session = session_name("c2a-lifecycle")
     prefix = ["agent-browser", "--session", session]
-    commands, receipt, owned = [], {"passed": False, "injected_fixture": True}, set()
+    commands, receipt, owned = (
+        [],
+        {"passed": False, "injected_fixture": True, "browser_session": session},
+        set(),
+    )
 
     def ab(*args):
         r = subprocess.run(prefix + list(args), capture_output=True, text=True, timeout=50)

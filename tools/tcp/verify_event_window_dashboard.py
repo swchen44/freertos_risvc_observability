@@ -6,15 +6,21 @@ import gzip
 import hashlib
 import io
 import json
+import os
 import shutil
 import subprocess
 import threading
 import time
+import uuid
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 BASE = ROOT / "artifacts/verification/event-window/formal"
 RSS_LIMIT_MIB = 640  # User-approved revision, 2026-10-14.
+
+
+def session_name(label):
+    return f"{label}-{os.getpid()}-{uuid.uuid4().hex[:8]}"
 
 
 def process_table():
@@ -135,7 +141,7 @@ def verify(
     shutil.copyfile(__file__, output / "harness.py")
     shots = output / "screenshots"
     shots.mkdir()
-    session = "c2a-verify"
+    session = session_name("c2a-verify")
     commands = []
     samples = []
     tracked = set()
@@ -154,6 +160,7 @@ def verify(
         "source_commit": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
         "offline_html_sha256": hashlib.sha256(html.read_bytes()).hexdigest() if html else None,
         "browser_executable": str(executable) if executable else "agent-browser default",
+        "browser_session": session,
     }
     downloads = output / "downloads"
     downloads.mkdir()
@@ -212,6 +219,9 @@ def verify(
 
     def monitor():
         while not done.is_set():
+            if not browser_started:
+                done.wait(0.2)
+                continue
             rows = process_table()
             try:
                 daemon = int(
@@ -584,10 +594,11 @@ def verify(
         receipt.update(interactions_passed=True, resources=resources, errors=errors)
     except Exception as error:
         receipt["failure"] = str(error)
-        try:
-            receipt["failure_status"] = ev('document.querySelector("#status")?.textContent')
-        except Exception:
-            pass
+        if browser_started:
+            try:
+                receipt["failure_status"] = ev('document.querySelector("#status")?.textContent')
+            except Exception:
+                pass
         raise
     finally:
         try:
@@ -600,7 +611,7 @@ def verify(
         done.set()
         monitor_thread.join()
         time.sleep(0.5)
-        remaining = process_table()
+        remaining = process_table() if browser_started else {}
         receipt["remaining_browser_pids"] = [pid for pid in tracked if pid in remaining]
         receipt["sampled_peak_rss_kib"] = max((s["rss_kib"] for s in samples), default=0)
         receipt["capacity_passed"] = bool(

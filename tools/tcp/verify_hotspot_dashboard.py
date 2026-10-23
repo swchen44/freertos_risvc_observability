@@ -9,7 +9,7 @@ import threading
 import time
 from pathlib import Path
 
-from verify_event_window_dashboard import process_table
+from verify_event_window_dashboard import process_table, session_name
 
 from psf_lab.hotspot_dashboard import load_hotspot_workload
 
@@ -27,7 +27,7 @@ def verify(mode, output, html=None, executable=None):
     shots = output / "screenshots"
     shots.mkdir()
     log = []
-    session = "c1-accept-" + mode
+    session = session_name("c1-accept-" + mode)
 
     def ab(*args):
         nonlocal started
@@ -99,7 +99,7 @@ def verify(mode, output, html=None, executable=None):
             )
             done.wait(0.2)
 
-    receipt = {"passed": False, "mode": mode}
+    receipt = {"passed": False, "mode": mode, "browser_session": session}
     monitor_thread = threading.Thread(target=monitor)
     monitor_thread.start()
     try:
