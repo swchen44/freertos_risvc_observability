@@ -58,7 +58,15 @@ def oracle(run_id, start, end, context="", search=""):
     return result
 
 
-def verify(mode, output, html=None, executable=None, capacity_only=False, force_failure=False):
+def verify(
+    mode,
+    output,
+    html=None,
+    executable=None,
+    capacity_only=False,
+    force_failure=False,
+    profile_csv=False,
+):
     output.mkdir(parents=True, exist_ok=False)
     shutil.copyfile(__file__, output / "harness.py")
     shots = output / "screenshots"
@@ -74,6 +82,7 @@ def verify(mode, output, html=None, executable=None, capacity_only=False, force_
         "scope": "capacity-only" if capacity_only else "full-interactions",
         "rss_limit_mib": RSS_LIMIT_MIB,
         "mode": mode,
+        "diagnostic_csv": profile_csv,
         "sample_interval_seconds": 0.2,
         "harness_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         "source_commit": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
@@ -156,6 +165,7 @@ def verify(mode, output, html=None, executable=None, capacity_only=False, force_
             samples.append(
                 dict(
                     seconds=time.monotonic(),
+                    wall_ms=time.time() * 1000,
                     stage=stage,
                     rss_kib=sum(rows[p][1] for p in tracked if p in rows),
                     pids=sorted(p for p in tracked if p in rows),
@@ -277,6 +287,11 @@ def verify(mode, output, html=None, executable=None, capacity_only=False, force_
             shot("08-zoom")
             click("#reset")
             wait()
+            if profile_csv:
+                probe = ROOT / "tools/tcp/profile_csv_browser.js"
+                shutil.copyfile(probe, output / probe.name)
+                receipt["csv_probe_sha256"] = hashlib.sha256(probe.read_bytes()).hexdigest()
+                ev(probe.read_text())
             stage = "full-csv-export"
             scroll("#events-csv")
             csv_path = output / "full-events.csv"
@@ -287,6 +302,12 @@ def verify(mode, output, html=None, executable=None, capacity_only=False, force_
             while not downloaded.exists() and time.monotonic() < deadline:
                 time.sleep(0.1)
             assert downloaded.is_file(), "Full CSV download missing"
+            if profile_csv:
+                diagnostics = ev("window.csvDiagnostics")
+                (output / "csv-diagnostics.json").write_text(
+                    json.dumps(diagnostics, indent=2) + "\n"
+                )
+            stage = "full-csv-oracle"
             downloaded.rename(csv_path)
             count, cycles = 0, 0
             with csv_path.open(newline="") as stream:
@@ -507,9 +528,18 @@ if __name__ == "__main__":
     p.add_argument("--browser-executable", type=Path)
     p.add_argument("--capacity-only", action="store_true")
     p.add_argument("--force-failure", action="store_true")
+    p.add_argument("--profile-csv", action="store_true")
     a = p.parse_args()
     print(
         json.dumps(
-            verify(a.mode, a.output, a.html, a.browser_executable, a.capacity_only, a.force_failure)
+            verify(
+                a.mode,
+                a.output,
+                a.html,
+                a.browser_executable,
+                a.capacity_only,
+                a.force_failure,
+                a.profile_csv,
+            )
         )
     )
