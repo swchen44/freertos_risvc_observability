@@ -39,8 +39,7 @@ def verify(mode, output, html=None, executable=None):
                     "--executable-path",
                     str(executable),
                     "--args",
-                    "--disable-gpu,--disable-software-rasterizer,--renderer-process-limit=1,"
-                    "--js-flags=--max-old-space-size=64",
+                    "--disable-gpu,--disable-software-rasterizer,--renderer-process-limit=1",
                 ]
             started = True
         p = subprocess.run(
@@ -292,6 +291,14 @@ def verify(mode, output, html=None, executable=None):
         )
     except Exception as error:
         receipt["failure"] = str(error)
+        if started:
+            try:
+                receipt["failure_status"] = ev(
+                    'document.querySelector("#hotspot-status")?.textContent'
+                )
+                receipt["failure_errors"] = json.loads(ab("errors", "--json"))["data"]["errors"]
+            except Exception as probe_error:
+                receipt["failure_probe_error"] = str(probe_error)
         raise
     finally:
         try:
