@@ -1,0 +1,46 @@
+{
+  "passed": false,
+  "mode": "server",
+  "load_wall_seconds": 7.0663046250119805,
+  "column_resize": {
+    "before": 278,
+    "after": 323
+  },
+  "column_order": {
+    "before": [
+      "name",
+      "role",
+      "value",
+      "run_percent",
+      "filtered_percent",
+      "instructions",
+      "memory_cycles",
+      "pair_status",
+      "pair_reason",
+      "delta",
+      "delta_percent"
+    ],
+    "after": [
+      "role",
+      "value",
+      "name",
+      "run_percent",
+      "filtered_percent",
+      "instructions",
+      "memory_cycles",
+      "pair_status",
+      "pair_reason",
+      "delta",
+      "delta_percent"
+    ]
+  },
+  "failure": "Command '['agent-browser', '--session', 'c1-accept-server', 'wait', '--fn', 'window.hotspotReady === true']' timed out after 60 seconds",
+  "close_exit": 0,
+  "owned_pids": [
+    75243,
+    75244,
+    75245,
+    75247
+  ],
+  "remaining_browser_pids": []
+}

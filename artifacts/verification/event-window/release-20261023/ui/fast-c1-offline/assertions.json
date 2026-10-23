@@ -1,0 +1,50 @@
+{
+  "passed": true,
+  "mode": "offline",
+  "browser_session": "c1-accept-offline-3465-648d762b",
+  "load_wall_seconds": 1.2818946659972426,
+  "column_resize": {
+    "before": 278,
+    "after": 323
+  },
+  "column_order": {
+    "before": [
+      "name",
+      "role",
+      "value",
+      "run_percent",
+      "filtered_percent",
+      "instructions",
+      "memory_cycles",
+      "pair_status",
+      "pair_reason",
+      "delta",
+      "delta_percent"
+    ],
+    "after": [
+      "role",
+      "value",
+      "name",
+      "run_percent",
+      "filtered_percent",
+      "instructions",
+      "memory_cycles",
+      "pair_status",
+      "pair_reason",
+      "delta",
+      "delta_percent"
+    ]
+  },
+  "filtered_csv_rows": 40,
+  "resources": [],
+  "errors": [],
+  "svg": 4,
+  "close_exit": 0,
+  "owned_pids": [
+    3492,
+    3494,
+    3495,
+    3497
+  ],
+  "remaining_browser_pids": []
+}

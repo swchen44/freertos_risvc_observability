@@ -1,0 +1,44 @@
+{
+  "passed": true,
+  "browser_session": "c2a-capabilities-3086-f2b0ad80",
+  "injected_fixture": true,
+  "cases": [
+    {
+      "missing": "Worker",
+      "paths": 0,
+      "ready": false,
+      "result": null,
+      "rows": 0,
+      "status": "\u8f09\u5165\u5931\u6557\uff1a\u700f\u89bd\u5668\u9700\u652f\u63f4 Worker \u8207 DecompressionStream"
+    },
+    {
+      "missing": "DecompressionStream",
+      "paths": 0,
+      "ready": false,
+      "result": null,
+      "rows": 0,
+      "status": "\u8f09\u5165\u5931\u6557\uff1a\u700f\u89bd\u5668\u9700\u652f\u63f4 Worker \u8207 DecompressionStream"
+    }
+  ],
+  "assets": {
+    "/assets/event-window.js": "d788d70936bfd719c1d08d0d00b94f7b64045e09a3da4b8f1960ed44c2b09c40",
+    "/assets/event-window.css": "648a289250fb7af8620e48733bf89dfd36ad9acc8871e2435286c9d626b323d9"
+  },
+  "checks_passed": true,
+  "close_exit": 0,
+  "owned_pids": [
+    3090,
+    3091,
+    3092,
+    3093
+  ],
+  "remaining_browser_pids": [],
+  "requests": [
+    "/Worker.html",
+    "/assets/event-window.css",
+    "/assets/event-window.js",
+    "/DecompressionStream.html",
+    "/assets/event-window.css",
+    "/assets/event-window.js"
+  ]
+}

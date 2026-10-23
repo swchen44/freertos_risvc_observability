@@ -1,0 +1,7 @@
+{
+  "status": 200,
+  "bytes": 42739530,
+  "seconds": 5.895404,
+  "curl_body_kept_locally": "/tmp/c2a-c1-A08-response.json",
+  "note": "API succeeded after failed UI wait. C1 harness had newly imposed C2a 64MiB V8 old-space flag, unlike original C1 launch."
+}

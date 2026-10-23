@@ -1,0 +1,99 @@
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/swchen.tw/git/percepio/poc/.venv/lib/python3.13/site-packages/fastapi/routing.py", line 152, in app
+    await response(scope, receive, send)
+  File "/Users/swchen.tw/git/percepio/poc/.venv/lib/python3.13/site-packages/starlette/responses.py", line 275, in __call__
+    async with create_collapsing_task_group() as task_group:
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/Users/swchen.tw/git/percepio/poc/.venv/lib/python3.13/site-packages/starlette/_utils.py", line 115, in create_collapsing_task_group
+    raise exc from exc.__cause__ or context
+  File "/Users/swchen.tw/git/percepio/poc/.venv/lib/python3.13/site-packages/anyio/_core/_tasks.py", line 327, in _run_coro
+    retval = await self._coro
+             ^^^^^^^^^^^^^^^^
+  File "/Users/swchen.tw/git/percepio/poc/.venv/lib/python3.13/site-packages/starlette/responses.py", line 278, in wrap
+    await func()
+  File "/Users/swchen.tw/git/percepio/poc/.venv/lib/python3.13/site-packages/starlette/responses.py", line 252, in stream_response
+    async for chunk in self.body_iterator:
+    ...<2 lines>...
+        await send({"type": "http.response.body", "body": chunk, "more_body": True})
+  File "/Users/swchen.tw/git/percepio/poc/.venv/lib/python3.13/site-packages/starlette/concurrency.py", line 57, in iterate_in_threadpool
+    yield await anyio.to_thread.run_sync(_next, as_iterator)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/swchen.tw/git/percepio/poc/.venv/lib/python3.13/site-packages/anyio/to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/swchen.tw/git/percepio/poc/.venv/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 2706, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "/Users/swchen.tw/git/percepio/poc/.venv/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 1100, in run
+    result = context.run(func, *args)
+  File "/Users/swchen.tw/git/percepio/poc/.venv/lib/python3.13/site-packages/starlette/concurrency.py", line 46, in _next
+    return next(iterator)
+  File "/Users/swchen.tw/git/percepio/poc/src/psf_lab/event_window.py", line 416, in generate
+    data = first if index == 0 else load(descriptor)
+                                    ~~~~^^^^^^^^^^^^
+  File "/Users/swchen.tw/git/percepio/poc/src/psf_lab/event_window.py", line 399, in load
+    return decode_event_chunk(payload, descriptor, manifest)
+  File "/Users/swchen.tw/git/percepio/poc/src/psf_lab/event_window.py", line 151, in decode_event_chunk
+    raise ValueError("Compressed chunk mismatch")
+ValueError: Compressed chunk mismatch
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/.venv/lib/python3.13/site-packages/uvicorn/protocols/http/h11_impl.py", line 411, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/swchen.tw/git/percepio/poc/.venv/lib/python3.13/site-packages/uvicorn/middleware/proxy_headers.py", line 63, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/swchen.tw/git/percepio/poc/.venv/lib/python3.13/site-packages/fastapi/applications.py", line 1215, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/swchen.tw/git/percepio/poc/.venv/lib/python3.13/site-packages/starlette/applications.py", line 96, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/swchen.tw/git/percepio/poc/.venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/swchen.tw/git/percepio/poc/.venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/swchen.tw/git/percepio/poc/.venv/lib/python3.13/site-packages/fastapi/telemetry/_asgi.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/swchen.tw/git/percepio/poc/src/psf_lab/server.py", line 109, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/swchen.tw/git/percepio/poc/src/psf_lab/server.py", line 67, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/swchen.tw/git/percepio/poc/.venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/swchen.tw/git/percepio/poc/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/swchen.tw/git/percepio/poc/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/swchen.tw/git/percepio/poc/.venv/lib/python3.13/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/swchen.tw/git/percepio/poc/.venv/lib/python3.13/site-packages/starlette/routing.py", line 676, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/swchen.tw/git/percepio/poc/.venv/lib/python3.13/site-packages/fastapi/routing.py", line 2786, in app
+    await route.handle(scope, receive, send)
+  File "/Users/swchen.tw/git/percepio/poc/.venv/lib/python3.13/site-packages/fastapi/routing.py", line 1310, in handle
+    await super().handle(scope, receive, send)
+  File "/Users/swchen.tw/git/percepio/poc/.venv/lib/python3.13/site-packages/starlette/routing.py", line 282, in handle
+    await self.app(scope, receive, send)
+  File "/Users/swchen.tw/git/percepio/poc/.venv/lib/python3.13/site-packages/fastapi/routing.py", line 165, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/swchen.tw/git/percepio/poc/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 56, in wrapped_app
+    raise RuntimeError("Caught handled exception, but response already started.") from exc
+RuntimeError: Caught handled exception, but response already started.
+{"passed": true, "synthetic_fixture": true, "cases": [{"name": "valid", "exit": 0, "status": "200", "stderr": "", "bytes": 139671, "sha256": "5456f8d4ece5be1ffe99afcdf09d5e2b717fd997d99794a0ce7d2acf9aa0c3e9"}, {"name": "late-corruption", "exit": 18, "status": "200", "stderr": "curl: (18) transfer closed with outstanding read data remaining\n", "bytes": 131486, "sha256": "3637aba816b0a3a0498f82b09b5e16ac4c8d1617f31f528c27dea835f88a64f9"}, {"name": "first-corruption", "exit": 0, "status": "503", "stderr": "", "bytes": 34, "sha256": "41f072a82298383c83139e0b15e2fff8912d3f41e7753069e6f9444ac102cf8e"}], "server_stopped": true}

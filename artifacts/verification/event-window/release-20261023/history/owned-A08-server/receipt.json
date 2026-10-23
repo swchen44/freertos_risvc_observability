@@ -1,0 +1,78 @@
+{
+  "passed": false,
+  "scope": "full-interactions",
+  "rss_limit_mib": 640,
+  "mode": "server",
+  "diagnostic_csv": false,
+  "workload": "A08",
+  "acceptance_case": {
+    "run_id": "A08-baseline-b1-1-1",
+    "events": 610577,
+    "memory_cycles": 1537544
+  },
+  "sample_interval_seconds": 0.2,
+  "harness_sha256": "d40018212279dc846a19761001ec910ed9c1932d8215e436fe6842747bf95c40",
+  "source_commit": "e831ccf99fbd9ae56edd61a90bf6926a699e536b",
+  "offline_html_sha256": null,
+  "browser_executable": "/Users/swchen.tw/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+  "browser_session": "c2a-verify-96206-768b19e5",
+  "ready_seconds": 26.54946958302753,
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36",
+  "heap_initial": 23100000,
+  "filter_seconds": 5.700793625001097,
+  "heap_after": 23100000,
+  "zoom": {
+    "start": "87390",
+    "end": "610577",
+    "oracle": {
+      "events": 523187,
+      "instructions": 422247,
+      "memory_cycles": 1286260,
+      "l1i.misses": 1492,
+      "l1d.misses": 439,
+      "l2.misses": 605
+    }
+  },
+  "full_csv": {
+    "rows": 610577,
+    "memory_cycles": 1537544,
+    "bytes": 104929344
+  },
+  "export_cancel_retry": true,
+  "cancel_progress": 0.0016750418760469012,
+  "function_csv_oracle": {
+    "passed": true,
+    "groups": 20
+  },
+  "column_resize": {
+    "before": 198,
+    "after": 243
+  },
+  "column_order": {
+    "before": [
+      "name",
+      "role",
+      "value",
+      "run_denominator",
+      "filtered_denominator",
+      "instructions",
+      "memory_cycles"
+    ],
+    "after": [
+      "role",
+      "value",
+      "name",
+      "run_denominator",
+      "filtered_denominator",
+      "instructions",
+      "memory_cycles"
+    ]
+  },
+  "failure": "Command '['agent-browser', '--session', 'c2a-verify-96206-768b19e5', 'wait', '--fn', 'window.eventWindowReady === true']' timed out after 50 seconds",
+  "failure_status": "A08-pbuf-b2-1-1 \u00b7 [0, 540539) \u00b7 540539 \u7b46\u4e8b\u4ef6",
+  "browser_started": true,
+  "close_exit": 0,
+  "remaining_browser_pids": [],
+  "sampled_peak_rss_kib": 414304,
+  "capacity_passed": false
+}

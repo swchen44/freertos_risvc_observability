@@ -1,0 +1,64 @@
+[
+  {
+    "args": [
+      "open",
+      "http://127.0.0.1:8017/no-such-probe"
+    ],
+    "exit": 0,
+    "stdout": "\u2713 \n  http://127.0.0.1:8017/no-such-probe\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "document.body.innerHTML='<button id=go>CSV</button>';window.delay=0;document.querySelector('#go').onclick=()=>setTimeout(()=>{let a=document.createElement('a');a.href='/api/event-windows/A08-baseline-b1-1-1/events.csv?start=0&end=2';a.download='probe.csv';a.click()},window.delay)"
+    ],
+    "exit": 0,
+    "stdout": "{}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "window.delay=0"
+    ],
+    "exit": 0,
+    "stdout": "0\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "click",
+      "#go"
+    ],
+    "exit": 0,
+    "stdout": "\u2713 Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "window.delay=7000"
+    ],
+    "exit": 0,
+    "stdout": "7000\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "click",
+      "#go"
+    ],
+    "exit": 0,
+    "stdout": "\u2713 Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "close"
+    ],
+    "exit": 0,
+    "stdout": "\u2713 Browser closed\n",
+    "stderr": ""
+  }
+]

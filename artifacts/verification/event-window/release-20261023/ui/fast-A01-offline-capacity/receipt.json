@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "scope": "capacity-only",
+  "rss_limit_mib": 640,
+  "mode": "offline",
+  "diagnostic_csv": false,
+  "workload": "A01",
+  "acceptance_case": {
+    "run_id": "A01-baseline-b1-1-1",
+    "events": 424003,
+    "memory_cycles": 1075147
+  },
+  "sample_interval_seconds": 0.2,
+  "harness_sha256": "9fce9c404d920ba44c8402be2d1858cc4abc98fcd91b4665a58447e106a3290a",
+  "source_commit": "c423354fded7549573cb737e4a7e021d26efa577",
+  "offline_html_sha256": "9f5e8b102f259e33497f4ec2013918ae90bb148cbe03c12274f08c0836412b75",
+  "browser_executable": "/Users/swchen.tw/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+  "browser_session": "c2a-verify-2632-a9d71a50",
+  "ready_seconds": 3.674686082988046,
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36",
+  "heap_initial": 37300000,
+  "filter_seconds": 2.269765874982113,
+  "heap_after": 37300000,
+  "interactions_passed": true,
+  "resources": [],
+  "errors": [],
+  "browser_started": true,
+  "close_exit": 0,
+  "remaining_browser_pids": [],
+  "sampled_peak_rss_kib": 485104,
+  "capacity_passed": true
+}

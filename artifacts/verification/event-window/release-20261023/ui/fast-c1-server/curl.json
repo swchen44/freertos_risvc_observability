@@ -1,0 +1,32 @@
+[
+  {
+    "route": "api/hotspots",
+    "status": 200,
+    "bytes": 1105
+  },
+  {
+    "route": "api/hotspots/A02",
+    "status": 200,
+    "bytes": 43399719
+  },
+  {
+    "route": "api/hotspots/unknown",
+    "status": 404,
+    "bytes": 73
+  },
+  {
+    "route": "hotspot.html",
+    "status": 200,
+    "bytes": 4499
+  },
+  {
+    "route": "assets/hotspot.js",
+    "status": 200,
+    "bytes": 1603389
+  },
+  {
+    "route": "assets/hotspot.css",
+    "status": 200,
+    "bytes": 30656
+  }
+]

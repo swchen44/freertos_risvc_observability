@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "bytes": 104929344,
+  "previous_sha256": "b92d7d63da50d6799160d4cfae08321d32abf9b44378f4c45cb777465cd44aff",
+  "stream_sha256": "b92d7d63da50d6799160d4cfae08321d32abf9b44378f4c45cb777465cd44aff",
+  "curl": "200 104929344 38.123700 2752338"
+}

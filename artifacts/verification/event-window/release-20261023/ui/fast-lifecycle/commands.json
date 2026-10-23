@@ -1,0 +1,419 @@
+[
+  {
+    "args": [
+      "--executable-path",
+      "/Users/swchen.tw/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+      "--args",
+      "--disable-gpu,--disable-software-rasterizer,--renderer-process-limit=1,--js-flags=--max-old-space-size=64",
+      "--download-path",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/local/c2a-csv-20261023/fast-lifecycle/downloads",
+      "open",
+      "http://127.0.0.1:8017/event-window.html"
+    ],
+    "code": 0,
+    "stdout": "\u2713 C2a \u00b7 \u4e8b\u4ef6\u5340\u9593\u5206\u6790\n  http://127.0.0.1:8017/event-window.html\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "set",
+      "viewport",
+      "1600",
+      "1050"
+    ],
+    "code": 0,
+    "stdout": "\u2713 Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "wait",
+      "--fn",
+      "window.eventWindowReady===true"
+    ],
+    "code": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector('#workload').value"
+    ],
+    "code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8017/event-window.html\",\"result\":\"A01\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "select",
+      "#workload",
+      "A02"
+    ],
+    "code": 0,
+    "stdout": "\u2713 Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "wait",
+      "--fn",
+      "window.eventWindowReady===true && window.eventWindowResult?.run_id==='A02-baseline-b1-1-1'"
+    ],
+    "code": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "window.realFetch=fetch;window.delayOne=true;\n            window.fetch=(url,...args)=>{\n              if(window.delayOne && String(url).endsWith('/A02-pbuf-b2-1-1')){\n                window.delayOne=false;window.delayedStarted=true;\n                return new Promise((resolve,reject)=>window.rejectOld=reject);\n              }\n              return window.realFetch(url,...args);\n            };"
+    ],
+    "code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8017/event-window.html\",\"result\":{}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "select",
+      "#run",
+      "A02-pbuf-b2-1-1"
+    ],
+    "code": 0,
+    "stdout": "\u2713 Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "wait",
+      "--fn",
+      "window.delayedStarted===true"
+    ],
+    "code": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "click",
+      "#cancel"
+    ],
+    "code": 0,
+    "stdout": "\u2713 Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "window.eventWindowResult"
+    ],
+    "code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8017/event-window.html\",\"result\":null},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector('#evidence').textContent"
+    ],
+    "code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8017/event-window.html\",\"result\":\"\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "window.rejectOld(Error('injected stale failure'))"
+    ],
+    "code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8017/event-window.html\",\"result\":null},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector('#status').textContent"
+    ],
+    "code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8017/event-window.html\",\"result\":\"\u5df2\u53d6\u6d88\uff1b\u53ef\u91cd\u65b0\u5206\u6790\u3002\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "screenshot",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/local/c2a-csv-20261023/fast-lifecycle/01-cancel-stale-error.png"
+    ],
+    "code": 0,
+    "stdout": "\u2713 Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/local/c2a-csv-20261023/fast-lifecycle/01-cancel-stale-error.png\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "window.fetch=(url,...args)=>{\n            if(String(url).endsWith('/A02-pbuf-b2-1-1')){\n                return new Promise((resolve,reject)=>window.realFetch(url,...args).then(r=>{\n                    window.releaseB=()=>resolve(r);\n                },reject));\n            }return window.realFetch(url,...args);\n        };"
+    ],
+    "code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8017/event-window.html\",\"result\":{}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "select",
+      "#run",
+      "A02-pbuf-b2-1-1"
+    ],
+    "code": 0,
+    "stdout": "\u2713 Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "wait",
+      "--fn",
+      "typeof window.releaseB==='function'"
+    ],
+    "code": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "select",
+      "#run",
+      "A02-baseline-b1-1-1"
+    ],
+    "code": 0,
+    "stdout": "\u2713 Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "wait",
+      "--fn",
+      "window.eventWindowReady===true"
+    ],
+    "code": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "window.eventWindowResult.run_id"
+    ],
+    "code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8017/event-window.html\",\"result\":\"A02-baseline-b1-1-1\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "(async()=>{window.releaseB();\n            await new Promise(r=>setTimeout(r,100));\n            return window.eventWindowResult.run_id})()"
+    ],
+    "code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8017/event-window.html\",\"result\":\"A02-baseline-b1-1-1\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "window.eventWindowResult.totals.memory_cycles"
+    ],
+    "code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8017/event-window.html\",\"result\":\"1088094\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "screenshot",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/local/c2a-csv-20261023/fast-lifecycle/02-rapid-run-switch.png"
+    ],
+    "code": 0,
+    "stdout": "\u2713 Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/local/c2a-csv-20261023/fast-lifecycle/02-rapid-run-switch.png\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector('#events-csv').scrollIntoView({block:'center'})"
+    ],
+    "code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8017/event-window.html\",\"result\":{\"interrupted\":false}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "click",
+      "#events-csv"
+    ],
+    "code": 0,
+    "stdout": "\u2713 Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "wait",
+      "--fn",
+      "(()=>{\n            const p=document.querySelector('#progress').value;\n            if(p>0&&p<1&&!window.eventWindowReady){\n                window.cancelProgress=p;document.querySelector('#cancel').click();return true;\n            }return false;\n        })()"
+    ],
+    "code": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "window.cancelProgress"
+    ],
+    "code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8017/event-window.html\",\"result\":0.057007125890736345},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "window.eventWindowReady"
+    ],
+    "code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8017/event-window.html\",\"result\":false},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "window.eventWindowResult"
+    ],
+    "code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8017/event-window.html\",\"result\":null},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "screenshot",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/local/c2a-csv-20261023/fast-lifecycle/04-export-cancelled-inflight.png"
+    ],
+    "code": 0,
+    "stdout": "\u2713 Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/local/c2a-csv-20261023/fast-lifecycle/04-export-cancelled-inflight.png\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector('#apply').scrollIntoView({block:'center'})"
+    ],
+    "code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8017/event-window.html\",\"result\":{\"interrupted\":false}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "click",
+      "#apply"
+    ],
+    "code": 0,
+    "stdout": "\u2713 Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "wait",
+      "--fn",
+      "window.eventWindowReady===true"
+    ],
+    "code": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "window.fetch=async(url,...args)=>{\n            const response=await window.realFetch(url,...args);\n            if(String(url).endsWith('/A02-pbuf-b2-1-1')){\n                const m=await response.json();\n                m.psf={clock:{origin_ticks:'4294967290'},\n                  quality:{fixture:true,sequence_gaps:[{expected:8,actual:10}]},events:[\n                    {sequence:7,ticks:'0',kind:'task',timestamp_raw:'4294967290'},\n                    {sequence:10,ticks:'0',kind:'irq',timestamp_raw:'4294967290'},\n                    {sequence:11,ticks:null,kind:'unknown',timestamp_raw:null},\n                    {sequence:12,ticks:'12',kind:'task',timestamp_raw:'6'}]};\n                return new Response(JSON.stringify(m));\n            }return response;\n        };"
+    ],
+    "code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8017/event-window.html\",\"result\":{}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "select",
+      "#run",
+      "A02-pbuf-b2-1-1"
+    ],
+    "code": 0,
+    "stdout": "\u2713 Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "wait",
+      "--fn",
+      "window.eventWindowReady===true"
+    ],
+    "code": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "[...document.querySelectorAll(\n          '#psf-table .tabulator-row [tabulator-field=sequence]')].map(e=>e.textContent)"
+    ],
+    "code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8017/event-window.html\",\"result\":[\"7\",\"10\",\"11\",\"12\"]},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector('#psf-quality').textContent"
+    ],
+    "code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8017/event-window.html\",\"result\":\"\u7368\u7acb PSF ticks \u00b7 origin 4294967290 \u00b7 {\\\"fixture\\\":true,\\\"sequence_gaps\\\":[{\\\"expected\\\":8,\\\"actual\\\":10}]} \u00b7 \u4e0d\u8207 event index \u9023\u52d5\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector('#psf-chart').scrollIntoView({block:'center'})"
+    ],
+    "code": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8017/event-window.html\",\"result\":{\"interrupted\":false}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "screenshot",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/local/c2a-csv-20261023/fast-lifecycle/03-psf-gap-fixture.png"
+    ],
+    "code": 0,
+    "stdout": "\u2713 Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/local/c2a-csv-20261023/fast-lifecycle/03-psf-gap-fixture.png\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "close"
+    ],
+    "code": 0,
+    "stdout": "\u2713 Browser closed\n",
+    "stderr": ""
+  }
+]

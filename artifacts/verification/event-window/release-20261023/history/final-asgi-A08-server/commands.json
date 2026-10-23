@@ -1,0 +1,12 @@
+[
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#status\")?.textContent"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"about:blank\",\"result\":null},\"error\":null}\n",
+    "stderr": ""
+  }
+]

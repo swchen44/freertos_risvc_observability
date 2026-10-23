@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "bytes_each": 714,
+  "sha256": "457b9076f0fd5ba817c7660803dbff288b6b694f7090abe2b60c2dd6676690cb",
+  "delays_ms": [
+    0,
+    7000
+  ],
+  "close_exit": 0,
+  "pid_tracking": "not-performed: transport-only probe",
+  "driver_note": "Original diagnostic loop renamed the first file again on second iteration. Corrected labels afterwards: retained original server filename was the second download. Both native downloads existed with identical bytes. Use corrected driver for reruns."
+}

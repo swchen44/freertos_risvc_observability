@@ -1,0 +1,22 @@
+test_connection_failure_never_launches_diagnostic_browser (tests.unit.test_browser_preflight.BrowserPreflightTests.test_connection_failure_never_launches_diagnostic_browser) ... FAIL
+
+======================================================================
+FAIL: test_connection_failure_never_launches_diagnostic_browser (tests.unit.test_browser_preflight.BrowserPreflightTests.test_connection_failure_never_launches_diagnostic_browser)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_browser_preflight.py", line 43, in test_connection_failure_never_launches_diagnostic_browser
+    self.assertEqual(calls, ["curl"])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: ['curl', 'agent-browser'] != ['curl']
+
+First list contains 1 additional elements.
+First extra element 1:
+'agent-browser'
+
+- ['curl', 'agent-browser']
++ ['curl']
+
+----------------------------------------------------------------------
+Ran 1 test in 0.569s
+
+FAILED (failures=1)

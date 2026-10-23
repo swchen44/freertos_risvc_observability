@@ -1,6 +1,6 @@
 # C2a Event-window Dashboard Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking. 沿用本 session 原生執行與最後獨立 review；所有瀏覽器測試依序執行。
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking. 沿用本 session 原生執行與最後獨立 review；所有瀏覽器測試依序執行。
 
 **Goal:** 用完整事件序號區間定位 Task／IRQ、函式與 Cache 成本，在本機 Web 與離線 HTML 得到一致結果。
 
@@ -10,11 +10,11 @@
 
 **Spec:** [C2 設計](../design/cache-psf-time-alignment.md)。使用者已選 A；本計畫只交付 C2a，C2b 必須在 C2a 完成後用另一份 clock-anchor pilot 計畫接續。
 
-狀態：**使用者已核准並執行中。Tasks 1–5 的程式已實作；A02 pilot14 全量資料與 C1 相符。Task 6 容量／互動驗收未完成，正式40份與8HTML尚未產生。**
+狀態：**Tasks1–6本機驗收完成，40 runs／8HTML與最新release證據已保存；發布checkbox待remote核對。C2b尚未開始。**
 
 2026-10-13 review 修正 `0584229`：取消載入、CSV Blob parts、dictionary／gzip 拒絕、source mapping provenance。Python319、Node21、Ruff通過；獨立複查未發現未解的 Important。瀏覽器 RSS 超過512MiB，不能視為整體通過。[checkpoint 操作與還原報告](../event-window-dashboard.md)保存有效證據與已作廢的早期驗收。
 
-目前進度：Task1 完成；Tasks2–5 程式與 pilot 已實作，以下複合條件尚未全部勾選；Task6 完整資料／最終回歸／容量 pending。核准計畫的未勾選項不因單一 pilot 通過而自動完成。
+歷史進度（2026-10-13）：Task1 完成；Tasks2–5 程式與 pilot 已實作，以下複合條件尚未全部勾選；Task6 完整資料／最終回歸／容量 pending。核准計畫的未勾選項不因單一 pilot 通過而自動完成。
 
 2026-10-14 使用者明確核准：RSS 上限由512改為 **640 MiB**。只調整此項，其他容量條件維持；舊512MiB失敗收據保持原樣，新測試明列 `rss_limit_mib: 640`。2026-10-14 Web／offline RSS均通過；Web時間條件仍有失敗。[重驗紀錄](../../artifacts/verification/event-window/rss-640-20261014/)，正式批次保持未擴大。
 
@@ -96,8 +96,8 @@ self.assertEqual(sum(int(c['rows']) for c in manifest['chunks']), 1025)
 
 - [x] 實作一遍 iterator streaming write；`gzip.compress(json_bytes, mtime=0)`；canonical UTF-8 JSON，固定 separators；保存全部 chunks 與 C1 totals/facts comparison receipt。2 MiB 解壓上限／chunk、1024 列上限，超出拒絕而不截斷。
 - [x] 新 CLI：`PYTHONPATH=src .venv/bin/python tools/tcp/build_event_windows.py --workload A02 --output artifacts/local/c2a-pilot`。未指定 workload 才生成完整 40；output 必須新建且不在既有輸入 runset。
-- [ ] 測試錯 hash、重複／缺尾 chunk、非連續範圍、未知 owner、非法 op、負數／bool／非 canonical 數字；所有失敗留下明確結果，不發布 passed catalog。
-- [ ] PSF 使用同一 capture 的 trace.psf 與現有 parse_trace；保留 origin、ticks 字串、sequence 與 quality。測相同 timestamp、wrap、sequence gap、非零 origin；不能自創 cache timestamp。
+- [x] 測試錯 hash、重複／缺尾 chunk、非連續範圍、未知 owner、非法 op、負數／bool／非 canonical 數字；所有失敗留下明確結果，不發布 passed catalog。
+- [x] PSF 使用同一 capture 的 trace.psf 與現有 parse_trace；保留 origin、ticks 字串、sequence 與 quality。測相同 timestamp、wrap、sequence gap、非零 origin；不能自創 cache timestamp。
 - [x] `.venv/bin/python -m unittest tests.unit.test_event_window -v`、Ruff 通過後 commit。
 
 ## Task 3：Web／離線共用精確查詢
@@ -115,7 +115,7 @@ assert.deepEqual(empty.function_rows, []);
 - [x] 實作以 DecompressionStream('gzip') 逐塊解碼；累計輸出 bytes 到 2 MiB 即拒絕。解壓前後 hash、schema、descriptor/range/row count 全核對；不同 filters 重算不變更 cache 狀態，使用已保存逐列結果。
 - [x] 分桶依完整所選 [start,end) 固定邊界；sum(bins) 等於篩選 totals。所有後端數值採 BigInt；表格 Top-N 不限制 CSV。
 - [x] Worker protocol 為 query/progress/result/error/cancel，全部帶 request_id；main thread 忽略過期結果與錯誤。切 run 使用 terminate 而非等待舊工作完成，清除舊 PC／source selection。
-- [ ] 函式摘要 CSV 與逐事件 CSV 都覆蓋完整篩選區間。CSV 逐塊生成 Blob parts，匯出後 revoke URL；匯出取消釋放暫存。測 formula injection、quote/newline、空集合與大整數。
+- [x] 函式摘要 CSV 與逐事件 CSV 都覆蓋完整篩選區間。CSV 逐塊生成 Blob parts，匯出後 revoke URL；匯出取消釋放暫存。測 formula injection、quote/newline、空集合與大整數。
 - [x] `npm --prefix web run test:unit` 通過後 commit。Node 測試使用相同 query engine，不另寫 production 計算分支。
 
 ## Task 4：事件區間 SVG 視圖
@@ -123,7 +123,7 @@ assert.deepEqual(empty.function_rows, []);
 - [x] 新頁面提供 workload/run、context、function、metric、start/end 精確輸入；SVG histogram 可 drag/zoom，選取值轉成 index 整數並明示 [start,end)。事件密度不等於每秒發生率。
 - [x] 分桶圖、函式表、成本拆解、選定事件 PC／source 明細使用同一 query result。主圖只顯示512 bins，tooltip 明列桶涵蓋範圍與原始列數。
 - [x] PSF panel 使用獨立 ticks/time 軸，原順序與 unknown/gap 可見，兩軸不連動。提供「回到 C1 比較」連結，不實作兩個 run index 的逐點差值。
-- [ ] worker progress 與取消按鈕；零結果清除所有圖、table、detail。DecompressionStream／Worker 不可用則明確顯示不支援，不顯示空成功畫面。
+- [x] worker progress 與取消按鈕；零結果清除所有圖、table、detail。DecompressionStream／Worker 不可用則明確顯示不支援，不顯示空成功畫面。
 - [x] 使用下列 request gate，加入舊失敗覆蓋新成功的 browser regression：
 
 ```js
@@ -131,7 +131,7 @@ if (message.request_id !== currentRequestId) return;
 // applies equally to progress, result and error
 ```
 
-- [ ] `npm --prefix web run build`、Node tests 通過後 commit；真實拖曳、resize、排序與手機版面在 Task6 驗收。
+- [x] `npm --prefix web run build`、Node tests 通過後 commit；真實拖曳、resize、排序與手機版面在 Task6 驗收。
 
 ## Task 5：API 與單檔 HTML
 
@@ -139,8 +139,8 @@ if (message.request_id !== currentRequestId) return;
 
 介面：`export_event_window_html(root: Path, workload: str, output: Path) -> dict`。HTML 內嵌該 workload 全部 gzip chunks 的 base64、manifests、PSF 與 worker JS；worker Blob URL 由同檔程式產生。CSP connect-src none、worker-src blob:，無 CDN。output exclusive create；匯出 receipt 保存每項來源與最終 HTML hashes。
 
-- [ ] RED API integration 測 200/404/503、encoded traversal、gzip bytes exact、gzip hash 正確但內容 malformed。
-- [ ] export RED 測 `</script>`／U+2028／惡意來源字串、缺 asset、重複 template anchor、既有 output 拒絕。
+- [x] RED API integration 測 200/404/503、encoded traversal、gzip bytes exact、gzip hash 正確但內容 malformed。
+- [x] export RED 測 `</script>`／U+2028／惡意來源字串、缺 asset、重複 template anchor、既有 output 拒絕。
 - [x] 實作前端統一 loadChunk：Web 固定 route，offline 從固定 ID 的內嵌 base64 解碼；兩者進相同 validator。無 window 全量解壓或保留全部 JSON rows。
 - [x] `.venv/bin/python -m unittest tests.integration.test_event_window_api tests.unit.test_event_window_export -v`、Ruff、build 通過後 commit。
 
@@ -148,13 +148,13 @@ if (message.request_id !== currentRequestId) return;
 
 容量門檻是本計畫提出的本機驗收條件，不宣稱所有電腦可達：HTML 每 workload ≤95 MiB；初次 ready ≤25s；完整 run filter ≤5s；page JS heap ≤128 MiB（可量測時），測試 browser process tree 採樣峰值 RSS ≤640 MiB。browser RSS 只統計該測試 session 的 PID 子樹；無法可靠歸屬則記 unknown，不能寫 passed。超限保存失敗，不擴大正式批次；再根據量測修訂方案。
 
-- [ ] A02 pilot14 runs，保存 bytes、chunk counts、hashes、3次 load/filter/RSS 原始值、browser/OS/toolchain/commit。記憶體監測為該 session 的低頻採樣，列出間隔與可能漏掉瞬間峰值的限制。
-- [ ] harness 先 curl API/catalog/chunk/unknown 與 static routes，保存 status/bytes/hash。獨立 Python oracle 讀逐列資料驗證選區 totals、3C、CSV、跨塊切點及空區間。
-- [ ] agent-browser Web：精確 start/end、zoom/drag、context/filter、排序、欄寬、CSV、快速切 run、PSF gap、hover、mobile；每 mode 至少6張截圖。結束保存 close exit code；非0或仍有該 session PID 就中止後續 browser，不開下一個。
+- [x] A02 pilot14 runs，保存 bytes、chunk counts、hashes、3次 load/filter/RSS 原始值、browser/OS/toolchain/commit。記憶體監測為該 session 的低頻採樣，列出間隔與可能漏掉瞬間峰值的限制。
+- [x] harness 先 curl API/catalog/chunk/unknown 與 static routes，保存 status/bytes/hash。獨立 Python oracle 讀逐列資料驗證選區 totals、3C、CSV、跨塊切點及空區間。
+- [x] agent-browser Web：精確 start/end、zoom/drag、context/filter、排序、欄寬、CSV、快速切 run、PSF gap、hover、mobile；每 mode 至少6張截圖。結束保存 close exit code；非0或仍有該 session PID 就中止後續 browser，不開下一個。
 - [x] 停 server、curl證明不可連；才開 offline session，阻擋 HTTP/HTTPS，重做同一 oracle，resource list 不含網路。finally close 保存結果；測試故意失敗一次確認 close 路徑。
-- [ ] pilot全部通過才生成完整40份與8HTML，新目錄保存來源、逐列 chunks、manifest、容量數字及全部失敗／中間檔。每份與保存 C1 totals/facts 完整一致；正式A08補做最大run操作驗收。
-- [ ] code先commit；完整Python unittest、Ruff、Node、既有Playwright單worker與C1瀏覽器回歸依序執行。備份／復原歷史tracked測試產物，最終只保存新 evidence。
-- [ ] 獨立whole-change review，Important先修並重跑受影響測試；記錄所有延期問題。README加入流程、截圖、檔案表、事件序號語意、離線使用與C2b待辦。
+- [x] pilot全部通過才生成完整40份與8HTML，新目錄保存來源、逐列 chunks、manifest、容量數字及全部失敗／中間檔。每份與保存 C1 totals/facts 完整一致；正式A08補做最大run操作驗收。
+- [x] code先commit；完整Python unittest、Ruff、Node、既有Playwright單worker與C1瀏覽器回歸依序執行。備份／復原歷史tracked測試產物，最終只保存新 evidence。
+- [x] 獨立whole-change review，Important先修並重跑受影響測試；記錄所有延期問題。README加入流程、截圖、檔案表、事件序號語意、離線使用與C2b待辦。
 - [ ] `verify_docs(Path.cwd())` 與 `git diff --check`；completion需列實測結果與source/tested commit。payload commit後正常push兩個repo，capture transport，核對remote SHA及clean status；不能把預期測試數寫成通過數。
 
 ## C2b 接續條件與計畫自我審閱
@@ -171,3 +171,7 @@ C2a 完成後另寫 C2b pilot 計畫：先查 QEMU callback 可取 clock 的位�
 | screenshots／復原／review／push | Task6 |
 
 未實測項目全部維持未勾選。執行前審閱本計畫；沿用原生逐項實作，最後獨立審查。
+
+## 最終驗收補充
+
+最新release-20261023覆蓋全部負向fixture、40-run full parity、8HTML容量、A02/A08 Web/offline oracle、C1/lifecycle/capability與close；Python328/Node25/PW11/Ruff。Web CSV依plan17改HTTP串流，Offline仍Blob；plan18只重用已逐列驗證的整塊totals，未減少資料/驗證。歷史失敗不作廢成成功；preflight意外browser的RSS則明確不可採認。待下方發布條件實際核對後才完成最後checkbox。

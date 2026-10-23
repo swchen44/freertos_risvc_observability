@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "runs": {
+    "A02": {
+      "fast-A02-server": "e2205d3134a4d49dec151e8852e5440daa34eecdbc6b378ce5bff3ad63f10280",
+      "fast-A02-offline": "e2205d3134a4d49dec151e8852e5440daa34eecdbc6b378ce5bff3ad63f10280"
+    },
+    "A08": {
+      "fast-A08-server": "b92d7d63da50d6799160d4cfae08321d32abf9b44378f4c45cb777465cd44aff",
+      "fast-A08-offline": "b92d7d63da50d6799160d4cfae08321d32abf9b44378f4c45cb777465cd44aff"
+    }
+  }
+}

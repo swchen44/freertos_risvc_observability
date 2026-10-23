@@ -1,8 +1,52 @@
 # C2a：用事件區間找出 Cache 成本
 
-**目前狀態：2026-10-23 時間最佳化完成，最新 Web 三次時間門檻通過，離線完整操作及容量通過。Web 完整 CSV 匯出 RSS 650.36 MiB 超過640，因此整體仍未驗收；正式40 runs／8 HTML 尚未產生。**
+**目前狀態：C2a本機正式驗收通過。40 runs／8HTML已完成；Python328、Node25、Playwright11、Ruff與真TCP故障測試通過。發布核對另見release收據。C2b尚未開始。**
 
 這份文件是進度與復原入口。已發布的 A、B、C1 成果保持原樣；C2b clock-anchor pilot 尚未開始。
+
+## 正式40-run／8HTML驗收
+
+[完整收據、還原與限制](../artifacts/verification/event-window/release-20261023/README.md)｜[completion](../artifacts/verification/event-window/release-20261023/completion.json)｜[HTTP CSV API](../src/psf_lab/server.py)｜[串流實作](../src/psf_lab/event_window.py)｜[真TCP故障驗證](../tools/tcp/verify_csv_stream_faults.py)
+
+| 模式／workload | 範圍 | ready s | filter s | RSS MiB |
+|---|---|---:|---:|---:|
+| fast-A08-server | full-interactions | 13.83 | 3.08 | 502.62 |
+| fast-A02-server | full-interactions | 10.66 | 2.44 | 489.64 |
+| fast-A08-offline | full-interactions | 4.42 | 3.31 | 571.31 |
+| fast-A02-offline | full-interactions | 3.60 | 2.73 | 600.52 |
+| fast-A01-offline-capacity | capacity-only | 3.67 | 2.27 | 473.73 |
+| fast-A03-offline-capacity | capacity-only | 3.88 | 2.60 | 427.66 |
+| fast-A04-offline-capacity | capacity-only | 3.66 | 2.29 | 466.36 |
+| fast-A05-offline-capacity | capacity-only | 3.51 | 2.29 | 469.92 |
+| fast-A06-offline-capacity | capacity-only | 3.75 | 2.41 | 470.27 |
+| fast-A07-offline-capacity | capacity-only | 3.42 | 2.30 | 471.89 |
+
+Web經HTTP attachment輸出完整CSV，Offline仍用本機Blob；兩路完整CSV的SHA相同。分析未完成時可在頁面取消；原生下載開始後由瀏覽器下載列取消。圖表最多512桶、逐事件表200列，CSV沒有裁切。新HTML每份約7.2–16.2MiB。
+
+```mermaid
+flowchart LR
+  A[raw context ELF] --> B[連續暖Cache replay]
+  B --> C[40 runs gzip chunks manifest]
+  C --> D[Worker hash schema BigInt]
+  D --> E[SVG 函式表與事件分頁]
+  C --> F[本機HTTP串流CSV]
+  D --> G[Offline Blob CSV]
+  P[同capture PSF] --> T[獨立ticks視圖]
+```
+
+![最新Web A08](../artifacts/verification/event-window/release-20261023/ui/fast-A08-server/screenshots/01-overview.png)
+
+A08完整610577筆access rows；不把一列稱為完整CPU指令，也不把event index當每秒時間。
+
+![最新離線hover](../artifacts/verification/event-window/release-20261023/ui/fast-A08-offline/screenshots/07-hover.png)
+
+Hover保留精確半開區間與memory cycles；Web／offline的選區、函式集合與CSV均由獨立oracle核對。
+
+![手機版](../artifacts/verification/event-window/release-20261023/ui/fast-A02-offline/screenshots/06-mobile.png)
+
+390px版面沒有水平溢出；排序、欄寬、移欄、PC／source與空集合清除另有完整操作證據。
+
+Python328／Node25／Ruff／Playwright11、lifecycle、missing capabilities、forced failure close及真TCP faults皆通過。先前late fault回假成功與preflight意外啟動都已修，原失敗記錄保留。這些RSS是Chrome，不是firmware RAM；host分析速度也不是SDK overhead。
 
 ## 2026-10-23：時間修正與 CSV 記憶體阻塞
 
@@ -117,12 +161,10 @@ PYTHONPATH=src .venv/bin/python tools/tcp/export_event_window_html.py \
 
 ## 尚待完成
 
-1. 最新時間門檻已通過；Web完整CSV匯出RSS650.36MiB超過640。下一步分段量測worker／傳遞／Blob／下載，保留全部CSV及取消驗證。
-2. Web／offline 完整操作與專項生命週期已驗證；容量通過後仍需重跑最終候選版本，不能把本 checkpoint 當正式 release。
-3. 上述bool／非canonical wire數字、空CSV、缺asset／重複template anchor已補測通過；其餘複合checklist仍逐項核對，不能由單一子項推定全部完成。
-4. 容量與 pilot 全部通過後才生成正式 40 runs／8 HTML，並補 A08 最大 run 驗收。
-5. 完整 Python／Node／Ruff、既有 Playwright workers=1 與 C1 browser 回歸；保存 screenshot／hash／review／remote SHA。
-6. C2a 完成後另寫 C2b clock-anchor pilot 計畫，研究 cache event index 與 PSF clock 對齊，不能用猜測 timestamp。
+1. 發布：核對poc-history/main的payload與metadata commit，保留remote SHA及clean status。
+2. C2b另立clock-anchor pilot；cache event index不能推論PSF timestamp。
+3. 實機PMU／SDK overhead／UART吞吐與cache-model校準仍待公司平台；本機相對模型結果不能當產品效能數據。
+4. 跨機目標平台依使用者決定暫緩；沒有把未執行項目勾成完成。
 
 
 ## 這次新增的操作證據

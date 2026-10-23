@@ -1,0 +1,19 @@
+{
+  "source_receipt": "artifacts/local/c2a-csv-20261023/final-asgi-A08-server/receipt.json",
+  "reason": "Owned by unintended eval probe after this preflight failure",
+  "session": "c2a-verify",
+  "tracked_browser_pids": [
+    93103,
+    93108,
+    93109,
+    93082,
+    93112,
+    93050,
+    93084,
+    93087
+  ],
+  "close_exit": 0,
+  "remaining_browser_pids": [],
+  "stdout": "\u2713 Browser closed\n",
+  "stderr": ""
+}

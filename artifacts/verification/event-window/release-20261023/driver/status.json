@@ -1,0 +1,410 @@
+[
+  {
+    "name": "fast-A08-server",
+    "state": "finished",
+    "command": [
+      ".venv/bin/python",
+      "tools/tcp/verify_event_window_dashboard.py",
+      "--mode",
+      "server",
+      "--workload",
+      "A08",
+      "--output",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/local/c2a-csv-20261023/fast-A08-server",
+      "--browser-executable",
+      "/Users/swchen.tw/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell"
+    ],
+    "host_load_before": [
+      5.02294921875,
+      7.0517578125,
+      7.26318359375
+    ],
+    "started": 1792756807.478959,
+    "exit": 0,
+    "passed": true,
+    "host_load_after": [
+      4.61328125,
+      6.458984375,
+      7.0166015625
+    ],
+    "finished": 1792756897.711209
+  },
+  {
+    "name": "fast-A02-server",
+    "state": "finished",
+    "command": [
+      ".venv/bin/python",
+      "tools/tcp/verify_event_window_dashboard.py",
+      "--mode",
+      "server",
+      "--workload",
+      "A02",
+      "--output",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/local/c2a-csv-20261023/fast-A02-server",
+      "--browser-executable",
+      "/Users/swchen.tw/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell"
+    ],
+    "host_load_before": [
+      4.61328125,
+      6.458984375,
+      7.0166015625
+    ],
+    "started": 1792756897.712139,
+    "exit": 0,
+    "passed": true,
+    "host_load_after": [
+      4.58935546875,
+      6.111328125,
+      6.84033203125
+    ],
+    "finished": 1792756971.2883992
+  },
+  {
+    "name": "fast-lifecycle",
+    "state": "finished",
+    "command": [
+      ".venv/bin/python",
+      "tools/tcp/verify_event_window_lifecycle.py",
+      "--output",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/local/c2a-csv-20261023/fast-lifecycle",
+      "--browser-executable",
+      "/Users/swchen.tw/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell"
+    ],
+    "host_load_before": [
+      4.58935546875,
+      6.111328125,
+      6.84033203125
+    ],
+    "started": 1792756971.289034,
+    "exit": 0,
+    "passed": true,
+    "host_load_after": [
+      4.927734375,
+      6.02001953125,
+      6.7763671875
+    ],
+    "finished": 1792757009.653558
+  },
+  {
+    "name": "fast-c1-server",
+    "state": "finished",
+    "command": [
+      ".venv/bin/python",
+      "tools/tcp/verify_hotspot_dashboard.py",
+      "--mode",
+      "server",
+      "--output",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/local/c2a-csv-20261023/fast-c1-server",
+      "--browser-executable",
+      "/Users/swchen.tw/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell"
+    ],
+    "host_load_before": [
+      4.53271484375,
+      5.919921875,
+      6.736328125
+    ],
+    "started": 1792757010.185994,
+    "exit": 0,
+    "passed": true,
+    "host_load_after": [
+      5.96533203125,
+      6.0654296875,
+      6.74853515625
+    ],
+    "finished": 1792757050.782749
+  },
+  {
+    "name": "fast-A08-offline",
+    "state": "finished",
+    "command": [
+      ".venv/bin/python",
+      "tools/tcp/verify_event_window_dashboard.py",
+      "--mode",
+      "offline",
+      "--workload",
+      "A08",
+      "--output",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/local/c2a-csv-20261023/fast-A08-offline",
+      "--browser-executable",
+      "/Users/swchen.tw/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+      "--html",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/offline/event-window/A08.html"
+    ],
+    "host_load_before": [
+      5.96533203125,
+      6.0654296875,
+      6.74853515625
+    ],
+    "started": 1792757051.0446908,
+    "exit": 0,
+    "passed": true,
+    "host_load_after": [
+      8.63427734375,
+      6.49560546875,
+      6.83349609375
+    ],
+    "finished": 1792757124.978796
+  },
+  {
+    "name": "fast-A02-offline",
+    "state": "finished",
+    "command": [
+      ".venv/bin/python",
+      "tools/tcp/verify_event_window_dashboard.py",
+      "--mode",
+      "offline",
+      "--workload",
+      "A02",
+      "--output",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/local/c2a-csv-20261023/fast-A02-offline",
+      "--browser-executable",
+      "/Users/swchen.tw/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+      "--html",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/offline/event-window/A02.html"
+    ],
+    "host_load_before": [
+      8.63427734375,
+      6.49560546875,
+      6.83349609375
+    ],
+    "started": 1792757124.979569,
+    "exit": 0,
+    "passed": true,
+    "host_load_after": [
+      10.6904296875,
+      7.46044921875,
+      7.16259765625
+    ],
+    "finished": 1792757197.030956
+  },
+  {
+    "name": "fast-A01-offline-capacity",
+    "state": "finished",
+    "command": [
+      ".venv/bin/python",
+      "tools/tcp/verify_event_window_dashboard.py",
+      "--mode",
+      "offline",
+      "--workload",
+      "A01",
+      "--output",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/local/c2a-csv-20261023/fast-A01-offline-capacity",
+      "--browser-executable",
+      "/Users/swchen.tw/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+      "--html",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/offline/event-window/A01.html",
+      "--capacity-only"
+    ],
+    "host_load_before": [
+      10.6904296875,
+      7.46044921875,
+      7.16259765625
+    ],
+    "started": 1792757197.031975,
+    "exit": 0,
+    "passed": true,
+    "host_load_after": [
+      9.81494140625,
+      7.37890625,
+      7.13720703125
+    ],
+    "finished": 1792757205.3696399
+  },
+  {
+    "name": "fast-A03-offline-capacity",
+    "state": "finished",
+    "command": [
+      ".venv/bin/python",
+      "tools/tcp/verify_event_window_dashboard.py",
+      "--mode",
+      "offline",
+      "--workload",
+      "A03",
+      "--output",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/local/c2a-csv-20261023/fast-A03-offline-capacity",
+      "--browser-executable",
+      "/Users/swchen.tw/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+      "--html",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/offline/event-window/A03.html",
+      "--capacity-only"
+    ],
+    "host_load_before": [
+      9.81494140625,
+      7.37890625,
+      7.13720703125
+    ],
+    "started": 1792757205.370324,
+    "exit": 0,
+    "passed": true,
+    "host_load_after": [
+      9.50927734375,
+      7.35595703125,
+      7.13037109375
+    ],
+    "finished": 1792757214.2288861
+  },
+  {
+    "name": "fast-A04-offline-capacity",
+    "state": "finished",
+    "command": [
+      ".venv/bin/python",
+      "tools/tcp/verify_event_window_dashboard.py",
+      "--mode",
+      "offline",
+      "--workload",
+      "A04",
+      "--output",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/local/c2a-csv-20261023/fast-A04-offline-capacity",
+      "--browser-executable",
+      "/Users/swchen.tw/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+      "--html",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/offline/event-window/A04.html",
+      "--capacity-only"
+    ],
+    "host_load_before": [
+      9.50927734375,
+      7.35595703125,
+      7.13037109375
+    ],
+    "started": 1792757214.2300239,
+    "exit": 0,
+    "passed": true,
+    "host_load_after": [
+      8.66845703125,
+      7.2451171875,
+      7.09326171875
+    ],
+    "finished": 1792757222.556295
+  },
+  {
+    "name": "fast-A05-offline-capacity",
+    "state": "finished",
+    "command": [
+      ".venv/bin/python",
+      "tools/tcp/verify_event_window_dashboard.py",
+      "--mode",
+      "offline",
+      "--workload",
+      "A05",
+      "--output",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/local/c2a-csv-20261023/fast-A05-offline-capacity",
+      "--browser-executable",
+      "/Users/swchen.tw/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+      "--html",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/offline/event-window/A05.html",
+      "--capacity-only"
+    ],
+    "host_load_before": [
+      8.66845703125,
+      7.2451171875,
+      7.09326171875
+    ],
+    "started": 1792757222.556833,
+    "exit": 0,
+    "passed": true,
+    "host_load_after": [
+      8.2578125,
+      7.20361328125,
+      7.07958984375
+    ],
+    "finished": 1792757230.786123
+  },
+  {
+    "name": "fast-A06-offline-capacity",
+    "state": "finished",
+    "command": [
+      ".venv/bin/python",
+      "tools/tcp/verify_event_window_dashboard.py",
+      "--mode",
+      "offline",
+      "--workload",
+      "A06",
+      "--output",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/local/c2a-csv-20261023/fast-A06-offline-capacity",
+      "--browser-executable",
+      "/Users/swchen.tw/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+      "--html",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/offline/event-window/A06.html",
+      "--capacity-only"
+    ],
+    "host_load_before": [
+      8.2578125,
+      7.20361328125,
+      7.07958984375
+    ],
+    "started": 1792757230.7866821,
+    "exit": 0,
+    "passed": true,
+    "host_load_after": [
+      7.75634765625,
+      7.1171875,
+      7.0498046875
+    ],
+    "finished": 1792757239.2846148
+  },
+  {
+    "name": "fast-A07-offline-capacity",
+    "state": "finished",
+    "command": [
+      ".venv/bin/python",
+      "tools/tcp/verify_event_window_dashboard.py",
+      "--mode",
+      "offline",
+      "--workload",
+      "A07",
+      "--output",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/local/c2a-csv-20261023/fast-A07-offline-capacity",
+      "--browser-executable",
+      "/Users/swchen.tw/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+      "--html",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/offline/event-window/A07.html",
+      "--capacity-only"
+    ],
+    "host_load_before": [
+      7.75634765625,
+      7.1171875,
+      7.0498046875
+    ],
+    "started": 1792757239.285156,
+    "exit": 0,
+    "passed": true,
+    "host_load_after": [
+      7.25830078125,
+      7.03076171875,
+      7.01953125
+    ],
+    "finished": 1792757247.309618
+  },
+  {
+    "name": "fast-force-failure",
+    "state": "finished",
+    "passed": true,
+    "expected_failure": true
+  },
+  {
+    "name": "fast-capabilities",
+    "state": "finished",
+    "command": [
+      ".venv/bin/python",
+      "tools/tcp/verify_event_window_capabilities.py",
+      "--output",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/local/c2a-csv-20261023/fast-capabilities",
+      "--browser-executable",
+      "/Users/swchen.tw/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell"
+    ],
+    "host_load_before": [
+      6.9970703125,
+      6.97998046875,
+      7.00146484375
+    ],
+    "started": 1792757254.870008,
+    "exit": 0,
+    "passed": true,
+    "host_load_after": [
+      6.7568359375,
+      6.93017578125,
+      6.9833984375
+    ],
+    "finished": 1792757257.75916
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "name": "owned-A08-server",
+    "state": "finished",
+    "command": [
+      ".venv/bin/python",
+      "tools/tcp/verify_event_window_dashboard.py",
+      "--mode",
+      "server",
+      "--workload",
+      "A08",
+      "--output",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/local/c2a-csv-20261023/owned-A08-server",
+      "--browser-executable",
+      "/Users/swchen.tw/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell"
+    ],
+    "host_load_before": [
+      8.51220703125,
+      8.88232421875,
+      10.7900390625
+    ],
+    "started": 1792748870.2459,
+    "exit": 1,
+    "passed": false,
+    "host_load_after": [
+      11.17578125,
+      9.69873046875,
+      10.7607421875
+    ],
+    "finished": 1792749050.243819
+  }
+]

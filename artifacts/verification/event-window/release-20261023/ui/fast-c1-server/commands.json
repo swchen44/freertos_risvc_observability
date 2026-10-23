@@ -1,0 +1,826 @@
+[
+  {
+    "args": [
+      "open",
+      "about:blank"
+    ],
+    "exit": 0,
+    "stdout": "✓ \n  about:blank\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "set",
+      "viewport",
+      "1600",
+      "1050"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "open",
+      "http://127.0.0.1:8016/hotspot.html"
+    ],
+    "exit": 0,
+    "stdout": "✓ 成本與熱點 · FreeRTOS Lab\n  http://127.0.0.1:8016/hotspot.html\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "wait",
+      "--fn",
+      "window.hotspotReady === true"
+    ],
+    "exit": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelectorAll(\".hotspot-chart svg\").length"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/hotspot.html\",\"result\":4},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#quality\").textContent"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/hotspot.html\",\"result\":\"unknown\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "snapshot",
+      "-i"
+    ],
+    "exit": 0,
+    "stdout": "- heading \"成本花在哪裡？\" [level=1, ref=e1]\n- region \"資料選擇\" [ref=e2]\n  - combobox \"Workload\" [expanded=false, ref=e6]: A02\n    - option \"A01\" [ref=e23]\n    - option \"A02\" [selected, ref=e24]\n    - option \"A03\" [ref=e25]\n    - option \"A04\" [ref=e26]\n    - option \"A05\" [ref=e27]\n    - option \"A06\" [ref=e28]\n    - option \"A07\" [ref=e29]\n    - option \"A08\" [ref=e30]\n  - combobox \"候選\" [expanded=false, ref=e7]: pbuf\n    - option \"pbuf\" [selected, ref=e31]\n    - option \"baseline\" [ref=e32]\n  - combobox \"Capture\" [expanded=false, ref=e8]: B1 · unknown context\n    - option \"B1 · unknown context\" [selected, ref=e33]\n    - option \"B2 · exact context\" [ref=e34]\n  - combobox \"模型模式\" [expanded=false, ref=e9]: injection model\n    - option \"injection model\" [selected, ref=e35]\n  - combobox \"Repeat\" [expanded=false, ref=e10]: 1\n    - option \"1\" [selected, ref=e36]\n  - combobox \"Context\" [expanded=false, ref=e11]: 全部 Context\n    - option \"全部 Context\" [selected, ref=e37]\n    - option \"unknown\" [ref=e38]\n  - combobox \"程式角色\" [expanded=false, ref=e12]: 全部角色\n    - option \"全部角色\" [selected, ref=e39]\n    - option \"application_harness\" [ref=e40]\n    - option \"kernel_port\" [ref=e41]\n    - option \"lwip\" [ref=e42]\n    - option \"observer_entry\" [ref=e43]\n    - option \"recorder\" [ref=e44]\n    - option \"runtime_library\" [ref=e45]\n  - textbox \"函式搜尋\" [ref=e13]\n  - combobox \"指標\" [expanded=false, ref=e14]: Memory cycles\n    - option \"Memory cycles\" [selected, ref=e46]\n    - option \"Self instructions\" [ref=e47]\n    - option \"Accounted model ns\" [ref=e48]\n    - option \"Cache misses\" [ref=e49]\n  - combobox \"Cache 層\" [expanded=false, ref=e15]: L1I\n    - option \"L1I\" [selected, ref=e50]\n    - option \"L1D\" [ref=e51]\n    - option \"L2\" [ref=e52]\n  - combobox \"圖表筆數\" [expanded=false, ref=e16]: 10\n    - option \"10\" [selected, ref=e53]\n    - option \"20\" [ref=e54]\n    - option \"50\" [ref=e55]\n  - button \"匯出完整篩選 CSV\" [ref=e3]\n- heading \"函式成本排名\" [level=2, ref=e17]\n- heading \"相對 baseline 的差異\" [level=2, ref=e18]\n- heading \"記憶體服務成本\" [level=2, ref=e19]\n- heading \"3C misses\" [level=2, ref=e20]\n- heading \"完整篩選表格\" [level=2, ref=e4]\n- columnheader \"函式\" [ref=e496]\n- columnheader \"角色\" [ref=e497]\n- columnheader \"選定指標\" [ref=e498]\n- columnheader \"占 run %\" [ref=e499]\n- columnheader \"占篩選 %\" [ref=e500]\n- columnheader \"指令\" [ref=e501]\n- columnheader \"Memory cycles\" [ref=e502]\n- columnheader \"配對狀態\" [ref=e503]\n- columnheader \"配對說明\" [ref=e504]\n- columnheader \"差異\" [ref=e505]\n- columnheader \"差異 %\" [ref=e506]\n- generic \"memcpyruntime_library360,92033.02633.02679,332360,920matchedunique source identity-8-0.002session_ta\" [ref=e21] focusable [tabindex]\n- gridcell \"memcpy\" [ref=e56] clickable [cursor:pointer]\n- gridcell \"runtime_library\" [ref=e57] clickable [cursor:pointer]\n- gridcell \"360,920\" [ref=e58] clickable [cursor:pointer]\n- gridcell \"33.026\" [ref=e59] clickable [cursor:pointer]\n- gridcell \"33.026\" [ref=e60] clickable [cursor:pointer]\n- gridcell \"79,332\" [ref=e61] clickable [cursor:pointer]\n- gridcell \"360,920\" [ref=e62] clickable [cursor:pointer]\n- gridcell \"matched\" [ref=e63] clickable [cursor:pointer]\n- gridcell \"unique source identity\" [ref=e64] clickable [cursor:pointer]\n- gridcell \"-8\" [ref=e65] clickable [cursor:pointer]\n- gridcell \"-0.002\" [ref=e66] clickable [cursor:pointer]\n- gridcell \"session_task\" [ref=e67] clickable [cursor:pointer]\n- gridcell \"application_harness\" [ref=e68] clickable [cursor:pointer]\n- gridcell \"357,012\" [ref=e69] clickable [cursor:pointer]\n- gridcell \"32.669\" [ref=e70] clickable [cursor:pointer]\n- gridcell \"32.669\" [ref=e71] clickable [cursor:pointer]\n- gridcell \"106,830\" [ref=e72] clickable [cursor:pointer]\n- gridcell \"357,012\" [ref=e73] clickable [cursor:pointer]\n- gridcell \"matched\" [ref=e74] clickable [cursor:pointer]\n- gridcell \"unique source identity\" [ref=e75] clickable [cursor:pointer]\n- gridcell \"11,724\" [ref=e76] clickable [cursor:pointer]\n- gridcell \"3.395\" [ref=e77] clickable [cursor:pointer]\n- gridcell \"memcmp\" [ref=e78] clickable [cursor:pointer]\n- gridcell \"runtime_library\" [ref=e79] clickable [cursor:pointer]\n- gridcell \"105,226\" [ref=e80] clickable [cursor:pointer]\n- gridcell \"9.629\" [ref=e81] clickable [cursor:pointer]\n- gridcell \"9.629\" [ref=e82] clickable [cursor:pointer]\n- gridcell \"81,792\" [ref=e83] clickable [cursor:pointer]\n- gridcell \"105,226\" [ref=e84] clickable [cursor:pointer]\n- gridcell \"matched\" [ref=e85] clickable [cursor:pointer]\n- gridcell \"unique source identity\" [ref=e86] clickable [cursor:pointer]\n- gridcell \"0\" [ref=e87] clickable [cursor:pointer]\n- gridcell \"0\" [ref=e88] clickable [cursor:pointer]\n- gridcell \"lwip_standard_chksum\" [ref=e89] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e90] clickable [cursor:pointer]\n- gridcell \"26,286\" [ref=e91] clickable [cursor:pointer]\n- gridcell \"2.405\" [ref=e92] clickable [cursor:pointer]\n- gridcell \"2.405\" [ref=e93] clickable [cursor:pointer]\n- gridcell \"22,622\" [ref=e94] clickable [cursor:pointer]\n- gridcell \"26,286\" [ref=e95] clickable [cursor:pointer]\n- gridcell \"matched\" [ref=e96] clickable [cursor:pointer]\n- gridcell \"unique source identity\" [ref=e97] clickable [cursor:pointer]\n- gridcell \"-137\" [ref=e98] clickable [cursor:pointer]\n- gridcell \"-0.518\" [ref=e99] clickable [cursor:pointer]\n- gridcell \"memset\" [ref=e100] clickable [cursor:pointer]\n- gridcell \"runtime_library\" [ref=e101] clickable [cursor:pointer]\n- gridcell \"24,448\" [ref=e102] clickable [cursor:pointer]\n- gridcell \"2.237\" [ref=e103] clickable [cursor:pointer]\n- gridcell \"2.237\" [ref=e104] clickable [cursor:pointer]\n- gridcell \"4,096\" [ref=e105] clickable [cursor:pointer]\n- gridcell \"24,448\" [ref=e106] clickable [cursor:pointer]\n- gridcell \"matched\" [ref=e107] clickable [cursor:pointer]\n- gridcell \"unique source identity\" [ref=e108] clickable [cursor:pointer]\n- gridcell \"0\" [ref=e109] clickable [cursor:pointer]\n- gridcell \"0\" [ref=e110] clickable [cursor:pointer]\n- gridcell \"tcp_input\" [ref=e111] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e112] clickable [cursor:pointer]\n- gridcell \"21,922\" [ref=e113] clickable [cursor:pointer]\n- gridcell \"2.006\" [ref=e114] clickable [cursor:pointer]\n- gridcell \"2.006\" [ref=e115] clickable [cursor:pointer]\n- gridcell \"3,817\" [ref=e116] clickable [cursor:pointer]\n- gridcell \"21,922\" [ref=e117] clickable [cursor:pointer]\n- gridcell \"matched\" [ref=e118] clickable [cursor:pointer]\n- gridcell \"unique source identity\" [ref=e119] clickable [cursor:pointer]\n- gridcell \"483\" [ref=e120] clickable [cursor:pointer]\n- gridcell \"2.253\" [ref=e121] clickable [cursor:pointer]\n- gridcell \"inject\" [ref=e122] clickable [cursor:pointer]\n- gridcell \"application_harness\" [ref=e123] clickable [cursor:pointer]\n- gridcell \"17,380\" [ref=e124] clickable [cursor:pointer]\n- gridcell \"1.590\" [ref=e125] clickable [cursor:pointer]\n- gridcell \"1.590\" [ref=e126] clickable [cursor:pointer]\n- gridcell \"2,684\" [ref=e127] clickable [cursor:pointer]\n- gridcell \"17,380\" [ref=e128] clickable [cursor:pointer]\n- gridcell \"matched\" [ref=e129] clickable [cursor:pointer]\n- gridcell \"unique source identity\" [ref=e130] clickable [cursor:pointer]\n- gridcell \"-58\" [ref=e131] clickable [cursor:pointer]\n- gridcell \"-0.333\" [ref=e132] clickable [cursor:pointer]\n- gridcell \"tcp_output\" [ref=e133] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e134] clickable [cursor:pointer]\n- gridcell \"16,919\" [ref=e135] clickable [cursor:pointer]\n- gridcell \"1.548\" [ref=e136] clickable [cursor:pointer]\n- gridcell \"1.548\" [ref=e137] clickable [cursor:pointer]\n- gridcell \"3,005\" [ref=e138] clickable [cursor:pointer]\n- gridcell \"16,919\" [ref=e139] clickable [cursor:pointer]\n- gridcell \"matched\" [ref=e140] clickable [cursor:pointer]\n- gridcell \"unique source identity\" [ref=e141] clickable [cursor:pointer]\n- gridcell \"56\" [ref=e142] clickable [cursor:pointer]\n- gridcell \"0.332\" [ref=e143] clickable [cursor:pointer]\n- gridcell \"pbuf_alloc\" [ref=e144] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e145] clickable [cursor:pointer]\n- gridcell \"10,952\" [ref=e146] clickable [cursor:pointer]\n- gridcell \"1.002\" [ref=e147] clickable [cursor:pointer]\n- gridcell \"1.002\" [ref=e148] clickable [cursor:pointer]\n- gridcell \"1,766\" [ref=e149] clickable [cursor:pointer]\n- gridcell \"10,952\" [ref=e150] clickable [cursor:pointer]\n- gridcell \"matched\" [ref=e151] clickable [cursor:pointer]\n- gridcell \"unique source identity\" [ref=e152] clickable [cursor:pointer]\n- gridcell \"-55\" [ref=e153] clickable [cursor:pointer]\n- gridcell \"-0.500\" [ref=e154] clickable [cursor:pointer]\n- gridcell \"inet_chksum_pseudo\" [ref=e155] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e156] clickable [cursor:pointer]\n- gridcell \"9,534\" [ref=e157] clickable [cursor:pointer]\n- gridcell \"0.872\" [ref=e158] clickable [cursor:pointer]\n- gridcell \"0.872\" [ref=e159] clickable [cursor:pointer]\n- gridcell \"3,051\" [ref=e160] clickable [cursor:pointer]\n- gridcell \"9,534\" [ref=e161] clickable [cursor:pointer]\n- gridcell \"matched\" [ref=e162] clickable [cursor:pointer]\n- gridcell \"unique source identity\" [ref=e163] clickable [cursor:pointer]\n- gridcell \"-13\" [ref=e164] clickable [cursor:pointer]\n- gridcell \"-0.136\" [ref=e165] clickable [cursor:pointer]\n- gridcell \"ip4_input\" [ref=e166] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e167] clickable [cursor:pointer]\n- gridcell \"9,398\" [ref=e168] clickable [cursor:pointer]\n- gridcell \"0.860\" [ref=e169] clickable [cursor:pointer]\n- gridcell \"0.860\" [ref=e170] clickable [cursor:pointer]\n- gridcell \"1,806\" [ref=e171] clickable [cursor:pointer]\n- gridcell \"9,398\" [ref=e172] clickable [cursor:pointer]\n- gridcell \"matched\" [ref=e173] clickable [cursor:pointer]\n- gridcell \"unique source identity\" [ref=e174] clickable [cursor:pointer]\n- gridcell \"98\" [ref=e175] clickable [cursor:pointer]\n- gridcell \"1.054\" [ref=e176] clickable [cursor:pointer]\n- gridcell \"tcp_receive\" [ref=e177] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e178] clickable [cursor:pointer]\n- gridcell \"9,008\" [ref=e179] clickable [cursor:pointer]\n- gridcell \"0.824\" [ref=e180] clickable [cursor:pointer]\n- gridcell \"0.824\" [ref=e181] clickable [cursor:pointer]\n- gridcell \"1,641\" [ref=e182] clickable [cursor:pointer]\n- gridcell \"9,008\" [ref=e183] clickable [cursor:pointer]\n- gridcell \"matched\" [ref=e184] clickable [cursor:pointer]\n- gridcell \"unique source identity\" [ref=e185] clickable [cursor:pointer]\n- gridcell \"-27\" [ref=e186] clickable [cursor:pointer]\n- gridcell \"-0.299\" [ref=e187] clickable [cursor:pointer]\n- gridcell \"ip4_output_if_src\" [ref=e188] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e189] clickable [cursor:pointer]\n- gridcell \"8,669\" [ref=e190] clickable [cursor:pointer]\n- gridcell \"0.793\" [ref=e191] clickable [cursor:pointer]\n- gridcell \"0.793\" [ref=e192] clickable [cursor:pointer]\n- gridcell \"1,177\" [ref=e193] clickable [cursor:pointer]\n- gridcell \"8,669\" [ref=e194] clickable [cursor:pointer]\n- gridcell \"matched\" [ref=e195] clickable [cursor:pointer]\n- gridcell \"unique source identity\" [ref=e196] clickable [cursor:pointer]\n- gridcell \"48\" [ref=e197] clickable [cursor:pointer]\n- gridcell \"0.557\" [ref=e198] clickable [cursor:pointer]\n- gridcell \"mem_malloc\" [ref=e199] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e200] clickable [cursor:pointer]\n- gridcell \"7,264\" [ref=e201] clickable [cursor:pointer]\n- gridcell \"0.665\" [ref=e202] clickable [cursor:pointer]\n- gridcell \"0.665\" [ref=e203] clickable [cursor:pointer]\n- gridcell \"1,926\" [ref=e204] clickable [cursor:pointer]\n- gridcell \"7,264\" [ref=e205] clickable [cursor:pointer]\n- gridcell \"matched\" [ref=e206] clickable [cursor:pointer]\n- gridcell \"unique source identity\" [ref=e207] clickable [cursor:pointer]\n- gridcell \"-40\" [ref=e208] clickable [cursor:pointer]\n- gridcell \"-0.548\" [ref=e209] clickable [cursor:pointer]\n- gridcell \"pbuf_free\" [ref=e210] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e211] clickable [cursor:pointer]\n- gridcell \"6,759\" [ref=e212] clickable [cursor:pointer]\n- gridcell \"0.618\" [ref=e213] clickable [cursor:pointer]\n- gridcell \"0.618\" [ref=e214] clickable [cursor:pointer]\n- gridcell \"1,525\" [ref=e215] clickable [cursor:pointer]\n- gridcell \"6,759\" [ref=e216] clickable [cursor:pointer]\n- gridcell \"matched\" [ref=e217] clickable [cursor:pointer]\n- gridcell \"unique source identity\" [ref=e218] clickable [cursor:pointer]\n- gridcell \"-72\" [ref=e219] clickable [cursor:pointer]\n- gridcell \"-1.054\" [ref=e220] clickable [cursor:pointer]\n- gridcell \"tcp_write\" [ref=e221] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e222] clickable [cursor:pointer]\n- gridcell \"6,546\" [ref=e223] clickable [cursor:pointer]\n- gridcell \"0.599\" [ref=e224] clickable [cursor:pointer]\n- gridcell \"0.599\" [ref=e225] clickable [cursor:pointer]\n- gridcell \"1,232\" [ref=e226] clickable [cursor:pointer]\n- gridcell \"6,546\" [ref=e227] clickable [cursor:pointer]\n- gridcell \"matched\" [ref=e228] clickable [cursor:pointer]\n- gridcell \"unique source identity\" [ref=e229] clickable [cursor:pointer]\n- gridcell \"38\" [ref=e230] clickable [cursor:pointer]\n- gridcell \"0.584\" [ref=e231] clickable [cursor:pointer]\n- gridcell \"tcp_create_segment\" [ref=e232] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e233] clickable [cursor:pointer]\n- gridcell \"6,506\" [ref=e234] clickable [cursor:pointer]\n- gridcell \"0.595\" [ref=e235] clickable [cursor:pointer]\n- gridcell \"0.595\" [ref=e236] clickable [cursor:pointer]\n- gridcell \"780\" [ref=e237] clickable [cursor:pointer]\n- gridcell \"6,506\" [ref=e238] clickable [cursor:pointer]\n- gridcell \"matched\" [ref=e239] clickable [cursor:pointer]\n- gridcell \"unique source identity\" [ref=e240] clickable [cursor:pointer]\n- gridcell \"128\" [ref=e241] clickable [cursor:pointer]\n- gridcell \"2.007\" [ref=e242] clickable [cursor:pointer]\n- gridcell \"pbuf_copy_partial\" [ref=e243] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e244] clickable [cursor:pointer]\n- gridcell \"5,999\" [ref=e245] clickable [cursor:pointer]\n- gridcell \"0.549\" [ref=e246] clickable [cursor:pointer]\n- gridcell \"0.549\" [ref=e247] clickable [cursor:pointer]\n- gridcell \"1,720\" [ref=e248] clickable [cursor:pointer]\n- gridcell \"5,999\" [ref=e249] clickable [cursor:pointer]\n- gridcell \"matched\" [ref=e250] clickable [cursor:pointer]\n- gridcell \"unique source identity\" [ref=e251] clickable [cursor:pointer]\n- gridcell \"-102\" [ref=e252] clickable [cursor:pointer]\n- gridcell \"-1.672\" [ref=e253] clickable [cursor:pointer]\n- gridcell \"phase\" [ref=e254] clickable [cursor:pointer]\n- gridcell \"application_harness\" [ref=e255] clickable [cursor:pointer]\n- gridcell \"5,729\" [ref=e256] clickable [cursor:pointer]\n- gridcell \"0.524\" [ref=e257] clickable [cursor:pointer]\n- gridcell \"0.524\" [ref=e258] clickable [cursor:pointer]\n- gridcell \"837\" [ref=e259] clickable [cursor:pointer]\n- gridcell \"5,729\" [ref=e260] clickable [cursor:pointer]\n- gridcell \"matched\" [ref=e261] clickable [cursor:pointer]\n- gridcell \"unique source identity\" [ref=e262] clickable [cursor:pointer]\n- gridcell \"87\" [ref=e263] clickable [cursor:pointer]\n- gridcell \"1.542\" [ref=e264] clickable [cursor:pointer]\n- gridcell \"snapshot\" [ref=e265] clickable [cursor:pointer]\n- gridcell \"application_harness\" [ref=e266] clickable [cursor:pointer]\n- gridcell \"5,188\" [ref=e267] clickable [cursor:pointer]\n- gridcell \"0.475\" [ref=e268] clickable [cursor:pointer]\n- gridcell \"0.475\" [ref=e269] clickable [cursor:pointer]\n- gridcell \"1,100\" [ref=e270] clickable [cursor:pointer]\n- gridcell \"5,188\" [ref=e271] clickable [cursor:pointer]\n- gridcell \"matched\" [ref=e272] clickable [cursor:pointer]\n- gridcell \"unique source identity\" [ref=e273] clickable [cursor:pointer]\n- gridcell \"2\" [ref=e274] clickable [cursor:pointer]\n- gridcell \"0.039\" [ref=e275] clickable [cursor:pointer]\n- gridcell \"mem_free\" [ref=e276] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e277] clickable [cursor:pointer]\n- gridcell \"4,875\" [ref=e278] clickable [cursor:pointer]\n- gridcell \"0.446\" [ref=e279] clickable [cursor:pointer]\n- gridcell \"0.446\" [ref=e280] clickable [cursor:pointer]\n- gridcell \"1,652\" [ref=e281] clickable [cursor:pointer]\n- gridcell \"4,875\" [ref=e282] clickable [cursor:pointer]\n- gridcell \"matched\" [ref=e283] clickable [cursor:pointer]\n- gridcell \"unique source identity\" [ref=e284] clickable [cursor:pointer]\n- gridcell \"86\" [ref=e285] clickable [cursor:pointer]\n- gridcell \"1.796\" [ref=e286] clickable [cursor:pointer]\n- gridcell \"tcp_free_acked_segments.isra.0\" [ref=e287] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e288] clickable [cursor:pointer]\n- gridcell \"4,578\" [ref=e289] clickable [cursor:pointer]\n- gridcell \"0.419\" [ref=e290] clickable [cursor:pointer]\n- gridcell \"0.419\" [ref=e291] clickable [cursor:pointer]\n- gridcell \"840\" [ref=e292] clickable [cursor:pointer]\n- gridcell \"4,578\" [ref=e293] clickable [cursor:pointer]\n- gridcell \"matched\" [ref=e294] clickable [cursor:pointer]\n- gridcell \"unique source identity\" [ref=e295] clickable [cursor:pointer]\n- gridcell \"-10\" [ref=e296] clickable [cursor:pointer]\n- gridcell \"-0.218\" [ref=e297] clickable [cursor:pointer]\n- gridcell \"pbuf_remove_header\" [ref=e298] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e299] clickable [cursor:pointer]\n- gridcell \"3,562\" [ref=e300] clickable [cursor:pointer]\n- gridcell \"0.326\" [ref=e301] clickable [cursor:pointer]\n- gridcell \"0.326\" [ref=e302] clickable [cursor:pointer]\n- gridcell \"840\" [ref=e303] clickable [cursor:pointer]\n- gridcell \"3,562\" [ref=e304] clickable [cursor:pointer]\n- gridcell \"matched\" [ref=e305] clickable [cursor:pointer]\n- gridcell \"unique source identity\" [ref=e306] clickable [cursor:pointer]\n- gridcell \"-68\" [ref=e307] clickable [cursor:pointer]\n- gridcell \"-1.873\" [ref=e308] clickable [cursor:pointer]\n- gridcell \"pbuf_add_header_impl\" [ref=e309] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e310] clickable [cursor:pointer]\n- gridcell \"3,511\" [ref=e311] clickable [cursor:pointer]\n- gridcell \"0.321\" [ref=e312] clickable [cursor:pointer]\n- gridcell \"0.321\" [ref=e313] clickable [cursor:pointer]\n- gridcell \"945\" [ref=e314] clickable [cursor:pointer]\n- gridcell \"3,511\" [ref=e315] clickable [cursor:pointer]\n- gridcell \"matched\" [ref=e316] clickable [cursor:pointer]\n- gridcell \"unique source identity\" [ref=e317] clickable [cursor:pointer]\n- gridcell \"114\" [ref=e318] clickable [cursor:pointer]\n- gridcell \"3.356\" [ref=e319] clickable [cursor:pointer]\n- gridcell \"consume\" [ref=e320] clickable [cursor:pointer]\n- gridcell \"application_harness\" [ref=e321] clickable [cursor:pointer]\n- gridcell \"3,051\" [ref=e322] clickable [cursor:pointer]\n- gridcell \"0.279\" [ref=e323] clickable [cursor:pointer]\n- gridcell \"0.279\" [ref=e324] clickable [cursor:pointer]\n- gridcell \"786\" [ref=e325] clickable [cursor:pointer]\n- gridcell \"3,051\" [ref=e326] clickable [cursor:pointer]\n- gridcell \"matched\" [ref=e327] clickable [cursor:pointer]\n- gridcell \"unique source identity\" [ref=e328] clickable [cursor:pointer]\n- gridcell \"-92\" [ref=e329] clickable [cursor:pointer]\n- gridcell \"-2.927\" [ref=e330] clickable [cursor:pointer]\n- gridcell \"lwip_htons\" [ref=e331] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e332] clickable [cursor:pointer]\n- gridcell \"2,956\" [ref=e333] clickable [cursor:pointer]\n- gridcell \"0.270\" [ref=e334] clickable [cursor:pointer]\n- gridcell \"0.270\" [ref=e335] clickable [cursor:pointer]\n- gridcell \"2,460\" [ref=e336] clickable [cursor:pointer]\n- gridcell \"2,956\" [ref=e337] clickable [cursor:pointer]\n- gridcell \"matched\" [ref=e338] clickable [cursor:pointer]\n- gridcell \"unique source identity\" [ref=e339] clickable [cursor:pointer]\n- gridcell \"444\" [ref=e340] clickable [cursor:pointer]\n- gridcell \"17.675\" [ref=e341] clickable [cursor:pointer]\n- gridcell \"on_recv\" [ref=e342] clickable [cursor:pointer]\n- gridcell \"application_harness\" [ref=e343] clickable [cursor:pointer]\n- gridcell \"2,904\" [ref=e344] clickable [cursor:pointer]\n- gridcell \"0.266\" [ref=e345] clickable [cursor:pointer]\n- gridcell \"0.266\" [ref=e346] clickable [cursor:pointer]\n- gridcell \"1,342\" [ref=e347] clickable [cursor:pointer]\n- gridcell \"2,904\" [ref=e348] clickable [cursor:pointer]\n- gridcell \"matched\" [ref=e349] clickable [cursor:pointer]\n- gridcell \"unique source identity\" [ref=e350] clickable [cursor:pointer]\n- gridcell \"-266\" [ref=e351] clickable [cursor:pointer]\n- gridcell \"-8.391\" [ref=e352] clickable [cursor:pointer]\n- gridcell \"unresolved@/Users/swchen.tw/git/percepio/poc/runs/tcp-workload-matrix-v1/A02-pbuf/build/portASM.o:2147519488\" [ref=e353] clickable [cursor:pointer]\n- gridcell \"kernel_port\" [ref=e354] clickable [cursor:pointer]\n- gridcell \"2,828\" [ref=e355] clickable [cursor:pointer]\n- gridcell \"0.259\" [ref=e356] clickable [cursor:pointer]\n- gridcell \"0.259\" [ref=e357] clickable [cursor:pointer]\n- gridcell \"293\" [ref=e358] clickable [cursor:pointer]\n- gridcell \"2,828\" [ref=e359] clickable [cursor:pointer]\n- gridcell \"unmatched\" [ref=e360] clickable [cursor:pointer]\n- gridcell \"unmatched\" [ref=e361] clickable [cursor:pointer]\n- gridcell \"—\" [ref=e362] clickable [cursor:pointer]\n- gridcell \"—\" [ref=e363] clickable [cursor:pointer]\n- gridcell \"__ssputs_r\" [ref=e364] clickable [cursor:pointer]\n- gridcell \"runtime_library\" [ref=e365] clickable [cursor:pointer]\n- gridcell \"2,542\" [ref=e366] clickable [cursor:pointer]\n- gridcell \"0.233\" [ref=e367] clickable [cursor:pointer]\n- gridcell \"0.233\" [ref=e368] clickable [cursor:pointer]\n- gridcell \"370\" [ref=e369] clickable [cursor:pointer]\n- gridcell \"2,542\" [ref=e370] clickable [cursor:pointer]\n- gridcell \"matched\" [ref=e371] clickable [cursor:pointer]\n- gridcell \"unique source identity\" [ref=e372] clickable [cursor:pointer]\n- gridcell \"0\" [ref=e373] clickable [cursor:pointer]\n- gridcell \"0\" [ref=e374] clickable [cursor:pointer]\n- gridcell \"lwip_htonl\" [ref=e375] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e376] clickable [cursor:pointer]\n- gridcell \"2,093\" [ref=e377] clickable [cursor:pointer]\n- gridcell \"0.192\" [ref=e378] clickable [cursor:pointer]\n- gridcell \"0.192\" [ref=e379] clickable [cursor:pointer]\n- gridcell \"2,093\" [ref=e380] clickable [cursor:pointer]\n- gridcell \"2,093\" [ref=e381] clickable [cursor:pointer]\n- gridcell \"matched\" [ref=e382] clickable [cursor:pointer]\n- gridcell \"unique source identity\" [ref=e383] clickable [cursor:pointer]\n- gridcell \"-8\" [ref=e384] clickable [cursor:pointer]\n- gridcell \"-0.381\" [ref=e385] clickable [cursor:pointer]\n- gridcell \"pbuf_alloc_reference\" [ref=e386] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e387] clickable [cursor:pointer]\n- gridcell \"2,048\" [ref=e388] clickable [cursor:pointer]\n- gridcell \"0.187\" [ref=e389] clickable [cursor:pointer]\n- gridcell \"0.187\" [ref=e390] clickable [cursor:pointer]\n- gridcell \"184\" [ref=e391] clickable [cursor:pointer]\n- gridcell \"2,048\" [ref=e392] clickable [cursor:pointer]\n- gridcell \"matched\" [ref=e393] clickable [cursor:pointer]\n- gridcell \"unique source identity\" [ref=e394] clickable [cursor:pointer]\n- gridcell \"0\" [ref=e395] clickable [cursor:pointer]\n- gridcell \"0\" [ref=e396] clickable [cursor:pointer]\n- gridcell \"memp_free\" [ref=e397] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e398] clickable [cursor:pointer]\n- gridcell \"1,824\" [ref=e399] clickable [cursor:pointer]\n- gridcell \"0.167\" [ref=e400] clickable [cursor:pointer]\n- gridcell \"0.167\" [ref=e401] clickable [cursor:pointer]\n- gridcell \"378\" [ref=e402] clickable [cursor:pointer]\n- gridcell \"1,824\" [ref=e403] clickable [cursor:pointer]\n- gridcell \"matched\" [ref=e404] clickable [cursor:pointer]\n- gridcell \"unique source identity\" [ref=e405] clickable [cursor:pointer]\n- gridcell \"-66\" [ref=e406] clickable [cursor:pointer]\n- gridcell \"-3.492\" [ref=e407] clickable [cursor:pointer]\n- gridcell \"do_memp_malloc_pool\" [ref=e408] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e409] clickable [cursor:pointer]\n- gridcell \"1,777\" [ref=e410] clickable [cursor:pointer]\n- gridcell \"0.163\" [ref=e411] clickable [cursor:pointer]\n- gridcell \"0.163\" [ref=e412] clickable [cursor:pointer]\n- gridcell \"319\" [ref=e413] clickable [cursor:pointer]\n- gridcell \"1,777\" [ref=e414] clickable [cursor:pointer]\n- gridcell \"matched\" [ref=e415] clickable [cursor:pointer]\n- gridcell \"unique source identity\" [ref=e416] clickable [cursor:pointer]\n- gridcell \"-66\" [ref=e417] clickable [cursor:pointer]\n- gridcell \"-3.581\" [ref=e418] clickable [cursor:pointer]\n- gridcell \"_svfiprintf_r\" [ref=e419] clickable [cursor:pointer]\n- gridcell \"runtime_library\" [ref=e420] clickable [cursor:pointer]\n- gridcell \"1,715\" [ref=e421] clickable [cursor:pointer]\n- gridcell \"0.157\" [ref=e422] clickable [cursor:pointer]\n- gridcell \"0.157\" [ref=e423] clickable [cursor:pointer]\n- gridcell \"360\" [ref=e424] clickable [cursor:pointer]\n- gridcell \"1,715\" [ref=e425] clickable [cursor:pointer]\n- gridcell \"matched\" [ref=e426] clickable [cursor:pointer]\n- gridcell \"unique source identity\" [ref=e427] clickable [cursor:pointer]\n- gridcell \"0\" [ref=e428] clickable [cursor:pointer]\n- gridcell \"0\" [ref=e429] clickable [cursor:pointer]\n- gridcell \"xTaskIncrementTick\" [ref=e430] clickable [cursor:pointer]\n- gridcell \"kernel_port\" [ref=e431] clickable [cursor:pointer]\n- gridcell \"1,506\" [ref=e432] clickable [cursor:pointer]\n- gridcell \"0.138\" [ref=e433] clickable [cursor:pointer]\n- gridcell \"0.138\" [ref=e434] clickable [cursor:pointer]\n- gridcell \"194\" [ref=e435] clickable [cursor:pointer]\n- gridcell \"1,506\" [ref=e436] clickable [cursor:pointer]\n- gridcell \"matched\" [ref=e437] clickable [cursor:pointer]\n- gridcell \"unique source identity\" [ref=e438] clickable [cursor:pointer]\n- gridcell \"-18\" [ref=e439] clickable [cursor:pointer]\n- gridcell \"-1.181\" [ref=e440] clickable [cursor:pointer]\n- gridcell \"tcp_slowtmr\" [ref=e441] clickable [cursor:pointer]\n- gridcell \"lwip\" [ref=e442] clickable [cursor:pointer]\n- gridcell \"1,500\" [ref=e443] clickable [cursor:pointer]\n- gridcell \"0.137\" [ref=e444] clickable [cursor:pointer]\n- gridcell \"0.137\" [ref=e445] clickable [cursor:pointer]\n- gridcell \"204\" [ref=e446] clickable [cursor:pointer]\n- gridcell \"1,500\" [ref=e447] clickable [cursor:pointer]\n- gridcell \"matched\" [ref=e448] clickable [cursor:pointer]\n- gridcell \"unique source identity\" [ref=e449] clickable [cursor:pointer]\n- gridcell \"22\" [ref=e450] clickable [cursor:pointer]\n- gridcell \"1.488\" [ref=e451] clickable [cursor:pointer]\n- gridcell \"xTraceEventCreate1\" [ref=e452] clickable [cursor:pointer]\n- gridcell \"recorder\" [ref=e453] clickable [cursor:pointer]\n- gridcell \"1,348\" [ref=e454] clickable [cursor:pointer]\n- gridcell \"0.123\" [ref=e455] clickable [cursor:pointer]\n- gridcell \"0.123\" [ref=e456] clickable [cursor:pointer]\n- gridcell \"220\" [ref=e457] clickable [cursor:pointer]\n- gridcell \"1,348\" [ref=e458] clickable [cursor:pointer]\n- gridcell \"matched\" [ref=e459] clickable [cursor:pointer]\n- gridcell \"unique source identity\" [ref=e460] clickable [cursor:pointer]\n- gridcell \"0\" [ref=e461] clickable [cursor:pointer]\n- gridcell \"0\" [ref=e462] clickable [cursor:pointer]\n- gridcell \"memmove\" [ref=e463] clickable [cursor:pointer]\n- gridcell \"runtime_library\" [ref=e464] clickable [cursor:pointer]\n- gridcell \"1,265\" [ref=e465] clickable [cursor:pointer]\n- gridcell \"0.116\" [ref=e466] clickable [cursor:pointer]\n- gridcell \"0.116\" [ref=e467] clickable [cursor:pointer]\n- gridcell \"333\" [ref=e468] clickable [cursor:pointer]\n- gridcell \"1,265\" [ref=e469] clickable [cursor:pointer]\n- gridcell \"matched\" [ref=e470] clickable [cursor:pointer]\n- gridcell \"unique source identity\" [ref=e471] clickable [cursor:pointer]\n- gridcell \"0\" [ref=e472] clickable [cursor:pointer]\n- gridcell \"0\" [ref=e473] clickable [cursor:pointer]\n- gridcell \"output_packet\" [ref=e474] clickable [cursor:pointer]\n- gridcell \"application_harness\" [ref=e475] clickable [cursor:pointer]\n- gridcell \"1,175\" [ref=e476] clickable [cursor:pointer]\n- gridcell \"0.108\" [ref=e477] clickable [cursor:pointer]\n- gridcell \"0.108\" [ref=e478] clickable [cursor:pointer]\n- gridcell \"187\" [ref=e479] clickable [cursor:pointer]\n- gridcell \"1,175\" [ref=e480] clickable [cursor:pointer]\n- gridcell \"matched\" [ref=e481] clickable [cursor:pointer]\n- gridcell \"unique source identity\" [ref=e482] clickable [cursor:pointer]\n- gridcell \"-60\" [ref=e483] clickable [cursor:pointer]\n- gridcell \"-4.858\" [ref=e484] clickable [cursor:pointer]\n- gridcell \"_printf_i\" [ref=e485] clickable [cursor:pointer]\n- gridcell \"runtime_library\" [ref=e486] clickable [cursor:pointer]\n- gridcell \"1,081\" [ref=e487] clickable [cursor:pointer]\n- gridcell \"0.099\" [ref=e488] clickable [cursor:pointer]\n- gridcell \"0.099\" [ref=e489] clickable [cursor:pointer]\n- gridcell \"212\" [ref=e490] clickable [cursor:pointer]\n- gridcell \"1,081\" [ref=e491] clickable [cursor:pointer]\n- gridcell \"matched\" [ref=e492] clickable [cursor:pointer]\n- gridcell \"unique source identity\" [ref=e493] clickable [cursor:pointer]\n- gridcell \"0\" [ref=e494] clickable [cursor:pointer]\n- gridcell \"0\" [ref=e495] clickable [cursor:pointer]\n- heading \"點選函式，查看 PC 與來源\" [level=2, ref=e5]\n- columnheader \"PC\" [ref=e507]\n- columnheader \"Self instructions\" [ref=e508]\n- columnheader \"Memory cycles\" [ref=e509]\n- generic [ref=e22] focusable [tabindex]\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "screenshot",
+      "--full",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/local/c2a-csv-20261023/fast-c1-server/screenshots/01-overview.png"
+    ],
+    "exit": 0,
+    "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/local/c2a-csv-20261023/fast-c1-server/screenshots/01-overview.png\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#rank-chart\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/hotspot.html\",\"result\":{\"interrupted\":false}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "hover",
+      "#rank-chart svg path[fill=\"#326c89\"]"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "screenshot",
+      "--full",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/local/c2a-csv-20261023/fast-c1-server/screenshots/02-hover.png"
+    ],
+    "exit": 0,
+    "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/local/c2a-csv-20261023/fast-c1-server/screenshots/02-hover.png\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#family\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/hotspot.html\",\"result\":{\"interrupted\":false}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "select",
+      "#family",
+      "b2"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "wait",
+      "--fn",
+      "window.hotspotReady === true"
+    ],
+    "exit": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#quality\").textContent"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/hotspot.html\",\"result\":\"exact\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#context\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/hotspot.html\",\"result\":{\"interrupted\":false}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "select",
+      "#context",
+      "task:2148022416"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "wait",
+      "--fn",
+      "window.hotspotReady === true"
+    ],
+    "exit": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#function-query\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/hotspot.html\",\"result\":{\"interrupted\":false}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "fill",
+      "#function-query",
+      "tcp_"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "wait",
+      "--fn",
+      "window.hotspotReady === true"
+    ],
+    "exit": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\".tabulator-col[tabulator-field=\\\"value\\\"]\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/hotspot.html\",\"result\":{\"interrupted\":false}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "click",
+      ".tabulator-col[tabulator-field=\"value\"]"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "screenshot",
+      "--full",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/local/c2a-csv-20261023/fast-c1-server/screenshots/03-context-filter.png"
+    ],
+    "exit": 0,
+    "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/local/c2a-csv-20261023/fast-c1-server/screenshots/03-context-filter.png\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#csv\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/hotspot.html\",\"result\":{\"interrupted\":false}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#csv\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/hotspot.html\",\"result\":{\"interrupted\":false}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "click",
+      "#csv"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#top-n\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/hotspot.html\",\"result\":{\"interrupted\":false}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "select",
+      "#top-n",
+      "20"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "wait",
+      "--fn",
+      "window.hotspotReady === true"
+    ],
+    "exit": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#csv\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/hotspot.html\",\"result\":{\"interrupted\":false}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#csv\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/hotspot.html\",\"result\":{\"interrupted\":false}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "click",
+      "#csv"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#functions-table .tabulator-row .tabulator-cell[tabulator-field=\\\"name\\\"]\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/hotspot.html\",\"result\":{\"interrupted\":false}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "click",
+      "#functions-table .tabulator-row .tabulator-cell[tabulator-field=\"name\"]"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelectorAll(\"#pc-table .tabulator-row\").length"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/hotspot.html\",\"result\":20},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelectorAll(\"#pc-table .tabulator-col[tabulator-field]\").length"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/hotspot.html\",\"result\":3},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#pc-table .tabulator-row .tabulator-cell[tabulator-field=\\\"pc_hex\\\"]\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/hotspot.html\",\"result\":{\"interrupted\":false}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "click",
+      "#pc-table .tabulator-row .tabulator-cell[tabulator-field=\"pc_hex\"]"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#source-evidence\").textContent"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/hotspot.html\",\"result\":\"{\\n  \\\"pc\\\": \\\"0x80006500\\\",\\n  \\\"frames\\\": [\\n    {\\n      \\\"function\\\": \\\"tcp_input\\\",\\n      \\\"location\\\": \\\"/poc/references/tcp/lwip/src/core/tcp_in.c:135\\\"\\n    }\\n  ],\\n  \\\"elf_sha256\\\": \\\"a549e6d500b5996a2fe944e544c8086b1000fabfd3aa32fdd8b6d35fd191b2bd\\\"\\n}\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "screenshot",
+      "--full",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/local/c2a-csv-20261023/fast-c1-server/screenshots/04-pc-source.png"
+    ],
+    "exit": 0,
+    "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/local/c2a-csv-20261023/fast-c1-server/screenshots/04-pc-source.png\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#functions-table .tabulator-col[tabulator-field=\\\"name\\\"]\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/hotspot.html\",\"result\":{\"interrupted\":false}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "(()=>{const e=document.querySelector(\"#functions-table .tabulator-col[tabulator-field=name]\"),r=e.getBoundingClientRect();return {x:r.right-2,y:r.top+r.height/2,width:r.width}})()"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/hotspot.html\",\"result\":{\"width\":278,\"x\":363,\"y\":525.453125}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "mouse",
+      "move",
+      "363",
+      "525"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "mouse",
+      "down",
+      "left"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "mouse",
+      "move",
+      "408",
+      "525"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "mouse",
+      "up",
+      "left"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#functions-table .tabulator-col[tabulator-field=name]\").getBoundingClientRect().width"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/hotspot.html\",\"result\":323},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "Array.from(document.querySelectorAll(\"#functions-table .tabulator-col[tabulator-field]\")).map(e=>e.getAttribute(\"tabulator-field\"))"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/hotspot.html\",\"result\":[\"name\",\"role\",\"value\",\"run_percent\",\"filtered_percent\",\"instructions\",\"memory_cycles\",\"pair_status\",\"pair_reason\",\"delta\",\"delta_percent\"]},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "(()=>{const r=document.querySelector(\"#functions-table .tabulator-col[tabulator-field=name]\").getBoundingClientRect();return {x:r.left+40,y:r.top+r.height/2}})()"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/hotspot.html\",\"result\":{\"x\":126.390625,\"y\":525.453125}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "mouse",
+      "move",
+      "126",
+      "525"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "mouse",
+      "down",
+      "left"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "wait",
+      "--fn",
+      "Boolean(document.querySelector(\".tabulator-moving\"))"
+    ],
+    "exit": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "(()=>{const r=document.querySelector(\"#functions-table .tabulator-col[tabulator-field=value]\").getBoundingClientRect();return {x:r.right-15,y:r.top+r.height/2}})()"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/hotspot.html\",\"result\":{\"x\":676.390625,\"y\":525.453125}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "mouse",
+      "move",
+      "676",
+      "525"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "mouse",
+      "up",
+      "left"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "Array.from(document.querySelectorAll(\"#functions-table .tabulator-col[tabulator-field]\")).map(e=>e.getAttribute(\"tabulator-field\"))"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/hotspot.html\",\"result\":[\"role\",\"value\",\"name\",\"run_percent\",\"filtered_percent\",\"instructions\",\"memory_cycles\",\"pair_status\",\"pair_reason\",\"delta\",\"delta_percent\"]},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#metric\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/hotspot.html\",\"result\":{\"interrupted\":false}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "select",
+      "#metric",
+      "misses"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "wait",
+      "--fn",
+      "window.hotspotReady === true"
+    ],
+    "exit": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#cache-level\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/hotspot.html\",\"result\":{\"interrupted\":false}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "select",
+      "#cache-level",
+      "l2"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "wait",
+      "--fn",
+      "window.hotspotReady === true"
+    ],
+    "exit": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "screenshot",
+      "--full",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/local/c2a-csv-20261023/fast-c1-server/screenshots/05-misses.png"
+    ],
+    "exit": 0,
+    "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/local/c2a-csv-20261023/fast-c1-server/screenshots/05-misses.png\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#function-query\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/hotspot.html\",\"result\":{\"interrupted\":false}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "fill",
+      "#function-query",
+      "no_such_function_0123"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "wait",
+      "--fn",
+      "window.hotspotReady === true"
+    ],
+    "exit": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#hotspot-status\").textContent"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/hotspot.html\",\"result\":\"A02-pbuf-b2-1-1 · 0 個函式 · injected_model · l2.misses\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelectorAll(\"#pc-table .tabulator-row\").length"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/hotspot.html\",\"result\":0},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#family\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/hotspot.html\",\"result\":{\"interrupted\":false}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "select",
+      "#family",
+      "b1"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "wait",
+      "--fn",
+      "window.hotspotReady === true"
+    ],
+    "exit": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#context\").value"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/hotspot.html\",\"result\":\"all\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#workload\").scrollIntoView({block:\"center\"})"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/hotspot.html\",\"result\":{\"interrupted\":false}},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "select",
+      "#workload",
+      "A08"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "wait",
+      "--fn",
+      "window.hotspotReady === true"
+    ],
+    "exit": 0,
+    "stdout": "true\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.querySelector(\"#hotspot-status\").textContent"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/hotspot.html\",\"result\":\"A08-pbuf-b1-1-1 · 115 個函式 · injected_model · l2.misses\"},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "set",
+      "viewport",
+      "390",
+      "844"
+    ],
+    "exit": 0,
+    "stdout": "✓ Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "document.documentElement.scrollWidth <= innerWidth"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/hotspot.html\",\"result\":true},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "screenshot",
+      "--full",
+      "/Users/swchen.tw/git/percepio/poc/artifacts/local/c2a-csv-20261023/fast-c1-server/screenshots/06-mobile.png"
+    ],
+    "exit": 0,
+    "stdout": "✓ Screenshot saved to /Users/swchen.tw/git/percepio/poc/artifacts/local/c2a-csv-20261023/fast-c1-server/screenshots/06-mobile.png\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "--json",
+      "performance.getEntriesByType(\"resource\").map(r=>r.name)"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"origin\":\"http://127.0.0.1:8016/hotspot.html\",\"result\":[\"http://127.0.0.1:8016/assets/hotspot.css\",\"http://127.0.0.1:8016/assets/hotspot.js\",\"http://127.0.0.1:8016/api/hotspots\",\"http://127.0.0.1:8016/api/hotspots/A02\",\"http://127.0.0.1:8016/api/hotspots/A08\"]},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "errors",
+      "--json"
+    ],
+    "exit": 0,
+    "stdout": "{\"success\":true,\"data\":{\"errors\":[]},\"error\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "close"
+    ],
+    "exit": 0,
+    "stdout": "✓ Browser closed\n",
+    "stderr": ""
+  }
+]

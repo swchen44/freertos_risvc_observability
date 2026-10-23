@@ -1,0 +1,6 @@
+test_connection_failure_never_launches_diagnostic_browser (tests.unit.test_browser_preflight.BrowserPreflightTests.test_connection_failure_never_launches_diagnostic_browser) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.578s
+
+OK

@@ -1,6 +1,8 @@
 # PSF Lab 實作計畫入口
 
-最新接續提案：[11 下一輪 Cache／TCP 研究](11-next-cache-research.md)。此處舊 M1～M3 計畫保留歷史；順序已確認 A → B → C，尚未開始新實作。
+最新： [C2a完整驗收](../event-window-dashboard.md)與[release收據](../../artifacts/verification/event-window/release-20261023/README.md)。C2b仍未開始；[下一階段clock-anchor提案](19-c2b-clock-anchor-pilot.md)先盤點實際API，不預設可用clock。
+
+歷史提案：[11 下一輪 Cache／TCP 研究](11-next-cache-research.md)。此處舊 M1～M3 計畫保留歷史；順序已確認A→B→C；A、B、C1、C2a現已完成，以下舊計畫保留歷史。
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 

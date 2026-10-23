@@ -1,0 +1,200 @@
+{
+  "passed": true,
+  "scope": "C2a local acceptance; publication pending",
+  "source_commit": "c423354fded7549573cb737e4a7e021d26efa577",
+  "dataset": {
+    "passed": true,
+    "runs": 40,
+    "chunks": 18753,
+    "events": 19177626,
+    "workloads": {
+      "A01": 2,
+      "A02": 14,
+      "A03": 2,
+      "A04": 2,
+      "A05": 2,
+      "A06": 2,
+      "A07": 2,
+      "A08": 14
+    }
+  },
+  "offline": {
+    "passed": true,
+    "files": [
+      {
+        "workload": "A01",
+        "bytes": 7558076,
+        "runs": 2,
+        "sha256": "9f5e8b102f259e33497f4ec2013918ae90bb148cbe03c12274f08c0836412b75"
+      },
+      {
+        "workload": "A02",
+        "bytes": 13044804,
+        "runs": 14,
+        "sha256": "332a7feaf9a67976097f4c308b2c7c4217d5fe6d948381ca7a09db29ea309ced"
+      },
+      {
+        "workload": "A03",
+        "bytes": 7555872,
+        "runs": 2,
+        "sha256": "6d6755feddf738c43896dd7b01d478004debbb0256e3a6ec4f825d54a8b63df4"
+      },
+      {
+        "workload": "A04",
+        "bytes": 7560716,
+        "runs": 2,
+        "sha256": "688bc0c7c182a7e1bbf4dd452882de3a947af098a929571244fdcf7e7fc135a1"
+      },
+      {
+        "workload": "A05",
+        "bytes": 7800174,
+        "runs": 2,
+        "sha256": "2e2ffd81a09e54b619b7a089957e967f4035987b646bbe2c64d6bc343c64e164"
+      },
+      {
+        "workload": "A06",
+        "bytes": 8007776,
+        "runs": 2,
+        "sha256": "7cebdc019e0dc06b60709d029a7fe9a5e58b373b3ae249af4ff28537052c0e43"
+      },
+      {
+        "workload": "A07",
+        "bytes": 7792952,
+        "runs": 2,
+        "sha256": "33a33f7b730c672c5798df8a596407a94139ffd6a9a093fbad2f1baedd63625f"
+      },
+      {
+        "workload": "A08",
+        "bytes": 16958636,
+        "runs": 14,
+        "sha256": "729e5603177685e531de695c814d719eda3947d6117e98cf99d0d0294873b32d"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "case": "fast-A08-server",
+      "scope": "full-interactions",
+      "ready_seconds": 13.834713833988644,
+      "filter_seconds": 3.079298166994704,
+      "rss_kib": 514688,
+      "passed": true,
+      "source_commit": "c423354fded7549573cb737e4a7e021d26efa577",
+      "browser_session": "c2a-verify-99816-51ec5f22",
+      "offline_html_sha256": null
+    },
+    {
+      "case": "fast-A02-server",
+      "scope": "full-interactions",
+      "ready_seconds": 10.664004833000945,
+      "filter_seconds": 2.4368881249974947,
+      "rss_kib": 501392,
+      "passed": true,
+      "source_commit": "c423354fded7549573cb737e4a7e021d26efa577",
+      "browser_session": "c2a-verify-592-63c26ebd",
+      "offline_html_sha256": null
+    },
+    {
+      "case": "fast-A08-offline",
+      "scope": "full-interactions",
+      "ready_seconds": 4.424182791990461,
+      "filter_seconds": 3.30877595799393,
+      "rss_kib": 585024,
+      "passed": true,
+      "source_commit": "c423354fded7549573cb737e4a7e021d26efa577",
+      "browser_session": "c2a-verify-1712-2026e955",
+      "offline_html_sha256": "729e5603177685e531de695c814d719eda3947d6117e98cf99d0d0294873b32d"
+    },
+    {
+      "case": "fast-A02-offline",
+      "scope": "full-interactions",
+      "ready_seconds": 3.5991701250022743,
+      "filter_seconds": 2.73287416700623,
+      "rss_kib": 614928,
+      "passed": true,
+      "source_commit": "c423354fded7549573cb737e4a7e021d26efa577",
+      "browser_session": "c2a-verify-2167-61f70a65",
+      "offline_html_sha256": "332a7feaf9a67976097f4c308b2c7c4217d5fe6d948381ca7a09db29ea309ced"
+    },
+    {
+      "case": "fast-A01-offline-capacity",
+      "scope": "capacity-only",
+      "ready_seconds": 3.674686082988046,
+      "filter_seconds": 2.269765874982113,
+      "rss_kib": 485104,
+      "passed": true,
+      "source_commit": "c423354fded7549573cb737e4a7e021d26efa577",
+      "browser_session": "c2a-verify-2632-a9d71a50",
+      "offline_html_sha256": "9f5e8b102f259e33497f4ec2013918ae90bb148cbe03c12274f08c0836412b75"
+    },
+    {
+      "case": "fast-A03-offline-capacity",
+      "scope": "capacity-only",
+      "ready_seconds": 3.8811858749832027,
+      "filter_seconds": 2.595609250012785,
+      "rss_kib": 437920,
+      "passed": true,
+      "source_commit": "c423354fded7549573cb737e4a7e021d26efa577",
+      "browser_session": "c2a-verify-2697-3747edfa",
+      "offline_html_sha256": "6d6755feddf738c43896dd7b01d478004debbb0256e3a6ec4f825d54a8b63df4"
+    },
+    {
+      "case": "fast-A04-offline-capacity",
+      "scope": "capacity-only",
+      "ready_seconds": 3.6584388749906793,
+      "filter_seconds": 2.293352833017707,
+      "rss_kib": 477552,
+      "passed": true,
+      "source_commit": "c423354fded7549573cb737e4a7e021d26efa577",
+      "browser_session": "c2a-verify-2765-5d89b833",
+      "offline_html_sha256": "688bc0c7c182a7e1bbf4dd452882de3a947af098a929571244fdcf7e7fc135a1"
+    },
+    {
+      "case": "fast-A05-offline-capacity",
+      "scope": "capacity-only",
+      "ready_seconds": 3.5130862920195796,
+      "filter_seconds": 2.293846582993865,
+      "rss_kib": 481200,
+      "passed": true,
+      "source_commit": "c423354fded7549573cb737e4a7e021d26efa577",
+      "browser_session": "c2a-verify-2828-a589c047",
+      "offline_html_sha256": "2e2ffd81a09e54b619b7a089957e967f4035987b646bbe2c64d6bc343c64e164"
+    },
+    {
+      "case": "fast-A06-offline-capacity",
+      "scope": "capacity-only",
+      "ready_seconds": 3.751226166001288,
+      "filter_seconds": 2.411535040999297,
+      "rss_kib": 481552,
+      "passed": true,
+      "source_commit": "c423354fded7549573cb737e4a7e021d26efa577",
+      "browser_session": "c2a-verify-2902-c4024a9a",
+      "offline_html_sha256": "7cebdc019e0dc06b60709d029a7fe9a5e58b373b3ae249af4ff28537052c0e43"
+    },
+    {
+      "case": "fast-A07-offline-capacity",
+      "scope": "capacity-only",
+      "ready_seconds": 3.4230290410050657,
+      "filter_seconds": 2.299376625014702,
+      "rss_kib": 483216,
+      "passed": true,
+      "source_commit": "c423354fded7549573cb737e4a7e021d26efa577",
+      "browser_session": "c2a-verify-2966-8a2a91d8",
+      "offline_html_sha256": "33a33f7b730c672c5798df8a596407a94139ffd6a9a093fbad2f1baedd63625f"
+    }
+  ],
+  "python_tests": 328,
+  "node_tests": 25,
+  "playwright_tests": 11,
+  "expected_failure_closed": true,
+  "tcp_faults_passed": true,
+  "limits": {
+    "ready_seconds": 25,
+    "filter_seconds": 5,
+    "rss_mib": 640,
+    "heap_mib": 128,
+    "html_mib": 95,
+    "bins": 512
+  },
+  "c2b_started": false
+}

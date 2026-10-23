@@ -1,0 +1,36 @@
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tools/tcp/verify_event_window_dashboard.py", line 652, in <module>
+    verify(
+    ~~~~~~^
+        a.mode,
+        ^^^^^^^
+    ...<6 lines>...
+        a.workload,
+        ^^^^^^^^^^^
+    )
+    ^
+  File "/Users/swchen.tw/git/percepio/poc/tools/tcp/verify_event_window_dashboard.py", line 549, in verify
+    choose("#run", f"{workload}-pbuf-b2-1-1")
+    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/swchen.tw/git/percepio/poc/tools/tcp/verify_event_window_dashboard.py", line 212, in choose
+    wait()
+    ~~~~^^
+  File "/Users/swchen.tw/git/percepio/poc/tools/tcp/verify_event_window_dashboard.py", line 196, in wait
+    ab("wait", "--fn", "window.eventWindowReady === true")
+    ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/swchen.tw/git/percepio/poc/tools/tcp/verify_event_window_dashboard.py", line 185, in ab
+    p = subprocess.run(command + list(args), capture_output=True, text=True, timeout=50)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/subprocess.py", line 558, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/subprocess.py", line 1221, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/subprocess.py", line 2131, in _communicate
+    self._check_timeout(endtime, orig_timeout, stdout, stderr)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/subprocess.py", line 1265, in _check_timeout
+    raise TimeoutExpired(
+    ...<2 lines>...
+            stderr=b''.join(stderr_seq) if stderr_seq else None)
+subprocess.TimeoutExpired: Command '['agent-browser', '--session', 'c2a-verify-96206-768b19e5', 'wait', '--fn', 'window.eventWindowReady === true']' timed out after 50 seconds

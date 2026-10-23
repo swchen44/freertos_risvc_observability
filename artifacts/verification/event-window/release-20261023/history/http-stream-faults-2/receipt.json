@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "synthetic_fixture": true,
+  "cases": [
+    {
+      "name": "valid",
+      "exit": 0,
+      "status": "200",
+      "stderr": "",
+      "bytes": 139671,
+      "sha256": "5456f8d4ece5be1ffe99afcdf09d5e2b717fd997d99794a0ce7d2acf9aa0c3e9"
+    },
+    {
+      "name": "late-corruption",
+      "exit": 18,
+      "status": "200",
+      "stderr": "curl: (18) transfer closed with outstanding read data remaining\n",
+      "bytes": 131486,
+      "sha256": "3637aba816b0a3a0498f82b09b5e16ac4c8d1617f31f528c27dea835f88a64f9"
+    },
+    {
+      "name": "first-corruption",
+      "exit": 0,
+      "status": "503",
+      "stderr": "",
+      "bytes": 34,
+      "sha256": "41f072a82298383c83139e0b15e2fff8912d3f41e7753069e6f9444ac102cf8e"
+    }
+  ],
+  "server_stopped": true
+}

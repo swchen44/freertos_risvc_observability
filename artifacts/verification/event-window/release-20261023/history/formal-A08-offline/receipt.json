@@ -1,0 +1,88 @@
+{
+  "passed": false,
+  "scope": "full-interactions",
+  "rss_limit_mib": 640,
+  "mode": "offline",
+  "diagnostic_csv": false,
+  "workload": "A08",
+  "acceptance_case": {
+    "run_id": "A08-baseline-b1-1-1",
+    "events": 610577,
+    "memory_cycles": 1537544
+  },
+  "sample_interval_seconds": 0.2,
+  "harness_sha256": "528c1ad66c20936ceb158330fa4a6467a5b6b7468949fa41d5d7e6c20b848f5b",
+  "source_commit": "a30c7f45e7cdd00d41734fc84c4be347b92e371c",
+  "offline_html_sha256": "15196e3d5efac4d12627064cf7e9a3d1568047e87bbd51ce809f30b9d7a6981d",
+  "browser_executable": "/Users/swchen.tw/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+  "ready_seconds": 5.230887666009949,
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36",
+  "heap_initial": 27600000,
+  "filter_seconds": 6.479332707996946,
+  "heap_after": 27600000,
+  "zoom": {
+    "start": "87390",
+    "end": "610577",
+    "oracle": {
+      "events": 523187,
+      "instructions": 422247,
+      "memory_cycles": 1286260,
+      "l1i.misses": 1492,
+      "l1d.misses": 439,
+      "l2.misses": 605
+    }
+  },
+  "full_csv": {
+    "rows": 610577,
+    "memory_cycles": 1537544,
+    "bytes": 104929344
+  },
+  "export_cancel_retry": true,
+  "cancel_progress": 0.023450586264656615,
+  "function_csv_oracle": {
+    "passed": true,
+    "groups": 20
+  },
+  "column_resize": {
+    "before": 198,
+    "after": 243
+  },
+  "column_order": {
+    "before": [
+      "name",
+      "role",
+      "value",
+      "run_denominator",
+      "filtered_denominator",
+      "instructions",
+      "memory_cycles"
+    ],
+    "after": [
+      "role",
+      "value",
+      "name",
+      "run_denominator",
+      "filtered_denominator",
+      "instructions",
+      "memory_cycles"
+    ]
+  },
+  "empty_views_cleared": true,
+  "interval_oracle": {
+    "events": 19556,
+    "instructions": 13206,
+    "memory_cycles": 77153,
+    "l1i.misses": 771,
+    "l1d.misses": 12,
+    "l2.misses": 225
+  },
+  "event_csv_rows": 1038,
+  "interactions_passed": true,
+  "resources": [],
+  "errors": [],
+  "browser_started": true,
+  "close_exit": 0,
+  "remaining_browser_pids": [],
+  "sampled_peak_rss_kib": 507008,
+  "capacity_passed": false
+}

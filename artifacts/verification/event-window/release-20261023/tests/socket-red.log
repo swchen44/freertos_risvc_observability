@@ -1,0 +1,54 @@
+test_late_corruption_cannot_look_like_successful_download (tests.integration.test_csv_stream_socket.CsvStreamSocketTests.test_late_corruption_cannot_look_like_successful_download) ... FAIL
+
+======================================================================
+FAIL: test_late_corruption_cannot_look_like_successful_download (tests.integration.test_csv_stream_socket.CsvStreamSocketTests.test_late_corruption_cannot_look_like_successful_download)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/integration/test_csv_stream_socket.py", line 31, in test_late_corruption_cannot_look_like_successful_download
+    self.assertEqual(process.returncode, 0, process.stderr[-3000:])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 1 != 0 :  _send)
+  File "/Users/swchen.tw/git/percepio/poc/.venv/lib/python3.13/site-packages/fastapi/telemetry/_asgi.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/swchen.tw/git/percepio/poc/.venv/lib/python3.13/site-packages/starlette/middleware/base.py", line 202, in __call__
+    raise app_exc
+  File "/Users/swchen.tw/git/percepio/poc/.venv/lib/python3.13/site-packages/starlette/middleware/base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/Users/swchen.tw/git/percepio/poc/src/psf_lab/server.py", line 66, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/swchen.tw/git/percepio/poc/.venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/swchen.tw/git/percepio/poc/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/swchen.tw/git/percepio/poc/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/swchen.tw/git/percepio/poc/.venv/lib/python3.13/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/swchen.tw/git/percepio/poc/.venv/lib/python3.13/site-packages/starlette/routing.py", line 676, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/swchen.tw/git/percepio/poc/.venv/lib/python3.13/site-packages/fastapi/routing.py", line 2786, in app
+    await route.handle(scope, receive, send)
+  File "/Users/swchen.tw/git/percepio/poc/.venv/lib/python3.13/site-packages/fastapi/routing.py", line 1310, in handle
+    await super().handle(scope, receive, send)
+  File "/Users/swchen.tw/git/percepio/poc/.venv/lib/python3.13/site-packages/starlette/routing.py", line 282, in handle
+    await self.app(scope, receive, send)
+  File "/Users/swchen.tw/git/percepio/poc/.venv/lib/python3.13/site-packages/fastapi/routing.py", line 165, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/swchen.tw/git/percepio/poc/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 56, in wrapped_app
+    raise RuntimeError("Caught handled exception, but response already started.") from exc
+RuntimeError: Caught handled exception, but response already started.
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tools/tcp/verify_csv_stream_faults.py", line 127, in <module>
+    main()
+    ~~~~^^
+  File "/Users/swchen.tw/git/percepio/poc/tools/tcp/verify_csv_stream_faults.py", line 104, in main
+    assert case["status"] == "200" and case["exit"] in (18, 56) and len(data) > 0
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+
+
+----------------------------------------------------------------------
+Ran 1 test in 2.207s
+
+FAILED (failures=1)

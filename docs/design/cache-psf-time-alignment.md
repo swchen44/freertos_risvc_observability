@@ -1,6 +1,6 @@
 # C2：Cache 與 PSF 時間對齊研究草案
 
-日期：2026-10-13。狀態：**已盤點現有程式碼；使用者已選 A 分階段；C2a 計畫待審閱，尚未實作或新增 capture。**
+日期：2026-10-13，更新2026-10-23。狀態：**C2a已完成本機驗收，固定C1的40份來源轉成完整chunks／8HTML；C2b clock-anchor尚未開始。**
 
 ## 目的與承接範圍
 
@@ -38,7 +38,7 @@ mtime 粒度是時鐘量化，不是整體對齊誤差上限。500 MHz 的 2 ns/
 
 重播 raw access 時持續維護完整 cache 狀態，產生索引或可重播的區段資料。選取 [start_index, end_index) 只影響加總與展示，不能在區間開頭重置 cache。完整 raw 保留，UI 分桶只影響畫圖，不截斷 CSV 或改分母。
 
-保留事件序號、I/R/W、PC、context、五種成本與 3C 類型；大整數序號與 ns 採字串傳輸，避免 JavaScript 精度損失。資料量和輸出 schema 需在實作計畫前用既有 A02 盤點，尚未選擇將全量逐列資料嵌入 HTML。離線容量若不適合，必須提出可保留完整分析能力的替代設計，不能靜默裁剪。
+保留事件序號、I/R/W、PC、context、五種成本與 3C 類型；大整數序號與 ns 採字串傳輸，避免 JavaScript 精度損失。已選擇每workload完整gzip chunks嵌入單檔HTML，8份均已驗收；詳細結果見[正式報告](../event-window-dashboard.md)。離線容量若不適合，必須提出可保留完整分析能力的替代設計，不能靜默裁剪。
 
 UI 顯示 event-index 軸與選取範圍；PSF 獨立呈現自己的 clock 軸。未驗證映射時，不連動兩個軸的拖曳或宣稱同時發生。函式比較沿用 C1 的保守配對，PC 仍限制在各自 ELF。
 
@@ -75,10 +75,10 @@ flowchart TD
 
 完成：來源盤點、clock／event-index 語意區分、三方案比較、低記憶體瀏覽器驗收要求。
 
-已決定：採用 A，C2a 事件序號區間先做，C2b clock-anchor pilot 接續。詳細 schema、分塊策略與容量 gate 見 [C2a 實作計畫](../plans/14-event-window-dashboard.md)。本草案不代表允許使用推測 timestamp，也不代表 C2 已實作。
+已決定：採用 A，C2a 事件序號區間先做，C2b clock-anchor pilot 接續。詳細 schema、分塊策略與容量 gate 見 [C2a 實作計畫](../plans/14-event-window-dashboard.md)。本草案不代表允許使用推測 timestamp，C2a已完成，C2b仍未實作。
 
 ## A 的資料盤點與分塊設計
 
-40 份保存報告合計 19,177,626 筆事件，單份 419,022–610,577 筆；A02 raw CSV 單份 15,117,683–15,525,597 bytes。這是輸入盤點，尚未量測新增欄位後的 HTML 或 browser memory；[原始盤點收據](../../artifacts/verification/event-window/planning/input-inventory.json)。
+40 份保存報告合計 19,177,626 筆事件，單份 419,022–610,577 筆；A02 raw CSV 單份 15,117,683–15,525,597 bytes。這是實作前輸入盤點；後續HTML／browser量測見正式報告；[原始盤點收據](../../artifacts/verification/event-window/planning/input-inventory.json)。
 
 C2a 每1024列 gzip JSON 分塊，所有塊完整放入每 workload 的單檔HTML；Worker 逐塊驗證和加總，最多同時保留兩個解碼塊，主執行緒只持有圖表桶與函式摘要。整數以字串傳輸、BigInt計算。保留精確區間輸入和完整CSV，圖表分桶不改原始數值。容量 gate 或 browser 支援不符就停止擴大正式資料，保存量測後修訂設計。

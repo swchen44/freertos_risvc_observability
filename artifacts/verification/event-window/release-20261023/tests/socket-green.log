@@ -1,0 +1,9 @@
+/Users/swchen.tw/git/percepio/poc/.venv/lib/python3.13/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_late_corruption_cannot_look_like_successful_download (tests.integration.test_csv_stream_socket.CsvStreamSocketTests.test_late_corruption_cannot_look_like_successful_download) ... ok
+test_fixed_routes_corruption_and_unknown (tests.integration.test_event_window_api.EventApiTests.test_fixed_routes_corruption_and_unknown) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.803s
+
+OK

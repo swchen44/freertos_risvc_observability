@@ -1,0 +1,12 @@
+{
+  "platform": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+  "python": "3.13.2",
+  "node": "v26.0.0",
+  "agent_browser": "agent-browser 0.26.0",
+  "packages": {
+    "fastapi": "0.136.1",
+    "starlette": "0.46.1",
+    "uvicorn": "0.34.0",
+    "httpx": "0.28.1"
+  }
+}

@@ -1,6 +1,33 @@
 # FreeRTOS／RISC-V PSF POC
 
-> **2026-10-23 最新進度：** 時間最佳化、Python320／Node22／Ruff通過，離線完整驗收通過；Web完整CSV RSS650.36MiB仍超過640，整體partial。正式40／8HTML尚未生成。[最新報告、截圖與後續計畫](docs/event-window-dashboard.md)。下方為歷史checkpoint。
+## C2a 正式本機驗收 · 2026-10-23
+
+40 runs／8份離線HTML已完成並通過本機驗收，資料與C1完整facts相符；Python328、Node25、Playwright11、Ruff、curl及agent-browser均有可複查證據。固定L1I8KiB／L1D8KiB／L232KiB。C2b時間對齊尚未開始。
+
+[操作／實驗報告](docs/event-window-dashboard.md)｜[正式收據與還原](artifacts/verification/event-window/release-20261023/README.md)｜[完整checklist](docs/plans/14-event-window-dashboard.md)｜[Web串流計畫](docs/plans/17-c2a-http-csv-stream.md)｜[CPU成本對照](docs/plans/18-c2a-large-run-cost.md)
+
+| 位置 | 用途／重要檔案 |
+|---|---|
+| `artifacts/verification/event-window/formal/` | 正式40-run catalog、manifest、18753個gzip chunks、facts與來源/完整比對收據 |
+| `artifacts/offline/event-window/` | A01～A08單檔HTML、來源/assets/output SHA receipts，直接開即可 |
+| `artifacts/verification/event-window/release-20261023/` | 最新E2E、curl、CSV、screenshots、TCP faults、versions、source/tested commit、發布收據 |
+| `.../csv-memory-20261023/`、`.../perf-final-20261023/` | 成功/失敗與已撤回實驗、原始對照、舊HTML復原資料 |
+| `src/psf_lab/event_window.py`、`server.py` | 分塊/驗證、bounded HTTP CSV API；沒有更改FreeRTOS/QEMU/PSF |
+| `tools/tcp/`、`tests/`、`web/tests/` | 生成、HTML匯出、串流/生命週期/容量與socket回歸 |
+| `docs/` | 研究、需求、設計、已核准計畫與後續工作；原研究入口在`docs/research/README.md` |
+
+Web：先`npm --prefix web run build`，再`PYTHONPATH=src .venv/bin/python -m psf_lab serve --port 8017`，確認curl API回200後開`http://127.0.0.1:8017/event-window.html`。依賴安裝與內網還原沿用既有setup文件。
+
+Offline：開[ A08.html ](artifacts/offline/event-window/A08.html)或同目錄其他workload；不用Python或網路。保留全部事件，表格分頁不限制CSV。Web先驗證再HTTP下載；下載列可取消原生下載。
+
+![Web A08](artifacts/verification/event-window/release-20261023/ui/fast-A08-server/screenshots/01-overview.png)
+
+![Offline hover](artifacts/verification/event-window/release-20261023/ui/fast-A08-offline/screenshots/07-hover.png)
+
+RSS上限640MiB、ready25s、filter5s均未放寬；舊失敗仍可查。RSS是host Chrome，不是MCU RAM；相對cache模型不能當實機效能。以下章節保留歷史checkpoint，最新狀態以上述release為準。
+
+
+> **歷史：2026-10-23早期checkpoint：** 時間最佳化、Python320／Node22／Ruff通過，離線完整驗收通過；Web完整CSV RSS650.36MiB仍超過640，整體partial。正式40／8HTML尚未生成。[最新報告、截圖與後續計畫](docs/event-window-dashboard.md)。下方為歷史checkpoint。
 
 ## C1：成本與熱點 Dashboard · 2026-10-13
 

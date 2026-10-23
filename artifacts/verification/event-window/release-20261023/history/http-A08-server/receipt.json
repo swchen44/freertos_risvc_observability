@@ -1,0 +1,42 @@
+{
+  "passed": false,
+  "scope": "full-interactions",
+  "rss_limit_mib": 640,
+  "mode": "server",
+  "diagnostic_csv": false,
+  "workload": "A08",
+  "acceptance_case": {
+    "run_id": "A08-baseline-b1-1-1",
+    "events": 610577,
+    "memory_cycles": 1537544
+  },
+  "sample_interval_seconds": 0.2,
+  "harness_sha256": "794e8b3af1345f13e95bb931a33df179c1f11952025d2798b215fc853dcfd5c5",
+  "source_commit": "579ceafd8090b895ce3bb8de9e033d367995193c",
+  "offline_html_sha256": null,
+  "browser_executable": "/Users/swchen.tw/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+  "ready_seconds": 46.86827662499854,
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36",
+  "heap_initial": 16100000,
+  "filter_seconds": 4.822952415997861,
+  "heap_after": 16100000,
+  "zoom": {
+    "start": "87390",
+    "end": "610577",
+    "oracle": {
+      "events": 523187,
+      "instructions": 422247,
+      "memory_cycles": 1286260,
+      "l1i.misses": 1492,
+      "l1d.misses": 439,
+      "l2.misses": 605
+    }
+  },
+  "failure": "Full CSV download missing",
+  "failure_status": "A08-baseline-b1-1-1 \u00b7 [0, 610577) \u00b7 610577 \u7b46\u4e8b\u4ef6 \u00b7 CSV \u5df2\u4ea4\u7531\u700f\u89bd\u5668\u4e0b\u8f09\uff1b\u53ef\u5728\u4e0b\u8f09\u5217\u53d6\u6d88\u3002",
+  "browser_started": true,
+  "close_exit": 0,
+  "remaining_browser_pids": [],
+  "sampled_peak_rss_kib": 413696,
+  "capacity_passed": false
+}
