@@ -209,3 +209,20 @@ test("canonical numeric wire and header-only empty CSV", async () => {
     m.csvLine([...m.COLUMNS, "context", "function", "role"]),
   );
 });
+
+test("CSV round-trips multiline Unicode, empty function set, and exact event integers", async () => {
+  const { parse } = await import("csv-parse/sync");
+  const { m, manifest, gzip } = await fixture();
+  const value = 'alpha\n臺灣😀,"quoted"';
+  assert.deepEqual(parse(m.csvLine([value])), [[value]]);
+  assert.deepEqual(parse(m.functionsCsv([]), { columns: true }), []);
+  assert.equal(parse(m.functionsCsv([])).length, 1);
+  const pieces = [];
+  await m.queryEventWindow(manifest, async () => gzip, {
+    run_id: "toy", start: "0", end: "3", metric: "memory_cycles",
+    event_offset: "0", event_limit: 1, export_events: true
+  }, x => { if(x.type === "csv") pieces.push(x.text); });
+  const rows = parse(pieces.join(""), { columns: true });
+  assert.equal(rows.length, 3);
+  assert.equal(rows[1].l1i, "9007199254740993");
+});

@@ -58,6 +58,65 @@ def oracle(run_id, start, end, context="", search=""):
     return result
 
 
+def function_csv_oracle(run_id, start, end):
+    manifest = json.loads((BASE / run_id / "manifest.json").read_text())
+    groups = {}
+    for desc in manifest["chunks"]:
+        if int(desc["end"]) <= start or int(desc["start"]) >= end:
+            continue
+        with gzip.open(BASE / run_id / (desc["id"] + ".json.gz"), "rt") as f:
+            rows = json.load(f)["rows"]
+        for row in rows:
+            if not start <= int(row[0]) < end:
+                continue
+            owner = manifest["owners"][int(row[6])]
+            group = groups.setdefault(
+                row[6],
+                dict(
+                    name=owner.get("function") or "unresolved",
+                    role=owner["role"],
+                    instructions=0,
+                    memory_cycles=0,
+                ),
+            )
+            group["instructions"] += int(row[4] == "I")
+            group["memory_cycles"] += sum(map(int, row[7:12]))
+    denominator = sum(g["memory_cycles"] for g in groups.values())
+    return [
+        dict(
+            name=g["name"],
+            role=g["role"],
+            value=str(g["memory_cycles"]),
+            run_denominator=manifest["totals"]["memory_cycles"],
+            filtered_denominator=str(denominator),
+            instructions=str(g["instructions"]),
+            memory_cycles=str(g["memory_cycles"]),
+        )
+        for g in groups.values()
+    ]
+
+
+def acceptance_case(workload):
+    catalog = json.loads((BASE / "catalog.json").read_text())
+    candidates = [r for r in catalog["runs"] if r["workload"] == workload]
+    if workload == "A02":
+        run_id = "A02-baseline-b1-1-1"
+    else:
+        run_id = max(
+            candidates,
+            key=lambda r: int(
+                json.loads((BASE / r["run_id"] / "manifest.json").read_text())["events"]
+            ),
+        )["run_id"]
+    with gzip.open(
+        ROOT / "artifacts/verification/hotspot/formal" / run_id / "report.json.gz", "rt"
+    ) as f:
+        report = json.load(f)
+    return dict(
+        run_id=run_id, events=report["events"], memory_cycles=report["totals"]["memory_cycles"]
+    )
+
+
 def verify(
     mode,
     output,
@@ -66,7 +125,10 @@ def verify(
     capacity_only=False,
     force_failure=False,
     profile_csv=False,
+    workload="A02",
 ):
+    case = acceptance_case(workload)
+    run_id = case["run_id"]
     output.mkdir(parents=True, exist_ok=False)
     shutil.copyfile(__file__, output / "harness.py")
     shots = output / "screenshots"
@@ -83,6 +145,8 @@ def verify(
         "rss_limit_mib": RSS_LIMIT_MIB,
         "mode": mode,
         "diagnostic_csv": profile_csv,
+        "workload": workload,
+        "acceptance_case": case,
         "sample_interval_seconds": 0.2,
         "harness_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         "source_commit": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
@@ -180,8 +244,8 @@ def verify(
             curls = []
             for route, want in [
                 ("api/event-windows", 200),
-                ("api/event-windows/A02-baseline-b1-1-1", 200),
-                ("api/event-windows/A02-baseline-b1-1-1/chunks/000000", 200),
+                (f"api/event-windows/{run_id}", 200),
+                (f"api/event-windows/{run_id}/chunks/000000", 200),
                 ("api/event-windows/unknown", 404),
                 ("event-window.html", 200),
                 ("assets/event-window.js", 200),
@@ -233,13 +297,32 @@ def verify(
             ab("network", "route", "https://**", "--abort")
         ab("set", "viewport", "1600", "1050")
         ab("open", url)
-        wait()
+        ab(
+            "wait",
+            "--fn",
+            f"[...document.querySelector('#workload').options].some(o=>o.value==={json.dumps(workload)})",
+        )
+        if ev("document.querySelector('#workload').value") != workload:
+            ab("select", "#workload", workload)
+        ab(
+            "wait",
+            "--fn",
+            f"[...document.querySelector('#run').options].some(o=>o.value==={json.dumps(run_id)})",
+        )
+        if ev("document.querySelector('#run').value") != run_id:
+            ab("select", "#run", run_id)
+        ab(
+            "wait",
+            "--fn",
+            "window.eventWindowReady===true && "
+            f"window.eventWindowResult?.run_id==={json.dumps(run_id)}",
+        )
         receipt["ready_seconds"] = time.monotonic() - start
         receipt["browser"] = ev("navigator.userAgent")
         receipt["heap_initial"] = ev("performance.memory?.usedJSHeapSize ?? null")
         r = ev("window.eventWindowResult")
-        assert r["event_count"] == "430324"
-        assert r["totals"]["memory_cycles"] == "1088094"
+        assert r["event_count"] == str(case["events"])
+        assert r["totals"]["memory_cycles"] == str(case["memory_cycles"])
         assert ev('document.querySelectorAll("svg").length') == 4
         shot("01-overview")
         stage = "full-run-filter"
@@ -297,7 +380,7 @@ def verify(
             csv_path = output / "full-events.csv"
             click("#events-csv")
             wait()
-            downloaded = downloads / "A02-baseline-b1-1-1-events.csv"
+            downloaded = downloads / f"{run_id}-events.csv"
             deadline = time.monotonic() + 20
             while not downloaded.exists() and time.monotonic() < deadline:
                 time.sleep(0.1)
@@ -317,7 +400,7 @@ def verify(
                     cycles += sum(
                         int(row[k]) for k in ["l1i", "l1d", "l2", "ram_read", "ram_write"]
                     )
-            assert count == 430324 and cycles == 1088094
+            assert count == case["events"] and cycles == case["memory_cycles"]
             receipt["full_csv"] = {
                 "rows": count,
                 "memory_cycles": cycles,
@@ -391,7 +474,15 @@ def verify(
             ab("wait", "--fn", "window.savedCsv.length===2")
             text = ev("window.savedCsv[1]")
             (output / "functions.csv").write_text(text)
-            values = [int(row["value"]) for row in csv.DictReader(io.StringIO(text))]
+            function_rows = list(csv.DictReader(io.StringIO(text)))
+            expected_functions = function_csv_oracle(r["run_id"], 1023, 2061)
+
+            def key(row):
+                return tuple(row[k] for k in sorted(row))
+
+            assert sorted(function_rows, key=key) == sorted(expected_functions, key=key)
+            receipt["function_csv_oracle"] = dict(passed=True, groups=len(function_rows))
+            values = [int(row["value"]) for row in function_rows]
             assert values == sorted(values) or values == sorted(values, reverse=True)
             rect = ev(
                 "(()=>{const e=document.querySelector("
@@ -439,7 +530,7 @@ def verify(
             assert before_order != after_order, "Column reorder did not change DOM order"
             receipt["column_order"] = {"before": before_order, "after": after_order}
 
-            choose("#run", "A02-pbuf-b2-1-1")
+            choose("#run", f"{workload}-pbuf-b2-1-1")
             choose("#context", "task:2148022416") if "task:2148022416" in ev(
                 'Array.from(document.querySelector("#context").options).map(o=>o.value)'
             ) else None
@@ -462,6 +553,14 @@ def verify(
             wait()
             assert ev("window.eventWindowResult.event_count") == "0"
             assert ev('document.querySelectorAll("#event-table .tabulator-row").length') == 0
+            assert ev('document.querySelectorAll("#function-table .tabulator-row").length') == 0
+            assert "篩選已變更" in ev('document.querySelector("#source").textContent')
+            assert ev("window.eventWindowResult.bins.every(b=>b.value==='0' && b.rows==='0')")
+            assert ev("""['event','rank','cost'].every(k=>
+                [...document.querySelectorAll('#'+k+'-chart svg path')]
+                .filter(p=>['#336e86','#078575'].includes(p.getAttribute('fill')))
+                .every(p=>k==='event'?p.getBBox().height===0:p.getBBox().width===0))""")
+            receipt["empty_views_cleared"] = True
             click("#cancel")
             assert not ev("window.eventWindowReady")
             click("#apply")
@@ -529,6 +628,7 @@ if __name__ == "__main__":
     p.add_argument("--capacity-only", action="store_true")
     p.add_argument("--force-failure", action="store_true")
     p.add_argument("--profile-csv", action="store_true")
+    p.add_argument("--workload", choices=["A02", "A08"], default="A02")
     a = p.parse_args()
     print(
         json.dumps(
@@ -540,6 +640,7 @@ if __name__ == "__main__":
                 a.capacity_only,
                 a.force_failure,
                 a.profile_csv,
+                a.workload,
             )
         )
     )

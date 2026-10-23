@@ -1,3 +1,5 @@
+import copy
+import gzip
 import json
 import tempfile
 import unittest
@@ -6,7 +8,7 @@ from unittest.mock import patch
 
 from fastapi.testclient import TestClient
 
-from psf_lab.event_window import BASE, canonical, sha, write_event_chunks
+from psf_lab.event_window import BASE, canonical, encode_chunk, sha, write_event_chunks
 from psf_lab.hotspot_events import iter_hotspot_events
 from psf_lab.server import create_app
 from tests.unit.test_cost_attribution import owner
@@ -47,6 +49,25 @@ class EventApiTests(unittest.TestCase):
                 self.assertEqual(r.content, (folder / "000000.json.gz").read_bytes())
                 self.assertEqual(c.get("/api/event-windows/unknown").status_code, 404)
                 self.assertEqual(c.get("/api/event-windows/%2e%2e%2fsecret").status_code, 404)
+                original = r.content
+                malformed_chunk = json.loads(gzip.decompress(original))
+                malformed_chunk["rows"][0][4] = "Q"
+                encoded = encode_chunk(malformed_chunk)
+                changed = copy.deepcopy(m)
+                changed["chunks"][0].update(encoded["metadata"])
+                altered_raw = canonical(changed)
+                (folder / "000000.json.gz").write_bytes(encoded["gzip"])
+                (folder / "manifest.json").write_bytes(altered_raw)
+                catalog_path = folder.parent / "catalog.json"
+                catalog = json.loads(catalog_path.read_text())
+                catalog["runs"][0]["sha256"] = sha(altered_raw)
+                catalog_path.write_bytes(canonical(catalog))
+                self.assertEqual(
+                    c.get("/api/event-windows/" + rid + "/chunks/000000").status_code, 503
+                )
+                (folder / "manifest.json").write_bytes(raw)
+                catalog["runs"][0]["sha256"] = sha(raw)
+                catalog_path.write_bytes(canonical(catalog))
                 (folder / "000000.json.gz").write_bytes(b"broken")
                 self.assertEqual(
                     c.get("/api/event-windows/" + rid + "/chunks/000000").status_code, 503
