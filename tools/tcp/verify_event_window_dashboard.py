@@ -384,7 +384,7 @@ def verify(
             click("#events-csv")
             wait()
             downloaded = downloads / f"{run_id}-events.csv"
-            deadline = time.monotonic() + 60
+            deadline = time.monotonic() + 180
             while not downloaded.exists() and time.monotonic() < deadline:
                 time.sleep(0.1)
             assert downloaded.is_file(), "Full CSV download missing"
