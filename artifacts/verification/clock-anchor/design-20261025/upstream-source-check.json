@@ -1,0 +1,31 @@
+{
+  "scope": "fixed-revision official source comparison only",
+  "revision": "ae35f033b874c627d81d51070187fbf55f0bf1a7",
+  "records": [
+    {
+      "path": "qemu-options.hx",
+      "url": "https://raw.githubusercontent.com/qemu/qemu/ae35f033b874c627d81d51070187fbf55f0bf1a7/qemu-options.hx",
+      "exit": 0,
+      "bytes": 266348,
+      "sha256": "241f2473acabe78495ffc6f97c0d25fcadbcc3694c1a4eb3f8bb16731105db95",
+      "matches_local_source": true
+    },
+    {
+      "path": "semihosting/config.c",
+      "url": "https://raw.githubusercontent.com/qemu/qemu/ae35f033b874c627d81d51070187fbf55f0bf1a7/semihosting/config.c",
+      "exit": 0,
+      "bytes": 5532,
+      "sha256": "16940b33fb2c7ee7af184efb1d72b0958fa5d8ed7a4b13a1a023e66fdd5ffdbe",
+      "matches_local_source": true
+    },
+    {
+      "path": "semihosting/arm-compat-semi.c",
+      "url": "https://raw.githubusercontent.com/qemu/qemu/ae35f033b874c627d81d51070187fbf55f0bf1a7/semihosting/arm-compat-semi.c",
+      "exit": 0,
+      "bytes": 23759,
+      "sha256": "9e20eb206897bff23491dc4be67d04d15d1b45a17289fa2e69675d61ff005962",
+      "matches_local_source": true
+    }
+  ],
+  "passed": true
+}

@@ -1,0 +1,76 @@
+{
+  "scope": "read-only design source audit",
+  "observed_at_utc": "2026-10-25T06:15:44.003161+00:00",
+  "source_files": [
+    {
+      "path": "firmware/port/semihost.c",
+      "bytes": 631,
+      "sha256": "5a48c786895e57fa4d8fce34ba75b6a7d419c3fd99b9920f164ec353b3295828",
+      "kind": "local pinned source; no runtime proof"
+    },
+    {
+      "path": "firmware/port/recorder_port.h",
+      "bytes": 799,
+      "sha256": "9c5a85bae29d8576e581dfde9b9a7052fcb33e199377b581c30d76341bdfcb12",
+      "kind": "local pinned source; no runtime proof"
+    },
+    {
+      "path": "firmware/app/cases/tcp_request_response.c",
+      "bytes": 15635,
+      "sha256": "62f28cec6bb2d28ce3f5ddbc4a4412a68c777d6a3532924fb19a5281bde024d0",
+      "kind": "local pinned source; no runtime proof"
+    },
+    {
+      "path": "third_party/FreeRTOS/FreeRTOS/Demo/RISC-V_RV32_QEMU_VIRT_GCC/build/gcc/start.S",
+      "bytes": 2057,
+      "sha256": "42625f3a760bfad30e53b06d1c2b4211b2a65d5037763f36ae4802baf9075c04",
+      "kind": "local pinned source; no runtime proof"
+    },
+    {
+      "path": "third_party/FreeRTOS/FreeRTOS/Demo/RISC-V_RV32_QEMU_VIRT_GCC/build/gcc/fake_rom.ld",
+      "bytes": 2193,
+      "sha256": "f22fd0f87be41763e500cf94b3a3e4222f8db4f3bcb2dbeb3480225cc4a2bc9b",
+      "kind": "local pinned source; no runtime proof"
+    },
+    {
+      "path": ".tools/qemu-time-control/qemu-9.2.0/semihosting/config.c",
+      "bytes": 5532,
+      "sha256": "16940b33fb2c7ee7af184efb1d72b0958fa5d8ed7a4b13a1a023e66fdd5ffdbe",
+      "kind": "local pinned source; no runtime proof"
+    },
+    {
+      "path": ".tools/qemu-time-control/qemu-9.2.0/semihosting/arm-compat-semi.c",
+      "bytes": 23759,
+      "sha256": "9e20eb206897bff23491dc4be67d04d15d1b45a17289fa2e69675d61ff005962",
+      "kind": "local pinned source; no runtime proof"
+    },
+    {
+      "path": ".tools/qemu-time-control/qemu-9.2.0/hw/core/generic-loader.c",
+      "bytes": 7212,
+      "sha256": "be2c003200ac4dd7967439a31529096c8998ea40b5ad20d867fa2318777c127a",
+      "kind": "local pinned source; no runtime proof"
+    },
+    {
+      "path": ".tools/qemu-time-control/qemu-9.2.0/hw/core/loader.c",
+      "bytes": 56535,
+      "sha256": "e24842d172d181c6e3b11f6a4e2598d679444efc66ff83cd2ff65ef7fc3fa113",
+      "kind": "local pinned source; no runtime proof"
+    },
+    {
+      "path": ".tools/qemu-time-control/qemu-9.2.0/hw/intc/riscv_aclint.c",
+      "bytes": 19714,
+      "sha256": "ee1dbb1f2162c07d70cd76e8886266ae4bf97176f41cbb5b672b29caa8fa959c",
+      "kind": "local pinned source; no runtime proof"
+    }
+  ],
+  "relative_qemu_sha256": "69969c3ec8cce8f9340215fc340c5c01f81c3ef978252d3766937d2d176816db",
+  "matches_prior_A02_qemu": true,
+  "build_performed": false,
+  "guest_executed": false,
+  "discarded_design": {
+    "approach": "Generic Loader overwrites ELF-backed rodata mode",
+    "reason": "CLI loader reset precedes rom_reset; ELF segment reloaded. Source-derived, not reproduced runtime.",
+    "alternative_not_used": "ABS RAM slot also needs ELF/DTB/startup-range proof",
+    "selected_approach": "existing semihosting transport with SYS_GET_CMDLINE; capability smoke remains unperformed"
+  }
+}

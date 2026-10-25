@@ -1,0 +1,24 @@
+{
+  "scope": "written spec self-review; no product/runtime acceptance",
+  "spec_path": "docs/design/c2b-clock-anchor-pilot-v1.md",
+  "spec_sha256": "65ca7270224a27dd22d21af57cb710db0345102dd0529cbc9a3bc2b3c288b2b8",
+  "blocking_issues_remaining": 0,
+  "checks": [
+    "A scope matches user choice; kernel/SDK unchanged",
+    "same ELF for each candidate across L/C/O/M",
+    "16 captures: two candidates, two modes, four configurations, repeat one",
+    "five sparse markers; registration excluded from 160-byte event-only estimate",
+    "source-derived loader reset issue removed; semihosting cmdline capability remains to test",
+    "request clock null; applied safety guard retained; no implicit retirement claim",
+    "native MMIO single sample includes actual epoch and return value",
+    "uint64 counter subtraction, signed64 point bounds and exclusive upper handled",
+    "observer and marker perturbation reported separately",
+    "resolution unrated without user product budget",
+    "unknown preserved; no interpolation or historical capture rewrite",
+    "bounded logging, pending queue, parser line limits and sequential captures",
+    "unit/integration/runtime/UI checks listed but not reported as run",
+    "observer off excludes new register callbacks; existing context observer policy identical across configurations"
+  ],
+  "source_research_note": "Background QEMU researcher checked loader reset order and same-sample ACLINT feasibility; full spec was self-reviewed, not runtime-tested",
+  "written_spec_review": "pending"
+}

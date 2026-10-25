@@ -1,0 +1,32 @@
+{
+  "recorded_at_utc": "2026-10-25T06:15:44.003161+00:00",
+  "decision_date": "2026-10-25",
+  "user_message": "A",
+  "choice": "A",
+  "scope": "POC app/port SDK markers plus isolated QEMU request/applied observer; FreeRTOS kernel and SDK sources unchanged",
+  "written_spec_review": "pending",
+  "implementation_plan": "not-written",
+  "runtime_capture": "not-performed",
+  "proposed_design_values": {
+    "markers_per_on_run": 5,
+    "candidates": [
+      "A02-baseline",
+      "A02-pbuf"
+    ],
+    "injection_modes": [
+      0,
+      1
+    ],
+    "configurations": [
+      "L",
+      "C",
+      "O",
+      "M"
+    ],
+    "repeats": 1,
+    "captures": 16,
+    "initial_smoke_subset": 4,
+    "product_resolution_budget": "not-specified; report unrated"
+  },
+  "parent_commit": "33e1acf32b2f322b028700130f82af56206308bb"
+}

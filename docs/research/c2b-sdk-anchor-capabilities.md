@@ -1,6 +1,6 @@
 # C2b：SDK anchors、PSF clock 與首輪實驗邊界
 
-更新：2026-10-23。**能力盤點完成；修改範圍 A／B 等待使用者選擇。這是研究紀錄，尚不是已核准的實作規格。** 本輪只讀來源、核對 binary 身分及重新解析兩份保存的 PSF；沒有重新 build、執行 guest、產生新 capture 或開瀏覽器。
+能力盤點日期：2026-10-23；決策更新：2026-10-25。**使用者已選A，具體書面規格見[C2b v1設計](../design/c2b-clock-anchor-pilot-v1.md)，等待審閱。這份來源研究不等於runtime驗收。** 10月23日只讀來源、核對 binary 身分及重新解析兩份保存的 PSF；沒有重新 build、執行 guest、產生新 capture 或開瀏覽器。
 
 ## 先看結論
 
@@ -28,7 +28,7 @@
 
 目前 [FreeRTOSConfig.h](../../firmware/config/FreeRTOSConfig.h) 第15行啟用 trace facility，第41行 include `trcRecorder.h`；[Makefile](../../firmware/Makefile) 連結 SDK、FreeRTOS kernel port 與本地 app／port。本 POC 的 [trcConfig.h](../../firmware/config/trcConfig.h) 第45行選 application-defined hardware port，第91行啟用 user events。
 
-本輪候選設計是新增 POC app／port helper，呼叫 SDK 現有 API；SDK 與 kernel 的原始碼可以保持原樣。**是否採用這個修改範圍，仍等待 A／B 選擇。** 這不表示任意公司版本都能直接相容，內網仍須比對當地 FreeRTOS／SDK／port。
+使用者已選A：新增 POC app／port helper，呼叫 SDK 現有 API；SDK 與 kernel 的原始碼保持原樣。具體介面與對照方式已寫入新規格，尚未實作。這不表示任意公司版本都能直接相容，內網仍須比對當地 FreeRTOS／SDK／port。
 
 ### 可使用的 API
 
@@ -85,18 +85,18 @@ sequenceDiagram
 
 QEMU 的 `mtime` 還有 device `time_delta`／epoch，不能先假定為零。缺 offset、anchor、序號連續性或可靠 phase 時，對齊狀態須是 `unavailable`／有界區間，而不是產生一個看似精確的點。兩個 sparse anchors 中間不做線性插值；有證據時只給包含範圍，沒有證據就維持 unknown。
 
-## 後續分段與正在等的選擇
+## 後續分段與書面規格審閱
 
 | 階段 | 可審閱產物 | 目前狀態 |
 |---|---|---|
 | 能力盤點 | 來源表、clock domains、binary／PSF provenance | 本文件與QEMU盤點已完成；尚無新 capture |
-| Pilot 規格 | anchor schema、phase、版本與可修改範圍、對照矩陣、拒絕條件 | 等使用者選 A／B，之後寫成具體規格供審閱 |
+| Pilot 規格 | anchor schema、phase、版本與可修改範圍、對照矩陣、拒絕條件 | A已確認；[C2b v1規格](../design/c2b-clock-anchor-pilot-v1.md)已寫好，等待審閱 |
 | 最小新 capture | 獨立 output、新 patch／binary、request／applied／marker／PSF 全鏈原始資料 | 未實作 |
-| 誤差與 observer 驗證 | 排隊延遲／bracket寬度／未知比例、封包與應用結果、host overhead／guest變化分開 | 次數與通過門檻尚未決定；既有200 ns整窗條件不可直接搬用 |
+| 誤差與 observer 驗證 | 排隊cursor距離／bracket寬度／未知比例、封包與應用結果、host overhead／guest變化分開 | 新規格提出16-run與clock一致性驗收，等待審閱；產品解析度預算仍未提供，舊200 ns條件不可直接搬用 |
 | Web 與單檔 HTML | 共用已驗證資料，顯示 bounds／unknown，再做篩選與CSV、E2E截圖 | 等 pilot 證據；沿用一次一個 Chrome、結束 close |
 
-**待選 A：**POC app／port 用現有 SDK 加少量 markers，配合獨立 QEMU request／applied patch；FreeRTOS kernel、SDK原始碼保持原樣。較容易把 PSF 和明確 marker 身分配對，但要量測 observer 與 marker 的擾動。
+**2026-10-25已選 A：**POC app／port 用現有 SDK 加少量 markers，配合獨立 QEMU request／applied patch；FreeRTOS kernel、SDK原始碼保持原樣。較容易把 PSF 和明確 marker 身分配對，但要量測 observer 與 marker 的擾動。
 
-**待選 B：**guest ELF完全不變，先做QEMU側錄。可降低 guest 變動；既有 trace 缺少 marker 配對時保留 unknown，無法保證完成相同程度的 PSF 對齊。
+**未採用的 B，保留比較：**guest ELF完全不變，先做QEMU側錄。可降低 guest 變動；既有 trace 缺少 marker 配對時保留 unknown，無法保證完成相同程度的 PSF 對齊。
 
-這兩個選項都先做 pilot 與誤差報告；沒有將全量40-run重跑或Dashboard聯動視為已完成。原實機PMU／SDK CPU loading／UART量測、知識庫增補與跨機暫緩決策，仍依既有待辦處理。
+採用A後仍先做pilot與誤差報告；沒有將全量40-run重跑或Dashboard聯動視為已完成。原實機PMU／SDK CPU loading／UART量測、知識庫增補與跨機暫緩決策，仍依既有待辦處理。

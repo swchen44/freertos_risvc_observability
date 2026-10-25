@@ -2,6 +2,8 @@
 
 日期：2026-10-23。範圍：**來源研究與唯讀檔案核對**。這次沒有重新編譯、執行 guest 模擬、擷取 trace 或開啟瀏覽器。主流程的 `--version`／hash 與保存PSF重解析見[SDK盤點](c2b-sdk-anchor-capabilities.md)。C2b 的新 API、anchor schema 與時間映射都尚未實作。
 
+2026-10-25決策更新：使用者已選A，修改POC app／port加SDK markers；[具體書面規格](../design/c2b-clock-anchor-pilot-v1.md)完成待審閱。以下能力表保留來源盤點邊界，不代表新callback已經runtime通過。
+
 **主要結論：現有 QEMU 9.2／API 4 沒有 public virtual-clock getter。不能在任意 instruction callback 加上 `qemu_clock_get_ns()` 就當成安全、精確的逐事件時間。** 固定 icount 有讀鐘上下文限制，TB 的計數又是預先扣整塊。第一輪較可控的方案，是在既有 async cost 生效點記錄 clock before／after，搭配原始 event index 與 guest／SDK marker 的有界觀測；沒有證據的 request clock 保留 `null`。
 
 ## 1. 這次核對哪一套 QEMU
