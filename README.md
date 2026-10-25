@@ -1,6 +1,8 @@
 # FreeRTOS／RISC-V Observability：研究與可重跑 POC
 
-**C2b 接續：2026-10-25已選A，書面設計完成待審閱；實作與新capture尚未開始。** [具體設計規格](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/design/c2b-clock-anchor-pilot-v1.md)、[QEMU clock能力表](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/research/c2b-qemu-clock-capabilities.md)、[SDK anchors／PSF研究](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/research/c2b-sdk-anchor-capabilities.md)、[接續checklist](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/plans/19-c2b-clock-anchor-pilot.md)。設計提出同ELF、5筆markers及16-run對照；沒有修改FreeRTOS kernel、SDK或既有capture。
+**C2b 接續：方案A與書面規格已確認，[8項實作計畫](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/plans/20-c2b-clock-anchor-implementation.md)完成待審閱；實作與新capture尚未開始。** [設計規格](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/design/c2b-clock-anchor-pilot-v1.md)、[QEMU能力表](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/research/c2b-qemu-clock-capabilities.md)、[SDK研究](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/research/c2b-sdk-anchor-capabilities.md)、[checklist](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/plans/19-c2b-clock-anchor-pilot.md)。同ELF、5筆markers、先4後16-run、Native與最後獨立review已記錄；kernel／SDK與舊capture保持原樣。
+
+[本次計畫與自審收據](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/artifacts/verification/clock-anchor/plan-20261025/README.md)保存8項任務、47個未執行步驟及文件／來源檢查結果。
 
 ## C2a 最新成果 · 2026-10-23
 
