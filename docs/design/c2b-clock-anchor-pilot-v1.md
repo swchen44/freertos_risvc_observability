@@ -1,6 +1,6 @@
 # C2b v1：SDK marker 與 QEMU clock-anchor pilot 設計規格
 
-日期：2026-10-25。**使用者已選 A：可修改 POC app／port 加少量 SDK markers，FreeRTOS kernel 與 SDK 原始碼保持原樣。本文是待審閱的具體設計；沒有新增 build、capture 或 runtime 驗收。**
+日期：2026-10-25。**使用者已選A，並以後續`continue`確認本書面規格，已進入[逐項實作計畫](../plans/20-c2b-clock-anchor-implementation.md)審閱階段。** 可修改POC app／port加少量SDK markers，FreeRTOS kernel與SDK原始碼保持原樣；目前沒有新增build、capture或runtime驗收。
 
 ## 1. 目的、交付與目前邊界
 
@@ -17,7 +17,7 @@
 | 可還原與可複查 | 新 output、新 patch／binary、source／ELF／profile hash、原始輸出、失敗及JSON收據一起保存 |
 | Dashboard 的後續驗證 | 保留 Web／offline、curl integration、agent-browser E2E、逐一開啟與finally close政策 |
 
-後文的 marker 數、16-run矩陣與介面是本次提出的設計，尚不表示使用者已核准這份書面規格。實機 PMU／SDK CPU loading／UART吞吐、cache unused-byte分析、知識庫增補與跨機暫緩狀態另列後續。
+後文的marker數、16-run矩陣與介面已隨本規格確認；這是設計基準，沒有宣稱已執行或量測。實機PMU／SDK CPU loading／UART吞吐、cache unused-byte分析、知識庫增補與跨機暫緩狀態另列後續。
 
 ## 2. 來源前提與不能使用的捷徑
 
@@ -240,8 +240,8 @@ capture逐一執行，不開平行QEMU；每次host wall timeout為120秒，只�
 
 ## 10. 狀態與下一個審閱點
 
-- 已完成：使用者選A、來源能力盤點、本文的具體設計與自我審閱。
-- 等待：使用者審閱這份書面規格，特別是5筆markers、同ELF mode、16-run對照與「有界證據／解析能力未評級」的驗收分層。
-- 尚未完成：書面實作計畫、QEMU／firmware改動、unit／integration runtime、pilot與誤差結果、Web／offline接合及知識庫增補。
+- 已完成：使用者選A、來源能力盤點、本文的具體設計、自我審閱及使用者以continue確認；逐項實作計畫已寫好。
+- 等待：審閱[實作計畫](../plans/20-c2b-clock-anchor-implementation.md)，之後沿用Native逐項執行。
+- 尚未完成：QEMU／firmware改動、unit／integration runtime、pilot與誤差結果、Web／offline接合及知識庫增補。
 
 實作前不得把本文件的schema、32-byte推導、數字矩陣或來源安全鏈寫成已量測結果。

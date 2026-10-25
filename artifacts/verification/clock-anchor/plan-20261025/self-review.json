@@ -1,0 +1,60 @@
+{
+  "review_kind": "inline-document-review",
+  "independent_agent_review": false,
+  "spec": {
+    "path": "docs/design/c2b-clock-anchor-pilot-v1.md",
+    "sha256": "1499da7c65901613cb099fc4f2b6479877dd12e08af7d9f42776984ba187c77e"
+  },
+  "coverage": {
+    "spec_1_3": "constraints; tasks 1,4,5",
+    "spec_4": "tasks 2,5,8",
+    "spec_5": "contracts A/C; tasks 3,4,5,6",
+    "spec_6": "tasks 1,6",
+    "spec_7": "tasks 5,7,8",
+    "spec_8": "review focus; task tests; task 8 runtime gate",
+    "spec_9": "tasks 4,8",
+    "spec_10": "review before implementation"
+  },
+  "review_focus_owners": {
+    "same-tick-and-wrap": [
+      1,
+      6
+    ],
+    "applied-after-end": [
+      3,
+      4,
+      6
+    ],
+    "observer-transparency": [
+      5,
+      8
+    ],
+    "native-mmio-versus-timer-internals": [
+      4,
+      5,
+      6
+    ],
+    "damaged-large-or-replaced-sidecar": [
+      1,
+      3,
+      6,
+      8
+    ]
+  },
+  "fixes": [
+    "Distinguished marker_mode=0 from injection_enabled=0; M/injection-on still requires requests and applied records.",
+    "Required direct QEMU_PLUGIN_API prototypes for macOS generated exports.",
+    "Configure checks intended SMP; plugin loads before CPU objects exist.",
+    "Required explicit locked small cache profile for independent replay.",
+    "Preserved bounded two-pass join and stable uncompressed content hashes.",
+    "Preserved native test stdout/stderr before temporary files are removed."
+  ],
+  "document_check_history": [
+    "Initial placeholder scan stopped on literal ellipsis in a CSV formula example; replaced it with concrete =SUM(A1:A2), then reran checks. No product code ran."
+  ],
+  "review_limits": [
+    "Python snippets syntax only; no product implementation or runtime acceptance.",
+    "Existing design/source audit receipts unchanged.",
+    "Independent whole-change code review remains future work."
+  ]
+}

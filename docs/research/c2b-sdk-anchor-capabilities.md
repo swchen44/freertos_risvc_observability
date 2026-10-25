@@ -1,6 +1,6 @@
 # C2b：SDK anchors、PSF clock 與首輪實驗邊界
 
-能力盤點日期：2026-10-23；決策更新：2026-10-25。**使用者已選A，具體書面規格見[C2b v1設計](../design/c2b-clock-anchor-pilot-v1.md)，等待審閱。這份來源研究不等於runtime驗收。** 10月23日只讀來源、核對 binary 身分及重新解析兩份保存的 PSF；沒有重新 build、執行 guest、產生新 capture 或開瀏覽器。
+能力盤點日期：2026-10-23；決策更新：2026-10-25。**使用者已選A並確認[C2b v1設計](../design/c2b-clock-anchor-pilot-v1.md)，[逐項實作計畫](../plans/20-c2b-clock-anchor-implementation.md)完成待審閱。來源研究不等於runtime驗收。** 10月23日只讀來源、核對binary身分及重新解析兩份保存PSF；沒有重新build、執行guest、產生新capture或開瀏覽器。
 
 ## 先看結論
 
@@ -90,9 +90,9 @@ QEMU 的 `mtime` 還有 device `time_delta`／epoch，不能先假定為零。�
 | 階段 | 可審閱產物 | 目前狀態 |
 |---|---|---|
 | 能力盤點 | 來源表、clock domains、binary／PSF provenance | 本文件與QEMU盤點已完成；尚無新 capture |
-| Pilot 規格 | anchor schema、phase、版本與可修改範圍、對照矩陣、拒絕條件 | A已確認；[C2b v1規格](../design/c2b-clock-anchor-pilot-v1.md)已寫好，等待審閱 |
+| Pilot 規格 | anchor schema、phase、版本與可修改範圍、對照矩陣、拒絕條件 | A與書面規格已確認；[實作計畫](../plans/20-c2b-clock-anchor-implementation.md)待審閱 |
 | 最小新 capture | 獨立 output、新 patch／binary、request／applied／marker／PSF 全鏈原始資料 | 未實作 |
-| 誤差與 observer 驗證 | 排隊cursor距離／bracket寬度／未知比例、封包與應用結果、host overhead／guest變化分開 | 新規格提出16-run與clock一致性驗收，等待審閱；產品解析度預算仍未提供，舊200 ns條件不可直接搬用 |
+| 誤差與 observer 驗證 | 排隊cursor距離／bracket寬度／未知比例、封包與應用結果、host overhead／guest變化分開 | 規格已確認16-run與clock一致性驗收，尚未執行；產品解析度預算未提供，舊200 ns條件不可直接搬用 |
 | Web 與單檔 HTML | 共用已驗證資料，顯示 bounds／unknown，再做篩選與CSV、E2E截圖 | 等 pilot 證據；沿用一次一個 Chrome、結束 close |
 
 **2026-10-25已選 A：**POC app／port 用現有 SDK 加少量 markers，配合獨立 QEMU request／applied patch；FreeRTOS kernel、SDK原始碼保持原樣。較容易把 PSF 和明確 marker 身分配對，但要量測 observer 與 marker 的擾動。

@@ -1,6 +1,8 @@
 # FreeRTOS／RISC-V PSF POC
 
-**C2b 接續：2026-10-25已選A，書面設計完成待審閱，尚未實作。** [具體設計規格](docs/design/c2b-clock-anchor-pilot-v1.md)、[QEMU clock／callback能力表](docs/research/c2b-qemu-clock-capabilities.md)、[SDK anchors與PSF研究](docs/research/c2b-sdk-anchor-capabilities.md)、[目前checklist](docs/plans/19-c2b-clock-anchor-pilot.md)。設計提出同ELF markers開關、5個phase與16-run對照；沒有新增capture，也未修改kernel／SDK。
+**C2b 接續：已選A、書面規格已確認，[8項實作計畫](docs/plans/20-c2b-clock-anchor-implementation.md)完成待審閱，尚未實作。** [設計規格](docs/design/c2b-clock-anchor-pilot-v1.md)、[QEMU能力表](docs/research/c2b-qemu-clock-capabilities.md)、[SDK研究](docs/research/c2b-sdk-anchor-capabilities.md)、[checklist](docs/plans/19-c2b-clock-anchor-pilot.md)。同ELF、5筆markers、先4後16-run與Native方式已記錄；沒有新增capture，也未修改kernel／SDK。
+
+[本次計畫與自審收據](artifacts/verification/clock-anchor/plan-20261025/README.md)保存規格覆蓋、介面修正、文件檢查及檔案SHA；計畫共有8項任務、47個未執行步驟。
 
 ## C2a 正式本機驗收 · 2026-10-23
 

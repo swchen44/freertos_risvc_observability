@@ -1,0 +1,96 @@
+{
+  "ok": true,
+  "plan": "docs/plans/20-c2b-clock-anchor-implementation.md",
+  "sha256": "f07e64815603729da65dea5daa5cd6e6748586cd4cf70fd087f1c4e1d50ea3b9",
+  "bytes": 55119,
+  "lines": 585,
+  "tasks": [
+    {
+      "task": 1,
+      "unchecked_steps": 5
+    },
+    {
+      "task": 2,
+      "unchecked_steps": 6
+    },
+    {
+      "task": 3,
+      "unchecked_steps": 5
+    },
+    {
+      "task": 4,
+      "unchecked_steps": 6
+    },
+    {
+      "task": 5,
+      "unchecked_steps": 7
+    },
+    {
+      "task": 6,
+      "unchecked_steps": 6
+    },
+    {
+      "task": 7,
+      "unchecked_steps": 5
+    },
+    {
+      "task": 8,
+      "unchecked_steps": 7
+    }
+  ],
+  "unchecked_steps": 47,
+  "python_fences": [
+    {
+      "line": 173,
+      "sha256": "43b254cef93d78ba4c8f914a88278e456c698b0f5340dccdf808ea594e30e77f",
+      "syntax_ok": true
+    },
+    {
+      "line": 188,
+      "sha256": "051d1ba8b554dec4e2d1b1b48269619c5ecdfdb31df5a332f2b9e8baf3f68ef9",
+      "syntax_ok": true
+    },
+    {
+      "line": 203,
+      "sha256": "c7389eb4ef0ae5eead514dd30142517ad228edec90119a1831ee732fc7604ba9",
+      "syntax_ok": true
+    },
+    {
+      "line": 376,
+      "sha256": "2131a095103955c9300f4c3972cec98356ee84860c40b2610246b9bde6937668",
+      "syntax_ok": true
+    },
+    {
+      "line": 398,
+      "sha256": "93c8cfe99f3d9d994ca70c2300a2c2472baf3c8c6969557ad9c80f7e8fbc4b9f",
+      "syntax_ok": true
+    },
+    {
+      "line": 449,
+      "sha256": "4bd5e9240ce76a25f43b656f378a7d8ac0370dde6511eb84a9312ec0a4a3b3f5",
+      "syntax_ok": true
+    },
+    {
+      "line": 469,
+      "sha256": "7c88507e17009f1f53aea2cbd45de32617e335dcdbfbf709c417ce18125e8d27",
+      "syntax_ok": true
+    },
+    {
+      "line": 491,
+      "sha256": "b89ffa486fb51c0ea21991216c5f15fa82c60b1d380f203529a710c0a072f40b",
+      "syntax_ok": true
+    }
+  ],
+  "syntax_only": true,
+  "placeholder_patterns": [
+    "\\bTBD\\b",
+    "\\bTODO\\b",
+    "implement later",
+    "fill in details",
+    "appropriate error handling",
+    "Similar to Task",
+    "\\.\\.\\."
+  ],
+  "placeholder_matches": [],
+  "product_tests_executed": false
+}

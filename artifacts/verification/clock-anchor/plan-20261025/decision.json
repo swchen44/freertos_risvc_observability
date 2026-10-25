@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-25",
+  "user_message": "continue",
+  "approved_stage": "written-design",
+  "prior_poc_commit": "9b0152c708a1b635d56ed147f4768e124cb5c670",
+  "prior_root_commit": "b1146cb7b9495e1e6da04eebe5387d9a0fb4cb52",
+  "implementation_plan_status": "written-self-reviewed-awaiting-user-review",
+  "execution_method": "Native",
+  "execution_method_source": "docs/plans/14-event-window-dashboard.md:3",
+  "scope": "POC app/port markers; kernel and SDK source unchanged; isolated QEMU patch and host sidecar allowed",
+  "runtime_runs": 0,
+  "product_code_changed": false,
+  "builds_performed": false,
+  "browser_started": false
+}

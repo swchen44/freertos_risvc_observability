@@ -1,6 +1,6 @@
 # C2：Cache 與 PSF 時間對齊研究草案
 
-日期：2026-10-13，更新2026-10-25。狀態：**C2a已完成本機驗收，固定C1的40份來源轉成完整chunks／8HTML；C2b已選A，書面設計完成待審閱，實作與新capture尚未開始。** [C2b具體規格](c2b-clock-anchor-pilot-v1.md)與[目前checklist](../plans/19-c2b-clock-anchor-pilot.md)記錄markers與對照方法。
+日期：2026-10-13，更新2026-10-25。狀態：**C2a已完成本機驗收；C2b已選A並確認書面規格，[實作計畫](../plans/20-c2b-clock-anchor-implementation.md)完成待審閱，實作與新capture尚未開始。** [C2b規格](c2b-clock-anchor-pilot-v1.md)與[checklist](../plans/19-c2b-clock-anchor-pilot.md)記錄markers與對照方法。
 
 ## 目的與承接範圍
 

@@ -1,6 +1,6 @@
 # PSF Lab 實作計畫入口
 
-最新： [C2a完整驗收](../event-window-dashboard.md)與[release收據](../../artifacts/verification/event-window/release-20261023/README.md)。[C2b clock-anchor計畫](19-c2b-clock-anchor-pilot.md)已選A，[具體書面設計](../design/c2b-clock-anchor-pilot-v1.md)完成待審閱；實作與新capture尚未開始，不預設可用clock。
+最新： [C2a完整驗收](../event-window-dashboard.md)與[release收據](../../artifacts/verification/event-window/release-20261023/README.md)。C2b已確認[書面規格](../design/c2b-clock-anchor-pilot-v1.md)，[8項實作計畫](20-c2b-clock-anchor-implementation.md)完成待審閱；沿用Native，實作與新capture尚未開始。[總checklist](19-c2b-clock-anchor-pilot.md)分開文件與runtime狀態。
 
 歷史提案：[11 下一輪 Cache／TCP 研究](11-next-cache-research.md)。此處舊 M1～M3 計畫保留歷史；順序已確認A→B→C；A、B、C1、C2a現已完成，以下舊計畫保留歷史。
 

@@ -7,7 +7,7 @@
 | 範圍 | 現況與證據 | 接續工作 |
 |---|---|---|
 | C2a 事件區間 Dashboard | 40 runs、19,177,626 events、8 份離線 HTML 已通過本機驗收；[報告](event-window-dashboard.md)、[正式收據](../artifacts/verification/event-window/release-20261023/README.md) | 發布以 release 的 publication.json 與遠端 SHA 核對為準 |
-| PSF 與 cache 時間對齊 | C2a 保持兩軸獨立；C2b已完成來源盤點，2026-10-25已選A，尚未實作 | [具體設計規格](design/c2b-clock-anchor-pilot-v1.md)等待審閱；[checklist](plans/19-c2b-clock-anchor-pilot.md)保留計畫／capture／誤差及Web／offline待辦 |
+| PSF 與 cache 時間對齊 | C2a保持兩軸獨立；C2b已選A並確認[規格](design/c2b-clock-anchor-pilot-v1.md)，尚未實作 | [逐項實作計畫](plans/20-c2b-clock-anchor-implementation.md)待審閱，沿用Native；[checklist](plans/19-c2b-clock-anchor-pilot.md)保留capture／誤差／Web／offline待辦 |
 | 產品平台量測 | 模型結果可供相對比較；L1I 8 KiB／L1D 8 KiB／L2 32 KiB | 實機 PMU、SDK on/off CPU／code size／IRQ、UART 吞吐與 cache model 校準仍待內網／硬體 |
 | 知識庫 | 原單篇同步已完成；下方 KB commits 是先前版本 | 本輪 C2a 增補尚未同步，不以舊同步收據宣稱最新內容已同步 |
 | 跨機驗證 | 依使用者決定暫緩 | 保留還原檔案；不新增目標平台驗收 |
