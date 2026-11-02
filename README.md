@@ -1,10 +1,10 @@
 # FreeRTOS／RISC-V Observability：研究與可重跑 POC
 
-**C2b Tasks1–6完成，Tasks7–8繼續。** [最新進度與證據](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/clock-anchor-progress.md)記錄 TCP collector、獨立 replay／因果 validator 與真 PSF join。development O 取得5組 bounds、431,512 covered／311 unknown rows；正式16-run尚未執行。[Task6收據](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/artifacts/verification/clock-anchor/task6-20261103/README.md)保存完整原始資料、反例與失敗修正。完整suite385個：380通過、5個opt-in skip；另明確啟用的runtime通過，0 skip。全庫Ruff check通過；全庫format仍有10個既有舊檔未通過。
+**C2b Tasks1–6完成並已發布，Tasks7–8依使用者要求暫停。** [最新進度與證據](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/clock-anchor-progress.md)記錄 TCP collector、獨立 replay／因果 validator 與真 PSF join。development O 取得5組 bounds、431,512 covered／311 unknown rows；正式16-run尚未執行。[Task6收據](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/artifacts/verification/clock-anchor/task6-20261103/README.md)保存完整原始資料、反例與失敗修正。完整suite385個：380通過、5個opt-in skip；另明確啟用的runtime通過，0 skip。全庫Ruff check通過；全庫format仍有10個既有舊檔未通過。
 
 正式16-run、透明性／marker成本報告、完整還原分卷與Dashboard接合尚未完成。沿用Native與最後獨立review；FreeRTOS kernel／SDK與舊capture保持原樣。[實作計畫](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/plans/20-c2b-clock-anchor-implementation.md)與[checklist](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/plans/19-c2b-clock-anchor-pilot.md)分開現況與後續。
 
-2026-11-03：已依確認範圍完成[保守空間清理](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/storage-cleanup.md)，核對archive後移除重複副本、乾淨暫存clone與可重建objects；觀測釋放約563MiB。正式資料、工具與還原證據保留。
+2026-11-03：已完成[第二次空間清理與暫停接手點](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/artifacts/verification/storage/cleanup-paused-20261103/README.md)。四份重複capture／runtime副本、兩份完整封存並實際還原核對的失敗QEMU source已移除；觀測增加約1.76GiB。六份source分卷、SHA、逐檔inventory及還原指令保留；現用QEMU／GCC未刪。Task7只有已保存的RED測試草稿，等待恢復指示。
 
 ## C2a 最新成果 · 2026-10-23
 
