@@ -156,7 +156,7 @@
 +# Canonical core also compiles outside QEMU against the same public ABI header.
 +specific_ss.add(when: 'CONFIG_SOFTMMU', if_true: [
 +  files('poc-clock-observer.c', 'poc-clock-state.c'),
-+  declare_dependency(include_directories: include_directories('../include/qemu')),
++  declare_dependency(compile_args: '-DPOC_CLOCK_IN_QEMU'),
 +])
 --- /dev/null
 +++ b/plugins/poc-clock-observer.c
@@ -666,10 +666,14 @@
 +}
 --- /dev/null
 +++ b/plugins/poc-clock-state.h
-@@ -0,0 +1,26 @@
+@@ -0,0 +1,30 @@
 +#ifndef POC_CLOCK_STATE_H
 +#define POC_CLOCK_STATE_H
++#ifdef POC_CLOCK_IN_QEMU
++#include "qemu/poc-clock-anchor-api.h"
++#else
 +#include "poc-clock-anchor-api.h"
++#endif
 +#include <stddef.h>
 +
 +typedef struct PocState PocState;

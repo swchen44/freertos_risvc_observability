@@ -94,6 +94,29 @@ class ClockBuildTests(unittest.TestCase):
             timeout=10,
         )
         self.assertEqual(native.returncode, 0, native.stderr)
+        probe.write_text(
+            '#include <ctype.h>\n#include "poc-clock-state.h"\n'
+            "int main(void) { return tolower('A') != 'a'; }\n"
+        )
+        native = subprocess.run(
+            [
+                "cc",
+                "-std=c11",
+                "-Wall",
+                "-Wextra",
+                "-Werror",
+                "-DPOC_CLOCK_IN_QEMU",
+                "-I" + str(source / "include"),
+                "-I" + str(source / "plugins"),
+                str(probe),
+                str(source / "plugins/poc-clock-state.c"),
+                "-o",
+                str(self.root / "core-in-qemu"),
+            ],
+            capture_output=True,
+            timeout=10,
+        )
+        self.assertEqual(native.returncode, 0, native.stderr)
         command = [
             sys.executable,
             str(ROOT / "references/qemu-clock-anchor/scripts/qemu-plugin-symbols.py"),

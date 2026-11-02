@@ -1,6 +1,10 @@
 #ifndef POC_CLOCK_STATE_H
 #define POC_CLOCK_STATE_H
+#ifdef POC_CLOCK_IN_QEMU
+#include "qemu/poc-clock-anchor-api.h"
+#else
 #include "poc-clock-anchor-api.h"
+#endif
 #include <stddef.h>
 
 typedef struct PocState PocState;
