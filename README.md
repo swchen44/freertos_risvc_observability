@@ -4,6 +4,8 @@
 
 正式16-run、tagged guest因果驗證、PSF時間mapping、完整還原分卷與Dashboard接合尚未完成。沿用Native與最後獨立review；FreeRTOS kernel／SDK與舊capture保持原樣。[實作計畫](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/plans/20-c2b-clock-anchor-implementation.md)與[checklist](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/plans/19-c2b-clock-anchor-pilot.md)分開現況與後續。
 
+2026-11-03：[空間盤點與清理候選](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/storage-cleanup.md)，已核對重複archive與cache；目前未刪除，等待選擇清理範圍。
+
 ## C2a 最新成果 · 2026-10-23
 
 C2a本機驗收完成：**40 runs、19,177,626 events、18,753 gzip chunks、8份離線HTML**，完整facts/totals與C1相符。Python328、Node25、Playwright11、Ruff、curl與agent-browser證據已保存。發布完成與否另以release的publication.json和remote SHA為準。
