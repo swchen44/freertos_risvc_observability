@@ -1,8 +1,8 @@
 # FreeRTOS／RISC-V PSF POC
 
-**C2b 接續：已選A、書面規格已確認，[8項實作計畫](docs/plans/20-c2b-clock-anchor-implementation.md)完成待審閱，尚未實作。** [設計規格](docs/design/c2b-clock-anchor-pilot-v1.md)、[QEMU能力表](docs/research/c2b-qemu-clock-capabilities.md)、[SDK研究](docs/research/c2b-sdk-anchor-capabilities.md)、[checklist](docs/plans/19-c2b-clock-anchor-pilot.md)。同ELF、5筆markers、先4後16-run與Native方式已記錄；沒有新增capture，也未修改kernel／SDK。
+**C2b 實作中：使用者已確認[八項實作計畫](docs/plans/20-c2b-clock-anchor-implementation.md)，沿用Native。** Task1已完成：11個新測試與完整339個Python測試通過；[Task1收據與失敗歷史](artifacts/verification/clock-anchor/task1-20261102/README.md)。Task2 host parser測試通過，guest probe仍待執行；正式16-run與新QEMU build尚未完成。FreeRTOS kernel與SDK原始碼保持原樣。
 
-[本次計畫與自審收據](artifacts/verification/clock-anchor/plan-20261025/README.md)保存規格覆蓋、介面修正、文件檢查及檔案SHA；計畫共有8項任務、47個未執行步驟。
+[設計規格](docs/design/c2b-clock-anchor-pilot-v1.md)｜[總checklist](docs/plans/19-c2b-clock-anchor-pilot.md)｜[原計畫自審](artifacts/verification/clock-anchor/plan-20261025/README.md)
 
 ## C2a 正式本機驗收 · 2026-10-23
 

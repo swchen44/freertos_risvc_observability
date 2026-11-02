@@ -10,9 +10,9 @@
 
 **Spec:** [C2b v1設計規格](../design/c2b-clock-anchor-pilot-v1.md)，使用者於2026-10-25以`continue`確認後進入本計畫階段。
 
-**Execution:** 沿用本專案已採用的Native：主agent逐項實作，最後做獨立whole-change review；依據[既有原生執行紀錄](14-event-window-dashboard.md)。不重新詢問A／B或執行方式。本計畫仍需審閱後才開始寫product code／build／capture。
+**Execution:** 沿用本專案已採用的Native：主agent逐項實作，最後做獨立whole-change review；依據[既有原生執行紀錄](14-event-window-dashboard.md)。不重新詢問A／B或執行方式。2026-11-02使用者以continue確認計畫，開始逐項實作。
 
-**Current status:** 僅完成書面計畫與自審，以下unchecked項目全部尚未執行。預期輸出、程式片段及測試命令不是已通過的證據。
+**Current status:** 2026-11-02 Task1已完成，來源commit `1b7c0eb2`；11個新測試、完整339個Python測試及Ruff通過。Task2起仍待完成；尚無C2b正式capture或新QEMU build。unchecked項目的預期輸出不是已通過證據。
 
 ## Global Constraints
 
@@ -168,7 +168,7 @@ bool qemu_plugin_poc_clock_finish(const void *, uint64_t expected_rows);
 
 **Interfaces:** Produces契約B的四個wire函式／兩個exception；fixture提供`record(kind, seq, cursor, phase, **fields)`、`minimal_wire()`、`write_wire(path, records)`與`psf_markers()`，全部手工指定數值，不呼叫production decoder／writer生成expected。
 
-- [ ] **1. 寫RED數字／clock primitive測試。**
+- [x] **1. 寫RED數字／clock primitive測試。**
 
 ```python
 def test_offset_wrap_and_signed_clock_edge(self):
@@ -183,7 +183,7 @@ def test_offset_wrap_and_signed_clock_edge(self):
         mtime_quantum(3, 1, 0)
 ```
 
-- [ ] **2. 手工fixture與reader反例。** common record按契約A組dict，minimal_wire為header seq0、begin seq1、end seq2、footer seq3，共4列／raw_rows0，僅測語法，不冒充有效capture。`write_wire`用stdlib json.dumps＋LF；`psf_markers(*, base=100, sequence_start=1)`用既有`tests.fixtures.binary.event/stream`，先兩筆object_name定義handle4=`C2B`、5=`C2Bv1|%u|%u|%u|%u`，再用event id0x9c寫五筆6-word payload `(4,5,i,i,lo,hi)`。第i筆app sample為`base+10*i`，SDK timestamp為`base+10*i+1`的low32；metadata timestamps用`base-1`的low32，EventCount從sequence_start遞增取low16。frequency10MHz。name payload以`struct.pack('<I',handle)+utf8+NUL`補齊4-byte，再pack words。
+- [x] **2. 手工fixture與reader反例。** common record按契約A組dict，minimal_wire為header seq0、begin seq1、end seq2、footer seq3，共4列／raw_rows0，僅測語法，不冒充有效capture。`write_wire`用stdlib json.dumps＋LF；`psf_markers(*, base=100, sequence_start=1)`用既有`tests.fixtures.binary.event/stream`，先兩筆object_name定義handle4=`C2B`、5=`C2Bv1|%u|%u|%u|%u`，再用event id0x9c寫五筆6-word payload `(4,5,i,i,lo,hi)`。第i筆app sample為`base+10*i`，SDK timestamp為`base+10*i+1`的low32；metadata timestamps用`base-1`的low32，EventCount從sequence_start遞增取low16。frequency10MHz。name payload以`struct.pack('<I',handle)+utf8+NUL`補齊4-byte，再pack words。
 
 ```python
 def test_duplicate_keys_truncation_and_line_limit(self):
@@ -197,8 +197,8 @@ def test_duplicate_keys_truncation_and_line_limit(self):
                 list(iter_clock_records(path))
 ```
 
-- [ ] **3. 執行RED：**`PYTHONPATH=src .venv/bin/python -m unittest tests.unit.test_clock_anchor_wire -v`；確認因缺module／行為失敗，不把語法錯誤當RED。
-- [ ] **4. 實作reader與數學核心。** `readline(16385)`限制讀入，object_pairs_hook拒重複key，parse_constant拒NaN；逐kind白名單驗keys／型別。raw reader使用csv.DictReader，固定既有9欄，支援plain／gzip，逐列附0-based index，不全量read_bytes。
+- [x] **3. 執行RED：**`PYTHONPATH=src .venv/bin/python -m unittest tests.unit.test_clock_anchor_wire -v`；確認因缺module／行為失敗，不把語法錯誤當RED。
+- [x] **4. 實作reader與數學核心。** `readline(16385)`限制讀入，object_pairs_hook拒重複key，parse_constant拒NaN；逐kind白名單驗keys／型別。raw reader使用csv.DictReader，固定既有9欄，支援plain／gzip，逐列附0-based index，不全量read_bytes。
 
 ```python
 q = (t - offset) % (1 << 64)
@@ -209,7 +209,7 @@ upper = min(lower + 100, 1 << 63)
 ```
 
 頻率不等於10MHz時丟ClockUnavailable；t／offset超uint64範圍則ClockEvidenceError。`decimal`只接受str且`0|[1-9][0-9]{0,39}` fullmatch，bits上限用`n < 1<<bits`。不得strip後接受壞數字。
-- [ ] **5. GREEN／Ruff並commit。** 同一unittest通過，`.venv/bin/ruff check src/psf_lab/clock_anchor_wire.py tests/fixtures/clock_anchor.py tests/unit/test_clock_anchor_wire.py`及format check；保存RED/GREEN logs，再commit task paths。
+- [x] **5. GREEN／Ruff並commit。** 同一unittest通過，`.venv/bin/ruff check src/psf_lab/clock_anchor_wire.py tests/fixtures/clock_anchor.py tests/unit/test_clock_anchor_wire.py`及format check；保存RED/GREEN logs，再commit task paths。
 
 ## Task 2：同ELF guest mode、SDK markers與capability probe
 
@@ -582,4 +582,4 @@ analysis成功後，把report、package與restore-check收據複製到新accepta
 | §9還原／來源／發布 | Task4build manifest、Task8package／restore／remote核對 |
 | §10階段邊界 | 本計畫待審閱；仍無product code／新captures |
 
-書面設計已由本次`continue`確認；本計畫完成後由使用者審閱，再沿用Native執行。實機PMU／產品SDK／UART、cache unused-byte與layout因果分析、最新知識庫增補及跨機暫緩狀態不因本計畫建立而結清。Web／offline接合另立下一份計畫，必須帶著pilot真實bounds與資料量，再決定互動及容量，不先承諾精度或截圖。
+書面設計及本計畫均已由使用者以continue確認；2026-11-02開始沿用Native執行。實機PMU／產品SDK／UART、cache unused-byte與layout因果分析、最新知識庫增補及跨機暫緩狀態不因本計畫建立而結清。Web／offline接合另立下一份計畫，必須帶著pilot真實bounds與資料量，再決定互動及容量，不先承諾精度或截圖。

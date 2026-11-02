@@ -1,5 +1,6 @@
 #include "case_api.h"
 #include "oracle.h"
+#include "clock_anchor.h"
 #include <stdio.h>
 extern void freertos_risc_v_trap_handler(void);
 static TraceStringHandle_t channel;
@@ -14,6 +15,9 @@ int main(void) {
  configASSERT(xTraceInitialize()==TRC_SUCCESS);
  configASSERT(xTraceEnable(TRC_START)==TRC_SUCCESS);
  configASSERT(xTraceStringRegister("POC",&channel)==TRC_SUCCESS);
+#ifdef POC_CLOCK_ANCHORS
+ poc_clock_anchor_init();
+#endif
  poc_case_run();vTaskStartScheduler();poc_finish(0);
 }
 void vAssertCalled(const char *file,uint32_t line) {

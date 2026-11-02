@@ -3,5 +3,6 @@
 int poc_sh_open(const char *name);
 int poc_sh_close(int fd);
 long poc_sh_write(int fd, const void *data, uint32_t size);
+int poc_sh_get_cmdline(char *buf, uint32_t capacity, uint32_t *length);
 void poc_finish(int success) __attribute__((noreturn));
 void poc_console(const char *text);

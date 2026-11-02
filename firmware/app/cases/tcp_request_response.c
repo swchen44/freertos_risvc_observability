@@ -2,6 +2,7 @@
 #include "case_api.h"
 #include "oracle.h"
 #include "stream_io.h"
+#include "clock_anchor.h"
 #include "lwip/init.h"
 #include "lwip/netif.h"
 #include "lwip/ip4.h"
@@ -265,12 +266,18 @@ static void session_task(void *arg) {
 #ifdef POC_LIVE_IRQ
  timing_start_tick=timing_ticks;poc_irq_restore(timing_mask);
 #endif
+#ifdef POC_CLOCK_ANCHORS
+ poc_clock_anchor(1);
+#endif
  uint32_t start=phase_start();struct tcp_pcb *listener=tcp_new();configASSERT(listener);
  configASSERT(tcp_bind(listener,IP_ADDR_ANY,1234)==ERR_OK);
  listener=tcp_listen(listener);configASSERT(listener);tcp_accept(listener,on_accept);phase("listen",start);
  inject(1000,0,TCP_SYN,NULL,0,"syn");server_seq=consume(0,UINT32_MAX,TCP_SYN|TCP_ACK)+1;
  inject(client_seq,server_seq,TCP_ACK,NULL,0,"establish");
  configASSERT(connection&&connection->state==ESTABLISHED&&!pending);
+#ifdef POC_CLOCK_ANCHORS
+ poc_clock_anchor(2);
+#endif
  for(round_id=0;round_id<2;round_id++) {
   for(unsigned i=0;i<POC_REQUEST_BYTES;i++) request[i]=(uint8_t)(round_id+i);
   inject(client_seq,server_seq,TCP_ACK|TCP_PSH,request,POC_REQUEST_BYTES,"request_rx");client_seq+=POC_REQUEST_BYTES;
@@ -291,6 +298,9 @@ static void session_task(void *arg) {
    configASSERT(!pending&&retained==0&&acked==(round_id*4+chunk+1)*1460);
   }
   start=phase_start();tcp_fasttmr();tcp_slowtmr();phase("timer_idle",start);configASSERT(!pending);
+#ifdef POC_CLOCK_ANCHORS
+  poc_clock_anchor(3+round_id);
+#endif
  }
  client_seq++;inject(client_seq-1,server_seq,TCP_FIN|TCP_ACK,NULL,0,"peer_fin");
  configASSERT(peer_closed&&connection->state==CLOSE_WAIT);consume(0,server_seq,TCP_ACK);
@@ -301,6 +311,9 @@ static void session_task(void *arg) {
  configASSERT(!pending&&!tcp_active_pcbs&&!tcp_tw_pcbs&&!tcp_listen_pcbs.pcbs&&!tcp_bound_pcbs);
  resources(resources_after);
  for(unsigned i=0;i<6;i++) configASSERT(resources_before[i]==resources_after[i]);
+#ifdef POC_CLOCK_ANCHORS
+ poc_clock_anchor(5);
+#endif
 #ifdef POC_LIVE_IRQ
  timing_mask=poc_irq_save();
 #endif

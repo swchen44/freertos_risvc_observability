@@ -9,3 +9,9 @@ static long call(long op, uintptr_t *params) {
 int poc_sh_open(const char *name) {uintptr_t p[]={(uintptr_t)name,5,strlen(name)};return call(1,p);}
 int poc_sh_close(int fd) {uintptr_t p[]={(uintptr_t)fd};return call(2,p);}
 long poc_sh_write(int fd,const void *data,uint32_t size) {uintptr_t p[]={(uintptr_t)fd,(uintptr_t)data,size};return call(5,p);}
+int poc_sh_get_cmdline(char *buf, uint32_t cap, uint32_t *length) {
+ uintptr_t p[]={(uintptr_t)buf,cap};
+ if(!buf || !length || cap==0 || call(0x15,p)!=0 || p[1]>=cap) return -1;
+ *length=(uint32_t)p[1];
+ return buf[*length]=='\0' ? 0 : -1;
+}

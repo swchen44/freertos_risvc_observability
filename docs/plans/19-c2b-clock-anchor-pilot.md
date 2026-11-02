@@ -10,7 +10,7 @@
 - [x] 2026-10-25使用者選A：app／port加少量SDK markers、不改kernel／SDK；不再等待A／B選擇。
 - [x] 完成並自我審閱具體anchor介面、最小pilot與錯誤／誤差判定，使用者以continue確認[C2b v1書面規格](../design/c2b-clock-anchor-pilot-v1.md)。
 - [x] 建立[逐項實作計畫](20-c2b-clock-anchor-implementation.md)及覆蓋自審；沿用既有Native方式。
-- [ ] 使用者審閱實作計畫後，開始Task1→8；未執行項目保持unchecked。
+- [x] 使用者以continue確認實作計畫，2026-11-02開始Task1→8；Task1完成，未執行項目保持unchecked。
 - [ ] 新capture、observer對照、誤差量測、Web／offline視圖與E2E；不得用本輪source audit勾成已完成。
 
 ## 目的與順序

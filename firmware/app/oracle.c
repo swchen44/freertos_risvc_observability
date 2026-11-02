@@ -1,5 +1,6 @@
 #include "case_api.h"
 #include "oracle.h"
+#include "clock_anchor.h"
 #include "stream_io.h"
 #include <stdio.h>
 #include <string.h>
@@ -22,7 +23,11 @@ void poc_oracle_finish(void) {
  for(unsigned i=0;i<poc_sent_count;i++) n+=snprintf(output+n,sizeof(output)-n,"%s%u",i?",":"",poc_sent[i]);
  n+=snprintf(output+n,sizeof(output)-n,"],\"received_ids\":[");
  for(unsigned i=0;i<poc_received_count;i++) n+=snprintf(output+n,sizeof(output)-n,"%s%u",i?",":"",poc_received[i]);
+#ifdef POC_CLOCK_ANCHORS
+ n+=snprintf(output+n,sizeof(output)-n,"],\"clock_marker_mode\":%u,\"clock_marker_count\":%u,\"phases\":[",poc_clock_anchor_mode(),poc_clock_anchor_count());
+#else
  n+=snprintf(output+n,sizeof(output)-n,"],\"phases\":[");
+#endif
  for(unsigned i=0;i<phase_count;i++) n+=snprintf(output+n,sizeof(output)-n,"%s{\"phase\":\"%s\",\"request_id\":%u,\"mtime\":\"%u\"}",i?",":"",phases[i].name,phases[i].id,phases[i].mtime);
  n+=snprintf(output+n,sizeof(output)-n,"],\"requests\":[");
  unsigned count=0;
