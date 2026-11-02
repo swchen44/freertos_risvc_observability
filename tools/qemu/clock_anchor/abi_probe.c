@@ -7,6 +7,7 @@
 QEMU_PLUGIN_EXPORT int qemu_plugin_version=QEMU_PLUGIN_VERSION;
 static const void *handle;
 static int began;
+static int outside_cpu;
 static void execute(unsigned cpu, void *arg) {
     (void)arg;
     if(cpu) exit(2);
@@ -43,11 +44,13 @@ QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id, const qemu_info_
         if(!strcmp(argv[0],"fault=abi")) c.abi_version=2;
         else if(!strcmp(argv[0],"fault=size")) c.struct_size--;
         else if(!strcmp(argv[0],"fault=handle")) handle=(void *)1;
+        else if(!strcmp(argv[0],"fault=context")) outside_cpu=1;
         else return -1;
     }
     if(!qemu_plugin_poc_clock_configure(handle,&c)) {
         fputs("C2b ABI configure rejected\n",stderr);return -1;
     }
+    if(outside_cpu) qemu_plugin_poc_add_ns_tagged(handle,2,1,0);
     qemu_plugin_register_vcpu_tb_trans_cb(id,translate);
     qemu_plugin_register_atexit_cb(id,finish,NULL);
     return 0;
