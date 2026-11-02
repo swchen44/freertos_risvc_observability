@@ -35,3 +35,5 @@ Tasks1–6已完成及發布；Task7只有RED測試草稿，已保存接手點�
 若使用者選擇擴大範圍，再封存`artifacts/local`歷史trial及失敗QEMU工作目錄。每個目錄先產生inventory、保存來源／patch／build命令，再實際還原核對；沒有完整備份的資料先保留。不得用`git clean -fdx`或整批刪掉`runs/`、`artifacts/`、`.tools/`。
 
 第一次清理後續作Tasks5–6。最新使用者要求暫停Task7，第二次清理結果見頁首；等待恢復指示再續作。完整C2b內網還原包仍屬Task8，本頁兩次清理備份不代表整個pilot還原交付完成。
+
+本次清理備份已保存於本機 Git；上傳在600秒後逾時，遠端仍停在Tasks1–6 checkpoint。完整狀態與重試接手點見[清理收據](../artifacts/verification/storage/cleanup-paused-20261103/README.md)。開發維持暫停。

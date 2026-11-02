@@ -386,3 +386,5 @@ Dashboard 可先使用既有 PSF，不需要 FreeRTOS toolchain。重新模擬�
 T2a 本輪回歸：158 Python tests 通過，Ruff lint 與新增 Python 檔案格式檢查通過。[驗證紀錄](artifacts/verification/time-control/completion.json) 保存被測 commit；[完整 log](artifacts/verification/time-control/full-tests.log)。這項回歸通過不代表時間注入驗收通過。
 
 歷史阻礙（2026-10-08，2026-10-09 已解除並完成 UI 重驗）：目前發佈受阻：POC push 因 DNS 無法解析失敗；root `.git` 禁止寫入，尚未更新遠端 main 的 README／gitlink。完整結果保留在 `artifacts/verification/cost-attribution/publication.json` 與 `root-publication.json`。UI 仍待可建立 socket 的環境重跑；C 熱點／時間軸尚未開始。
+
+本次清理備份已保存於本機 Git；上傳在600秒後逾時，遠端仍停在Tasks1–6 checkpoint。完整狀態與重試接手點見[清理收據](artifacts/verification/storage/cleanup-paused-20261103/README.md)。開發維持暫停。

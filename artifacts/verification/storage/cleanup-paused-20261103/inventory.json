@@ -1,7 +1,7 @@
 {
   "README.md": {
-    "bytes": 3653,
-    "sha256": "b0fcb689274c07155de5d7673878b6198866df8861b896f917de348aaddc525a"
+    "bytes": 3994,
+    "sha256": "54ff7976557a5db76d569fc59e71d63375fb76e720e0db9734d9ec540b6726e5"
   },
   "c2b-clock-20261102-inventory.json.gz": {
     "bytes": 4192569,
@@ -36,8 +36,8 @@
     "sha256": "b0f116198a9c4ac842e7b268aa56743a07f356ab8a83d1f2463fb4fb468dea08"
   },
   "checkpoint.json": {
-    "bytes": 797,
-    "sha256": "1844535b5f5c716231624d2493ef7611749bd2d5e78c8dedfea916b79f3ea94f"
+    "bytes": 1154,
+    "sha256": "6acfea0a00bfcc02b509e9767d385f4eb60ddd1f4e74a942e9acb07da00aeb19"
   },
   "cleanup.py": {
     "bytes": 7345,
@@ -63,9 +63,17 @@
     "bytes": 11378,
     "sha256": "fdfbaa0c441f084261ee7172837ba16f02d7afa0ea19f3b71f045bc6f2ed04fe"
   },
+  "publication-attempt.json": {
+    "bytes": 137,
+    "sha256": "44bef2f0e128c4d47e4fdf54967a7d6af7c2eb22bd20d78d32a7afc82cda0b60"
+  },
   "receipt.json": {
     "bytes": 4735,
     "sha256": "81fd88912a9ee4f7ce692fb85da1b9bd3ea20edcfe4abc31b43eaf8797e91dfb"
+  },
+  "remote-after-timeout.json": {
+    "bytes": 143,
+    "sha256": "c69440f623a0627793bcad005f78e7e254fe4fd19fd358d25a9f72d8fa5d960e"
   },
   "restore.py": {
     "bytes": 4390,

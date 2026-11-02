@@ -56,3 +56,5 @@ flowchart TD
 Task8還需完整QEMU source／binary／依賴鎖與可還原分卷，實際還原並核對hash；目前各Task收據不代表整包內網還原完成。跨機目標驗證仍依使用者決定暫緩。
 
 Web／offline視覺接合另接在pilot之後；保留curl integration、agent-browser E2E、單一Chrome session及finally close政策。實機PMU、SDK CPU／code-size／IRQ latency、UART吞吐、cache unused-byte／layout因果分析及最新知識庫增補仍列後續，未因本輪而結清。
+
+本次清理備份已保存於本機 Git；上傳在600秒後逾時，遠端仍停在Tasks1–6 checkpoint。完整狀態與重試接手點見[清理收據](../artifacts/verification/storage/cleanup-paused-20261103/README.md)。開發維持暫停。

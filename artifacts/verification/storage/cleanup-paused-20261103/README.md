@@ -2,6 +2,8 @@
 
 2026-11-03：依使用者「先暫停一下，你清理一下空間」執行。**Task7 維持暫停，沒有實作 analysis 模組，也沒有執行正式 16-run。** Tasks1–6 已發布的遠端核對在本資料夾的 task6 publication JSON。
 
+**本次清理備份尚未發布。** POC push 在600秒後逾時；隨後查到遠端仍是 POC `11885222`／main `57aafb33`。分卷與清理紀錄都已在本機 commit；`publication-attempt.json` 與 `remote-after-timeout.json` 保存失敗與遠端核對。等待恢復指示後再處理發布，不將本機commit當成push成功。
+
 ## 清理結果
 
 | 項目 | 結果 |

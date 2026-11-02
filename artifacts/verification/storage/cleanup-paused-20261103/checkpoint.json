@@ -17,10 +17,15 @@
   "resume_plan": "docs/plans/20-c2b-clock-anchor-implementation.md",
   "task7_base": "11885222eaf5f4e15af80b98a708db318b8a43be",
   "next_actions": [
+    "When user resumes, check remote refs and retry pending cleanup archive publication",
     "Restore test draft to original path",
     "Implement Task7 comparison/report per approved brief",
     "Complete Task8 formal pilot/restore/fresh whole-change review/publication"
   ],
   "cleanup_status": "complete",
-  "development_resumed": false
+  "development_resumed": false,
+  "backup_publication": "pending-transport-timeout-600s",
+  "attempted_poc_commit": "a8d96289c43db67129c2355c785411f55dbbbf50",
+  "verified_remote_poc": "11885222eaf5f4e15af80b98a708db318b8a43be",
+  "verified_remote_main": "57aafb339ad9f21f8c5f0e2ab994c33300f02249"
 }
