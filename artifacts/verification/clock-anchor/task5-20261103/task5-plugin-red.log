@@ -1,0 +1,16 @@
+setUpClass (tests.unit.test_clock_anchor_plugin.ClockAnchorPluginTests) ... ERROR
+
+======================================================================
+ERROR: setUpClass (tests.unit.test_clock_anchor_plugin.ClockAnchorPluginTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_clock_anchor_plugin.py", line 43, in setUpClass
+    if p.returncode:raise AssertionError(p.stderr.decode(errors='replace'))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: clang: error: no such file or directory: '/Users/swchen.tw/git/percepio/poc/tools/tcp/clock_anchor.c'
+
+
+----------------------------------------------------------------------
+Ran 0 tests in 0.145s
+
+FAILED (errors=1)

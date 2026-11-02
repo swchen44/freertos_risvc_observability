@@ -1,0 +1,11 @@
+usage: prepare_clock_anchor_tools.py [-h]
+                                     --qemu-build-manifest QEMU_BUILD_MANIFEST
+                                     --legacy-qemu LEGACY_QEMU --output OUTPUT
+
+Build the pinned C2b candidate ELFs and legacy/new collectors.
+
+options:
+  -h, --help            show this help message and exit
+  --qemu-build-manifest QEMU_BUILD_MANIFEST
+  --legacy-qemu LEGACY_QEMU
+  --output OUTPUT

@@ -1,0 +1,20 @@
+test_clock_anchor_capture (unittest.loader._FailedTest.test_clock_anchor_capture) ... ERROR
+
+======================================================================
+ERROR: test_clock_anchor_capture (unittest.loader._FailedTest.test_clock_anchor_capture)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_clock_anchor_capture
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/unittest/loader.py", line 137, in loadTestsFromName
+    module = __import__(module_name)
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_clock_anchor_capture.py", line 13, in <module>
+    from psf_lab.clock_anchor_capture import (
+    ...<7 lines>...
+    )
+ImportError: cannot import name '_check_qemu_sources' from 'psf_lab.clock_anchor_capture' (/Users/swchen.tw/git/percepio/poc/src/psf_lab/clock_anchor_capture.py)
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)

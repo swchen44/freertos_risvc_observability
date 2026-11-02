@@ -1,0 +1,66 @@
+{
+  "task5-python-red.log": {
+    "bytes": 1839,
+    "sha256": "e76a9baad615e5b38ad547656a75b2ff648a0554e377ed361cbeb3a411d8b2c1"
+  },
+  "task5-capture-cli-help.log": {
+    "bytes": 326,
+    "sha256": "22482b64a3d91f9b25cc381c387d3da9ff2d285dde06389c5d7668fd85a4012f"
+  },
+  "task5-build-cli-help.log": {
+    "bytes": 420,
+    "sha256": "ee41aae8a229ca75dcc5e115fe52b4368af4f10af2d81b6a6e0cd6abe70f08ee"
+  },
+  "task5-boundaries-green.log": {
+    "bytes": 484,
+    "sha256": "dfbf46447fd3bb3caaaaef162aa446dffc2732cc383ca450162066648350ea56"
+  },
+  "tools.tar.gz": {
+    "bytes": 12268187,
+    "sha256": "0ea84d27076e60f26c72f77b7ba244b012edd747b597da134fdcc5eb058255fc"
+  },
+  "task5-plugin-green-attempt.log": {
+    "bytes": 850,
+    "sha256": "ef0f8f3584c1aa26da90ad82f7bd35cc1cf464e420075b9ec6f568b838c79496"
+  },
+  "task5-unit-green.log": {
+    "bytes": 2351,
+    "sha256": "5288398cdf5269cf39b2f45dfb2f6b996871c62e4cf3165a38625a1267ed9c86"
+  },
+  "task5-plugin-red.log": {
+    "bytes": 829,
+    "sha256": "829f166e7e3718b29447f43d1addd7d5af2d2f203e4ea575e21a4af60e351a09"
+  },
+  "development-O.tar.gz": {
+    "bytes": 8502055,
+    "sha256": "a90b389c01b19ec0fd7747e2e125d89307785eedfd4f8d2f326a710bcf049e97"
+  },
+  "progress-ledger.md": {
+    "bytes": 8057,
+    "sha256": "e7a15e88e7ad9570b5dbb8690a5df705257424f57f27c966cfbf99468ee11917"
+  },
+  "task5-capture-green-attempt.log": {
+    "bytes": 1666,
+    "sha256": "544b5b32feecd36d1bf0f3caf2bdb943b6460b8aacfcfca4fc6366282a49bf72"
+  },
+  "task5-tools-build.log": {
+    "bytes": 105,
+    "sha256": "34cdabc702b24f8ca971b84de25f45f9ef90e068868630df143cfc483a53b5c2"
+  },
+  "task5-guest-runtime.log": {
+    "bytes": 440,
+    "sha256": "1400053dea01839e65e2f54afa5ac90e0503d565ffd779a7874c24e0091cc6c3"
+  },
+  "task5-full-suite.log": {
+    "bytes": 48101,
+    "sha256": "9067c7a44a3666b84a50974491adb33c1eb89517b090483602e0018d5d42b935"
+  },
+  "task-5-tests.log": {
+    "bytes": 2351,
+    "sha256": "db6c6f56ea848b7d8875cc71d4b0482b46e14f7b33e8a54ba2b38c8b5d2f8196"
+  },
+  "task5-guards-red.log": {
+    "bytes": 1044,
+    "sha256": "3747d2963a1d3ad875d50fb5d03bae1d177daca71682ce305779e65de404e939"
+  }
+}

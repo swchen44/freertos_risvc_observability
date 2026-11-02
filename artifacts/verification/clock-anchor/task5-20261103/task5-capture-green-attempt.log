@@ -1,0 +1,18 @@
+test_dirty_sources_refuse_before_building_or_creating_output (tests.unit.test_clock_anchor_capture.ClockCaptureDriverTests.test_dirty_sources_refuse_before_building_or_creating_output) ... ok
+test_matrix_is_complete_smoke_first_and_mode_is_derived (tests.unit.test_clock_anchor_capture.ClockCaptureDriverTests.test_matrix_is_complete_smoke_first_and_mode_is_derived) ... ok
+test_output_is_new_ignored_and_contained_but_supports_spaces (tests.unit.test_clock_anchor_capture.ClockCaptureDriverTests.test_output_is_new_ignored_and_contained_but_supports_spaces) ... FAIL
+test_timeout_retains_output_and_kills_owned_grandchild (tests.unit.test_clock_anchor_capture.ClockCaptureDriverTests.test_timeout_retains_output_and_kills_owned_grandchild) ... ok
+
+======================================================================
+FAIL: test_output_is_new_ignored_and_contained_but_supports_spaces (tests.unit.test_clock_anchor_capture.ClockCaptureDriverTests.test_output_is_new_ignored_and_contained_but_supports_spaces)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_clock_anchor_capture.py", line 38, in test_output_is_new_ignored_and_contained_but_supports_spaces
+    self.assertEqual(allocate_output(root, output), output)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: PosixPath('/private/var/folders/wj/3v8944vj0t714p6b5l[50 chars]ces') != PosixPath('/var/folders/wj/3v8944vj0t714p6b5l9lmr_800[42 chars]ces')
+
+----------------------------------------------------------------------
+Ran 4 tests in 2.142s
+
+FAILED (failures=1)

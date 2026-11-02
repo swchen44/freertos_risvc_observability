@@ -393,7 +393,7 @@ for label, binary in (("legacy", legacy), ("new", new)):
 
 **Interfaces:** Produces契約B的RunSpec／matrix／capture functions與boundaries。native helper對外為`clock_anchor_init(config_path)`、`clock_anchor_needs_registers(pc)`、`clock_anchor_vcpu_init(id,cpu)`、`clock_anchor_before(cursor,pc)`、`clock_anchor_after_row(cursor,pc,op)`、`clock_anchor_mmio_success(cursor,pc,address,size,store)`、`clock_anchor_finish(rows)`；回傳失敗時停止capture。既有context observer各組都開啟。
 
-- [ ] **1. RED RunSpec／matrix／source/output測試。**
+- [x] **1. RED RunSpec／matrix／source/output測試。**
 
 ```python
 def test_matrix_is_complete_smoke_first_and_mode_is_derived(self):
@@ -407,9 +407,9 @@ def test_matrix_is_complete_smoke_first_and_mode_is_derived(self):
 ```
 
 RunSpec為frozen dataclass，拒candidate非baseline/pbuf、config非L/C/O/M、injection型別不是int0／1、repeat不為1。拒dirty source、既有或落在source／舊captures內的output、symlink逃逸、QEMU plugin argv無法表示的comma path；空白path用subprocess list正常支援。
-- [ ] **2. 寫ELF／boundary unit tests並RED。** 從實際ELF header檢RV32 little endian／RISC-V；nm／readelf／objdump輸出與binary hash一起存。拒重複或缺少三個marker symbols、clone、非instruction-aligned PC及其他candidate map。利用既有`parse_link_map`與`context_boundaries.build_boundaries`：供應elf_path、firmware.elf digest、tool_outputs.nm、可執行sections及map_records，得到舊context config；新module另加marker PCs，不改舊函式的驗證語意。
-- [ ] **3. 寫plugin native stub tests並RED。** 仿`tests.unit.test_live_context`，cc真編譯clock_anchor.c，stub四個POC APIs與register API。測a0～a3缺失／重複／short-read、phase不連續、sample高低位、observer-off不新增R_REGS、raw cursor只在row成功後增加、MMIO不加row。hooks的sample由`((uint64_t)a3<<32)|a2`取得，不讀guest clock。
-- [ ] **4. 加live_cache opt-in與CLI。** 新plugin argc為原6個context args加`clock-config=PATH`共7個；L維持原6個args。clock config採與context config相同的strict `key=value`平面文字，不新增JSON-C依賴；keys固定version、observer、injection、marker_mode、run_id、configuration、四個SHA、sidecar、enter_pc、sampled_pc、leave_pc。unknown／duplicate keys拒絕，observer-off的sidecar值為`-`並傳NULL。PC為canonical十進位RV32，path拒newline／comma，不trim合法path的空白。
+- [x] **2. 寫ELF／boundary unit tests並RED。** 從實際ELF header檢RV32 little endian／RISC-V；nm／readelf／objdump輸出與binary hash一起存。拒重複或缺少三個marker symbols、clone、非instruction-aligned PC及其他candidate map。利用既有`parse_link_map`與`context_boundaries.build_boundaries`：供應elf_path、firmware.elf digest、tool_outputs.nm、可執行sections及map_records，得到舊context config；新module另加marker PCs，不改舊函式的驗證語意。
+- [x] **3. 寫plugin native stub tests並RED。** 仿`tests.unit.test_live_context`，cc真編譯clock_anchor.c，stub四個POC APIs與register API。測a0～a3缺失／重複／short-read、phase不連續、sample高低位、observer-off不新增R_REGS、raw cursor只在row成功後增加、MMIO不加row。hooks的sample由`((uint64_t)a3<<32)|a2`取得，不讀guest clock。
+- [x] **4. 加live_cache opt-in與CLI。** 新plugin argc為原6個context args加`clock-config=PATH`共7個；L維持原6個args。clock config採與context config相同的strict `key=value`平面文字，不新增JSON-C依賴；keys固定version、observer、injection、marker_mode、run_id、configuration、四個SHA、sidecar、enter_pc、sampled_pc、leave_pc。unknown／duplicate keys拒絕，observer-off的sidecar值為`-`並傳NULL。PC為canonical十進位RV32，path拒newline／comma，不trim合法path的空白。
 
 charge寫row後先note cursor，再tagged request；end先note freeze cursor，再停raw；atexit檢finish。MMIO原allowlist／stderr log保留，同時note成功phase。observer-off仍回報cursor供tagged accounting，但不註冊三個新register hooks。
 
@@ -421,7 +421,7 @@ if (enabled) {
     api_calls++;
 }
 ```
-- [ ] **5. 實作build與legacy來源鎖。** 每candidate用新OUT build一次，參數`CASE=tcp_request_response CASE_SRC=tcp_request_response_irq CLOCK_ANCHORS=1 TCP_VARIANT=<candidate> CHECKSUM_OPT=Os TCP_WORKLOAD=linear`，force-include header為A02的64 bytes／13,0,51。L plugin從固定commit `9b0152c708a1b635d56ed147f4768e124cb5c670`唯讀匯出live_cache.c、live_context.c/h、live_timing.c/h、poc-clock-api.h與API4 header編譯，保留目錄結構；不能拿已改的新collector當舊reference。
+- [x] **5. 實作build與legacy來源鎖。** 每candidate用新OUT build一次，參數`CASE=tcp_request_response CASE_SRC=tcp_request_response_irq CLOCK_ANCHORS=1 TCP_VARIANT=<candidate> CHECKSUM_OPT=Os TCP_WORKLOAD=linear`，force-include header為A02的64 bytes／13,0,51。L plugin從固定commit `9b0152c708a1b635d56ed147f4768e124cb5c670`唯讀匯出live_cache.c、live_context.c/h、live_timing.c/h、poc-clock-api.h與API4 header編譯，保留目錄結構；不能拿已改的新collector當舊reference。
 
 `prepare_tools(root,qemu_build,legacy_qemu,output)`在exclusive-create的output中做上述build、probe ELF與兩個plugin；寫tools.json及runtime-tests.json。tools.json固定schema、source_commit、legacy/new QEMU與headers的path/sha256、兩plugin path/sha256、baseline/pbuf各自ELF/map/symbols/boundaries/build命令及dependency hashes、profile／registry hash。runtime-tests.json沿用Task2 schema、加入clock_qemu／plugins／candidates；供Task6 integration，不由test自行選PATH工具。CLI命令為：
 
@@ -435,8 +435,8 @@ PYTHONPATH=src .venv/bin/python tools/tcp/prepare_clock_anchor_tools.py \
 ```
 
 `.tools/c2b-clock`是本計畫建議的新build位置；只在Task4確實於該處成功建置後使用。若改成其他新目錄，CLI傳其實際manifest，不建立指向舊binary的替代檔。
-- [ ] **6. 新collector subprocess與失敗保留。** 每run複製同一ELF、symbols／map；命令使用絕對binary與list argv，semihosting arg只取derived mode。新增qemu.log、console.log、raw CSV、context JSONL、clock JSONL、PSF、packet及oracle receipts。120s timeout後terminate／wait此run的process group，必要時kill group並確認不殘留；不kill別人的QEMU。缺檔／非0／partial都保存capture.json為failed；成功exit也僅標captured-unvalidated，Task6驗證後才可能採認。
-- [ ] **7. GREEN unit／Ruff／commit。** CLI固定`--tools PATH --output NEW_PATH --stage smoke|full`，smoke只4次，full先驗同目錄smoke的commit／commands／source／binary／ELF hashes，符合才接續12次；不相符就拒絕resume並要求新output。source本身必須已commit、logs在ignored新路徑，不能因寫自己的receipt使來源變dirty。
+- [x] **6. 新collector subprocess與失敗保留。** 每run複製同一ELF、symbols／map；命令使用絕對binary與list argv，semihosting arg只取derived mode。新增qemu.log、console.log、raw CSV、context JSONL、clock JSONL、PSF、packet及oracle receipts。120s timeout後terminate／wait此run的process group，必要時kill group並確認不殘留；不kill別人的QEMU。缺檔／非0／partial都保存capture.json為failed；成功exit也僅標captured-unvalidated，Task6驗證後才可能採認。
+- [x] **7. GREEN unit／Ruff／commit。** CLI固定`--tools PATH --output NEW_PATH --stage smoke|full`，smoke只4次，full先驗同目錄smoke的commit／commands／source／binary／ELF hashes，符合才接續12次；不相符就拒絕resume並要求新output。source本身必須已commit、logs在ignored新路徑，不能因寫自己的receipt使來源變dirty。
 
 ## Task 6：串流因果驗證與PSF join
 

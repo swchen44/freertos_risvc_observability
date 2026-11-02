@@ -1,0 +1,7 @@
+test_each_candidate_uses_own_marker_and_context_pcs (tests.unit.test_clock_anchor_boundaries.ClockAnchorBoundaryTests.test_each_candidate_uses_own_marker_and_context_pcs) ... ok
+test_missing_duplicate_clone_mid_instruction_and_other_map_refused (tests.unit.test_clock_anchor_boundaries.ClockAnchorBoundaryTests.test_missing_duplicate_clone_mid_instruction_and_other_map_refused) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.006s
+
+OK

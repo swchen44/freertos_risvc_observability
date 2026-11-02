@@ -1,0 +1,11 @@
+usage: run_clock_anchor_pilot.py [-h] --tools TOOLS --output OUTPUT
+                                 --stage {smoke,full}
+
+Capture and independently validate the four-run smoke or remaining twelve
+runs.
+
+options:
+  -h, --help            show this help message and exit
+  --tools TOOLS
+  --output OUTPUT
+  --stage {smoke,full}
