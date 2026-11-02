@@ -1,6 +1,6 @@
 # C2b clock-anchor pilot：接續提案
 
-狀態：**2026-11-03 Tasks1–6完成，Tasks7–8繼續。** [最新進度](../clock-anchor-progress.md)與[實作計畫](20-c2b-clock-anchor-implementation.md)分開同ELF guest probe／QEMU ABI／回歸與尚未執行的正式16-run；development O有界mapping已驗證，正式對照未完成。
+狀態：**2026-11-03 Tasks1–7完成，Task8進行中。** [最新進度](../clock-anchor-progress.md)與[實作計畫](20-c2b-clock-anchor-implementation.md)分開同ELF guest probe／QEMU ABI／回歸與尚未執行的正式16-run；development O有界mapping已驗證，正式對照未完成。
 
 ## 2026-10-23 接續 checkpoint
 
@@ -10,7 +10,7 @@
 - [x] 2026-10-25使用者選A：app／port加少量SDK markers、不改kernel／SDK；不再等待A／B選擇。
 - [x] 完成並自我審閱具體anchor介面、最小pilot與錯誤／誤差判定，使用者以continue確認[C2b v1書面規格](../design/c2b-clock-anchor-pilot-v1.md)。
 - [x] 建立[逐項實作計畫](20-c2b-clock-anchor-implementation.md)及覆蓋自審；沿用既有Native方式。
-- [x] 使用者以continue確認實作計畫，2026-11-02開始Task1→8；Tasks1–6完成，未執行項目保持unchecked。
+- [x] 使用者以continue確認實作計畫，2026-11-02開始Task1→8；Tasks1–7完成，未執行項目保持unchecked。
 - [ ] 新capture、observer對照、誤差量測、Web／offline視圖與E2E；不得用本輪source audit勾成已完成。
 
 ## 目的與順序
@@ -29,9 +29,9 @@
 
 ## 待決策
 
-- 固定timer／hart配置已由來源核對，修改範圍A與書面規格已確認；實作計畫已確認並執行至Task6。Pilot先量bounds，未提供產品解析度預算時回報unrated，不從100ns量化或舊200ns整窗條件推論通過門檻。
+- 固定timer／hart配置已由來源核對，修改範圍A與書面規格已確認；實作計畫已確認並執行至Task7。Pilot先量bounds，未提供產品解析度預算時回報unrated，不從100ns量化或舊200ns整窗條件推論通過門檻。
 - C2b仍是相對模擬研究；實機PMU、SDK on/off code-size/CPU/IRQ latency、UART吞吐另需公司平台資料。
 - 原單篇知識庫已在先前階段同步；本輪C2a新增資料以本repo為準，知識庫增補尚未同步，列後續而不冒稱完成。
 - 跨機目標平台驗證依既有決定暫緩，不新增這個目標。
 
-Tasks1–6已有實作與獨立development O驗證；Task7–8及正式16-run未完成，不能將單份bounds當成完整pilot驗收。
+Tasks1–6已有實作與獨立development O驗證；Task8及正式16-run未完成，不能將單份bounds當成完整pilot驗收。

@@ -1,8 +1,8 @@
 # C2b 實作進度與證據
 
-更新：2026-11-03。**Tasks 1–6 完成並已發布；Tasks 7–8 依使用者要求暫停。正式 16-run 尚未執行，development O 已取得有界對齊；正式對照仍未驗證。** 執行方式沿用 Native，最後保留獨立整體 review。
+更新：2026-11-03。**Tasks1–7完成；使用者continue已恢復開發，Task8進行中。正式16-run尚未執行。** development O有界對齊已驗證；正式透明性／marker效應對照及完整還原仍待Task8。
 
-已完成[第二次空間清理與接手點](../artifacts/verification/storage/cleanup-paused-20261103/README.md)，觀測增加約1.76GiB。Task7停在RED測試，草稿及log保留；等待使用者恢復指示，不自動續跑。
+清理備份已重試發布，遠端POC核對為e0679501；[Task7收據](../artifacts/verification/clock-anchor/task7-20261103/README.md)保存重試receipt。先前暫停、失敗及清理記錄維持歷史原文，不能當成目前仍暫停。
 
 ## 已完成什麼
 
@@ -14,8 +14,9 @@
 | 4 QEMU adapter | 第三個隔離build完成；10個ABI情境、6份新舊clock回歸driver通過 | [Task4](../artifacts/verification/clock-anchor/task4-20261103/README.md) |
 | 5 TCP collector／capture | 兩個候選 ELF、新舊 plugins、12 個測試；實際 O capture 正常退出，尚待因果驗證 | [Task5](../artifacts/verification/clock-anchor/task5-20261103/README.md) |
 | 6 因果 validator／join | 獨立 replay／FIFO／MMIO／PSF 核對；5 組 bounds、431,512 covered／311 unknown rows | [Task6](../artifacts/verification/clock-anchor/task6-20261103/README.md) |
+| 7 對照與報告 | 18個相關測試；先驗smoke gate、JSON／CSV／Mermaid、真code-size比較 | [Task7](../artifacts/verification/clock-anchor/task7-20261103/README.md) |
 
-最新完整 Python 回歸 **385 個：380 通過、5 個 opt-in skip**；另明確啟用的 runtime 三項全通過，其後完整 uint64 wrap 修正再跑正向 O 與 guest mode／cmdline 三項也全通過，0 skip。相關 35 個單元測試通過。全庫 Ruff check 與本輪 Python format 通過；全庫 format 仍有 10 個 baseline 舊檔未通過。
+最新完整 Python 回歸 **396 個：391 通過、5 個 opt-in skip**；另明確啟用的 runtime 三項全通過，其後完整 uint64 wrap 修正再跑正向 O 與 guest mode／cmdline 三項也全通過，0 skip。相關 35 個單元測試通過。全庫 Ruff check 與本輪 Python format 通過；全庫 format 仍有 10 個 baseline 舊檔未通過。
 
 ```mermaid
 flowchart TD
@@ -24,7 +25,7 @@ flowchart TD
     C --> Q[Task4：隔離QEMU ABI與原clock回歸<br/>已通過]
     Q --> P
     P --> J[Task6：request／applied／MMIO／PSF join<br/>development O 已驗證]
-    J --> R[Task7：透明性、marker成本與bounds報告<br/>待完成]
+    J --> R[Task7：透明性、marker成本與bounds報告<br/>程式完成，正式資料待Task8]
     R --> V[Task8：先4後16次、還原、獨立review與發布<br/>待完成]
     V --> UI[下一階段：Web與離線HTML接合<br/>尚未驗收]
 ```
@@ -51,10 +52,10 @@ flowchart TD
 
 ## 接下來
 
-依[實作計畫](plans/20-c2b-clock-anchor-implementation.md)完成Tasks7–8：A02 baseline／pbuf、每candidate同一ELF、L／C／O／M、先4次smoke再補12次。只有對照與完整性成立，才發布verified bounds；不足時交付inconclusive與unknown。
+依[實作計畫](plans/20-c2b-clock-anchor-implementation.md)完成Task8：A02 baseline／pbuf、每candidate同一ELF、L／C／O／M、先4次smoke再補12次。只有對照與完整性成立，才發布verified bounds；不足時交付inconclusive與unknown。
 
 Task8還需完整QEMU source／binary／依賴鎖與可還原分卷，實際還原並核對hash；目前各Task收據不代表整包內網還原完成。跨機目標驗證仍依使用者決定暫緩。
 
 Web／offline視覺接合另接在pilot之後；保留curl integration、agent-browser E2E、單一Chrome session及finally close政策。實機PMU、SDK CPU／code-size／IRQ latency、UART吞吐、cache unused-byte／layout因果分析及最新知識庫增補仍列後續，未因本輪而結清。
 
-本次清理備份已保存於本機 Git；上傳在600秒後逾時，遠端仍停在Tasks1–6 checkpoint。完整狀態與重試接手點見[清理收據](../artifacts/verification/storage/cleanup-paused-20261103/README.md)。開發維持暫停。
+本次清理備份首次上傳在600秒後逾時，之後重試已成功發布。完整狀態與重試接手點見[清理收據](../artifacts/verification/storage/cleanup-paused-20261103/README.md)。開發已依continue恢復。

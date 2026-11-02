@@ -1,0 +1,35 @@
+test_marker_effect_compares_application_outcome_not_only_packet_bytes (tests.unit.test_clock_anchor_analysis.ClockAnalysisTests.test_marker_effect_compares_application_outcome_not_only_packet_bytes) ... FAIL
+test_full_revalidates_smoke_before_starting_any_new_capture (tests.unit.test_clock_anchor_pilot_flow.PilotFlowTests.test_full_revalidates_smoke_before_starting_any_new_capture) ... FAIL
+test_smoke_includes_marker_effect_application_gate (tests.unit.test_clock_anchor_pilot_flow.PilotFlowTests.test_smoke_includes_marker_effect_application_gate) ... FAIL
+
+======================================================================
+FAIL: test_marker_effect_compares_application_outcome_not_only_packet_bytes (tests.unit.test_clock_anchor_analysis.ClockAnalysisTests.test_marker_effect_compares_application_outcome_not_only_packet_bytes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_clock_anchor_analysis.py", line 140, in test_marker_effect_compares_application_outcome_not_only_packet_bytes
+    self.assertFalse(compare_marker_effect(on,off)["passed"])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_full_revalidates_smoke_before_starting_any_new_capture (tests.unit.test_clock_anchor_pilot_flow.PilotFlowTests.test_full_revalidates_smoke_before_starting_any_new_capture)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_clock_anchor_pilot_flow.py", line 57, in test_full_revalidates_smoke_before_starting_any_new_capture
+    with self.assertRaisesRegex(ValueError,"Smoke"):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_smoke_includes_marker_effect_application_gate (tests.unit.test_clock_anchor_pilot_flow.PilotFlowTests.test_smoke_includes_marker_effect_application_gate)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_clock_anchor_pilot_flow.py", line 66, in test_smoke_includes_marker_effect_application_gate
+    self.assertFalse(result["smoke_passed"])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.124s
+
+FAILED (failures=3)

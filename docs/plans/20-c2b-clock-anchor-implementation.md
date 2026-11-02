@@ -12,7 +12,7 @@
 
 **Execution:** 沿用本專案已採用的Native：主agent逐項實作，最後做獨立whole-change review；依據[既有原生執行紀錄](14-event-window-dashboard.md)。不重新詢問A／B或執行方式。2026-11-02使用者以continue確認計畫，開始逐項實作。
 
-**Current status:** 2026-11-03 Tasks1–4完成；完整352個Python測試、10個ABI情境、6份新舊clock回歸driver通過。[進度與證據](../clock-anchor-progress.md)分開已驗證與未完成。Task5起、正式16-run及時間對齊待完成；全庫format仍有10個baseline舊檔未通過，本輪12檔format通過。unchecked預期不是通過證據。
+**Current status:** 2026-11-03 Tasks1–7完成，Task8進行中。396個Python測試391通過、5個opt-in skip；正式16-run尚未執行。[進度與證據](../clock-anchor-progress.md)。全庫format十個baseline舊問題保留，unchecked不是通過證據。
 
 ## Global Constraints
 
@@ -486,7 +486,7 @@ if start < end and previous["epoch_id"] == following["epoch_id"]:
 
 **Interfaces:** `compare_transparent`只接受同candidate／ELF／injection；檢packet bytes／順序、oracle、資源、raw stream／cost totals、PSF bytes／語意及guest measurement。`compare_marker_effect`只接受O/M且其他identity一致，輸出差值／分母。`write_pilot_report`exclusive-create新report目錄，產生summary.json、anchors.csv、comparisons.csv、report.md與hash清單。
 
-- [ ] **1. RED差異與分母測試。**
+- [x] **1. RED差異與分母測試。**
 
 ```python
 def test_transparency_and_marker_denominator_are_separate(self):
@@ -504,16 +504,16 @@ def test_transparency_and_marker_denominator_are_separate(self):
 ```
 
 `analysis_identity`在test內手寫完整必要identity（同ELF、mode、packets／PSF等），不呼叫production collector生成expected；加zero denominator、missing artifact、比較不同candidate、PSF一byte不同、unknown alignment與marker mode互換反例。
-- [ ] **2. 實作透明性及marker delta。** L/C與C/O不得去掉不相同的timestamps或payload後宣稱一致；O/M不要求raw／PSF相同。百分比以Decimal、6位小數顯示，raw numerator／denominator保留字串；分母0輸出null＋reason。single-pair host overhead百分比不宣稱穩定，只列raw host wall／可取得的child CPU metrics；拿不到CPU time是null，不是0。
+- [x] **2. 實作透明性及marker delta。** L/C與C/O不得去掉不相同的timestamps或payload後宣稱一致；O/M不要求raw／PSF相同。百分比以Decimal、6位小數顯示，raw numerator／denominator保留字串；分母0輸出null＋reason。single-pair host overhead百分比不宣稱穩定，只列raw host wall／可取得的child CPU metrics；拿不到CPU time是null，不是0。
 
 分析差值可以是負數，與raw wire的unsigned counters分開；補測on90／off100應得到delta`-10`、percent`-10.000000`，不能clamp成0或因「overhead」名稱拒絕。
-- [ ] **3. 加入context、trace bytes與code size來源。** raw I/R/W、memory cycles、guest elapsed與IRQ／task差異分開；marker bracket先依既有context intervals列known／unknown，不能把preemption elapsed全算SDK exclusive CPU。保存`size -A`／map／ELF sections；新舊ELF差值包括整個新helper／init／layout影響，不稱SDK本身固定code size。上下文不足時exclusive成本為unavailable。
-- [ ] **4. JSON／CSV／Markdown。** CSV為UTF-8、QUOTE_ALL、CRLF，欄位完整precision字串；不可信文字若起始為`=+-@`或tab／CR，前置apostrophe並附spreadsheet_escaped。表格列bounds寬度／候選數／unknown比率／queue cursor距離，不輸出request→applied ns latency；resolution固定unrated。Markdown至少含架構／取樣時序Mermaid與每組原始檔連結，不放假Dashboard截圖。
+- [x] **3. 加入context、trace bytes與code size來源。** raw I/R/W、memory cycles、guest elapsed與IRQ／task差異分開；marker bracket先依既有context intervals列known／unknown，不能把preemption elapsed全算SDK exclusive CPU。保存`size -A`／map／ELF sections；新舊ELF差值包括整個新helper／init／layout影響，不稱SDK本身固定code size。上下文不足時exclusive成本為unavailable。
+- [x] **4. JSON／CSV／Markdown。** CSV為UTF-8、QUOTE_ALL、CRLF，欄位完整precision字串；不可信文字若起始為`=+-@`或tab／CR，前置apostrophe並附spreadsheet_escaped。表格列bounds寬度／候選數／unknown比率／queue cursor距離，不輸出request→applied ns latency；resolution固定unrated。Markdown至少含架構／取樣時序Mermaid與每組原始檔連結，不放假Dashboard截圖。
 
 generated signed numeric欄位按明訂型別輸出負數字串，不當成不可信label加apostrophe；CSV roundtrip要同時測負差值與`=SUM(A1:A2)`文字guard，避免公式防護破壞數字精度或原值。
 
 analysis CLI固定`--runset PATH --output NEW_PATH`，呼叫write_pilot_report；成功解析partial仍須exit非0並保留partial報告，不能只因檔案寫成功回0。
-- [ ] **5. GREEN／Ruff／commit。** CSV roundtrip與JSON rows對照，確認report引用全部16個identities；不足16時明示partial，不能寫pilot completed。renderer／HTML／Web service均未變，不把本Task標作UI驗收。
+- [x] **5. GREEN／Ruff／commit。** CSV roundtrip與JSON rows對照，確認report引用全部16個identities；不足16時明示partial，不能寫pilot completed。renderer／HTML／Web service均未變，不把本Task標作UI驗收。
 
 ## Task 8：正式16次、完整回歸、還原封裝與發布
 

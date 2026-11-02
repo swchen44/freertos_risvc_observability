@@ -1,0 +1,15 @@
+test_csv_preserves_signed_numeric_precision_but_escapes_labels (tests.unit.test_clock_anchor_analysis.ClockAnalysisTests.test_csv_preserves_signed_numeric_precision_but_escapes_labels) ... ok
+test_empty_partial_report_is_reviewable_and_cli_exits_nonzero (tests.unit.test_clock_anchor_analysis.ClockAnalysisTests.test_empty_partial_report_is_reviewable_and_cli_exits_nonzero) ... ok
+test_group_cannot_claim_verified_bounds_without_five_anchors (tests.unit.test_clock_anchor_analysis.ClockAnalysisTests.test_group_cannot_claim_verified_bounds_without_five_anchors) ... ok
+test_marker_effect_compares_application_outcome_not_only_packet_bytes (tests.unit.test_clock_anchor_analysis.ClockAnalysisTests.test_marker_effect_compares_application_outcome_not_only_packet_bytes) ... ok
+test_negative_and_zero_denominators_and_packet_gate (tests.unit.test_clock_anchor_analysis.ClockAnalysisTests.test_negative_and_zero_denominators_and_packet_gate) ... ok
+test_no_timestamp_normalization_missing_artifact_or_cross_identity (tests.unit.test_clock_anchor_analysis.ClockAnalysisTests.test_no_timestamp_normalization_missing_artifact_or_cross_identity) ... ok
+test_report_keeps_all_sixteen_identities_and_csv_matches_json (tests.unit.test_clock_anchor_analysis.ClockAnalysisTests.test_report_keeps_all_sixteen_identities_and_csv_matches_json) ... ok
+test_transparency_and_marker_denominator_are_separate (tests.unit.test_clock_anchor_analysis.ClockAnalysisTests.test_transparency_and_marker_denominator_are_separate) ... ok
+test_full_revalidates_smoke_before_starting_any_new_capture (tests.unit.test_clock_anchor_pilot_flow.PilotFlowTests.test_full_revalidates_smoke_before_starting_any_new_capture) ... ok
+test_smoke_includes_marker_effect_application_gate (tests.unit.test_clock_anchor_pilot_flow.PilotFlowTests.test_smoke_includes_marker_effect_application_gate) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.201s
+
+OK

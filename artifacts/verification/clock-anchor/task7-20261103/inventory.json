@@ -1,0 +1,58 @@
+{
+  "task7-first-green.log": {
+    "bytes": 1024,
+    "sha256": "ed81297bab7d04144c8b0b9e61f489b028bdbbe2888fe33dbecc5968b0a8ef2f"
+  },
+  "code-size.tar.gz": {
+    "bytes": 363643,
+    "sha256": "29cfaf547f7676971df792e72744f464c78b5b1a7967274374b86d58ec6788a8"
+  },
+  "task-7-tests.log": {
+    "bytes": 3461,
+    "sha256": "d4bff949147e441465de585e0a21ca56e32837f2605329f2b71ac3295ad25719"
+  },
+  "progress.md": {
+    "bytes": 13240,
+    "sha256": "964e407ef5e4732c9250806d8c2842a42e9203ef69c7c0ed949fd1a2c8e79f7b"
+  },
+  "task7-gates-green.log": {
+    "bytes": 1580,
+    "sha256": "5977de01ba0ac173259c9bc516362fc069468f32a0c06c9c125a30a5b29678ea"
+  },
+  "task7-expanded-green.log": {
+    "bytes": 1959,
+    "sha256": "f749fc409cfcf1d0051f78eda72e7b1c8495782dc886309bc1504f1aa9718152"
+  },
+  "task7-gates-red.log": {
+    "bytes": 2666,
+    "sha256": "e6b44624406fd4f0fbae18e535543d66c3eba78ab0bc49e55606a713d03dbabb"
+  },
+  "task7-final-units.log": {
+    "bytes": 3461,
+    "sha256": "24e030b907a86ebca4d9cb55b6ec333bd7842f24b0fa020d0e966193c3af48a4"
+  },
+  "task7-bounds-stats-red.log": {
+    "bytes": 1050,
+    "sha256": "6a82be8aa3de891b67b04b6631def6094a0e28233c340cf23c3a28b0b2b6962b"
+  },
+  "task7-resume-red.log": {
+    "bytes": 1026,
+    "sha256": "fb59d7eca1982dbd8481dacda6f4b24bde03853f32f6ad266b396937d0fa0f57"
+  },
+  "task7-red.log": {
+    "bytes": 1026,
+    "sha256": "fb59d7eca1982dbd8481dacda6f4b24bde03853f32f6ad266b396937d0fa0f57"
+  },
+  "task7-code-size.log": {
+    "bytes": 193,
+    "sha256": "7ae4388630c06f0966556976d8279373b20c0fbc9acead7499e5407f7a06709e"
+  },
+  "task7-full-suite.log": {
+    "bytes": 53639,
+    "sha256": "2516d924f9b2ac27f88bae194b37e0387fb866d29758741f8c24b57d1d81b1a2"
+  },
+  "task7-five-anchor-red.log": {
+    "bytes": 979,
+    "sha256": "94e3c2e0601bfc88fbff4976ce0a0c166dc75edd1bbcae9e20d5d8be3c16e8cc"
+  }
+}

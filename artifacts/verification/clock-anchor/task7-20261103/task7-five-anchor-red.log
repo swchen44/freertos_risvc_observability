@@ -1,0 +1,15 @@
+test_group_cannot_claim_verified_bounds_without_five_anchors (tests.unit.test_clock_anchor_analysis.ClockAnalysisTests.test_group_cannot_claim_verified_bounds_without_five_anchors) ... FAIL
+
+======================================================================
+FAIL: test_group_cannot_claim_verified_bounds_without_five_anchors (tests.unit.test_clock_anchor_analysis.ClockAnalysisTests.test_group_cannot_claim_verified_bounds_without_five_anchors)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_clock_anchor_analysis.py", line 92, in test_group_cannot_claim_verified_bounds_without_five_anchors
+    self.assertFalse(group_comparisons(rows)[0]["passed"])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (failures=1)
