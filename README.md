@@ -1,10 +1,10 @@
 # FreeRTOS／RISC-V Observability：研究與可重跑 POC
 
-**C2b Tasks1–4完成，Tasks5–8繼續。** [最新進度與證據](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/clock-anchor-progress.md)記錄同ELF SDK marker probe、原生C核心與隔離QEMU ABI；完整352個Python測試、10個ABI情境、6份新舊clock driver通過。[Task4收據](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/artifacts/verification/clock-anchor/task4-20261103/README.md)保存編譯失敗、deadlock、sample、修正與原始輸出。全庫Ruff check通過；全庫format仍有10個既有舊檔未通過，本輪12檔format通過。
+**C2b Tasks1–6完成，Tasks7–8繼續。** [最新進度與證據](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/clock-anchor-progress.md)記錄 TCP collector、獨立 replay／因果 validator 與真 PSF join。development O 取得5組 bounds、431,512 covered／311 unknown rows；正式16-run尚未執行。[Task6收據](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/artifacts/verification/clock-anchor/task6-20261103/README.md)保存完整原始資料、反例與失敗修正。完整suite385個：380通過、5個opt-in skip；另明確啟用的runtime通過，0 skip。全庫Ruff check通過；全庫format仍有10個既有舊檔未通過。
 
-正式16-run、tagged guest因果驗證、PSF時間mapping、完整還原分卷與Dashboard接合尚未完成。沿用Native與最後獨立review；FreeRTOS kernel／SDK與舊capture保持原樣。[實作計畫](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/plans/20-c2b-clock-anchor-implementation.md)與[checklist](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/plans/19-c2b-clock-anchor-pilot.md)分開現況與後續。
+正式16-run、透明性／marker成本報告、完整還原分卷與Dashboard接合尚未完成。沿用Native與最後獨立review；FreeRTOS kernel／SDK與舊capture保持原樣。[實作計畫](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/plans/20-c2b-clock-anchor-implementation.md)與[checklist](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/plans/19-c2b-clock-anchor-pilot.md)分開現況與後續。
 
-2026-11-03：[空間盤點與清理候選](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/storage-cleanup.md)，已核對重複archive與cache；目前未刪除，等待選擇清理範圍。
+2026-11-03：已依確認範圍完成[保守空間清理](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/storage-cleanup.md)，核對archive後移除重複副本、乾淨暫存clone與可重建objects；觀測釋放約563MiB。正式資料、工具與還原證據保留。
 
 ## C2a 最新成果 · 2026-10-23
 
