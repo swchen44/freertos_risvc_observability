@@ -21,6 +21,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--qemu", type=Path, required=True)
+    parser.add_argument("--jobs", type=int, choices=(1, 2), default=2)
     parser.add_argument("--repeats", type=int, choices=(1, 3), default=3)
     parser.add_argument("--relative", action="store_true")
     args = parser.parse_args()
@@ -30,7 +31,7 @@ def main():
     build = dest / "build"
     build_cmd = [
         "make",
-        "-j4",
+        f"-j{args.jobs}",
         "-C",
         str(ROOT / "firmware"),
         "CASE=clock_edges",

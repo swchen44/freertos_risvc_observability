@@ -1,0 +1,11 @@
+{
+  "project": "QEMU",
+  "version": "9.2.0",
+  "revision": "ae35f033b874c627d81d51070187fbf55f0bf1a7",
+  "url": "https://github.com/qemu/qemu/blob/ae35f033b874c627d81d51070187fbf55f0bf1a7/scripts/qemu-plugin-symbols.py",
+  "purpose": "Unmodified upstream export generator for C2b build contract tests",
+  "files": {
+    "COPYING": "6f04ae8364d0079a192b14635f4b1da294ce18724c034c39a6a41d1b09df6100",
+    "scripts/qemu-plugin-symbols.py": "72b8bd55be40cd9fe030b8bf000143a5116cf456bb2fd35a9b47ec00e54d0808"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "README.md": {
+    "bytes": 714,
+    "sha256": "5ab59f2fcf19d4975b715c55873d00704173e20ed1ed25890bf984b66d3b54b7"
+  },
+  "ledger.md": {
+    "bytes": 3694,
+    "sha256": "9cd74108e0d228696300dec1a63b4e9e147f7c6700b147eb7e387bc6fd644d24"
+  },
+  "native-cases.tar.gz": {
+    "bytes": 72511,
+    "sha256": "988da79abe56e0df2caa18e342239a35cd33b509a563b45f6600b2035c0fd92b"
+  },
+  "receipt.json": {
+    "bytes": 398,
+    "sha256": "b0d6a89d2211ea4105e080e310d19fbde4a298a0440138c962d1b39c7418c5bf"
+  },
+  "task-3-tests.log.gz": {
+    "bytes": 310,
+    "sha256": "b12b2dd08d115fef30cfe1cc9554417b95011371c9888a281cb908ea1b6a3d3a"
+  },
+  "task3-green-attempt.log.gz": {
+    "bytes": 309,
+    "sha256": "ed54f843b4a1d35e4ff5a1f67d637cdb0f9139ddf3dba5653f881033e745a351"
+  },
+  "task3-green-final.log.gz": {
+    "bytes": 309,
+    "sha256": "02ff750ff07e1e28532b795a5dfc9cd6f2cf443ddfbff02d2df33b889aa7f6b2"
+  },
+  "task3-note-unused-red.log.gz": {
+    "bytes": 330,
+    "sha256": "8c177c3e616f3d7eced4b4d0afa7f66a3df433fbd2ed78b52ef6b896e0d2accd"
+  },
+  "task3-red.log.gz": {
+    "bytes": 315,
+    "sha256": "8100e9c59ca4fa6c5a68420acf317e113a5fd5466095a282a2f3ebf94e4de61f"
+  },
+  "task3-suite-clean.log.gz": {
+    "bytes": 8218,
+    "sha256": "fbe733105ef5e489da041f0a008687b3e59da0d6793ed1a428ef93fdc9c21f70"
+  }
+}

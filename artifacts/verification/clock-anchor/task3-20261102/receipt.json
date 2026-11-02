@@ -1,0 +1,14 @@
+{
+  "task": 3,
+  "status": "complete",
+  "source_commit": "87766959e14137797b717201adf0c671c648db47",
+  "native_test_methods": 6,
+  "full_suite_tests": 348,
+  "full_suite_failures": 0,
+  "marker_mode_independent_of_injection": true,
+  "post_end_applied": true,
+  "core_calls_clock_getter": false,
+  "new_qemu_build": false,
+  "formal_pilot_runs": 0,
+  "global_format": "failed-existing-10-files"
+}

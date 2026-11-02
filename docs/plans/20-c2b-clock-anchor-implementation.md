@@ -12,7 +12,7 @@
 
 **Execution:** 沿用本專案已採用的Native：主agent逐項實作，最後做獨立whole-change review；依據[既有原生執行紀錄](14-event-window-dashboard.md)。不重新詢問A／B或執行方式。2026-11-02使用者以continue確認計畫，開始逐項實作。
 
-**Current status:** 2026-11-02 Task1已完成，來源commit `1b7c0eb2`；11個新測試、完整339個Python測試及Ruff通過。Task2同ELF guest probe已完成，完整342測試通過；Task3起待完成。全庫format的10個baseline舊檔未通過，見Task2收據；尚無C2b正式capture或新QEMU build。unchecked項目的預期輸出不是已通過證據。
+**Current status:** 2026-11-02 Task1已完成，來源commit `1b7c0eb2`；11個新測試、完整339個Python測試及Ruff通過。Task2同ELF guest probe已完成，完整342測試通過；Task3 native core已完成，完整348測試通過；Task4起待完成。全庫format的10個baseline舊檔未通過，見Task2收據；尚無C2b正式capture或新QEMU build。unchecked項目的預期輸出不是已通過證據。
 
 ## Global Constraints
 
@@ -289,9 +289,9 @@ bool poc_state_finish(PocState *, uint64_t expected_rows);
 
 PocNativeIO的kind3必須提供非0 epoch_reason；其他kind該欄為0。epoch record不假稱有新的clock sample。native_io_seq由core分配，plugin成功phase由`POC_CLOCK_MMIO_SUCCESS` note匹配，不由plugin自造native值。
 
-- [ ] **1. RED host harness測真core。** unittest呼叫cc編譯canonical core與tests/native harness，harness以stdout輸出實際JSONL。最小有效程序為configure→begin→cursor1→request1(index0,delta2)→end(cursor1)→apply(before100,returned102,after102,cursor1)→finish；assert request_clock_ns null、applied cursor1、footer pending0、record_count正確。
-- [ ] **2. 反例分別寫測試並RED。** duplicate request、跳號、apply非head、target overflow、cursor倒退、3,000,001 rows、65,537 pending、end後新request、finish pending、sink第N次short-write、footer寫失敗。observer-off的sink完全不能被呼叫，但pending與lifecycle檢查仍執行。另測marker_mode=0且injection_enabled=1仍接受有效request並核對applied；只有injection_enabled=0的request會被拒絕。
-- [ ] **3. 實作lifecycle與bounded FIFO。** state enum CONFIGURED／ACTIVE／DRAINING／FINISHED／FAILED；ring最多65,536項。request要求index=cursor-1、id連續、0<delta<=INT64_MAX；apply驗target不overflow。begin/apply/end不持有外部mutex跨clock provider。僅injection_enabled=0時不得出request；marker_mode=0且injection_enabled=1仍照常計成本與排request。
+- [x] **1. RED host harness測真core。** unittest呼叫cc編譯canonical core與tests/native harness，harness以stdout輸出實際JSONL。最小有效程序為configure→begin→cursor1→request1(index0,delta2)→end(cursor1)→apply(before100,returned102,after102,cursor1)→finish；assert request_clock_ns null、applied cursor1、footer pending0、record_count正確。
+- [x] **2. 反例分別寫測試並RED。** duplicate request、跳號、apply非head、target overflow、cursor倒退、3,000,001 rows、65,537 pending、end後新request、finish pending、sink第N次short-write、footer寫失敗。observer-off的sink完全不能被呼叫，但pending與lifecycle檢查仍執行。另測marker_mode=0且injection_enabled=1仍接受有效request並核對applied；只有injection_enabled=0的request會被拒絕。
+- [x] **3. 實作lifecycle與bounded FIFO。** state enum CONFIGURED／ACTIVE／DRAINING／FINISHED／FAILED；ring最多65,536項。request要求index=cursor-1、id連續、0<delta<=INT64_MAX；apply驗target不overflow。begin/apply/end不持有外部mutex跨clock provider。僅injection_enabled=0時不得出request；marker_mode=0且injection_enabled=1仍照常計成本與排request。
 
 ```c
 /* apply_begin的關鍵檢查；成功後只準備target，不自行讀鐘或advance。 */
@@ -301,8 +301,8 @@ if (!head || head->id != id || before < 0 || head->delta > INT64_MAX ||
 *target_out = before + head->delta;
 ```
 
-- [ ] **4. 實作確定性的JSON writer與IO成對狀態。** 使用契約A白名單enum及已驗證ASCII run_id／hex SHA，不拼接任意JSON。每行先完整格式化到16KiB內，再sink；超長／short-write立即failed，後續finish不得complete true。native IO給連續id；plugin success必須依序對上同address／direction／size，保留device／plugin兩個phase。
-- [ ] **5. 互通GREEN。** Python用Task1 reader讀C harness輸出，另以手工expected斷言欄位；bad case需非0並保留partial stdout。native harness每次subprocess timeout5s，避免死鎖等成假成功。清除temp目錄前將每case的command、source hash、stdout／stderr bytes與exit保存到新ignored測試log目錄，保留RED／GREEN；不只保存最後成功摘要。commit source與可複查receipt。
+- [x] **4. 實作確定性的JSON writer與IO成對狀態。** 使用契約A白名單enum及已驗證ASCII run_id／hex SHA，不拼接任意JSON。每行先完整格式化到16KiB內，再sink；超長／short-write立即failed，後續finish不得complete true。native IO給連續id；plugin success必須依序對上同address／direction／size，保留device／plugin兩個phase。
+- [x] **5. 互通GREEN。** Python用Task1 reader讀C harness輸出，另以手工expected斷言欄位；bad case需非0並保留partial stdout。native harness每次subprocess timeout5s，避免死鎖等成假成功。清除temp目錄前將每case的command、source hash、stdout／stderr bytes與exit保存到新ignored測試log目錄，保留RED／GREEN；不只保存最後成功摘要。commit source與可複查receipt。
 
 ## Task 4：QEMU adapter、ACLINT同次sample與隔離build
 

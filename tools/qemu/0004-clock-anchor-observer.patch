@@ -1,0 +1,695 @@
+--- a/hw/intc/riscv_aclint.c
++++ b/hw/intc/riscv_aclint.c
+@@ -24,0 +25 @@
++#include "sysemu/poc-clock-observer.h"
+@@ -153,2 +154,7 @@
+-        uint64_t rtc = cpu_riscv_read_rtc(mtimer);
+-        return (size == 4) ? (rtc & 0xFFFFFFFF) : rtc;
++        int64_t ns = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
++        uint64_t rtc = muldiv64(ns, mtimer->timebase_freq, NANOSECONDS_PER_SECOND)
++                     + mtimer->time_delta;
++        uint64_t value = (size == 4) ? (rtc & 0xFFFFFFFF) : rtc;
++        poc_clock_native_read(mtimer, mtimer->mmio.addr + addr, size, ns,
++            mtimer->timebase_freq, mtimer->time_delta, rtc, value);
++        return value;
+@@ -156,2 +162,8 @@
+-        /* time_hi */
+-        return (cpu_riscv_read_rtc(mtimer) >> 32) & 0xFFFFFFFF;
++        /* Preserve the one native getter used by this MMIO read. */
++        int64_t ns = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
++        uint64_t rtc = muldiv64(ns, mtimer->timebase_freq, NANOSECONDS_PER_SECOND)
++                     + mtimer->time_delta;
++        uint64_t value = (rtc >> 32) & 0xFFFFFFFF;
++        poc_clock_native_read(mtimer, mtimer->mmio.addr + addr, size, ns,
++            mtimer->timebase_freq, mtimer->time_delta, rtc, value);
++        return value;
+@@ -207,0 +220,4 @@
++        if (env && size == 4 && ((addr & 7) == 0 || (addr & 7) == 4)) {
++            poc_clock_native_write(mtimer, mtimer->mmio.addr + addr, size,
++                                   (uint32_t)value);
++        }
+@@ -209,0 +226 @@
++        poc_clock_epoch(mtimer, 1);
+@@ -311,0 +329 @@
++    poc_clock_epoch(mtimer, 2);
+--- /dev/null
++++ b/include/qemu/poc-clock-anchor-api.h
+@@ -0,0 +1,29 @@
++#ifndef POC_CLOCK_ANCHOR_API_H
++#define POC_CLOCK_ANCHOR_API_H
++#include <stdint.h>
++#include <stdbool.h>
++
++/* POC host ABI v1, separate from upstream QEMU plugin API version 4. */
++typedef struct PocClockConfig {
++    uint32_t struct_size, abi_version, observer_enabled, injection_enabled;
++    uint32_t marker_mode, expected_frequency_hz;
++    const char *path, *run_id, *configuration;
++    const char *qemu_sha256, *elf_sha256, *profile_sha256, *plugin_sha256;
++} PocClockConfig;
++typedef struct PocClockNote {
++    uint32_t struct_size, kind;
++    uint64_t raw_cursor, pc;
++    uint32_t marker_seq, marker_phase;
++    uint64_t sample64, address;
++    uint32_t access_size, is_store;
++} PocClockNote;
++enum PocClockNoteKind {
++    POC_CLOCK_BEGIN=1, POC_CLOCK_RAW_I=2, POC_CLOCK_RAW_R=3, POC_CLOCK_RAW_W=4,
++    POC_CLOCK_ENTER=5, POC_CLOCK_SAMPLED=6, POC_CLOCK_LEAVE=7,
++    POC_CLOCK_END=8, POC_CLOCK_MMIO_SUCCESS=9
++};
++bool qemu_plugin_poc_clock_configure(const void *, const PocClockConfig *);
++void qemu_plugin_poc_clock_note(const void *, const PocClockNote *);
++void qemu_plugin_poc_add_ns_tagged(const void *, uint64_t, uint64_t, uint64_t);
++bool qemu_plugin_poc_clock_finish(const void *, uint64_t);
++#endif
+--- a/include/qemu/qemu-plugin.h
++++ b/include/qemu/qemu-plugin.h
+@@ -737,0 +738,12 @@
++/* POC-only host ABI v1; upstream QEMU_PLUGIN_VERSION remains 4. */
++struct PocClockConfig;
++struct PocClockNote;
++QEMU_PLUGIN_API
++bool qemu_plugin_poc_clock_configure(const void *, const struct PocClockConfig *);
++QEMU_PLUGIN_API
++void qemu_plugin_poc_clock_note(const void *, const struct PocClockNote *);
++QEMU_PLUGIN_API
++void qemu_plugin_poc_add_ns_tagged(const void *, uint64_t, uint64_t, uint64_t);
++QEMU_PLUGIN_API
++bool qemu_plugin_poc_clock_finish(const void *, uint64_t);
++
+--- /dev/null
++++ b/include/sysemu/poc-clock-observer.h
+@@ -0,0 +1,27 @@
++/* POC-only clock observer, QEMU 9.2 / RV32 virt / one fixed-icount CPU. */
++#ifndef SYSEMU_POC_CLOCK_OBSERVER_H
++#define SYSEMU_POC_CLOCK_OBSERVER_H
++#include "qemu/poc-clock-anchor-api.h"
++#ifdef CONFIG_PLUGIN
++bool poc_clock_configure(const PocClockConfig *);
++void poc_clock_note(const PocClockNote *);
++void poc_clock_add_tagged(uint64_t, uint64_t, uint64_t);
++bool poc_clock_finish(uint64_t);
++void poc_clock_native_read(const void *, uint64_t, uint32_t, int64_t,
++                           uint32_t, uint64_t, uint64_t, uint64_t);
++void poc_clock_native_write(const void *, uint64_t, uint32_t, uint64_t);
++void poc_clock_epoch(const void *, uint32_t);
++#else
++static inline void poc_clock_native_read(const void *d, uint64_t a, uint32_t z,
++    int64_t n, uint32_t h, uint64_t o, uint64_t t, uint64_t v) {
++    (void)d; (void)a; (void)z; (void)n; (void)h; (void)o; (void)t; (void)v;
++}
++static inline void poc_clock_native_write(const void *d, uint64_t a,
++                                         uint32_t z, uint64_t v) {
++    (void)d; (void)a; (void)z; (void)v;
++}
++static inline void poc_clock_epoch(const void *d, uint32_t r) {
++    (void)d; (void)r;
++}
++#endif
++#endif
+--- a/plugins/api.c
++++ b/plugins/api.c
+@@ -38,0 +39,3 @@
++#ifdef CONFIG_SOFTMMU
++#include "sysemu/poc-clock-observer.h"
++#endif
+@@ -712,0 +716,33 @@
++
++/* POC-only ABI wrappers keep the original time-control handle private. */
++bool qemu_plugin_poc_clock_configure(const void *handle, const struct PocClockConfig *c)
++{
++#ifdef CONFIG_SOFTMMU
++    return handle == &has_control && poc_clock_configure(c);
++#else
++    return false;
++#endif
++}
++void qemu_plugin_poc_clock_note(const void *handle, const struct PocClockNote *n)
++{
++#ifdef CONFIG_SOFTMMU
++    if (handle != &has_control) { error_report("C2b invalid handle"); exit(2); }
++    poc_clock_note(n);
++#endif
++}
++void qemu_plugin_poc_add_ns_tagged(const void *handle, uint64_t delta,
++                                  uint64_t id, uint64_t index)
++{
++#ifdef CONFIG_SOFTMMU
++    if (handle != &has_control) { error_report("C2b invalid handle"); exit(2); }
++    poc_clock_add_tagged(delta, id, index);
++#endif
++}
++bool qemu_plugin_poc_clock_finish(const void *handle, uint64_t rows)
++{
++#ifdef CONFIG_SOFTMMU
++    return handle == &has_control && poc_clock_finish(rows);
++#else
++    return false;
++#endif
++}
+--- a/plugins/meson.build
++++ b/plugins/meson.build
+@@ -48,0 +49,6 @@
++
++# Canonical core also compiles outside QEMU against the same public ABI header.
++specific_ss.add(when: 'CONFIG_SOFTMMU', if_true: [
++  files('poc-clock-observer.c', 'poc-clock-state.c'),
++  declare_dependency(include_directories: include_directories('../include/qemu')),
++])
+--- /dev/null
++++ b/plugins/poc-clock-observer.c
+@@ -0,0 +1,221 @@
++/* SPDX-License-Identifier: GPL-2.0-or-later
++ * POC adapter. The canonical core performs no QEMU clock reads or scheduling.
++ */
++#include "qemu/osdep.h"
++#include "qemu/error-report.h"
++#include "qemu/main-loop.h"
++#include "qemu/timer.h"
++#include "hw/boards.h"
++#include "hw/core/cpu.h"
++#include "sysemu/cpu-timers.h"
++#include "sysemu/cpus.h"
++#include "sysemu/tcg.h"
++#include "sysemu/poc-clock-observer.h"
++#include "poc-clock-state.h"
++
++static PocState *clock_state;
++static QemuMutex clock_lock;
++static bool configured, capture_started;
++static FILE *clock_file;
++static char clock_buffer[65536];
++static const void *clock_device;
++typedef struct PocClockWork { uint64_t id, event_index, delta_ns; } PocClockWork;
++
++static G_NORETURN void poc_clock_fatal(const char *reason)
++{
++    error_report("C2b clock: %s", reason);
++    if (clock_file) {
++        fflush(clock_file);
++    }
++    exit(2);
++}
++
++static bool sink(void *opaque, const char *data, size_t length)
++{
++    FILE *stream = opaque;
++    return fwrite(data, 1, length, stream) == length && !ferror(stream);
++}
++
++static void check(bool ok)
++{
++    if (!ok) {
++        poc_clock_fatal(poc_state_error(clock_state));
++    }
++}
++
++bool poc_clock_configure(const PocClockConfig *config)
++{
++    MachineState *machine = MACHINE(qdev_get_machine());
++    if (configured || !config || config->struct_size != sizeof(*config) ||
++        config->abi_version != 1 || !tcg_enabled() || qemu_tcg_mttcg_enabled() ||
++        icount_enabled() != ICOUNT_PRECISE || icount_to_ns(1) != 1 ||
++        machine->smp.cpus != 1 || strcmp(MACHINE_GET_CLASS(machine)->name, "virt")) {
++        return false;
++    }
++    if (config->observer_enabled) {
++        if (!config->path) {
++            return false;
++        }
++        clock_file = fopen(config->path, "wx");
++        if (!clock_file) {
++            return false;
++        }
++        if (setvbuf(clock_file, clock_buffer, _IOFBF, sizeof(clock_buffer))) {
++            fclose(clock_file);
++            clock_file = NULL;
++            return false;
++        }
++    }
++    clock_state = poc_state_new(config, sink, clock_file);
++    if (!clock_state) {
++        if (clock_file) {
++            fclose(clock_file);
++            clock_file = NULL;
++        }
++        return false;
++    }
++    qemu_mutex_init(&clock_lock);
++    configured = true;
++    return true;
++}
++
++static void require_cpu(CPUState *cpu, bool outside_exec)
++{
++    CPUState *other;
++    unsigned count = 0;
++    if (!current_cpu || current_cpu != cpu || cpu->cpu_index != 0 ||
++        icount_enabled() != ICOUNT_PRECISE ||
++        (outside_exec && (cpu->running || !bql_locked()))) {
++        poc_clock_fatal("unsafe-applied-context");
++    }
++    CPU_FOREACH(other) {
++        count++;
++    }
++    if (count != 1) {
++        poc_clock_fatal("wrong-cpu-count");
++    }
++}
++
++void poc_clock_note(const PocClockNote *note)
++{
++    if (!clock_state) {
++        poc_clock_fatal("unconfigured-note");
++    }
++    require_cpu(current_cpu, false);
++    qemu_mutex_lock(&clock_lock);
++    check(poc_state_note(clock_state, note));
++    if (note->kind == POC_CLOCK_BEGIN) {
++        capture_started = true;
++    }
++    qemu_mutex_unlock(&clock_lock);
++}
++
++static void apply(CPUState *cpu, run_on_cpu_data data)
++{
++    PocClockWork *work = data.host_ptr;
++    int64_t target, before, returned, after;
++    require_cpu(cpu, true);
++    before = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
++    qemu_mutex_lock(&clock_lock);
++    check(poc_state_apply_begin(clock_state, work->id, before,
++                               poc_state_cursor(clock_state), &target));
++    qemu_mutex_unlock(&clock_lock);
++    returned = qemu_clock_advance_virtual_time(target);
++    require_cpu(cpu, true);
++    after = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
++    qemu_mutex_lock(&clock_lock);
++    check(poc_state_apply_end(clock_state, work->id, returned, after,
++                             poc_state_cursor(clock_state)));
++    qemu_mutex_unlock(&clock_lock);
++    g_free(work);
++}
++
++void poc_clock_add_tagged(uint64_t delta, uint64_t id, uint64_t index)
++{
++    if (!clock_state || !delta || delta > INT64_MAX) {
++        poc_clock_fatal("unconfigured-or-invalid-request");
++    }
++    require_cpu(current_cpu, false);
++    qemu_mutex_lock(&clock_lock);
++    check(poc_state_request(clock_state, id, index, delta));
++    qemu_mutex_unlock(&clock_lock);
++    PocClockWork *work = g_new(PocClockWork, 1);
++    *work = (PocClockWork){id, index, delta};
++    async_run_on_cpu(current_cpu, apply, RUN_ON_CPU_HOST_PTR(work));
++}
++
++static bool select_device(const void *device)
++{
++    if (!clock_state || !capture_started) {
++        return false;
++    }
++    if (clock_device && clock_device != device) {
++        poc_clock_epoch(device, 3);
++    }
++    clock_device = device;
++    return true;
++}
++
++void poc_clock_native_read(const void *device, uint64_t address, uint32_t size,
++                          int64_t ns, uint32_t frequency, uint64_t offset,
++                          uint64_t tick, uint64_t value)
++{
++    if (!select_device(device)) {
++        return;
++    }
++    PocNativeIO io = {.kind = 1, .size = size, .address = address,
++        .virtual_ns = ns, .timebase_hz = frequency, .time_delta = offset,
++        .mtime64 = tick, .value32 = value};
++    qemu_mutex_lock(&clock_lock);
++    check(poc_state_native_io(clock_state, &io));
++    qemu_mutex_unlock(&clock_lock);
++}
++
++void poc_clock_native_write(const void *device, uint64_t address, uint32_t size,
++                           uint64_t value)
++{
++    if (!select_device(device)) {
++        return;
++    }
++    PocNativeIO io = {.kind = 2, .is_store = 1, .size = size,
++        .address = address, .value32 = value};
++    qemu_mutex_lock(&clock_lock);
++    check(poc_state_native_io(clock_state, &io));
++    qemu_mutex_unlock(&clock_lock);
++}
++
++void poc_clock_epoch(const void *device, uint32_t reason)
++{
++    if (!clock_state || !capture_started) {
++        return;
++    }
++    PocNativeIO io = {.kind = 3, .epoch_reason = reason};
++    qemu_mutex_lock(&clock_lock);
++    check(poc_state_native_io(clock_state, &io));
++    qemu_mutex_unlock(&clock_lock);
++}
++
++bool poc_clock_finish(uint64_t expected_rows)
++{
++    if (!clock_state) {
++        return false;
++    }
++    qemu_mutex_lock(&clock_lock);
++    bool ok = poc_state_finish(clock_state, expected_rows);
++    if (!ok) {
++        error_report("C2b clock finish: %s", poc_state_error(clock_state));
++    }
++    if (clock_file) {
++        if (fflush(clock_file) || ferror(clock_file)) {
++            ok = false;
++        }
++        if (fclose(clock_file)) {
++            ok = false;
++        }
++        clock_file = NULL;
++    }
++    poc_state_free(clock_state);
++    clock_state = NULL;
++    qemu_mutex_unlock(&clock_lock);
++    return ok;
++}
+--- /dev/null
++++ b/plugins/poc-clock-state.c
+@@ -0,0 +1,279 @@
++/* Canonical host state machine; external adapter owns locking and clock reads. */
++#include "poc-clock-state.h"
++#include <inttypes.h>
++#include <limits.h>
++#include <stdarg.h>
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++
++#define PENDING_LIMIT 65536u
++#define RAW_LIMIT UINT64_C(3000000)
++enum Stage { CONFIGURED, ACTIVE, DRAINING, FINISHED, FAILED };
++typedef struct Request { uint64_t id, index, delta; } Request;
++struct PocState {
++    enum Stage stage;
++    PocSink sink;
++    void *opaque;
++    bool observer, injection, applying, io_pending, clock_seen;
++    uint32_t marker_mode, marker_seq, marker_stage, head, pending, frequency;
++    uint32_t last_op;
++    uint64_t cursor, pc, requested_cursor, requests, applied, sequence;
++    uint64_t device_io, plugin_io;
++    int64_t before, target, last_clock;
++    PocNativeIO io;
++    Request *queue;
++    char run_id[97], config[2], hashes[4][65], path[4097], error[128];
++};
++
++static bool copy_string(char *dest, size_t capacity, const char *src) {
++    if (!src) return false;
++    size_t n=0;
++    while (n<capacity && src[n]) n++;
++    if (n==0 || n==capacity) return false;
++    memcpy(dest,src,n+1);
++    return true;
++}
++static bool safe_id(const char *s) {
++    for (size_t i=0;s[i];i++) {
++        char c=s[i];
++        bool alpha=(c>='A' && c<='Z') || (c>='a' && c<='z');
++        bool digit=c>='0' && c<='9';
++        if (!alpha && !digit && !(i && (c=='_' || c=='-' || c=='.'))) return false;
++    }
++    return true;
++}
++static bool hex_hash(const char *s) {
++    if (strlen(s)!=64) return false;
++    for (unsigned i=0;i<64;i++) if (!((s[i]>='0' && s[i]<='9') ||
++                                                   (s[i]>='a' && s[i]<='f'))) return false;
++    return true;
++}
++bool poc_state_fail(PocState *s, const char *reason) {
++    if (s && s->stage!=FAILED) {
++        snprintf(s->error,sizeof s->error,"%s",reason);
++        s->stage=FAILED;
++    }
++    return false;
++}
++const char *poc_state_error(const PocState *s) { return s ? s->error : "no-state"; }
++uint64_t poc_state_cursor(const PocState *s) { return s ? s->cursor : 0; }
++void poc_state_free(PocState *s) { if(s) {free(s->queue);free(s);} }
++
++static bool emit(PocState *s, const char *kind, const char *phase, const char *fmt, ...) {
++    if (s->stage==FAILED) return false;
++    if (!s->observer) return true;
++    char extra[12288], line[16385];
++    va_list ap;va_start(ap,fmt);
++    int n=vsnprintf(extra,sizeof extra,fmt,ap);va_end(ap);
++    if(n<0 || (size_t)n>=sizeof extra) return poc_state_fail(s,"line-limit");
++    n=snprintf(line,sizeof line,
++        "{\"schema\":\"clock-anchor-record-v1\",\"run_id\":\"%s\","
++        "\"record_seq\":\"%"PRIu64"\",\"kind\":\"%s\",\"cpu\":\"0\","
++        "\"raw_cursor\":\"%"PRIu64"\",\"phase\":\"%s\"%s}\n",
++        s->run_id,s->sequence,kind,s->cursor,phase,extra);
++    if(n<0 || n>16384) return poc_state_fail(s,"line-limit");
++    if(!s->sink(s->opaque,line,(size_t)n)) return poc_state_fail(s,"sink-write");
++    s->sequence++;
++    return true;
++}
++
++PocState *poc_state_new(const PocClockConfig *c, PocSink sink, void *opaque) {
++    if(!c || c->struct_size!=sizeof *c || c->abi_version!=1 ||
++       c->observer_enabled>1 || c->injection_enabled>1 || c->marker_mode>1 ||
++       c->expected_frequency_hz!=10000000 || (c->observer_enabled && !sink) ||
++       (!c->observer_enabled && c->path)) return NULL;
++    PocState *s=calloc(1,sizeof *s);
++    if(!s) return NULL;
++    s->queue=calloc(PENDING_LIMIT,sizeof *s->queue);
++    if(!s->queue || !copy_string(s->run_id,sizeof s->run_id,c->run_id) || !safe_id(s->run_id) ||
++       !copy_string(s->config,sizeof s->config,c->configuration) ||
++       !strchr("LCOM",s->config[0]) ||
++       (c->observer_enabled && !copy_string(s->path,sizeof s->path,c->path))) goto bad;
++    const char *hashes[]={c->qemu_sha256,c->elf_sha256,c->profile_sha256,c->plugin_sha256};
++    for(unsigned i=0;i<4;i++)
++        if(!copy_string(s->hashes[i],sizeof s->hashes[i],hashes[i]) ||
++           !hex_hash(s->hashes[i])) goto bad;
++    s->observer=c->observer_enabled;s->injection=c->injection_enabled;
++    s->marker_mode=c->marker_mode;s->sink=sink;s->opaque=opaque;
++    if(!emit(s,"header","configured",
++        ",\"abi_version\":\"1\",\"configuration\":\"%s\",\"injection_enabled\":%s,"
++        "\"observer_enabled\":%s,\"marker_mode\":\"%u\",\"expected_frequency_hz\":\"10000000\","
++        "\"qemu_sha256\":\"%s\",\"elf_sha256\":\"%s\",\"profile_sha256\":\"%s\","
++        "\"plugin_sha256\":\"%s\",\"clock_domains\":{\"virtual\":\"qemu_virtual_ns\","
++        "\"mtime\":\"aclint_mtime64\",\"psf\":\"mtime_low32\"}",
++        s->config,s->injection?"true":"false",s->observer?"true":"false",s->marker_mode,
++        s->hashes[0],s->hashes[1],s->hashes[2],s->hashes[3])) goto bad;
++    return s;
++bad:
++    poc_state_free(s);return NULL;
++}
++
++static bool clock_point(PocState *s, int64_t ns) {
++    if(ns<0 || (s->clock_seen && ns<s->last_clock)) return poc_state_fail(s,"clock-reversal");
++    s->clock_seen=true;s->last_clock=ns;return true;
++}
++
++bool poc_state_request(PocState *s, uint64_t id, uint64_t index, uint64_t delta) {
++    if(!s || s->stage==FAILED) return false;
++    if(s->stage!=ACTIVE) return poc_state_fail(s,"request-state");
++    if(!s->injection) return poc_state_fail(s,"request-disabled");
++    if(id!=s->requests+1 || !s->cursor || index!=s->cursor-1 ||
++       s->requested_cursor==s->cursor || !delta || delta>INT64_MAX)
++        return poc_state_fail(s,"request-order");
++    if(s->pending==PENDING_LIMIT) return poc_state_fail(s,"pending-limit");
++    s->queue[(s->head+s->pending)%PENDING_LIMIT]=(Request){id,index,delta};
++    s->pending++;s->requests++;s->requested_cursor=s->cursor;
++    return emit(s,"cost_request",s->last_op==POC_CLOCK_RAW_I?"instruction_before":
++        "memory_after_success",",\"request_id\":\"%"PRIu64"\",\"request_event_index\":\"%"PRIu64
++        "\",\"delta_ns\":\"%"PRIu64"\",\"request_clock_ns\":null,\"pc\":\"%"PRIu64"\"",
++        id,index,delta,s->pc);
++}
++
++bool poc_state_apply_begin(PocState *s, uint64_t id, int64_t before,
++                           uint64_t cursor, int64_t *target) {
++    if(!s || s->stage==FAILED) return false;
++    if(s->applying) return poc_state_fail(s,"apply-in-progress");
++    Request *r=s->pending ? &s->queue[s->head] : NULL;
++    if((s->stage!=ACTIVE && s->stage!=DRAINING) || !r || r->id!=id ||
++       cursor!=s->cursor || !target || before<0 || r->delta>INT64_MAX ||
++       (uint64_t)before>(uint64_t)INT64_MAX-r->delta)
++        return poc_state_fail(s,"apply-order-or-range");
++    if(!clock_point(s,before)) return false;
++    s->before=before;s->target=before+(int64_t)r->delta;
++    s->applying=true;*target=s->target;return true;
++}
++bool poc_state_apply_end(PocState *s, uint64_t id, int64_t returned,
++                         int64_t after, uint64_t cursor) {
++    if(!s || s->stage==FAILED) return false;
++    if(!s->applying || !s->pending || s->queue[s->head].id!=id || cursor!=s->cursor)
++        return poc_state_fail(s,"apply-order-or-range");
++    if(!emit(s,"cost_applied","cpu_async_outside_exec",
++        ",\"request_id\":\"%"PRIu64"\",\"before_ns\":\"%"PRId64
++        "\",\"requested_target_ns\":\"%"PRId64"\",\"advance_return_ns\":\"%"PRId64
++        "\",\"after_ns\":\"%"PRId64"\"",id,s->before,s->target,returned,after)) return false;
++    if(returned!=s->target || after!=s->target) return poc_state_fail(s,"applied-mismatch");
++    if(!clock_point(s,after)) return false;
++    s->applying=false;s->head=(s->head+1)%PENDING_LIMIT;s->pending--;s->applied++;
++    return true;
++}
++
++static bool emit_io(PocState *s, const char *source) {
++    const PocNativeIO *io=&s->io;
++    const char *kind=io->kind==1?"mtime_read":"mtimecmp_write";
++    const char *phase=!strcmp(source,"device")?"device_mmio":"memory_after_success";
++    char fields[1024];
++    if(io->kind==1) {
++        if(!strcmp(source,"device"))
++            snprintf(fields,sizeof fields,",\"virtual_ns\":\"%"PRId64
++                "\",\"timebase_hz\":\"%u\",\"time_delta\":\"%"PRIu64
++                "\",\"mtime64\":\"%"PRIu64"\",\"value32\":\"%"PRIu64"\"",
++                io->virtual_ns,io->timebase_hz,io->time_delta,io->mtime64,io->value32);
++        else strcpy(fields,",\"virtual_ns\":null,\"timebase_hz\":null,\"time_delta\":null,"
++                           "\"mtime64\":null,\"value32\":null");
++    } else {
++        if(!strcmp(source,"device"))
++            snprintf(fields,sizeof fields,",\"value32\":\"%"PRIu64"\"",io->value32);
++        else strcpy(fields,",\"value32\":null");
++    }
++    return emit(s,kind,phase,",\"source\":\"%s\",\"native_io_seq\":\"%"PRIu64
++        "\",\"address\":\"%"PRIu64"\",\"size\":\"4\",\"pc\":\"%"PRIu64"\"%s",
++        source,s->device_io,io->address,s->pc,fields);
++}
++
++bool poc_state_native_io(PocState *s, const PocNativeIO *io) {
++    if(!s || s->stage==FAILED || !io) return false;
++    if(s->stage==CONFIGURED) return true; /* Before capture: no observed epoch yet. */
++    if(s->stage!=ACTIVE && s->stage!=DRAINING) return poc_state_fail(s,"io-state");
++    if(io->kind==3) {
++        const char *reasons[]={"", "mtime_write", "reset", "device_changed", "frequency_changed"};
++        if(io->epoch_reason<1 || io->epoch_reason>4) return poc_state_fail(s,"epoch-reason");
++        if(!emit(s,"epoch_change","device_epoch",",\"reason\":\"%s\","
++                 "\"old_value\":null,\"new_value\":null",reasons[io->epoch_reason])) return false;
++        return poc_state_fail(s,"epoch-change");
++    }
++    if(s->io_pending) return poc_state_fail(s,"native-io-pending");
++    if(io->epoch_reason || io->size!=4 || io->value32>UINT32_MAX ||
++       (io->kind!=1 && io->kind!=2) || io->is_store!=(io->kind==2))
++        return poc_state_fail(s,"native-layout");
++    if(io->kind==1) {
++        if(io->address!=0x0200bff8 && io->address!=0x0200bffc)
++            return poc_state_fail(s,"native-address");
++        if(!clock_point(s,io->virtual_ns)) return false;
++        if(!io->timebase_hz || (s->frequency && io->timebase_hz!=s->frequency))
++            return poc_state_fail(s,"frequency-change");
++        s->frequency=io->timebase_hz;
++        uint64_t ns=(uint64_t)io->virtual_ns;
++        uint64_t tick=(ns/1000000000)*io->timebase_hz +
++                     (ns%1000000000)*io->timebase_hz/1000000000 + io->time_delta;
++        uint32_t word=io->address==0x0200bffc ? (uint32_t)(tick>>32) : (uint32_t)tick;
++        if(tick!=io->mtime64 || word!=io->value32) return poc_state_fail(s,"native-value");
++    } else if(io->address!=0x02004000 && io->address!=0x02004004)
++        return poc_state_fail(s,"native-address");
++    s->io=*io;s->io_pending=true;s->device_io++;
++    return emit_io(s,"device");
++}
++
++bool poc_state_note(PocState *s, const PocClockNote *n) {
++    if(!s || s->stage==FAILED) return false;
++    if(!n || n->struct_size!=sizeof *n || n->pc>UINT32_MAX)
++        return poc_state_fail(s,"note-layout");
++    bool marker=n->kind>=POC_CLOCK_ENTER && n->kind<=POC_CLOCK_LEAVE;
++    if ((!marker && (n->marker_seq || n->marker_phase)) ||
++        (n->kind!=POC_CLOCK_SAMPLED && n->sample64) ||
++        (n->kind!=POC_CLOCK_MMIO_SUCCESS && (n->address || n->access_size || n->is_store)))
++        return poc_state_fail(s,"note-layout");
++    if(n->kind==POC_CLOCK_BEGIN) {
++        if(s->stage!=CONFIGURED || n->raw_cursor) return poc_state_fail(s,"begin-state");
++        s->stage=ACTIVE;return emit(s,"capture_begin","before_guest_instruction","");
++    }
++    if(n->kind>=POC_CLOCK_RAW_I && n->kind<=POC_CLOCK_RAW_W) {
++        if(s->stage!=ACTIVE || n->raw_cursor!=s->cursor+1) return poc_state_fail(s,"raw-cursor");
++        if(n->raw_cursor>RAW_LIMIT) return poc_state_fail(s,"raw-limit");
++        if(s->injection && s->requested_cursor!=s->cursor) return poc_state_fail(s,"missing-request");
++        s->cursor=n->raw_cursor;s->pc=n->pc;s->last_op=n->kind;return true;
++    }
++    if(n->raw_cursor!=s->cursor) return poc_state_fail(s,"note-cursor");
++    if(n->kind==POC_CLOCK_END) {
++        if(s->stage!=ACTIVE || (s->injection && s->requested_cursor!=s->cursor))
++            return poc_state_fail(s,"end-state");
++        s->stage=DRAINING;return emit(s,"capture_end","before_guest_instruction","");
++    }
++    if(n->kind==POC_CLOCK_MMIO_SUCCESS) {
++        if((s->stage!=ACTIVE && s->stage!=DRAINING) || !s->io_pending ||
++           n->address!=s->io.address || n->access_size!=s->io.size ||
++           n->is_store!=s->io.is_store) return poc_state_fail(s,"mmio-pair");
++        s->plugin_io++;s->io_pending=false;return emit_io(s,"plugin");
++    }
++    if(n->kind>=POC_CLOCK_ENTER && n->kind<=POC_CLOCK_LEAVE) {
++        uint32_t stage=n->kind-POC_CLOCK_ENTER;
++        if(s->stage!=ACTIVE || !s->observer || !s->marker_mode ||
++           stage!=s->marker_stage || n->marker_seq!=s->marker_seq+1 ||
++           n->marker_phase!=n->marker_seq || n->marker_seq>5 ||
++           (stage!=1 && n->sample64)) return poc_state_fail(s,"marker-order");
++        const char *kinds[]={"marker_enter","marker_sampled","marker_leave"};
++        char sample[32];
++        if(stage==1) snprintf(sample,sizeof sample,"\"%"PRIu64"\"",n->sample64);
++        else strcpy(sample,"null");
++        if(!emit(s,kinds[stage],"hook_before_guest_instruction",
++            ",\"marker_seq\":\"%u\",\"marker_phase\":\"%u\",\"sample64\":%s,\"pc\":\"%"PRIu64"\"",
++            n->marker_seq,n->marker_phase,sample,n->pc)) return false;
++        if(stage==2) {s->marker_seq++;s->marker_stage=0;} else s->marker_stage++;
++        return true;
++    }
++    return poc_state_fail(s,"note-kind");
++}
++
++bool poc_state_finish(PocState *s, uint64_t expected_rows) {
++    if(!s || s->stage==FAILED) return false;
++    if(s->stage!=DRAINING || s->cursor!=expected_rows) return poc_state_fail(s,"finish-state");
++    if(s->pending || s->applying || s->requests!=s->applied) return poc_state_fail(s,"finish-pending");
++    if(s->io_pending || s->device_io!=s->plugin_io) return poc_state_fail(s,"finish-io");
++    if(s->observer && s->marker_mode && (s->marker_seq!=5 || s->marker_stage))
++        return poc_state_fail(s,"finish-markers");
++    if(!emit(s,"footer","finished",",\"complete\":true,\"raw_rows\":\"%"PRIu64
++        "\",\"requests\":\"%"PRIu64"\",\"applied\":\"%"PRIu64"\",\"pending\":\"0\","
++        "\"device_io\":\"%"PRIu64"\",\"plugin_io\":\"%"PRIu64"\",\"record_count\":\"%"PRIu64"\"",
++        s->cursor,s->requests,s->applied,s->device_io,s->plugin_io,s->sequence+1)) return false;
++    s->stage=FINISHED;return true;
++}
+--- /dev/null
++++ b/plugins/poc-clock-state.h
+@@ -0,0 +1,26 @@
++#ifndef POC_CLOCK_STATE_H
++#define POC_CLOCK_STATE_H
++#include "poc-clock-anchor-api.h"
++#include <stddef.h>
++
++typedef struct PocState PocState;
++typedef bool (*PocSink)(void *, const char *, size_t);
++typedef struct PocNativeIO {
++    uint32_t kind, size, is_store;
++    uint32_t epoch_reason;
++    uint64_t address, time_delta, mtime64, value32;
++    int64_t virtual_ns;
++    uint32_t timebase_hz;
++} PocNativeIO;
++PocState *poc_state_new(const PocClockConfig *, PocSink, void *);
++void poc_state_free(PocState *);
++uint64_t poc_state_cursor(const PocState *);
++const char *poc_state_error(const PocState *);
++bool poc_state_fail(PocState *, const char *);
++bool poc_state_note(PocState *, const PocClockNote *);
++bool poc_state_request(PocState *, uint64_t, uint64_t, uint64_t);
++bool poc_state_apply_begin(PocState *, uint64_t, int64_t, uint64_t, int64_t *);
++bool poc_state_apply_end(PocState *, uint64_t, int64_t, int64_t, uint64_t);
++bool poc_state_native_io(PocState *, const PocNativeIO *);
++bool poc_state_finish(PocState *, uint64_t);
++#endif
