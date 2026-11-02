@@ -585,9 +585,26 @@ def run_pilot(root: Path, output: Path, tools: dict, *, stage: str) -> dict:
         ):
             raise ValueError("Smoke source/identity/validation mismatch; use a new output")
         _check_smoke_files(output, state)
-    # Formal expansion uses the independent validator/comparator from Tasks6/7.
-    from psf_lab.clock_anchor_analysis import compare_transparent
+    from psf_lab.clock_anchor_analysis import expected_identity, group_comparisons
     from psf_lab.clock_anchor_evidence import verify_clock_capture
+
+    validated = []
+    if stage == "full":
+        # Revalidate the old four before allowing even one additional capture.
+        for index, entry in enumerate(state["runs"]):
+            spec = matrix[index]
+            run = output / spec.run_id
+            if (
+                entry["spec"] != asdict(spec)
+                or entry["path"] != spec.run_id
+                or entry["run_id"] != spec.run_id
+                or not entry["valid"]
+            ):
+                raise ValueError("Smoke run identity mismatch")
+            summary = verify_clock_capture(run, expected_identity(spec, tools))
+            validated.append(summary)
+        if not all(g["passed"] for g in group_comparisons(validated)):
+            raise ValueError("Smoke validation/comparison no longer passes")
 
     selected = matrix[:4] if stage == "smoke" else matrix[4:]
     write_json(output / "runset.json", state)
@@ -603,12 +620,16 @@ def run_pilot(root: Path, output: Path, tools: dict, *, stage: str) -> dict:
         )
         if captured["status"] == "captured-unvalidated":
             try:
-                validation = verify_clock_capture(run, captured["expected"])
+                if captured["capture_source_commit"] != commit:
+                    raise ValueError("Capture source changed during runset")
+                validation = verify_clock_capture(run, expected_identity(spec, tools))
                 entry.update(
                     valid=validation["application_status"] == "passed"
                     and validation["evidence_status"] == "valid",
                     validation=validation,
                 )
+                if entry["valid"]:
+                    validated.append(validation)
             except (ValueError, OSError) as e:
                 entry["error"] = str(e)
         else:
@@ -617,34 +638,15 @@ def run_pilot(root: Path, output: Path, tools: dict, *, stage: str) -> dict:
         write_json(output / "runset.json", state)
         if not entry["valid"]:
             return state
-    # Recheck frozen smoke captures even when resuming, never trust a passed flag alone.
     _check_smoke_files(output, state)
-    groups = {}
-    for entry in state["runs"]:
-        run = output / entry["path"]
-        if digest(run / "capture.json") != entry["capture_sha256"]:
-            raise ValueError("Smoke capture changed")
-        captured = json.loads((run / "capture.json").read_text())
-        key = (entry["spec"]["candidate"], entry["spec"]["injection"])
-        groups.setdefault(key, {})[entry["spec"]["configuration"]] = verify_clock_capture(
-            run, captured["expected"]
-        )
-    checks = []
-    for (candidate, injection), summaries in groups.items():
-        comparisons = [
-            compare_transparent(summaries[a], summaries[b]) for a, b in (("L", "C"), ("C", "O"))
-        ]
-        checks.append(
-            dict(
-                candidate=candidate,
-                injection=injection,
-                comparisons=comparisons,
-                passed=all(c["passed"] for c in comparisons)
-                and summaries["O"]["alignment_status"] == "verified-bounds",
-            )
-        )
+    _validate_tools(root, tools)
+    if require_clean_tree(root) != commit:
+        raise ValueError("Runset source changed")
+    checks = group_comparisons(validated)
     state["group_checks"] = checks
     state["smoke_passed"] = checks[0]["passed"]
-    state["passed"] = len(state["runs"]) == 16 and all(c["passed"] for c in checks)
+    state["passed"] = (
+        len(state["runs"]) == 16 and len(checks) == 4 and all(c["passed"] for c in checks)
+    )
     write_json(output / "runset.json", state)
     return state
