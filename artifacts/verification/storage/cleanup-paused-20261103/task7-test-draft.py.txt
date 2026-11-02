@@ -1,0 +1,110 @@
+"""Exact transparency, signed marker deltas and portable report encoding."""
+
+import copy
+import csv
+import json
+import subprocess
+import sys
+import tempfile
+import unittest
+from pathlib import Path
+
+from psf_lab.clock_anchor_analysis import (
+    compare_marker_effect, compare_transparent, write_csv_rows, write_pilot_report,
+)
+
+
+def analysis_identity(config, *, cycles=100, elapsed_ns=1000):
+    mode=0 if config=="M" else 1
+    return dict(configuration=config,candidate="baseline",elf_sha256="a"*64,
+        qemu_sha256="b"*64,plugin_sha256="c"*64,profile_sha256="d"*64,
+        injection_enabled=True,observer_enabled=config in ("O","M"),marker_mode=mode,
+        run_id="fixture-"+config,evidence_status="valid",application_status="passed",
+        alignment_status="verified-bounds" if config=="O" else "unavailable",
+        packet_sha256=["e"*64,"f"*64],psf_sha256="1"*64,
+        raw_stream_sha256="2"*64,context_stream_sha256="3"*64,
+        model_cycles=str(cycles),raw_rows="20",psf_bytes="1000",marker_bytes=str(mode*160),
+        audit=dict(events=20,cycles=cycles,ns=cycles*2,operations=dict(I=10,R=5,W=5),
+                   costs=dict(l1i=10,l1d=90,l2=0,ram_read=0,ram_write=0)),
+        measurement=dict(before=100,after=100+elapsed_ns//100,ticks=2,woke=1,work=11680),
+        oracle=dict(complete=True,clock_marker_mode=mode,clock_marker_count=mode*5),
+        session=dict(acked_bytes=11680,request_bytes=128,retained_bytes=0,
+            peak_retained_bytes=1460,active_pcbs=0,timewait_pcbs=0,peer_closed=True,
+            resources_before=[0]*6,resources_after=[0]*6),
+        tcp=dict(packets=25,unique_response_bytes=11680,request_bytes=128),
+        switches=[],context=dict(quality="exact",intervals=[dict(start=0,end=20,context="task:1")]),
+        host_wall_seconds=.1,host_child_cpu_seconds=None,anchors=[],intervals=[],
+        covered_rows="0",unknown_rows="20")
+
+
+class ClockAnalysisTests(unittest.TestCase):
+    def test_transparency_and_marker_denominator_are_separate(self):
+        control=analysis_identity("C");observed=analysis_identity("O")
+        self.assertTrue(compare_transparent(control,observed)["passed"])
+        observed["raw_stream_sha256"]="f"*64
+        self.assertFalse(compare_transparent(control,observed)["passed"])
+        effect=compare_marker_effect(analysis_identity("O",cycles=110,elapsed_ns=1200),
+                                     analysis_identity("M"))
+        self.assertEqual(effect["model_cycles_delta"],"10")
+        self.assertEqual(effect["model_cycles_denominator"],"100")
+        self.assertEqual(effect["model_cycles_percent"],"10.000000")
+        self.assertEqual(effect["guest_elapsed_ns_delta"],"200")
+        self.assertEqual(effect["guest_elapsed_ns_percent"],"20.000000")
+
+    def test_no_timestamp_normalization_missing_artifact_or_cross_identity(self):
+        reference=analysis_identity("L");observed=analysis_identity("C")
+        for key,value in (("psf_sha256","9"*64),("oracle",{}),("measurement",{}),
+                          ("packet_sha256",[]),("session",{})):
+            with self.subTest(key=key):
+                bad=copy.deepcopy(observed);bad[key]=value
+                self.assertFalse(compare_transparent(reference,bad)["passed"])
+        bad=copy.deepcopy(observed);del bad["psf_sha256"]
+        self.assertFalse(compare_transparent(reference,bad)["passed"])
+        for change in (dict(candidate="pbuf"),dict(elf_sha256="f"*64),dict(injection_enabled=False)):
+            with self.assertRaises(ValueError):compare_transparent(reference,observed|change)
+        with self.assertRaises(ValueError):compare_marker_effect(analysis_identity("M"),analysis_identity("O"))
+        result=compare_transparent(analysis_identity("C"),analysis_identity("O")|dict(alignment_status="unavailable"))
+        self.assertTrue(result["passed"])
+        self.assertFalse(result["alignment_verified"])
+
+    def test_negative_and_zero_denominators_and_packet_gate(self):
+        effect=compare_marker_effect(analysis_identity("O",cycles=90),analysis_identity("M"))
+        self.assertEqual(effect["model_cycles_delta"],"-10")
+        self.assertEqual(effect["model_cycles_percent"],"-10.000000")
+        effect=compare_marker_effect(analysis_identity("O"),analysis_identity("M",cycles=0))
+        self.assertIsNone(effect["model_cycles_percent"])
+        self.assertEqual(effect["model_cycles_percent_reason"],"zero-denominator")
+        effect=compare_marker_effect(analysis_identity("O"),analysis_identity("M")|dict(packet_sha256=[]))
+        self.assertFalse(effect["passed"])
+
+    def test_csv_preserves_signed_numeric_precision_but_escapes_labels(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path=Path(tmp)/"test.csv"
+            rows=[dict(label="=SUM(A1:A2)",model_cycles_delta="-10",counter="18446744073709551615"),
+                  dict(label="@remote",model_cycles_delta="0",counter="0")]
+            write_csv_rows(path,rows,numeric_fields={"model_cycles_delta","counter"})
+            data=path.read_bytes()
+            self.assertIn(b'"-10"',data)
+            self.assertIn(b'\r\n',data)
+            self.assertNotIn(b'\n',data.replace(b'\r\n',b''))
+            with path.open(newline="") as f:read=list(csv.DictReader(f))
+            self.assertEqual(read[0]["label"],"'=SUM(A1:A2)")
+            self.assertEqual(read[0]["model_cycles_delta"],"-10")
+            self.assertEqual(read[0]["counter"],"18446744073709551615")
+            self.assertEqual(read[0]["spreadsheet_escaped"],"true")
+
+    def test_empty_partial_report_is_reviewable_and_cli_exits_nonzero(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);runset=root/"runset";runset.mkdir()
+            (runset/"runset.json").write_text(json.dumps(dict(schema="clock-anchor-runset-v1",
+                runs=[],source_commit="a"*40,tools={},requested_runs=[])))
+            result=write_pilot_report(runset,root/"report")
+            self.assertEqual(result["status"],"partial")
+            self.assertEqual(result["runs"],[])
+            self.assertIn("mermaid",(root/"report/report.md").read_text())
+            with self.assertRaises(FileExistsError):write_pilot_report(runset,root/"report")
+            cli=Path(__file__).resolve().parents[2]/"tools/tcp/analyze_clock_anchor_pilot.py"
+            p=subprocess.run([sys.executable,str(cli),"--runset",str(runset),"--output",str(root/"cli")],
+                              capture_output=True,timeout=10)
+            self.assertEqual(p.returncode,1)
+            self.assertEqual(json.loads((root/"cli/summary.json").read_text())["status"],"partial")

@@ -1,0 +1,26 @@
+{
+  "status": "paused-by-user",
+  "completed_tasks": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "current_task": 7,
+  "task7_status": "red-tests-only-no-implementation",
+  "formal_runs": 0,
+  "original_draft_path": "tests/unit/test_clock_anchor_analysis.py",
+  "saved_draft": "task7-test-draft.py.txt",
+  "draft_sha256": "47347bfc2dea3d7e65254ea00e89b5a107a0cedd3f7ec35fcf7fb7819977ef6d",
+  "resume_plan": "docs/plans/20-c2b-clock-anchor-implementation.md",
+  "task7_base": "11885222eaf5f4e15af80b98a708db318b8a43be",
+  "next_actions": [
+    "Restore test draft to original path",
+    "Implement Task7 comparison/report per approved brief",
+    "Complete Task8 formal pilot/restore/fresh whole-change review/publication"
+  ],
+  "cleanup_status": "complete",
+  "development_resumed": false
+}

@@ -1,6 +1,8 @@
 # 儲存空間盤點與清理範圍
 
-日期：2026-11-03。**使用者已確認保守清理，執行完成。** [執行收據](../artifacts/verification/storage/cleanup-20261103-r2/README.md)保存重新驗證、移除清單與重編metadata；下方候選表保留清理前盤點。 C2b已完成Tasks1–4；Task5 brief已讀，尚未新增Task5程式碼。
+日期：2026-11-03。**第二次清理完成，Task7開發維持暫停。** [最新清理與還原收據](../artifacts/verification/storage/cleanup-paused-20261103/README.md)：四份已封存的重複capture／runtime目錄已移除；兩份失敗QEMU source先完整封存、實際還原並逐檔核對後移除。觀測可用空間增加約1.76GiB，清理結束約4.0GiB；現用工具與唯一證據保留。source備份分成每份最多64MiB，附還原指令與SHA清單。
+
+Tasks1–6已完成及發布；Task7只有RED測試草稿，已保存接手點；正式16-run仍未執行。以下是**第一次清理的歷史盤點**，當時完成Tasks1–4；[第一次執行收據](../artifacts/verification/storage/cleanup-20261103-r2/README.md)保存先前約563MiB的清理證據。
 
 ## 占用
 
@@ -32,4 +34,4 @@
 
 若使用者選擇擴大範圍，再封存`artifacts/local`歷史trial及失敗QEMU工作目錄。每個目錄先產生inventory、保存來源／patch／build命令，再實際還原核對；沒有完整備份的資料先保留。不得用`git clean -fdx`或整批刪掉`runs/`、`artifacts/`、`.tools/`。
 
-清理後記錄刪除清單、可還原來源、實際回收量及Git狀態，再續作C2b Task5。完整內網還原包仍屬Task8，這份audit不代表已完成還原交付。
+第一次清理後續作Tasks5–6。最新使用者要求暫停Task7，第二次清理結果見頁首；等待恢復指示再續作。完整C2b內網還原包仍屬Task8，本頁兩次清理備份不代表整個pilot還原交付完成。

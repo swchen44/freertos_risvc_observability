@@ -1,0 +1,8 @@
+test_bad_or_missing_part_refuses_before_creating_output (__main__.RestoreTests.test_bad_or_missing_part_refuses_before_creating_output) ... ok
+test_roundtrip_and_existing_destination (__main__.RestoreTests.test_roundtrip_and_existing_destination) ... ok
+test_traversal_is_rejected_before_extraction (__main__.RestoreTests.test_traversal_is_rejected_before_extraction) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.038s
+
+OK

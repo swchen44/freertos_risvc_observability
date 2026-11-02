@@ -1,0 +1,14 @@
+{
+  "removed_files": 151979,
+  "removed_logical_bytes": 1443470294,
+  "retained_archive_bytes": 374174339,
+  "restored_source_trees": 2,
+  "max_part_bytes": 67108864,
+  "observed_free_delta": 1891155968,
+  "free_after": 4306014208,
+  "active_tools_validation": "passed",
+  "versions": {
+    "legacy_qemu": "QEMU emulator version 9.2.0",
+    "clock_qemu": "QEMU emulator version 9.2.0"
+  }
+}

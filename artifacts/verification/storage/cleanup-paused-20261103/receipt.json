@@ -1,0 +1,113 @@
+{
+  "status": "complete",
+  "free_before": 2424295424,
+  "actions": [
+    {
+      "kind": "verified-duplicate",
+      "path": "runs/local/c2b-development-O-20261103",
+      "archive": "artifacts/verification/clock-anchor/task5-20261103/development-O.tar.gz",
+      "archive_sha256": "a90b389c01b19ec0fd7747e2e125d89307785eedfd4f8d2f326a710bcf049e97",
+      "removed_files": 40,
+      "removed_bytes": 16576167
+    },
+    {
+      "kind": "verified-duplicate",
+      "path": "runs/local/c2b-tools-20261103/runtime-tests/causal-57e345a0e9ff480d90b2587027b6d491",
+      "archive": "artifacts/verification/clock-anchor/task6-20261103/causal-57e345a0e9ff480d90b2587027b6d491.tar.gz",
+      "archive_sha256": "33a5c8c004b3688e65e7de032365ca92ab53d1c7de02baf2a621d3b578414249",
+      "removed_files": 41,
+      "removed_bytes": 21438211
+    },
+    {
+      "kind": "verified-duplicate",
+      "path": "runs/local/c2b-tools-20261103/runtime-tests/causal-75d6ecebbc0f4aca941524973cc7a8fd",
+      "archive": "artifacts/verification/clock-anchor/task6-20261103/causal-75d6ecebbc0f4aca941524973cc7a8fd.tar.gz",
+      "archive_sha256": "9af24fd450f474328e2ff2924f92f3bd96c10d312f0e4595500ecb75a27434c6",
+      "removed_files": 40,
+      "removed_bytes": 21415148
+    },
+    {
+      "kind": "verified-duplicate",
+      "path": "runs/local/c2b-tools-20261103/runtime-tests/causal-fb9ea1d90314495c943a3f5a5d04f755",
+      "archive": "artifacts/verification/clock-anchor/task6-20261103/causal-fb9ea1d90314495c943a3f5a5d04f755.tar.gz",
+      "archive_sha256": "a1c97ce12ab586c28d89ac856596713b651e95134d482233e0a68928a49df1ee",
+      "removed_files": 206,
+      "removed_bytes": 85753308
+    },
+    {
+      "kind": "archived-failed-source",
+      "path": ".tools/c2b-clock-20261102/qemu-9.2.0",
+      "archive_sha256": "25fb84762d71e3bd7dfda1162955f1adb8c83ad32b9de006d34f5254e1e67d80",
+      "parts": [
+        {
+          "path": "c2b-clock-20261102-source.tar.gz.part001",
+          "bytes": 67108864,
+          "sha256": "e84c4a8435a046e1f8396555e4322f4f6f6b70257ce1b746e92a8391a0f32446"
+        },
+        {
+          "path": "c2b-clock-20261102-source.tar.gz.part002",
+          "bytes": 67108864,
+          "sha256": "864cdf7e78551288871d0db0272ba63c56d8169ca5757b7fdcc76294b6d16eef"
+        },
+        {
+          "path": "c2b-clock-20261102-source.tar.gz.part003",
+          "bytes": 52869267,
+          "sha256": "b0f116198a9c4ac842e7b268aa56743a07f356ab8a83d1f2463fb4fb468dea08"
+        }
+      ],
+      "inventory": "c2b-clock-20261102-inventory.json.gz",
+      "inventory_sha256": "3df54905953de7e09cd12ae83a0aa1ad87469867f132d28aab2b256c3a95e975",
+      "restored_and_verified": true,
+      "entries": 81761,
+      "removed_files": 75826,
+      "removed_bytes": 649143672
+    },
+    {
+      "kind": "archived-failed-source",
+      "path": ".tools/c2b-clock-20261102-r2/qemu-9.2.0",
+      "archive_sha256": "4aa058073eed62d7315abb4c57a3a24adbba989d6a3dccaa017230ca99634c5f",
+      "parts": [
+        {
+          "path": "c2b-clock-20261102-r2-source.tar.gz.part001",
+          "bytes": 67108864,
+          "sha256": "bd39b14460c613df1240f6c19878e6d27b8441acb03bfc38438801a22bdcaa39"
+        },
+        {
+          "path": "c2b-clock-20261102-r2-source.tar.gz.part002",
+          "bytes": 67108864,
+          "sha256": "c81eb0588213a5d040c9da5a4b36b146c80214c078a9f5d0163323febfd6d7c5"
+        },
+        {
+          "path": "c2b-clock-20261102-r2-source.tar.gz.part003",
+          "bytes": 52869616,
+          "sha256": "c2359cf0ec3d5834ec30eeba627f5f9175f377ead43853350bae3c312c712966"
+        }
+      ],
+      "inventory": "c2b-clock-20261102-r2-inventory.json.gz",
+      "inventory_sha256": "a55b88ee758e74e8ef5ac9d393d5bfe838b95a199d06accc70ad83830d011e73",
+      "restored_and_verified": true,
+      "entries": 81761,
+      "removed_files": 75826,
+      "removed_bytes": 649143788
+    }
+  ],
+  "free_after": 4315451392,
+  "protected_tools_verified": {
+    "legacy_qemu": {
+      "path": "/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-system-riscv32-relative",
+      "sha256": "69969c3ec8cce8f9340215fc340c5c01f81c3ef978252d3766937d2d176816db",
+      "bytes": 15051168
+    },
+    "clock_qemu": {
+      "path": "/Users/swchen.tw/git/percepio/poc/.tools/c2b-clock-20261102-r3/qemu-system-riscv32-clock-anchor",
+      "sha256": "eab95b72dabe404d652bba976d821892b276b0c06be1f92fd305c7bdb30f42e6"
+    },
+    "probe_elf": {
+      "path": "/Users/swchen.tw/git/percepio/poc/runs/local/c2b-guest-probe-20261102/build/firmware.elf",
+      "sha256": "f9a2dbd7caa114bb4f4de4ac689a33bee1c1be3144c03160cc6b1ec83a9fcff2"
+    }
+  },
+  "tracked_files_removed": 0,
+  "unique_evidence_discarded": 0,
+  "observed_free_delta": 1891155968
+}

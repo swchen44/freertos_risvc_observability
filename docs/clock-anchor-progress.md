@@ -1,6 +1,8 @@
 # C2b 實作進度與證據
 
-更新：2026-11-03。**Tasks 1–6 完成；Tasks 7–8 繼續。正式 16-run 尚未執行，development O 已取得有界對齊；正式對照仍未驗證。** 執行方式沿用 Native，最後保留獨立整體 review。
+更新：2026-11-03。**Tasks 1–6 完成並已發布；Tasks 7–8 依使用者要求暫停。正式 16-run 尚未執行，development O 已取得有界對齊；正式對照仍未驗證。** 執行方式沿用 Native，最後保留獨立整體 review。
+
+已完成[第二次空間清理與接手點](../artifacts/verification/storage/cleanup-paused-20261103/README.md)，觀測增加約1.76GiB。Task7停在RED測試，草稿及log保留；等待使用者恢復指示，不自動續跑。
 
 ## 已完成什麼
 

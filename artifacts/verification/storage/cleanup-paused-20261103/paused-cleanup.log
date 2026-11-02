@@ -1,0 +1,11 @@
+Removed verified archived duplicate: c2b-development-O-20261103
+Removed verified archived duplicate: causal-57e345a0e9ff480d90b2587027b6d491
+Removed verified archived duplicate: causal-75d6ecebbc0f4aca941524973cc7a8fd
+Removed verified archived duplicate: causal-fb9ea1d90314495c943a3f5a5d04f755
+Archiving failed source: c2b-clock-20261102
+Restoring and checking every file: c2b-clock-20261102
+Removed restored-and-verified source: c2b-clock-20261102
+Archiving failed source: c2b-clock-20261102-r2
+Restoring and checking every file: c2b-clock-20261102-r2
+Removed restored-and-verified source: c2b-clock-20261102-r2
+{"status": "complete", "observed_free_delta": 1891155968, "free_after": 4315451392}
