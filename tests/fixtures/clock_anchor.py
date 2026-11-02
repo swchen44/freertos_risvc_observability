@@ -74,7 +74,7 @@ def psf_markers(*, base=100, sequence_start=1):
         words = struct.unpack("<" + "I" * (len(raw) // 4), raw)
         events.append(event(3, (sequence_start + i) % 65536, (base - 1) % (1 << 32), words))
     for i in range(1, 6):
-        sample = base + i * 10
+        sample = (base + i * 10) % (1 << 64)
         events.append(
             event(
                 0x9C,

@@ -3,7 +3,12 @@
 import copy
 import unittest
 
-from psf_lab.clock_anchor_evidence import extract_psf_markers, join_anchor_bounds, scan_evidence
+from psf_lab.clock_anchor_evidence import (
+    annotate_anchor_contexts,
+    extract_psf_markers,
+    join_anchor_bounds,
+    scan_evidence,
+)
 from psf_lab.clock_anchor_wire import ClockEvidenceError
 from psf_lab.parser.semantic import parse_trace
 from tests.fixtures.clock_anchor import psf_markers
@@ -11,6 +16,26 @@ from tests.fixtures.clock_anchor_semantic import marker_fixture
 
 
 class ClockJoinTests(unittest.TestCase):
+    def test_irq_in_either_hook_half_does_not_claim_exclusive_cpu(self):
+        f = marker_fixture()
+        scan = scan_evidence(f.records, f.accesses, f.expected)
+        joined = join_anchor_bounds(f.records, scan, parse_trace(f.psf))
+        context = dict(
+            intervals=[
+                dict(start=0, end=1, context="task:1"),
+                dict(start=1, end=2, context="irq:7"),
+                dict(start=2, end=3, context="task:1"),
+                dict(start=3, end=4, context="irq:7"),
+                dict(start=4, end=25, context="task:1"),
+            ]
+        )
+        anchors = annotate_anchor_contexts(joined["anchors"], scan["markers"], context)
+        self.assertTrue(anchors[0]["preempted"])
+        self.assertEqual(anchors[0]["contexts_enter_sampled"], ["irq:7", "task:1"])
+        self.assertEqual(anchors[0]["contexts_sampled_leave"], ["irq:7", "task:1"])
+        self.assertFalse(anchors[1]["preempted"])
+        self.assertEqual(anchors[0]["exclusive_cpu_status"], "unavailable")
+
     def test_five_bounds_prefix_suffix_and_no_point_timestamps(self):
         f = marker_fixture()
         scan = scan_evidence(f.records, f.accesses, f.expected)
@@ -85,6 +110,23 @@ class ClockJoinTests(unittest.TestCase):
         result = join_anchor_bounds(f.records, scan, parse_trace(psf_markers(base=99)))
         self.assertEqual(result["anchors"][0]["lower_ns"], "11100")
 
+    def test_full_mtime_wrap_within_and_between_anchors_uses_native_order(self):
+        f = marker_fixture()
+        offset = (1 << 64) - 111
+        for row in f.records:
+            if row["kind"] == "mtime_read" and row["source"] == "device":
+                tick = (int(row["mtime64"]) + offset) % (1 << 64)
+                row.update(
+                    time_delta=str(offset), mtime64=str(tick), value32=str(tick & 0xFFFFFFFF)
+                )
+            elif row["kind"] == "marker_sampled":
+                row["sample64"] = str((int(row["sample64"]) + offset) % (1 << 64))
+        scan = scan_evidence(f.records, f.accesses, f.expected)
+        joined = join_anchor_bounds(f.records, scan, parse_trace(psf_markers(base=100 + offset)))
+        self.assertEqual(joined["anchors"][0]["sdk_mtime64"], "0")
+        self.assertEqual(joined["anchors"][0]["sample_to_sdk_ticks"], "1")
+        self.assertEqual(joined["anchors"][0]["lower_ns"], "11100")
+
     def test_missing_or_nonunique_sdk_candidate_cannot_be_picked_arbitrarily(self):
         f = marker_fixture()
         scan = scan_evidence(f.records, f.accesses, f.expected)
@@ -97,10 +139,11 @@ class ClockJoinTests(unittest.TestCase):
                 rows.insert(7, sdk)
             else:
                 rows[6]["mtime64"] = "112"
-            with self.subTest(ambiguous=ambiguous), self.assertRaises(ClockEvidenceError) as c:
-                join_anchor_bounds(rows, scan, parse_trace(f.psf))
+            result = join_anchor_bounds(rows, scan, parse_trace(f.psf))
+            self.assertEqual(result["alignment_status"], "unavailable")
+            self.assertEqual(result["unknown_rows"], "25")
             self.assertEqual(
-                c.exception.code,
+                result["reason"],
                 "ambiguous_full_counter" if ambiguous else "sdk_sample_unavailable",
             )
 

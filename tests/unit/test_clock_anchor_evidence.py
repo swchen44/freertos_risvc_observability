@@ -1,16 +1,49 @@
 """Independent causal failures must carry specific machine-readable reasons."""
 
 import copy
+import csv
+import gzip
+import tempfile
 import tracemalloc
 import unittest
+from pathlib import Path
 
 from psf_lab.clock_anchor_evidence import scan_evidence
-from psf_lab.clock_anchor_wire import ClockEvidenceError
-from tests.fixtures.clock_anchor import record
+from psf_lab.clock_anchor_wire import ClockEvidenceError, iter_access_rows, iter_clock_records
+from tests.fixtures.clock_anchor import record, write_wire
 from tests.fixtures.clock_anchor_semantic import marker_fixture, semantic_fixture
 
 
 class ClockScanTests(unittest.TestCase):
+    def test_plain_and_gzip_produce_identical_causal_summary(self):
+        f = semantic_fixture()
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            clock = root / "clock.jsonl"
+            raw = root / "accesses.csv"
+            write_wire(clock, f.records)
+            with raw.open("w", newline="") as stream:
+                columns = [k for k in f.accesses[0] if k != "index"]
+                writer = csv.DictWriter(stream, fieldnames=columns)
+                writer.writeheader()
+                writer.writerows(
+                    {k: v for k, v in row.items() if k != "index"} for row in f.accesses
+                )
+            # Wire column order is fixed; fixture dictionaries put operation before costs.
+            self.assertEqual(
+                raw.read_text().splitlines()[0],
+                "pc,address,size,operation,l1i,l1d,l2,ram_read,ram_write",
+            )
+            expected = scan_evidence(iter_clock_records(clock), iter_access_rows(raw), f.expected)
+            for path in (clock, raw):
+                path.with_suffix(path.suffix + ".gz").write_bytes(gzip.compress(path.read_bytes()))
+            actual = scan_evidence(
+                iter_clock_records(root / "clock.jsonl.gz"),
+                iter_access_rows(root / "accesses.csv.gz"),
+                f.expected,
+            )
+            self.assertEqual(actual, expected)
+
     def test_fifo_and_end_then_applied(self):
         f = semantic_fixture()
         result = scan_evidence(iter(f.records), iter(f.accesses), f.expected)

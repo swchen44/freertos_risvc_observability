@@ -3,6 +3,7 @@
 import gzip
 import hashlib
 import json
+import subprocess
 from collections import deque
 from pathlib import Path
 
@@ -339,12 +340,32 @@ def join_anchor_bounds(records, scan: dict, psf: dict) -> dict:
                     a[key] = value if a[key] is None else fn(a[key], value)
     anchors = []
     for i, (app, sdk) in enumerate(aggregates):
-        _require(app["count"] > 0, "app_sample_unavailable")
-        _require(sdk["count"] > 0, "sdk_sample_unavailable")
-        _require(not app["ambiguous"] and not sdk["ambiguous"], "ambiguous_full_counter")
+        reason = (
+            "app_sample_unavailable"
+            if not app["count"]
+            else "sdk_sample_unavailable"
+            if not sdk["count"]
+            else "ambiguous_full_counter"
+            if app["ambiguous"] or sdk["ambiguous"]
+            else None
+        )
+        if reason:
+            return dict(
+                alignment_status="unavailable",
+                reason=reason,
+                anchors=[],
+                intervals=[],
+                covered_rows="0",
+                unknown_rows=scan["raw_rows"],
+                candidate_counts=[
+                    dict(app=str(a["count"]), sdk=str(s["count"]), sdk_ambiguous=s["ambiguous"])
+                    for a, s in aggregates
+                ],
+            )
         low, high = mtime_quantum(sdk["tick"], sdk["offset"], 10000000)
         _require(low <= sdk["ns_min"] <= sdk["ns_max"] < high, "quantum_formula")
-        _require(sdk["tick"] >= app["tick"], "anchor_clock_order")
+        app_low, _ = mtime_quantum(app["tick"], app["offset"], 10000000)
+        _require(low >= app_low, "anchor_clock_order")
         anchors.append(
             dict(
                 **psf_markers[i],
@@ -356,7 +377,7 @@ def join_anchor_bounds(records, scan: dict, psf: dict) -> dict:
                 cursor_max=str(sdk["cursor_max"]),
                 sdk_candidates=str(sdk["count"]),
                 app_candidates=str(app["count"]),
-                sample_to_sdk_ticks=str(sdk["tick"] - app["tick"]),
+                sample_to_sdk_ticks=str((sdk["tick"] - app["tick"]) % (1 << 64)),
                 bracket_start=scan["markers"][i]["marker_enter"]["raw_cursor"],
                 bracket_end=scan["markers"][i]["marker_leave"]["raw_cursor"],
                 exclusive_cpu_status="unavailable",
@@ -366,7 +387,7 @@ def join_anchor_bounds(records, scan: dict, psf: dict) -> dict:
     for previous, following in zip(anchors, anchors[1:], strict=False):
         _require(int(previous["lower_ns"]) <= int(following["lower_ns"]), "anchor_clock_order")
         _require(
-            int(following["sdk_mtime64"]) - int(previous["sdk_mtime64"])
+            (int(following["sdk_mtime64"]) - int(previous["sdk_mtime64"])) % (1 << 64)
             == int(following["psf_ticks"]) - int(previous["psf_ticks"]),
             "psf_clock_relation",
         )
@@ -389,6 +410,37 @@ def join_anchor_bounds(records, scan: dict, psf: dict) -> dict:
         covered_rows=str(covered),
         unknown_rows=str(int(scan["raw_rows"]) - covered),
     )
+
+
+def annotate_anchor_contexts(anchors, markers, context):
+    """Preserve preemption in both hook halves; these boundaries are not retirement."""
+    result = []
+    for anchor, marker in zip(anchors, markers, strict=True):
+        points = [
+            int(marker[k]["raw_cursor"]) for k in ("marker_enter", "marker_sampled", "marker_leave")
+        ]
+        halves = []
+        for start, end in zip(points, points[1:], strict=False):
+            halves.append(
+                sorted(
+                    {
+                        i["context"]
+                        for i in context["intervals"]
+                        if i["start"] < end and i["end"] > start
+                    }
+                )
+            )
+        contexts = sorted(set(halves[0] + halves[1]))
+        result.append(
+            dict(
+                anchor,
+                contexts=contexts,
+                contexts_enter_sampled=halves[0],
+                contexts_sampled_leave=halves[1],
+                preempted=any(c.startswith("irq:") for c in contexts),
+            )
+        )
+    return result
 
 
 def _content_identity(path):
@@ -478,6 +530,7 @@ def verify_clock_capture(run: Path, expected: dict) -> dict:
     wanted = dict(
         expected, raw_rows=audit["events"], marker_pcs=candidate["boundaries"]["marker_pcs"]
     )
+    _require((run / "trace.psf").stat().st_size <= 16 * 1024 * 1024, "psf_resource_limit")
     trace = parse_trace((run / "trace.psf").read_bytes())
     measurement = json.loads((run / "live-cache.json").read_text())
     session = json.loads((run / "session.json").read_text())
@@ -512,7 +565,10 @@ def verify_clock_capture(run: Path, expected: dict) -> dict:
     psf_markers = extract_psf_markers(trace)
     _require(len(psf_markers) == (5 if expected["marker_mode"] else 0), "psf_marker_count")
     with gzip.open(paths["context.jsonl"], "rt") as f:
-        context_events = [json.loads(line) for line in f]
+        context_events = []
+        while line := f.readline(16385):
+            _require(len(line) <= 16384 and len(context_events) < 65536, "context_resource_limit")
+            context_events.append(json.loads(line))
     boundaries = candidate["boundaries"]["context"]
     validate_context_anchors(context_events, iter_access_rows(raw), boundaries)
     task_ids = {e["task_id"] for e in context_events if e["task_id"] is not None}
@@ -535,10 +591,24 @@ def verify_clock_capture(run: Path, expected: dict) -> dict:
         context=context,
         packet_sha256=[capture["files"][f"packet-{i}.bin"]["sha256"] for i in range(len(packets))],
         psf_sha256=digest(run / "trace.psf"),
+        psf_bytes=str((run / "trace.psf").stat().st_size),
+        marker_bytes=str(
+            sum(
+                8 + len(e["payload_hex"]) // 2
+                for e in trace["events"]
+                if e["fields"].get("channel") == "C2B"
+            )
+        ),
         raw_stream_sha256=audit["stream_sha256"],
         context_stream_sha256=capture["streams"]["context.jsonl"]["content_sha256"],
         capture_source_commit=capture["capture_source_commit"],
         compiled_source_commit=capture["compiled_source_commit"],
+        validator_source_commit=subprocess.check_output(
+            ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True
+        ).strip(),
+        validator_source_clean=not subprocess.check_output(
+            ["git", "status", "--porcelain"], cwd=ROOT, text=True
+        ),
         host_wall_seconds=capture["host_wall_seconds"],
         host_child_cpu_seconds=capture.get("host_child_cpu_seconds"),
         anchors=[],
@@ -569,11 +639,10 @@ def verify_clock_capture(run: Path, expected: dict) -> dict:
             first_hash.hexdigest() == second_hash.hexdigest() == before["sha256"],
             "scan_content_changed",
         )
-        for anchor in joined["anchors"]:
-            start, end = int(anchor["bracket_start"]), int(anchor["bracket_end"])
-            spans = [i for i in context["intervals"] if i["start"] < end and i["end"] > start]
-            anchor["contexts"] = sorted({i["context"] for i in spans})
-            anchor["preempted"] = any(i["context"].startswith("irq:") for i in spans)
+        if joined["anchors"]:
+            joined["anchors"] = annotate_anchor_contexts(
+                joined["anchors"], scan["markers"], context
+            )
         result.update(scan=scan, **joined)
     else:
         _require("clock.jsonl" not in paths, "observer_disabled_sidecar")
