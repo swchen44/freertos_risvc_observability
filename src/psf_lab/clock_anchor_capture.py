@@ -469,6 +469,7 @@ def capture_one(root: Path, spec: RunSpec, tools: dict, elf: dict, output: Path)
         spec=asdict(spec),
         capture_source_commit=commit,
         compiled_source_commit=tools["source_commit"],
+        tools=tools,
         command=command,
         expected=expected,
         status="failed",
