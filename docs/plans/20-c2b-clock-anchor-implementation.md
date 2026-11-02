@@ -12,7 +12,7 @@
 
 **Execution:** 沿用本專案已採用的Native：主agent逐項實作，最後做獨立whole-change review；依據[既有原生執行紀錄](14-event-window-dashboard.md)。不重新詢問A／B或執行方式。2026-11-02使用者以continue確認計畫，開始逐項實作。
 
-**Current status:** 2026-11-02 Task1已完成，來源commit `1b7c0eb2`；11個新測試、完整339個Python測試及Ruff通過。Task2同ELF guest probe已完成，完整342測試通過；Task3 native core已完成，完整348測試通過；Task4起待完成。全庫format的10個baseline舊檔未通過，見Task2收據；尚無C2b正式capture或新QEMU build。unchecked項目的預期輸出不是已通過證據。
+**Current status:** 2026-11-03 Tasks1–4完成；完整352個Python測試、10個ABI情境、6份新舊clock回歸driver通過。[進度與證據](../clock-anchor-progress.md)分開已驗證與未完成。Task5起、正式16-run及時間對齊待完成；全庫format仍有10個baseline舊檔未通過，本輪12檔format通過。unchecked預期不是通過證據。
 
 ## Global Constraints
 
@@ -310,8 +310,8 @@ if (!head || head->id != id || before < 0 || head->delta > INT64_MAX ||
 
 **Interfaces:** Produces新QEMU binary、patched API4 header、export清單、`build-manifest.json`。manifest含source archive／patch／overlay／binary／header／compiler／meson／ninja hashes與versions、configure／build commands。Task5只接受這份實際檔案hash，不用PATH的QEMU。
 
-- [ ] **1. RED build contract tests。** 新script必須拒既有destination、錯archive digest、缺patch、overlay不相符；source-tree fixture用實際`qemu-plugin-symbols.py`掃header，四個新function必須直接匯出。先跑`tests.unit.test_clock_anchor_build`見RED。
-- [ ] **2. 寫POC adapter。** configure驗handle／ABI／struct_size／fixed icount與machine預定smp=1；此時plugin先於CPU建立，不能用CPU_FOREACH數到0便拒絕，也不能要求current_cpu存在。plugin install依info先檢riscv32／smp，vcpu_init與每次applied再檢實際CPUState／index／running／BQL。note只copy cursor與hook資料，不讀clock。tagged request保留原一筆一個async work、delta與id；observer-off同路徑、不開檔。原API保持原語意。
+- [x] **1. RED build contract tests。** 新script必須拒既有destination、錯archive digest、缺patch、overlay不相符；source-tree fixture用實際`qemu-plugin-symbols.py`掃header，四個新function必須直接匯出。先跑`tests.unit.test_clock_anchor_build`見RED。
+- [x] **2. 寫POC adapter。** configure驗handle／ABI／struct_size／fixed icount與machine預定smp=1；此時plugin先於CPU建立，不能用CPU_FOREACH數到0便拒絕，也不能要求current_cpu存在。plugin install依info先檢riscv32／smp，vcpu_init與每次applied再檢實際CPUState／index／running／BQL。note只copy cursor與hook資料，不讀clock。tagged request保留原一筆一個async work、delta與id；observer-off同路徑、不開檔。原API保持原語意。
 
 來源是固定QEMU9.2 `system/vl.c:2626–2632`：`qemu_plugin_load_list`先於`machine_run_board_init`；fixed icount已由較早的configure_accelerators處理。加native fixture與真QEMU smoke，避免把尚未建立CPU誤當不支援環境。
 
@@ -357,7 +357,7 @@ static void poc_clock_apply(CPUState *cpu, run_on_cpu_data data) {
 ```
 
 callback work item在結束釋放metadata。mutex不跨advance，FILE以64KiB setvbuf；fflush／fclose也檢查錯誤。其他emulation／SMP／非fixed icount configure拒絕。private header在非plugin build提供不觀測stub，避免ACLINT多出未定義symbol。
-- [ ] **3. ACLINT patch只改原生MMIO分支。** 不在`cpu_riscv_read_rtc`通用函式直接log，避免記到timer內部運算。MTIME low／high read重用一次原virtual getter，保存同組input與return；mtimecmp部分store記原word，plugin phase之後只驗成功、不再讀clock。MTIME write／reset記epoch_change，active／draining時fail closed。
+- [x] **3. ACLINT patch只改原生MMIO分支。** 不在`cpu_riscv_read_rtc`通用函式直接log，避免記到timer內部運算。MTIME low／high read重用一次原virtual getter，保存同組input與return；mtimecmp部分store記原word，plugin phase之後只驗成功、不再讀clock。MTIME write／reset記epoch_change，active／draining時fail closed。
 
 ```c
 int64_t ns = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
@@ -367,11 +367,11 @@ uint32_t word = is_high ? (uint32_t)(tick >> 32) : (uint32_t)tick;
 /* observer接收ns、frequency、time_delta、tick與word；不得再取一次clock。 */
 ```
 
-- [ ] **4. 產生完整0004與建置script。** canonical core是Task3檔案，patch內副本由工具產生／逐byte核對，不能人工分叉。新目錄從hash為`f859f0bc65e1f533d040bbe8c92bcfecee5af2c921a6687c652fb44d089bd894`的QEMU9.2 tarball開始，套0001～0004；meson1.12.1、ninja1.13.2；沿原configure flags，只把build平行度定為2。archive可指定本機檔案，無檔時才以正常TLS下載；保留configure／每個build失敗log與patched source。
+- [x] **4. 產生完整0004與建置script。** canonical core是Task3檔案，patch內副本由工具產生／逐byte核對，不能人工分叉。新目錄從hash為`f859f0bc65e1f533d040bbe8c92bcfecee5af2c921a6687c652fb44d089bd894`的QEMU9.2 tarball開始，套0001～0004；meson1.12.1、ninja1.13.2；沿原configure flags，只把build平行度定為2。archive可指定本機檔案，無檔時才以正常TLS下載；保留configure／每個build失敗log與patched source。
 
 `make_clock_anchor_patch.py`提供`generate_clock_patch(base:Path, edited:Path, output:Path)->dict`及CLI `--base PATH --edited PATH --output NEW_PATCH`：base是只套0001～0003的來源，edited是加本Taskadapter及canonical core的來源。用stdlib difflib逐檔產生unified diff，舊／新路徑為`a/`／`b/`，新檔的fromfile為`/dev/null`；只允許本Task Files列出的QEMU paths。先複製canonical core到edited再產生，輸出exclusive-create，回傳paths／新檔SHA；測試把patch實際套到base副本，所有bytes需等於edited。build套完0004後再比core／public ABI header hash，不以生成器成功代替內容核對。
-- [ ] **5. GREEN unit後commit來源，才執行build／ABI probe。** script介面為`tools/qemu/build-clock-anchor-probe.sh NEW_DEST [SOURCE_ARCHIVE] [JOBS]`；archive預設先找既有`.tools/qemu-time-control/qemu-9.2.0.tar.xz`，沒有才下載，jobs只接受1／2且預設2。用`nm`及generated export清單確認四個symbols；abi_probe用observer-off配置，執行Task2 probe guest，舊binary應載入失敗／新binary應正常。故意ABI2／struct_size錯、SMP2或無fixed icount必須拒絕；不提供instruction callback的clock getter來測試。
-- [ ] **6. 原clock nano／edges回歸。** 下列driver程式片段對舊relative與新binary逐一執行，保持原delay／case，不能只跑--help。將`new`路徑取自實際build manifest；不要假造路徑已存在。保存command list、stdout／stderr與結果；observer未configure時不應建立clock sidecar。
+- [x] **5. GREEN unit後commit來源，才執行build／ABI probe。** script介面為`tools/qemu/build-clock-anchor-probe.sh NEW_DEST [SOURCE_ARCHIVE] [JOBS]`；archive預設先找既有`.tools/qemu-time-control/qemu-9.2.0.tar.xz`，沒有才下載，jobs只接受1／2且預設2。用`nm`及generated export清單確認四個symbols；abi_probe用observer-off配置，執行Task2 probe guest，舊binary應載入失敗／新binary應正常。故意ABI2／struct_size錯、SMP2或無fixed icount必須拒絕；不提供instruction callback的clock getter來測試。
+- [x] **6. 原clock nano／edges回歸。** 下列driver程式片段對舊relative與新binary逐一執行，保持原delay／case，不能只跑--help。將`new`路徑取自實際build manifest；不要假造路徑已存在。保存command list、stdout／stderr與結果；observer未configure時不應建立clock sidecar。
 
 ```python
 checks = (("run_clock_nano.py", ["--relative"], "nano"),

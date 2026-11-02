@@ -1,0 +1,13 @@
+{
+  "command": [
+    "/Users/swchen.tw/git/percepio/poc/.venv/bin/python",
+    "/Users/swchen.tw/git/percepio/poc/.superpowers/sdd/20-c2b-clock-anchor-implementation/task4-manifest-recovery.py",
+    "/Users/swchen.tw/git/percepio/poc",
+    "/Users/swchen.tw/git/percepio/poc/.tools/c2b-clock-20261102-r2",
+    "/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-9.2.0.tar.xz",
+    "2"
+  ],
+  "exit": 0,
+  "compile_commit": "2dd4ccbf4eff92eca638e51493657a3422a7efea",
+  "reason": "Ninja distribution/CLI version distinction; no binary recompile"
+}

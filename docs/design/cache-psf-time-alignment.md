@@ -1,6 +1,6 @@
 # C2：Cache 與 PSF 時間對齊研究草案
 
-日期：2026-10-13，更新2026-10-25。狀態：**C2a已完成本機驗收；C2b已選A並確認書面規格，[實作計畫](../plans/20-c2b-clock-anchor-implementation.md)完成待審閱，實作與新capture尚未開始。** [C2b規格](c2b-clock-anchor-pilot-v1.md)與[checklist](../plans/19-c2b-clock-anchor-pilot.md)記錄markers與對照方法。
+日期：2026-10-13，更新2026-11-03。**C2a已完成本機驗收；C2b Tasks1–4完成，Tasks5–8繼續，見[最新進度](../clock-anchor-progress.md)。** 正式16-run與時間mapping未完成；不可使用推測timestamp。
 
 ## 目的與承接範圍
 
@@ -75,7 +75,7 @@ flowchart TD
 
 完成：來源盤點、clock／event-index 語意區分、三方案比較、低記憶體瀏覽器驗收要求。
 
-已決定：採用 A，C2a 事件序號區間先做，C2b clock-anchor pilot 接續。詳細 schema、分塊策略與容量 gate 見 [C2a 實作計畫](../plans/14-event-window-dashboard.md)。本草案不代表允許使用推測 timestamp，C2a已完成，C2b仍未實作。
+已決定：採用 A，C2a 事件序號區間先做，C2b clock-anchor pilot 接續。詳細 schema、分塊策略與容量 gate 見 [C2a 實作計畫](../plans/14-event-window-dashboard.md)。本草案不代表允許使用推測 timestamp，C2a已完成，C2b正式pilot與時間mapping仍未完成。
 
 ## A 的資料盤點與分塊設計
 

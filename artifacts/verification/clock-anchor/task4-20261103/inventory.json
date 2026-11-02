@@ -1,0 +1,262 @@
+{
+  "README.md": {
+    "bytes": 1835,
+    "sha256": "ad2bc8fc100c51539f491c28b46731e996763ef1464fb7c4207abe87d13b2c36"
+  },
+  "abi-accepted.tar.gz": {
+    "bytes": 8030,
+    "sha256": "8c2d60405e0780a79ab50ac576aa18fc91cc15d7cc8202eb981f34ef03316876"
+  },
+  "abi-failed.tar.gz": {
+    "bytes": 6903,
+    "sha256": "89b0727d9da9e327b4e88bd329d32f0b8ac90c630037e5bb61773d1226e4c733"
+  },
+  "accepted/build-manifest.json": {
+    "bytes": 3805,
+    "sha256": "72d17f291c6ce6cc0574d168c7314077e8ffc013625bc322a49079472b29f251"
+  },
+  "accepted/build.log.gz": {
+    "bytes": 15025,
+    "sha256": "cebb4f6a374a798ab1c4d5d56589e2e0e17d3011fffb12cb636350dce6cb3aae"
+  },
+  "accepted/configure.log.gz": {
+    "bytes": 5797,
+    "sha256": "7f8f415f3228c432beeda440ba114684d5c5a333d1e0b858e4cc4ffaa621d3e4"
+  },
+  "accepted/extract.log.gz": {
+    "bytes": 20,
+    "sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64"
+  },
+  "accepted/overlay-check.json": {
+    "bytes": 310,
+    "sha256": "f8a6fe2a237ca835ad7dbbba062548b58c77cd1af91cb9ca86ba1c8ac95f86eb"
+  },
+  "accepted/patch.log.gz": {
+    "bytes": 199,
+    "sha256": "35ded275fc060a3b4724e641ae232f434f26a1f850333e1f7483831152f38e97"
+  },
+  "accepted/tool-install.log.gz": {
+    "bytes": 147,
+    "sha256": "897635ed35513a26a39cc9bd18af2d320d70dc80c60e4a6c1df2de833f1cc640"
+  },
+  "accepted/venv.log.gz": {
+    "bytes": 149,
+    "sha256": "20cd994a54e2d7730f0728f215721597d9c1115a27a5daa0493d81f6186993bf"
+  },
+  "clock-regressions.tar.gz": {
+    "bytes": 22045039,
+    "sha256": "d309e95127d18d2e66e3bc1dc1cf932a67e28e03ac38b9bfd402d55231c5d069"
+  },
+  "docs-check.json": {
+    "bytes": 107,
+    "sha256": "7e0c454ac120983544cb75a0d674ef9960a5274d1db2cb1d488dfdbeba3eede4"
+  },
+  "failed-compile/build.log.gz": {
+    "bytes": 15140,
+    "sha256": "136cab2031aab045a78517fd8ad714ddab006e308d41296183326d059d478695"
+  },
+  "failed-compile/configure.log.gz": {
+    "bytes": 5789,
+    "sha256": "0666f17e9ee09ad2aaf2d5a8b28c1ec08b1d299162e0fb2a6506ac853044f8b6"
+  },
+  "failed-compile/extract.log.gz": {
+    "bytes": 20,
+    "sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64"
+  },
+  "failed-compile/overlay-check.json": {
+    "bytes": 310,
+    "sha256": "f0d67db2866da078fec81ec6eab2718470e1d7469262541f730dfbb669034a11"
+  },
+  "failed-compile/patch.log.gz": {
+    "bytes": 199,
+    "sha256": "35ded275fc060a3b4724e641ae232f434f26a1f850333e1f7483831152f38e97"
+  },
+  "failed-compile/tool-install.log.gz": {
+    "bytes": 145,
+    "sha256": "7b1f83572ac0942ae034ce496e7a2f0b6ed71de370c5185601d55e835bb642a9"
+  },
+  "failed-compile/venv.log.gz": {
+    "bytes": 146,
+    "sha256": "6fd9932a14bcdc688ddd46bc9b7dd6c7df15f758a0454dc20696f1c71d7681aa"
+  },
+  "ledger.md": {
+    "bytes": 5672,
+    "sha256": "08469a99118ac320faa06df962f4ca420fed029bd55798b4365e3e3eba3eb079"
+  },
+  "metadata-failure-and-deadlock/build-manifest.json": {
+    "bytes": 3805,
+    "sha256": "ff1f285c9642b16454261358ba025d86903b7082b3662c19d059294b5c11fc7d"
+  },
+  "metadata-failure-and-deadlock/build.log.gz": {
+    "bytes": 15004,
+    "sha256": "0ae3c3d6fba4ca62f321d9914c32ab72f71b770ac07ce26945419c4e936242c6"
+  },
+  "metadata-failure-and-deadlock/configure.log.gz": {
+    "bytes": 5797,
+    "sha256": "1be25b706ff36c0a083246d92f93a19b2a624330ee6aafe5cfcda232b455005e"
+  },
+  "metadata-failure-and-deadlock/extract.log.gz": {
+    "bytes": 20,
+    "sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64"
+  },
+  "metadata-failure-and-deadlock/overlay-check.json": {
+    "bytes": 310,
+    "sha256": "f8a6fe2a237ca835ad7dbbba062548b58c77cd1af91cb9ca86ba1c8ac95f86eb"
+  },
+  "metadata-failure-and-deadlock/patch.log.gz": {
+    "bytes": 199,
+    "sha256": "35ded275fc060a3b4724e641ae232f434f26a1f850333e1f7483831152f38e97"
+  },
+  "metadata-failure-and-deadlock/tool-install.log.gz": {
+    "bytes": 145,
+    "sha256": "481ad162bd1ba0eba32c1f4c721d56437a9896218ad401866aee30590772d640"
+  },
+  "metadata-failure-and-deadlock/venv.log.gz": {
+    "bytes": 149,
+    "sha256": "9501f9d9234954955be97d85fcb03043c6709dc5a74f48ed325fe9088de535c2"
+  },
+  "patch-snapshots.json": {
+    "bytes": 1883,
+    "sha256": "e1ccc9daec0254029fb347b965c0bd8dead19d6c7493f4739443fafefc1389e8"
+  },
+  "receipt.json": {
+    "bytes": 929,
+    "sha256": "ec1d11f166933155a76557d5e1978e2173018f0f9c7c18b9d0d72a3c1bc60fcf"
+  },
+  "task-4-tests.log.gz": {
+    "bytes": 472,
+    "sha256": "fcec5130ad8c7d17ff21bf161e0ad27e222d3b3f050c27670f428cfdc86235e3"
+  },
+  "task4-abi-final.log.gz": {
+    "bytes": 20,
+    "sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64"
+  },
+  "task4-abi-first.log.gz": {
+    "bytes": 514,
+    "sha256": "363dd2c0156eefe678371bf6230140ec42fe91f391cf48171329a7599fa970f4"
+  },
+  "task4-abi-hang.sample.gz": {
+    "bytes": 18709,
+    "sha256": "fa148f7f84ffd6746f67bedbc69c9b56dd2fbe56fc00363cf50ebb549e8845e8"
+  },
+  "task4-abi-r1.log.gz": {
+    "bytes": 20,
+    "sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64"
+  },
+  "task4-before-build-r3.log.gz": {
+    "bytes": 473,
+    "sha256": "6d8578bee25615614f094ddf4e1a4994d55b6b5ed396577f2fa7ac2fe9b6f25a"
+  },
+  "task4-build-r2.log.gz": {
+    "bytes": 48,
+    "sha256": "6ac70de60db3080b4065b0d1025a9720ccca4913edb7315a535809930ed08d8d"
+  },
+  "task4-build-r3.log.gz": {
+    "bytes": 210,
+    "sha256": "fad9e643e66b93b86b33a5b9513caca9058e32df7646d14efe1b210d67937076"
+  },
+  "task4-build.log.gz": {
+    "bytes": 20,
+    "sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64"
+  },
+  "task4-generated-patch.json": {
+    "bytes": 1342,
+    "sha256": "39f68d53e55de499ad3f2c81f3dbe84a143c42cd3f082174914f6932c6a57681"
+  },
+  "task4-header-scope-green.log.gz": {
+    "bytes": 441,
+    "sha256": "d903b5767162016f93295dccfc5f9e889b867bdfecdcc8779a5ce93551557c85"
+  },
+  "task4-header-scope-red.log.gz": {
+    "bytes": 509,
+    "sha256": "a5fd7ba47404d6aeacdffe4c7c126f62258b61907ee23bd01faf90433ca73028"
+  },
+  "task4-manifest-recovery.json": {
+    "bytes": 560,
+    "sha256": "d2bd780dc86091c4d421ed83e4b5c73698acd4ff3b1926e81b00d4469b6909e8"
+  },
+  "task4-manifest-recovery.py": {
+    "bytes": 2925,
+    "sha256": "90ee178c15f3a792c33bfc1b87d7a41cbd1d3df64c9bdca870afa57d1bac7e36"
+  },
+  "task4-manifest-recovery.stderr.gz": {
+    "bytes": 20,
+    "sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64"
+  },
+  "task4-manifest-recovery.stdout.gz": {
+    "bytes": 210,
+    "sha256": "f3da55ce70582e3bc956bbaf4153f83baf6cf9085a836c176a12b422b95d8b02"
+  },
+  "task4-new-format.log.gz": {
+    "bytes": 47,
+    "sha256": "5a8564faeb141e78463171589e6158c0f4f383a6392377fc5621b7d47542f337"
+  },
+  "task4-patch-before-fatal-unlock.patch.gz": {
+    "bytes": 7345,
+    "sha256": "69115f147742888888a8acfa0731d4daba31eab08fe130ea99941126583d235d"
+  },
+  "task4-patch-before-stub-fix.patch.gz": {
+    "bytes": 7691,
+    "sha256": "8b763e4995de7ed0c0a2274be933a9b0e82cba9530d02b4ae67dcb14403c6701"
+  },
+  "task4-patch-context0.patch.gz": {
+    "bytes": 7339,
+    "sha256": "89800a8baf856b5b5db621f3784c58701cbed09c540e805fd7727302cd5af1ce"
+  },
+  "task4-patch-context3.patch.gz": {
+    "bytes": 7723,
+    "sha256": "cc72c71681ad5740431ad0f2e530869e606473f4da09b2fb062c8df816feee93"
+  },
+  "task4-patch-failed-global-include.patch.gz": {
+    "bytes": 7339,
+    "sha256": "89800a8baf856b5b5db621f3784c58701cbed09c540e805fd7727302cd5af1ce"
+  },
+  "task4-patch-fatal-unlocked.patch.gz": {
+    "bytes": 7395,
+    "sha256": "e350502b99114280138856555193eb8af669a843bc792eb5833c7dac14a783ac"
+  },
+  "task4-patch-scoped-header.patch.gz": {
+    "bytes": 7345,
+    "sha256": "69115f147742888888a8acfa0731d4daba31eab08fe130ea99941126583d235d"
+  },
+  "task4-patch-stub-fixed.patch.gz": {
+    "bytes": 7723,
+    "sha256": "cc72c71681ad5740431ad0f2e530869e606473f4da09b2fb062c8df816feee93"
+  },
+  "task4-red.log.gz": {
+    "bytes": 403,
+    "sha256": "2a36d1f3c51b8367376c3b91dd137c2009ec629ec130c034da2c07f4dac44df6"
+  },
+  "task4-ruff-check.log.gz": {
+    "bytes": 39,
+    "sha256": "f3af4d142827f5aad2eb0c72d556d325488a57fb6219aac10afeb51085667d53"
+  },
+  "task4-stub-red.log.gz": {
+    "bytes": 739,
+    "sha256": "ca9d9ad4f19d1aa54ae82811fcc983a8f896bb21ede1695c0ed221b3d4566118"
+  },
+  "task4-suite-clean.log.gz": {
+    "bytes": 8362,
+    "sha256": "2419bddef57bec0665e27f3542cd6c383e2c70759fab88bd141cb9da764dfd40"
+  },
+  "task4-tool-version-green.log.gz": {
+    "bytes": 270,
+    "sha256": "02f957d7ddb2e0763b9cdeb080d42458512a6ffca70a20dd0fcf971253b8f5fb"
+  },
+  "task4-tool-version-red.log.gz": {
+    "bytes": 432,
+    "sha256": "a38e43c2d33f8e730413a998f5a419523cef0902f236321eb7c4aa5a35df746a"
+  },
+  "task4-unit-before-build.log.gz": {
+    "bytes": 235,
+    "sha256": "8b2061aa97e167c56a3eac76f7127aee4b4e955c12a678ae738c332ed14c11cf"
+  },
+  "task4-unit-green-final.log.gz": {
+    "bytes": 235,
+    "sha256": "6bb0b7f610175b5998e42780547fc37385cbccc707d7b6b2bba2f6681d58f68e"
+  },
+  "task4-unit-green.log.gz": {
+    "bytes": 235,
+    "sha256": "359edf4326065b32f9191daa83783b14c619cc187b7449f12bf3b18b01ec0034"
+  }
+}

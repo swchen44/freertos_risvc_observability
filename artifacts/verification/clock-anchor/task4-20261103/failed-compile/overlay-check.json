@@ -1,0 +1,5 @@
+{
+  "plugins/poc-clock-state.c": "8f6259597100e61400d486aa3a56db7ecbce7cc4a2ba65d3d338ddcd77b5cfce",
+  "plugins/poc-clock-state.h": "f7fba2757206b827bcc3293abb4070cd59df3fd243ddfb52aa7749dc506962cf",
+  "include/qemu/poc-clock-anchor-api.h": "fe8c87a3e65eeb93bd60e8a5ea22be0e9e4fbee6810e228ece9344028ce71279"
+}

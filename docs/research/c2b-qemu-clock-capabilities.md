@@ -1,5 +1,7 @@
 # C2b：QEMU clock 能力盤點
 
+**2026-11-03最新：[Tasks1–4實作與runtime證據](../clock-anchor-progress.md)已完成；Tasks5–8、正式16-run與完整mapping待完成。以下能力盤點及「未實作」為2026-10-23／25歷史狀態，不能當成本輪進度。**
+
 日期：2026-10-23。範圍：**來源研究與唯讀檔案核對**。這次沒有重新編譯、執行 guest 模擬、擷取 trace 或開啟瀏覽器。主流程的 `--version`／hash 與保存PSF重解析見[SDK盤點](c2b-sdk-anchor-capabilities.md)。C2b 的新 API、anchor schema 與時間映射都尚未實作。
 
 2026-10-25決策更新：使用者已選A並確認[具體書面規格](../design/c2b-clock-anchor-pilot-v1.md)；[逐項實作計畫](../plans/20-c2b-clock-anchor-implementation.md)完成待審閱。以下能力表保留來源盤點邊界，不代表新callback已經runtime通過。

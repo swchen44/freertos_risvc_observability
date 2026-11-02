@@ -1,0 +1,50 @@
+[
+  {
+    "path": "task4-patch-before-fatal-unlock.patch.gz",
+    "original_path": "task4-patch-before-fatal-unlock.patch",
+    "original_bytes": 29020,
+    "original_sha256": "040b09c5d1360099a3affc298aa4aac096024d28b55b1f661c5c837b74133ff7"
+  },
+  {
+    "path": "task4-patch-before-stub-fix.patch.gz",
+    "original_path": "task4-patch-before-stub-fix.patch",
+    "original_bytes": 30058,
+    "original_sha256": "59d1b95075945f35b863b4e8f56c08c2399d211cf87fa4951210dedd5cf957b0"
+  },
+  {
+    "path": "task4-patch-context0.patch.gz",
+    "original_path": "task4-patch-context0.patch",
+    "original_bytes": 28963,
+    "original_sha256": "2f48b1a75a6381adc52b36693e758ff8fc75ada1232e36bc1fc6223aa8f0ea9c"
+  },
+  {
+    "path": "task4-patch-context3.patch.gz",
+    "original_path": "task4-patch-context3.patch",
+    "original_bytes": 30205,
+    "original_sha256": "73c02ec61e9173e0759ea4ea9abe8c04f6b00f62e30ad610c9c8ae8c3e7a7d38"
+  },
+  {
+    "path": "task4-patch-failed-global-include.patch.gz",
+    "original_path": "task4-patch-failed-global-include.patch",
+    "original_bytes": 28963,
+    "original_sha256": "2f48b1a75a6381adc52b36693e758ff8fc75ada1232e36bc1fc6223aa8f0ea9c"
+  },
+  {
+    "path": "task4-patch-fatal-unlocked.patch.gz",
+    "original_path": "task4-patch-fatal-unlocked.patch",
+    "original_bytes": 29145,
+    "original_sha256": "28e1f7ed95c1368d99c0d6075da5e35c8bec010d44009c4acb3c09500b6b4a5d"
+  },
+  {
+    "path": "task4-patch-scoped-header.patch.gz",
+    "original_path": "task4-patch-scoped-header.patch",
+    "original_bytes": 29020,
+    "original_sha256": "040b09c5d1360099a3affc298aa4aac096024d28b55b1f661c5c837b74133ff7"
+  },
+  {
+    "path": "task4-patch-stub-fixed.patch.gz",
+    "original_path": "task4-patch-stub-fixed.patch",
+    "original_bytes": 30205,
+    "original_sha256": "73c02ec61e9173e0759ea4ea9abe8c04f6b00f62e30ad610c9c8ae8c3e7a7d38"
+  }
+]

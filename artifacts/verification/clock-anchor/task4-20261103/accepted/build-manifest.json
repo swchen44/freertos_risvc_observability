@@ -1,0 +1,78 @@
+{
+  "schema": "c2b-qemu-build-v1",
+  "source_commit": "797d8c7c3c56c7ed2ec06b9a5a58feaa2420bbc6",
+  "metadata_source_commit": "797d8c7c3c56c7ed2ec06b9a5a58feaa2420bbc6",
+  "host": {
+    "system": "Darwin",
+    "machine": "arm64",
+    "platform": "macOS-15.7.7-arm64-arm-64bit-Mach-O"
+  },
+  "source_archive": {
+    "path": "/Users/swchen.tw/git/percepio/poc/.tools/qemu-time-control/qemu-9.2.0.tar.xz",
+    "sha256": "f859f0bc65e1f533d040bbe8c92bcfecee5af2c921a6687c652fb44d089bd894"
+  },
+  "source": "/Users/swchen.tw/git/percepio/poc/.tools/c2b-clock-20261102-r3/qemu-9.2.0",
+  "jobs": 2,
+  "patches": {
+    "tools/qemu/0001-experimental-icount-setter.patch": "944844a4384b8fbeda92091bb4c926995bfd89e7eda3fe2e528c94bdc6b6f5ae",
+    "tools/qemu/0002-clock-advance-without-pending-timer.patch": "b2f057dd2ce0b50494df9bb363e4bb351fbb405b7f50da404a5bfb288a195b06",
+    "tools/qemu/0003-experimental-relative-clock-cost.patch": "d77bf8974a950eb3aac7b6333b6fd6dfe30940af8704b953ae3832db4c6ab11f",
+    "tools/qemu/0004-clock-anchor-observer.patch": "28e1f7ed95c1368d99c0d6075da5e35c8bec010d44009c4acb3c09500b6b4a5d"
+  },
+  "overlays": {
+    "plugins/poc-clock-state.c": "8f6259597100e61400d486aa3a56db7ecbce7cc4a2ba65d3d338ddcd77b5cfce",
+    "plugins/poc-clock-state.h": "619794001c2324cb79e9b636e961d318e9d0444bd9f3ca1819f2b9a9a49c2a1a",
+    "include/qemu/poc-clock-anchor-api.h": "fe8c87a3e65eeb93bd60e8a5ea22be0e9e4fbee6810e228ece9344028ce71279"
+  },
+  "binary": {
+    "path": "/Users/swchen.tw/git/percepio/poc/.tools/c2b-clock-20261102-r3/qemu-system-riscv32-clock-anchor",
+    "sha256": "eab95b72dabe404d652bba976d821892b276b0c06be1f92fd305c7bdb30f42e6"
+  },
+  "header": {
+    "path": "/Users/swchen.tw/git/percepio/poc/.tools/c2b-clock-20261102-r3/qemu-9.2.0/include/qemu/qemu-plugin.h",
+    "sha256": "84bde8f30c61d64321f440c28e9558f77c554cae91178d00d58d12dd05cefcf5"
+  },
+  "abi_header": {
+    "path": "/Users/swchen.tw/git/percepio/poc/.tools/c2b-clock-20261102-r3/qemu-9.2.0/include/qemu/poc-clock-anchor-api.h",
+    "sha256": "fe8c87a3e65eeb93bd60e8a5ea22be0e9e4fbee6810e228ece9344028ce71279"
+  },
+  "compiler": {
+    "path": "/usr/bin/cc",
+    "sha256": "7f30f076d0e9c38f772a76449fca9da8cf97f6a3d43b94c90a00e4f9ce7ad39e",
+    "version": "Apple clang version 17.0.0 (clang-1700.0.13.5)\nTarget: arm64-apple-darwin24.6.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin"
+  },
+  "meson": {
+    "path": "/Users/swchen.tw/git/percepio/poc/.tools/c2b-clock-20261102-r3/venv/bin/meson",
+    "sha256": "2c90517d510f21232c147fcfbf0ec8fdc7f72bb41693cfc157ca297593b67664",
+    "version": "1.12.1",
+    "reported_version": "1.12.1"
+  },
+  "ninja": {
+    "path": "/Users/swchen.tw/git/percepio/poc/.tools/c2b-clock-20261102-r3/venv/bin/ninja",
+    "sha256": "78db38d68dde4904f4a7a9cae2dfd0ef47f5f00e2ec88462b0f24d85ac610586",
+    "version": "1.13.2",
+    "reported_version": "1.13.2.git.kitware.jobserver-pipe-1"
+  },
+  "configure_command": [
+    "/Users/swchen.tw/git/percepio/poc/.tools/c2b-clock-20261102-r3/qemu-9.2.0/configure",
+    "--target-list=riscv32-softmmu",
+    "--without-default-features",
+    "--enable-system",
+    "--enable-tcg",
+    "--enable-plugins",
+    "--enable-fdt=internal",
+    "--disable-docs",
+    "--disable-werror",
+    "--python=/Users/swchen.tw/git/percepio/poc/.tools/c2b-clock-20261102-r3/venv/bin/python",
+    "--ninja=/Users/swchen.tw/git/percepio/poc/.tools/c2b-clock-20261102-r3/venv/bin/ninja"
+  ],
+  "build_command": [
+    "/Users/swchen.tw/git/percepio/poc/.tools/c2b-clock-20261102-r3/venv/bin/ninja",
+    "-j2",
+    "qemu-system-riscv32"
+  ],
+  "exports": {
+    "path": "/Users/swchen.tw/git/percepio/poc/.tools/c2b-clock-20261102-r3/exports.txt",
+    "sha256": "0fc77f0f97f15b2ab11961e35859544b1c468d14fac16d91b529f903d674a2d4"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "paths": [
+    "hw/intc/riscv_aclint.c",
+    "include/qemu/poc-clock-anchor-api.h",
+    "include/qemu/qemu-plugin.h",
+    "include/sysemu/poc-clock-observer.h",
+    "plugins/api.c",
+    "plugins/meson.build",
+    "plugins/poc-clock-observer.c",
+    "plugins/poc-clock-state.c",
+    "plugins/poc-clock-state.h"
+  ],
+  "files_sha256": {
+    "hw/intc/riscv_aclint.c": "fe820cb2084274c638e5b5c11bd1b0e6ad6468e1f478df4d66e442c6ffea8d76",
+    "include/qemu/poc-clock-anchor-api.h": "fe8c87a3e65eeb93bd60e8a5ea22be0e9e4fbee6810e228ece9344028ce71279",
+    "include/qemu/qemu-plugin.h": "84bde8f30c61d64321f440c28e9558f77c554cae91178d00d58d12dd05cefcf5",
+    "include/sysemu/poc-clock-observer.h": "27f92e46bef4e788ab864a0f0f123128220dba5ccd680828f727e5a1bb1b7c89",
+    "plugins/api.c": "7e5c4f17ad9e54456d97064972391bdc6f506576f1724f77fea4b0ad125de7e5",
+    "plugins/meson.build": "5d027154cf3c79839147ec2d06bc89f6421a051e67b6cda1bdc848fbb477d18b",
+    "plugins/poc-clock-observer.c": "72ab31d079a996e242f88b00b63933e7ef4842f8c6cd5e50c3a7734c882716c1",
+    "plugins/poc-clock-state.c": "8f6259597100e61400d486aa3a56db7ecbce7cc4a2ba65d3d338ddcd77b5cfce",
+    "plugins/poc-clock-state.h": "f7fba2757206b827bcc3293abb4070cd59df3fd243ddfb52aa7749dc506962cf"
+  },
+  "patch_sha256": "59d1b95075945f35b863b4e8f56c08c2399d211cf87fa4951210dedd5cf957b0"
+}

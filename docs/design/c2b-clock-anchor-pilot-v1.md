@@ -1,6 +1,6 @@
 # C2b v1：SDK marker 與 QEMU clock-anchor pilot 設計規格
 
-日期：2026-10-25。**使用者已選A，並以後續`continue`確認本書面規格，已進入[逐項實作計畫](../plans/20-c2b-clock-anchor-implementation.md)審閱階段。** 可修改POC app／port加少量SDK markers，FreeRTOS kernel與SDK原始碼保持原樣；目前沒有新增build、capture或runtime驗收。
+日期：2026-10-25；進度更新2026-11-03。**規格與實作計畫已確認，Tasks1–4完成，Tasks5–8繼續，見[實作證據](../clock-anchor-progress.md)。** 已有guest helper／probe及新QEMU build／ABI驗收；正式16-run與完整時間mapping未完成。FreeRTOS kernel與SDK原始碼保持原樣。
 
 ## 1. 目的、交付與目前邊界
 
@@ -115,7 +115,7 @@ mode0仍保留相同binary、phase呼叫位置與共用guard，但不sample、�
 
 ### 5.1 POC介面與資料流契約
 
-以下是新介面契約，並非已存在API；具體C宣告與檔案拆分由後續實作計畫展開。
+以下是本POC新增的ABI，Task4已有build與ABI smoke證據；真guest tagged request／applied與完整mapping仍待Task5–8。
 
 | 介面 | 輸入與效果 |
 |---|---|
@@ -240,8 +240,8 @@ capture逐一執行，不開平行QEMU；每次host wall timeout為120秒，只�
 
 ## 10. 狀態與下一個審閱點
 
-- 已完成：使用者選A、來源能力盤點、本文的具體設計、自我審閱及使用者以continue確認；逐項實作計畫已寫好。
-- 等待：審閱[實作計畫](../plans/20-c2b-clock-anchor-implementation.md)，之後沿用Native逐項執行。
-- 尚未完成：QEMU／firmware改動、unit／integration runtime、pilot與誤差結果、Web／offline接合及知識庫增補。
+- 已完成：使用者選A、來源能力盤點、本文的具體設計、自我審閱及使用者以continue確認；逐項實作計畫已確認，Tasks1–4已完成。
+- 續作：依[實作計畫](../plans/20-c2b-clock-anchor-implementation.md)沿用Native執行Task5–8。
+- 尚未完成：collector、因果validator／join、正式pilot與誤差結果、完整還原包、獨立整體review、Web／offline接合及知識庫增補。
 
 實作前不得把本文件的schema、32-byte推導、數字矩陣或來源安全鏈寫成已量測結果。

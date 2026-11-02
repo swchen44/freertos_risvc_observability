@@ -1,8 +1,10 @@
 # FreeRTOS／RISC-V PSF POC
 
-**C2b 實作中：使用者已確認[八項實作計畫](docs/plans/20-c2b-clock-anchor-implementation.md)，沿用Native。** Task1已完成：11個新測試與完整339個Python測試通過；[Task1收據與失敗歷史](artifacts/verification/clock-anchor/task1-20261102/README.md)。[Task2同ELF QEMU probe](artifacts/verification/clock-anchor/task2-20261102/README.md)完成，完整342個測試通過；全庫format另有10個baseline舊檔未通過。[Task3 native core](artifacts/verification/clock-anchor/task3-20261102/README.md)完成，完整348測試通過；Task4起、正式16-run與新QEMU build尚未完成。FreeRTOS kernel與SDK原始碼保持原樣。
+**C2b Tasks1–4完成，Tasks5–8繼續；[最新進度與證據](docs/clock-anchor-progress.md)。** 同ELF SDK marker probe、原生C核心與隔離QEMU ABI已驗證；完整352個Python測試、10個ABI情境、6份新舊clock driver通過。[Task4收據](artifacts/verification/clock-anchor/task4-20261103/README.md)保留編譯失敗、deadlock、sample及修正。全庫Ruff check通過；全庫format仍有10個既有舊檔未通過，本輪12個Python檔format通過。
 
-[設計規格](docs/design/c2b-clock-anchor-pilot-v1.md)｜[總checklist](docs/plans/19-c2b-clock-anchor-pilot.md)｜[原計畫自審](artifacts/verification/clock-anchor/plan-20261025/README.md)
+正式16-run、tagged guest因果驗證、PSF時間對齊、完整還原分卷與新Dashboard接合尚未完成。FreeRTOS kernel／SDK與舊capture保持原樣。執行方式沿用Native，最後獨立review。
+
+[設計規格](docs/design/c2b-clock-anchor-pilot-v1.md)｜[八項實作計畫](docs/plans/20-c2b-clock-anchor-implementation.md)｜[總checklist](docs/plans/19-c2b-clock-anchor-pilot.md)
 
 ## C2a 正式本機驗收 · 2026-10-23
 

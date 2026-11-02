@@ -1,5 +1,7 @@
 # C2b：SDK anchors、PSF clock 與首輪實驗邊界
 
+**2026-11-03最新：[Tasks1–4實作與runtime證據](../clock-anchor-progress.md)已完成；Tasks5–8、正式16-run與完整mapping待完成。以下能力盤點及「未實作」為2026-10-23／25歷史狀態，不能當成本輪進度。**
+
 能力盤點日期：2026-10-23；決策更新：2026-10-25。**使用者已選A並確認[C2b v1設計](../design/c2b-clock-anchor-pilot-v1.md)，[逐項實作計畫](../plans/20-c2b-clock-anchor-implementation.md)完成待審閱。來源研究不等於runtime驗收。** 10月23日只讀來源、核對binary身分及重新解析兩份保存PSF；沒有重新build、執行guest、產生新capture或開瀏覽器。
 
 ## 先看結論

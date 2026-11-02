@@ -1,0 +1,24 @@
+{
+  "task": 4,
+  "status": "complete",
+  "source_commit": "797d8c7c3c56c7ed2ec06b9a5a58feaa2420bbc6",
+  "accepted_build": ".tools/c2b-clock-20261102-r3",
+  "binary_sha256": "eab95b72dabe404d652bba976d821892b276b0c06be1f92fd305c7bdb30f42e6",
+  "abi_subcases": 10,
+  "abi_failures": 0,
+  "abi_skips": 0,
+  "clock_regression_drivers": 6,
+  "full_suite_tests": 352,
+  "full_suite_failures": 0,
+  "ruff_check": "passed",
+  "changed_python_files_formatted": 12,
+  "global_format": "failed-existing-10-files",
+  "tagged_guest_apply_validation": "not-performed-until-collector",
+  "formal_pilot_runs": 0,
+  "full_offline_restore_bundle": "pending-task8",
+  "failed_paths": [
+    "global QEMU include path shadowed system ctype.h",
+    "Ninja CLI suffix initially confused with distribution version; manifest recovery only",
+    "ABI probe missing MMIO pairing plus fatal cleanup lock deadlock; owned QEMU timeout; sample retained"
+  ]
+}
