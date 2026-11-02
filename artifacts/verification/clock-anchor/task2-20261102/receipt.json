@@ -1,0 +1,36 @@
+{
+  "task": 2,
+  "status": "complete",
+  "source_commit": "af002edcb4de259522356ef66b875b188529459d",
+  "host_parser_tests": 1,
+  "enabled_guest_integration_tests": 2,
+  "integration_skips": 0,
+  "full_suite_tests": 342,
+  "full_suite_failures": 0,
+  "ruff_check": "passed",
+  "new_files_format": "passed",
+  "global_format": "failed-existing-10-files",
+  "same_elf_modes": [
+    0,
+    1
+  ],
+  "c2b_event_counts": [
+    0,
+    5
+  ],
+  "rejected_cases": [
+    "missing",
+    "overlong",
+    "mode2",
+    "extra-argument"
+  ],
+  "development_probe_only": true,
+  "formal_pilot_runs": 0,
+  "new_qemu_build": false,
+  "restore": {
+    "files": 176,
+    "verified": true
+  },
+  "qemu_sha256": "69969c3ec8cce8f9340215fc340c5c01f81c3ef978252d3766937d2d176816db",
+  "elf_sha256": "f9a2dbd7caa114bb4f4de4ac689a33bee1c1be3144c03160cc6b1ec83a9fcff2"
+}

@@ -12,7 +12,7 @@
 
 **Execution:** 沿用本專案已採用的Native：主agent逐項實作，最後做獨立whole-change review；依據[既有原生執行紀錄](14-event-window-dashboard.md)。不重新詢問A／B或執行方式。2026-11-02使用者以continue確認計畫，開始逐項實作。
 
-**Current status:** 2026-11-02 Task1已完成，來源commit `1b7c0eb2`；11個新測試、完整339個Python測試及Ruff通過。Task2起仍待完成；尚無C2b正式capture或新QEMU build。unchecked項目的預期輸出不是已通過證據。
+**Current status:** 2026-11-02 Task1已完成，來源commit `1b7c0eb2`；11個新測試、完整339個Python測試及Ruff通過。Task2同ELF guest probe已完成，完整342測試通過；Task3起待完成。全庫format的10個baseline舊檔未通過，見Task2收據；尚無C2b正式capture或新QEMU build。unchecked項目的預期輸出不是已通過證據。
 
 ## Global Constraints
 
@@ -217,8 +217,8 @@ upper = min(lower + 100, 1 << 63)
 
 **Interfaces:** `poc_sh_get_cmdline(char*,uint32_t,uint32_t*) -> int`；`poc_clock_anchor_init(void)`、`poc_clock_anchor(uint32_t phase)`、`poc_clock_anchor_mode/count(void) -> uint32_t`；header的portable inline `poc_clock_parse_mode(const char*,uint32_t,uint32_t*) -> int`供host C test使用。Task5用同ELF、5 phases與oracle的`clock_marker_mode/clock_marker_count`。
 
-- [ ] **1. RED portable parser／native C harness。** unittest用cc `-std=c11 -Wall -Wextra -Werror`編譯包含新header的小程式，接受精確`c2b-markers=0/1`，拒空字串、值2、前後空白、embedded NUL、額外參數、length不符。assert實際C程式exit／輸出，不用Python重寫parser再自證。
-- [ ] **2. 執行RED後實作bounded SYS_GET_CMDLINE與parser。**
+- [x] **1. RED portable parser／native C harness。** unittest用cc `-std=c11 -Wall -Wextra -Werror`編譯包含新header的小程式，接受精確`c2b-markers=0/1`，拒空字串、值2、前後空白、embedded NUL、額外參數、length不符。assert實際C程式exit／輸出，不用Python重寫parser再自證。
+- [x] **2. 執行RED後實作bounded SYS_GET_CMDLINE與parser。**
 
 ```c
 int poc_sh_get_cmdline(char *buf, uint32_t cap, uint32_t *length) {
@@ -231,7 +231,7 @@ int poc_sh_get_cmdline(char *buf, uint32_t cap, uint32_t *length) {
 ```
 
 portable parser要求length13、前12 bytes=`c2b-markers=`、第12 byte為0／1、第13為NUL；mode取digit減`'0'`。初始化64-byte buffer，失敗以console診斷＋`poc_finish(0)`停止，不能預設mode0。
-- [ ] **3. 實作SDK helper與3個hooks。** `CLOCK_ANCHORS ?= 0`只在1時定義`POC_CLOCK_ANCHORS`。main在SDK enable與POC channel註冊後、case執行前init；兩種mode都預先註冊C2B channel／format，mode0僅略過body。hooks使用`noinline,noclone,used`及asm inputs／memory clobber，沿用`clock_nano`的ABI做法。
+- [x] **3. 實作SDK helper與3個hooks。** `CLOCK_ANCHORS ?= 0`只在1時定義`POC_CLOCK_ANCHORS`。main在SDK enable與POC channel註冊後、case執行前init；兩種mode都預先註冊C2B channel／format，mode0僅略過body。hooks使用`noinline,noclone,used`及asm inputs／memory clobber，沿用`clock_nano`的ABI做法。
 
 ```c
 void poc_clock_anchor(uint32_t phase) {
@@ -249,11 +249,11 @@ void poc_clock_anchor(uint32_t phase) {
 ```
 
 5個插入點逐項照spec §4.1，不移動原IRQ save／restore或capture boundaries。oracle寫實際mode／count；default build不新增C2B runtime行為。probe case只呼叫五個phase再`poc_oracle_finish()`，不手工生成PSF。
-- [ ] **4. GREEN host tests／Ruff，commit來源後才跑guest probe。** build使用新ignored OUT，不能覆寫build/clock_probe或舊A02。probe Makefile參數為`CASE=clock_anchor_probe CLOCK_ANCHORS=1`。保存ELF／map／反組譯與build命令。
-- [ ] **5. 真QEMU integration。** 原relative binary、相同probe ELF執行兩種cmdline，assert ELF SHA相同、oracle mode/count為0/0及1/5、PSF真實解析的C2B events為0／5。再執行缺參數、過長64 bytes以上、mode2及額外arg，必須非成功且無complete oracle；partial PSF保留。integration tests用`C2B_REQUIRE_QEMU=1`啟用，config位於`C2B_RUNTIME_CONFIG`；啟用後缺config／工具是FAIL，不是skip。
+- [x] **4. GREEN host tests／Ruff，commit來源後才跑guest probe。** build使用新ignored OUT，不能覆寫build/clock_probe或舊A02。probe Makefile參數為`CASE=clock_anchor_probe CLOCK_ANCHORS=1`。保存ELF／map／反組譯與build命令。
+- [x] **5. 真QEMU integration。** 原relative binary、相同probe ELF執行兩種cmdline，assert ELF SHA相同、oracle mode/count為0/0及1/5、PSF真實解析的C2B events為0／5。再執行缺參數、過長64 bytes以上、mode2及額外arg，必須非成功且無complete oracle；partial PSF保留。integration tests用`C2B_REQUIRE_QEMU=1`啟用，config位於`C2B_RUNTIME_CONFIG`；啟用後缺config／工具是FAIL，不是skip。
 
 `clock_anchor_support.py`提供test helper `guest_probe_config(root, qemu, output) -> Path`：用新OUT編譯probe一次，寫`c2b-runtime-config-v1`，欄位為source_commit、root、legacy_qemu(path/sha256)、probe_elf(path/sha256)、output_parent；clock_qemu／plugins／candidates先為null。每個test在output_parent下exclusive-create自己的新子目錄。Task5的prepare_tools產生同schema完整版，Task6才要求這三個欄位非null。
-- [ ] **6. 保存probe收據並commit。** 本次probe是development capability evidence，不算Task8的16個正式captures；後續source改動不可使它冒充最終candidate驗收。
+- [x] **6. 保存probe收據並commit。** 本次probe是development capability evidence，不算Task8的16個正式captures；後續source改動不可使它冒充最終candidate驗收。
 
 ## Task 3：可測試的C observer狀態機與sink
 
