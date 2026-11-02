@@ -103,3 +103,33 @@ class ClockJoinTests(unittest.TestCase):
                 c.exception.code,
                 "ambiguous_full_counter" if ambiguous else "sdk_sample_unavailable",
             )
+
+    def test_same_tick_keeps_quantum_and_marker_off_consumes_second_pass(self):
+        f = marker_fixture()
+        trace = parse_trace(f.psf)
+        for row in f.records:
+            if row["kind"] == "mtime_read" and row["source"] == "device":
+                row.update(mtime64="111", value32="111", virtual_ns="11107")
+            elif row["kind"] == "marker_sampled":
+                row["sample64"] = "111"
+        for event in trace["events"]:
+            if event["fields"].get("channel") == "C2B":
+                event["fields"]["arguments"][2:] = ["111", "0"]
+                event.update(timestamp_raw=111, ticks="12")
+        scan = scan_evidence(f.records, f.accesses, f.expected)
+        result = join_anchor_bounds(f.records, scan, trace)
+        self.assertEqual(
+            {(a["lower_ns"], a["upper_ns"]) for a in result["anchors"]}, {("11100", "11200")}
+        )
+        trace["events"] = [e for e in trace["events"] if e["fields"].get("channel") != "C2B"]
+        consumed = []
+
+        def stream():
+            for r in f.records:
+                consumed.append(1)
+                yield r
+
+        result = join_anchor_bounds(stream(), dict(scan, marker_mode=0), trace)
+        self.assertEqual(len(consumed), len(f.records))
+        self.assertEqual(result["intervals"], [])
+        self.assertEqual(result["unknown_rows"], "25")

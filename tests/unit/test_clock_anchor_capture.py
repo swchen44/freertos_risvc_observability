@@ -15,6 +15,7 @@ from psf_lab.clock_anchor_capture import (
     _check_qemu_sources,
     _check_smoke_files,
     _run_qemu,
+    _validate_capture_contract,
     allocate_output,
     pilot_matrix,
     prepare_tools,
@@ -169,3 +170,65 @@ class ClockCaptureDriverTests(unittest.TestCase):
             if live:
                 os.kill(pid, 9)
             self.assertFalse(live, "Owned child survived the timeout cleanup")
+
+    def test_capture_contract_rejects_mode_binary_and_command_drift(self):
+        spec = RunSpec("baseline", "O", 1)
+        tools = dict(
+            source_commit="compiled",
+            legacy_qemu=dict(path="/old", sha256="a" * 64),
+            clock_qemu=dict(path="/new", sha256="b" * 64),
+            plugins=dict(new=dict(path="/plugin", sha256="c" * 64)),
+            candidates=dict(
+                baseline=dict(
+                    elf=dict(sha256="d" * 64),
+                    boundaries=dict(
+                        context=dict(capture_begin_pc=0x80000000, capture_end_pc=0x80000004)
+                    ),
+                )
+            ),
+        )
+        expected = dict(
+            candidate="baseline",
+            configuration="O",
+            injection_enabled=True,
+            observer_enabled=True,
+            marker_mode=1,
+            run_id=spec.run_id,
+            qemu_sha256="b" * 64,
+            plugin_sha256="c" * 64,
+            elf_sha256="d" * 64,
+        )
+        from dataclasses import asdict
+
+        from psf_lab.runner import QEMU_FLAGS
+
+        flags = QEMU_FLAGS.copy()
+        flags[flags.index("-semihosting-config") + 1] += ",arg=c2b-markers=1"
+        command = [
+            "/new",
+            *flags,
+            "-plugin",
+            "/plugin,begin=80000000,end=80000004,enabled=1,out=/original/accesses.csv,"
+            "context-config=/original/context.config,context-out=/original/context.jsonl,"
+            "clock-config=/original/clock.config",
+            "-kernel",
+            "/original/firmware.elf",
+        ]
+        capture = dict(
+            spec=asdict(spec),
+            tools=tools,
+            compiled_source_commit="compiled",
+            command=command,
+            files={"firmware.elf": dict(path="/original/firmware.elf")},
+        )
+        _validate_capture_contract(capture, expected)
+        for changed in (
+            dict(marker_mode=0),
+            dict(qemu_sha256="a" * 64),
+            dict(injection_enabled=False),
+        ):
+            with self.assertRaises(ValueError):
+                _validate_capture_contract(capture, expected | changed)
+        capture["command"] = command + ["-smp", "2"]
+        with self.assertRaises(ValueError):
+            _validate_capture_contract(capture, expected)

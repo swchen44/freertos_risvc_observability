@@ -201,6 +201,11 @@ def _validate_tools(root: Path, tools: dict):
     for candidate in tools["candidates"].values():
         for name in ("elf", "map", "symbols", "context_config", "boundaries_file"):
             _check_identity(candidate[name])
+        if (
+            json.loads(Path(candidate["boundaries_file"]["path"]).read_text())
+            != candidate["boundaries"]
+        ):
+            raise ValueError("Embedded ELF boundaries changed")
     for name, sha in tools["compiled_dependencies"].items():
         path = (root / name).resolve()
         if not path.is_relative_to(root) or not path.is_file() or digest(path) != sha:
@@ -212,6 +217,53 @@ def _validate_tools(root: Path, tools: dict):
     for name, sha in build["patches"].items():
         if digest(root / name) != sha:
             raise ValueError("QEMU patch changed")
+
+
+def _validate_capture_contract(capture: dict, expected: dict):
+    """Cross-check external identity and the entire invocation, including clocks."""
+    spec = RunSpec(**capture["spec"])
+    derived = dict(
+        candidate=spec.candidate,
+        configuration=spec.configuration,
+        run_id=spec.run_id,
+        marker_mode=spec.marker_mode,
+        injection_enabled=bool(spec.injection),
+        observer_enabled=spec.observer_enabled,
+    )
+    if any(type(expected[k]) is not type(v) or expected[k] != v for k, v in derived.items()):
+        raise ValueError("Capture mode/identity mismatch")
+    tools = capture["tools"]
+    legacy = spec.configuration == "L"
+    qemu = tools["legacy_qemu" if legacy else "clock_qemu"]
+    plugin = tools["plugins"]["legacy" if legacy else "new"]
+    candidate = tools["candidates"][spec.candidate]
+    if (
+        expected["qemu_sha256"] != qemu["sha256"]
+        or expected["plugin_sha256"] != plugin["sha256"]
+        or expected["elf_sha256"] != candidate["elf"]["sha256"]
+        or capture["compiled_source_commit"] != tools["source_commit"]
+    ):
+        raise ValueError("Capture tool identity mismatch")
+    out = Path(capture["files"]["firmware.elf"]["path"]).parent
+    context = candidate["boundaries"]["context"]
+    argument = (
+        f"{plugin['path']},begin={context['capture_begin_pc']:x},"
+        f"end={context['capture_end_pc']:x},enabled={spec.injection},out={out}/accesses.csv,"
+        f"context-config={out}/context.config,context-out={out}/context.jsonl"
+    )
+    if not legacy:
+        argument += f",clock-config={out}/clock.config"
+    flags = QEMU_FLAGS.copy()
+    flags[flags.index("-semihosting-config") + 1] += f",arg=c2b-markers={spec.marker_mode}"
+    if capture["command"] != [
+        qemu["path"],
+        *flags,
+        "-plugin",
+        argument,
+        "-kernel",
+        str(out / "firmware.elf"),
+    ]:
+        raise ValueError("Capture invocation changed")
 
 
 def prepare_tools(root: Path, qemu_build: Path, legacy_qemu: Path, output: Path) -> dict:

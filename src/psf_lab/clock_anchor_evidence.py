@@ -39,6 +39,7 @@ def scan_evidence(records, accesses, expected: dict, *, pending_limit=65536) -> 
     stage = "configured"
     marker_stage = 0
     markers = []
+    marker_rows = {}
     current = None
     last_clock = -1
     offset = None
@@ -50,6 +51,12 @@ def scan_evidence(records, accesses, expected: dict, *, pending_limit=65536) -> 
         while cursor < target:
             last_row = next(raw, None)
             _require(last_row is not None and last_row["index"] == cursor, "raw_count")
+            if cursor in marker_rows:
+                _require(
+                    last_row["operation"] == "I" and last_row["pc"] == marker_rows[cursor],
+                    "marker_instruction",
+                )
+                del marker_rows[cursor]
             total += sum(last_row[k] for k in COSTS)
             cursor += 1
 
@@ -143,6 +150,11 @@ def scan_evidence(records, accesses, expected: dict, *, pending_limit=65536) -> 
                 and int(row["marker_phase"]) == seq,
                 "marker_order",
             )
+            if "marker_pcs" in expected:
+                key = ("enter_pc", "sampled_pc", "leave_pc")[marker_stage]
+                _require(int(row["pc"]) == expected["marker_pcs"][key], "marker_pc")
+            _require(cursor not in marker_rows, "marker_instruction")
+            marker_rows[cursor] = int(row["pc"])
             if marker_stage == 0:
                 current = dict(marker_seq=str(seq), marker_phase=str(seq))
             current[names[marker_stage]] = dict(row)
@@ -265,6 +277,8 @@ def join_anchor_bounds(records, scan: dict, psf: dict) -> dict:
     psf_markers = extract_psf_markers(psf)
     if not scan["marker_mode"]:
         _require(not psf_markers, "marker_mode")
+        for _ in records:
+            pass  # Consume pass2 so its content hash covers the complete stream.
         return dict(
             alignment_status="unavailable",
             reason="markers-off",
@@ -390,7 +404,7 @@ def _content_identity(path):
 
 def verify_clock_capture(run: Path, expected: dict) -> dict:
     """Real-file boundary: validate pinned tools, replay costs, then scan twice."""
-    from psf_lab.clock_anchor_capture import PROFILE, _validate_tools
+    from psf_lab.clock_anchor_capture import PROFILE, _validate_capture_contract, _validate_tools
     from psf_lab.execution_context import context_intervals, validate_context_anchors
     from psf_lab.live_cache import audit_accesses
     from psf_lab.live_cache_irq import validate_irq_trace
@@ -408,6 +422,7 @@ def verify_clock_capture(run: Path, expected: dict) -> dict:
         "capture_identity",
     )
     tools = capture["tools"]
+    _validate_capture_contract(capture, expected)
     _validate_tools(ROOT, tools)
     profile_path = Path(expected["profile_path"])
     _require(
@@ -415,11 +430,25 @@ def verify_clock_capture(run: Path, expected: dict) -> dict:
         "profile_identity",
     )
     _require(tools["profile"]["sha256"] == expected["profile_sha256"], "profile_identity")
+    required = {
+        "firmware.elf",
+        "firmware.map",
+        "symbols.txt",
+        "context.config",
+        "trace.psf",
+        "oracle.json",
+        "live-cache.json",
+        "session.json",
+        "qemu.log",
+        "console.log",
+    }
+    _require(required <= capture["files"].keys(), "missing_artifact")
     for name, identity in capture["files"].items():
         path = (run / name).resolve()
         _require(
             Path(name).name == name
             and path.is_relative_to(run)
+            and not (run / name).is_symlink()
             and path.is_file()
             and path.stat().st_size == identity["bytes"]
             and digest(path) == identity["sha256"],
@@ -446,15 +475,28 @@ def verify_clock_capture(run: Path, expected: dict) -> dict:
         paths[name] = path
     raw = paths["accesses.csv"]
     audit = audit_accesses(raw, profile=json.loads(profile_path.read_text()))
-    wanted = dict(expected, raw_rows=audit["events"])
+    wanted = dict(
+        expected, raw_rows=audit["events"], marker_pcs=candidate["boundaries"]["marker_pcs"]
+    )
     trace = parse_trace((run / "trace.psf").read_bytes())
     measurement = json.loads((run / "live-cache.json").read_text())
     session = json.loads((run / "session.json").read_text())
     oracle = json.loads((run / "oracle.json").read_text())
     _require(
+        measurement["work"] == 11680
+        and measurement["after"] >= measurement["before"]
+        and (
+            (measurement["woke"] == 1 and measurement["ticks"] >= 2)
+            if expected["injection_enabled"]
+            else (measurement["woke"] == 0 and measurement["ticks"] == 0)
+        ),
+        "irq_measurement",
+    )
+    _require(
         oracle["complete"] is True
         and oracle["transport_ok"] is True
         and oracle["outcome"] == "normal"
+        and oracle["sent_ids"] == oracle["received_ids"] == [11680]
         and oracle["clock_marker_mode"] == expected["marker_mode"]
         and oracle["clock_marker_count"] == (5 if expected["marker_mode"] else 0),
         "oracle",
@@ -477,7 +519,7 @@ def verify_clock_capture(run: Path, expected: dict) -> dict:
     context = context_intervals(context_events, raw_events=audit["events"], task_ids=task_ids)
     result = dict(
         schema="clock-anchor-validation-v1",
-        **expected,
+        **{k: v for k, v in expected.items() if k != "raw_rows"},
         evidence_status="valid",
         application_status="passed",
         alignment_status="unavailable",
@@ -507,8 +549,13 @@ def verify_clock_capture(run: Path, expected: dict) -> dict:
     if expected["observer_enabled"]:
         clock_path = paths["clock.jsonl"]
         before = _content_identity(clock_path)
-        scan = scan_evidence(iter_clock_records(clock_path), iter_access_rows(raw), wanted)
-        joined = join_anchor_bounds(iter_clock_records(clock_path), scan, trace)
+        first_hash, second_hash = hashlib.sha256(), hashlib.sha256()
+        scan = scan_evidence(
+            iter_clock_records(clock_path, content_hasher=first_hash), iter_access_rows(raw), wanted
+        )
+        joined = join_anchor_bounds(
+            iter_clock_records(clock_path, content_hasher=second_hash), scan, trace
+        )
         _require(
             before
             == _content_identity(clock_path)
@@ -516,6 +563,10 @@ def verify_clock_capture(run: Path, expected: dict) -> dict:
                 sha256=capture["streams"]["clock.jsonl"]["content_sha256"],
                 bytes=capture["streams"]["clock.jsonl"]["content_bytes"],
             ),
+            "scan_content_changed",
+        )
+        _require(
+            first_hash.hexdigest() == second_hash.hexdigest() == before["sha256"],
             "scan_content_changed",
         )
         for anchor in joined["anchors"]:

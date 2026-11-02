@@ -213,7 +213,9 @@ def _json_number(value):
     raise ClockEvidenceError("json_numeric_literal")
 
 
-def iter_clock_records(path: Path, *, max_line_bytes: int = 16384) -> Iterator[dict]:
+def iter_clock_records(
+    path: Path, *, max_line_bytes: int = 16384, content_hasher=None
+) -> Iterator[dict]:
     """Validate each line lazily; lifecycle/completeness belongs to the scanner."""
     if type(max_line_bytes) is not int or not 1 <= max_line_bytes <= 16384:
         raise ClockEvidenceError("line_limit")
@@ -223,6 +225,8 @@ def iter_clock_records(path: Path, *, max_line_bytes: int = 16384) -> Iterator[d
             while line := stream.readline(max_line_bytes + 1):
                 if len(line) > max_line_bytes or not line.endswith(b"\n") or line.endswith(b"\r\n"):
                     raise ClockEvidenceError("line_boundary")
+                if content_hasher is not None:
+                    content_hasher.update(line)
                 row = json.loads(
                     line.decode("utf-8"),
                     object_pairs_hook=_pairs,

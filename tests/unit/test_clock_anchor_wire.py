@@ -2,6 +2,7 @@
 
 import copy
 import gzip
+import hashlib
 import json
 import tempfile
 import unittest
@@ -61,6 +62,10 @@ class WireTests(unittest.TestCase):
         zipped.write_bytes(gzip.compress(path.read_bytes()))
         self.assertEqual(list(iter_clock_records(path)), rows)
         self.assertEqual(list(iter_clock_records(zipped)), rows)
+        for file in (path, zipped):
+            actual = hashlib.sha256()
+            self.assertEqual(list(iter_clock_records(file, content_hasher=actual)), rows)
+            self.assertEqual(actual.hexdigest(), hashlib.sha256(path.read_bytes()).hexdigest())
 
     def test_json_number_limits_and_truncated_gzip_are_evidence_errors(self):
         path = self.temp / "huge-number.jsonl"

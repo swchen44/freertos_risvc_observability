@@ -84,6 +84,18 @@ class ClockScanTests(unittest.TestCase):
             scan_evidence(f.records, f.accesses, f.expected)
         self.assertEqual(caught.exception.code, "epoch_change")
 
+    def test_marker_pc_must_match_actual_next_instruction_and_pinned_hook(self):
+        f = marker_fixture()
+        f.records[5]["pc"] = str(int(f.records[5]["pc"]) + 2)
+        with self.assertRaises(ClockEvidenceError) as caught:
+            scan_evidence(f.records, f.accesses, f.expected)
+        self.assertEqual(caught.exception.code, "marker_instruction")
+        f = marker_fixture()
+        f.expected["marker_pcs"] = {"enter_pc": 1, "sampled_pc": 2, "leave_pc": 3}
+        with self.assertRaises(ClockEvidenceError) as caught:
+            scan_evidence(f.records, f.accesses, f.expected)
+        self.assertEqual(caught.exception.code, "marker_pc")
+
     def test_consumed_rows_do_not_accumulate_in_memory(self):
         fixture = semantic_fixture()
 

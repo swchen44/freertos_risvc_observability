@@ -27,18 +27,18 @@ class ClockAnchorRuntimeTests(unittest.TestCase):
         cls.tools = json.loads(Path(config["tools_manifest"]).read_text())
         cls.output = Path(config["output_parent"]) / ("causal-" + uuid.uuid4().hex)
         cls.output.mkdir(parents=True)
-        cls.run = cls.output / "observed"
+        cls.captured_run = cls.output / "observed"
         cls.capture = capture_one(
             cls.root,
             RunSpec("baseline", "O", 1),
             cls.tools,
             cls.tools["candidates"]["baseline"],
-            cls.run,
+            cls.captured_run,
         )
 
     def test_real_tcp_o_has_five_verified_bounds(self):
         self.assertEqual(self.capture["status"], "captured-unvalidated")
-        result = verify_clock_capture(self.run, self.capture["expected"])
+        result = verify_clock_capture(self.captured_run, self.capture["expected"])
         write_json(self.output / "validation.json", result)
         self.assertEqual(result["application_status"], "passed")
         self.assertEqual(result["evidence_status"], "valid")
@@ -54,7 +54,7 @@ class ClockAnchorRuntimeTests(unittest.TestCase):
             ("hash", "file_hash"),
         ):
             run = self.output / fault
-            shutil.copytree(self.run, run)
+            shutil.copytree(self.captured_run, run)
             path = run / "clock.jsonl.gz"
             # Streaming edit; retain all originals and each deliberately bad copy.
             changed = run / "changed.gz"
