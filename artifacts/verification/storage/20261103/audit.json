@@ -1,0 +1,95 @@
+{
+  "status": "audit-only-awaiting-user-scope",
+  "removed_files": 0,
+  "logical_du": {
+    "artifacts": "2.8G",
+    "runs": "2.0G",
+    "tools": "5.9G",
+    "artifacts_local": "1.4G"
+  },
+  "verified_archived_copies": [
+    {
+      "path": "runs/local/c2b-guest-probe-restored-20261102/guest-probe",
+      "archive": "artifacts/verification/clock-anchor/task2-20261102/guest-probe.tar.gz",
+      "files": 176,
+      "matched": 176,
+      "extra_files": 0,
+      "missing_files": 0,
+      "bytes": 12992513,
+      "fully_backed_up": true
+    },
+    {
+      "path": "runs/local/c2b-clock-regressions-20261103",
+      "archive": "artifacts/verification/clock-anchor/task4-20261103/clock-regressions.tar.gz",
+      "files": 697,
+      "matched": 697,
+      "extra_files": 0,
+      "missing_files": 0,
+      "bytes": 81006916,
+      "fully_backed_up": true
+    },
+    {
+      "path": "runs/local/c2b-abi-20261102-r1",
+      "archive": "artifacts/verification/clock-anchor/task4-20261103/abi-failed.tar.gz",
+      "files": 34,
+      "matched": 34,
+      "extra_files": 0,
+      "missing_files": 0,
+      "bytes": 65885,
+      "fully_backed_up": true
+    },
+    {
+      "path": "runs/local/c2b-abi-20261103",
+      "archive": "artifacts/verification/clock-anchor/task4-20261103/abi-accepted.tar.gz",
+      "files": 39,
+      "matched": 39,
+      "extra_files": 0,
+      "missing_files": 0,
+      "bytes": 68155,
+      "fully_backed_up": true
+    }
+  ],
+  "clean_clones": [
+    {
+      "path": "artifacts/local/github-clone-verification",
+      "commit": "232637b293858e915d17e6ec04e3633d4539dd28",
+      "ancestor_of_current_workspace": false,
+      "ignored_files": 0,
+      "ignored_are_only_python_bytecode": true
+    },
+    {
+      "path": "artifacts/local/github-clone-verification/poc",
+      "commit": "e17fe496e89dc27aa1aa583af63ad9628394c7f6",
+      "ancestor_of_current_workspace": true,
+      "ignored_files": 46,
+      "ignored_are_only_python_bytecode": true
+    }
+  ],
+  "rebuildable_objects": [
+    {
+      "path": ".tools/c2b-clock-20261102/build",
+      "files": 1045,
+      "bytes": 62382864,
+      "policy": "rebuildable-cache-only; source/logs/binaries retained"
+    },
+    {
+      "path": ".tools/c2b-clock-20261102-r2/build",
+      "files": 1131,
+      "bytes": 75892136,
+      "policy": "rebuildable-cache-only; source/logs/binaries retained"
+    },
+    {
+      "path": ".tools/qemu-time-control/build",
+      "files": 1129,
+      "bytes": 75773184,
+      "policy": "rebuildable-cache-only; source/logs/binaries retained"
+    }
+  ],
+  "keep": [
+    "tracked artifacts and runs",
+    "active .tools/c2b-clock-20261102-r3",
+    "runs/local/c2b-guest-probe-20261102",
+    "all QEMU source archives and patched source",
+    "source code, SDK, kernel and baseline"
+  ]
+}
