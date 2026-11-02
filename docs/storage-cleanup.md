@@ -1,6 +1,6 @@
 # 儲存空間盤點與清理範圍
 
-日期：2026-11-03。**目前只完成盤點，尚未刪除檔案，等待使用者選擇清理範圍。** C2b已完成Tasks1–4；Task5 brief已讀，尚未新增Task5程式碼。
+日期：2026-11-03。**使用者已確認保守清理，執行完成。** [執行收據](../artifacts/verification/storage/cleanup-20261103-r2/README.md)保存重新驗證、移除清單與重編metadata；下方候選表保留清理前盤點。 C2b已完成Tasks1–4；Task5 brief已讀，尚未新增Task5程式碼。
 
 ## 占用
 
@@ -26,7 +26,7 @@
 
 舊驗證clone的root commit已不在現行main ancestry，且含先前要求移除的`percepio-observability-research.zip`。它的舊Git歷史不會重新打包上傳；POC commit仍為現行POC ancestor。移除這份一次性clone不代表重寫目前repo歷史。
 
-上述候選約可先回收0.5GiB；尚未刪除，也不把這個估算寫成實際回收量。
+保守清理已執行：946個已備份副本、一次性舊clone及3305個可重建物件檔已移除。觀測可用空間增加563.32MiB；logical移除量為573379682bytes。沒有刪唯一trace、tracked檔或目前使用中的工具。
 
 ## 擴大清理
 

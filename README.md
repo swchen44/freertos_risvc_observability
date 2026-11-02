@@ -6,7 +6,7 @@
 
 [設計規格](docs/design/c2b-clock-anchor-pilot-v1.md)｜[八項實作計畫](docs/plans/20-c2b-clock-anchor-implementation.md)｜[總checklist](docs/plans/19-c2b-clock-anchor-pilot.md)
 
-2026-11-03：[空間盤點與清理候選](docs/storage-cleanup.md)。目前尚未刪除；已確認約90MiB重複runs有完整archive，另有舊clone與可重建cache，等待使用者選擇範圍。
+2026-11-03：[空間盤點與清理候選](docs/storage-cleanup.md)。使用者已確認保守清理並完成，觀測可用空間增加約563MiB；正式資料與目前工具保留，見[收據](artifacts/verification/storage/cleanup-20261103-r2/README.md)。
 
 ## C2a 正式本機驗收 · 2026-10-23
 

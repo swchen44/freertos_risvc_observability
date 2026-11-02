@@ -1,0 +1,54 @@
+{
+  "c2b-clock-20261102-build.ninja.gz": {
+    "bytes": 272479,
+    "sha256": "e88b9ea211cd9b802e140c42eecb2909053bc90a3547cde8896502a9656d9866"
+  },
+  "c2b-clock-20261102-compile-commands.json.gz": {
+    "bytes": 131982,
+    "sha256": "2fa8dbfa818acc5fdbbd0f1f38b7175c17b7b0415aaa94e5bae2071258f84539"
+  },
+  "c2b-clock-20261102-config-host.h.gz": {
+    "bytes": 1818,
+    "sha256": "e931afe1d3da42efb7485491b48d77ff31561062f5c8aff614adb774bdb112d1"
+  },
+  "c2b-clock-20261102-config-host.mak.gz": {
+    "bytes": 323,
+    "sha256": "92663f9cae3d5cdb904c85209463a28112b2e74aa8dcc257fcbac903e3d73f83"
+  },
+  "c2b-clock-20261102-ninja_log.gz": {
+    "bytes": 41928,
+    "sha256": "d39822a3d10b75b5cbb6547105430867c7f04eb35ef09e15d81f849dc02bfe03"
+  },
+  "c2b-clock-20261102-r2-build.ninja.gz": {
+    "bytes": 273725,
+    "sha256": "ecaafb7b7ec0dbf19e07b3e57270de62efe9d2054e4f3820ae96b78105381a99"
+  },
+  "c2b-clock-20261102-r2-compile-commands.json.gz": {
+    "bytes": 132101,
+    "sha256": "7bbf6da5f2a445c188a16e9ec258d0ff9ec457c2c0af4a7fcc99b6d9bc23909a"
+  },
+  "c2b-clock-20261102-r2-config-host.h.gz": {
+    "bytes": 1818,
+    "sha256": "e931afe1d3da42efb7485491b48d77ff31561062f5c8aff614adb774bdb112d1"
+  },
+  "c2b-clock-20261102-r2-config-host.mak.gz": {
+    "bytes": 325,
+    "sha256": "2715d8e5b4a23b8b1796a737f3a44eb467f1660fb6e75469aca6b7b54b8a1aac"
+  },
+  "c2b-clock-20261102-r2-ninja_log.gz": {
+    "bytes": 44587,
+    "sha256": "cb274723d472a76ef9f6ebf17a5f628159039e79aff416313965fa060b4cb78b"
+  },
+  "clone-files.json.gz": {
+    "bytes": 95040,
+    "sha256": "c9442139552db8e9a0d48e5715b383a2dd55917527601f2d100a449c2a84100f"
+  },
+  "preflight-failure.log.gz": {
+    "bytes": 583,
+    "sha256": "22e89b9508e900bb2e4ac5dd50ac4ca7fcff01b4829db31fcb379c84bf5e91c0"
+  },
+  "receipt.json": {
+    "bytes": 154,
+    "sha256": "0940751de187694ab0af20b1111a52714e5690f34e99ab7aab01dd8367bd2be3"
+  }
+}

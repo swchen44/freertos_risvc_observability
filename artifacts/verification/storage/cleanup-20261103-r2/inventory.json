@@ -1,0 +1,94 @@
+{
+  "README.md": {
+    "bytes": 1204,
+    "sha256": "e4189562f41aaaaec0d53bedfa7f03dcd54f3ddf76daa66148cf82035f056415"
+  },
+  "archive-verification.json": {
+    "bytes": 1041,
+    "sha256": "bb524a85441593e7bdb3696837c7643578186b32019bf29e0da4dbe25a602c5c"
+  },
+  "c2b-clock-20261102-build.ninja.gz": {
+    "bytes": 272479,
+    "sha256": "e88b9ea211cd9b802e140c42eecb2909053bc90a3547cde8896502a9656d9866"
+  },
+  "c2b-clock-20261102-compile-commands.json.gz": {
+    "bytes": 131982,
+    "sha256": "2fa8dbfa818acc5fdbbd0f1f38b7175c17b7b0415aaa94e5bae2071258f84539"
+  },
+  "c2b-clock-20261102-config-host.h.gz": {
+    "bytes": 1818,
+    "sha256": "e931afe1d3da42efb7485491b48d77ff31561062f5c8aff614adb774bdb112d1"
+  },
+  "c2b-clock-20261102-config-host.mak.gz": {
+    "bytes": 323,
+    "sha256": "92663f9cae3d5cdb904c85209463a28112b2e74aa8dcc257fcbac903e3d73f83"
+  },
+  "c2b-clock-20261102-ninja_log.gz": {
+    "bytes": 41928,
+    "sha256": "d39822a3d10b75b5cbb6547105430867c7f04eb35ef09e15d81f849dc02bfe03"
+  },
+  "c2b-clock-20261102-r2-build.ninja.gz": {
+    "bytes": 273725,
+    "sha256": "ecaafb7b7ec0dbf19e07b3e57270de62efe9d2054e4f3820ae96b78105381a99"
+  },
+  "c2b-clock-20261102-r2-compile-commands.json.gz": {
+    "bytes": 132101,
+    "sha256": "7bbf6da5f2a445c188a16e9ec258d0ff9ec457c2c0af4a7fcc99b6d9bc23909a"
+  },
+  "c2b-clock-20261102-r2-config-host.h.gz": {
+    "bytes": 1818,
+    "sha256": "e931afe1d3da42efb7485491b48d77ff31561062f5c8aff614adb774bdb112d1"
+  },
+  "c2b-clock-20261102-r2-config-host.mak.gz": {
+    "bytes": 325,
+    "sha256": "2715d8e5b4a23b8b1796a737f3a44eb467f1660fb6e75469aca6b7b54b8a1aac"
+  },
+  "c2b-clock-20261102-r2-ninja_log.gz": {
+    "bytes": 44587,
+    "sha256": "cb274723d472a76ef9f6ebf17a5f628159039e79aff416313965fa060b4cb78b"
+  },
+  "clone-files.json.gz": {
+    "bytes": 95040,
+    "sha256": "c9442139552db8e9a0d48e5715b383a2dd55917527601f2d100a449c2a84100f"
+  },
+  "execution.log.gz": {
+    "bytes": 872,
+    "sha256": "f74bedf0f4e02e4feee581de47636b897d30276da50e32a32cc07dad5cdc0469"
+  },
+  "execution.py": {
+    "bytes": 7302,
+    "sha256": "4fda0c4c955764912d7cccce9710bf975643e765b2773e5819e9833e0012fcf4"
+  },
+  "qemu-time-control-build.ninja.gz": {
+    "bytes": 271161,
+    "sha256": "87420e79d9bb9223f12e19c6a3bda7bcfdebb6248a13986e833f39119d5be5c8"
+  },
+  "qemu-time-control-compile-commands.json.gz": {
+    "bytes": 131861,
+    "sha256": "9a59fcddff28b36c9b1f6bada4c1afcf3f4746b22d4894184840958752d06d18"
+  },
+  "qemu-time-control-config-host.h.gz": {
+    "bytes": 1818,
+    "sha256": "e931afe1d3da42efb7485491b48d77ff31561062f5c8aff614adb774bdb112d1"
+  },
+  "qemu-time-control-config-host.mak.gz": {
+    "bytes": 318,
+    "sha256": "d8f4a47bc160d5f370f8944a43d6dc0faf3d650a3bec27e2844640d2224c7c5c"
+  },
+  "qemu-time-control-ninja_log.gz": {
+    "bytes": 47281,
+    "sha256": "c7d42ae123dae27cdd88c20d8f21bab6c2ff5d8f62bb621861fbd127abe7056d"
+  },
+  "receipt.json": {
+    "bytes": 2294,
+    "sha256": "66458197c0cd6205b8b23a3d50b56cb614ace60e7191888eb591607a90a26c06"
+  },
+  "removed-objects-progress.jsonl": {
+    "bytes": 354384,
+    "sha256": "1f0ef8e12c4eb87eff39c970f9a987f7f2aeb7834795da7bb5782651d3c31209"
+  },
+  "removed-objects.json.gz": {
+    "bytes": 170406,
+    "sha256": "c92368b2176e7c97c8ec65de77bab28f779790af08369be3ca0bcfca583359cf"
+  }
+}

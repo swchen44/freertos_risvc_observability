@@ -1,0 +1,65 @@
+{
+  "status": "complete",
+  "authorization": "OK, contine jobs; recommended conservative scope",
+  "free_bytes_before": 7037022208,
+  "removed_files": 6484,
+  "removed_logical_bytes": 573379682,
+  "actions": [
+    {
+      "kind": "archived-copy",
+      "path": "runs/local/c2b-guest-probe-restored-20261102/guest-probe",
+      "archive": "artifacts/verification/clock-anchor/task2-20261102/guest-probe.tar.gz",
+      "archive_sha256": "f5e1be5467d231580618cc1798c15013cdcdf1d65b56305564a5a67793b4205b",
+      "files": 176
+    },
+    {
+      "kind": "archived-copy",
+      "path": "runs/local/c2b-clock-regressions-20261103",
+      "archive": "artifacts/verification/clock-anchor/task4-20261103/clock-regressions.tar.gz",
+      "archive_sha256": "d309e95127d18d2e66e3bc1dc1cf932a67e28e03ac38b9bfd402d55231c5d069",
+      "files": 697
+    },
+    {
+      "kind": "archived-copy",
+      "path": "runs/local/c2b-abi-20261102-r1",
+      "archive": "artifacts/verification/clock-anchor/task4-20261103/abi-failed.tar.gz",
+      "archive_sha256": "89b0727d9da9e327b4e88bd329d32f0b8ac90c630037e5bb61773d1226e4c733",
+      "files": 34
+    },
+    {
+      "kind": "archived-copy",
+      "path": "runs/local/c2b-abi-20261103",
+      "archive": "artifacts/verification/clock-anchor/task4-20261103/abi-accepted.tar.gz",
+      "archive_sha256": "8c2d60405e0780a79ab50ac576aa18fc91cc15d7cc8202eb981f34ef03316876",
+      "files": 39
+    },
+    {
+      "kind": "disposable-clean-clone",
+      "path": "artifacts/local/github-clone-verification",
+      "files": 2233,
+      "recovery": "Clone current repository; no unique worktree changes."
+    },
+    {
+      "kind": "rebuildable-object-cache",
+      "files": 3305,
+      "bytes": 214048184,
+      "recovery": "Source, logs, binaries and compdb retained."
+    }
+  ],
+  "clone_heads": [
+    {
+      "path": "artifacts/local/github-clone-verification",
+      "commit": "232637b293858e915d17e6ec04e3633d4539dd28"
+    },
+    {
+      "path": "artifacts/local/github-clone-verification/poc",
+      "commit": "e17fe496e89dc27aa1aa583af63ad9628394c7f6"
+    }
+  ],
+  "generated_objects": 3305,
+  "unique_trace_files_removed": 0,
+  "tracked_files_removed": 0,
+  "protected_inputs_verified": true,
+  "free_bytes_after": 7627702272,
+  "observed_free_bytes_delta": 590680064
+}

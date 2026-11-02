@@ -1,0 +1,5 @@
+{
+  "status": "preflight-failed",
+  "removed_files": 0,
+  "reason": "Legacy Ninja is under build-venv, not venv; all preflight checks precede deletion"
+}
