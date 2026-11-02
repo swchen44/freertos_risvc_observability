@@ -13,6 +13,12 @@
 #include "live_context.h"
 static unsigned context_enabled;
 #endif
+#ifdef POC_CLOCK_ANCHOR
+#ifndef POC_CONTEXT
+#error POC_CLOCK_ANCHOR requires POC_CONTEXT
+#endif
+#include "clock_anchor.h"
+#endif
 QEMU_PLUGIN_EXPORT int qemu_plugin_version=QEMU_PLUGIN_VERSION;
 typedef struct { uint64_t pc; unsigned size; } Instruction;
 static uint64_t begin_pc,end_pc,events,cycles,api_calls;
@@ -31,11 +37,22 @@ static void charge(uint64_t pc,uint64_t address,unsigned size,char op) {
  cycles+=total;
  if(fprintf(out,"%"PRIu64",%"PRIu64",%u,%c,%"PRIu64",%"PRIu64",%"PRIu64",%"PRIu64",%"PRIu64"\n",
             pc,address,size,op,c[0],c[1],c[2],c[3],c[4])<0) fail("trace write");
+#ifdef POC_CLOCK_ANCHOR
+ if(clock_anchor_after_row(events,pc,op)) fail("clock row note");
+ if(enabled) {
+  if(total>(uint64_t)INT64_MAX/2) fail("clock cost overflow");
+  qemu_plugin_poc_add_ns_tagged(handle,total*2,events,events-1);api_calls++;
+ }
+#else
  if(enabled) {qemu_plugin_poc_add_ns(handle,total*2);api_calls++;}
+#endif
 }
 static void execute(unsigned cpu,void *arg) {
  if(cpu) fail("requires one vCPU");
  Instruction *i=arg;
+#ifdef POC_CLOCK_ANCHOR
+ if(clock_anchor_before(events,i->pc)) fail("clock boundary note");
+#endif
  if(i->pc==begin_pc) {
   if(active || windows) fail("one window required");
   timing_reset();active=1;windows++;
@@ -59,8 +76,24 @@ static void execute(unsigned cpu,void *arg) {
 }
 static void memory(unsigned cpu,qemu_plugin_meminfo_t info,uint64_t va,void *arg) {
  if(cpu) fail("requires one vCPU");
- if(!active) return;
  Instruction *i=arg;
+#ifdef POC_CLOCK_ANCHOR
+ if(!active) {
+  struct qemu_plugin_hwaddr *outside=qemu_plugin_get_hwaddr(info,va);
+  if(outside && qemu_plugin_hwaddr_is_io(outside)) {
+   uint64_t address=qemu_plugin_hwaddr_phys_addr(outside);
+   unsigned store=qemu_plugin_mem_is_store(info);
+   if(store ? (address==0x02004000 || address==0x02004004) :
+              (address==0x0200bff8 || address==0x0200bffc)) {
+    if(qemu_plugin_mem_size_shift(info)!=2 ||
+       clock_anchor_mmio_success(events,i->pc,address,4,store)) fail("clock MMIO note");
+   }
+  }
+  return;
+ }
+#else
+ if(!active) return;
+#endif
  struct qemu_plugin_hwaddr *h=qemu_plugin_get_hwaddr(info,va);
  unsigned shift=qemu_plugin_mem_size_shift(info);
  if(!h || shift>12) fail("unsupported memory access");
@@ -71,7 +104,11 @@ static void memory(unsigned cpu,qemu_plugin_meminfo_t info,uint64_t va,void *arg
   if(shift!=2 || !(write ? (address==0x02004000 || address==0x02004004) :
                            (address==0x0200bff8 || address==0x0200bffc))) fail("unsupported MMIO");
   fprintf(stderr,"live_cache_mmio pc=%"PRIu64" address=%"PRIu64" size=4 op=%c\n",i->pc,address,write?'W':'R');
-  mmio_count++;return;
+  mmio_count++;
+#ifdef POC_CLOCK_ANCHOR
+  if(clock_anchor_mmio_success(events,i->pc,address,4,write)) fail("clock MMIO note");
+#endif
+  return;
 #else
   fail("unsupported MMIO");
 #endif
@@ -89,6 +126,9 @@ static void translate(qemu_plugin_id_t id,struct qemu_plugin_tb *tb) {
 #ifdef POC_CONTEXT
   if(context_enabled && context_needs_registers(data->pc)) flags=QEMU_PLUGIN_CB_R_REGS;
 #endif
+#ifdef POC_CLOCK_ANCHOR
+  if(clock_anchor_needs_registers(data->pc)) flags=QEMU_PLUGIN_CB_R_REGS;
+#endif
   qemu_plugin_register_vcpu_insn_exec_cb(i,execute,flags,data);
   qemu_plugin_register_vcpu_mem_cb(i,memory,QEMU_PLUGIN_CB_NO_REGS,QEMU_PLUGIN_MEM_RW,data);
  }
@@ -99,6 +139,9 @@ static void finish(qemu_plugin_id_t id,void *arg) {
  if(context_enabled && context_finish(events)) fail("incomplete context evidence");
 #endif
  if(active || windows!=1 || !events || fclose(out)) fail("incomplete capture");
+#ifdef POC_CLOCK_ANCHOR
+ if(clock_anchor_finish(events)) fail("incomplete clock evidence");
+#endif
  fprintf(stderr,"live_cache_complete events=%"PRIu64" cycles=%"PRIu64" api_calls=%"PRIu64"\n",events,cycles,api_calls);
 #ifdef POC_LIVE_IRQ
  fprintf(stderr,"live_cache_mmio_count=%u\n",mmio_count);
@@ -108,8 +151,12 @@ static void finish(qemu_plugin_id_t id,void *arg) {
 QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,const qemu_info_t *info,int argc,char **argv) {
  if(!info->system_emulation || strcmp(info->target_name,"riscv32") || info->system.smp_vcpus!=1 ) return -1;
 #ifdef POC_CONTEXT
+#ifdef POC_CLOCK_ANCHOR
+ if(argc!=7 || strncmp(argv[6],"clock-config=",13)) return -1;
+#else
  if(argc!=4 && argc!=6) return -1;
- if(argc==6) {
+#endif
+ if(argc>=6) {
   if(strncmp(argv[4],"context-config=",15) || strncmp(argv[5],"context-out=",12)) return -1;
   if(context_init(argv[4]+15,argv[5]+12)) return -1;
   context_enabled=1;
@@ -126,6 +173,10 @@ QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,const qemu_info_t
  }
  if(begin_pc==end_pc || (strcmp(argv[2],"enabled=0")&&strcmp(argv[2],"enabled=1")) || strncmp(argv[3],"out=",4)) return -1;
  enabled=argv[2][8]=='1';handle=qemu_plugin_request_time_control();if(!handle) return -1;
+#ifdef POC_CLOCK_ANCHOR
+ if(clock_anchor_init(argv[6]+13,handle,begin_pc,end_pc)) return -1;
+ qemu_plugin_register_vcpu_init_cb(id,clock_anchor_vcpu_init);
+#endif
  out=fopen(argv[3]+4,"wx");if(!out) return -1;
  if(fputs("pc,address,size,operation,l1i,l1d,l2,ram_read,ram_write\n",out)<0) fail("header");
  instructions=g_ptr_array_new_with_free_func(g_free);
