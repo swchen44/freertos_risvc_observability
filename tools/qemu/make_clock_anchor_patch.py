@@ -26,6 +26,18 @@ COPIES = {
 }
 
 
+def check_tool_versions(packages: dict, reported: dict) -> dict:
+    expected = {"meson": "1.12.1", "ninja": "1.13.2"}
+    if packages != expected or set(reported) != set(expected):
+        raise ValueError("Build distribution version mismatch")
+    accepted = {"meson": {"1.12.1"}, "ninja": {"1.13.2", "1.13.2.git.kitware.jobserver-pipe-1"}}
+    if any(reported[name] not in accepted[name] for name in expected):
+        raise ValueError("Build executable version mismatch")
+    return {
+        name: dict(version=expected[name], reported_version=reported[name]) for name in expected
+    }
+
+
 def verify_overlays(root: Path, source: Path) -> dict:
     result = {}
     for canonical, copied in COPIES.items():

@@ -7,7 +7,11 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from tools.qemu.make_clock_anchor_patch import generate_clock_patch, verify_overlays
+from tools.qemu.make_clock_anchor_patch import (
+    check_tool_versions,
+    generate_clock_patch,
+    verify_overlays,
+)
 
 ROOT = Path(__file__).resolve().parents[2]
 EXPORTS = [
@@ -19,6 +23,18 @@ EXPORTS = [
 
 
 class ClockBuildTests(unittest.TestCase):
+    def test_pinned_distributions_keep_exact_cli_build_suffix(self):
+        result = check_tool_versions(
+            {"meson": "1.12.1", "ninja": "1.13.2"},
+            {"meson": "1.12.1", "ninja": "1.13.2.git.kitware.jobserver-pipe-1"},
+        )
+        self.assertEqual(result["ninja"]["version"], "1.13.2")
+        self.assertEqual(result["ninja"]["reported_version"], "1.13.2.git.kitware.jobserver-pipe-1")
+        with self.assertRaises(ValueError):
+            check_tool_versions(
+                {"meson": "1.12.1", "ninja": "1.14.0"}, {"meson": "1.12.1", "ninja": "1.14.0"}
+            )
+
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)

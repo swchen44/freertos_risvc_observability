@@ -37,6 +37,8 @@ if actual != 'f859f0bc65e1f533d040bbe8c92bcfecee5af2c921a6687c652fb44d089bd894':
 PY
 if [ "$created" -eq 0 ]; then mkdir "$dest"; fi
 dest=$(CDPATH= cd -- "$dest" && pwd)
+POC_CLOCK_COMPILE_COMMIT=$(git -C "$repo" rev-parse HEAD)
+export POC_CLOCK_COMPILE_COMMIT
 archive=$(python3 - "$archive" <<'PY'
 import pathlib, sys
 print(pathlib.Path(sys.argv[1]).resolve())
@@ -66,9 +68,11 @@ cd "$dest/build"
 "$dest/venv/bin/ninja" "-j$jobs" qemu-system-riscv32 > "$dest/build.log" 2>&1
 cp qemu-system-riscv32 "$dest/qemu-system-riscv32-clock-anchor"
 "$repo/.venv/bin/python" - "$repo" "$dest" "$archive" "$jobs" <<'PY'
-import hashlib, json, platform, shutil, subprocess, sys
+import hashlib, json, os, platform, shutil, subprocess, sys
 from pathlib import Path
 repo, dest, archive = map(Path, sys.argv[1:4]); jobs = int(sys.argv[4])
+sys.path.insert(0, str(repo))
+from tools.qemu.make_clock_anchor_patch import check_tool_versions, verify_overlays
 def sha(p):
     with p.open('rb') as f: return hashlib.file_digest(f, 'sha256').hexdigest()
 def identity(p): return dict(path=str(p.resolve()), sha256=sha(p))
@@ -76,16 +80,22 @@ def version(cmd): return subprocess.check_output(cmd, text=True).strip()
 source=dest/'qemu-9.2.0'; binary=dest/'qemu-system-riscv32-clock-anchor'
 patches=sorted((repo/'tools/qemu').glob('000[1-4]-*.patch'))
 cc=Path(shutil.which('cc')).resolve()
-manifest=dict(schema='c2b-qemu-build-v1', source_commit=version(['git','-C',str(repo),'rev-parse','HEAD']),
+packages=json.loads(version([str(dest/'venv/bin/python'), '-c',
+    'import json; from importlib.metadata import version; '
+    'print(json.dumps({n:version(n) for n in ("meson","ninja")}))']))
+tool_versions=check_tool_versions(packages, {
+    n:version([str(dest/'venv/bin'/n),'--version']) for n in ('meson','ninja')})
+manifest=dict(schema='c2b-qemu-build-v1', source_commit=os.environ['POC_CLOCK_COMPILE_COMMIT'],
+    metadata_source_commit=version(['git','-C',str(repo),'rev-parse','HEAD']),
     host=dict(system=platform.system(),machine=platform.machine(),platform=platform.platform()),
     source_archive=identity(archive), source=str(source), jobs=jobs,
     patches={str(p.relative_to(repo)):sha(p) for p in patches},
-    overlays=json.loads((dest/'overlay-check.json').read_text()),
+    overlays=verify_overlays(repo,source),
     binary=identity(binary), header=identity(source/'include/qemu/qemu-plugin.h'),
     abi_header=identity(source/'include/qemu/poc-clock-anchor-api.h'),
     compiler=dict(**identity(cc),version=version([str(cc),'--version'])),
-    meson=dict(**identity(dest/'venv/bin/meson'),version=version([str(dest/'venv/bin/meson'),'--version'])),
-    ninja=dict(**identity(dest/'venv/bin/ninja'),version=version([str(dest/'venv/bin/ninja'),'--version'])),
+    meson=dict(**identity(dest/'venv/bin/meson'),**tool_versions['meson']),
+    ninja=dict(**identity(dest/'venv/bin/ninja'),**tool_versions['ninja']),
     configure_command=[str(source/'configure'),'--target-list=riscv32-softmmu','--without-default-features',
        '--enable-system','--enable-tcg','--enable-plugins','--enable-fdt=internal','--disable-docs','--disable-werror',
        '--python='+str(dest/'venv/bin/python'),'--ninja='+str(dest/'venv/bin/ninja')],
