@@ -1,6 +1,6 @@
 # C2b 實作進度與證據
 
-更新：2026-11-03。**Tasks 1–5 完成；Tasks 6–8 繼續。正式 16-run 尚未執行，PSF／cache 時間對齊仍未驗證。** 執行方式沿用 Native，最後保留獨立整體 review。
+更新：2026-11-03。**Tasks 1–6 完成；Tasks 7–8 繼續。正式 16-run 尚未執行，development O 已取得有界對齊；正式對照仍未驗證。** 執行方式沿用 Native，最後保留獨立整體 review。
 
 ## 已完成什麼
 
@@ -11,8 +11,9 @@
 | 3 Native core | 真 C FIFO、生命週期、end後applied、sink失敗、marker與MMIO；6個methods、27個拒絕案例 | [Task3](../artifacts/verification/clock-anchor/task3-20261102/README.md) |
 | 4 QEMU adapter | 第三個隔離build完成；10個ABI情境、6份新舊clock回歸driver通過 | [Task4](../artifacts/verification/clock-anchor/task4-20261103/README.md) |
 | 5 TCP collector／capture | 兩個候選 ELF、新舊 plugins、12 個測試；實際 O capture 正常退出，尚待因果驗證 | [Task5](../artifacts/verification/clock-anchor/task5-20261103/README.md) |
+| 6 因果 validator／join | 獨立 replay／FIFO／MMIO／PSF 核對；5 組 bounds、431,512 covered／311 unknown rows | [Task6](../artifacts/verification/clock-anchor/task6-20261103/README.md) |
 
-最新完整 Python 回歸執行 **364 個：362 通過、2 個 opt-in runtime skip**；另明確啟用 guest runtime 的 2 個測試通過，無 skip。Task5 的 12 個新增測試通過。ABI CLI另以1個unittest method執行10個subcases，不能將兩種計數混用。全庫 `ruff check .` 通過，本輪7個Python檔的format通過；全庫format仍有10個baseline舊檔未通過，原檔未因本輪而改寫。
+最新完整 Python 回歸 **385 個：380 通過、5 個 opt-in skip**；另明確啟用的 runtime 三項全通過，其後完整 uint64 wrap 修正再跑正向 O 與 guest mode／cmdline 三項也全通過，0 skip。相關 35 個單元測試通過。全庫 Ruff check 與本輪 Python format 通過；全庫 format 仍有 10 個 baseline 舊檔未通過。
 
 ```mermaid
 flowchart TD
@@ -20,7 +21,7 @@ flowchart TD
     G[Task2：同ELF SDK markers<br/>0或5筆，已通過] --> P[Task5：TCP collector與ELF邊界<br/>已完成，development capture待獨立驗證]
     C --> Q[Task4：隔離QEMU ABI與原clock回歸<br/>已通過]
     Q --> P
-    P --> J[Task6：request／applied／MMIO／PSF join<br/>待完成]
+    P --> J[Task6：request／applied／MMIO／PSF join<br/>development O 已驗證]
     J --> R[Task7：透明性、marker成本與bounds報告<br/>待完成]
     R --> V[Task8：先4後16次、還原、獨立review與發布<br/>待完成]
     V --> UI[下一階段：Web與離線HTML接合<br/>尚未驗收]
@@ -41,14 +42,14 @@ flowchart TD
 ## 能證明與不能證明的事
 
 - Guest probe證明既有SDK可發出這五筆marker及同ELF開關。Task5 的 TCP capture 已收集五組 hooks；尚不能證明TCP／IRQ流程的五個phase均已正確對齊。
-- 新QEMU能載入POC ABI，正確拒絕錯ABI／handle／SMP／icount／unsafe context；原nano／burst／edges語意通過。新tagged成本的真guest request／applied關係仍待collector驗證。
-- C核心與Python reader已互通；這不等於完整因果validator或PSF mapping完成。
+- 新QEMU能載入POC ABI，正確拒絕錯ABI／handle／SMP／icount／unsafe context；原nano／burst／edges語意通過。新tagged成本已由Task6在development O獨立驗證；正式L/C/O/M對照仍未執行。
+- C核心與Python reader已互通；Task6 已完成 validator 並取得 development O 的有界 mapping，仍未完成正式 16-run。
 - 模型保持L1I8KiB／L1D8KiB／L232KiB、64B line、4-way LRU、WT／WA；每instruction 1ns、每memory cycle 2ns。這些是比較模型，沒有轉成產品CPU loading、cache penalty或實機UART吞吐。
 - request clock仍為null；不將event index、model cost或100ns量化換成精確PSF時間，解析度評估維持unrated。
 
 ## 接下來
 
-依[實作計畫](plans/20-c2b-clock-anchor-implementation.md)完成Tasks6–8：A02 baseline／pbuf、每candidate同一ELF、L／C／O／M、先4次smoke再補12次。只有對照與完整性成立，才發布verified bounds；不足時交付inconclusive與unknown。
+依[實作計畫](plans/20-c2b-clock-anchor-implementation.md)完成Tasks7–8：A02 baseline／pbuf、每candidate同一ELF、L／C／O／M、先4次smoke再補12次。只有對照與完整性成立，才發布verified bounds；不足時交付inconclusive與unknown。
 
 Task8還需完整QEMU source／binary／依賴鎖與可還原分卷，實際還原並核對hash；目前各Task收據不代表整包內網還原完成。跨機目標驗證仍依使用者決定暫緩。
 

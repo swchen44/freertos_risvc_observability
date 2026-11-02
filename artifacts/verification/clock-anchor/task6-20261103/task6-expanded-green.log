@@ -1,0 +1,17 @@
+test_consumed_rows_do_not_accumulate_in_memory (tests.unit.test_clock_anchor_evidence.ClockScanTests.test_consumed_rows_do_not_accumulate_in_memory) ... ok
+test_epoch_change_is_not_silently_rebased (tests.unit.test_clock_anchor_evidence.ClockScanTests.test_epoch_change_is_not_silently_rebased) ... ok
+test_fifo_and_end_then_applied (tests.unit.test_clock_anchor_evidence.ClockScanTests.test_fifo_and_end_then_applied) ... ok
+test_individual_causal_corruptions_fail_with_specific_codes (tests.unit.test_clock_anchor_evidence.ClockScanTests.test_individual_causal_corruptions_fail_with_specific_codes) ... ok
+test_native_formula_pairing_frequency_and_epoch (tests.unit.test_clock_anchor_evidence.ClockScanTests.test_native_formula_pairing_frequency_and_epoch) ... ok
+test_raw_extra_or_short_and_footer_after_data_rejected (tests.unit.test_clock_anchor_evidence.ClockScanTests.test_raw_extra_or_short_and_footer_after_data_rejected) ... ok
+test_five_bounds_prefix_suffix_and_no_point_timestamps (tests.unit.test_clock_anchor_join.ClockJoinTests.test_five_bounds_prefix_suffix_and_no_point_timestamps) ... ok
+test_missing_or_nonunique_sdk_candidate_cannot_be_picked_arbitrarily (tests.unit.test_clock_anchor_join.ClockJoinTests.test_missing_or_nonunique_sdk_candidate_cannot_be_picked_arbitrarily) ... ok
+test_psf_sequence_phase_payload_and_quality (tests.unit.test_clock_anchor_join.ClockJoinTests.test_psf_sequence_phase_payload_and_quality) ... ok
+test_ts32_and_eventcount16_wrap_preserve_full_native_counter (tests.unit.test_clock_anchor_join.ClockJoinTests.test_ts32_and_eventcount16_wrap_preserve_full_native_counter) ... ok
+test_uint64_offset_wrap_uses_modular_quantum (tests.unit.test_clock_anchor_join.ClockJoinTests.test_uint64_offset_wrap_uses_modular_quantum) ... ok
+test_wrong_app_sample_does_not_join (tests.unit.test_clock_anchor_join.ClockJoinTests.test_wrong_app_sample_does_not_join) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 3.349s
+
+OK

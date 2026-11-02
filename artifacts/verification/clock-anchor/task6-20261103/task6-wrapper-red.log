@@ -1,0 +1,10 @@
+runs/local/c2b-tools-20261103/runtime-tests/causal-75d6ecebbc0f4aca941524973cc7a8fd/observed/capture.json
+Traceback (most recent call last):
+  File "<stdin>", line 6, in <module>
+  File "/Users/swchen.tw/git/percepio/poc/src/psf_lab/clock_anchor_evidence.py", line 478, in verify_clock_capture
+    result = dict(
+        schema="clock-anchor-validation-v1",
+    ...<25 lines>...
+        unknown_rows=str(audit["events"]),
+    )
+TypeError: dict() got multiple values for keyword argument 'raw_rows'

@@ -1,0 +1,15 @@
+test_marker_pc_must_match_actual_next_instruction_and_pinned_hook (tests.unit.test_clock_anchor_evidence.ClockScanTests.test_marker_pc_must_match_actual_next_instruction_and_pinned_hook) ... FAIL
+
+======================================================================
+FAIL: test_marker_pc_must_match_actual_next_instruction_and_pinned_hook (tests.unit.test_clock_anchor_evidence.ClockScanTests.test_marker_pc_must_match_actual_next_instruction_and_pinned_hook)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_clock_anchor_evidence.py", line 90, in test_marker_pc_must_match_actual_next_instruction_and_pinned_hook
+    with self.assertRaises(ClockEvidenceError) as caught:
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+AssertionError: ClockEvidenceError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (failures=1)

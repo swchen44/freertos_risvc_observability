@@ -1,6 +1,6 @@
 # FreeRTOS／RISC-V PSF POC
 
-**C2b Tasks1–5完成，Tasks6–8繼續；[最新進度與證據](docs/clock-anchor-progress.md)。** TCP 候選與 collector 已編譯，第一份 O capture 保存完整原始資料；時間對齊仍待獨立驗證。完整 suite 364 個：362 通過、2 個 opt-in skip；另啟用 guest runtime 的 2 個測試通過。見 [Task5 收據](artifacts/verification/clock-anchor/task5-20261103/README.md)。Ruff check 與本輪 format 通過，全庫仍有 10 個既有 format 問題。
+**C2b Tasks1–6完成，Tasks7–8繼續；[最新進度與證據](docs/clock-anchor-progress.md)。** 獨立 validator 已核對真 O capture 的 request／applied、MMIO 與 PSF，取得5組 bounds，431,512 covered／311 unknown rows；正式16-run尚未執行。完整suite385個：380通過、5個opt-in skip；明確啟用的runtime已通過，見[Task6收據](artifacts/verification/clock-anchor/task6-20261103/README.md)。全庫Ruff check通過，仍有10個既有format問題。
 
 正式16-run、tagged guest因果驗證、PSF時間對齊、完整還原分卷與新Dashboard接合尚未完成。FreeRTOS kernel／SDK與舊capture保持原樣。執行方式沿用Native，最後獨立review。
 

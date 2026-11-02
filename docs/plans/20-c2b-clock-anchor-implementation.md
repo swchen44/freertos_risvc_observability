@@ -444,7 +444,7 @@ PYTHONPATH=src .venv/bin/python tools/tcp/prepare_clock_anchor_tools.py \
 
 **Interfaces:** Produces契約B的scan／PSF extract／join／verify。純函式允許手工fixtures；filesystem wrapper另驗manifest／實際檔案hash、工具與ELF身分，不能以fixture模式放過真capture的來源。scan只保存bounded FIFO、5個marker brackets與累計值；第二次scan才用已知PSF／payload過濾native read候選。
 
-- [ ] **1. RED FIFO／formula tests。** 手工semantic fixture明列raw rows、成本、request／applied與footer；expected target100+2=102、phase與row對照獨立指定。對一份valid fixture逐項破壞id／delta／cursor／sample／IO source，必須得到特定code，而不是任意exception。
+- [x] **1. RED FIFO／formula tests。** 手工semantic fixture明列raw rows、成本、request／applied與footer；expected target100+2=102、phase與row對照獨立指定。對一份valid fixture逐項破壞id／delta／cursor／sample／IO source，必須得到特定code，而不是任意exception。
 
 ```python
 def test_quantum_and_duplicate_request_fail_closed(self):
@@ -462,9 +462,9 @@ def test_quantum_and_duplicate_request_fail_closed(self):
 `semantic_fixture()`回傳test dataclass `ClockFixture(records,accesses,expected,psf,anchors)`：預設marker_mode0、injection1、3筆I/R/W raw rows，成本分別只在l1i/l1d/ram_write為1/2/3，其餘0；request ids1/2/3、indices0/1/2、delta2/4/6，end(cursor3)後才apply，before依序1000/1002/1006、after1002/1006/1012，footer為第10列、pending0。這是synthetic protocol fixture，不宣稱硬體profile或ELF真實執行。
 
 另提供`marker_fixture()`：injection0、markers-on、5個phases；每phase五筆I rows依序enter／app low-read／sampled／SDK low-read／leave，共25 rows；各有兩筆device→plugin read成對記錄，native IO共10組。phase i的app tick為100+10*i，SDK tick為101+10*i，virtual ns分別tick*100+5與tick*100+7，offset0。expected SDK cursors手寫`[4,9,14,19,24]`，第一組quantum`[11100,11200)`，可覆蓋20 rows、prefix4與suffix1為unknown。PSF使用Task1的手packed fixture；型別／來源防線由filesystem wrapper與真integration另驗，不能拿synthetic fixture建立runtime收據。
-- [ ] **2. RED wrap／IRQ／bounds／品質矩陣。** 用Task1手packed PSF測same tick、TS32 wrap、EventCount16 wrap、unknown event、gap、payload高低交換、重複／缺phase；用native fixture測offset0與UINT64 wrap、epoch變化、wrong frequency、SDK候選不唯一、enter→sampled與sampled→leave間IRQ、cost end後applied。明確預期prefix／suffix unknown、重疊不插值、空區間合法輸出。
-- [ ] **3. 實作pass1。** filesystem wrapper先以既有`audit_accesses(raw, profile=locked_small_profile)`獨立連續重播並驗每row五種C成本；profile先與tools manifest／repo來源hash核對，再把audit.events填expected.raw_rows。不可省略profile參數：該函式預設是舊16+16/64KiB，與本案8+8/32不同。request與raw iterator lockstep，delta=sum(5 costs)*2，FIFO要求apply依序且applied cursor≥request cursor；僅injection_enabled=false時requests0，marker_mode=0不豁免injection-on的request驗證。device→plugin IO依序配對，device公式／word／size正確，plugin sample欄位不得冒稱新clock。record_seq／footer／counts／lifecycle逐筆核對；logger／context原phase不是retirement。
-- [ ] **4. 實作pass2與candidate aggregation。** 先解析PSF取得5組seq／phase／sample及原TS／offset，再串流第二遍：app sample候選限enter→sampled，SDK TS候選限sampled→leave，僅mtime low address；保留相符數、unique full tick、cursor min/max，不把全部native reads放list。多筆相同full tick允許；不同full tick則ambiguous，不能任挑。兩次掃描的未壓縮內容SHA與預期必須相同；中途換檔／修改直接invalid。
+- [x] **2. RED wrap／IRQ／bounds／品質矩陣。** 用Task1手packed PSF測same tick、TS32 wrap、EventCount16 wrap、unknown event、gap、payload高低交換、重複／缺phase；用native fixture測offset0與UINT64 wrap、epoch變化、wrong frequency、SDK候選不唯一、enter→sampled與sampled→leave間IRQ、cost end後applied。明確預期prefix／suffix unknown、重疊不插值、空區間合法輸出。
+- [x] **3. 實作pass1。** filesystem wrapper先以既有`audit_accesses(raw, profile=locked_small_profile)`獨立連續重播並驗每row五種C成本；profile先與tools manifest／repo來源hash核對，再把audit.events填expected.raw_rows。不可省略profile參數：該函式預設是舊16+16/64KiB，與本案8+8/32不同。request與raw iterator lockstep，delta=sum(5 costs)*2，FIFO要求apply依序且applied cursor≥request cursor；僅injection_enabled=false時requests0，marker_mode=0不豁免injection-on的request驗證。device→plugin IO依序配對，device公式／word／size正確，plugin sample欄位不得冒稱新clock。record_seq／footer／counts／lifecycle逐筆核對；logger／context原phase不是retirement。
+- [x] **4. 實作pass2與candidate aggregation。** 先解析PSF取得5組seq／phase／sample及原TS／offset，再串流第二遍：app sample候選限enter→sampled，SDK TS候選限sampled→leave，僅mtime low address；保留相符數、unique full tick、cursor min/max，不把全部native reads放list。多筆相同full tick允許；不同full tick則ambiguous，不能任挑。兩次掃描的未壓縮內容SHA與預期必須相同；中途換檔／修改直接invalid。
 
 ```python
 start = previous["cursor_max"]
@@ -477,8 +477,8 @@ if start < end and previous["epoch_id"] == following["epoch_id"]:
 ```
 
 時間界先轉int驗非倒退／合法，再保留decimal strings；不填interval外的row times。status分evidence／application／alignment／resolution，資料合法但缺clock證據是unavailable，並非verified。
-- [ ] **5. 真QEMU runtime integration。** `C2B_REQUIRE_QEMU=1 C2B_RUNTIME_CONFIG=PATH PYTHONPATH=src .venv/bin/python -m unittest tests.integration.test_clock_anchor_runtime -v`；config指定Task4 build manifest、Task5候選／plugin build manifest與新ignored output。實跑一個O probe及SMP／錯ABI／錯cmdline拒絕路徑，再對其sidecar副本做缺footer／duplicate request／hash mismatch反例，原檔不改。要求無skip；預設未設require時integration測試明示skip，不能當runtime完成。
-- [ ] **6. GREEN unit、Ruff、format與commit。** 驗證同一內容plain／gzip結果一致；大檔測試用generator加tracemalloc證明pending上限內記憶體不隨已消費rows增長，閾值只限reader本身、與Chrome640MiB無關。保留所有RED/GREEN與runtime失敗logs。
+- [x] **5. 真QEMU runtime integration。** `C2B_REQUIRE_QEMU=1 C2B_RUNTIME_CONFIG=PATH PYTHONPATH=src .venv/bin/python -m unittest tests.integration.test_clock_anchor_runtime -v`；config指定Task4 build manifest、Task5候選／plugin build manifest與新ignored output。實跑一個O probe及SMP／錯ABI／錯cmdline拒絕路徑，再對其sidecar副本做缺footer／duplicate request／hash mismatch反例，原檔不改。要求無skip；預設未設require時integration測試明示skip，不能當runtime完成。
+- [x] **6. GREEN unit、Ruff、format與commit。** 驗證同一內容plain／gzip結果一致；大檔測試用generator加tracemalloc證明pending上限內記憶體不隨已消費rows增長，閾值只限reader本身、與Chrome640MiB無關。保留所有RED/GREEN與runtime失敗logs。
 
 ## Task 7：透明性比較、marker效應與輸出
 

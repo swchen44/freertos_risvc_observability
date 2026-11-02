@@ -1,0 +1,19 @@
+test_full_mtime_wrap_within_and_between_anchors_uses_native_order (tests.unit.test_clock_anchor_join.ClockJoinTests.test_full_mtime_wrap_within_and_between_anchors_uses_native_order) ... ERROR
+
+======================================================================
+ERROR: test_full_mtime_wrap_within_and_between_anchors_uses_native_order (tests.unit.test_clock_anchor_join.ClockJoinTests.test_full_mtime_wrap_within_and_between_anchors_uses_native_order)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_clock_anchor_join.py", line 98, in test_full_mtime_wrap_within_and_between_anchors_uses_native_order
+    joined=join_anchor_bounds(f.records,scan,parse_trace(psf_markers(base=100+offset)))
+  File "/Users/swchen.tw/git/percepio/poc/src/psf_lab/clock_anchor_evidence.py", line 347, in join_anchor_bounds
+    _require(sdk["tick"] >= app["tick"], "anchor_clock_order")
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/swchen.tw/git/percepio/poc/src/psf_lab/clock_anchor_evidence.py", line 25, in _require
+    raise ClockEvidenceError(code)
+psf_lab.clock_anchor_wire.ClockEvidenceError: anchor_clock_order
+
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+FAILED (errors=1)

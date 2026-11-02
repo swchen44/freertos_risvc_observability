@@ -1,0 +1,19 @@
+test_missing_or_nonunique_sdk_candidate_cannot_be_picked_arbitrarily (tests.unit.test_clock_anchor_join.ClockJoinTests.test_missing_or_nonunique_sdk_candidate_cannot_be_picked_arbitrarily) ... ERROR
+
+======================================================================
+ERROR: test_missing_or_nonunique_sdk_candidate_cannot_be_picked_arbitrarily (tests.unit.test_clock_anchor_join.ClockJoinTests.test_missing_or_nonunique_sdk_candidate_cannot_be_picked_arbitrarily)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_clock_anchor_join.py", line 115, in test_missing_or_nonunique_sdk_candidate_cannot_be_picked_arbitrarily
+    result=join_anchor_bounds(rows, scan, parse_trace(f.psf))
+  File "/Users/swchen.tw/git/percepio/poc/src/psf_lab/clock_anchor_evidence.py", line 343, in join_anchor_bounds
+    _require(sdk["count"] > 0, "sdk_sample_unavailable")
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/swchen.tw/git/percepio/poc/src/psf_lab/clock_anchor_evidence.py", line 25, in _require
+    raise ClockEvidenceError(code)
+psf_lab.clock_anchor_wire.ClockEvidenceError: sdk_sample_unavailable
+
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+FAILED (errors=1)

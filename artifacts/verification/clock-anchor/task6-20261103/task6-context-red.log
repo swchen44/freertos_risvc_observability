@@ -1,0 +1,20 @@
+test_clock_anchor_join (unittest.loader._FailedTest.test_clock_anchor_join) ... ERROR
+
+======================================================================
+ERROR: test_clock_anchor_join (unittest.loader._FailedTest.test_clock_anchor_join)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_clock_anchor_join
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/unittest/loader.py", line 137, in loadTestsFromName
+    module = __import__(module_name)
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_clock_anchor_join.py", line 6, in <module>
+    from psf_lab.clock_anchor_evidence import (
+        annotate_anchor_contexts, extract_psf_markers, join_anchor_bounds, scan_evidence,
+    )
+ImportError: cannot import name 'annotate_anchor_contexts' from 'psf_lab.clock_anchor_evidence' (/Users/swchen.tw/git/percepio/poc/src/psf_lab/clock_anchor_evidence.py)
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)

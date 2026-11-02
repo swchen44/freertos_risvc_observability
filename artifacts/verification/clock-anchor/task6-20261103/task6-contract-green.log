@@ -1,0 +1,36 @@
+test_capture_contract_rejects_mode_binary_and_command_drift (tests.unit.test_clock_anchor_capture.ClockCaptureDriverTests.test_capture_contract_rejects_mode_binary_and_command_drift) ... ok
+test_dirty_sources_refuse_before_building_or_creating_output (tests.unit.test_clock_anchor_capture.ClockCaptureDriverTests.test_dirty_sources_refuse_before_building_or_creating_output) ... ok
+test_matrix_is_complete_smoke_first_and_mode_is_derived (tests.unit.test_clock_anchor_capture.ClockCaptureDriverTests.test_matrix_is_complete_smoke_first_and_mode_is_derived) ... ok
+test_output_is_new_ignored_and_contained_but_supports_spaces (tests.unit.test_clock_anchor_capture.ClockCaptureDriverTests.test_output_is_new_ignored_and_contained_but_supports_spaces) ... ok
+test_qemu_overlay_checks_canonical_and_compiled_source_bytes (tests.unit.test_clock_anchor_capture.ClockCaptureDriverTests.test_qemu_overlay_checks_canonical_and_compiled_source_bytes) ... ok
+test_resume_checks_capture_and_data_before_expansion (tests.unit.test_clock_anchor_capture.ClockCaptureDriverTests.test_resume_checks_capture_and_data_before_expansion) ... ok
+test_timeout_retains_output_and_kills_owned_grandchild (tests.unit.test_clock_anchor_capture.ClockCaptureDriverTests.test_timeout_retains_output_and_kills_owned_grandchild) ... ok
+test_consumed_rows_do_not_accumulate_in_memory (tests.unit.test_clock_anchor_evidence.ClockScanTests.test_consumed_rows_do_not_accumulate_in_memory) ... ok
+test_epoch_change_is_not_silently_rebased (tests.unit.test_clock_anchor_evidence.ClockScanTests.test_epoch_change_is_not_silently_rebased) ... ok
+test_fifo_and_end_then_applied (tests.unit.test_clock_anchor_evidence.ClockScanTests.test_fifo_and_end_then_applied) ... ok
+test_individual_causal_corruptions_fail_with_specific_codes (tests.unit.test_clock_anchor_evidence.ClockScanTests.test_individual_causal_corruptions_fail_with_specific_codes) ... ok
+test_marker_pc_must_match_actual_next_instruction_and_pinned_hook (tests.unit.test_clock_anchor_evidence.ClockScanTests.test_marker_pc_must_match_actual_next_instruction_and_pinned_hook) ... ok
+test_native_formula_pairing_frequency_and_epoch (tests.unit.test_clock_anchor_evidence.ClockScanTests.test_native_formula_pairing_frequency_and_epoch) ... ok
+test_raw_extra_or_short_and_footer_after_data_rejected (tests.unit.test_clock_anchor_evidence.ClockScanTests.test_raw_extra_or_short_and_footer_after_data_rejected) ... ok
+test_five_bounds_prefix_suffix_and_no_point_timestamps (tests.unit.test_clock_anchor_join.ClockJoinTests.test_five_bounds_prefix_suffix_and_no_point_timestamps) ... ok
+test_missing_or_nonunique_sdk_candidate_cannot_be_picked_arbitrarily (tests.unit.test_clock_anchor_join.ClockJoinTests.test_missing_or_nonunique_sdk_candidate_cannot_be_picked_arbitrarily) ... ok
+test_psf_sequence_phase_payload_and_quality (tests.unit.test_clock_anchor_join.ClockJoinTests.test_psf_sequence_phase_payload_and_quality) ... ok
+test_ts32_and_eventcount16_wrap_preserve_full_native_counter (tests.unit.test_clock_anchor_join.ClockJoinTests.test_ts32_and_eventcount16_wrap_preserve_full_native_counter) ... ok
+test_uint64_offset_wrap_uses_modular_quantum (tests.unit.test_clock_anchor_join.ClockJoinTests.test_uint64_offset_wrap_uses_modular_quantum) ... ok
+test_wrong_app_sample_does_not_join (tests.unit.test_clock_anchor_join.ClockJoinTests.test_wrong_app_sample_does_not_join) ... ok
+test_canonical_integer_and_field_range (tests.unit.test_clock_anchor_wire.WireTests.test_canonical_integer_and_field_range) ... ok
+test_duplicate_keys_truncation_and_line_limit (tests.unit.test_clock_anchor_wire.WireTests.test_duplicate_keys_truncation_and_line_limit) ... ok
+test_handpacked_psf_preserves_wrap_payload_and_offsets (tests.unit.test_clock_anchor_wire.WireTests.test_handpacked_psf_preserves_wrap_payload_and_offsets) ... ok
+test_json_number_limits_and_truncated_gzip_are_evidence_errors (tests.unit.test_clock_anchor_wire.WireTests.test_json_number_limits_and_truncated_gzip_are_evidence_errors) ... ok
+test_line_limit_includes_lf_and_reader_is_lazy (tests.unit.test_clock_anchor_wire.WireTests.test_line_limit_includes_lf_and_reader_is_lazy) ... ok
+test_mmio_plugin_cannot_claim_native_clock (tests.unit.test_clock_anchor_wire.WireTests.test_mmio_plugin_cannot_claim_native_clock) ... ok
+test_offset_wrap_and_signed_clock_edge (tests.unit.test_clock_anchor_wire.WireTests.test_offset_wrap_and_signed_clock_edge) ... ok
+test_plain_and_gzip_preserve_wire_strings (tests.unit.test_clock_anchor_wire.WireTests.test_plain_and_gzip_preserve_wire_strings) ... ok
+test_raw_csv_strict_schema_ranges_and_gzip (tests.unit.test_clock_anchor_wire.WireTests.test_raw_csv_strict_schema_ranges_and_gzip) ... ok
+test_request_has_no_clock_and_ns_is_signed_range (tests.unit.test_clock_anchor_wire.WireTests.test_request_has_no_clock_and_ns_is_signed_range) ... ok
+test_schema_types_and_unknown_keys_fail_closed (tests.unit.test_clock_anchor_wire.WireTests.test_schema_types_and_unknown_keys_fail_closed) ... ok
+
+----------------------------------------------------------------------
+Ran 31 tests in 3.992s
+
+OK

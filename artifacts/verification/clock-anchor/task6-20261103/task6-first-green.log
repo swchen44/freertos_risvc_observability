@@ -1,0 +1,12 @@
+test_fifo_and_end_then_applied (tests.unit.test_clock_anchor_evidence.ClockScanTests.test_fifo_and_end_then_applied) ... ok
+test_individual_causal_corruptions_fail_with_specific_codes (tests.unit.test_clock_anchor_evidence.ClockScanTests.test_individual_causal_corruptions_fail_with_specific_codes) ... ok
+test_native_formula_pairing_frequency_and_epoch (tests.unit.test_clock_anchor_evidence.ClockScanTests.test_native_formula_pairing_frequency_and_epoch) ... ok
+test_raw_extra_or_short_and_footer_after_data_rejected (tests.unit.test_clock_anchor_evidence.ClockScanTests.test_raw_extra_or_short_and_footer_after_data_rejected) ... ok
+test_five_bounds_prefix_suffix_and_no_point_timestamps (tests.unit.test_clock_anchor_join.ClockJoinTests.test_five_bounds_prefix_suffix_and_no_point_timestamps) ... ok
+test_psf_sequence_phase_payload_and_quality (tests.unit.test_clock_anchor_join.ClockJoinTests.test_psf_sequence_phase_payload_and_quality) ... ok
+test_wrong_app_sample_does_not_join (tests.unit.test_clock_anchor_join.ClockJoinTests.test_wrong_app_sample_does_not_join) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.023s
+
+OK

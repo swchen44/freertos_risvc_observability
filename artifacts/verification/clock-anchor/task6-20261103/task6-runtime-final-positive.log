@@ -1,0 +1,8 @@
+test_real_tcp_o_has_five_verified_bounds (tests.integration.test_clock_anchor_runtime.ClockAnchorRuntimeTests.test_real_tcp_o_has_five_verified_bounds) ... ok
+test_missing_long_invalid_and_extra_argument_fail_before_capture (tests.integration.test_clock_anchor_guest.ClockAnchorGuestTests.test_missing_long_invalid_and_extra_argument_fail_before_capture) ... ok
+test_same_elf_modes_and_real_psf (tests.integration.test_clock_anchor_guest.ClockAnchorGuestTests.test_same_elf_modes_and_real_psf) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 48.424s
+
+OK

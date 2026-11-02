@@ -240,8 +240,8 @@ capture逐一執行，不開平行QEMU；每次host wall timeout為120秒，只�
 
 ## 10. 狀態與下一個審閱點
 
-- 已完成：使用者選A、來源能力盤點、本文的具體設計、自我審閱及使用者以continue確認；逐項實作計畫已確認，Tasks1–4已完成。
-- 續作：依[實作計畫](../plans/20-c2b-clock-anchor-implementation.md)沿用Native執行Task5–8。
-- 尚未完成：collector、因果validator／join、正式pilot與誤差結果、完整還原包、獨立整體review、Web／offline接合及知識庫增補。
+- 已完成：使用者選A、來源能力盤點、本文的具體設計、自我審閱及使用者以continue確認；逐項實作計畫已確認，Tasks1–6已完成。
+- 續作：依[實作計畫](../plans/20-c2b-clock-anchor-implementation.md)沿用Native執行Task7–8。
+- 尚未完成：透明性／marker成本報告、正式pilot與誤差結果、完整還原包、獨立整體review、Web／offline接合及知識庫增補。
 
 實作前不得把本文件的schema、32-byte推導、數字矩陣或來源安全鏈寫成已量測結果。

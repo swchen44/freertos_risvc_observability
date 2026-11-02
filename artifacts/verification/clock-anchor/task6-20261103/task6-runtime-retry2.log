@@ -1,0 +1,8 @@
+test_new_qemu_bad_cmdline_and_abi_smp_rejections (tests.integration.test_clock_anchor_runtime.ClockAnchorRuntimeTests.test_new_qemu_bad_cmdline_and_abi_smp_rejections) ... ok
+test_real_tcp_o_has_five_verified_bounds (tests.integration.test_clock_anchor_runtime.ClockAnchorRuntimeTests.test_real_tcp_o_has_five_verified_bounds) ... ok
+test_sidecar_missing_footer_duplicate_request_and_hash_mismatch (tests.integration.test_clock_anchor_runtime.ClockAnchorRuntimeTests.test_sidecar_missing_footer_duplicate_request_and_hash_mismatch) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 122.126s
+
+OK
