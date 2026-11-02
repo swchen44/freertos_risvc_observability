@@ -160,7 +160,7 @@
 +])
 --- /dev/null
 +++ b/plugins/poc-clock-observer.c
-@@ -0,0 +1,221 @@
+@@ -0,0 +1,223 @@
 +/* SPDX-License-Identifier: GPL-2.0-or-later
 + * POC adapter. The canonical core performs no QEMU clock reads or scheduling.
 + */
@@ -202,6 +202,8 @@
 +static void check(bool ok)
 +{
 +    if (!ok) {
++        /* exit invokes plugin atexit callbacks. Never re-enter with this lock. */
++        qemu_mutex_unlock(&clock_lock);
 +        poc_clock_fatal(poc_state_error(clock_state));
 +    }
 +}

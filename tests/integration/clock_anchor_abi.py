@@ -70,6 +70,7 @@ def run_suite(manifest: Path, guest_config: Path, output: Path) -> bool:
                 "smp-2",
                 "legacy",
                 "outside-cpu",
+                "missing-mmio",
             ):
                 with self.subTest(case=label):
                     out = output / label
@@ -90,6 +91,7 @@ def run_suite(manifest: Path, guest_config: Path, output: Path) -> bool:
                         "size": "size",
                         "handle": "handle",
                         "outside-cpu": "context",
+                        "missing-mmio": "missing-mmio",
                     }.get(label)
                     binary = (
                         guest["legacy_qemu"]["path"]
@@ -149,6 +151,8 @@ def run_suite(manifest: Path, guest_config: Path, output: Path) -> bool:
                         self.assertNotEqual(p.returncode, 0)
                         if label == "outside-cpu":
                             self.assertIn("unsafe-applied-context", text)
+                        elif label == "missing-mmio":
+                            self.assertIn("native-io-pending", text)
                         elif label != "legacy":
                             self.assertIn("C2b ABI configure rejected", text)
                     self.assertEqual(list(out.glob("*.jsonl")), [])
@@ -162,7 +166,7 @@ def run_suite(manifest: Path, guest_config: Path, output: Path) -> bool:
         dict(
             passed=result.wasSuccessful(),
             tests=result.testsRun,
-            subcases=9,
+            subcases=10,
             failures=len(result.failures),
             errors=len(result.errors),
             skips=len(result.skipped),
