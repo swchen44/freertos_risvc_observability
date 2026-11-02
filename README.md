@@ -6,6 +6,8 @@
 
 2026-11-03：已完成[第二次空間清理與暫停接手點](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/artifacts/verification/storage/cleanup-paused-20261103/README.md)。四份重複capture／runtime副本、兩份完整封存並實際還原核對的失敗QEMU source已移除；觀測增加約1.76GiB。六份source分卷、SHA、逐檔inventory及還原指令保留；現用QEMU／GCC未刪。Task7只有已保存的RED測試草稿，等待恢復指示。
 
+本次清理備份已在本機Git保存；push在600秒後逾時，最後核對遠端仍為Tasks1–6 checkpoint。上列最新清理頁面待發布；恢復工作後先核對遠端、重試備份發布。開發維持暫停。
+
 ## C2a 最新成果 · 2026-10-23
 
 C2a本機驗收完成：**40 runs、19,177,626 events、18,753 gzip chunks、8份離線HTML**，完整facts/totals與C1相符。Python328、Node25、Playwright11、Ruff、curl與agent-browser證據已保存。發布完成與否另以release的publication.json和remote SHA為準。
