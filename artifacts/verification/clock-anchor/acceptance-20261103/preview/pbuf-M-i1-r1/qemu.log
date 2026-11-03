@@ -1,0 +1,36 @@
+context_capabilities registers=259 mcause_matches=1
+live_cache_mmio pc=2147520396 address=33570816 size=4 op=W
+live_cache_mmio pc=2147520398 address=33570820 size=4 op=W
+live_cache_mmio pc=2147520400 address=33570816 size=4 op=W
+live_cache_mmio pc=2147493638 address=33603580 size=4 op=R
+live_cache_mmio pc=2147493640 address=33603576 size=4 op=R
+live_cache_mmio pc=2147493642 address=33603580 size=4 op=R
+live_cache_mmio pc=2147520396 address=33570816 size=4 op=W
+live_cache_mmio pc=2147520398 address=33570820 size=4 op=W
+live_cache_mmio pc=2147520400 address=33570816 size=4 op=W
+live_cache_mmio pc=2147493638 address=33603580 size=4 op=R
+live_cache_mmio pc=2147493640 address=33603576 size=4 op=R
+live_cache_mmio pc=2147493642 address=33603580 size=4 op=R
+live_cache_mmio pc=2147493638 address=33603580 size=4 op=R
+live_cache_mmio pc=2147493640 address=33603576 size=4 op=R
+live_cache_mmio pc=2147493642 address=33603580 size=4 op=R
+live_cache_mmio pc=2147493638 address=33603580 size=4 op=R
+live_cache_mmio pc=2147493640 address=33603576 size=4 op=R
+live_cache_mmio pc=2147493642 address=33603580 size=4 op=R
+live_cache_mmio pc=2147493638 address=33603580 size=4 op=R
+live_cache_mmio pc=2147493640 address=33603576 size=4 op=R
+live_cache_mmio pc=2147493642 address=33603580 size=4 op=R
+live_cache_mmio pc=2147493638 address=33603580 size=4 op=R
+live_cache_mmio pc=2147493640 address=33603576 size=4 op=R
+live_cache_mmio pc=2147493642 address=33603580 size=4 op=R
+live_cache_mmio pc=2147493638 address=33603580 size=4 op=R
+live_cache_mmio pc=2147493640 address=33603576 size=4 op=R
+live_cache_mmio pc=2147493642 address=33603580 size=4 op=R
+live_cache_mmio pc=2147493638 address=33603580 size=4 op=R
+live_cache_mmio pc=2147493640 address=33603576 size=4 op=R
+live_cache_mmio pc=2147493642 address=33603580 size=4 op=R
+live_cache_mmio pc=2147493638 address=33603580 size=4 op=R
+live_cache_mmio pc=2147493640 address=33603576 size=4 op=R
+live_cache_mmio pc=2147493642 address=33603580 size=4 op=R
+live_cache_complete events=425340 cycles=1093170 api_calls=425340
+live_cache_mmio_count=33

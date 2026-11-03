@@ -1,0 +1,15 @@
+{
+  "status": "relocated-and-rehashed",
+  "original_path": "artifacts/local/c2b-restore-3e8a5fe2",
+  "published_path": "artifacts/verification/clock-anchor/acceptance-20261103/restore",
+  "manifest_sha256": "9a55b8323647027839f3a10258c4cfa48013263a768b6f9a48419e53da7f1d75",
+  "checked_parts": 1516,
+  "unchanged_restore_receipt": {
+    "status": "restored-verified",
+    "verified_files": 1514,
+    "verified_bytes": "720494937",
+    "manifest_sha256": "9a55b8323647027839f3a10258c4cfa48013263a768b6f9a48419e53da7f1d75",
+    "scope": "regular files; nested source archives remain opaque"
+  },
+  "scope": "Rehash after move; actual prior restore and nested source checks are separate receipts"
+}

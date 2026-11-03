@@ -1,0 +1,10 @@
+test_declared_size_limits_expansion_and_output_cannot_nest_input (tests.unit.test_clock_anchor_package.ClockPackageTests.test_declared_size_limits_expansion_and_output_cannot_nest_input) ... ok
+test_partial_binary_roundtrip_is_self_contained_and_bounded (tests.unit.test_clock_anchor_package.ClockPackageTests.test_partial_binary_roundtrip_is_self_contained_and_bounded) ... ok
+test_symlink_input_and_unsupported_archive_codecs_refused (tests.unit.test_clock_anchor_package.ClockPackageTests.test_symlink_input_and_unsupported_archive_codecs_refused) ... ok
+test_traversal_absolute_and_symlink_restore_paths_rejected (tests.unit.test_clock_anchor_package.ClockPackageTests.test_traversal_absolute_and_symlink_restore_paths_rejected) ... ok
+test_wrong_or_missing_parts_rejected (tests.unit.test_clock_anchor_package.ClockPackageTests.test_wrong_or_missing_parts_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.047s
+
+OK

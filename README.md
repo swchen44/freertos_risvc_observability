@@ -1,8 +1,20 @@
 # FreeRTOS／RISC-V PSF POC
 
-**C2b Tasks1–7完成，Task8進行中；[最新進度與證據](docs/clock-anchor-progress.md)。** 對照與JSON／CSV／Mermaid報告程式已完成；396個測試391通過、5個opt-in skip。正式16-run尚未執行，見[Task7收據](artifacts/verification/clock-anchor/task7-20261103/README.md)。全庫Ruff check通過，十個既有format問題仍保留。
+**C2b 正式 pilot 16／16 runs 有效，20 組 anchors 建立 verified bounds；完整封裝與內層 source 已實際還原核對。** [研究／操作報告](docs/clock-anchor-pilot.md)整理對照、marker 成本、code size、原理、重跑與內網還原；[驗收入口](artifacts/verification/clock-anchor/acceptance-20261103/README.md)提供 JSON／CSV／Mermaid、PSF、測試與完整分卷。Git 發布收據另列狀態。
 
-development O的tagged guest因果與有界PSF對齊已驗證；正式16-run、完整還原及新Dashboard接合尚未完成。FreeRTOS kernel／SDK與舊capture保持原樣。執行方式沿用Native，最後獨立review。
+完整 Python suite 403 個：398 passed、5 opt-in skipped；明確啟用 QEMU runtime 5／5、0 skip。全庫 Ruff check 與本輪 format 通過，十個 baseline 舊 format 問題仍保留。Fresh Astra/high review 的兩項 Important 已 RED→GREEN 修正。FreeRTOS kernel／SDK 與歷史 captures 保持原樣。
+
+| 本輪資料夾／重要入口 | 內容 |
+|---|---|
+| [docs/clock-anchor-pilot.md](docs/clock-anchor-pilot.md) | C2b 完整研究／操作報告、成本／精度限制、Mermaid、API／source 連結 |
+| [docs/clock-anchor-progress.md](docs/clock-anchor-progress.md) | 八項任務、已完成與後續分開 |
+| [acceptance-20261103](artifacts/verification/clock-anchor/acceptance-20261103/README.md) | preview、verification、完整 restore 分卷及操作方法 |
+| `firmware/port/clock_anchor.c` | app／port 的五筆 SDK markers，無 kernel／SDK source 修改 |
+| `src/psf_lab/clock_anchor_*.py` | 嚴格 reader、數學、capture、因果 validator、對照與報告 |
+| `tools/tcp/*clock_anchor*.py` | 建 tools、先 smoke 再 full、分析與封裝／還原 CLI |
+| `tools/qemu/clock_anchor/` | 原生 C 核心、ABI probe；QEMU patch 與 build script 在上層 |
+
+下一階段是 Web／離線 HTML 接合與 UI 驗收；本輪沒有新增畫面或重跑 browser。產品 SDK CPU loading、UART 吞吐、PMU、layout 因果與最新知識庫同步仍為後續。
 
 [設計規格](docs/design/c2b-clock-anchor-pilot-v1.md)｜[八項實作計畫](docs/plans/20-c2b-clock-anchor-implementation.md)｜[總checklist](docs/plans/19-c2b-clock-anchor-pilot.md)
 
@@ -10,7 +22,7 @@ development O的tagged guest因果與有界PSF對齊已驗證；正式16-run、�
 
 ## C2a 正式本機驗收 · 2026-10-23
 
-40 runs／8份離線HTML已完成並通過本機驗收，資料與C1完整facts相符；Python328、Node25、Playwright11、Ruff、curl及agent-browser均有可複查證據。固定L1I8KiB／L1D8KiB／L232KiB。C2b時間對齊尚未開始。
+40 runs／8份離線HTML已完成並通過本機驗收，資料與C1完整facts相符；Python328、Node25、Playwright11、Ruff、curl及agent-browser均有可複查證據。固定L1I8KiB／L1D8KiB／L232KiB。C2b pilot 已完成，詳見頁首；Web／offline 接合待下一階段。
 
 [操作／實驗報告](docs/event-window-dashboard.md)｜[正式收據與還原](artifacts/verification/event-window/release-20261023/README.md)｜[完整checklist](docs/plans/14-event-window-dashboard.md)｜[Web串流計畫](docs/plans/17-c2a-http-csv-stream.md)｜[CPU成本對照](docs/plans/18-c2a-large-run-cost.md)
 
@@ -45,7 +57,7 @@ C1 已建立 Task／IRQ × role × function × PC 聯合統計、函式差異與
 - [實作計畫與 checklist](docs/plans/13-hotspot-dashboard.md)。
 - [正式報告與來源](artifacts/verification/hotspot/formal/)；[8 組離線 HTML](artifacts/offline/hotspot/)。
 - Web：在 POC 執行 `.venv/bin/python -m psf_lab serve --port 8016`，開啟 `http://127.0.0.1:8016/hotspot.html`。
-- C1 發布當時，C2 時間軸尚未開始；目前 C2a 已完成，C2b 時間對齊仍未開始。這些是模型相對成本，不是產品 CPU 使用率。
+- C1 發布當時，C2 時間軸尚未開始；目前 C2a 已完成，C2b pilot 已完成，clock bounds 尚待接入 UI。這些是模型相對成本，不是產品 CPU 使用率。
 - [C2 時間對齊研究草案](docs/design/cache-psf-time-alignment.md)：已選 A 分階段；[C2a 計畫](docs/plans/14-event-window-dashboard.md)的最新驗收見本頁開頭。Chrome 測試固定逐一執行，用完 close。
 
 ![C1 Web 畫面](artifacts/verification/hotspot/ui/server/screenshots/01-overview.png)
@@ -90,7 +102,7 @@ Web 版：curl 驗 API 與 assets；agent-browser 驗四張 SVG 圖、篩選、�
 **A：八種 TCP workload 的 pbuf 最佳化驗證**已完成 96 次正式執行、原始資料分析與 Web／離線操作驗收。固定 **L1I 8 KiB + L1D 8 KiB + L2 32 KiB**，結果是相同模型下的軟體比較。
 
 - [完整 A 研究報告、數值與重跑命令](docs/tcp-workload-matrix.md)：7/8 組模型時間改善；A08 改善 8.339%，A02 反而慢 0.218%，反例保留，原因待 B 歸因。
-- [設計與 A → B → C 計畫](docs/plans/11-next-cache-research.md)：A 已完成；B 已驗收；C1 熱點已實作，C2a 事件區間視圖實作中，C2b 時間對齊尚未開始。
+- [設計與 A → B → C 計畫](docs/plans/11-next-cache-research.md)：A 已完成；B 已驗收；C1 熱點已實作，C2a 事件區間已完成，C2b pilot 已完成；clock bounds 的 UI 接合待下一階段。
 - [案例契約](cases/tcp/workload-matrix-v1.json)：63、64、65、256、1460 bytes，以及空節點／八節點 chain。
 - [正式 capture](runs/tcp-workload-matrix-v1/)：16 組、96 次，包含 PSF、raw trace、ELF、map、封包、generated header 與來源 hashes。
 - [探索與失敗紀錄](runs/tcp-workload-probe-v1/)；[分析／驗收收據](artifacts/verification/tcp-workload-matrix/)；[離線 HTML](artifacts/offline/tcp-workload-matrix.html)。

@@ -1,0 +1,25 @@
+test_last_hook_at_eof_cannot_claim_an_instruction_that_does_not_exist (tests.unit.test_clock_anchor_evidence.ClockScanTests.test_last_hook_at_eof_cannot_claim_an_instruction_that_does_not_exist) ... FAIL
+test_manifest_replacement_during_restore_cannot_receive_verified_receipt (tests.unit.test_clock_anchor_package.ClockPackageTests.test_manifest_replacement_during_restore_cannot_receive_verified_receipt) ... FAIL
+
+======================================================================
+FAIL: test_last_hook_at_eof_cannot_claim_an_instruction_that_does_not_exist (tests.unit.test_clock_anchor_evidence.ClockScanTests.test_last_hook_at_eof_cannot_claim_an_instruction_that_does_not_exist)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_clock_anchor_evidence.py", line 22, in test_last_hook_at_eof_cannot_claim_an_instruction_that_does_not_exist
+    with self.assertRaises(ClockEvidenceError) as caught:
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+AssertionError: ClockEvidenceError not raised
+
+======================================================================
+FAIL: test_manifest_replacement_during_restore_cannot_receive_verified_receipt (tests.unit.test_clock_anchor_package.ClockPackageTests.test_manifest_replacement_during_restore_cannot_receive_verified_receipt)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/swchen.tw/git/percepio/poc/tests/unit/test_clock_anchor_package.py", line 28, in test_manifest_replacement_during_restore_cannot_receive_verified_receipt
+    with self.assertRaisesRegex(ValueError,"Manifest changed"):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.007s
+
+FAILED (failures=2)

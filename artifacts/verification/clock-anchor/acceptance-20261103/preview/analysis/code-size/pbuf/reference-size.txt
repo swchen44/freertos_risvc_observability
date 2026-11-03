@@ -1,0 +1,25 @@
+/Users/swchen.tw/git/percepio/poc/runs/tcp-context-v1/probe/A02-pbuf/enabled-1-1/firmware.elf  :
+section               size         addr
+.init                  118   2147483648
+.text                39014   2147483904
+.rodata               2692   2147522920
+.data.align              0   2148007936
+.data                  144   2148007936
+.bss.align               0   2148008080
+.bss                292820   2148008128
+.stack                4108   2148300948
+.debug_info         129436            0
+.debug_abbrev        26379            0
+.debug_loclists      57069            0
+.debug_aranges        4312            0
+.debug_rnglists       5843            0
+.debug_macro         61436            0
+.debug_line         141667            0
+.debug_str          212497            0
+.debug_line_str       4947            0
+.comment                50            0
+.riscv.attributes       91            0
+.debug_frame         13520            0
+Total               996143
+
+

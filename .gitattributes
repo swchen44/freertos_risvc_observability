@@ -12,3 +12,8 @@ artifacts/offline/hotspot/** -whitespace
 # C2a checkpoint keeps generated CSV and embedded vendor assets byte-for-byte.
 artifacts/verification/event-window/checkpoint-20261013/** -whitespace
 artifacts/verification/event-window/rss-640-20261014/** -whitespace
+
+# C2b generated evidence retains exact RFC CSV and tool output bytes.
+artifacts/verification/clock-anchor/acceptance-20261103/preview/analysis/*.csv -text -whitespace
+artifacts/verification/clock-anchor/acceptance-20261103/preview/**/*.map -text -whitespace
+artifacts/verification/clock-anchor/acceptance-20261103/preview/analysis/code-size/*/*size.txt -text -whitespace

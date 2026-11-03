@@ -1,0 +1,35 @@
+{
+  "full_suite": {
+    "executed": 403,
+    "passed": 398,
+    "skipped": 5
+  },
+  "explicit_runtime": {
+    "executed": 5,
+    "passed": 5,
+    "skipped": 0
+  },
+  "review": {
+    "model": "gpt-6-astra",
+    "effort": "high",
+    "fork_turns": "none",
+    "reviewed_head": "3cdb7794778bf608da6e86d189175c3cefb638b1",
+    "critical": 0,
+    "important": 2,
+    "minor": 0,
+    "fixed": 2,
+    "red_green_tests": "final-review-two-findings-red.log / final-review-fix-targeted-green.log"
+  },
+  "formal_capture_commit": "3cdb7794778bf608da6e86d189175c3cefb638b1",
+  "analysis_commit": "3e8a5fe27e1fbf922d7701b496b25ae021d84b3a",
+  "analysis_status": "complete",
+  "formal_runs": 16,
+  "groups": 4,
+  "anchors": 20,
+  "gates": {
+    "ruff_check": "passed",
+    "changed_format": "passed",
+    "global_format": "failed-existing10-unchanged",
+    "ui": "not-performed-no-ui-change"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "diff_check": "passed",
+  "index_native_bytes_verified": 24,
+  "credential_pattern_scan": "no-matches-in-published-text",
+  "scope": "Targeted GitHub token syntax scan; no raw transport logs or URLs published"
+}

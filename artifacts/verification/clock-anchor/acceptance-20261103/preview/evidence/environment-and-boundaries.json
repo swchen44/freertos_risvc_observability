@@ -1,0 +1,13 @@
+{
+  "host": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "python": "3.13.2",
+  "source_commit": "3cdb7794778bf608da6e86d189175c3cefb638b1",
+  "source_clean": true,
+  "formal_runset": "runs/local/c2b-pilot-v1-3cdb7794",
+  "formal_count": 16,
+  "formal_passed": true,
+  "known_pre_fix_issue": "vcpu_init callback replacement: timing bounds survived but context unknown_cause; not formal acceptance",
+  "pre_fix_source_sha256": "e7c9a7389024111f867e0f958c016dcd2876f8c2d8ed42ca3f2809ffa6e0eda5",
+  "scope": "Pinned macOS RV32 QEMU/icount relative model. Not target PMU, SDK CPU loading, UART, UI or cross-host acceptance."
+}

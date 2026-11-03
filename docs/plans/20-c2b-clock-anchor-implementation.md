@@ -12,7 +12,7 @@
 
 **Execution:** 沿用本專案已採用的Native：主agent逐項實作，最後做獨立whole-change review；依據[既有原生執行紀錄](14-event-window-dashboard.md)。不重新詢問A／B或執行方式。2026-11-02使用者以continue確認計畫，開始逐項實作。
 
-**Current status:** 2026-11-03 Tasks1–7完成，Task8進行中。396個Python測試391通過、5個opt-in skip；正式16-run尚未執行。[進度與證據](../clock-anchor-progress.md)。全庫format十個baseline舊問題保留，unchecked不是通過證據。
+**Current status:** 2026-11-03 Tasks1–7完成；Task8 steps1–6實際通過，step7文件／發布進行中。正式16／16、20 anchors、完整包與內層source還原均有證據；403個Python測試398通過、5 opt-in skip，明確runtime5／5零skip。[正式報告](../clock-anchor-pilot.md)。全庫format十個baseline舊問題保留，不列passed。
 
 ## Global Constraints
 
@@ -521,21 +521,21 @@ analysis CLI固定`--runset PATH --output NEW_PATH`，呼叫write_pilot_report�
 
 **Interfaces:** `package_clock_anchor(runset:Path, output:Path, *, max_part_bytes:int=64*1024*1024)->dict`在tool模組提供可import函式；所有成員相對path，拒絕symlink／traversal。產出restore manifest、inventory、各gzip／分卷與原內容SHA；`verify_restore(package:Path, temporary_output:Path)->dict`實際還原到新目錄逐檔比對。
 
-- [ ] **1. RED封裝還原測試。** 任意binary bytes與partial failed run必須逐byte還原；錯part hash、缺part、zip/tar traversal或覆寫既有output皆失敗。不能把>100MiB原始CSV直接stage到Git；每part最大64MiB且完整原hash在manifest。
-- [ ] **2. GREEN、來源commit與完整回歸。** 先確認tools dependency仍匹配；package tests／Ruff通過後commit來源，從clean tree保存tools manifest、兩份candidate ELF、legacy plugin來源commit與hash，再執行下列完整檢查。備份可能被回歸改寫的舊tracked artifacts並於測後還原；新資料只寫新ignored目錄，不預寫通過數。
+- [x] **1. RED封裝還原測試。** 任意binary bytes與partial failed run必須逐byte還原；錯part hash、缺part、zip/tar traversal或覆寫既有output皆失敗。不能把>100MiB原始CSV直接stage到Git；每part最大64MiB且完整原hash在manifest。
+- [x] **2. GREEN、來源commit與完整回歸。** 先確認tools dependency仍匹配；package tests／Ruff通過後commit來源，從clean tree保存tools manifest、兩份candidate ELF、legacy plugin來源commit與hash，再執行下列完整檢查。備份可能被回歸改寫的舊tracked artifacts並於測後還原；新資料只寫新ignored目錄，不預寫通過數。
 
 ```sh
 PYTHONPATH=src .venv/bin/python -m unittest discover -s tests -v
 .venv/bin/ruff check .
 .venv/bin/ruff format --check .
-C2B_REQUIRE_QEMU=1 C2B_RUNTIME_CONFIG=runs/local/c2b-tools/runtime-tests.json \
+C2B_REQUIRE_QEMU=1 C2B_RUNTIME_CONFIG=runs/local/c2b-tools-20261103-initfix/runtime-tests.json \
   PYTHONPATH=src .venv/bin/python -m unittest \
   tests.integration.test_clock_anchor_guest tests.integration.test_clock_anchor_runtime -v
 ```
 
 完整suite中的C2b runtime若skip，收據必須列skip／not-performed；最後一條明確啟用後須0skip。既有Node／Playwright與agent-browser在此pilot沒有UI改動時不重複執行，也不列成新UI驗收。
 
-- [ ] **3. 正式四次smoke。** 上一步檢查通過且來源仍乾淨才執行；`--tools`必須是Task4／5合併核對的manifest，而非預先假設已存在的檔。
+- [x] **3. 正式四次smoke。** 上一步檢查通過且來源仍乾淨才執行；`--tools`必須是Task4／5合併核對的manifest，而非預先假設已存在的檔。
 
 ```sh
 PYTHONPATH=src .venv/bin/python tools/tcp/run_clock_anchor_pilot.py \
@@ -544,7 +544,7 @@ PYTHONPATH=src .venv/bin/python tools/tcp/run_clock_anchor_pilot.py \
 ```
 
 smoke必須實際完成baseline injection1的L/C/O/M；L/C、C/O與所有application gate通過，O有5組verified bounds，才允許full。失敗保留partial並停止；source修正另建新output，不能改預期或加tolerance。
-- [ ] **4. 同一source的resume跑其餘12次。**
+- [x] **4. 同一source的resume跑其餘12次。**
 
 ```sh
 PYTHONPATH=src .venv/bin/python tools/tcp/run_clock_anchor_pilot.py \
@@ -553,8 +553,8 @@ PYTHONPATH=src .venv/bin/python tools/tcp/run_clock_anchor_pilot.py \
 ```
 
 full只補缺的12份，不重寫前4份；先核對commit、命令、ELF／binary／plugin／profile hashes，任一漂移就拒絕resume。每run後即保存成功／失敗receipt，不能只在最後寫總結。16份完成仍依evidence／alignment／resolution分層判定；markers-off／observer-off不能冒稱有anchors。
-- [ ] **5. 獨立whole-change review。** Native方式最後由fresh reviewer檢全branch／spec，Important先修，再只重跑受影響測試與正式captures。步2已通過的完整檢查，沒有新source變更／失敗／未解疑慮時不重複執行；metadata與新captures不能使未跑的runtime變成passed。
-- [ ] **6. 分析、封裝及實際還原。** report須列16次／先4後12、所有失敗、host環境、單次配對限制、marker bytes與完整code-size來源、bounds／unknown、source與tested commits。封裝包含新patch／canonical overlays、完整patched source與license、build logs／dependency locks、ELF／map／symbols、raw／PSF／sidecar／context／packets、JSON／CSV、原與壓縮hash。實際還原到新ignored目錄再核對所有檔案；現有macOS結果不外推跨機或實機。
+- [x] **5. 獨立whole-change review。** Native方式最後由fresh reviewer檢全branch／spec，Important先修，再只重跑受影響測試與正式captures。步2已通過的完整檢查，沒有新source變更／失敗／未解疑慮時不重複執行；metadata與新captures不能使未跑的runtime變成passed。
+- [x] **6. 分析、封裝及實際還原。** report須列16次／先4後12、所有失敗、host環境、單次配對限制、marker bytes與完整code-size來源、bounds／unknown、source與tested commits。封裝包含新patch／canonical overlays、完整patched source與license、build logs／dependency locks、ELF／map／symbols、raw／PSF／sidecar／context／packets、JSON／CSV、原與壓縮hash。實際還原到新ignored目錄再核對所有檔案；現有macOS結果不外推跨機或實機。
 
 package CLI固定`--runset PATH --output NEW_PATH --restore-check NEW_PATH`，最後一個選項會實際呼叫verify_restore，並保存結果。每檔gzip後依序切成最多64MiB parts；manifest列相對path、原bytes／SHA、完整gzip SHA及各part的bytes／SHA。restore先驗parts，串流串接解壓，核對原SHA與regular-file mode，不依賴原始run目錄。缺少離線建置依賴時列清楚unavailable，不能把只有source／locks的包宣稱為任何host都可離線build。
 
@@ -580,6 +580,6 @@ analysis成功後，把report、package與restore-check收據複製到新accepta
 | §7 16-run／三因果對照 | Task5矩陣、Task7比較、Task8執行 |
 | §8反例／resource／resolution | Review Focus、各Task具體tests、Task8收據 |
 | §9還原／來源／發布 | Task4build manifest、Task8package／restore／remote核對 |
-| §10階段邊界 | 本計畫待審閱；仍無product code／新captures |
+| §10階段邊界 | 正式pilot16次與bounds完成；Web／offline接合另立計畫 |
 
 書面設計及本計畫均已由使用者以continue確認；2026-11-02開始沿用Native執行。實機PMU／產品SDK／UART、cache unused-byte與layout因果分析、最新知識庫增補及跨機暫緩狀態不因本計畫建立而結清。Web／offline接合另立下一份計畫，必須帶著pilot真實bounds與資料量，再決定互動及容量，不先承諾精度或截圖。

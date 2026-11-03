@@ -1,0 +1,13 @@
+{
+  "command": [
+    "/Users/swchen.tw/git/percepio/poc/.tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin/riscv-none-elf-size",
+    "-A",
+    "/Users/swchen.tw/git/percepio/poc/runs/tcp-context-v1/probe/A02-pbuf/enabled-1-1/firmware.elf"
+  ],
+  "elf_sha256": "a549e6d500b5996a2fe944e544c8086b1000fabfd3aa32fdd8b6d35fd191b2bd",
+  "tool": {
+    "path": "/Users/swchen.tw/git/percepio/poc/.tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin/riscv-none-elf-size",
+    "sha256": "6378363493f271657f4bd4e0558e1272968ada95b53ba09ccffdbc70433dac66",
+    "version": "GNU size (xPack GNU RISC-V Embedded GCC arm64) 2.45"
+  }
+}

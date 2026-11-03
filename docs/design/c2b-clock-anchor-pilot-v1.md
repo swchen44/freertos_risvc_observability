@@ -1,6 +1,6 @@
 # C2b v1：SDK marker 與 QEMU clock-anchor pilot 設計規格
 
-日期：2026-10-25；進度更新2026-11-03。**規格與實作計畫已確認，Tasks1–4完成，Tasks5–8繼續，見[實作證據](../clock-anchor-progress.md)。** 已有guest helper／probe及新QEMU build／ABI驗收；正式16-run與完整時間mapping未完成。FreeRTOS kernel與SDK原始碼保持原樣。
+日期：2026-10-25；進度更新2026-11-03。**Tasks1–8 的程式／正式16-run／分析／獨立review修正／完整還原已驗證；Git 發布收據另列。** [正式結果與操作](../clock-anchor-pilot.md)、[進度與證據](../clock-anchor-progress.md)。20組anchors為verified bounds，resolution仍unrated；FreeRTOS kernel與SDK原始碼保持原樣。下方能力需求與設計期用語保留為規格，不以舊未驗證描述取代本段最新結果。
 
 ## 1. 目的、交付與目前邊界
 

@@ -1,0 +1,25 @@
+/Users/swchen.tw/git/percepio/poc/runs/local/c2b-tools-20261103-initfix/baseline/build/firmware.elf  :
+section                size         addr
+.init                   118   2147483648
+.text                 39782   2147483904
+.rodata                2840   2147523688
+.data.align               0   2148007936
+.data                   144   2148007936
+.bss.align                0   2148008080
+.bss                 292820   2148008128
+.stack                 4108   2148300948
+.debug_info          131022            0
+.debug_abbrev         26887            0
+.debug_loclists       57223            0
+.debug_aranges         4400            0
+.debug_rnglists        5870            0
+.debug_macro          62326            0
+.debug_line          143036            0
+.debug_str           212695            0
+.debug_line_str        4989            0
+.comment                 50            0
+.riscv.attributes        91            0
+.debug_frame          13728            0
+Total               1002129
+
+

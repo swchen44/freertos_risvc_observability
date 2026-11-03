@@ -1,0 +1,10 @@
+test_missing_duplicate_short_registers_phase_jump_api_and_row_failure (tests.unit.test_clock_anchor_plugin.ClockAnchorPluginTests.test_missing_duplicate_short_registers_phase_jump_api_and_row_failure) ... ok
+test_observer_off_does_not_enumerate_or_read_new_registers (tests.unit.test_clock_anchor_plugin.ClockAnchorPluginTests.test_observer_off_does_not_enumerate_or_read_new_registers) ... ok
+test_register_payload_cursor_and_post_end_mmio (tests.unit.test_clock_anchor_plugin.ClockAnchorPluginTests.test_register_payload_cursor_and_post_end_mmio) ... ok
+test_unknown_duplicate_missing_and_noncanonical_config_rejected (tests.unit.test_clock_anchor_plugin.ClockAnchorPluginTests.test_unknown_duplicate_missing_and_noncanonical_config_rejected) ... ok
+test_stub_boundaries_faults_and_config_validation (tests.unit.test_live_context.LiveContextTests.test_stub_boundaries_faults_and_config_validation) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.999s
+
+OK

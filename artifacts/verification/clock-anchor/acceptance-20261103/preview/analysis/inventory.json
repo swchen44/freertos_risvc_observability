@@ -1,0 +1,74 @@
+{
+  "anchors.csv": {
+    "bytes": 5743,
+    "sha256": "346fd7449f8e94d02c461cbdddf4fbaac9287d72652fb171e1d47bcbb251a4b1"
+  },
+  "code-size/baseline/firmware.map": {
+    "bytes": 1485712,
+    "sha256": "d79a3a6b0dff993b165fc8234c43d5989896399d6dee3c1306d7503ac0ab34c6"
+  },
+  "code-size/baseline/nm.txt": {
+    "bytes": 17078,
+    "sha256": "8a9e507cb4d911b737ed4e9e481069014ccf64450d8cd03d5e16f2cc6321c756"
+  },
+  "code-size/baseline/objdump.txt": {
+    "bytes": 694038,
+    "sha256": "b50bfaa9513bf8792234cdcd3c63a90a71458cdca2d934e4b4200e88c45bf486"
+  },
+  "code-size/baseline/readelf.txt": {
+    "bytes": 2357,
+    "sha256": "cd9a09dc2a93e579666b4b4573d69f4cf2095cea19a3e000dd3accc964170206"
+  },
+  "code-size/baseline/reference-command.json": {
+    "bytes": 609,
+    "sha256": "9e0e88b5f3cd69a2a56d87854ec20fcdf81715e53fb09dfa40a7b30d195bb1da"
+  },
+  "code-size/baseline/reference-size.txt": {
+    "bytes": 970,
+    "sha256": "44e8ad76435908b3674f3842b8a17dc6f9948934c0d9d15980ac959df28a404d"
+  },
+  "code-size/baseline/size.txt": {
+    "bytes": 994,
+    "sha256": "7b7a6b4fb022b05d5e496c71d8e29c8ad4226342e8b53eff8d442c244b436752"
+  },
+  "code-size/pbuf/firmware.map": {
+    "bytes": 1445308,
+    "sha256": "8484c802092059af3c12fe472e2a622643bb436ef92e8910a6ff3a2dbe27f951"
+  },
+  "code-size/pbuf/nm.txt": {
+    "bytes": 17010,
+    "sha256": "b5050106ed37afd680cd4c060b02745cc6e59b8679a59a7b6862bd0c97ba3a57"
+  },
+  "code-size/pbuf/objdump.txt": {
+    "bytes": 693460,
+    "sha256": "bac1317f7a0b1a9550fb108ef726bad284cacd2c3412d545fe0dc8bdc8de0a9b"
+  },
+  "code-size/pbuf/readelf.txt": {
+    "bytes": 2357,
+    "sha256": "b497526c8ed348160725d6eae7fd01194ab905e5511234fa00dcd04bfd420e18"
+  },
+  "code-size/pbuf/reference-command.json": {
+    "bytes": 605,
+    "sha256": "a90ec0c428fecc31717a88aa0ce2776a28b4ed746317166981616f3b70a51727"
+  },
+  "code-size/pbuf/reference-size.txt": {
+    "bytes": 966,
+    "sha256": "0632f7a4733fc0461571485a2f215f8e8dfd2e19aa2923d4249ded8caff3bfd6"
+  },
+  "code-size/pbuf/size.txt": {
+    "bytes": 990,
+    "sha256": "70b201fa1ee75e68ff3122c2c81aaa554dcaf90def925eb8b784c6c328d8a1dd"
+  },
+  "comparisons.csv": {
+    "bytes": 9964,
+    "sha256": "3a55b864aeef8b422ef838bba03f841f775c2a9c834b601bf2d588a6f7d23257"
+  },
+  "report.md": {
+    "bytes": 5446,
+    "sha256": "fa0860a06f5ce3b9b43ea76ffbdcaf750b0e2ae7a92238e2724594e0cea9f523"
+  },
+  "summary.json": {
+    "bytes": 288380,
+    "sha256": "587026c63301b63f25fd8fbb56cd6de51cada3dd4154a23f32969335157e46c2"
+  }
+}

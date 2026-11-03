@@ -1,0 +1,23 @@
+{
+  "status": "source-restored-verified",
+  "source_root": "/Users/swchen.tw/git/percepio/poc/artifacts/local/c2b-restored-3e8a5fe2",
+  "checks": [
+    {
+      "kind": "qemu-source",
+      "archive_sha256": "422e85a50f98a94670e080d4166319f4a0af011b28a76d799f3b6cac633a2883",
+      "tar_members": 81704,
+      "verified_entries": 75847,
+      "regular_files": 75782,
+      "symlinks": 65,
+      "result": "passed"
+    },
+    {
+      "kind": "selected-project-source",
+      "archive_sha256": "c65968fcf32dcba591a86d7dd6ae99b7d879b0f311f3ab4b36a2a4b0f7bfbbcf",
+      "tar_members": 1925,
+      "verified_entries": 1528,
+      "result": "passed"
+    }
+  ],
+  "scope": "Same-host content/mode/symlink metadata checks; no rebuild or cross-host acceptance"
+}

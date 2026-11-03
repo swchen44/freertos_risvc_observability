@@ -1,0 +1,9 @@
+{
+  "new_artifact_documents": 2,
+  "relative_links": 32,
+  "broken": [],
+  "ruff_check": "passed",
+  "changed_helpers_format": "passed",
+  "global_format": "failed-existing10-unchanged",
+  "product_source_commit": "3e8a5fe27e1fbf922d7701b496b25ae021d84b3a"
+}

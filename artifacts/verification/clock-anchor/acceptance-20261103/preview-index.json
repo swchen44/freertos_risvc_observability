@@ -1,0 +1,211 @@
+{
+  "scope": "Partial projection for reading; use restore/runset for validation",
+  "complete_data": "restore/manifest.json plus parts; restored runset/",
+  "omitted_from_preview": [
+    {
+      "path": "baseline-C-i0-r1/accesses.csv.gz",
+      "bytes": 553658,
+      "sha256": "d88f020f16aafc9a2521e3b79c97389d1cd3093ebd3387dad25bdf506668d5b8"
+    },
+    {
+      "path": "baseline-C-i0-r1/context.jsonl.gz",
+      "bytes": 184,
+      "sha256": "13fac6ce3cc35e483fb1dc2e8b5adfdec69b42d07d90516445f81f69166972a4"
+    },
+    {
+      "path": "baseline-C-i1-r1/accesses.csv.gz",
+      "bytes": 576162,
+      "sha256": "fd15907606ca67f3280868f53f83d934ca8d555e0f7a61ac464064e3882a3f26"
+    },
+    {
+      "path": "baseline-C-i1-r1/context.jsonl.gz",
+      "bytes": 386,
+      "sha256": "f962b348e3b797d7280b6ddcffc215bd4382fa8b3c42d610adcee666820db728"
+    },
+    {
+      "path": "baseline-L-i0-r1/accesses.csv.gz",
+      "bytes": 553658,
+      "sha256": "d88f020f16aafc9a2521e3b79c97389d1cd3093ebd3387dad25bdf506668d5b8"
+    },
+    {
+      "path": "baseline-L-i0-r1/context.jsonl.gz",
+      "bytes": 184,
+      "sha256": "13fac6ce3cc35e483fb1dc2e8b5adfdec69b42d07d90516445f81f69166972a4"
+    },
+    {
+      "path": "baseline-L-i1-r1/accesses.csv.gz",
+      "bytes": 576162,
+      "sha256": "fd15907606ca67f3280868f53f83d934ca8d555e0f7a61ac464064e3882a3f26"
+    },
+    {
+      "path": "baseline-L-i1-r1/context.jsonl.gz",
+      "bytes": 386,
+      "sha256": "f962b348e3b797d7280b6ddcffc215bd4382fa8b3c42d610adcee666820db728"
+    },
+    {
+      "path": "baseline-M-i0-r1/accesses.csv.gz",
+      "bytes": 546204,
+      "sha256": "863f192834bd894390345fa8aa259be712b5c954a7b9d5e8d87526325e170619"
+    },
+    {
+      "path": "baseline-M-i0-r1/clock.jsonl.gz",
+      "bytes": 1063,
+      "sha256": "21fef7036fcc92054bc175e2256c4e5ad01fac2f18fa08a8fc67e778e69a77ad"
+    },
+    {
+      "path": "baseline-M-i0-r1/context.jsonl.gz",
+      "bytes": 183,
+      "sha256": "75d9a78e87f9f60e70a74913ed5928fcdf28344602fd8a762a1bdd26e1d65324"
+    },
+    {
+      "path": "baseline-M-i1-r1/accesses.csv.gz",
+      "bytes": 568488,
+      "sha256": "2021a6e341fefdc1b64b737b77329c85a5a95d36d2f4a4aa4af17fd9a56f5424"
+    },
+    {
+      "path": "baseline-M-i1-r1/clock.jsonl.gz",
+      "bytes": 13751545,
+      "sha256": "47b9b1e71396efe6ebb3aa31983ab048c2e284523d7c2d6e09f098703be5280b"
+    },
+    {
+      "path": "baseline-M-i1-r1/context.jsonl.gz",
+      "bytes": 383,
+      "sha256": "280ac26cbda860c91a5da94ccd4bcb53ceae01360420979dccdb024b2c22a426"
+    },
+    {
+      "path": "baseline-O-i0-r1/accesses.csv.gz",
+      "bytes": 553658,
+      "sha256": "d88f020f16aafc9a2521e3b79c97389d1cd3093ebd3387dad25bdf506668d5b8"
+    },
+    {
+      "path": "baseline-O-i0-r1/clock.jsonl.gz",
+      "bytes": 2187,
+      "sha256": "ca55f2afc2eaa46c43f04541394bf1df3a22e412b8cc0e8e60fe498f60dfc24d"
+    },
+    {
+      "path": "baseline-O-i0-r1/context.jsonl.gz",
+      "bytes": 184,
+      "sha256": "13fac6ce3cc35e483fb1dc2e8b5adfdec69b42d07d90516445f81f69166972a4"
+    },
+    {
+      "path": "baseline-O-i1-r1/accesses.csv.gz",
+      "bytes": 576162,
+      "sha256": "fd15907606ca67f3280868f53f83d934ca8d555e0f7a61ac464064e3882a3f26"
+    },
+    {
+      "path": "baseline-O-i1-r1/clock.jsonl.gz",
+      "bytes": 13808657,
+      "sha256": "b7e8797575c536601ac86c90f71bb454ad4596f382c976ab6c1f02d24e89152e"
+    },
+    {
+      "path": "baseline-O-i1-r1/context.jsonl.gz",
+      "bytes": 386,
+      "sha256": "f962b348e3b797d7280b6ddcffc215bd4382fa8b3c42d610adcee666820db728"
+    },
+    {
+      "path": "evidence/pre-initfix-tools-and-runtime.tar.gz",
+      "bytes": 55920612,
+      "sha256": "da549f50972e0524496e941a63e73d33993067b0a6d74b31dee87e0ae8e17ea2"
+    },
+    {
+      "path": "pbuf-C-i0-r1/accesses.csv.gz",
+      "bytes": 550287,
+      "sha256": "cc257e5592b3aeb2239ae2994273182d991570da3a4b71ccbbb27cb23d42312b"
+    },
+    {
+      "path": "pbuf-C-i0-r1/context.jsonl.gz",
+      "bytes": 183,
+      "sha256": "8fc16a98b2dce389346c95c74ff9f059457f2a93e26e380dce83281b782d2dd9"
+    },
+    {
+      "path": "pbuf-C-i1-r1/accesses.csv.gz",
+      "bytes": 573608,
+      "sha256": "43827e94f9fa23116e82fa7468846c9d0b8f9c125489b103d4ca06c3bf7f96d5"
+    },
+    {
+      "path": "pbuf-C-i1-r1/context.jsonl.gz",
+      "bytes": 384,
+      "sha256": "4c801d1854972c8e1fff3119b122ae20be14fdb3af990d2c528d92285d06d533"
+    },
+    {
+      "path": "pbuf-L-i0-r1/accesses.csv.gz",
+      "bytes": 550287,
+      "sha256": "cc257e5592b3aeb2239ae2994273182d991570da3a4b71ccbbb27cb23d42312b"
+    },
+    {
+      "path": "pbuf-L-i0-r1/context.jsonl.gz",
+      "bytes": 183,
+      "sha256": "8fc16a98b2dce389346c95c74ff9f059457f2a93e26e380dce83281b782d2dd9"
+    },
+    {
+      "path": "pbuf-L-i1-r1/accesses.csv.gz",
+      "bytes": 573608,
+      "sha256": "43827e94f9fa23116e82fa7468846c9d0b8f9c125489b103d4ca06c3bf7f96d5"
+    },
+    {
+      "path": "pbuf-L-i1-r1/context.jsonl.gz",
+      "bytes": 384,
+      "sha256": "4c801d1854972c8e1fff3119b122ae20be14fdb3af990d2c528d92285d06d533"
+    },
+    {
+      "path": "pbuf-M-i0-r1/accesses.csv.gz",
+      "bytes": 544254,
+      "sha256": "bbf03de55ca7c416a03ba0229afb17aa736db5a48b9d86310cab2f87f9a8a930"
+    },
+    {
+      "path": "pbuf-M-i0-r1/clock.jsonl.gz",
+      "bytes": 1069,
+      "sha256": "970806b929773177c0d301026bde296f4af3c041f0e7d6118d776402345b25e0"
+    },
+    {
+      "path": "pbuf-M-i0-r1/context.jsonl.gz",
+      "bytes": 184,
+      "sha256": "cfc420b73c965271d20158ffc63a572a57d3c601e7aa53a8ad18481eb91d4e69"
+    },
+    {
+      "path": "pbuf-M-i1-r1/accesses.csv.gz",
+      "bytes": 565459,
+      "sha256": "c8a4de2fe02835c9fd0c5c22cf716f3913439eeffb84deae8e6ef5de9f5370d2"
+    },
+    {
+      "path": "pbuf-M-i1-r1/clock.jsonl.gz",
+      "bytes": 13577949,
+      "sha256": "b64fdfe6fd8d0c17dd11c630981b76e688394e6a15e9164d6067cfe7bc13435b"
+    },
+    {
+      "path": "pbuf-M-i1-r1/context.jsonl.gz",
+      "bytes": 381,
+      "sha256": "ad35e419406779d32b6d5868342c8fb444796b7fdb5dba226c03ad4d934e80f3"
+    },
+    {
+      "path": "pbuf-O-i0-r1/accesses.csv.gz",
+      "bytes": 550287,
+      "sha256": "cc257e5592b3aeb2239ae2994273182d991570da3a4b71ccbbb27cb23d42312b"
+    },
+    {
+      "path": "pbuf-O-i0-r1/clock.jsonl.gz",
+      "bytes": 2186,
+      "sha256": "bbadf2c054e0c465cb71a99de35914d0f5c083ccbb8d3af9a124999986d431eb"
+    },
+    {
+      "path": "pbuf-O-i0-r1/context.jsonl.gz",
+      "bytes": 183,
+      "sha256": "8fc16a98b2dce389346c95c74ff9f059457f2a93e26e380dce83281b782d2dd9"
+    },
+    {
+      "path": "pbuf-O-i1-r1/accesses.csv.gz",
+      "bytes": 573608,
+      "sha256": "43827e94f9fa23116e82fa7468846c9d0b8f9c125489b103d4ca06c3bf7f96d5"
+    },
+    {
+      "path": "pbuf-O-i1-r1/clock.jsonl.gz",
+      "bytes": 13628481,
+      "sha256": "92bfebb4086809279b54e956f836052f26c936f79a5fd21a9d1a178e02212062"
+    },
+    {
+      "path": "pbuf-O-i1-r1/context.jsonl.gz",
+      "bytes": 384,
+      "sha256": "4c801d1854972c8e1fff3119b122ae20be14fdb3af990d2c528d92285d06d533"
+    }
+  ]
+}
