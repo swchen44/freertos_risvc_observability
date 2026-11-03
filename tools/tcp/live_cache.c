@@ -148,6 +148,13 @@ static void finish(qemu_plugin_id_t id,void *arg) {
 #endif
  g_ptr_array_free(instructions,TRUE);
 }
+#ifdef POC_CLOCK_ANCHOR
+/* QEMU stores one callback per plugin/event: dispatch both initializers here. */
+static void clock_context_vcpu_init(qemu_plugin_id_t id,unsigned cpu) {
+ if(context_enabled) context_vcpu_init(id,cpu);
+ clock_anchor_vcpu_init(id,cpu);
+}
+#endif
 QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,const qemu_info_t *info,int argc,char **argv) {
  if(!info->system_emulation || strcmp(info->target_name,"riscv32") || info->system.smp_vcpus!=1 ) return -1;
 #ifdef POC_CONTEXT
@@ -160,7 +167,9 @@ QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,const qemu_info_t
   if(strncmp(argv[4],"context-config=",15) || strncmp(argv[5],"context-out=",12)) return -1;
   if(context_init(argv[4]+15,argv[5]+12)) return -1;
   context_enabled=1;
+#ifndef POC_CLOCK_ANCHOR
   qemu_plugin_register_vcpu_init_cb(id,context_vcpu_init);
+#endif
  }
 #else
  if(argc!=4) return -1;
@@ -175,7 +184,7 @@ QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,const qemu_info_t
  enabled=argv[2][8]=='1';handle=qemu_plugin_request_time_control();if(!handle) return -1;
 #ifdef POC_CLOCK_ANCHOR
  if(clock_anchor_init(argv[6]+13,handle,begin_pc,end_pc)) return -1;
- qemu_plugin_register_vcpu_init_cb(id,clock_anchor_vcpu_init);
+ qemu_plugin_register_vcpu_init_cb(id,clock_context_vcpu_init);
 #endif
  out=fopen(argv[3]+4,"wx");if(!out) return -1;
  if(fputs("pc,address,size,operation,l1i,l1d,l2,ram_read,ram_write\n",out)<0) fail("header");
