@@ -1,6 +1,6 @@
 # FreeRTOS／RISC-V Observability：研究與可重跑 POC
 
-**C2b 正式pilot 16／16有效，20組anchors建立verified bounds，完整包與內層source已實際還原。** [研究／操作報告](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/clock-anchor-pilot.md)提供原理、對照、marker成本、code size、API與重跑／還原方法；[驗收入口](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/artifacts/verification/clock-anchor/acceptance-20261103/README.md)包含PSF、JSON／CSV／Mermaid、完整分卷與測試證據。Git發布收據另列實際SHA。
+**C2b 正式pilot 16／16有效，20組anchors建立verified bounds，完整包與內層source已實際還原。** [研究／操作報告](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/clock-anchor-pilot.md)提供原理、對照、marker成本、code size、API與重跑／還原方法；[驗收入口](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/artifacts/verification/clock-anchor/acceptance-20261103/README.md)包含PSF、JSON／CSV／Mermaid、完整分卷與測試證據。[發布收據](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/artifacts/verification/clock-anchor/acceptance-20261103/verification/publication.json)已核對POC payload `5b311de1`／root `d1410b5b`；Task8完成。後續metadata commit保存成功收據與完成ledger。
 
 完整Python suite403個：398 passed、5 opt-in skipped；明確runtime5／5零skip。全庫Ruff check與本輪format通過，十個baseline舊format問題保留。Fresh Astra/high review兩項Important均RED→GREEN修正。FreeRTOS kernel／SDK與歷史captures保持原樣；Web／offline clock-bounds接合與產品PMU／SDK loading／UART仍為後續。
 
