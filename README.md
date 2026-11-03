@@ -1,8 +1,18 @@
 # FreeRTOS／RISC-V Observability：研究與可重跑 POC
 
-**C2b Tasks1–7完成並已發布，Task8進行中。** [最新進度與證據](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/clock-anchor-progress.md)記錄獨立因果validator、PSF bounds與對照／JSON／CSV／Mermaid報告程式。完整suite396個：391通過、5個opt-in skip；正式16-run尚未執行。[Task7收據](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/artifacts/verification/clock-anchor/task7-20261103/README.md)保存測試、真code-size來源及smoke gate修正。全庫Ruff check通過，十個既有format問題保留。
+**C2b 正式pilot 16／16有效，20組anchors建立verified bounds，完整包與內層source已實際還原。** [研究／操作報告](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/clock-anchor-pilot.md)提供原理、對照、marker成本、code size、API與重跑／還原方法；[驗收入口](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/artifacts/verification/clock-anchor/acceptance-20261103/README.md)包含PSF、JSON／CSV／Mermaid、完整分卷與測試證據。Git發布收據另列實際SHA。
 
-正式16-run、透明性／marker成本報告、完整還原分卷與Dashboard接合尚未完成。沿用Native與最後獨立review；FreeRTOS kernel／SDK與舊capture保持原樣。[實作計畫](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/plans/20-c2b-clock-anchor-implementation.md)與[checklist](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/plans/19-c2b-clock-anchor-pilot.md)分開現況與後續。
+完整Python suite403個：398 passed、5 opt-in skipped；明確runtime5／5零skip。全庫Ruff check與本輪format通過，十個baseline舊format問題保留。Fresh Astra/high review兩項Important均RED→GREEN修正。FreeRTOS kernel／SDK與歷史captures保持原樣；Web／offline clock-bounds接合與產品PMU／SDK loading／UART仍為後續。
+
+| 最新POC入口 | 內容 |
+|---|---|
+| [POC README](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/README.md) | 實驗步驟、各資料夾與重要檔案、完整歷史 |
+| [C2b報告](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/clock-anchor-pilot.md) | 架構／時序／品質Mermaid、16-run結果與重現邊界 |
+| [驗收與還原](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/artifacts/verification/clock-anchor/acceptance-20261103/README.md) | preview／verification／restore分卷；同host還原1514檔、720494937bytes |
+| [實作計畫](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/plans/20-c2b-clock-anchor-implementation.md) | 八項任務及可複查完成證據 |
+
+`poc/`是nested Git repo／gitlink，完整實驗與文件在遠端`poc-history`分支；root main用README與gitlink指向已發布版本。完整Git history需一併保留供legacy exporter使用，clone只取單一目錄source不代表完整可建置環境。
+
 
 2026-11-03：已完成[第二次空間清理與暫停接手點](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/artifacts/verification/storage/cleanup-paused-20261103/README.md)。四份重複capture／runtime副本、兩份完整封存並實際還原核對的失敗QEMU source已移除；觀測增加約1.76GiB。六份source分卷、SHA、逐檔inventory及還原指令保留；現用QEMU／GCC未刪。使用者continue已恢復開發，Task7完成；正式pilot與完整還原由Task8執行。
 
@@ -28,7 +38,7 @@ POC是`poc/` submodule，對應本repo的`poc-history`分支；根目錄保存�
 
 ![離線互動hover](https://raw.githubusercontent.com/swchen44/freertos_risvc_observability/poc-history/artifacts/verification/event-window/release-20261023/ui/fast-A08-offline/screenshots/07-hover.png)
 
-固定L1I8KiB／L1D8KiB／L232KiB，提供相對最佳化比較；Chrome RSS不是MCU RAM，也不是SDK CPU loading。C2b clock anchors、實機PMU／SDK overhead與本輪知識庫增補仍列後續。以下保留各階段歷史，不以舊checkpoint的pending描述判斷本輪狀態。
+固定L1I8KiB／L1D8KiB／L232KiB，提供相對最佳化比較；Chrome RSS不是MCU RAM，也不是SDK CPU loading。C2b pilot已完成；clock bounds的UI接合、實機PMU／SDK overhead與最新知識庫增補仍列後續。以下保留各階段歷史，不以舊checkpoint的pending描述判斷本輪狀態。
 
 
 > **歷史：2026-10-23早期checkpoint：** 時間最佳化、Python320／Node22／Ruff通過，離線完整驗收通過；Web完整CSV RSS650.36MiB仍超過640，整體partial。正式40／8HTML尚未生成。[最新報告、截圖與後續計畫](poc/docs/event-window-dashboard.md)。下方為歷史checkpoint。
@@ -55,7 +65,7 @@ C1 已建立 Task／IRQ × role × function × PC 聯合統計、函式差異與
 - [實作計畫與 checklist](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/plans/13-hotspot-dashboard.md)。
 - [正式報告與來源](https://github.com/swchen44/freertos_risvc_observability/tree/poc-history/artifacts/verification/hotspot/formal/)；[8 組離線 HTML](https://github.com/swchen44/freertos_risvc_observability/tree/poc-history/artifacts/offline/hotspot/)。
 - Web：在 POC 執行 `.venv/bin/python -m psf_lab serve --port 8016`，開啟 `http://127.0.0.1:8016/hotspot.html`。
-- C2a 事件區間實作中，C2b 時間對齊尚未開始；這些是模型相對成本，不是產品 CPU 使用率。
+- 歷史當時C2a／C2b尚未完成；目前C2a與C2b pilot已通過，clock bounds接入UI仍待後續；這些是模型相對成本，不是產品 CPU 使用率。
 
 ![C1 Web 畫面](https://raw.githubusercontent.com/swchen44/freertos_risvc_observability/poc-history/artifacts/verification/hotspot/ui/server/screenshots/01-overview.png)
 
