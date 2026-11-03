@@ -12,7 +12,7 @@
 
 **Execution:** 沿用本專案已採用的Native：主agent逐項實作，最後做獨立whole-change review；依據[既有原生執行紀錄](14-event-window-dashboard.md)。不重新詢問A／B或執行方式。2026-11-02使用者以continue確認計畫，開始逐項實作。
 
-**Current status:** 2026-11-03 Tasks1–7完成；Task8 steps1–6實際通過，step7文件／發布進行中。正式16／16、20 anchors、完整包與內層source還原均有證據；403個Python測試398通過、5 opt-in skip，明確runtime5／5零skip。[正式報告](../clock-anchor-pilot.md)。全庫format十個baseline舊問題保留，不列passed。
+**Current status:** 2026-11-03 Tasks1–8全部完成並發布，含step7文件／remote SHA核對；[發布收據](../../artifacts/verification/clock-anchor/acceptance-20261103/verification/publication.json)。正式16／16、20 anchors、完整包與內層source還原均有證據；403個Python測試398通過、5 opt-in skip，明確runtime5／5零skip。[正式報告](../clock-anchor-pilot.md)。全庫format十個baseline舊問題保留，不列passed。
 
 ## Global Constraints
 
@@ -567,7 +567,7 @@ PYTHONPATH=src .venv/bin/python tools/tcp/package_clock_anchor.py \
 ```
 
 analysis成功後，把report、package與restore-check收據複製到新acceptance目錄並重驗hash，才stage發布；例示final路徑已存在時改用新的run名稱，不清空舊目錄。
-- [ ] **7. 更新文件／push／核對。** 執行`verify_docs(Path.cwd())`與`git diff --check`，README給資料夾／重要檔／重跑與restore命令；task完成／inconclusive／未完成分開。只stage本輪paths，先push POC至poc-history、核對remote SHA，再更新root gitlink／README push main，最後兩repo HEAD等於remote、status乾淨。Git stdout／stderr capture後僅輸出sanitized原因及SHA，不顯示remote URL或憑證。
+- [x] **7. 更新文件／push／核對。** 執行`verify_docs(Path.cwd())`與`git diff --check`，README給資料夾／重要檔／重跑與restore命令；task完成／inconclusive／未完成分開。只stage本輪paths，先push POC至poc-history、核對remote SHA，再更新root gitlink／README push main，最後兩repo HEAD等於remote、status乾淨。Git stdout／stderr capture後僅輸出sanitized原因及SHA，不顯示remote URL或憑證。
 
 ## 計畫覆蓋自審與下一階段
 

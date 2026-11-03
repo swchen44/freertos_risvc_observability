@@ -1,6 +1,6 @@
 # C2b clock-anchor pilot：接續提案
 
-狀態：**2026-11-03正式pilot16／16、20 anchors、分析／review修正與完整還原已完成；Git發布收據另列。** [正式研究／操作報告](../clock-anchor-pilot.md)與[最新進度](../clock-anchor-progress.md)分開已完成pilot與尚未接合的Web／offline視圖。
+狀態：**2026-11-03正式pilot16／16、20 anchors、分析／review修正與完整還原已完成；Git發布已核對，見[收據](../../artifacts/verification/clock-anchor/acceptance-20261103/verification/publication.json)。** [正式研究／操作報告](../clock-anchor-pilot.md)與[最新進度](../clock-anchor-progress.md)分開已完成pilot與尚未接合的Web／offline視圖。
 
 ## 2026-10-23 接續 checkpoint
 
@@ -10,9 +10,10 @@
 - [x] 2026-10-25使用者選A：app／port加少量SDK markers、不改kernel／SDK；不再等待A／B選擇。
 - [x] 完成並自我審閱具體anchor介面、最小pilot與錯誤／誤差判定，使用者以continue確認[C2b v1書面規格](../design/c2b-clock-anchor-pilot-v1.md)。
 - [x] 建立[逐項實作計畫](20-c2b-clock-anchor-implementation.md)及覆蓋自審；沿用既有Native方式。
-- [x] 使用者以continue確認實作計畫，2026-11-02開始Task1→8；Tasks1–7完成；Task8正式資料與還原完成，發布收據另列。
+- [x] 使用者以continue確認實作計畫，2026-11-02開始Task1→8；Tasks1–7完成；Task8正式資料與還原完成，發布亦已核對。
 - [x] 正式16-run、L/C與C/O透明性、O/M marker效應、20組bounds；獨立runtime／report／還原均有收據。
 - [x] Fresh全branch review；兩項Important以RED→GREEN修正，完整suite／runtime通過。
+- [x] POC與root固定payload已push、remote SHA／gitlink核對；完成ledger與收據另以metadata commit保存。
 - [ ] Web／offline clock-bounds視圖與curl／agent-browser E2E，另立後續計畫。
 - [ ] 三次重複與變異分析；產品解析度預算／實機校準。
 

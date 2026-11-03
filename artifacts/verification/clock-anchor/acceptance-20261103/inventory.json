@@ -1,10 +1,10 @@
 {
   "schema": "c2b-published-inventory-v1",
-  "scope": "Payload before publication; root inventory and later publication receipts excluded",
+  "scope": "Current artifact files excluding root inventory itself. Publication receipt separately addresses immutable primary payload commits; original payload inventory is available at that commit.",
   "files": {
     "README.md": {
-      "bytes": 4452,
-      "sha256": "5da982bef53b853fddb6c03efd910624952b35a49abff9b9845b676d69b3505a"
+      "bytes": 4621,
+      "sha256": "234baaf33a0b15a9053db4050e0fc00cf521d5b7927622f7032e2efd5a690491"
     },
     "decisions.md": {
       "bytes": 7661,
@@ -8626,6 +8626,10 @@
       "bytes": 161,
       "sha256": "f88b8228795fb6a8a6fa9ecc89c1b331f6095187f5827ec1d8e3cefae118ffce"
     },
+    "verification/docs-final-check.json": {
+      "bytes": 161,
+      "sha256": "175d1d5610185c039c3cf7769366436593bfbe55492bdd7990522568c18c9419"
+    },
     "verification/final-review-astra.md": {
       "bytes": 2349,
       "sha256": "3640d1bff38fc9b2d9fa95763e7bc966f5bda9327f79f63bba95764ed235aa9c"
@@ -8658,9 +8662,21 @@
       "bytes": 19797,
       "sha256": "f63eb64f7eb41ddda26cead2065421da6e3d1de00bdc85cb21833ac0991029bc"
     },
+    "verification/progress-final.md": {
+      "bytes": 20241,
+      "sha256": "7971b9578a6bfad5ce3de21ece380d0b5543c50b659114194f70ef6dcf206644"
+    },
+    "verification/publication.json": {
+      "bytes": 1522,
+      "sha256": "7a7ad828848357c93743d4a2d9a1cb4915d574c73339004bf3191b63b41487ab"
+    },
     "verification/publish-preflight.json": {
       "bytes": 259,
       "sha256": "9523c081996727c32f0228b5fcb5a0a4a0fe657b3b17056cab6b3594ab9e4d81"
+    },
+    "verification/task-8-tests.log": {
+      "bytes": 54887,
+      "sha256": "f8544cf93cbcc2a1bbd3f5757c7b908dbd389d9eb98b02a7b678778292b23c2b"
     },
     "verification/task8-brief-read.log": {
       "bytes": 6654,

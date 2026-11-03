@@ -135,7 +135,7 @@ flowchart TD
 
 | Gate | 結果／證據 |
 |---|---|
-| 完整 Python suite | 403 執行、398 passed、5 opt-in skipped；49.270 s |
+| 完整 Python suite | 403 執行、398 passed、5 opt-in skipped；post-review 49.270 s，發布收尾再驗 53.657 s |
 | 明確啟用 guest／QEMU runtime | 5／5 passed、0 skipped；130.692 s |
 | Review fix targeted | 46／46 passed；2.562 s |
 | 全庫 Ruff check | passed |
@@ -143,7 +143,7 @@ flowchart TD
 | 全庫 format | **failed：10 個 baseline 舊檔**，與 `9c3c9aef` byte-identical；清單見[format debt](../artifacts/verification/clock-anchor/acceptance-20261103/verification/baseline-format-debt.json) |
 | UI／Node／browser | 本輪未執行，沒有 UI 程式變更；既有截圖不冒稱新增畫面 |
 
-測試與 runtime logs 見[verification](../artifacts/verification/clock-anchor/acceptance-20261103/verification/)。Fresh Astra/high whole-change review 找到兩項 Important，兩者都先看見 RED 再修到 GREEN，之後重跑完整 suite 與真 runtime；沒有 deferred minor。Reviewer 做 source review 與 42 個 pure unit checks，執行者另負責實際 QEMU／封裝驗收，不混稱 reviewer runtime。
+發布完成後的[task-done log](../artifacts/verification/clock-anchor/acceptance-20261103/verification/task-8-tests.log)再次確認完整suite。測試與 runtime logs 見[verification](../artifacts/verification/clock-anchor/acceptance-20261103/verification/)。Fresh Astra/high whole-change review 找到兩項 Important，兩者都先看見 RED 再修到 GREEN，之後重跑完整 suite 與真 runtime；沒有 deferred minor。Reviewer 做 source review 與 42 個 pure unit checks，執行者另負責實際 QEMU／封裝驗收，不混稱 reviewer runtime。
 
 | 發現 | 修正與來源 |
 |---|---|

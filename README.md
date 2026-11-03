@@ -1,6 +1,6 @@
 # FreeRTOS／RISC-V PSF POC
 
-**C2b 正式 pilot 16／16 runs 有效，20 組 anchors 建立 verified bounds；完整封裝與內層 source 已實際還原核對。** [研究／操作報告](docs/clock-anchor-pilot.md)整理對照、marker 成本、code size、原理、重跑與內網還原；[驗收入口](artifacts/verification/clock-anchor/acceptance-20261103/README.md)提供 JSON／CSV／Mermaid、PSF、測試與完整分卷。Git 發布收據另列狀態。
+**C2b 正式 pilot 16／16 runs 有效，20 組 anchors 建立 verified bounds；完整封裝與內層 source 已實際還原核對。** [研究／操作報告](docs/clock-anchor-pilot.md)整理對照、marker 成本、code size、原理、重跑與內網還原；[驗收入口](artifacts/verification/clock-anchor/acceptance-20261103/README.md)提供 JSON／CSV／Mermaid、PSF、測試與完整分卷。[發布收據](artifacts/verification/clock-anchor/acceptance-20261103/verification/publication.json)已核對 POC `5b311de1`／root `d1410b5b`；Task8 完成。
 
 完整 Python suite 403 個：398 passed、5 opt-in skipped；明確啟用 QEMU runtime 5／5、0 skip。全庫 Ruff check 與本輪 format 通過，十個 baseline 舊 format 問題仍保留。Fresh Astra/high review 的兩項 Important 已 RED→GREEN 修正。FreeRTOS kernel／SDK 與歷史 captures 保持原樣。
 

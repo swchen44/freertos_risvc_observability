@@ -1,0 +1,40 @@
+{
+  "schema": "c2b-pilot-publication-v1",
+  "status": "published-verified",
+  "time": "2026-11-03T01:41:48.457636+00:00",
+  "scope": "Immutable primary payload commits; a subsequent metadata-only commit records this receipt and task completion. This receipt does not claim its own containing commit SHA.",
+  "poc": {
+    "branch": "poc-history",
+    "local_commit": "5b311de1333f53fd263738cf2f73532987f98a5f",
+    "verified": true,
+    "push_exit": 0,
+    "remote_commit": "5b311de1333f53fd263738cf2f73532987f98a5f"
+  },
+  "root": {
+    "branch": "main",
+    "local_commit": "d1410b5bc9259f85dea155e33ce38d73a6e03f57",
+    "verified": true,
+    "push_exit": 0,
+    "remote_commit": "d1410b5bc9259f85dea155e33ce38d73a6e03f57"
+  },
+  "root_gitlink": "5b311de1333f53fd263738cf2f73532987f98a5f",
+  "formal_source_commit": "3cdb7794778bf608da6e86d189175c3cefb638b1",
+  "validated_analysis_package_source": "3e8a5fe27e1fbf922d7701b496b25ae021d84b3a",
+  "payload_inventory_sha256": "2d4f5765bb0d1173a61d30cbf8558284147610d5502f3ae16a055556ba881a35",
+  "restore_manifest_sha256": "9a55b8323647027839f3a10258c4cfa48013263a768b6f9a48419e53da7f1d75",
+  "task_done_suite": {
+    "executed": 403,
+    "passed": 398,
+    "skipped": 5,
+    "seconds": 53.657,
+    "source_commit": "5b311de1333f53fd263738cf2f73532987f98a5f"
+  },
+  "explicit_runtime": {
+    "passed": 5,
+    "skipped": 0,
+    "seconds": 130.692
+  },
+  "global_format": "failed-existing10-unchanged",
+  "cross_host": "not-performed",
+  "ui": "not-performed-no-ui-change"
+}
