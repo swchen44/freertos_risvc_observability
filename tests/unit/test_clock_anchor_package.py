@@ -1,14 +1,36 @@
 """Real byte/mode roundtrips, failed runs and hostile restore manifests."""
 
 import json
+import os
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 from tools.tcp.package_clock_anchor import package_clock_anchor, verify_restore
 
 
 class ClockPackageTests(unittest.TestCase):
+    def test_manifest_replacement_during_restore_cannot_receive_verified_receipt(self):
+        output = self.root / "package"
+        manifest = package_clock_anchor(self.runset, output)
+        original_chmod = os.chmod
+        changed = False
+
+        def swap_after_first_file(path, mode):
+            nonlocal changed
+            original_chmod(path, mode)
+            if not changed:
+                changed = True
+                replacement = json.loads(json.dumps(manifest))
+                replacement["files"][0]["path"] = "runset/never-restored.txt"
+                (output / "manifest.json").write_text(json.dumps(replacement))
+
+        with patch("tools.tcp.package_clock_anchor.os.chmod", side_effect=swap_after_first_file):
+            with self.assertRaisesRegex(ValueError, "Manifest changed"):
+                verify_restore(output, self.root / "replaced")
+        self.assertTrue(changed)
+
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
         self.addCleanup(self.tmp.cleanup)

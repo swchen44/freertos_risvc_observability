@@ -154,7 +154,7 @@ def scan_evidence(records, accesses, expected: dict, *, pending_limit=65536) -> 
             if "marker_pcs" in expected:
                 key = ("enter_pc", "sampled_pc", "leave_pc")[marker_stage]
                 _require(int(row["pc"]) == expected["marker_pcs"][key], "marker_pc")
-            _require(cursor not in marker_rows, "marker_instruction")
+            _require(cursor < rows and cursor not in marker_rows, "marker_instruction")
             marker_rows[cursor] = int(row["pc"])
             if marker_stage == 0:
                 current = dict(marker_seq=str(seq), marker_phase=str(seq))
@@ -221,6 +221,7 @@ def scan_evidence(records, accesses, expected: dict, *, pending_limit=65536) -> 
         else:
             raise ClockEvidenceError("record_kind")
     _require(footer_seen, "missing_footer")
+    _require(not marker_rows, "marker_instruction")
     _require(next(raw, None) is None, "raw_count")
     return dict(
         raw_rows=str(rows),

@@ -15,6 +15,14 @@ from tests.fixtures.clock_anchor_semantic import marker_fixture, semantic_fixtur
 
 
 class ClockScanTests(unittest.TestCase):
+    def test_last_hook_at_eof_cannot_claim_an_instruction_that_does_not_exist(self):
+        f = marker_fixture()
+        self.assertEqual(f.records[-3]["kind"], "marker_leave")
+        f.records[-3]["raw_cursor"] = "25"
+        with self.assertRaises(ClockEvidenceError) as caught:
+            scan_evidence(f.records, f.accesses, f.expected)
+        self.assertEqual(caught.exception.code, "marker_instruction")
+
     def test_plain_and_gzip_produce_identical_causal_summary(self):
         f = semantic_fixture()
         with tempfile.TemporaryDirectory() as tmp:

@@ -310,7 +310,12 @@ def verify_restore(package: Path, temporary_output: Path):
     regular(manifest_path)
     if manifest_path.stat().st_size > 16 * 1024 * 1024:
         raise ValueError("Manifest resource limit")
-    manifest = json.loads(manifest_path.read_text())
+    with manifest_path.open("rb") as stream:
+        manifest_bytes = stream.read(16 * 1024 * 1024 + 1)
+    if len(manifest_bytes) > 16 * 1024 * 1024:
+        raise ValueError("Manifest resource limit")
+    manifest_sha256 = hashlib.sha256(manifest_bytes).hexdigest()
+    manifest = json.loads(manifest_bytes)
     if (
         manifest.get("schema") != "clock-anchor-package-v1"
         or manifest.get("codec") != "gzip-file-parts-v1"
@@ -400,11 +405,14 @@ def verify_restore(package: Path, temporary_output: Path):
             if stat.S_IMODE(dest.stat().st_mode) != entry["mode"]:
                 raise ValueError("Restored mode mismatch")
             total += size
+    regular(manifest_path)
+    if sha(manifest_path) != manifest_sha256:
+        raise ValueError("Manifest changed during restore")
     return dict(
         status="restored-verified",
         verified_files=len(files),
         verified_bytes=str(total),
-        manifest_sha256=sha(manifest_path),
+        manifest_sha256=manifest_sha256,
         scope="regular files; nested source archives remain opaque",
     )
 
