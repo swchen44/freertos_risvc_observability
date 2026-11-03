@@ -38,6 +38,10 @@ class ClockAnchorRuntimeTests(unittest.TestCase):
 
     def test_real_tcp_o_has_five_verified_bounds(self):
         self.assertEqual(self.capture["status"], "captured-unvalidated")
+        # QEMU keeps one vcpu_init callback per plugin/event; context must survive.
+        log = (self.captured_run / "qemu.log").read_text()
+        self.assertIn("context_capabilities registers=", log)
+        self.assertIn("mcause_matches=1", log)
         result = verify_clock_capture(self.captured_run, self.capture["expected"])
         write_json(self.output / "validation.json", result)
         self.assertEqual(result["application_status"], "passed")
@@ -46,6 +50,7 @@ class ClockAnchorRuntimeTests(unittest.TestCase):
         self.assertEqual(len(result["anchors"]), 5)
         self.assertGreater(int(result["unknown_rows"]), 0)
         self.assertEqual(result["scan"]["pending"], "0")
+        self.assertEqual(result["context"]["quality"], "exact")
 
     def test_sidecar_missing_footer_duplicate_request_and_hash_mismatch(self):
         for fault, code in (
