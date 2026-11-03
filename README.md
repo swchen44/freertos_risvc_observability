@@ -1,12 +1,12 @@
 # FreeRTOS／RISC-V Observability：研究與可重跑 POC
 
-**C2b Tasks1–6完成並已發布，Tasks7–8依使用者要求暫停。** [最新進度與證據](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/clock-anchor-progress.md)記錄 TCP collector、獨立 replay／因果 validator 與真 PSF join。development O 取得5組 bounds、431,512 covered／311 unknown rows；正式16-run尚未執行。[Task6收據](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/artifacts/verification/clock-anchor/task6-20261103/README.md)保存完整原始資料、反例與失敗修正。完整suite385個：380通過、5個opt-in skip；另明確啟用的runtime通過，0 skip。全庫Ruff check通過；全庫format仍有10個既有舊檔未通過。
+**C2b Tasks1–7完成並已發布，Task8進行中。** [最新進度與證據](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/clock-anchor-progress.md)記錄獨立因果validator、PSF bounds與對照／JSON／CSV／Mermaid報告程式。完整suite396個：391通過、5個opt-in skip；正式16-run尚未執行。[Task7收據](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/artifacts/verification/clock-anchor/task7-20261103/README.md)保存測試、真code-size來源及smoke gate修正。全庫Ruff check通過，十個既有format問題保留。
 
 正式16-run、透明性／marker成本報告、完整還原分卷與Dashboard接合尚未完成。沿用Native與最後獨立review；FreeRTOS kernel／SDK與舊capture保持原樣。[實作計畫](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/plans/20-c2b-clock-anchor-implementation.md)與[checklist](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/docs/plans/19-c2b-clock-anchor-pilot.md)分開現況與後續。
 
-2026-11-03：已完成[第二次空間清理與暫停接手點](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/artifacts/verification/storage/cleanup-paused-20261103/README.md)。四份重複capture／runtime副本、兩份完整封存並實際還原核對的失敗QEMU source已移除；觀測增加約1.76GiB。六份source分卷、SHA、逐檔inventory及還原指令保留；現用QEMU／GCC未刪。Task7只有已保存的RED測試草稿，等待恢復指示。
+2026-11-03：已完成[第二次空間清理與暫停接手點](https://github.com/swchen44/freertos_risvc_observability/blob/poc-history/artifacts/verification/storage/cleanup-paused-20261103/README.md)。四份重複capture／runtime副本、兩份完整封存並實際還原核對的失敗QEMU source已移除；觀測增加約1.76GiB。六份source分卷、SHA、逐檔inventory及還原指令保留；現用QEMU／GCC未刪。使用者continue已恢復開發，Task7完成；正式pilot與完整還原由Task8執行。
 
-本次清理備份已在本機Git保存；push在600秒後逾時，最後核對遠端仍為Tasks1–6 checkpoint。上列最新清理頁面待發布；恢復工作後先核對遠端、重試備份發布。開發維持暫停。
+清理備份首次push逾時，重試已成功核對遠端e0679501；Task7也已發布，遠端e0fc8f28。先前暫停與失敗receipt保留歷史原文，目前開發已恢復。
 
 ## C2a 最新成果 · 2026-10-23
 
